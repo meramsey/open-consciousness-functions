@@ -343,7 +343,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-AUT-001-Automatic-Action.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -370,6 +370,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-AUT-001-Automatic-Action.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-AUT-001-Automatic-Action.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-AUT-001-Automatic-Action.yaml",
@@ -3581,7 +3586,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -3608,6 +3613,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
@@ -6604,7 +6614,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -6631,6 +6641,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
@@ -9472,7 +9487,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-BOD-003-Comfort.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -9499,6 +9514,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-BOD-003-Comfort.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-BOD-003-Comfort.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-BOD-003-Comfort.yaml",
@@ -12615,7 +12635,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -12642,6 +12662,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
@@ -15583,7 +15608,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-BOD-005-Appetite-Choice.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -15610,6 +15635,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-BOD-005-Appetite-Choice.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-BOD-005-Appetite-Choice.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-BOD-005-Appetite-Choice.yaml",
@@ -18666,7 +18696,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -18693,6 +18723,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
@@ -21859,7 +21894,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -21886,6 +21921,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
@@ -24797,7 +24837,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-BOD-008-Immune-Readiness.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -24824,6 +24864,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-BOD-008-Immune-Readiness.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-BOD-008-Immune-Readiness.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-BOD-008-Immune-Readiness.yaml",
@@ -27755,7 +27800,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-BOD-009-Breathe-Better.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -27782,6 +27827,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-BOD-009-Breathe-Better.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-BOD-009-Breathe-Better.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-BOD-009-Breathe-Better.yaml",
@@ -30718,7 +30768,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-BOD-010-Nutricia.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -30745,6 +30795,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-BOD-010-Nutricia.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-BOD-010-Nutricia.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-BOD-010-Nutricia.yaml",
@@ -33961,7 +34016,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-BOD-011-Hormonal-Transitions.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -33988,6 +34043,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-BOD-011-Hormonal-Transitions.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-BOD-011-Hormonal-Transitions.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-BOD-011-Hormonal-Transitions.yaml",
@@ -36984,7 +37044,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-BOD-012-Sex-Drive.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -37011,6 +37071,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-BOD-012-Sex-Drive.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-BOD-012-Sex-Drive.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-BOD-012-Sex-Drive.yaml",
@@ -40372,7 +40437,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-BOD-013-Body-Tune-Up.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -40399,6 +40464,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-BOD-013-Body-Tune-Up.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-BOD-013-Body-Tune-Up.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-BOD-013-Body-Tune-Up.yaml",
@@ -43540,7 +43610,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-BOD-014-Regenerate.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -43567,6 +43637,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-BOD-014-Regenerate.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-BOD-014-Regenerate.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-BOD-014-Regenerate.yaml",
@@ -46833,7 +46908,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-BOD-015-Temporary-Numbing.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -46860,6 +46935,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-BOD-015-Temporary-Numbing.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-BOD-015-Temporary-Numbing.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-BOD-015-Temporary-Numbing.yaml",
@@ -50466,7 +50546,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-COG-001-Information-Access.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -50493,6 +50573,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-COG-001-Information-Access.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-COG-001-Information-Access.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-COG-001-Information-Access.yaml",
@@ -53229,7 +53314,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-COG-002-Mental-Calculation.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -53256,6 +53341,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-COG-002-Mental-Calculation.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-COG-002-Mental-Calculation.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-COG-002-Mental-Calculation.yaml",
@@ -56067,7 +56157,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-COG-003-Contemplation.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -56094,6 +56184,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-COG-003-Contemplation.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-COG-003-Contemplation.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-COG-003-Contemplation.yaml",
@@ -59120,7 +59215,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-COG-004-Imprint.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -59147,6 +59242,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-COG-004-Imprint.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-COG-004-Imprint.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-COG-004-Imprint.yaml",
@@ -62538,7 +62638,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-COG-005-Options.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -62565,6 +62665,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-COG-005-Options.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-COG-005-Options.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-COG-005-Options.yaml",
@@ -65726,7 +65831,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-COG-006-Recall.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -65753,6 +65858,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-COG-006-Recall.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-COG-006-Recall.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-COG-006-Recall.yaml",
@@ -68509,7 +68619,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-COG-007-Think-Fast.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -68536,6 +68646,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-COG-007-Think-Fast.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-COG-007-Think-Fast.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-COG-007-Think-Fast.yaml",
@@ -71332,7 +71447,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-COM-001-Speak-Up.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -71359,6 +71474,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-COM-001-Speak-Up.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-COM-001-Speak-Up.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-COM-001-Speak-Up.yaml",
@@ -74065,7 +74185,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-EMG-001-Injury-Response.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -74092,6 +74212,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-EMG-001-Injury-Response.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-EMG-001-Injury-Response.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-EMG-001-Injury-Response.yaml",
@@ -77368,7 +77493,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-EMG-002-Toxic-Exposure-Response.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -77395,6 +77520,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-EMG-002-Toxic-Exposure-Response.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-EMG-002-Toxic-Exposure-Response.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-EMG-002-Toxic-Exposure-Response.yaml",
@@ -80691,7 +80821,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-EMO-001-Let-Go.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -80718,6 +80848,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-EMO-001-Let-Go.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-EMO-001-Let-Go.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-EMO-001-Let-Go.yaml",
@@ -83494,7 +83629,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-EMO-002-Offload.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -83521,6 +83656,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-EMO-002-Offload.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-EMO-002-Offload.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-EMO-002-Offload.yaml",
@@ -86567,7 +86707,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-EMO-003-Empathize.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -86594,6 +86734,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-EMO-003-Empathize.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-EMO-003-Empathize.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-EMO-003-Empathize.yaml",
@@ -89845,7 +89990,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-EXP-001-Manifest.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -89872,6 +90017,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-EXP-001-Manifest.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-EXP-001-Manifest.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-EXP-001-Manifest.yaml",
@@ -93153,7 +93303,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-EXP-002-Insulate.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -93180,6 +93330,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-EXP-002-Insulate.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-EXP-002-Insulate.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-EXP-002-Insulate.yaml",
@@ -97301,7 +97456,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-EXP-003-Dissolve.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -97328,6 +97483,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-EXP-003-Dissolve.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-EXP-003-Dissolve.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-EXP-003-Dissolve.yaml",
@@ -98269,7 +98429,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-EXP-005-Clear-Zone.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -98296,6 +98456,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-EXP-005-Clear-Zone.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-EXP-005-Clear-Zone.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-EXP-005-Clear-Zone.yaml",
@@ -99697,7 +99862,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-EXP-006-Intuition.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -99724,6 +99889,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-EXP-006-Intuition.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-EXP-006-Intuition.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-EXP-006-Intuition.yaml",
@@ -100580,7 +100750,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-FND-001-Access-to-Energy.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -100607,6 +100777,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-FND-001-Access-to-Energy.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-FND-001-Access-to-Energy.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-FND-001-Access-to-Energy.yaml",
@@ -103368,7 +103543,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-FND-002-Focus.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -103395,6 +103570,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-FND-002-Focus.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-FND-002-Focus.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-FND-002-Focus.yaml",
@@ -106506,7 +106686,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-FND-003-Quick-Recharge.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -106533,6 +106713,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-FND-003-Quick-Recharge.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-FND-003-Quick-Recharge.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-FND-003-Quick-Recharge.yaml",
@@ -109429,7 +109614,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-FND-004-Relax.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -109514,8 +109699,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/session_templates/3": {
           "file": "locales/en-US/OCF-FND-004-Relax.yaml",
-          "value": "OCF-TPL-SESSION-PILOT-RELAX-001",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/session_templates/3"
+        },
+        "/content/bindings/session_templates/4": {
+          "file": "locales/en-US/OCF-FND-004-Relax.yaml",
+          "value": "OCF-TPL-SESSION-PILOT-RELAX-001",
+          "yaml_pointer": "/content/bindings/session_templates/4"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-FND-004-Relax.yaml",
@@ -112637,7 +112827,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-FND-005-Reset.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -112664,6 +112854,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-FND-005-Reset.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-FND-005-Reset.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-FND-005-Reset.yaml",
@@ -115745,7 +115940,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-FND-006-Release.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -115772,6 +115967,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-FND-006-Release.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-FND-006-Release.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-FND-006-Release.yaml",
@@ -119003,7 +119203,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-LIF-001-Habit-Freedom.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -119030,6 +119230,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-LIF-001-Habit-Freedom.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-LIF-001-Habit-Freedom.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-LIF-001-Habit-Freedom.yaml",
@@ -122066,7 +122271,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-PRF-001-Do-This-Now.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -122093,6 +122298,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-PRF-001-Do-This-Now.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-PRF-001-Do-This-Now.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-PRF-001-Do-This-Now.yaml",
@@ -124609,7 +124819,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-PRF-002-Inner-Power.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -124636,6 +124846,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-PRF-002-Inner-Power.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-PRF-002-Inner-Power.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-PRF-002-Inner-Power.yaml",
@@ -127727,7 +127942,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-PRF-003-Coordination.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -127754,6 +127969,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-PRF-003-Coordination.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-PRF-003-Coordination.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-PRF-003-Coordination.yaml",
@@ -130755,7 +130975,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-PRF-004-Light-Foot.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -130782,6 +131002,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-PRF-004-Light-Foot.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-PRF-004-Light-Foot.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-PRF-004-Light-Foot.yaml",
@@ -134153,7 +134378,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-PRF-005-Make-Your-Day.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -134180,6 +134405,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-PRF-005-Make-Your-Day.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-PRF-005-Make-Your-Day.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-PRF-005-Make-Your-Day.yaml",
@@ -137186,7 +137416,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-PRF-006-Strong-Quick.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -137213,6 +137443,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-PRF-006-Strong-Quick.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-PRF-006-Strong-Quick.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-PRF-006-Strong-Quick.yaml",
@@ -140869,7 +141104,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-SEN-001-Hearing.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -140954,8 +141189,13 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/session_templates/3": {
           "file": "locales/en-US/OCF-SEN-001-Hearing.yaml",
-          "value": "OCF-TPL-SESSION-PILOT-HEARING-001",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/session_templates/3"
+        },
+        "/content/bindings/session_templates/4": {
+          "file": "locales/en-US/OCF-SEN-001-Hearing.yaml",
+          "value": "OCF-TPL-SESSION-PILOT-HEARING-001",
+          "yaml_pointer": "/content/bindings/session_templates/4"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-SEN-001-Hearing.yaml",
@@ -144107,7 +144347,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-SEN-002-Seeing.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -144134,6 +144374,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-SEN-002-Seeing.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-SEN-002-Seeing.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-SEN-002-Seeing.yaml",
@@ -147210,7 +147455,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-SEN-003-Smell.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -147237,6 +147482,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-SEN-003-Smell.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-SEN-003-Smell.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-SEN-003-Smell.yaml",
@@ -151033,7 +151283,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-SEN-004-Taste.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -151060,6 +151310,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-SEN-004-Taste.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-SEN-004-Taste.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-SEN-004-Taste.yaml",
@@ -154791,7 +155046,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-SEN-005-Touch.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -154818,6 +155073,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-SEN-005-Touch.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-SEN-005-Touch.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-SEN-005-Touch.yaml",
@@ -158949,7 +159209,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -158976,6 +159236,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
@@ -161942,7 +162207,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -161969,6 +162234,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
@@ -164995,7 +165265,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-SLP-003-Dream-Theme.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -165022,6 +165292,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-SLP-003-Dream-Theme.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-SLP-003-Dream-Theme.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-SLP-003-Dream-Theme.yaml",
@@ -168153,7 +168428,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-SLP-004-Sleep-Insight.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -168180,6 +168455,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-SLP-004-Sleep-Insight.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-SLP-004-Sleep-Insight.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-SLP-004-Sleep-Insight.yaml",
@@ -171246,7 +171526,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-SLP-005-Sleep-Easy.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -171331,13 +171611,18 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/session_templates/3": {
           "file": "locales/en-US/OCF-SLP-005-Sleep-Easy.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-STANDARD-001",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/session_templates/4": {
           "file": "locales/en-US/OCF-SLP-005-Sleep-Easy.yaml",
-          "value": "OCF-TPL-SESSION-PILOT-SLEEP-EASY-001",
+          "value": "OCF-TPL-SESSION-HPLUS-STANDARD-001",
           "yaml_pointer": "/content/bindings/session_templates/4"
+        },
+        "/content/bindings/session_templates/5": {
+          "file": "locales/en-US/OCF-SLP-005-Sleep-Easy.yaml",
+          "value": "OCF-TPL-SESSION-PILOT-SLEEP-EASY-001",
+          "yaml_pointer": "/content/bindings/session_templates/5"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-SLP-005-Sleep-Easy.yaml",
@@ -174994,7 +175279,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/content/bindings/default_session_template": {
           "file": "locales/en-US/OCF-SLP-006-Stay-Awake.yaml",
-          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
           "yaml_pointer": "/content/bindings/default_session_template"
         },
         "/content/bindings/duration": {
@@ -175021,6 +175306,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "file": "locales/en-US/OCF-SLP-006-Stay-Awake.yaml",
           "value": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
           "yaml_pointer": "/content/bindings/session_templates/2"
+        },
+        "/content/bindings/session_templates/3": {
+          "file": "locales/en-US/OCF-SLP-006-Stay-Awake.yaml",
+          "value": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+          "yaml_pointer": "/content/bindings/session_templates/3"
         },
         "/content/bindings/voice_sources/0": {
           "file": "locales/en-US/OCF-SLP-006-Stay-Awake.yaml",
