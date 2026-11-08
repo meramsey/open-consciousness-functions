@@ -206,8 +206,7 @@ in-progress first final-gate job was stopped before editing its pinned inputs
 and marked superseded, not passing; full pytest had not started there.
 All 58 compact source plans were then regenerated successfully against the
 corrected composition metadata, without changing spoken text or the new lock.
-Final full-suite, coverage and repository-gate results are recorded in the
-subsequent verification checkpoint; not claimed here yet.
+Final corrected results are recorded in the verified completion checkpoint below.
 
 `make check PY=.venv/bin/python` passed against clean HEAD
 `5e36eb66e09e754c048f6b9267a478eaf1c1e765`, worktree fingerprint
@@ -266,3 +265,40 @@ integration commits on an appropriate branch. Never reset over other work,
 regenerate a predecessor approval baseline, delete caches wholesale or overwrite
 historical audio editions. No push, merge, release or production-service change
 is authorized by this implementation.
+
+## Verified completion checkpoint — 2026-11-08
+
+COMPLETE for the originally authorized long-form replacement. All 58 current
+defaults consume LOCKED-006 and the exact approved passage; audio/listening and
+publication remain unapproved. The subsequently authorized shared-session v3
+change is a separate successor, not part of this checkpoint's flow approval.
+
+Tested clean HEAD: `0e1dea32702be1d2659c479d648f5ddc3b5de641`.
+Exact tested worktree fingerprint:
+`318d231354ec72f127fba6b19d902eea47bca4cf1a2526fc7742f026c00261bf`.
+Interpreter: repository `.venv/bin/python`, Python 3.12.3, Linux.
+
+Commands/results at that checkpoint:
+
+- `locale validate --locale en-US`: PASS, 0 errors/0 warnings.
+- `make check`: PASS, including `validate --all` (0 errors/9 warnings),
+  `build-index --check`, all 58 `audio plan --all --locale en-US --check`
+  declarations, Farfield inventory, cue headers and editorial review.
+- `make lint`: PASS; optional markdownlint unavailable/SKIP, not claimed passing.
+- `docs-inventory --check`, original 177-key narration integrity and current
+  title/cue report `--check`: PASS.
+- `python -m ocf_tools.coverage_report run` plus summary `check`: PASS.
+  Full pytest: 2,900 collected, 2,895 passed, 5 skipped, 0 failures/errors,
+  0 deselected, 0 taxonomy errors; 7,255.65 seconds, two loadfile workers.
+  Combined coverage: 21,402/23,841 statements (89.769724%) and 8,243/9,742
+  branches (84.613016%). Unit-attributed: 61.037708% / 66.013139%.
+  Existing combined 89.5%/84% and unit 57%/62% floors are unchanged and pass;
+  the aspirational 100% unit target is not achieved or claimed.
+
+Current receipts/logs: `/tmp/opencode/ocf-relaxation-20261107/supervision-r5/`.
+Full XML/log/coverage summary: sibling `work/coverage-r5/`. The supported tool
+removed successful owned test scratch (`scratch_retained: false`) and did not
+retain detailed coverage JSON. Prior failed-run diagnostics remain separate.
+Exact changed-path manifest: `OCF_SHARED_RELAXATION_LONG_FORM_FILES_2026-11-07.txt`
+in this directory. Final report/inventory updates after the tested HEAD are
+documentation only and checked separately. No push, merge, release or CI run.
