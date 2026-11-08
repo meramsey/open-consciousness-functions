@@ -3,8 +3,12 @@ locale: en-US
 language_name: English (United States)
 direction: ltr
 status: canonical
-semantic_version: 1.12.0
+semantic_version: 2.0.0
 resources:
+- file: relaxation-long-002.yaml
+  domain: narration
+  revision: OCF-RELAXATION-LONG-002
+  description: Approved original OCF long-form v2 shared relaxation; scoped immutable-template successor, not historical source wording.
 - file: OCF-EXP-006-Intuition.yaml
   domain: function
   description: Sole editable localized function metadata and canonical narration.

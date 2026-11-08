@@ -71,7 +71,7 @@ def test_audible_bound_excludes_backend_tail_without_trimming_speech():
 @pytest.mark.integration
 def test_successor_relocates_only_approved_sentence_and_preserves_preparation():
     old = build_complete_session_plan("OCF-SEN-001", template="OCF-TPL-SESSION-HPLUS-LOCKED-004")
-    new = build_complete_session_plan("OCF-SEN-001")
+    new = build_complete_session_plan("OCF-SEN-001", template="OCF-TPL-SESSION-HPLUS-LOCKED-005")
     previous = list(iter_events(old["template_plan"]))
     current = list(iter_events(new["template_plan"]))
     calm = [

@@ -405,12 +405,13 @@ record_metadata:
   predecessor_resource_sha256: 7188ca74dc3b2dbacc677cd68f9cc9ca3d9068063239a1b74fa7cbb12eba3869
 content:
   bindings:
-    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-006
     duration: null
     narration_resources: []
     session_templates:
     - OCF-TPL-SESSION-HPLUS-LOCKED-004
     - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    - OCF-TPL-SESSION-HPLUS-LOCKED-006
     voice_sources:
     - tts
   decisions:

@@ -1,0 +1,19 @@
+schema_version: '1.0'
+id: OCF-TPL-STAGE-HPLUS-RELAXATION-002
+version: 2.0.0
+origin: original-ocf
+type: induction
+description: Exact approved original long-form v2 introduction and ten anatomical steps, including clear-awareness handoff. Counts do not declare semantic state transitions.
+events:
+  - {id: begin, at: 0, semantic: preparation.relaxation.begin, narration_key: hplus.shared.relaxation.begin, pacing_key: pauses.relaxation_begin_s, narration_required: true}
+  - {id: support, after: begin, offset: 0, timing: {anchor: speech-end}, semantic: preparation.relaxation.support, narration_key: hplus.shared.relaxation.support, pacing_key: pauses.relaxation_step_s, narration_required: true}
+  - {id: face, after: support, offset: 0, timing: {anchor: speech-end}, semantic: preparation.relaxation.face, narration_key: hplus.shared.relaxation.face, pacing_key: pauses.relaxation_step_s, narration_required: true}
+  - {id: jaw-neck, after: face, offset: 0, timing: {anchor: speech-end}, semantic: preparation.relaxation.jaw-neck, narration_key: hplus.shared.relaxation.jaw-neck, pacing_key: pauses.relaxation_step_s, narration_required: true}
+  - {id: shoulders, after: jaw-neck, offset: 0, timing: {anchor: speech-end}, semantic: preparation.relaxation.shoulders, narration_key: hplus.shared.relaxation.shoulders, pacing_key: pauses.relaxation_step_s, narration_required: true}
+  - {id: hands, after: shoulders, offset: 0, timing: {anchor: speech-end}, semantic: preparation.relaxation.hands, narration_key: hplus.shared.relaxation.hands, pacing_key: pauses.relaxation_step_s, narration_required: true}
+  - {id: chest-breathing, after: hands, offset: 0, timing: {anchor: speech-end}, semantic: preparation.relaxation.chest-breathing, narration_key: hplus.shared.relaxation.chest-breathing, pacing_key: pauses.relaxation_step_s, narration_required: true}
+  - {id: abdomen-lower-back, after: chest-breathing, offset: 0, timing: {anchor: speech-end}, semantic: preparation.relaxation.abdomen-lower-back, narration_key: hplus.shared.relaxation.abdomen-lower-back, pacing_key: pauses.relaxation_step_s, narration_required: true}
+  - {id: hips-thighs, after: abdomen-lower-back, offset: 0, timing: {anchor: speech-end}, semantic: preparation.relaxation.hips-thighs, narration_key: hplus.shared.relaxation.hips-thighs, pacing_key: pauses.relaxation_step_s, narration_required: true}
+  - {id: lower-legs-feet, after: hips-thighs, offset: 0, timing: {anchor: speech-end}, semantic: preparation.relaxation.lower-legs-feet, narration_key: hplus.shared.relaxation.lower-legs-feet, pacing_key: pauses.relaxation_step_s, narration_required: true}
+  - {id: whole-body-awareness, after: lower-legs-feet, offset: 0, timing: {anchor: speech-end}, semantic: preparation.relaxation.whole-body-awareness, narration_key: hplus.shared.relaxation.whole-body-awareness, pacing_key: pauses.relaxation_step_s, narration_required: true}
+  - {id: whole, after: whole-body-awareness, offset: 0, timing: {anchor: speech-end}, semantic: preparation.relaxation.whole, pacing_key: pauses.relaxation_whole_s, narration_required: false}

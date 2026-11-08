@@ -1467,7 +1467,14 @@ def _render_complete_session_unlocked(
         }
         from .audition_exports import attach_render_artwork
 
-        if session_plan["template"]["id"] == "OCF-TPL-SESSION-HPLUS-LOCKED-005" and not options:
+        if (
+            session_plan["template"]["id"]
+            in {
+                "OCF-TPL-SESSION-HPLUS-LOCKED-005",
+                "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+            }
+            and not options
+        ):
             from .session_pacing_audit import audit_session
 
             manifest["session_pacing_audit"] = audit_session(

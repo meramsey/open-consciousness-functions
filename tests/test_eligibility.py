@@ -24,10 +24,26 @@ def test_migration_preserves_sources_reviews_and_all_functions():
     previous = dict(unavailable)
     previous.pop("narration_review_status")
     assert current == previous
-    assert {key: current_reviews[key] for key in previous_reviews} == previous_reviews
+    removed = {"hplus.shared.relaxation.torso", "hplus.shared.relaxation.legs"}
+    assert previous_reviews.keys() - current_reviews.keys() == removed
+    assert {key: current_reviews[key] for key in previous_reviews if key not in removed} == {
+        key: value for key, value in previous_reviews.items() if key not in removed
+    }
     assert {
         key: value for key, value in current_reviews.items() if key not in previous_reviews
-    } == {"hplus.shared.focus20.close.ready": "reviewed"}
+    } == {
+        key: "reviewed"
+        for key in (
+            "hplus.shared.focus20.close.ready",
+            "hplus.shared.relaxation.support",
+            "hplus.shared.relaxation.jaw-neck",
+            "hplus.shared.relaxation.chest-breathing",
+            "hplus.shared.relaxation.abdomen-lower-back",
+            "hplus.shared.relaxation.hips-thighs",
+            "hplus.shared.relaxation.lower-legs-feet",
+            "hplus.shared.relaxation.whole-body-awareness",
+        )
+    }
 
 
 def test_spoken_locale_missing_dependency_is_reported_without_cross_language_fallback():
@@ -265,6 +281,6 @@ def test_binding_migration_is_idempotent_and_retains_old_sleep_template():
     from ocf_tools.content import load_layers
 
     binding = load_layers("OCF-SLP-005")["bindings"]
-    assert binding["default_session_template"] == "OCF-TPL-SESSION-HPLUS-LOCKED-005"
+    assert binding["default_session_template"] == "OCF-TPL-SESSION-HPLUS-LOCKED-006"
     assert "OCF-TPL-SESSION-PILOT-SLEEP-EASY-001" in binding["session_templates"]
     assert binding["narration_plan"]["sequence"][1]["repetitions"] == 4

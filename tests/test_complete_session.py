@@ -30,10 +30,10 @@ def test_sleep_easy_complete_template_expands_existing_focus_and_sleep_sequence(
     )
     assert plan["session_completeness"] == "complete"
     assert plan["template"] == {
-        "id": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
-        "version": "5.0.0",
+        "id": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+        "version": "6.0.0",
         "origin": "reference-derived",
-        "content_status": "draft",
+        "content_status": "reviewed",
     }
     assert [stage["id"] for stage in plan["stages"]] == [
         "function-opener",
@@ -111,14 +111,12 @@ def test_sleep_easy_complete_template_expands_existing_focus_and_sleep_sequence(
         "Nine.",
         "Ten.",
     ]
-    torso = next(
-        item
+    assert not any(
+        unit["text"] == "Sleep."
         for item in plan["narration_pacing_plan"]
-        if item["narration_key"] == "hplus.shared.relaxation.torso"
+        if item["narration_key"].startswith("hplus.shared.relaxation.")
+        for unit in item["units"]
     )
-    sleep_landings = [unit for unit in torso["units"] if unit["text"] == "Sleep."]
-    assert [unit["kind"] for unit in sleep_landings] == ["landing"] * 4
-    assert [unit["pause_after_s"] for unit in sleep_landings] == [5.0, 5.0, 5.0, 6.0]
     focus20 = paced["focus20-enter.enter"]["units"]
     assert [unit["text"] for unit in focus20[4:]] == [
         "Ten.",

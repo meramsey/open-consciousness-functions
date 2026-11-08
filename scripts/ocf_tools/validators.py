@@ -1517,8 +1517,11 @@ def validate_session_library() -> ValidationResult:
                     str(path),
                 )
             else:
-                result.extend(validate_narration_usage(doc, path))
-                result.extend(validate_narration_hygiene(doc, path, LocaleCatalog()))
+                catalog = LocaleCatalog()
+                if doc.get("narration_revision") is not None:
+                    catalog = catalog.with_revision(doc["narration_revision"], document_locale(doc))
+                result.extend(validate_narration_usage(doc, path, catalog))
+                result.extend(validate_narration_hygiene(doc, path, catalog))
         except OCFError as exc:
             result.add("error", "template-invalid", str(exc), str(path))
     return result

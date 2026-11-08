@@ -498,11 +498,12 @@ record_metadata:
     source_commit: 911dbd0f24618091e34e8a816275ab7eabbf97bb
 content:
   bindings:
-    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-006
     duration: null
     narration_resources: []
     session_templates:
     - OCF-TPL-SESSION-HPLUS-LOCKED-004
     - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    - OCF-TPL-SESSION-HPLUS-LOCKED-006
     voice_sources:
     - tts

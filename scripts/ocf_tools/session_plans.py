@@ -40,7 +40,7 @@ def source_plan(function_id: str, locale: str = "en-US") -> tuple[dict, dict, di
         raise OCFError(
             f"{function_id}: custom template requires a separately versioned defaults lock"
         )
-    catalog = LocaleCatalog()
+    catalog = LocaleCatalog().with_revision(template.get("narration_revision"), locale)
     resources = {}
     reference_resources = expanded["narration_resources"]
     if expanded.get("resolved_overrides"):

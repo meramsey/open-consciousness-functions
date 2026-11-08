@@ -1,0 +1,19 @@
+schema_version: '1.0'
+id: OCF-PACING-HPLUS-LOCKED-006
+version: 6.0.0
+extends: OCF-PACING-HPLUS-LOCKED-005
+status: approved_for_internal_composition
+narration_pacing:
+  entries:
+    hplus.shared.relaxation.support: relaxation-body
+    hplus.shared.relaxation.jaw-neck: relaxation-body
+    hplus.shared.relaxation.chest-breathing: relaxation-body
+    hplus.shared.relaxation.abdomen-lower-back: relaxation-body
+    hplus.shared.relaxation.hips-thighs: relaxation-body
+    hplus.shared.relaxation.lower-legs-feet: relaxation-body
+    hplus.shared.relaxation.whole-body-awareness: relaxation-body
+evidence_notes:
+- Exact original long-form v2 approved 2026-11-07; no listening or publication approval.
+- Existing 0.88 relaxation rate and all pause durations are inherited unchanged. Sentence/phrase roles maintain conversational flow; completed steps retain the existing 6-second event gap.
+- The final unit uses the event-end gap instead of adding a landing pause. The separate 30-second whole-body hold remains unchanged.
+- Existing duration preference is advisory; longer approved speech is never truncated, accelerated or fitted by shortening neighboring holds.
