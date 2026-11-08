@@ -2850,6 +2850,28 @@
       "missing_information": [
         "per-document semantic review not recorded"
       ],
+      "path": "docs/releases/OCF_SHARED_RELAXATION_LONG_FORM_2026-11-07.md",
+      "proposed_correction": "retain historical claims; consult current workflow guides",
+      "purpose": "Approved original long-form shared relaxation successor",
+      "related_commands": [
+        "audio render-speech"
+      ],
+      "related_schemas": [],
+      "sha256": "2bb878646fa27f07c9554056082058dec90eaa22c9a6dd4bc0ae913bc70a7b9c",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "maintainers/research reviewers",
+      "broken_references": [],
+      "canonical_source": "historical checkpoint (not current implementation)",
+      "duplicate_or_contradictory_information": [],
+      "historical": true,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [
+        "per-document semantic review not recorded"
+      ],
       "path": "docs/releases/OCF_SOURCE_FIRST_CHECKPOINT_2026-10-03.md",
       "proposed_correction": "retain historical claims; consult current workflow guides",
       "purpose": "Source-first authoring migration checkpoint — 2026-10-03",
@@ -4383,5 +4405,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 203
+  "total": 204
 }

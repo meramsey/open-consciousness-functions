@@ -1,6 +1,6 @@
 {
-  "defaults_lock": "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-015.json",
-  "defaults_sha256": "ee1a3cd80f416c3afd35d72581a2c2b92ba098c2ab899bd47e267725dfb4eb5e",
+  "defaults_lock": "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-016.json",
+  "defaults_sha256": "8677dbaefde4111ffdb8fb92a876c15e5d7d5b73d4cbbd3048a1e05cf0553bf4",
   "generator": "ocf.audio.plan/1",
   "profiles": {
     "dsp": {
@@ -8,12 +8,12 @@
       "version": "3.0.0"
     },
     "pacing": {
-      "id": "OCF-PACING-HPLUS-LOCKED-005",
-      "version": "5.0.0"
+      "id": "OCF-PACING-HPLUS-LOCKED-006",
+      "version": "6.0.0"
     },
     "template": {
-      "id": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
-      "version": "5.0.0"
+      "id": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+      "version": "6.0.0"
     }
   },
   "resources": [
@@ -136,12 +136,30 @@
     },
     {
       "fallback": false,
+      "key": "hplus.shared.relaxation.abdomen-lower-back",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "0b7a41a13cbe508f4803c89529e1a0efce109eb7b615992828700cf0381d4298",
+      "version": "2.0.0"
+    },
+    {
+      "fallback": false,
       "key": "hplus.shared.relaxation.begin",
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "e53ae6871d1b075f6658ac7091e3a5590034f399b35733f80947b07caeccdd95",
-      "version": "1.1.0"
+      "text_sha256": "368add839e3ad60b2f982cb16a1aeb2ed17066325a2a3d4c8dea7b2cc7400ec2",
+      "version": "2.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.relaxation.chest-breathing",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "f4466dd60bdc821c1507595eca53521ca192a780b4d251ea0215f388d1e0248c",
+      "version": "2.0.0"
     },
     {
       "fallback": false,
@@ -149,8 +167,8 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "24511349423e69dab6a14a1f3aa9dbcebf83840ea7ffbff3d0504f9a75e45339",
-      "version": "1.1.0"
+      "text_sha256": "376111076b84ac36935bfc46cb29828bbd716da3f2eff87146974415f67e5582",
+      "version": "2.0.0"
     },
     {
       "fallback": false,
@@ -158,17 +176,35 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "14ca4b469a3922d815847202f1ea7bbba450708b01774102aa9efadf873f520b",
-      "version": "1.1.0"
+      "text_sha256": "10d9b60bd1ffa5c46d76ad53ed8a02fcb244c252c1dd818ee5c90f02c5b35bd7",
+      "version": "2.0.0"
     },
     {
       "fallback": false,
-      "key": "hplus.shared.relaxation.legs",
+      "key": "hplus.shared.relaxation.hips-thighs",
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "2ae472aa7758e18a640c0193c89bfafd4f4b4f55eabcb7f763e7a5bf83845aeb",
-      "version": "1.1.0"
+      "text_sha256": "cfa49684daacc83336981053b8da7a7fcb66364fce4c16083eb5bde40eb570f5",
+      "version": "2.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.relaxation.jaw-neck",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "13586690512167a4822800ac55c58139504337f34801e9a4d2a87aa28cd437f1",
+      "version": "2.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.relaxation.lower-legs-feet",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "a4c2c554d4a98777a97bedc0c045d9b37117ae89fab8ee7727930e9f3f4a3eda",
+      "version": "2.0.0"
     },
     {
       "fallback": false,
@@ -176,17 +212,26 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "2377049f930b06833eb3caba3d5757aa358c19e994025903f864124297a887bf",
-      "version": "1.1.0"
+      "text_sha256": "54015924510642670d4a10c4c695d2ef62e06dfec9eef5db51c7141b954cb06b",
+      "version": "2.0.0"
     },
     {
       "fallback": false,
-      "key": "hplus.shared.relaxation.torso",
+      "key": "hplus.shared.relaxation.support",
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "bc9905ba9824a1eabf035b9567d78b9b27c923cacc3b522317258dd2e8d537f7",
-      "version": "1.1.0"
+      "text_sha256": "c7ed821741f02f8df479e5ca0f7d6f440caf1dc6d43eb0d43505b6afa6d390aa",
+      "version": "2.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.relaxation.whole-body-awareness",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "dd27b7cb4b6cc075e867f09f333876353f647eedd0c45bcaa5563d764cd1a2db",
+      "version": "2.0.0"
     },
     {
       "fallback": false,
