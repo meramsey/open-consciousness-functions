@@ -184,6 +184,33 @@ def test_successor_section_and_pause_policy_are_strictly_scoped():
     )
 
 
+@pytest.mark.parametrize("choice", [None, "none", "Gateway", "SyncCreation", "OCF", "custom"])
+def test_relaxation_revision_preserves_existing_affirmation_choices_and_explicit_enable(choice):
+    slots = {
+        "opener": "Synthetic opener.",
+        "function_body": "Synthetic body.",
+        "closer": "Synthetic closer.",
+    }
+    if choice == "custom":
+        slots["affirmation"] = "Synthetic explicit custom text."
+    selections = []
+    for identity in ("OCF-TPL-SESSION-HPLUS-LOCKED-005", "OCF-TPL-SESSION-HPLUS-LOCKED-006"):
+        doc = compose(
+            load_template(identity),
+            slots,
+            title="Fixture",
+            enabled_stages=["affirmation"],
+            affirmation=choice,
+        )
+        selections.append([e for e in iter_events(doc) if e["id"].startswith("affirmation.")])
+        if choice is None:
+            assert "affirmation_selection" not in doc
+        else:
+            assert doc["affirmation_selection"] == choice
+    assert selections[0] == selections[1]
+    assert len(selections[1]) == (0 if choice == "none" else 3)
+
+
 def test_strict_revision_locale_and_duplicate_keys_are_not_bypassed(approval):
     with pytest.raises(OCFError):
         LocaleCatalog().with_revision(approval["id"], "es")
