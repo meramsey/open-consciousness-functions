@@ -43,7 +43,7 @@ def test_locked_defaults_and_relative_session_regression():
         if e.get("narration_key")
     }
     comfort = plans["hplus.shared.body-comfort"]["units"]
-    assert len(comfort) == 7
+    assert len(comfort) == 6
     assert all(u["pause_after_s"] == 3 for u in comfort[:-1])
     assert all(u["rate_scale"] == 1 for u in comfort)
     assert all(u["pause_after_s"] == 5 for u in plans["hplus.shared.focus20.enter"]["units"][4:-1])

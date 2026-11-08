@@ -1,0 +1,31 @@
+description: Recognize completion of the single induction; silent semantic entry/transition markers retain
+  associations without another count or DSP restart.
+events:
+- at: 0
+  auditory_cue: focus.ten.enter
+  id: enter
+  narration_required: false
+  semantic: focus.ten.enter
+- after: enter
+  dsp:
+    state: focus-10
+  id: transition
+  offset: 0
+  semantic: focus.ten.transition
+  timing:
+    anchor: speech-end
+- after: transition
+  auditory_cue: focus.ten.ready
+  id: ready
+  narration_key: hplus.shared.focus10.ready
+  narration_required: true
+  offset: 0
+  pacing_key: pauses.focus10_initial_hold_s
+  semantic: focus.ten.ready
+  timing:
+    anchor: event-end
+id: OCF-TPL-STAGE-FOCUS-TEN-002
+origin: original-ocf
+schema_version: '1.0'
+type: induction
+version: 2.0.0

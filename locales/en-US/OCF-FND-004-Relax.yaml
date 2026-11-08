@@ -87,7 +87,7 @@ common_uses:
   text: Practicing a quiet transition from mental busyness toward rest.
 content:
   bindings:
-    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-006
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
     duration: null
     narration_resources:
     - key: pilot.function.complete
@@ -106,6 +106,7 @@ content:
     - OCF-TPL-SESSION-HPLUS-LOCKED-004
     - OCF-TPL-SESSION-HPLUS-LOCKED-005
     - OCF-TPL-SESSION-HPLUS-LOCKED-006
+    - OCF-TPL-SESSION-HPLUS-LOCKED-007
     - OCF-TPL-SESSION-PILOT-RELAX-001
     voice_sources:
     - externally-generated

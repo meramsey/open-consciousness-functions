@@ -24,7 +24,13 @@ def test_migration_preserves_sources_reviews_and_all_functions():
     previous = dict(unavailable)
     previous.pop("narration_review_status")
     assert current == previous
-    removed = {"hplus.shared.relaxation.torso", "hplus.shared.relaxation.legs"}
+    removed = {
+        "hplus.shared.relaxation.torso",
+        "hplus.shared.relaxation.legs",
+        "hplus.shared.focus10.learn",
+        "hplus.shared.focus10.count",
+        "hplus.shared.focus10.enter",
+    }
     assert previous_reviews.keys() - current_reviews.keys() == removed
     assert {key: current_reviews[key] for key in previous_reviews if key not in removed} == {
         key: value for key, value in previous_reviews.items() if key not in removed
@@ -35,6 +41,7 @@ def test_migration_preserves_sources_reviews_and_all_functions():
         key: "reviewed"
         for key in (
             "hplus.shared.focus20.close.ready",
+            "hplus.shared.focus11.closed",
             "hplus.shared.relaxation.support",
             "hplus.shared.relaxation.jaw-neck",
             "hplus.shared.relaxation.chest-breathing",
@@ -281,6 +288,6 @@ def test_binding_migration_is_idempotent_and_retains_old_sleep_template():
     from ocf_tools.content import load_layers
 
     binding = load_layers("OCF-SLP-005")["bindings"]
-    assert binding["default_session_template"] == "OCF-TPL-SESSION-HPLUS-LOCKED-006"
+    assert binding["default_session_template"] == "OCF-TPL-SESSION-HPLUS-LOCKED-007"
     assert "OCF-TPL-SESSION-PILOT-SLEEP-EASY-001" in binding["session_templates"]
     assert binding["narration_plan"]["sequence"][1]["repetitions"] == 4

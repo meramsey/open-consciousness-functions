@@ -51,6 +51,7 @@ def source_plan(function_id: str, locale: str = "en-US") -> tuple[dict, dict, di
         baseline = compose(
             load_template(TEMPLATE_ID),
             {},
+            title=expanded["title"],
             slot_keys=slots,
             pacing_profile=load_pacing_profile(PACING_ID),
         )

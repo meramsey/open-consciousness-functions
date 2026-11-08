@@ -1,0 +1,40 @@
+default_background_state: focus-10
+ending_fade_seconds: 10
+id: OCF-DSP-HPLUS-LOCKED-004
+ignored_state_events:
+- focus-ten.transition
+- focus20-enter.transition
+- focus20-close.transition
+- return.complete
+initial_state: focus-10
+notes: 'Reviewed v3 wording successor only: the ten-second equal-power close ends at the fourth authored
+  Ten, then the separate confirmation speaks. All levels, presets, entry timing and ending fade remain
+  unchanged. Number words never create software state events.'
+schema_version: '1.0'
+seed: 0
+stage_backgrounds:
+  close:
+  - focus-11
+  - focus-10
+  focus11-body:
+  - focus-11
+  open:
+  - focus-10
+  - focus-11
+states:
+  focus-10:
+    mode: preset
+    preset: OCF-BG-0012
+  focus-11:
+    mode: preset
+    preset: OCF-BG-0006
+target_state_rms_dbfs: -18.0
+transition_end_anchors:
+  close.close:
+    semantic: focus.eleven.close
+    unit_occurrence: 4
+    unit_text: Ten.
+transitions:
+  curve: equal-power
+  fallback_seconds: 25
+version: 4.0.0

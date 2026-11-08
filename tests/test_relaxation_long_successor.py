@@ -77,10 +77,10 @@ def test_exact_approved_passage_and_anatomical_segmentation(approval):
 
 @pytest.mark.parametrize("owner", ["OCF-FND-002", "OCF-SEN-001"])
 def test_normal_function_default_consumes_long_successor(owner, approval):
-    plan = build_complete_session_plan(owner)
-    assert (
-        plan["template"]["id"] == audio_defaults.TEMPLATE_ID == "OCF-TPL-SESSION-HPLUS-LOCKED-006"
-    )
+    # This checkpoint is now an explicit historical edition; v3 owns the
+    # current default and deliberately changes other shared stages.
+    plan = build_complete_session_plan(owner, template="OCF-TPL-SESSION-HPLUS-LOCKED-006")
+    assert plan["template"]["id"] == "OCF-TPL-SESSION-HPLUS-LOCKED-006"
     assert plan["template_plan"]["narration_revision"] == approval["id"]
     events = resolved(plan)
     body = relaxation(events)
@@ -123,7 +123,13 @@ def test_complete_canonical_text_map_and_previous_approvals_unchanged(approval):
     assert approval["human_listening_approval"] is None and approval["release_ready"] is False
     # Earlier historical locks intentionally predate other approved function
     # successors. Their immutable bytes are checked above, not re-baselined.
-    for identity in ("OCF-AUDIO-DEFAULTS-HPLUS-015", "OCF-AUDIO-DEFAULTS-HPLUS-016"):
+    assert (
+        hashlib.sha256(
+            (REPO_ROOT / "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-016.json").read_bytes()
+        ).hexdigest()
+        == "8677dbaefde4111ffdb8fb92a876c15e5d7d5b73d4cbbd3048a1e05cf0553bf4"
+    )
+    for identity in ("OCF-AUDIO-DEFAULTS-HPLUS-015", audio_defaults.BASELINE_ID):
         audio_defaults.check_lock(REPO_ROOT / "audio/defaults" / f"{identity}.json")
 
 
@@ -152,7 +158,7 @@ def test_successor_section_and_pause_policy_are_strictly_scoped():
     assert [s for s in old["sections"] if s["id"] != "relaxation"] == [
         s for s in new["sections"] if s["id"] != "relaxation"
     ]
-    plan = build_complete_session_plan("OCF-SEN-001")
+    plan = build_complete_session_plan("OCF-SEN-001", template="OCF-TPL-SESSION-HPLUS-LOCKED-006")
     previous = build_complete_session_plan("OCF-SEN-001", template=old["id"])
     for field in (
         "pauses",
@@ -265,7 +271,7 @@ def test_pronunciation_preflight_retains_revision_with_a_base_catalog():
 
 
 def test_speech_relative_timeline_never_caps_new_long_speech():
-    plan = build_complete_session_plan("OCF-SEN-001")
+    plan = build_complete_session_plan("OCF-SEN-001", template="OCF-TPL-SESSION-HPLUS-LOCKED-006")
     doc = resolve_document(plan["template_plan"], "en-US")
     events = list(iter_events(doc))
     # Synthetic long measurements deliberately exceed the old session target.
@@ -311,7 +317,7 @@ def test_cli_normal_complete_route_selects_long_form(owner, approval, capsys, mo
     report = json.loads(capsys.readouterr().out)
     assert report["dry_run"] is True
     plan = report["session_plan"]
-    assert plan["template"]["id"] == "OCF-TPL-SESSION-HPLUS-LOCKED-006"
+    assert plan["template"]["id"] == audio_defaults.TEMPLATE_ID
     assert (
         digest("\n\n".join(e["text"] for e in relaxation(resolved(plan))))
         == approval["assembled_text_sha256"]

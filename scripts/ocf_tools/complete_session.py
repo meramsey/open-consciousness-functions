@@ -382,6 +382,7 @@ def build_complete_session_plan(
         slot_keys=slot_keys,
         affirmation=options.get("affirmation"),
         custom_affirmation_locale=options.get("custom_affirmation_locale"),
+        enabled_stages=options.get("enabled_stages"),
         locale=plan["requested_locale"],
     )
     doc["semantic_dsp_profile"] = selected_dsp
@@ -1467,6 +1468,16 @@ def _render_complete_session_unlocked(
         }
         from .audition_exports import attach_render_artwork
 
+        if (
+            session_plan["template"]["id"] == "OCF-TPL-SESSION-HPLUS-LOCKED-007"
+            and not options
+            and not dsp_profile
+        ):
+            from .session_pacing_audit import audit_shared_v3
+
+            manifest["session_pacing_audit"] = audit_shared_v3(
+                manifest, pacing=session_pacing_profile
+            )
         if (
             session_plan["template"]["id"]
             in {

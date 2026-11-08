@@ -52,6 +52,7 @@ def migrate_bindings(function_ids: list[str], *, dry_run: bool = True) -> list[d
             "OCF-TPL-SESSION-HPLUS-STANDARD-001",
             "OCF-TPL-SESSION-HPLUS-LOCKED-004",
             "OCF-TPL-SESSION-HPLUS-LOCKED-005",
+            "OCF-TPL-SESSION-HPLUS-LOCKED-006",
         ):
             binding["default_session_template"] = TEMPLATE_ID
             binding["session_templates"] = sorted(set(binding["session_templates"]) | {TEMPLATE_ID})

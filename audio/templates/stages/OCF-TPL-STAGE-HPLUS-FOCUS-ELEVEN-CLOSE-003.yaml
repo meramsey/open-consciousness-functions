@@ -1,0 +1,50 @@
+description: Consolidation, one closing cue with four Ten anchors, measured closing transition, then confirmation
+  and Ten rest. Confirmation never precedes transition completion.
+events:
+- at: 0
+  id: prepare
+  narration_key: hplus.shared.focus11.close.prepare
+  narration_required: true
+  pacing_key: pauses.focus11_close_prepare_s
+  semantic: focus.eleven.close.prepare
+- after: prepare
+  dsp:
+    state:
+      from: focus-11
+      to: focus-10
+  id: close
+  narration_key: hplus.shared.focus11.close
+  narration_required: true
+  offset: 0
+  pacing_key: transitions.focus11_to_focus10_s
+  semantic: focus.eleven.close
+  timing:
+    anchor: speech-end
+- after: close
+  id: transition
+  offset: 0
+  semantic: focus.eleven.transition.close
+  timing:
+    anchor: speech-end
+- after: transition
+  id: confirmed
+  narration_key: hplus.shared.focus11.closed
+  narration_required: true
+  offset: 0
+  semantic: focus.eleven.closed
+  timing:
+    anchor: event-end
+- after: confirmed
+  id: ready
+  narration_key: hplus.shared.focus10.return.ready
+  narration_required: true
+  offset: 0
+  pacing_key: pauses.focus10_return_ready_s
+  semantic: focus.ten.ready
+  timing:
+    anchor: speech-end
+id: OCF-TPL-STAGE-HPLUS-FOCUS-ELEVEN-CLOSE-003
+origin: original-ocf
+schema_version: '1.0'
+type: access-close
+version: 3.0.0

@@ -15,6 +15,7 @@ DIRECTORIES = (
     "templates",
     "audio/templates/stages",
     "audio/templates/sessions",
+    "audio/templates/pacing",
     "audio/cues/profiles",
     "audio/voices/profiles",
     "audio/voices/registry",
@@ -76,9 +77,12 @@ def stage_data(root: Path, target: Path) -> dict:
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(path, destination)
             copied.append(relative.as_posix())
-    # Shared operational procedures are the only non-locale function-content
-    # data shipped; migration snapshots and historical path maps are Git history.
-    metadata_files = ("function-content/command-procedures.yaml",)
+    # Only explicit shared operational/state-cue records are runtime data;
+    # migration snapshots and historical function definitions stay in Git history.
+    metadata_files = (
+        "function-content/command-procedures.yaml",
+        "function-content/shared-state-cues.yaml",
+    )
     for name in metadata_files:
         source = root / name
         if (

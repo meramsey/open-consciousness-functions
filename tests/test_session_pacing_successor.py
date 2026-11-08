@@ -17,7 +17,7 @@ def test_exit_follows_measured_audible_confirmation_not_voice_onset(monkeypatch,
         "ocf_tools.audio_build._resolve_background_manifest",
         lambda _ref: {"id": "fixture", "engine": "reference-master"},
     )
-    profile = semantic_dsp.load_profile(audio_defaults.DSP_ID)
+    profile = semantic_dsp.load_profile("OCF-DSP-HPLUS-LOCKED-003")
     profile["ignored_state_events"] = []
     profile["initial_state"] = "focus-11"
     profile["default_background_state"] = "focus-11"

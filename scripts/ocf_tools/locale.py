@@ -997,8 +997,8 @@ def _entry_from_value(
     if contract is not None:
         if (
             not isinstance(contract, dict)
-            or set(contract) != {"function_id", "allowed"}
-            or not isinstance(contract.get("function_id"), str)
+            or set(contract) not in ({"function_id", "allowed"}, {"shared_state", "allowed"})
+            or not isinstance(contract.get("function_id", contract.get("shared_state")), str)
             or not isinstance(contract.get("allowed"), list)
             or not all(isinstance(symbol, str) for symbol in contract["allowed"])
         ):

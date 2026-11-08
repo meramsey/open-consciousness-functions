@@ -30,8 +30,8 @@ def test_sleep_easy_complete_template_expands_existing_focus_and_sleep_sequence(
     )
     assert plan["session_completeness"] == "complete"
     assert plan["template"] == {
-        "id": "OCF-TPL-SESSION-HPLUS-LOCKED-006",
-        "version": "6.0.0",
+        "id": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+        "version": "7.0.0",
         "origin": "reference-derived",
         "content_status": "reviewed",
     }

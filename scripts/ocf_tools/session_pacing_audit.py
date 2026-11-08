@@ -134,3 +134,63 @@ def audit_session(report, *, pacing=None, verify_successor=False):
             raise OCFError(f"successor session timing verification failed: {checks}")
         result["successor_checks"] = "PASS"
     return result
+
+
+def audit_shared_v3(report, *, pacing):
+    """Measured routine v3 accounting; old editions retain their old audit."""
+    cues = report["narration_timing"]["cues"]
+    by_id = {cue["id"]: cue for cue in cues}
+    if len(by_id) != len(cues):
+        raise OCFError("duplicate v3 narration event")
+    for previous, following in zip(cues, cues[1:]):
+        if speech_end(previous) > float(following["at"]) + 0.002:
+            raise OCFError("overlapping v3 narration")
+    transitions = report["state_transitions"]
+    closing = next(t for t in transitions if t["from"] == "focus-11" and t["to"] == "focus-10")
+    opening = next(t for t in transitions if t["to"] == "focus-11")
+    units = [u for u in by_id["close.close"].get("spoken_units", []) if u["text"] == "Ten."]
+    if len(units) != 4 or units[-1].get("audible_end_seconds") is None:
+        raise OCFError("v3 close requires four measured Ten anchors")
+    passes = [c for c in cues if c["id"].startswith(("focus11-body.", "sleep20-body."))]
+    holds = {
+        "breathing": float(by_id["transmutation-box.begin"]["at"])
+        - speech_end(by_id["body-comfort.begin"]),
+        "placement": float(by_id["transmutation-box.complete"]["at"])
+        - speech_end(by_id["transmutation-box.place"]),
+        "initial_ten": float(by_id["open.prepare"]["at"]) - speech_end(by_id["focus-ten.ready"]),
+        "eleven_repeat": float(by_id["focus11-body.pass-2"]["at"])
+        - speech_end(by_id["focus11-body.pass-1"]),
+        "post_close_ten": float(by_id["focus20-enter.enter"]["at"])
+        - speech_end(by_id["close.ready"]),
+        "pre_sleep_body": float(by_id["sleep20-body.pass-1"]["at"])
+        - speech_end(by_id["focus20-enter.calm"]),
+        "sleep_repeat": float(by_id["sleep20-body.pass-2"]["at"])
+        - speech_end(by_id["sleep20-body.pass-1"]),
+        "post_sleep_body": float(by_id["return.begin"]["at"])
+        - speech_end(by_id["sleep20-body.pass-2"]),
+    }
+    expected = dict(zip(holds, (20, 20, 40, 15, 60, 60, 60, 3), strict=True))
+    checks = [
+        len(passes) == 4,
+        all(abs(holds[k] - v) < 0.002 for k, v in expected.items()),
+        abs(closing["end_s"] - units[-1]["audible_end_seconds"]) < 0.002,
+        abs(closing["end_s"] - closing["start_s"] - 10) < 0.002,
+        abs(opening["end_s"] - opening["start_s"] - pacing["transitions"]["focus10_to_focus11_s"])
+        < 0.002,
+        float(by_id["close.confirmed"]["at"]) >= closing["end_s"],
+        speech_end(by_id["focus20-enter.enter"])
+        <= float(by_id["focus20-enter.calm"]["at"]) + 0.002,
+        next(s for s in report["stages"] if s["id"] == "sleep20-body")["gain_db"] == -24,
+        set(report["dsp_profile"]["selections"]) == {"focus-10", "focus-11"},
+    ]
+    if not all(checks):
+        raise OCFError(f"shared v3 measured timing verification failed: {checks}")
+    return {
+        "successor_checks": "PASS",
+        "edition": "shared-v3",
+        "holds_seconds": holds,
+        "closing_transition": closing,
+        "duration": duration_budget(
+            report["measurements"]["duration_seconds"], pacing.get("duration_preference", {})
+        ),
+    }
