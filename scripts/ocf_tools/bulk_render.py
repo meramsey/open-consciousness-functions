@@ -432,10 +432,13 @@ def _candidate_speech_plan(
         if not isinstance(template_doc, dict):
             continue
         locale = expanded.get("locale", template_doc.get("locale", "en-US"))
-        doc = resolve_document(template_doc, locale, catalog=catalog, strict=True)
+        selected_catalog = catalog
+        if template_doc.get("narration_revision") is not None:
+            selected_catalog = catalog.with_revision(template_doc["narration_revision"], locale)
+        doc = resolve_document(template_doc, locale, catalog=selected_catalog, strict=True)
         hints = {}
         if voice_spec:
-            hints = _pronunciation_hints(doc, locale, catalog, voice_spec["name"])
+            hints = _pronunciation_hints(doc, locale, selected_catalog, voice_spec["name"])
         for event in iter_events(doc):
             text = str(event.get("text") or "").strip()
             if not text:

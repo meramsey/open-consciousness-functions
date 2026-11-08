@@ -225,14 +225,28 @@ fingerprints: the changed locale manifest and Focus source plan. The supported
 markdownlint unavailable/skipped), and full instrumented pytest started at HEAD
 `260e0ea3e675556f56c4d6c44b5b624622efb50a`. It was interrupted after the user
 deleted the shared workspace; no terminal test count or coverage verdict is
-claimed for that attempt. Fresh isolated full-suite results follow in the final
-verification checkpoint.
+claimed for that attempt.
+
+The first complete isolated run at `a0a9d4e104a8837eca5ee5f82585186e59791d7f`
+(fingerprint `3adec944b97fc3ff3fb35c962d0b527d487328018b8a28c7df755b0c29fa5669`)
+collected all 2,899 tests: 2,889 passed, 5 failed, 5 skipped; no deselection or
+taxonomy errors. Combined coverage was 89.724763% statements / 84.541906% branches;
+unit-attributed coverage was 61.047243% / 66.033279%. Coverage floors were met,
+but the suite gate FAILED. Three failures identified missing revision scope in
+renderer validation and pronunciation/cache preflight. Two identified stale
+current-cue report input fingerprints. Both integration defects were corrected
+without changing spoken text or test expectations; the supported current-report
+generator refreshed only the 58 changed resource hashes. Focused verification then
+passed 40 tests with 1 existing opt-in render skip in 166.84 seconds. A direct
+base-catalog pronunciation regression is added. The complete corrected gate is
+recorded in the final checkpoint below; the failed run is not relabeled passing.
 
 Scoped non-narration integration changes are limited to the 58 binding selections,
 their two generated capability/field-source indexes and 59 compact source-plan
 files, selectors/explicit migration support, revision-aware generation/validation,
-the scoped affirmation-policy preservation, the existing measured-session audit's
-successor-ID allowance, regression tests,
+revision propagation at renderer/pronunciation/cache boundaries, the current-cue
+report input fingerprints, the scoped affirmation-policy preservation, the existing
+measured-session audit's successor-ID allowance, regression tests,
 approval hashes and this report/documentation inventory. No unrelated content
 or configuration profile is changed. The interface-example fingerprint refresh
 is the corresponding generated-data integration change, not a new example or

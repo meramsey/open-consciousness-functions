@@ -254,6 +254,16 @@ def test_generated_shared_plan_fingerprints_selected_revision(approval):
     assert not set(approval["active_key_removals"]) & resources.keys()
 
 
+def test_pronunciation_preflight_retains_revision_with_a_base_catalog():
+    from ocf_tools.voice import _pronunciation_hints
+
+    plan = build_complete_session_plan("OCF-SEN-001")
+    doc = resolve_document(plan["template_plan"], "en-US")
+    # Renderer/cache callers may supply their general catalog; pronunciation
+    # must consult the selected revision just like text and integrity do.
+    assert isinstance(_pronunciation_hints(doc, "en-US", LocaleCatalog(), "piper"), dict)
+
+
 def test_speech_relative_timeline_never_caps_new_long_speech():
     plan = build_complete_session_plan("OCF-SEN-001")
     doc = resolve_document(plan["template_plan"], "en-US")
