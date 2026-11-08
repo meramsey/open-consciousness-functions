@@ -182,13 +182,30 @@ corrected composition metadata, without changing spoken text or the new lock.
 Final full-suite, coverage and repository-gate results are recorded in the
 subsequent verification checkpoint; not claimed here yet.
 
+`make check PY=.venv/bin/python` passed against clean HEAD
+`5e36eb66e09e754c048f6b9267a478eaf1c1e765`, worktree fingerprint
+`d8d7ae41c179cf788f3a4530b8803e219c6d761ff35ee5403565e53410ab2547`:
+all-function validation (0 errors, 9 warnings), generated indexes, all 58 source
+plan freshness checks, Farfield inventory, cue headers and editorial review.
+The warnings are partial/stale Spanish and existing legacy/editorial metadata
+warnings; no translations or unrelated editorial decisions were changed.
+Locale en-US validation also passed (0 errors, 0 warnings).
+
+That job's subsequent lint phase found two stale generated interface-example
+fingerprints: the changed locale manifest and Focus source plan. The supported
+`python -m ocf_tools.examples` generator refreshed only those two hashes in
+`examples/interfaces.json`. No runtime input changed. The first full pytest has
+not yet run; the resumed final gate starts with lint and then the complete suite.
+
 Scoped non-narration integration changes are limited to the 58 binding selections,
 their two generated capability/field-source indexes and 59 compact source-plan
 files, selectors/explicit migration support, revision-aware generation/validation,
 the scoped affirmation-policy preservation, the existing measured-session audit's
 successor-ID allowance, regression tests,
 approval hashes and this report/documentation inventory. No unrelated content
-or configuration profile is changed.
+or configuration profile is changed. The interface-example fingerprint refresh
+is the corresponding generated-data integration change, not a new example or
+an executed operator action.
 
 One early oversized new parametrized focused run timed out; it was not a pass.
 The permanent tests use two full representative compositions, all 58 explicit
