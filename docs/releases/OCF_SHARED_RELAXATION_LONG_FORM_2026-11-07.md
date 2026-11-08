@@ -18,8 +18,11 @@ publication, or edits to frozen editions.
 Before edits, the existing integrity tool captured protected parsed texts/hashes;
 LocaleCatalog captured the complete en-US entry map. Bindings, effective pacing,
 representative normal/historical resolved sessions, session-template previews,
-and frozen file hashes are retained privately at
+and frozen file hashes were captured privately at
 `.ocf-work/agent-continuity/RELAXATION-LONG-20261107/baseline.json`.
+The user later intentionally deleted that shared workspace; the original capture
+is no longer present. Its committed approval fingerprints remain intact, and a
+read-only Git reconstruction is described below. No old approval baseline was regenerated.
 Private reference material and audio are excluded from Git and this report.
 
 Baseline interpreter: repository `.venv/bin/python` (supported isolated environment).
@@ -121,33 +124,57 @@ the existing duration audit flags that without cutting or accelerating speech.
 
 ## Private previews and optional local audition
 
-Under `.ocf-work/agent-continuity/RELAXATION-LONG-20261107/`:
+Current task-only artifacts are under
+`/tmp/opencode/ocf-relaxation-20261107/previews/`:
 
-- `baseline.json`: pre-edit capture.
+- `reconstructed-pre-edit-text-map.json`: read-only Git-baseline reconstruction;
+  all 1,112 hashes match the unchanged committed approval ledger. This is not a
+  replacement integrity/approval baseline.
 - `OCF-FND-002-resolved.txt` / `OCF-SEN-001-resolved.txt`: full resolved session speech.
 - Corresponding `*-resolved.json`: complete resolved documents.
 - `relaxation-approved-resolved.txt`: exact joined approved passage.
-- `estimated-timelines.json` / `timing-summary.json`: before/after complete timelines and accounting.
-- `catalog-duration-estimates.json`: all 58 advisory duration projections.
-- `relaxation-only.yaml`: validated, key-bound, revision-selected local audition input.
-- `*-cli-dry-run-local-voice.json`: actual CLI normal-template dry-runs with the available local voice override.
-- `generation/`: independent source-pinned generation receipts and logs.
-- `generation-r2/`: refreshed 58-plan receipts after the affirmation-policy preservation.
+- `estimated-timelines.json`: before/after complete timelines and accounting.
+- `relaxation-only.yaml`: key-bound, revision-selected local audition input.
+- `OCF-FND-002-cli-dry-run.json` / `OCF-SEN-001-cli-dry-run.json`: refreshed
+  normal-template CLI dry-runs using the installed shipped espeak profile;
+  the default template is not forced and no speech is synthesized.
+
+The original private generation logs, CLI dry-runs, catalog projection and
+baseline capture were deleted with the user's workspace cleanup. Recorded
+results above remain historical results, not claims those original files still
+exist. The full-suite run active during cleanup was interrupted, not passed.
+The user explicitly confirmed the deletion was intentional; the agent did not
+delete that workspace and does not restore its old worktrees or private assets.
+Registered worktree metadata was not pruned. Physical private-audio preservation
+cannot be claimed after that user action; tracked historical wording and hashes
+remain independently checked.
+
+New verification uses the explicit isolated `OCF_WORK_DIR` override
+`/tmp/opencode/ocf-relaxation-20261107/work`, with independent controller state
+outside its test scratch in the sibling `supervision/` directory. Successful
+test scratch is cleaned through the existing owned-scratch mechanism, and
+coverage reporting uses compact summaries rather than retained detailed JSON.
+No cache-wide deletion, global storage redesign or additional worktree is used.
 
 No new relaxation or complete-session audition was synthesized, listened to,
-uploaded or published. The unchanged
-default OCF-VOICE-0003 Lessac model path is unavailable here, so its no-override
-CLI render preflight is blocked. `voice doctor` verified an already installed
-local OCF-VOICE-9003 model; both representative CLI dry-runs succeeded with that
-explicit temporary voice selection. No default voice/profile was modified.
+uploaded or published. The unchanged default OCF-VOICE-0003 Lessac model path is
+unavailable. Before cleanup, the installed local OCF-VOICE-9003 model supported
+both representative CLI dry-runs; its private model was subsequently deleted
+by the user. No narrator default was substituted and no model was downloaded.
+Post-cleanup `voice doctor` confirms Python 3.12.3, installed espeak-ng/Piper
+launchers, three shipped profiles and no private profiles. The refreshed
+relaxation-only input validates with 0 errors and 0 warnings.
 
-Optional exact local command from the repository root (not executed):
+Per the user's storage instruction, any optional audition output belongs in the
+main checkout's existing gitignored `audio/rendered/`, never a nested worktree
+workspace. An exact diagnostic local command using the shipped espeak profile
+and already installed local engine (not executed; not the default narrator) is:
 
 ```bash
 .venv/bin/python scripts/ocf.py audio render-speech \
-  .ocf-work/agent-continuity/RELAXATION-LONG-20261107/relaxation-only.yaml \
-  --locale en-US --voice OCF-VOICE-9003 \
-  --output .ocf-work/agent-continuity/RELAXATION-LONG-20261107/relaxation-long-002-private.wav
+  /tmp/opencode/ocf-relaxation-20261107/previews/relaxation-only.yaml \
+  --locale en-US --voice espeak-en \
+  --output audio/rendered/relaxation-long-002-private.wav
 ```
 
 Run any extended synthesis through independent monitored supervision, not an
@@ -194,8 +221,12 @@ Locale en-US validation also passed (0 errors, 0 warnings).
 That job's subsequent lint phase found two stale generated interface-example
 fingerprints: the changed locale manifest and Focus source plan. The supported
 `python -m ocf_tools.examples` generator refreshed only those two hashes in
-`examples/interfaces.json`. No runtime input changed. The first full pytest has
-not yet run; the resumed final gate starts with lint and then the complete suite.
+`examples/interfaces.json`. No runtime input changed. Lint then passed (optional
+markdownlint unavailable/skipped), and full instrumented pytest started at HEAD
+`260e0ea3e675556f56c4d6c44b5b624622efb50a`. It was interrupted after the user
+deleted the shared workspace; no terminal test count or coverage verdict is
+claimed for that attempt. Fresh isolated full-suite results follow in the final
+verification checkpoint.
 
 Scoped non-narration integration changes are limited to the 58 binding selections,
 their two generated capability/field-source indexes and 59 compact source-plan
