@@ -2,7 +2,6 @@ default_background_state: focus-10
 ending_fade_seconds: 10
 id: OCF-DSP-HPLUS-LOCKED-004
 ignored_state_events:
-- focus-ten.transition
 - focus20-enter.transition
 - focus20-close.transition
 - return.complete

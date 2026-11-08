@@ -1091,7 +1091,7 @@ def load_pack(path: Path, *, reader=None, exists=None, revision=None) -> LocaleP
                 f"{locale} pack {path.name}: manifest declares resource {filename!r} "
                 "but the file is missing"
             )
-        if resource.get("revision") != revision:
+        if revision not in {resource.get("revision"), *(resource.get("revision_aliases") or [])}:
             continue
         if revision is not None and declared_domain != NARRATION_DOMAIN:
             raise LocalizationError(
@@ -1233,7 +1233,7 @@ class LocaleCatalog:
                 self.require(tag)
                 for tag in serving
                 if any(
-                    row.get("revision") == revision
+                    revision in {row.get("revision"), *(row.get("revision_aliases") or [])}
                     for row in self.require(tag).manifest.get("resources", [])
                 )
             ),

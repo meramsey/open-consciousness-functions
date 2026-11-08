@@ -1399,6 +1399,17 @@ def validate_all() -> ValidationResult:
     result.extend(validate_timed_transcripts())
     result.extend(validate_voice_profiles())
     result.extend(validate_locale_packs())
+    try:
+        from .shared_state_cues import load as load_shared_state_cues
+
+        load_shared_state_cues()
+    except OCFError as exc:
+        result.add(
+            "error",
+            "shared-state-cues",
+            str(exc),
+            "function-content/shared-state-cues.yaml",
+        )
     result.extend(validate_session_library())
     result.extend(validate_semantic_dsp_profiles())
     from .content import validate_library

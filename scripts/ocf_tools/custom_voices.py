@@ -89,6 +89,22 @@ def asset_root() -> Path:
     return work_path("cache", "voices", "models")
 
 
+def profile_root() -> Path:
+    """Durable optional profile store; default remains disposable OCF cache."""
+    value = os.environ.get("OCF_VOICE_PROFILE_DIR")
+    if not value:
+        return work_path("cache", "voices", "profiles")
+    path = Path(value).expanduser()
+    if not path.is_absolute():
+        path = REPO_ROOT / path
+    result = path.resolve()
+    if result in {Path(result.anchor), REPO_ROOT.resolve()}:
+        raise OCFError("OCF_VOICE_PROFILE_DIR must be a dedicated private profile directory")
+    if result.exists() and not result.is_dir():
+        raise OCFError("OCF_VOICE_PROFILE_DIR is not a directory")
+    return result
+
+
 def validate_profile(profile: dict, *, assets: bool = True) -> dict:
     from .validators import _load_schema, validate_against_schema
 
@@ -291,7 +307,7 @@ def import_model(
     ):
         _copy_verified(source, _contained(root, destination.name), sha256_of_file(source))
     validate_profile(profile)
-    path = work_path("cache", "voices", "profiles", voice_id + ".yaml")
+    path = profile_root() / (voice_id + ".yaml")
     write_text_atomic(path, yaml_safe_dump(profile), overwrite=False)
     return {
         "profile": profile,
@@ -504,7 +520,7 @@ def import_profile(
     validate_profile(profile, assets=False)
     if any(p["id"] == profile["id"] for p in load_voice_profiles()):
         raise OCFError("voice ID already exists; refusing replacement")
-    destination = work_path("cache", "voices", "profiles", profile["id"] + ".yaml")
+    destination = profile_root() / (profile["id"] + ".yaml")
     if destination.exists() or destination.is_symlink():
         raise OCFError("private voice profile already exists")
     expected = dict(_profile_assets(profile))

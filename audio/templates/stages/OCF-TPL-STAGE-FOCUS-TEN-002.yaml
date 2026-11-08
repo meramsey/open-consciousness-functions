@@ -7,8 +7,6 @@ events:
   narration_required: false
   semantic: focus.ten.enter
 - after: enter
-  dsp:
-    state: focus-10
   id: transition
   offset: 0
   semantic: focus.ten.transition

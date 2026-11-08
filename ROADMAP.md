@@ -4,7 +4,9 @@ Current status: **authoring/content/platform foundation in progress**. Transcrip
 voice/audio build, localization, reusable semantic stages, cue-binding validation
 and measured-ledger DSP dispatch are shipped. Cue playback and the dedicated
 preparation CLI remain unshipped. Preparation Learning en-US RC1 has a verified
-development audition; three function rehearsals are draft pilots requiring review.
+development audition; its wording/edition remains frozen. A separate v3 learning
+successor and active shared-session v3 are implemented as selectable compositions;
+audio rendering/listening approval remains separate.
 
 Current inventory snapshot (2026-10-25): the verified registry has **58 OCF
 function records**: 55 legacy-mapped targets plus 3 OCF-original records. The
@@ -132,6 +134,12 @@ schema additions require a proposal per `docs/DESIGN_SPEC.md`.
       exploratory only); sounds are audio assets/renders, licensed or OCF-own.
 
 ### Composable preparation pipeline
+
+- [x] Reviewed shared-session v3: one initial One-to-Ten body scan, explicit Ten
+      recognition, shared Access Channel cues, optional preparation blocks, and
+      separate three-visit/510-second Preparation Learning edition. RC1 and prior
+      routine editions remain selectable and immutable; no listening/publication
+      approval is implied. See `docs/releases/OCF_SHARED_SESSION_V3_2026-11-08.md`.
 
 - [ ] Modular preparation stages: relaxation → Energy Conversion Box →
       optional affirmation → optional oHm / resonant-tuning chant →
@@ -308,15 +316,12 @@ remains at 58 functions.
 
 ### Planned editorial reviews — approval pending
 
-- [ ] **PLANNED — editorial approval pending: optional short/long relaxation
-      preparation modes.**
-  - Scope: review and design short and long preparation variants, including
-    revised wording, pacing, and transitions. Keep the current default unchanged
-    until the revised wording and behavior receive explicit approval.
-  - Acceptance criteria: each proposed mode has separately reviewed wording,
-    pacing, and transition behavior; the selected mode is explicit; the current
-    default and its plan/lock remain unchanged until approval; tests verify that
-    opting into a variant does not silently alter the default.
+- [x] The approved original long-form relaxation is the one initial shared v3
+      induction, not a second ascent. Historical LONG-002 remains selectable.
+- [ ] **PLANNED — short relaxation alternative deferred.** No short wording is
+      authored or activated; only design a selectable short mode after separate
+      explicit wording/flow approval. It must not replace the current long-form
+      default or alter historical editions implicitly.
 - [ ] **PLANNED — editorial approval pending: OCF-BOD-010 Nutricia mode
       persistence and activation.**
   - Scope: review and design whether a last-used mode is remembered or selected

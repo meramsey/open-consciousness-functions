@@ -163,6 +163,7 @@ def _verify_session_structure(
             strict=True,
         )
         if stage not in (removed or set())
+        and not (stage == "focus-ten" and doc.get("narration_revision") == "OCF-SHARED-SESSION-003")
     ]
     if targets != expected:
         raise OCFError(

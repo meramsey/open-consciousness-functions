@@ -67,6 +67,65 @@ def test_prepare_reference_rejects_corrupt_and_invalid_clip(private_store):
         voice_packs.prepare_reference(source, start_s=5, duration_s=3)
 
 
+def test_explicit_durable_profile_and_asset_roots_survive_workspace_cleanup(monkeypatch, tmp_path):
+    from ocf_tools.custom_voices import profile_root
+    from ocf_tools.indexes import load_voice_profiles
+    from ocf_tools.paths import cleanup_workspace
+
+    work = tmp_path / "disposable-work"
+    profiles = tmp_path / "durable" / "profiles"
+    assets = tmp_path / "durable" / "assets"
+    monkeypatch.setenv("OCF_WORK_DIR", str(work))
+    monkeypatch.setenv("OCF_VOICE_PROFILE_DIR", str(profiles))
+    monkeypatch.setenv("OCF_VOICE_ASSETS", str(assets))
+    source = tone(tmp_path / "mike-fixture.wav")
+    result = voice_packs.create_pack(
+        source,
+        voice_id="OCF-VOICE-9890",
+        name="Durable synthetic voice fixture",
+        locale="en-US",
+        consent_declaration="Synthetic test fixture only.",
+    )
+    assert Path(result["path"]).parent == profiles
+    assert profile_root() == profiles
+    assert (assets / "OCF-VOICE-9890/reference.wav").is_file()
+    assert any(row["id"] == "OCF-VOICE-9890" for row in load_voice_profiles())
+    cleanup_workspace(0)
+    assert Path(result["path"]).is_file()
+    assert (assets / "OCF-VOICE-9890/reference.wav").is_file()
+
+
+def test_durable_profile_roots_are_explicit_and_outside_workspace_clean(tmp_path, monkeypatch):
+    from ocf_tools.custom_voices import profile_root
+    from ocf_tools.indexes import load_voice_profiles
+
+    work = tmp_path / "work"
+    durable = tmp_path / "repo" / "audio/voices/private-packs/profiles"
+    monkeypatch.setenv("OCF_WORK_DIR", str(work))
+    monkeypatch.setenv("OCF_VOICE_PROFILE_DIR", str(durable))
+    from ocf_tools.paths import ensure_workspace
+
+    ensure_workspace()
+    marker = work / "tmp" / "ocf-stale-marker"
+    marker.mkdir()
+    (marker / ".ocf-owned").write_text('{"schema_version":"1.0","owner_pid":99999999}\n')
+    private = durable / "OCF-VOICE-TEST.yaml"
+    durable.mkdir(parents=True)
+    from ocf_tools.utils import yaml_safe_dump, yaml_safe_load
+
+    profile = yaml_safe_load(
+        (Path(__file__).parents[1] / "audio/voices/profiles/espeak-en.yaml").read_text()
+    )
+    profile.update(id="OCF-VOICE-9997", slug="private-fixture")
+    private.write_text(yaml_safe_dump(profile))
+    from ocf_tools.paths import cleanup_workspace
+
+    cleanup_workspace(0)
+    assert profile_root() == durable.resolve()
+    assert private.is_file()
+    assert "OCF-VOICE-9997" in {row["id"] for row in load_voice_profiles()}
+
+
 def test_private_pack_registry_integrity_and_duplicate_id(private_store):
     source = tone(private_store / "reference.wav")
     result = voice_packs.create_pack(

@@ -129,7 +129,12 @@ def test_complete_canonical_text_map_and_previous_approvals_unchanged(approval):
         ).hexdigest()
         == "8677dbaefde4111ffdb8fb92a876c15e5d7d5b73d4cbbd3048a1e05cf0553bf4"
     )
-    for identity in ("OCF-AUDIO-DEFAULTS-HPLUS-015", audio_defaults.BASELINE_ID):
+    for identity in (
+        "OCF-AUDIO-DEFAULTS-HPLUS-015",
+        "OCF-AUDIO-DEFAULTS-HPLUS-016",
+        "OCF-AUDIO-DEFAULTS-HPLUS-017",
+        audio_defaults.BASELINE_ID,
+    ):
         audio_defaults.check_lock(REPO_ROOT / "audio/defaults" / f"{identity}.json")
 
 

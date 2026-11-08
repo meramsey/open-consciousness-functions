@@ -223,6 +223,15 @@ def test_normal_default_selects_single_induction_and_exact_four_pass_sequence(ow
 
 def test_whole_unaffected_map_commands_bindings_and_frozen_editions(approval):
     catalog = LocaleCatalog()
+    declared = catalog.require("en-US").manifest["resources"]
+    assert len([r["file"] for r in declared]) == len({r["file"] for r in declared})
+    long_revision = catalog.with_revision("OCF-RELAXATION-LONG-002", "en-US")
+    session_revision = catalog.with_revision(REVISION, "en-US")
+    for key in approval["blocks"]["06"]["ordered_keys"]:
+        assert (
+            long_revision.resource(key, "en-US", domain="narration", fallback=False)[0].text
+            == session_revision.resource(key, "en-US", domain="narration", fallback=False)[0].text
+        )
     actual = {
         k: {
             "raw_sha256": sha(v.text),
@@ -257,7 +266,24 @@ def test_whole_unaffected_map_commands_bindings_and_frozen_editions(approval):
     assert {e["id"]: sha(e.get("text", "")) for e in iter_events(rc1)} == approval[
         "rc1_event_text_sha256"
     ]
-    assert audio_defaults.check_lock()["id"] == "OCF-AUDIO-DEFAULTS-HPLUS-017"
+    assert audio_defaults.check_lock()["id"] == "OCF-AUDIO-DEFAULTS-HPLUS-018"
+
+
+def test_long_form_revision_is_an_explicit_manifest_alias_without_duplicate_resource():
+    pack = LocaleCatalog().require("en-US")
+    rows = pack.manifest["resources"]
+    assert len([row["file"] for row in rows]) == len({row["file"] for row in rows})
+    aliases = [row for row in rows if "OCF-RELAXATION-LONG-002" in row.get("revision_aliases", [])]
+    assert len(aliases) == 1 and aliases[0]["revision"] == REVISION
+    first = LocaleCatalog().with_revision("OCF-RELAXATION-LONG-002", "en-US")
+    v3 = LocaleCatalog().with_revision(REVISION, "en-US")
+    for key in json.loads(
+        (REPO_ROOT / "function-content/editorial/relaxation-long-002.json").read_text()
+    )["ordered_keys"]:
+        assert (
+            first.resource(key, "en-US", domain="narration", fallback=False)[0].text
+            == v3.resource(key, "en-US", domain="narration", fallback=False)[0].text
+        )
 
 
 @pytest.mark.parametrize(
@@ -480,6 +506,7 @@ def test_routine_timeline_preserves_effective_contract_and_one_close_ramp(monkey
     cues, total = synthetic_timeline(doc)
     program = semantic_dsp.plan_program(doc, cues, total, plan["resolved_dsp_profile"])
     assert [t["event_id"] for t in program["transitions"]] == ["open.transition", "close.close"]
+    assert not any(t["event_id"] == "focus-ten.transition" for t in program["transitions"])
     report = {
         "function_id": "OCF-SEN-001",
         "narration_timing": {"cues": cues},
@@ -535,6 +562,7 @@ def test_learning_is_one_preparation_three_visits_510_seconds_and_ten_to_one(mon
     profile = semantic_dsp.load_profile("OCF-DSP-PREP-LEARN-002")
     program = semantic_dsp.plan_program(doc, cues, total, profile)
     assert [t["to"] for t in program["transitions"]] == ["focus-11", "focus-10"] * 3
+    assert not any(t["event_id"] == "focus-ten.transition" for t in program["transitions"])
     by_id = {c["id"]: c for c in cues}
     for i in range(1, 4):
         close = next(t for t in program["transitions"] if t["event_id"] == f"close-{i}.close")

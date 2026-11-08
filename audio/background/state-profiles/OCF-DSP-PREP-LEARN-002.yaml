@@ -2,7 +2,6 @@ default_background_state: focus-10
 ending_fade_seconds: 10
 id: OCF-DSP-PREP-LEARN-002
 ignored_state_events:
-- focus-ten.transition
 - return.complete
 initial_state: focus-10
 notes: Learning-only three-visit profile. Same approved Focus Ten/Eleven presets, levels, equal-power

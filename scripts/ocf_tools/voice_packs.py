@@ -261,7 +261,7 @@ def create_pack(
             },
         }
         custom_voices.validate_profile(profile)
-        destination = work_path("cache", "voices", "profiles", voice_id + ".yaml")
+        destination = custom_voices.profile_root() / (voice_id + ".yaml")
         write_text_atomic(destination, yaml_safe_dump(profile), overwrite=False)
     except Exception:
         # Preserve diagnostics but remove the incomplete registration; audio stays private.
@@ -509,7 +509,7 @@ def synthesize(query: str, text: str, *, device: str = "auto", timeout: int = 90
     if report.get("model_files"):
         profile["reference_audio"]["model_files"] = report["model_files"]
     if profile["reference_audio"] != previous_reference_metadata:
-        profile_path = work_path("cache", "voices", "profiles", profile["id"] + ".yaml")
+        profile_path = custom_voices.profile_root() / (profile["id"] + ".yaml")
         write_text_atomic(profile_path, yaml_safe_dump(profile))
     receipt = {
         **report,

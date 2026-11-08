@@ -16,11 +16,8 @@ resources:
 - file: relaxation-long-002.yaml
   domain: narration
   revision: OCF-SHARED-SESSION-003
+  revision_aliases: [OCF-RELAXATION-LONG-002]
   description: Reuse the one approved long-form authority without copying its narration.
-- file: relaxation-long-002.yaml
-  domain: narration
-  revision: OCF-RELAXATION-LONG-002
-  description: Approved original OCF long-form v2 shared relaxation; scoped immutable-template successor, not historical source wording.
 - file: OCF-EXP-006-Intuition.yaml
   domain: function
   description: Sole editable localized function metadata and canonical narration.
