@@ -46,6 +46,7 @@ Inference access never implies permission to redistribute recordings or weights.
 Profiles and Piper configuration must contain finite JSON-compatible values;
 NaN/infinity is rejected. Profile gain, processing defaults, speed and speaker
 selection are explicit controls, not evidence of a trained or cloned identity.
+
 ### Portable metadata and private assets
 
 These examples require an existing private profile and unused destinations:
