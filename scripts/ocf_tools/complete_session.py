@@ -317,6 +317,7 @@ def build_complete_session_plan(
     template: str | None = None,
     dsp_profile: str | None = None,
     overrides: dict | None = None,
+    declared_voice_backend: str | None = None,
 ) -> dict[str, Any]:
     """Resolve a bound complete session and prove stage/state completeness before synthesis."""
     from .narration_first import plan_narration
@@ -347,7 +348,24 @@ def build_complete_session_plan(
     if not selected_dsp:
         raise OCFError(f"complete session template {selected_template} has no explicit DSP profile")
     dsp = load_profile(selected_dsp)
-    pacing_id = options.get("pacing_profile") or template_record.get("pacing_profile")
+    from . import backend_defaults
+
+    use_backend_defaults = backend_defaults.eligible(
+        (plan.get("voice_profile") or {}).get("backend")
+        or declared_voice_backend
+        or (
+            backend_defaults.declared_backend(options["voice_profile"])
+            if options.get("voice_profile")
+            else None
+        ),
+        dsp,
+        enabled=options.get("backend_defaults", True),
+    )
+    pacing_id = options.get("pacing_profile") or (
+        backend_defaults.pacing_id()
+        if use_backend_defaults
+        else template_record.get("pacing_profile")
+    )
     if not pacing_id:
         raise OCFError(
             f"complete session template {selected_template} has no explicit pacing profile"
@@ -490,6 +508,14 @@ def build_complete_session_plan(
         "resolved_pacing_profile": selected_pacing,
         "duration_preference": selected_pacing.get("duration_preference", {}),
         "resolved_dsp_profile": dsp,
+        **(
+            {
+                "backend_defaults": {"id": backend_defaults.POLICY_ID, "version": "1.0.0"},
+                "default_mix_profile": backend_defaults.mix_profile(),
+            }
+            if use_backend_defaults
+            else {}
+        ),
     }
 
 
@@ -1117,6 +1143,8 @@ def _render_complete_session_unlocked(
         }
     elif narration_source in ("recording", "hybrid"):
         raise OCFError("recording/hybrid mode requires --narration-sources")
+    if mix_profile is None and narration_sources is None:
+        mix_profile = session_plan.get("default_mix_profile")
     render_identity_sha256 = _complete_session_identity(
         function_id,
         session_plan,

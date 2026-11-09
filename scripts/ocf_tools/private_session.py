@@ -22,6 +22,8 @@ def load_defaults(path):
     if errors:
         raise OCFError("invalid private session configuration")
     for name in ("mix_profile",):
+        if name not in data:
+            continue
         selected = Path(data[name]).expanduser()
         data[name] = str(selected if selected.is_absolute() else path.parent / selected)
     return data
@@ -45,10 +47,11 @@ def main():
     result = render(
         output=args.output,
         voice=args.voice or config["voice"],
-        mix_profile=args.mix_profile or config["mix_profile"],
+        mix_profile=args.mix_profile or config.get("mix_profile"),
         locale=config.get("locale", "en-US"),
         native_speed=config.get("native_speed", True),
         pacing_profile=config.get("pacing_profile"),
+        backend_defaults=config.get("backend_defaults", True),
         enabled_stages=config.get("enabled_stages", []),
         affirmation=config.get("affirmation"),
         dry_run=args.dry_run,

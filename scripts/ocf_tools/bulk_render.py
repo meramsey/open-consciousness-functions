@@ -187,6 +187,7 @@ def _render_job(
                     speech_cache_mode="off" if fresh_synthesis else speech_cache_mode,
                     speech_cache_scope=speech_cache_scope,
                     **({"dsp_profile": dsp_profile} if dsp_profile else {}),
+                    **job.get("render_options", {}),
                 )
             session_report = result.get("manifest", {}).get("speech_cache", {})
             root = Path(result["output_directory"])
@@ -528,10 +529,16 @@ def render_many(
     speech_cache_mode: str = "auto",
     workers: int = 1,
     progress_callback=None,
+    overrides: dict | None = None,
+    mix_profile: dict | str | Path | None = None,
 ) -> dict:
     started_at = time.perf_counter()
     from .semantic_dsp import dependency_identity
 
+    if mix_profile is not None:
+        from .mix_profiles import load_mix_profile
+
+        mix_profile = load_mix_profile(mix_profile)
     ids = sorted(
         set(function_ids if function_ids is not None else [r.id for r in load_all_functions()])
     )
@@ -595,13 +602,22 @@ def render_many(
         notify({"phase": "function-preflight", "function_id": owner, "detail": owner})
         try:
             plan, shared, expanded = source_plan(owner, locale)
-            speech_plans.append((owner, shared, expanded))
-            if dsp_profile:
+            from .backend_defaults import declared_backend
+
+            selected_backend = voice_spec["name"] if voice_spec else declared_backend(voice)
+            if dsp_profile or overrides is not None or selected_backend == "chatterbox-nano":
                 from .complete_session import build_complete_session_plan
 
-                build_complete_session_plan(
-                    owner, locale=locale, voice=voice, pacing=pacing, dsp_profile=dsp_profile
+                expanded = build_complete_session_plan(
+                    owner,
+                    locale=locale,
+                    pacing=pacing,
+                    dsp_profile=dsp_profile,
+                    declared_voice_backend=selected_backend,
+                    overrides=overrides,
                 )
+                plan = {**plan, "effective_session_plan_sha256": digest(expanded)}
+            speech_plans.append((owner, shared, expanded))
             if dry_run:
                 statuses[owner] = {
                     "function_id": owner,
@@ -625,6 +641,10 @@ def render_many(
                 "renderer": renderer_identity,
                 "background": dsp_identity,
             }
+            if mix_profile is not None:
+                identity["mix_profile"] = mix_profile
+            if overrides is not None:
+                identity["overrides"] = overrides
             identity["git_worktree"] = git_identity
             key = digest(identity)
             receipt_path = work_path("cache", "bulk-renders", key + ".json")
@@ -648,6 +668,10 @@ def render_many(
                     }
                     notify({"phase": "function-skipped-verified", "function_id": owner})
                     continue
+            job["render_options"] = {
+                **({"overrides": overrides} if overrides is not None else {}),
+                **({"mix_profile": mix_profile} if mix_profile is not None else {}),
+            }
             jobs[owner] = job
             statuses[owner] = {
                 "function_id": owner,

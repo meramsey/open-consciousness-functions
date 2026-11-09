@@ -190,3 +190,9 @@ python3 -m pytest -n 2 --dist loadfile
 
 Use focused tests while editing; the serial and two-worker commands both cover
 the full suite. See [measured performance](releases/OCF_BULK_TEST_PERFORMANCE.md).
+
+For Chatterbox Nano with Farfield, bulk planning resolves the same approved
+[backend defaults](SESSION_OVERRIDES.md#automatic-nano-and-farfield-defaults)
+as individual rendering. Candidate speech counts and cache identity use the
+selected connected pacing. Supply `--overrides FILE.json` or `--mix-profile FILE`
+to customize the batch; explicit choices participate in verified-resume identity.

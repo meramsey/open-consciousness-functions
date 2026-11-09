@@ -4,8 +4,7 @@
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "voice",
-    "mix_profile"
+    "voice"
   ],
   "properties": {
     "voice": {
@@ -76,6 +75,9 @@
     "pacing_profile": {
       "type": "string",
       "pattern": "^OCF-PACING-[A-Z0-9-]+$"
+    },
+    "backend_defaults": {
+      "type": "boolean"
     }
   },
   "$id": "https://open-consciousness-functions.dev/schemas/private-session.schema.json"

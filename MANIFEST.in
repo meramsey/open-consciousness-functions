@@ -8,6 +8,7 @@ recursive-include locales *.yaml
 recursive-include templates *.yaml *.md
 recursive-include audio/templates/stages *.yaml
 recursive-include audio/templates/sessions *.yaml
+recursive-include audio/templates/pacing *.yaml
 recursive-include audio/cues/profiles *.yaml
 recursive-include audio/voices/profiles *.yaml
 recursive-include audio/voices/registry *.yaml

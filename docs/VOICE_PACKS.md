@@ -197,3 +197,14 @@ The same guide documents the opt-in three-function actual-narration cache
 benchmark; it intentionally does not mix a full session or alter approved DSP.
 
 Never commit reference audio, consent records, embeddings or cloned narration.
+
+## Approved defaults with Farfield
+
+When a new complete session selects a Chatterbox Nano voice and Farfield state
+backgrounds, OCF automatically uses the approved A6 background balance and
+connected preparation pacing at native speed. You do not need to recreate those
+profiles for each voice pack. Preview with `audio render FUNCTION_ID --voice
+VOICE_ID --dry-run`; then use the same selections for rendering.
+See [automatic defaults and overrides](SESSION_OVERRIDES.md#automatic-nano-and-farfield-defaults)
+for the exact levels, applicable baseline and opt-out. Explicit mix/pacing choices
+remain available for single and bulk sessions.

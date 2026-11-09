@@ -412,6 +412,12 @@ def _build_parser() -> argparse.ArgumentParser:
     bulk_cmd.add_argument(
         "--dsp-profile", help="Explicit semantic DSP profile ID or local YAML path"
     )
+    bulk_cmd.add_argument("--overrides", type=Path, help="explicit JSON session overrides")
+    bulk_cmd.add_argument(
+        "--mix-profile",
+        type=Path,
+        help="explicit YAML/JSON mix; {} disables automatic mix defaults",
+    )
     bulk_cmd.add_argument("--dry-run", action="store_true")
     bulk_cmd.add_argument(
         "--resume",
@@ -1743,6 +1749,8 @@ def main(argv: list[str] | None = None) -> int:
                     fresh_synthesis=args.fresh_synthesis,
                     speech_cache_mode=args.speech_cache,
                     workers=args.workers,
+                    **({"overrides": read_json_object(args.overrides)} if args.overrides else {}),
+                    **({"mix_profile": args.mix_profile} if args.mix_profile else {}),
                 )
                 print(json.dumps(result, ensure_ascii=False, indent=2))
                 return 1 if result["failed"] else 0
