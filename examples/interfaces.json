@@ -2109,6 +2109,12 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
+      "example_sha256": "f4d783614a3223eed8fc06d1f9bda96348a23fe5d774ad7696b3d10effb8e24b",
+      "schema": "private-session.schema.json",
+      "source": "examples/contracts.json#/private-session.schema.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
       "example_sha256": "14a34409976c4717d2604000f5273cbd9ab93964a19c096e33791eb39729a6b7",
       "schema": "proposal.schema.json",
       "source": "examples/contracts.json#/proposal.schema.json",
@@ -2218,6 +2224,7 @@
     "schemas/narration-package.schema.json": "8a9e55379eec1481cdde5fbfa55b91af471dc45fe0ae30c64da36ab5d9b1a15d",
     "schemas/narration-sources.schema.json": "5c084f128351d6a2a879b5a971007cbc9efe3fb269deb3eeb12832895e729c3e",
     "schemas/narration-stem.schema.json": "6e377d585c16ed0c77178862a99f6de5be75786183cef36361ed4e717faa1efd",
+    "schemas/private-session.schema.json": "8e109d51081a90106fc1c56e64320c33e09a7c30dbda73ca92859fe68e93520a",
     "schemas/proposal.schema.json": "110b6780ef9fda7154fcd5358c4502ea589c6a26356afd24da5668d4be2482a0",
     "schemas/recording-processing.schema.json": "7062e488510f3703db3392200d8a9f5ace7500dd41eb01496f3d5dad8a17ceec",
     "schemas/semantic-dsp-profile.schema.json": "2b02bb6c1e577bd6ccd2cfe4f429fe43408efd0c7717ea3d1e896f4cb4cdfe79",

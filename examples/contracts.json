@@ -278,5 +278,12 @@
         "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
       }
     ]
+  },
+  "private-session.schema.json": {
+    "voice": "OCF-VOICE-0003",
+    "mix_profile": "YOUR_PRIVATE_MIX_PROFILE.yaml",
+    "locale": "en-US",
+    "native_speed": true,
+    "enabled_stages": []
   }
 }
