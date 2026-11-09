@@ -202,7 +202,7 @@ def plan_event_pacing(doc: dict[str, Any], event: dict[str, Any]) -> dict[str, A
                 previous is not None
                 and previous["kind"] in prose
                 and unit["kind"] in prose
-                and previous["pause_kind"] != "paragraph"
+                and not units[index - 1]["paragraph_after"]
                 and previous["kind"] != "landing"
                 and previous["rate_scale"] == unit["rate_scale"]
             ):

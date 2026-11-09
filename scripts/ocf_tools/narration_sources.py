@@ -134,6 +134,8 @@ class SourceResolver:
                 raise OCFError(f"recording {identifier}: unknown narration event ID")
             if target.get("unit_index") and target.get("event_id") in self.events:
                 pacing = plan_event_pacing(doc, self.events[target["event_id"]])
+                if pacing and pacing["group_prose"]:
+                    raise OCFError("grouped prose is not compatible with hybrid unit bindings")
                 if not pacing or target["unit_index"] > len(pacing["units"]):
                     raise OCFError(f"recording {identifier}: unknown semantic unit index")
             if normalize_tag(entry["locale"]) != self.locale:
@@ -345,6 +347,8 @@ class SourceResolver:
         # A partial unit collection must not displace an available complete take.
         unit_matches = any(unit_ids) and (all(unit_ids) or self._matches(event) is None)
         if unit_matches and not choice:
+            if pacing["group_prose"]:
+                raise OCFError("grouped prose is not compatible with hybrid unit bindings")
             units = [
                 self._row(event, unit["text"], {}, "semantic-unit", i + 1)
                 for i, unit in enumerate(pacing["units"])

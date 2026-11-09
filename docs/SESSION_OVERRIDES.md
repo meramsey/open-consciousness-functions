@@ -46,7 +46,7 @@ ending/waking settings fail. No runtime paraphrase or automatic editorial
 approval occurs. DSP ignores/continuity probes and excerpt selection follow the
 explicit resolved stages; default Focus 10/11 settings stay locked.
 
-### Connected preparation and relaxation
+## Connected preparation and relaxation
 
 Explicitly select `OCF-PACING-CONNECTED-SESSION-001` through `pacing_profile`
 for routine sessions, or `OCF-PACING-CONNECTED-LEARNING-001` for standalone

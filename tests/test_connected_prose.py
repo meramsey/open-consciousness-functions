@@ -68,3 +68,33 @@ def test_paragraph_and_count_boundaries_are_retained():
     assert [u["pause_after_s"] for u in units] == [6, 4, 20]
     assert [u["source_unit_indexes"] for u in units] == [[0], [1, 2], [3, 4]]
     assert event == original
+
+
+def test_phrase_paragraph_is_not_joined_and_bulk_uses_actual_groups(monkeypatch):
+    from ocf_tools.bulk_render import _candidate_speech_plan
+
+    doc = {
+        "narration_pacing": {
+            "entries": {"test.text": "test"},
+            "profiles": {
+                "test": {
+                    "rate_scale": 1,
+                    "default_unit": "phrase",
+                    "group_prose": True,
+                    "pauses": {"phrase": 1, "paragraph": 4},
+                }
+            },
+        },
+        "timeline": [
+            {
+                "id": "fixture",
+                "narration_key": "test.text",
+                "text": "Rest. Stay.\n\nBreathe. Settle.",
+            }
+        ],
+    }
+    units = plan_event_pacing(doc, doc["timeline"][0])["units"]
+    assert [u["text"] for u in units] == ["Rest. Stay.", "Breathe. Settle."]
+    monkeypatch.setattr("ocf_tools.locale.resolve_document", lambda doc, *args, **kwargs: doc)
+    result = _candidate_speech_plan([("fixture", {}, {"template_plan": doc})])
+    assert len(result["compatible_unit_fingerprints"]) == 2
