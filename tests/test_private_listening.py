@@ -106,7 +106,8 @@ def test_learning_is_standalone_with_full_practice():
         verify_timing(planned["document"], {"event_timing": []})
 
 
-def test_http_auth_ranges_and_notes(tmp_path):
+@pytest.mark.parametrize("path_metadata_differs", [False, True])
+def test_http_auth_ranges_and_notes(tmp_path, monkeypatch, path_metadata_differs):
     import base64
     import http.client
     import threading
@@ -115,6 +116,21 @@ def test_http_auth_ranges_and_notes(tmp_path):
     from ocf_tools.listening_portal import handler
 
     completed(tmp_path)
+    if path_metadata_differs:
+        from pathlib import Path
+        from types import SimpleNamespace
+
+        original_stat = Path.stat
+
+        def path_stat(path, *args, **kwargs):
+            info = original_stat(path, *args, **kwargs)
+            if path.suffix == ".mp3":
+                fields = {name: getattr(info, name) for name in dir(info) if name.startswith("st_")}
+                fields["st_ctime_ns"] += 100
+                return SimpleNamespace(**fields)
+            return info
+
+        monkeypatch.setattr(Path, "stat", path_stat)
     auth = "Basic " + base64.b64encode(b"test:synthetic-password-for-tests").decode()
     server = ThreadingHTTPServer(("127.0.0.1", 0), handler(Library(tmp_path), auth))
     worker = threading.Thread(target=server.serve_forever, daemon=True)
@@ -376,3 +392,78 @@ def test_unhealthy_portal_worker_terminates_child(tmp_path, monkeypatch):
     assert worker.main() == 1
     assert child.returncode == -15
     assert json.loads(status.read_text())["sessions"]["portal"]["checks"] == 3
+
+
+def test_portal_rejects_mutation_during_hash(tmp_path, monkeypatch):
+    import os
+
+    from ocf_tools import listening_portal as portal
+
+    folder, _ = completed(tmp_path)
+    audio = folder / "audio.mp3"
+    original = portal.hashlib.sha256
+    changed = False
+
+    class Hash:
+        def __init__(self, *args):
+            self.inner = original(*args)
+
+        def update(self, block):
+            nonlocal changed
+            self.inner.update(block)
+            if not changed:
+                changed = True
+                info = audio.stat()
+                audio.write_bytes(b"X" * info.st_size)
+                os.utime(audio, ns=(info.st_atime_ns, info.st_mtime_ns + 1000000000))
+
+        def hexdigest(self):
+            return self.inner.hexdigest()
+
+    monkeypatch.setattr(portal.hashlib, "sha256", Hash)
+    assert Library(tmp_path).discover() == ([], {})
+    assert changed
+
+
+def test_portal_rejects_same_bytes_replacement_after_discovery(tmp_path):
+    import base64
+    import http.client
+    import os
+    import threading
+    from http.server import ThreadingHTTPServer
+
+    from ocf_tools.listening_portal import handler
+
+    folder, _ = completed(tmp_path)
+
+    class ReplacedLibrary(Library):
+        def discover(self):
+            rows, files = super().discover()
+            source = folder / "audio.mp3"
+            replacement = folder / "replacement.mp3"
+            replacement.write_bytes(source.read_bytes())
+            os.replace(replacement, source)
+            return rows, files
+
+    library = ReplacedLibrary(tmp_path)
+    auth = "Basic " + base64.b64encode(b"test:synthetic-password-for-tests").decode()
+    server = ThreadingHTTPServer(("127.0.0.1", 0), handler(library, auth))
+    worker = threading.Thread(target=server.serve_forever, daemon=True)
+    worker.start()
+    connection = http.client.HTTPConnection(*server.server_address, timeout=3)
+    try:
+        connection.request("GET", "/catalog", headers={"Authorization": auth})
+        catalog = json.loads(connection.getresponse().read())
+        connection.request(
+            "GET",
+            catalog[0]["media"][0]["url"],
+            headers={"Authorization": auth, "Range": "bytes=1-3"},
+        )
+        response = connection.getresponse()
+        assert response.status == 416
+        response.read()
+    finally:
+        connection.close()
+        server.shutdown()
+        server.server_close()
+        worker.join(timeout=3)
