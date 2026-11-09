@@ -150,6 +150,7 @@ def event_pacing(
         "unit_kinds": unit_kinds,
         "unit_rate_scales": unit_rate_scales,
         "pauses": pauses,
+        "group_prose": bool(profile.get("group_prose", False)),
     }
 
 
@@ -192,4 +193,26 @@ def plan_event_pacing(doc: dict[str, Any], event: dict[str, Any]) -> dict[str, A
                 "pause_inside_event": inside_event,
             }
         )
+    if pacing["group_prose"]:
+        grouped = []
+        prose = {"sentence", "instruction", "phrase", "landing"}
+        for index, unit in enumerate(planned_units):
+            previous = grouped[-1] if grouped else None
+            if (
+                previous is not None
+                and previous["kind"] in prose
+                and unit["kind"] in prose
+                and previous["pause_kind"] != "paragraph"
+                and previous["kind"] != "landing"
+                and previous["rate_scale"] == unit["rate_scale"]
+            ):
+                previous["text"] += " " + unit["text"]
+                previous["kind"] = unit["kind"]
+                previous["pause_kind"] = unit["pause_kind"]
+                previous["pause_after_s"] = unit["pause_after_s"]
+                previous["pause_inside_event"] = unit["pause_inside_event"]
+                previous["source_unit_indexes"].append(index)
+            else:
+                grouped.append({**unit, "source_unit_indexes": [index]})
+        planned_units = grouped
     return {**pacing, "units": planned_units}

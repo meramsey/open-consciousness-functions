@@ -22,7 +22,9 @@ from .utils import OCFError, sha256_of_file
 TEMPLATE = "OCF-TPL-SESSION-PREP-LEARN-002"
 
 
-def plan(*, locale="en-US", enabled_stages=(), affirmation=None, native_speed=False):
+def plan(
+    *, locale="en-US", enabled_stages=(), affirmation=None, native_speed=False, pacing_profile=None
+):
     template = load_template(TEMPLATE)
     document = compose(
         template,
@@ -31,6 +33,7 @@ def plan(*, locale="en-US", enabled_stages=(), affirmation=None, native_speed=Fa
         locale=locale,
         enabled_stages=list(enabled_stages),
         affirmation=affirmation,
+        pacing_profile=pacing_profile,
     )
     document = resolve_document(document, locale, strict=True)
     if native_speed:
@@ -110,6 +113,7 @@ def render(
     affirmation=None,
     dry_run=False,
     native_speed=False,
+    pacing_profile=None,
 ):
     """Render using existing OCF APIs; retain failed staging and refuse overwrite."""
     from .complete_session import _probe_audio, _stereo_metrics, _verify_decode
@@ -123,6 +127,7 @@ def render(
         enabled_stages=enabled_stages,
         affirmation=affirmation,
         native_speed=native_speed,
+        pacing_profile=pacing_profile,
     )
     profile = load_mix_profile(mix_profile)
     target = Path(output).expanduser().resolve()

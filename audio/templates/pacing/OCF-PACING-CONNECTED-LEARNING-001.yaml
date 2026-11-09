@@ -1,0 +1,18 @@
+schema_version: '1.0'
+id: OCF-PACING-CONNECTED-LEARNING-001
+version: 1.0.0
+extends: OCF-PACING-PREP-LEARN-002
+status: approved_for_internal_composition
+narration_pacing:
+  profiles:
+    preparation:
+      group_prose: true
+    relaxation-opening:
+      group_prose: true
+    relaxation-body:
+      group_prose: true
+evidence_notes:
+- Explicit successor for connected preparation and relaxation prose; wording is unchanged.
+- Authored paragraph boundaries, count pauses, event holds and semantic transitions remain intact.
+- Measured timing belongs to each synthesized group, not invented constituent sentence timestamps.
+- Internal composition approval is separate from listening or release approval.

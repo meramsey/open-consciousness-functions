@@ -45,3 +45,15 @@ verbatim; review the closer's meaning before using such a variant. Conflicting
 ending/waking settings fail. No runtime paraphrase or automatic editorial
 approval occurs. DSP ignores/continuity probes and excerpt selection follow the
 explicit resolved stages; default Focus 10/11 settings stay locked.
+
+### Connected preparation and relaxation
+
+Explicitly select `OCF-PACING-CONNECTED-SESSION-001` through `pacing_profile`
+for routine sessions, or `OCF-PACING-CONNECTED-LEARNING-001` for standalone
+Learning. The Learning API and private configuration accept `pacing_profile`.
+These successors synthesize connected prose within authored paragraphs together
+without changing words, count pauses, event holds or semantic transitions.
+Learning retains its 510-second practice allocation. Existing policies and
+public defaults remain unchanged. Timing reports measure the combined utterance;
+individual sentence timestamps are not inferred. Grouping is incompatible with
+existing hybrid unit bindings. Listening approval remains separate.
