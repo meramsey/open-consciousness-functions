@@ -18,6 +18,7 @@ loading the entire documentation tree:
   [audio pipeline](AUDIO_PIPELINE.md).
 - Build private reference-V4 listening editions: [private workflow](PRIVATE_REFERENCE_V4.md).
 - Choose a voice: [community voices](COMMUNITY_VOICES.md).
+- Deliver private completed sessions: [private listening delivery](PRIVATE_LISTENING_DELIVERY.md).
 - Read the [general listening guide](LISTENING_GUIDE.md) and generate
   [function-specific Markdown/PDF/HTML guides](FUNCTION_GUIDES.md).
 - Import/record/compare private voices: [voice workflows](VOICE_WORKFLOWS.md).

@@ -289,54 +289,6 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
-      "path": "ROADMAP.md",
-      "proposed_correction": "use docs/README.md for authoritative navigation",
-      "purpose": "Roadmap",
-      "related_commands": [
-        "preparation",
-        "session compose",
-        "transcript import",
-        "transcript segment",
-        "voice"
-      ],
-      "related_schemas": [],
-      "sha256": "60fb135cff14b6c73a59e350075791c08404c3bd5163cda0b3428837729df440",
-      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
-    },
-    {
-      "audience": "contributors and agents",
-      "broken_references": [],
-      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
-      "duplicate_or_contradictory_information": [],
-      "historical": false,
-      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
-      "last_verified_implementation_checkpoint": null,
-      "maintenance": "manual",
-      "missing_information": [],
-      "path": "ROADMAP.md",
-      "proposed_correction": "use docs/README.md for authoritative navigation",
-      "purpose": "Roadmap",
-      "related_commands": [
-        "preparation",
-        "session compose",
-        "transcript import",
-        "transcript segment",
-        "voice"
-      ],
-      "related_schemas": [],
-      "sha256": "60fb135cff14b6c73a59e350075791c08404c3bd5163cda0b3428837729df440",
-      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
-    },
-    {
-      "audience": "contributors and agents",
-      "broken_references": [],
-      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
-      "duplicate_or_contradictory_information": [],
-      "historical": false,
-      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
-      "last_verified_implementation_checkpoint": null,
-      "maintenance": "manual",
-      "missing_information": [],
       "path": "SECURITY.md",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "Security Policy",
@@ -1719,6 +1671,26 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "docs/PRIVATE_LISTENING_DELIVERY.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Private listening delivery",
+      "related_commands": [],
+      "related_schemas": [
+        "schemas/private-session.schema.json"
+      ],
+      "sha256": "0b2ece7fd5b05ee97234752f46960ea48a3730fa653bcee4068a1518f2f43a85",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "docs/PRIVATE_REFERENCE_V4.md",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "Private reference-V4 listening editions",
@@ -1780,7 +1752,7 @@
       "purpose": "Documentation map",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "f58b1b787f417283c6189a639d857da5bb12e4b313db6a360dd40803ce38e727",
+      "sha256": "53a0d7809f14f59604b707106ec86adf727cba7ca228a4df0d470e1b62d358a8",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4153,6 +4125,26 @@
         "schemas/narration-stem.schema.json"
       ],
       "sha256": "6e377d585c16ed0c77178862a99f6de5be75786183cef36361ed4e717faa1efd",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "schemas/private-session.schema.json",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "private-session.schema",
+      "related_commands": [],
+      "related_schemas": [
+        "schemas/private-session.schema.json"
+      ],
+      "sha256": "8e109d51081a90106fc1c56e64320c33e09a7c30dbda73ca92859fe68e93520a",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {

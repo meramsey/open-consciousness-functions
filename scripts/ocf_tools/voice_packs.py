@@ -346,10 +346,17 @@ def inference_verified(profile: dict) -> bool:
     return False
 
 
+def model_cache_root() -> Path:
+    """Match Hugging Face's explicit durable cache overrides."""
+    if os.environ.get("HF_HUB_CACHE"):
+        return Path(os.environ["HF_HUB_CACHE"]).expanduser()
+    if os.environ.get("HF_HOME"):
+        return Path(os.environ["HF_HOME"]).expanduser() / "hub"
+    return work_path("cache", "huggingface", "hub")
+
+
 def cached_model_revision() -> str | None:
-    ref = work_path(
-        "cache", "huggingface", "hub", "models--ResembleAI--chatterbox-nano", "refs", "main"
-    )
+    ref = model_cache_root() / "models--ResembleAI--chatterbox-nano/refs/main"
     try:
         return ref.read_text(encoding="ascii").strip() if ref.is_file() else None
     except OSError:
@@ -372,11 +379,7 @@ def cached_model_tree_fingerprint() -> str | None:
 
 
 def _cached_model_file_hashes(revision: str) -> dict[str, str]:
-    snapshot = (
-        work_path("cache").parent
-        / "cache/huggingface/hub/models--ResembleAI--chatterbox-nano/snapshots"
-        / revision
-    )
+    snapshot = model_cache_root() / "models--ResembleAI--chatterbox-nano/snapshots" / revision
     return {
         path.relative_to(snapshot).as_posix(): sha256_of_file(path)
         for path in sorted(snapshot.rglob("*"))
