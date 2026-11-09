@@ -31,6 +31,7 @@ _worker_scopes = 0
 _worker_process: subprocess.Popen | None = None
 _worker_responses: queue.Queue[str | None] | None = None
 _worker_log_path: Path | None = None
+_worker_interpreter: Path | None = None
 _active_voice_pack: ContextVar[dict | None] = ContextVar("ocf_active_zero_shot_pack", default=None)
 
 
@@ -78,12 +79,13 @@ def _read_worker_stdout(process: subprocess.Popen, responses: queue.Queue) -> No
 
 
 def _stop_worker() -> None:
-    global _worker_process, _worker_responses, _worker_log_path
+    global _worker_process, _worker_responses, _worker_log_path, _worker_interpreter
     with _worker_io_lock:
         process = _worker_process
         _worker_process = None
         _worker_responses = None
         _worker_log_path = None
+        _worker_interpreter = None
         if process is None:
             return
         if process.stdin:
@@ -102,9 +104,11 @@ def _stop_worker() -> None:
 
 
 def _persistent_inference(request: dict, interpreter: Path, timeout: int) -> dict:
-    global _worker_process, _worker_responses, _worker_log_path
+    global _worker_process, _worker_responses, _worker_log_path, _worker_interpreter
     with _worker_io_lock:
         process = _worker_process
+        if process is not None and process.poll() is None and _worker_interpreter != interpreter:
+            raise OCFError("Chatterbox runtime changed within an active worker scope")
         if process is None or process.poll() is not None:
             if process is not None:
                 _stop_worker()
@@ -132,6 +136,7 @@ def _persistent_inference(request: dict, interpreter: Path, timeout: int) -> dic
                     encoding="utf-8",
                     bufsize=1,
                 )
+            _worker_interpreter = interpreter
             _worker_responses = queue.Queue()
             threading.Thread(
                 target=_read_worker_stdout,
@@ -387,6 +392,20 @@ def _cached_model_file_hashes(revision: str) -> dict[str, str]:
     }
 
 
+def runtime_interpreter() -> Path:
+    """Select the same interpreter for inference and dependency identity.
+
+    Preserve a venv entrypoint's path: resolving its symlink would instead
+    select the base interpreter's unrelated package directory.
+    """
+    configured = os.environ.get("OCF_CHATTERBOX_PYTHON")
+    if configured:
+        return Path(configured).expanduser().absolute()
+    if sys.platform == "win32":
+        return work_path("cache").parent / "voice-envs/chatterbox/Scripts/python.exe"
+    return work_path("cache").parent / "voice-envs/chatterbox/bin/python"
+
+
 def synthesize(query: str, text: str, *, device: str = "auto", timeout: int = 900) -> dict:
     """Run the real optional Chatterbox worker without importing ML into OCF Python."""
     profile = _profile_for_synthesis(query)
@@ -398,15 +417,7 @@ def synthesize(query: str, text: str, *, device: str = "auto", timeout: int = 90
         )
     if not text.strip():
         raise OCFError("audition text must not be empty")
-    configured = os.environ.get("OCF_CHATTERBOX_PYTHON")
-    if configured:
-        # Venv entry points often symlink to the base interpreter; resolving it
-        # bypasses the optional environment's site-packages.
-        interpreter = Path(configured).expanduser()
-    elif sys.platform == "win32":
-        interpreter = work_path("cache").parent / "voice-envs/chatterbox/Scripts/python.exe"
-    else:
-        interpreter = work_path("cache").parent / "voice-envs/chatterbox/bin/python"
+    interpreter = runtime_interpreter()
     if not interpreter.is_file():
         raise OCFError(
             "Chatterbox optional environment is missing; see docs/VOICE_PACKS.md for setup"

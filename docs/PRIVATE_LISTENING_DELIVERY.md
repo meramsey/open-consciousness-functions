@@ -37,6 +37,9 @@ settings or replace an immutable edition with a reconstruction.
 also honored by voice model fingerprinting. `OCF_VOICE_PROFILE_DIR` and
 `OCF_VOICE_ASSETS` select durable private profile and asset directories.
 `OCF_CHATTERBOX_PYTHON` selects an explicitly provisioned optional interpreter.
+Speech-cache identity follows that selected interpreter and independently hashes
+its installed backend dependency records on POSIX and Windows. Changing an
+unselected scratch runtime does not change the selected runtime identity.
 All overrides apply to the private process; public defaults remain unchanged.
 
 A backend dependency constraint conflict must be resolved before claiming a
@@ -44,6 +47,15 @@ unified environment is provisioned. In particular, the current Python <3.13
 Chatterbox adapter declares NumPy <2, while the project development extra declares
 NumPy >=2. Preserve an existing working runtime; do not silently force an
 inconsistent installation or weaken the development dependency contract.
+
+When the operator selects a separate durable runtime, keep it under the private
+data root and point `OCF_CHATTERBOX_PYTHON` at its virtual-environment entrypoint.
+Retain a complete pinned lock from the proven runtime. Replaying a complete lock
+with `pip install --no-deps -r LOCK` avoids re-resolving floating transitive VCS
+metadata; it is appropriate only when followed by `pip check`, an exact installed
+lock comparison and a fresh synthesis through the project CLI. Verify the actual
+CUDA path when selected. Keep provisioning receipts and model hashes private,
+and retain the original working runtime until the replacement is verified.
 
 ## Private listening server
 

@@ -129,13 +129,20 @@ def test_complete_canonical_text_map_and_previous_approvals_unchanged(approval):
         ).hexdigest()
         == "8677dbaefde4111ffdb8fb92a876c15e5d7d5b73d4cbbd3048a1e05cf0553bf4"
     )
-    for identity in (
-        "OCF-AUDIO-DEFAULTS-HPLUS-015",
-        "OCF-AUDIO-DEFAULTS-HPLUS-016",
-        "OCF-AUDIO-DEFAULTS-HPLUS-017",
-        audio_defaults.BASELINE_ID,
-    ):
-        audio_defaults.check_lock(REPO_ROOT / "audio/defaults" / f"{identity}.json")
+    assert (
+        hashlib.sha256(
+            (REPO_ROOT / "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-017.json").read_bytes()
+        ).hexdigest()
+        == "f150209ee5a37d6ceda2fc7851101dc2ae1e0ee8e99a2b56c1b42813e00b5f6d"
+    )
+    # V3 deliberately supersedes dependencies recorded by 016/017. Their
+    # immutable receipts remain historical; the validator must still reject
+    # applying them to current inputs, rather than rewriting old lock bytes.
+    for identity in ("OCF-AUDIO-DEFAULTS-HPLUS-016", "OCF-AUDIO-DEFAULTS-HPLUS-017"):
+        with pytest.raises(OCFError, match="shared audio defaults lock is stale"):
+            audio_defaults.check_lock(REPO_ROOT / "audio/defaults" / f"{identity}.json")
+    audio_defaults.check_lock(REPO_ROOT / "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-015.json")
+    audio_defaults.check_lock()
 
 
 def test_historical_templates_and_rc1_preserve_transitive_resolved_words(approval):

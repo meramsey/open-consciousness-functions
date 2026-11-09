@@ -21,7 +21,7 @@ def test_plan_reuses_completeness_catalog_and_retains_exact_baseline(monkeypatch
     monkeypatch.setattr(complete_session, "LocaleCatalog", counted)
     plan, shared, expanded = source_plan("OCF-FND-002")
     assert len(created) == 1
-    # Public canonical baseline at b45f1fd; includes all expanded narration,
+    # Approved shared-session v3 baseline (018); includes all expanded narration,
     # timing, transition, approval and source-declaration metadata, not audio.
     assert (
         hashlib.sha256(
@@ -33,5 +33,5 @@ def test_plan_reuses_completeness_catalog_and_retains_exact_baseline(monkeypatch
                 }
             ).encode()
         ).hexdigest()
-        == "4ae638609dec2e47938c5989017a5ffe3a2d4003fe63373dd50e626dc225993d"
+        == "fdd3db96ceed4a37628d488d466a090629561d50a307f267bea92c56c3a75240"
     )

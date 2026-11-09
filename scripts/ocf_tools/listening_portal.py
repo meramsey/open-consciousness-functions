@@ -342,12 +342,12 @@ def handler(library, authorization):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, required=True)
-    config = json.loads(parser.parse_args().config.read_text())
+    config = json.loads(parser.parse_args().config.read_text(encoding="utf-8"))
     host = config.get("host", "127.0.0.1")
     credentials = config.get("credentials_file")
     authorization = None
     if credentials:
-        raw = Path(credentials).read_text().strip()
+        raw = Path(credentials).read_text(encoding="utf-8").strip()
         if ":" not in raw or len(raw.split(":", 1)[1]) < 24:
             raise ValueError("a strong pre-provisioned credential is required")
         authorization = "Basic " + base64.b64encode(raw.encode()).decode()
@@ -355,17 +355,22 @@ def main():
         authorization and config.get("certificate") and config.get("private_key")
     ):
         raise ValueError("LAN listening requires explicit credentials and TLS")
-    server = PrivateServer(
-        (host, config.get("port", 8766)), handler(Library(config["library"]), authorization)
-    )
+    # Validate TLS before opening a socket: malformed credentials must fail closed.
+    context = None
     if config.get("certificate"):
         context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
         context.minimum_version = ssl.TLSVersion.TLSv1_2
         context.load_cert_chain(config["certificate"], config["private_key"])
-        server.tls_context = context
-    for sig in (signal.SIGINT, signal.SIGTERM):
-        signal.signal(sig, lambda *_: threading.Thread(target=server.shutdown, daemon=True).start())
+    server = PrivateServer(
+        (host, config.get("port", 8766)), handler(Library(config["library"]), authorization)
+    )
     try:
+        if context is not None:
+            server.tls_context = context
+        for sig in (signal.SIGINT, signal.SIGTERM):
+            signal.signal(
+                sig, lambda *_: threading.Thread(target=server.shutdown, daemon=True).start()
+            )
         server.serve_forever()
     finally:
         server.server_close()

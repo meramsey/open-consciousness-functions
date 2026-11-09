@@ -474,7 +474,7 @@ def test_learning_selector_is_a_working_cli_composition_not_an_orphan(tmp_path, 
     )
     from ocf_tools.utils import yaml_safe_load
 
-    doc = yaml_safe_load(output.read_text())
+    doc = yaml_safe_load(output.read_text(encoding="utf-8"))
     assert doc["narration_revision"] == REVISION and "function_id" not in doc
     assert (
         len([e for e in iter_events(doc) if e.get("semantic") == "focus.eleven.transition.open"])
