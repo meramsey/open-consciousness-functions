@@ -37,7 +37,8 @@ settings or replace an immutable edition with a reconstruction.
 also honored by voice model fingerprinting. `OCF_VOICE_PROFILE_DIR` and
 `OCF_VOICE_ASSETS` select durable private profile and asset directories.
 `OCF_CHATTERBOX_PYTHON` selects an explicitly provisioned optional interpreter.
-Speech-cache identity follows that selected interpreter and independently hashes
+Synthesis, capability discovery and speech-cache identity use that selected
+interpreter. Cache identity independently hashes
 its installed backend dependency records on POSIX and Windows. Changing an
 unselected scratch runtime does not change the selected runtime identity.
 All overrides apply to the private process; public defaults remain unchanged.
