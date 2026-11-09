@@ -1,31 +1,39 @@
-# Private zero-shot voice packs (MVP)
+# Use your own voice with a private reference pack
 
-OCF reference packs are private OCF voice profiles, not trained models. By
-default they keep the reference WAV and consent declaration under
-`.ocf-work/cache/voices/models/` and register metadata in
-`.ocf-work/cache/voices/profiles/`. **Workspace cleaning removes that cache.**
-Operators who need persistent reusable packs should instead use the dedicated,
-gitignored, non-cleaned `audio/voices/private-packs/` directory. It is outside
-all `.ocf-work` trees and `ocf workspace clean` never targets it. Model weights are
-external dependencies and are not copied into each pack. Piper remains the
-default narrator. On POSIX, pack directories are mode 0700 and reference,
-consent, cache and audition files are mode 0600; Windows uses its normal account
-ACLs and was not platform-tested in this MVP.
+Create a reference pack, audition new text, then select that voice for an OCF
+session. The optional Chatterbox Nano adapter conditions a pretrained model on
+an authorized recording; it does not train a new model. Piper remains the
+default narrator. Installing a package alone does not verify speech generation.
 
-For durable local packs, place each source ZIP and its unpacked private bundle
-under `audio/voices/private-packs/`, then select a dedicated persistent profile
-directory and asset root for OCF commands:
+## 1. Keep your voice assets durable and private
+
+Keep original recordings, consent records, reusable profiles and model weights
+outside the checkout and disposable workspace. Without overrides, OCF uses
+`.ocf-work/cache/voices/{profiles,models}/`, which workspace cleaning can remove.
+A checkout-local `audio/voices/private-packs/` is ignored by Git and excluded from
+`workspace clean`, but removing the checkout can still remove it.
+
+For example, on Linux select owner-owned user-data directories before creating
+or importing a pack:
 
 ```bash
-export OCF_VOICE_PROFILE_DIR="$PWD/audio/voices/private-packs/profiles"
-export OCF_VOICE_ASSETS="$PWD/audio/voices/private-packs/assets"
+export OCF_VOICE_PROFILE_DIR="$HOME/.local/share/ocf/voices/profiles"
+export OCF_VOICE_ASSETS="$HOME/.local/share/ocf/voices/assets"
+export HF_HOME="$HOME/.local/share/ocf/models/huggingface"
+export HF_HUB_CACHE="$HF_HOME/hub"
 ```
 
-These variables affect only the invoking process and its child commands. Private
-pack files are gitignored; the tracked README is the only committed file in this
-directory. `workspace clean` and ordinary worktree cleanup do not remove them.
-Do not use recursive cleanup commands on this directory. Keep an independent
-backup for irreplaceable source recordings and consent records.
+Use equivalent private user-data paths on other platforms. These variables apply
+to the invoking process and its children; retain them in your private launcher
+or service configuration for future sessions. Keep an independent backup and
+verify copied bytes before changing storage locations. Models are external
+dependencies, not copied into each pack. See [durable private delivery](PRIVATE_LISTENING_DELIVERY.md).
+
+On POSIX, OCF pack directories use mode 0700 and reference, consent, cache and
+audition files use mode 0600. Windows uses account ACLs; these permission settings
+do not establish Windows inference or security verification.
+
+## 2. Prepare and inspect a reference
 
 Prepare a local WAV, FLAC or MP3. FFmpeg/ffprobe are needed for compressed input
 and rate conversion; no network service is used. Automatic selection picks the
@@ -42,6 +50,8 @@ prepared SHA-256 values, source measurements, selected clip range, sample peak,
 and clipping-sample count. Input is never modified. Inspect the clip and confirm
 the exact spoken words yourself; OCF does not invent or automatically verify a
 transcript.
+
+## 3. Create and inspect the pack
 
 Create a private profile-backed pack with an explicit ownership/authorization
 declaration. Chatterbox Nano does not require reference transcription; when the
@@ -60,6 +70,9 @@ python scripts/ocf.py voice export-profile OCF-VOICE-9100 \
   --output /private/path/my-voice.json --include-assets
 ```
 
+Keep the prepared reference and a verified export in durable storage; audition
+WAVs and inference receipts below use disposable workspace paths by default.
+
 The export contains the selected reference asset only when `--include-assets` is
 explicit. Consent records are never transferred; importing a cloned profile
 requires a new local consent-record attachment. Create that local declaration
@@ -67,9 +80,9 @@ file under the private voice asset root before import; its contents are not
 exported:
 
 ```bash
-mkdir -p .ocf-work/cache/voices/models/OCF-VOICE-9101
+mkdir -p "$OCF_VOICE_ASSETS/OCF-VOICE-9101"
 printf '%s\n' "I authorize private use of this voice pack on this computer." \
-  > .ocf-work/cache/voices/models/OCF-VOICE-9101/consent.txt
+  > "$OCF_VOICE_ASSETS/OCF-VOICE-9101/consent.txt"
 python scripts/ocf.py voice import-profile /private/path/my-voice.json \
   --include-assets --id OCF-VOICE-9101 --consent-record OCF-VOICE-9101/consent.txt
 ```
@@ -80,42 +93,48 @@ reference/model assets to `OCF_VOICE_ASSETS` (or the disposable workspace cache
 when unset). Set both when importing for durable reuse; provide a local consent
 record explicitly. Profile inspection reports inference readiness separately.
 
-Install the optional backend into a project-local environment without modifying
-OCF's Piper environment. Install dependencies explicitly; the pretrained Nano
-model is then fetched on first inference and cached in the OCF workspace:
+## 4. Provision the optional runtime and audition
+
+First inspect `voice doctor` and `voice capabilities --json`; preserve an existing
+working runtime. Select it with `OCF_CHATTERBOX_PYTHON`. For a new installation,
+keep the runtime under your durable private data directory, separate from OCF's
+development environment: on Python 3.12, the Nano adapter requires NumPy <2,
+while the project development extra requires NumPy >=2.
+
+The Nano API is supplied by the pinned upstream Chatterbox source revision
+`5de7a54aa4e5e2baadb0182dde554908b48b85c2`, not by the published 0.1.7 wheel alone.
+The verified Linux runtime uses Python 3.12, torch/torchaudio 2.6.0,
+transformers 5.2.0, NumPy 1.26.4 and setuptools 80.10.2. Those direct versions
+are not a complete dependency lock or a claim of native inference on other
+platforms. Preserve and replay the complete compatible lock, including pinned
+VCS dependencies, as described in [runtime provisioning](PRIVATE_LISTENING_DELIVERY.md#durable-private-storage).
+Run `pip check`, compare the installed lock and verify fresh CLI synthesis before
+using a replacement runtime. Do not install conflicting backend dependencies into
+the project development environment.
+
+For an already provisioned Linux runtime, select its virtual-environment
+entrypoint explicitly (adapt the path to your installation):
 
 ```bash
-python -m venv .ocf-work/voice-envs/chatterbox && \
-  .ocf-work/voice-envs/chatterbox/bin/python -m pip install "chatterbox-tts==0.1.7" && \
-  .ocf-work/voice-envs/chatterbox/bin/python -m pip install --no-deps --upgrade \
-    "git+https://github.com/resemble-ai/chatterbox.git@5de7a54aa4e5e2baadb0182dde554908b48b85c2" && \
-  .ocf-work/voice-envs/chatterbox/bin/python -m pip install 'setuptools<81'
+export OCF_CHATTERBOX_PYTHON="$HOME/.local/share/ocf/voices/runtime/chatterbox/bin/python"
+python scripts/ocf.py voice capabilities --json
 ```
 
-For Windows PowerShell, use the equivalent interpreter path in each pip step:
+On Windows, select the corresponding `Scripts/python.exe` using
+`$env:OCF_CHATTERBOX_PYTHON`. Do not resolve the interpreter symlink: doing so can
+select the base Python and lose the backend's packages. Set durable `HF_HOME`
+and `HF_HUB_CACHE` before the first inference, which may download model weights.
+Keep a verified copy of complete model blobs and their targets; a snapshot of
+symlinks alone is not a model backup.
 
-```powershell
-python -m venv .ocf-work\voice-envs\chatterbox
-& .ocf-work\voice-envs\chatterbox\Scripts\python.exe -m pip install "chatterbox-tts==0.1.7"
-& .ocf-work\voice-envs\chatterbox\Scripts\python.exe -m pip install --no-deps --upgrade "git+https://github.com/resemble-ai/chatterbox.git@5de7a54aa4e5e2baadb0182dde554908b48b85c2"
-& .ocf-work\voice-envs\chatterbox\Scripts\python.exe -m pip install 'setuptools<81'
-```
-
-If `OCF_WORK_DIR` is set, replace `.ocf-work` in these paths with that workspace.
-The pinned upstream source adds the Nano API absent from the published PyPI
-wheel; the setuptools pin keeps `pkg_resources` available for the upstream
-`resemble-perth` watermarker. Then synthesize previously unseen text:
+Then synthesize previously unseen text:
 
 ```bash
 python scripts/ocf.py voice audition-pack OCF-VOICE-9100 \
   --text "A short original sentence for a private voice audition." --device auto
 ```
 
-Set `OCF_CHATTERBOX_PYTHON` to another compatible optional-environment Python
-executable if desired. Keep a virtual environment's `bin/python` (or
-`Scripts/python.exe`) path as written: resolving its symlink can select the base
-Python and lose the optional environment's PyTorch packages. Chatterbox Nano's
-upstream implementation requires a reference longer than five seconds. The local audio is retained under
+Chatterbox Nano's upstream implementation requires a reference longer than five seconds. The local audio is retained under
 `.ocf-work/renders/voice-pack-auditions/`; inference is not claimed successful
 until that command produces and verifies a WAV. A successful run writes a private
 receipt under `.ocf-work/logs/voice-inference/VOICE-ID/`; inspect the pack to
@@ -127,7 +146,7 @@ sample peaks below full scale; it is not clipped, stretched or pitch-shifted.
 Nano has no OCF speaking-rate control yet; OCF measures the generated duration
 instead of stretching audio to a target.
 
-## Select the narrator and reuse speech across sessions
+## 5. Select the narrator for a session
 
 After a successful audition, explicitly select the private voice by stable ID
 for one complete session:
@@ -137,6 +156,8 @@ python scripts/ocf.py audio render OCF-FUNCTION-ID --mode session \
   --voice OCF-VOICE-9100 --locale en-US --pacing sleep \
   --output .ocf-work/renders/my-voice-smoke
 ```
+
+## Reuse speech across selected sessions
 
 For a deliberately selected batch, OCF's content-addressed dry-speech cache
 reuses matching narration across functions and repeated function-body passes.

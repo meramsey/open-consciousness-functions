@@ -2,11 +2,15 @@
 
 ## What OCF is
 
-This listening guide is a starting point, not a promise of a particular experience.
-You remain in charge: pause, skip, or stop whenever you wish. OCF is a declarative
-function and audio authoring project; a catalog entry is not proof of an effect,
-a finished recording, or release approval. This is editorial guidance, not
-reviewed session narration or medical advice.
+OCF helps you choose and create guided audio practices for intentions such as
+relaxation, attention, learning and sleep. A function is a named practice with
+its own cues and documented instructions. Start with one intention, read its
+guide, then choose a completed recording or create an edition with your preferred
+voice. The project quickstart explains the creation workflow.
+
+You remain in charge: pause, skip, or stop whenever you wish. A catalog entry does
+not promise a particular effect or mean a recording is available. This guide is
+editorial guidance, not reviewed session narration or medical advice.
 
 ## Choosing a function
 

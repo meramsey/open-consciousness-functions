@@ -13,7 +13,7 @@ PYTHONPATH=scripts python -m ocf_tools.listening_guides --output .ocf-work/guide
 ```
 
 The default produces `listening-guide.md` / `.pdf` / `.html`, the same three
-index formats, and one Markdown/PDF/HTML set per registry function in `functions/`
+index formats, and one Markdown/PDF/HTML set per canonical locale function in `functions/`
 (currently 58 functions, 180 files total).
 `--markdown-only` needs no ReportLab installation. Relative outputs resolve from
 the repository root. Existing target files are never overwritten: use a new
@@ -39,10 +39,14 @@ Historical lookup wording and retained compatibility aliases are separated from
 primary/secondary controls. Source plans are not represented as released recordings.
 
 The documentation-only approval `OCF-GUIDE-REVIEW-001` records the six directional
-optional companion links and final batch confirmation. Canonical `companions`
-must agree with that approval before links are published. The guide generator
+optional companion links and final batch confirmation. The canonical `relationships.related_functions` entries and embedded approval
+records in each function's locale YAML must agree before reviewed links are
+published. `companions` is a derived compatibility projection, not another
+editable source. The guide generator
 resolves descriptions through locale keys; neither a similar name nor a matching
-topic is approval. No cue, procedure operation/order, lifecycle, narration or DSP
+topic is approval. Tags and common uses are also read from each function YAML;
+draft assignments and `relationships.proposals` retain their draft labels in
+individual guides, discovery pages and the portable collection. No cue, procedure operation/order, lifecycle, narration or DSP
 change is authorized by this documentation batch. Immutable predecessors remain
 verifiable through the checked metadata-only successor.
 
@@ -113,7 +117,7 @@ to formal releases. Do not upload private bundles, source recordings or lyrics.
 ## Guide completeness and approved relationships
 
 All 58 current guides derive titles and primary/secondary cues from current
-registry/locale data. Current en-US titles match canonical titles. They expose
+canonical locale data. Current en-US titles match canonical titles. They expose
 review states, purpose, precautions, persistence and availability as metadata,
 not promises. Searchable PDF text, bookmarks and links do not establish PDF/UA
 compliance, visual clipping clearance or screen-reader usability.

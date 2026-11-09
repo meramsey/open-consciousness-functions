@@ -69,7 +69,10 @@ session or canonical text requires review/re-mapping. Older packages without the
 additive fingerprints remain supported. Original compressed codec is not inferred
 when only ffmpeg-decoded PCM metadata is available.
 
-Current limitations: no interactive recording wizard, narration-key alias
-mapping, speech-recognition/content verification, normalization controls or GUI
-recorder. Disabled narration and community voice-pack distribution remain planned.
+This older package workflow has no GUI recorder or automatic speech-content
+verification. For current complete sessions, use [recorded narration](RECORDED_NARRATION.md)
+or [hybrid narration](HYBRID_NARRATION.md), which provide explicit source bindings,
+processing and fallback policy. The dataset wizard imports external recordings;
+it does not record a microphone. Private [reference packs](VOICE_PACKS.md) and
+profile portability are supported separately from community distribution.
 Do not relabel reference-derived wording as original OCF because a user recorded it.
