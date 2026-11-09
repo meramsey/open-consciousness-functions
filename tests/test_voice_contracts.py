@@ -832,3 +832,50 @@ def test_model_bound_locale_without_sidecar_and_script_without_locale(
     monkeypatch.setattr(v, "render_narration", render)
     assert v.render_script(source, out) == 0
     assert "locale " not in capsys.readouterr().out
+
+
+def test_grouped_prose_records_one_measured_utterance(monkeypatch, tmp_path, narration_boundary):
+    from ocf_tools import locale
+
+    doc = {
+        "narration_pacing": {
+            "entries": {"test.guidance": "guided"},
+            "profiles": {
+                "guided": {
+                    "rate_scale": 1.0,
+                    "default_unit": "instruction",
+                    "group_prose": True,
+                    "pauses": {"instruction": 3},
+                }
+            },
+        },
+        "timeline": [
+            {
+                "id": "guidance",
+                "at": 0,
+                "narration_key": "test.guidance",
+                "text": "Act now. I will wait.",
+                "timing": {"pause_after": 20},
+            }
+        ],
+    }
+    monkeypatch.setattr(locale, "resolve_document", lambda document, *_a, **_k: document)
+    monkeypatch.setattr(v, "_pronunciation_hints", lambda *_a: {})
+    seen = []
+    result = v.render_narration(
+        doc,
+        tmp_path / "grouped.wav",
+        backend="espeak-ng",
+        sample_rate=100,
+        render_cue_with_profile=lambda text, _profile: seen.append(text) or wav([1000] * 100),
+    )
+    assert seen == ["Act now. I will wait."]
+    cue = result["cue_stats"][0]
+    assert cue["pacing"]["internal_pause_s"] == 0
+    assert cue["speech_duration"] == 1
+    assert len(cue["spoken_units"]) == 1
+    measured = cue["spoken_units"][0]
+    assert measured["source_unit_indexes"] == [0, 1]
+    assert measured["end_seconds"] == 1
+    assert measured["pause_after_s"] == 20
+    assert measured["pause_inside_event"] is False

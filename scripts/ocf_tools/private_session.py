@@ -48,6 +48,7 @@ def main():
         mix_profile=args.mix_profile or config["mix_profile"],
         locale=config.get("locale", "en-US"),
         native_speed=config.get("native_speed", True),
+        pacing_profile=config.get("pacing_profile"),
         enabled_stages=config.get("enabled_stages", []),
         affirmation=config.get("affirmation"),
         dry_run=args.dry_run,

@@ -1302,6 +1302,8 @@ def render_narration(
                 "semantic narration pacing requires one locale resource per timeline event"
             )
         if pacing is not None:
+            if source_row and source_row["source"] == "hybrid-units" and pacing["group_prose"]:
+                raise OCFError("grouped prose is not compatible with hybrid unit bindings")
             if fit or flow or even_counts:
                 raise OCFError(
                     "semantic narration pacing cannot be combined with fit, flow, or legacy even-count retiming"
@@ -1397,6 +1399,11 @@ def render_narration(
                 unit_rows.append(
                     {
                         "unit_index": unit_index + 1,
+                        **(
+                            {"source_unit_indexes": unit["source_unit_indexes"]}
+                            if "source_unit_indexes" in unit
+                            else {}
+                        ),
                         "text": unit_text,
                         "kind": unit["pause_kind"],
                         "semantic_kind": unit["kind"],

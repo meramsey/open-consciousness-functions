@@ -72,6 +72,10 @@
           "minLength": 1
         }
       }
+    },
+    "pacing_profile": {
+      "type": "string",
+      "pattern": "^OCF-PACING-[A-Z0-9-]+$"
     }
   },
   "$id": "https://open-consciousness-functions.dev/schemas/private-session.schema.json"

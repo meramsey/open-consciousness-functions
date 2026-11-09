@@ -417,7 +417,7 @@ def _candidate_speech_plan(
 ) -> dict:
     """Preflight exact cache-compatible spoken units without exposing their text."""
     from .locale import LocaleCatalog, iter_events, resolve_document
-    from .narration_pacing import event_pacing, split_speech_units
+    from .narration_pacing import plan_event_pacing
     from .voice import _paced_voice_spec, _pronunciation_hints, apply_pronunciation
 
     owners: dict[str, set[str]] = {}
@@ -443,9 +443,9 @@ def _candidate_speech_plan(
             text = str(event.get("text") or "").strip()
             if not text:
                 continue
-            pacing = event_pacing(doc, event, len(split_speech_units(text)))
-            units = split_speech_units(text) if pacing else [{"text": text}]
-            rate_scales = pacing["unit_rate_scales"] if pacing else [1.0] * len(units)
+            pacing = plan_event_pacing(doc, event)
+            units = pacing["units"] if pacing else [{"text": text}]
+            rate_scales = [unit["rate_scale"] for unit in units] if pacing else [1.0]
             for index, unit in enumerate(units):
                 spoken = unit["text"]
                 if voice_spec:
