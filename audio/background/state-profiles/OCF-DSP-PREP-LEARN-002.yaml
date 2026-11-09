@@ -1,0 +1,54 @@
+default_background_state: focus-10
+ending_fade_seconds: 10
+id: OCF-DSP-PREP-LEARN-002
+ignored_state_events:
+- return.complete
+initial_state: focus-10
+notes: Learning-only three-visit profile. Same approved Focus Ten/Eleven presets, levels, equal-power
+  transitions and fade. No Focus Twenty DSP or sound-withdrawal drill.
+schema_version: '1.0'
+seed: 0
+stage_backgrounds:
+  close-1:
+  - focus-11
+  - focus-10
+  close-2:
+  - focus-11
+  - focus-10
+  close-3:
+  - focus-11
+  - focus-10
+  open-1:
+  - focus-10
+  - focus-11
+  open-2:
+  - focus-10
+  - focus-11
+  open-3:
+  - focus-10
+  - focus-11
+states:
+  focus-10:
+    mode: preset
+    preset: OCF-BG-0012
+  focus-11:
+    mode: preset
+    preset: OCF-BG-0006
+target_state_rms_dbfs: -18.0
+transition_end_anchors:
+  close-1.close:
+    semantic: focus.eleven.close
+    unit_occurrence: 4
+    unit_text: Ten.
+  close-2.close:
+    semantic: focus.eleven.close
+    unit_occurrence: 4
+    unit_text: Ten.
+  close-3.close:
+    semantic: focus.eleven.close
+    unit_occurrence: 4
+    unit_text: Ten.
+transitions:
+  curve: equal-power
+  fallback_seconds: 25
+version: 2.0.0

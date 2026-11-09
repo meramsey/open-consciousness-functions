@@ -997,8 +997,8 @@ def _entry_from_value(
     if contract is not None:
         if (
             not isinstance(contract, dict)
-            or set(contract) != {"function_id", "allowed"}
-            or not isinstance(contract.get("function_id"), str)
+            or set(contract) not in ({"function_id", "allowed"}, {"shared_state", "allowed"})
+            or not isinstance(contract.get("function_id", contract.get("shared_state")), str)
             or not isinstance(contract.get("allowed"), list)
             or not all(isinstance(symbol, str) for symbol in contract["allowed"])
         ):
@@ -1091,7 +1091,7 @@ def load_pack(path: Path, *, reader=None, exists=None, revision=None) -> LocaleP
                 f"{locale} pack {path.name}: manifest declares resource {filename!r} "
                 "but the file is missing"
             )
-        if resource.get("revision") != revision:
+        if revision not in {resource.get("revision"), *(resource.get("revision_aliases") or [])}:
             continue
         if revision is not None and declared_domain != NARRATION_DOMAIN:
             raise LocalizationError(
@@ -1233,7 +1233,7 @@ class LocaleCatalog:
                 self.require(tag)
                 for tag in serving
                 if any(
-                    row.get("revision") == revision
+                    revision in {row.get("revision"), *(row.get("revision_aliases") or [])}
                     for row in self.require(tag).manifest.get("resources", [])
                 )
             ),

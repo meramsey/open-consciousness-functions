@@ -7,7 +7,7 @@ import shutil
 import subprocess
 from copy import deepcopy
 
-from .paths import work_path, workspace_run
+from .paths import workspace_run
 from .utils import OCFError
 
 _BACKENDS = {
@@ -102,19 +102,19 @@ def backend_capability(backend: str) -> dict:
         raise OCFError(f"unknown voice backend: {backend}")
     spec = deepcopy(_BACKENDS[backend])
     if backend == "chatterbox-nano":
-        root = work_path("cache").parent / "voice-envs/chatterbox"
-        executable = (
-            root / "Scripts/python.exe"
-            if __import__("sys").platform == "win32"
-            else root / "bin/python"
-        )
+        from .voice_packs import runtime_interpreter
+
+        executable = runtime_interpreter()
+        root = executable.parent.parent
         package = (
             any(root.glob("lib/python*/site-packages/chatterbox/__init__.py"))
             or (root / "Lib/site-packages/chatterbox/__init__.py").is_file()
         )
-        metadata_files = list(
-            root.glob("lib/python*/site-packages/chatterbox_tts-*.dist-info/METADATA")
-        )
+        metadata_files = [
+            path
+            for library in ("lib/python*/site-packages", "Lib/site-packages")
+            for path in sorted(root.glob(f"{library}/chatterbox_tts-*.dist-info/METADATA"))
+        ]
         try:
             version = next(
                 (
@@ -133,7 +133,7 @@ def backend_capability(backend: str) -> dict:
             "package_found": package,
             "discovery": {
                 "status": "ready" if executable.is_file() and package else "not-found",
-                "source": "project-local optional environment" if executable.is_file() else None,
+                "source": "selected optional environment" if executable.is_file() else None,
                 "reason": None
                 if executable.is_file() and package
                 else "install docs/VOICE_PACKS.md optional dependencies",
@@ -235,6 +235,8 @@ def profile_capability(profile: dict) -> dict:
         discovery = capability["installation"].get("discovery") or {}
         reason = discovery.get("reason") or discovery.get("status") or "not discovered"
         blockers.append(f"Required inference executable is unavailable ({reason}).")
+    if profile["backend"] == "chatterbox-nano" and not capability["installation"]["package_found"]:
+        blockers.append("Required Chatterbox package is unavailable in the selected runtime.")
     verified = False
     if profile.get("backend") == "chatterbox-nano" and capability["available"]:
         from .voice_packs import inference_verified

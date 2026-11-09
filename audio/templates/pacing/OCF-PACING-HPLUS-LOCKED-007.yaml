@@ -1,0 +1,49 @@
+evidence_notes:
+- Explicit maintainer v3 approval; words and internal composition, not listening or publication.
+- The initial recognition uses one 40-second hold; the former generic 30-second relaxation-whole hold
+  is not stacked with it.
+- Post-close recognition has no extra two-second event gap before the separate exact 60-second rest.
+- Existing voice/rates, internal pause values, 20-second breathing and separate placement holds, 15-second
+  Eleven gap, 60/60/3 sleep waits, -24 dB underlay and ten-second equal-power closing are retained.
+- Closing transition ends at the explicitly reviewed fourth Ten unit; closed confirmation follows completed
+  measured closure. No numeral creates state events.
+extends: OCF-PACING-HPLUS-LOCKED-006
+id: OCF-PACING-HPLUS-LOCKED-007
+narration_pacing:
+  entries:
+    hplus.optional.affirmation.begin: preparation
+    hplus.optional.affirmation.complete: preparation
+    hplus.optional.affirmation.gateway: preparation
+    hplus.optional.affirmation.ocf: preparation
+    hplus.optional.affirmation.synccreation: preparation
+    hplus.optional.energy-ball.begin: preparation
+    hplus.optional.energy-ball.complete: preparation
+    hplus.optional.resonant-tuning.begin: preparation
+    hplus.optional.resonant-tuning.complete: preparation
+    hplus.shared.body-comfort: preparation
+    hplus.shared.focus10.ready: guided-transition
+    hplus.shared.focus10.return.ready: guided-transition
+    hplus.shared.focus11.close: guided-transition
+    hplus.shared.focus11.close.prepare: guided-transition
+    hplus.shared.focus11.closed: guided-transition
+    hplus.shared.focus11.open: single-count
+    hplus.shared.focus11.open.prepare: guided-transition
+    hplus.shared.focus11.ready: guided-transition
+    hplus.shared.focus20.enter: focus20-countdown
+    hplus.shared.transmutation-box.begin: preparation
+    hplus.shared.transmutation-box.complete: preparation
+    hplus.shared.transmutation-box.place: preparation
+    preparation.learning.v3.integrate: guided-transition
+    preparation.learning.v3.intro: guided-transition
+    preparation.learning.v3.open-2: guided-transition
+    preparation.learning.v3.open-3: guided-transition
+    preparation.learning.v3.orientation: guided-transition
+    preparation.learning.v3.ready-1: guided-transition
+    preparation.learning.v3.ready-2: guided-transition
+    preparation.learning.v3.ready-3: guided-transition
+    preparation.learning.v3.return: waking-countdown
+pauses:
+  focus10_return_ready_s: 0
+schema_version: '1.0'
+status: approved_for_internal_composition
+version: 7.0.0

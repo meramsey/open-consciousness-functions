@@ -1,0 +1,30 @@
+# One shared-state identity table; spoken/display words live only in LocaleCatalog.
+# State intentions and narrated associations are not callable application commands.
+schema_version: '1.0'
+id: OCF-SHARED-STATE-CUES-001
+version: 1.0.0
+status: reviewed
+narration_revision: OCF-SHARED-SESSION-003
+cues:
+  state.access.open:
+    id: OCF-SHARED-CUE-ACCESS-OPEN
+    role: open
+    spoken_key: hplus.shared.state-cue.access-open
+    display_key: hplus.shared.state-cue.access-open
+    authorized_resources:
+    - hplus.shared.focus11.open.prepare
+    - preparation.learning.v3.open-2
+    - preparation.learning.v3.open-3
+  state.access.close:
+    id: OCF-SHARED-CUE-ACCESS-CLOSE
+    role: close
+    spoken_key: hplus.shared.state-cue.access-close
+    display_key: hplus.shared.state-cue.access-close
+    authorized_resources:
+    - hplus.shared.focus11.close
+    legacy_compatibility:
+      function_id: OCF-FND-001
+      command_id: OCF-CMD-FND-001-ACCESS-CLOSE
+      spoken_key: commands.ocf-cmd-fnd-001-access-close.spoken-cue
+      display_key: commands.ocf-cmd-fnd-001-access-close.display-cue
+      spoken_sha256: 1d4c5ff9e628944995cc87ebf819f4439cef1be7daf73474a660fcae110635ac

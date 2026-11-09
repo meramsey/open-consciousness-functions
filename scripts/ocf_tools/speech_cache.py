@@ -252,7 +252,7 @@ def voice_identity(spec: dict) -> dict:
     """Fingerprint actual engine/model/config bytes, not filenames or voice labels."""
     if spec.get("name") == "chatterbox-nano":
         from .chatterbox_backend import INFERENCE_PROVENANCE
-        from .paths import REPO_ROOT, work_path
+        from .paths import REPO_ROOT
 
         settings = {
             key: value
@@ -265,16 +265,25 @@ def voice_identity(spec: dict) -> dict:
             "renderer": sha256_of_file(Path(__file__).with_name("voice.py")),
             "adapter": sha256_of_file(REPO_ROOT / "scripts/ocf_tools/chatterbox_backend.py"),
         }
-        optional_root = work_path("cache").parent / "voice-envs/chatterbox"
-        for pattern in (
-            "lib/python*/site-packages/chatterbox_tts-*.dist-info/METADATA",
-            "lib/python*/site-packages/torch-*.dist-info/METADATA",
-            "lib/python*/site-packages/transformers-*.dist-info/METADATA",
-            "lib/python*/site-packages/resemble_perth-*.dist-info/METADATA",
-            "Lib/site-packages/chatterbox_tts-*.dist-info/METADATA",
-        ):
-            for metadata in optional_root.glob(pattern):
-                assets[metadata.name] = sha256_of_file(metadata)
+        from .voice_packs import runtime_interpreter
+
+        interpreter = runtime_interpreter()
+        optional_root = interpreter.parent.parent
+        if interpreter.is_file():
+            assets["runtime_python"] = sha256_of_file(interpreter)
+        for library in ("lib/python*/site-packages", "Lib/site-packages"):
+            for package in (
+                "chatterbox_tts",
+                "torch",
+                "torchaudio",
+                "transformers",
+                "resemble_perth",
+            ):
+                for record in ("METADATA", "RECORD", "direct_url.json"):
+                    for metadata in optional_root.glob(f"{library}/{package}-*.dist-info/{record}"):
+                        assets[metadata.relative_to(optional_root).as_posix()] = sha256_of_file(
+                            metadata
+                        )
         return {
             "assets": assets,
             "settings": {**settings, "inference": INFERENCE_PROVENANCE},

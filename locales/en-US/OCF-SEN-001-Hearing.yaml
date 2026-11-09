@@ -484,7 +484,7 @@ record_metadata:
     review_position: 28
 content:
   bindings:
-    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-005
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
     duration: null
     narration_resources:
     - key: pilot.function.complete
@@ -502,6 +502,8 @@ content:
     session_templates:
     - OCF-TPL-SESSION-HPLUS-LOCKED-004
     - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    - OCF-TPL-SESSION-HPLUS-LOCKED-006
+    - OCF-TPL-SESSION-HPLUS-LOCKED-007
     - OCF-TPL-SESSION-PILOT-HEARING-001
     voice_sources:
     - externally-generated

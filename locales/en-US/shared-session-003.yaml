@@ -1,0 +1,346 @@
+# Maintainer-approved shared-sequence consistency review v3.
+# Words/internal selection approved; listening, audio release and publication are separate.
+schema_version: '1.0'
+locale: en-US
+domain: narration
+entries:
+  hplus.shared.body-comfort:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction, instruction, instruction, instruction, instruction]
+    text: |-
+      Before we begin, arrange things so you can leave this time for yourself.
+      Choose a position in which your body is well supported.
+      Ease any tight clothing and make any adjustments that help you rest.
+      Let your breathing settle into a comfortable rhythm.
+      Take a few quiet moments to settle.
+      I will wait while you do this.
+
+  hplus.shared.transmutation-box.begin:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction, instruction, instruction, instruction, instruction]
+    text: |-
+      Turn now to your transmutation box.
+      It can be any kind of box you choose.
+      You can picture it, feel its presence, or simply know it is there.
+      Its appearance is unimportant.
+      It is already large enough and strong enough
+      to hold everything you choose to place inside.
+      Raise the lid, or simply know that your box is open and ready.
+
+  hplus.shared.transmutation-box.place:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction, instruction, instruction, instruction, instruction]
+    text: |-
+      Place inside your box any worries, anxieties, concerns,
+      tensions, or distractions you carry at this moment.
+      You can place each one there as an image, a word,
+      a feeling, a symbol, or simply an intention.
+      There is no need to solve or examine it now.
+      Set aside whatever can wait,
+      freeing your attention for this experience.
+      Do this now.
+      I will wait while you do this.
+
+  hplus.shared.transmutation-box.complete:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction, instruction, instruction, instruction, instruction]
+    text: |-
+      Now close your transmutation box securely.
+      Know that everything you placed inside can rest there,
+      and anything useful remains available when you choose to return.
+      Turn your attention away from the box,
+      leaving it quietly in the background.
+      Any further distraction that can wait
+      will settle into the box automatically,
+      without interrupting your experience.
+      Breathe slowly and deeply.
+      Relax, and continue with a calm, clear, open mind.
+
+  hplus.optional.affirmation.begin:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction]
+    text: |-
+      Now affirm your intention.
+      Let these words express what you choose to bring to this experience.
+
+  hplus.optional.affirmation.gateway:
+    status: reviewed
+    version: 3.0.0
+    notes: Supplied Gateway wording approved for internal selection; not newly authored OCF or independently authenticated. Publication rights are not cleared by this approval.
+    timing:
+      pacing_units: [instruction, instruction, instruction, instruction, instruction]
+    text: |-
+      I am more than my physical body.
+
+      Because I am more than physical matter,
+      I can perceive that which is greater than the physical world.
+
+      Therefore, I deeply desire to expand, to experience,
+      to know, to understand, to control, to use
+      such greater energies and energy systems
+      as may be beneficial and constructive to me
+      and to those who follow me.
+
+      Also, I deeply desire the help and cooperation,
+      the assistance, the understanding of those individuals
+      whose wisdom, development, and experience
+      are equal or greater than my own.
+
+      I ask their guidance and protection
+      from any influence or any source
+      that might provide me with less than my stated desires.
+
+  hplus.optional.affirmation.synccreation:
+    status: reviewed
+    version: 3.0.0
+    notes: Supplied SyncCreation wording approved for internal selection; not newly authored OCF or independently authenticated. Publication rights are not cleared by this approval.
+    timing:
+      pacing_units: [instruction, instruction, instruction, instruction, instruction, instruction]
+    text: |-
+      I am a miraculous spirit manifesting my sacred physical body
+      and my wondrous physical incarnation.
+
+      I deeply desire to explore my true nature
+      during this exercise and throughout my life.
+
+      I open my heart and my mind to do this.
+      Knowing that I am fully connected to the source of all good,
+      I affirm that highest consciousness and energy support me.
+
+      I extend deep thanks for the help I receive today.
+
+      I bring my experiences during this exercise
+      back into physical reality for my greater good
+      and the good of all other beings.
+
+  hplus.optional.affirmation.ocf:
+    status: reviewed
+    version: 3.0.0
+    notes: Approved OCF editorial addition; words and internal selection only, not listening/publication approval.
+    timing:
+      pacing_units: [instruction, instruction, instruction, instruction, instruction, instruction, instruction, instruction, instruction, instruction, instruction]
+    text: |-
+      I am more than my physical body.
+      My physical life is a sacred expression of my greater self.
+
+      I open my heart and mind to explore, experience,
+      know, and understand more of who I am.
+
+      My conscious mind, subconscious mind, and higher self
+      work together in harmony.
+
+      I am connected to the source of all good
+      and to the greater whole of life.
+
+      I welcome greater awareness, wisdom, love, and energy.
+      I direct them toward my highest good and the good of all.
+
+      I welcome the guidance, assistance, and protection
+      of those whose wisdom and loving intentions support my growth.
+
+      I remain grounded in my own awareness
+      and choose what I welcome into my experience.
+
+      I give thanks for the help and understanding I receive.
+
+      I remember what is useful and bring the insight
+      and benefits of this experience into my daily life,
+      for my greater good and the good of all beings.
+
+  hplus.optional.affirmation.complete:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction]
+    text: |-
+      Carry this intention with you.
+      Let the words rest as you continue.
+
+  hplus.optional.resonant-tuning.begin:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction, instruction, instruction, instruction, instruction, instruction]
+    text: |-
+      Now bring your attention to your breathing and the sound you can make with it.
+      Take an easy breath in.
+      As you breathe out, let a gentle hum form at a comfortable pitch.
+      Notice the vibration wherever you feel it most clearly.
+      Let each sound express your intention to become calm, balanced, and receptive.
+      Allow the next breath to arrive naturally.
+      Continue at your own easy pace, making a sound or simply listening.
+
+  hplus.optional.resonant-tuning.complete:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction, instruction]
+    text: |-
+      Let any sound you are making come to a natural finish.
+      Allow your breathing to continue quietly.
+      Rest for a moment with the calm you have begun to establish.
+
+  hplus.optional.energy-ball.begin:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction, instruction, instruction, instruction, instruction]
+    text: |-
+      Bring your attention to the space around your body.
+      Picture, feel, or simply know a gentle sphere of energy surrounding you.
+      Let it be spacious enough for you to rest comfortably within it.
+      Its shape and appearance can be whatever is natural for you.
+      Let this sphere express your intention to remain centered,
+      steady, and open to what supports your growth.
+      Take a moment to become familiar with its presence.
+
+  hplus.optional.energy-ball.complete:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction]
+    text: |-
+      Let this sense of centered, balanced energy remain quietly in the background.
+      Continue with your attention calm and your body at ease.
+
+  hplus.shared.focus10.ready:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction, instruction, instruction]
+    text: |-
+      You are now in Focus Ten.
+      Your body is deeply relaxed, and your mind is quietly aware.
+      Let your breathing come and go naturally.
+      Rest in this comfortable balance.
+
+  hplus.shared.focus11.open.prepare:
+    status: reviewed
+    version: 3.0.0
+    cue_template:
+      shared_state: OCF-SHARED-STATE-CUES-001
+      allowed: [state.access.open]
+    timing:
+      pacing_units: [instruction, instruction, instruction, instruction]
+    text: |-
+      Keep the ease of Focus Ten as you turn toward your total self.
+      Choose to open your Access Channel,
+      a connection between your conscious mind, subconscious awareness,
+      emotions, physical being, and higher self.
+      Think or say in your mind, "{{ state.access.open }}."
+      Let the opening unfold while your body remains comfortably relaxed.
+
+  hplus.shared.focus11.open:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [count]
+    text: Eleven.
+
+  hplus.shared.focus11.ready:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction, instruction, instruction, instruction]
+    text: |-
+      Your Access Channel is open.
+      Your body remains at ease, and your awareness is clear and receptive.
+      Let every part of your total self share in the learning you have chosen.
+      As you listen, the words take on meaning,
+      connecting with your understanding and the changes you wish to make.
+      Listen now.
+
+  hplus.shared.focus11.close.prepare:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction, instruction]
+    text: |-
+      Let what you have learned settle into your understanding.
+      The meaning and the cues you have practiced remain available to you.
+      Keep that learning as you allow this working period to finish.
+
+  hplus.shared.focus11.close:
+    status: reviewed
+    version: 3.0.0
+    cue_template:
+      shared_state: OCF-SHARED-STATE-CUES-001
+      allowed: [state.access.close]
+    timing:
+      pacing_units: [instruction, instruction, count, count, instruction, count, instruction, count]
+    text: |-
+      Now choose to close your Access Channel.
+      Think or say in your mind, "{{ state.access.close }}."
+      Ten.
+      Ten.
+      Let your attention return to the quiet rest of Focus Ten.
+      Ten.
+      Let the activity of this working period settle,
+      leaving you calm and comfortably relaxed.
+      Ten.
+
+  hplus.shared.focus11.closed:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction]
+    text: |-
+      Your Access Channel is now closed.
+      It will remain closed until you intentionally choose to open it again.
+
+  hplus.shared.focus10.return.ready:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction, instruction, instruction]
+    text: |-
+      You are back in Focus Ten.
+      Let your attention rest with the comfort of your body
+      and the easy rhythm of your breathing.
+      There is nothing to work on for the moment.
+      Simply rest, calm and aware.
+
+  hplus.shared.focus20.enter:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction, instruction, pre_countdown, countdown, countdown, countdown, countdown, countdown, countdown, countdown, countdown, countdown, countdown, countdown, countdown]
+    text: |-
+      Let the learning rest within you.
+      There is nothing more you need to work on now.
+      As I count from Ten to Twenty, let your attention grow quiet
+      and allow yourself to drift into peaceful, natural sleep.
+      My voice will guide you back to waking awareness at the end of this exercise.
+
+      Ten.
+      Eleven.
+      Twelve.
+      Thirteen.
+      Fourteen.
+      Fifteen.
+      Sixteen.
+      Seventeen.
+      Eighteen.
+      Nineteen.
+      Twenty.
+      Twenty.
+
+  hplus.shared.state-cue.access-open:
+    status: reviewed
+    version: 1.0.0
+    text: Plus Eleven Access
+
+  hplus.shared.state-cue.access-close:
+    status: reviewed
+    version: 1.0.0
+    text: Plus Release Eleven Access

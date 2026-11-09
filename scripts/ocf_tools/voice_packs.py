@@ -31,6 +31,7 @@ _worker_scopes = 0
 _worker_process: subprocess.Popen | None = None
 _worker_responses: queue.Queue[str | None] | None = None
 _worker_log_path: Path | None = None
+_worker_interpreter: Path | None = None
 _active_voice_pack: ContextVar[dict | None] = ContextVar("ocf_active_zero_shot_pack", default=None)
 
 
@@ -78,12 +79,13 @@ def _read_worker_stdout(process: subprocess.Popen, responses: queue.Queue) -> No
 
 
 def _stop_worker() -> None:
-    global _worker_process, _worker_responses, _worker_log_path
+    global _worker_process, _worker_responses, _worker_log_path, _worker_interpreter
     with _worker_io_lock:
         process = _worker_process
         _worker_process = None
         _worker_responses = None
         _worker_log_path = None
+        _worker_interpreter = None
         if process is None:
             return
         if process.stdin:
@@ -102,9 +104,11 @@ def _stop_worker() -> None:
 
 
 def _persistent_inference(request: dict, interpreter: Path, timeout: int) -> dict:
-    global _worker_process, _worker_responses, _worker_log_path
+    global _worker_process, _worker_responses, _worker_log_path, _worker_interpreter
     with _worker_io_lock:
         process = _worker_process
+        if process is not None and process.poll() is None and _worker_interpreter != interpreter:
+            raise OCFError("Chatterbox runtime changed within an active worker scope")
         if process is None or process.poll() is not None:
             if process is not None:
                 _stop_worker()
@@ -132,6 +136,7 @@ def _persistent_inference(request: dict, interpreter: Path, timeout: int) -> dic
                     encoding="utf-8",
                     bufsize=1,
                 )
+            _worker_interpreter = interpreter
             _worker_responses = queue.Queue()
             threading.Thread(
                 target=_read_worker_stdout,
@@ -261,7 +266,7 @@ def create_pack(
             },
         }
         custom_voices.validate_profile(profile)
-        destination = work_path("cache", "voices", "profiles", voice_id + ".yaml")
+        destination = custom_voices.profile_root() / (voice_id + ".yaml")
         write_text_atomic(destination, yaml_safe_dump(profile), overwrite=False)
     except Exception:
         # Preserve diagnostics but remove the incomplete registration; audio stays private.
@@ -346,10 +351,17 @@ def inference_verified(profile: dict) -> bool:
     return False
 
 
+def model_cache_root() -> Path:
+    """Match Hugging Face's explicit durable cache overrides."""
+    if os.environ.get("HF_HUB_CACHE"):
+        return Path(os.environ["HF_HUB_CACHE"]).expanduser()
+    if os.environ.get("HF_HOME"):
+        return Path(os.environ["HF_HOME"]).expanduser() / "hub"
+    return work_path("cache", "huggingface", "hub")
+
+
 def cached_model_revision() -> str | None:
-    ref = work_path(
-        "cache", "huggingface", "hub", "models--ResembleAI--chatterbox-nano", "refs", "main"
-    )
+    ref = model_cache_root() / "models--ResembleAI--chatterbox-nano/refs/main"
     try:
         return ref.read_text(encoding="ascii").strip() if ref.is_file() else None
     except OSError:
@@ -372,16 +384,26 @@ def cached_model_tree_fingerprint() -> str | None:
 
 
 def _cached_model_file_hashes(revision: str) -> dict[str, str]:
-    snapshot = (
-        work_path("cache").parent
-        / "cache/huggingface/hub/models--ResembleAI--chatterbox-nano/snapshots"
-        / revision
-    )
+    snapshot = model_cache_root() / "models--ResembleAI--chatterbox-nano/snapshots" / revision
     return {
         path.relative_to(snapshot).as_posix(): sha256_of_file(path)
         for path in sorted(snapshot.rglob("*"))
         if path.is_file()
     }
+
+
+def runtime_interpreter() -> Path:
+    """Select the same interpreter for inference and dependency identity.
+
+    Preserve a venv entrypoint's path: resolving its symlink would instead
+    select the base interpreter's unrelated package directory.
+    """
+    configured = os.environ.get("OCF_CHATTERBOX_PYTHON")
+    if configured:
+        return Path(configured).expanduser().absolute()
+    if sys.platform == "win32":
+        return work_path("cache").parent / "voice-envs/chatterbox/Scripts/python.exe"
+    return work_path("cache").parent / "voice-envs/chatterbox/bin/python"
 
 
 def synthesize(query: str, text: str, *, device: str = "auto", timeout: int = 900) -> dict:
@@ -395,15 +417,7 @@ def synthesize(query: str, text: str, *, device: str = "auto", timeout: int = 90
         )
     if not text.strip():
         raise OCFError("audition text must not be empty")
-    configured = os.environ.get("OCF_CHATTERBOX_PYTHON")
-    if configured:
-        # Venv entry points often symlink to the base interpreter; resolving it
-        # bypasses the optional environment's site-packages.
-        interpreter = Path(configured).expanduser()
-    elif sys.platform == "win32":
-        interpreter = work_path("cache").parent / "voice-envs/chatterbox/Scripts/python.exe"
-    else:
-        interpreter = work_path("cache").parent / "voice-envs/chatterbox/bin/python"
+    interpreter = runtime_interpreter()
     if not interpreter.is_file():
         raise OCFError(
             "Chatterbox optional environment is missing; see docs/VOICE_PACKS.md for setup"
@@ -509,7 +523,7 @@ def synthesize(query: str, text: str, *, device: str = "auto", timeout: int = 90
     if report.get("model_files"):
         profile["reference_audio"]["model_files"] = report["model_files"]
     if profile["reference_audio"] != previous_reference_metadata:
-        profile_path = work_path("cache", "voices", "profiles", profile["id"] + ".yaml")
+        profile_path = custom_voices.profile_root() / (profile["id"] + ".yaml")
         write_text_atomic(profile_path, yaml_safe_dump(profile))
     receipt = {
         **report,

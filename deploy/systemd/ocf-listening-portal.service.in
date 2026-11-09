@@ -1,0 +1,19 @@
+[Unit]
+Description=OCF private listening portal
+StartLimitIntervalSec=600
+StartLimitBurst=5
+
+[Service]
+Type=simple
+WorkingDirectory=@WORKING_DIRECTORY@
+Environment=PYTHONPATH=@WORKING_DIRECTORY@/scripts
+ExecStart=@PYTHON@ @SUPERVISOR@ run --config @SUPERVISION_CONFIG@
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=90
+KillMode=control-group
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target

@@ -172,7 +172,9 @@ def test_representative_session_plan_identifies_shared_resources_and_four_body_p
         item["resource_key"] for item in summary["template_resources_shared_across_functions"]
     }
     assert "hplus.shared.body-comfort" in shared_keys
-    assert "hplus.shared.focus10.count" in shared_keys
+    assert "hplus.shared.focus10.ready" in shared_keys
+    assert "hplus.shared.focus10.count" not in shared_keys
+    assert "hplus.shared.focus10.learn" not in shared_keys
     assert summary["candidate_four_pass_body_units"] > 0
     assert summary["candidate_unique_spoken_units"] > 0
     assert compatible_summary["compatible_unit_fingerprints"]

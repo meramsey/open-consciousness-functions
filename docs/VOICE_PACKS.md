@@ -1,12 +1,31 @@
 # Private zero-shot voice packs (MVP)
 
-OCF reference packs are private OCF voice profiles, not trained models. They keep
-the reference WAV and consent declaration under `.ocf-work/cache/voices/models/`
-and register metadata in `.ocf-work/cache/voices/profiles/`. Model weights are
+OCF reference packs are private OCF voice profiles, not trained models. By
+default they keep the reference WAV and consent declaration under
+`.ocf-work/cache/voices/models/` and register metadata in
+`.ocf-work/cache/voices/profiles/`. **Workspace cleaning removes that cache.**
+Operators who need persistent reusable packs should instead use the dedicated,
+gitignored, non-cleaned `audio/voices/private-packs/` directory. It is outside
+all `.ocf-work` trees and `ocf workspace clean` never targets it. Model weights are
 external dependencies and are not copied into each pack. Piper remains the
 default narrator. On POSIX, pack directories are mode 0700 and reference,
 consent, cache and audition files are mode 0600; Windows uses its normal account
 ACLs and was not platform-tested in this MVP.
+
+For durable local packs, place each source ZIP and its unpacked private bundle
+under `audio/voices/private-packs/`, then select a dedicated persistent profile
+directory and asset root for OCF commands:
+
+```bash
+export OCF_VOICE_PROFILE_DIR="$PWD/audio/voices/private-packs/profiles"
+export OCF_VOICE_ASSETS="$PWD/audio/voices/private-packs/assets"
+```
+
+These variables affect only the invoking process and its child commands. Private
+pack files are gitignored; the tracked README is the only committed file in this
+directory. `workspace clean` and ordinary worktree cleanup do not remove them.
+Do not use recursive cleanup commands on this directory. Keep an independent
+backup for irreplaceable source recordings and consent records.
 
 Prepare a local WAV, FLAC or MP3. FFmpeg/ffprobe are needed for compressed input
 and rate conversion; no network service is used. Automatic selection picks the
@@ -54,6 +73,12 @@ printf '%s\n' "I authorize private use of this voice pack on this computer." \
 python scripts/ocf.py voice import-profile /private/path/my-voice.json \
   --include-assets --id OCF-VOICE-9101 --consent-record OCF-VOICE-9101/consent.txt
 ```
+
+The supported `voice import-profile` API writes metadata to
+`OCF_VOICE_PROFILE_DIR` (or the disposable workspace cache when unset), and
+reference/model assets to `OCF_VOICE_ASSETS` (or the disposable workspace cache
+when unset). Set both when importing for durable reuse; provide a local consent
+record explicitly. Profile inspection reports inference readiness separately.
 
 Install the optional backend into a project-local environment without modifying
 OCF's Piper environment. Install dependencies explicitly; the pretrained Nano

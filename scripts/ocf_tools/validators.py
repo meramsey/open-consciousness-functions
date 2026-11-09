@@ -1399,6 +1399,17 @@ def validate_all() -> ValidationResult:
     result.extend(validate_timed_transcripts())
     result.extend(validate_voice_profiles())
     result.extend(validate_locale_packs())
+    try:
+        from .shared_state_cues import load as load_shared_state_cues
+
+        load_shared_state_cues()
+    except OCFError as exc:
+        result.add(
+            "error",
+            "shared-state-cues",
+            str(exc),
+            "function-content/shared-state-cues.yaml",
+        )
     result.extend(validate_session_library())
     result.extend(validate_semantic_dsp_profiles())
     from .content import validate_library
@@ -1517,8 +1528,11 @@ def validate_session_library() -> ValidationResult:
                     str(path),
                 )
             else:
-                result.extend(validate_narration_usage(doc, path))
-                result.extend(validate_narration_hygiene(doc, path, LocaleCatalog()))
+                catalog = LocaleCatalog()
+                if doc.get("narration_revision") is not None:
+                    catalog = catalog.with_revision(doc["narration_revision"], document_locale(doc))
+                result.extend(validate_narration_usage(doc, path, catalog))
+                result.extend(validate_narration_hygiene(doc, path, catalog))
         except OCFError as exc:
             result.add("error", "template-invalid", str(exc), str(path))
     return result

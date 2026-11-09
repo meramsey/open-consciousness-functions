@@ -1,0 +1,132 @@
+author: OCF
+composition_kind: preparation-learning
+content_status: reviewed
+cue_profile: OCF-CUE-PROFILE-DEFAULT
+description: Separate reviewed successor, not an RC1 rewrite. One preparation, three total Eleven visits,
+  510 seconds designated practice and full Ten-to-One return. No function installation, Twenty excursion,
+  underlay, shortcut, or listening/release approval.
+dsp_profile: OCF-DSP-PREP-LEARN-002
+id: OCF-TPL-SESSION-PREP-LEARN-002
+license: Apache-2.0
+name: Preparation Learning v3 — three total Eleven visits
+narration_revision: OCF-SHARED-SESSION-003
+origin: original-ocf
+pacing_profile: OCF-PACING-PREP-LEARN-002
+schema_version: '1.0'
+sections:
+- id: orientation
+  stage: OCF-TPL-STAGE-PREP-LEARNING-SPOKEN-002
+  narration:
+    speech: {narration_key: preparation.learning.v3.orientation}
+  start: 0
+- after: $previous
+  id: body-comfort
+  stage: OCF-TPL-STAGE-HPLUS-BODY-COMFORT-002
+- after: $previous
+  id: transmutation-box
+  narration:
+    begin:
+      narration_key: hplus.shared.transmutation-box.begin
+    complete:
+      narration_key: hplus.shared.transmutation-box.complete
+    place:
+      narration_key: hplus.shared.transmutation-box.place
+  pacing_overrides:
+    begin: pauses.transmutation_box_begin_s
+    complete: pauses.transmutation_box_complete_s
+    place: pauses.transmutation_box_place_s
+  role: shared transmutation-box preparation candidate
+  stage: OCF-TPL-STAGE-SETTING-ASIDE-001
+- after: $previous
+  enabled_by: affirmation
+  id: affirmation
+  narration:
+    practice:
+      slot: affirmation
+  role: optional affirmation stage; disabled by default
+  stage: OCF-TPL-STAGE-HPLUS-AFFIRMATION-002
+- after: $previous
+  enabled_by: resonant-tuning
+  id: resonant-tuning
+  role: reviewed optional resonant-tuning; off by default
+  stage: OCF-TPL-STAGE-HPLUS-TUNING-002
+- after: $previous
+  enabled_by: energy-ball
+  id: energy-ball
+  role: reviewed optional energy-ball; off by default
+  stage: OCF-TPL-STAGE-HPLUS-ENERGY-BALL-002
+- after: $previous
+  id: relaxation
+  role: approved original long-form v2 shared relaxation
+  stage: OCF-TPL-STAGE-HPLUS-RELAXATION-003
+- after: $previous
+  id: focus-ten
+  role: recognition of the single initial induction, not a second count
+  stage: OCF-TPL-STAGE-FOCUS-TEN-002
+- after: $previous
+  id: learning-intro
+  stage: OCF-TPL-STAGE-PREP-LEARNING-SPOKEN-002
+  narration:
+    speech: {narration_key: preparation.learning.v3.intro}
+  pacing_overrides:
+    speech: pauses.learning_ten_hold_s
+- after: $previous
+  id: open-1
+  narration:
+    prepare:
+      narration_key: hplus.shared.focus11.open.prepare
+    ready:
+      narration_key: preparation.learning.v3.ready-1
+  stage: OCF-TPL-STAGE-HPLUS-FOCUS-ELEVEN-OPEN-001
+- after: $previous
+  id: close-1
+  stage: OCF-TPL-STAGE-HPLUS-FOCUS-ELEVEN-CLOSE-003
+- after: $previous
+  id: ten-rest-1
+  stage: OCF-TPL-STAGE-HPLUS-FOCUS-TEN-HOLD-001
+- after: $previous
+  id: open-2
+  narration:
+    prepare:
+      narration_key: preparation.learning.v3.open-2
+    ready:
+      narration_key: preparation.learning.v3.ready-2
+  stage: OCF-TPL-STAGE-HPLUS-FOCUS-ELEVEN-OPEN-001
+- after: $previous
+  id: close-2
+  stage: OCF-TPL-STAGE-HPLUS-FOCUS-ELEVEN-CLOSE-003
+- after: $previous
+  id: ten-rest-2
+  stage: OCF-TPL-STAGE-HPLUS-FOCUS-TEN-HOLD-001
+- after: $previous
+  id: open-3
+  narration:
+    prepare:
+      narration_key: preparation.learning.v3.open-3
+    ready:
+      narration_key: preparation.learning.v3.ready-3
+  stage: OCF-TPL-STAGE-HPLUS-FOCUS-ELEVEN-OPEN-001
+- after: $previous
+  id: close-3
+  stage: OCF-TPL-STAGE-HPLUS-FOCUS-ELEVEN-CLOSE-003
+- after: $previous
+  id: ten-rest-3
+  stage: OCF-TPL-STAGE-HPLUS-FOCUS-TEN-HOLD-001
+- after: $previous
+  id: integrate
+  stage: OCF-TPL-STAGE-PREP-LEARNING-SPOKEN-002
+  narration:
+    speech: {narration_key: preparation.learning.v3.integrate}
+- after: $previous
+  id: return
+  stage: OCF-TPL-STAGE-PREP-LEARNING-RETURN-002
+- after: $previous
+  id: session-complete
+  stage: OCF-TPL-STAGE-HPLUS-SESSION-COMPLETE-001
+session_completeness: complete
+slots:
+  optional:
+  - affirmation
+  required: []
+version: 2.0.0
+voice_profile: OCF-VOICE-0003

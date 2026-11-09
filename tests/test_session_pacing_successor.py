@@ -17,7 +17,7 @@ def test_exit_follows_measured_audible_confirmation_not_voice_onset(monkeypatch,
         "ocf_tools.audio_build._resolve_background_manifest",
         lambda _ref: {"id": "fixture", "engine": "reference-master"},
     )
-    profile = semantic_dsp.load_profile(audio_defaults.DSP_ID)
+    profile = semantic_dsp.load_profile("OCF-DSP-HPLUS-LOCKED-003")
     profile["ignored_state_events"] = []
     profile["initial_state"] = "focus-11"
     profile["default_background_state"] = "focus-11"
@@ -71,7 +71,7 @@ def test_audible_bound_excludes_backend_tail_without_trimming_speech():
 @pytest.mark.integration
 def test_successor_relocates_only_approved_sentence_and_preserves_preparation():
     old = build_complete_session_plan("OCF-SEN-001", template="OCF-TPL-SESSION-HPLUS-LOCKED-004")
-    new = build_complete_session_plan("OCF-SEN-001")
+    new = build_complete_session_plan("OCF-SEN-001", template="OCF-TPL-SESSION-HPLUS-LOCKED-005")
     previous = list(iter_events(old["template_plan"]))
     current = list(iter_events(new["template_plan"]))
     calm = [

@@ -180,12 +180,10 @@ def load_voice_profiles() -> list[dict[str, Any]]:
     for path in discover_voice_profiles():
         data = load_yaml_file(path)
         out.append(data)
-    from .paths import work_path
+    from .custom_voices import profile_root, validate_profile
 
-    for path in sorted(work_path("cache", "voices", "profiles").glob("*.yaml")):
+    for path in sorted(profile_root().glob("*.yaml")):
         data = load_yaml_file(path)
-        from .custom_voices import validate_profile
-
         validate_profile(data, assets=False)
         if any(p["id"] == data["id"] for p in out):
             raise OCFError(f"private voice ID collides with another profile: {data['id']}")

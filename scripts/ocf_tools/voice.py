@@ -935,6 +935,8 @@ def _pronunciation_hints(
     from .locale import LocaleCatalog
 
     catalog = catalog or LocaleCatalog()
+    if doc.get("narration_revision") is not None:
+        catalog = catalog.with_revision(doc["narration_revision"], locale)
     origins = {
         item.get("id"): item.get("locale")
         for item in (doc.get("narration") or {}).get("resolved", [])
@@ -1074,6 +1076,8 @@ def render_narration(
 
         catalog = catalog or LocaleCatalog()
         target = normalize_tag(locale) if locale else document_locale(doc)
+        if doc.get("narration_revision") is not None:
+            catalog = catalog.with_revision(doc["narration_revision"], target)
         doc = resolve_document(doc, target, catalog=catalog, strict=strict)
         locale = target
     from .cue_templates import reject_unexpanded

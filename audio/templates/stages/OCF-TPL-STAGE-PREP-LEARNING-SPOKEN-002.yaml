@@ -1,0 +1,11 @@
+schema_version: '1.0'
+id: OCF-TPL-STAGE-PREP-LEARNING-SPOKEN-002
+version: 2.0.0
+origin: original-ocf
+type: preparation
+description: A reviewed learning-only spoken block bound explicitly by the selected lesson; no fictional function owner.
+events:
+- id: speech
+  at: 0
+  semantic: preparation.learning.instruction
+  narration_required: true

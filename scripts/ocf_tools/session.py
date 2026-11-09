@@ -601,8 +601,14 @@ def compose(
     used_slots: dict[str, list[str]] = {}
     counter = 0
     features = set(template.get("features") or []) | set(enabled_stages or [])
+    # This revision changes relaxation only. Selecting it must not opt the
+    # inherited routine into the separate preparation/affirmation successor.
+    revision_affirmation_defaults = template.get("narration_revision") not in (
+        None,
+        "OCF-RELAXATION-LONG-002",
+    )
     if affirmation == "none" or (
-        affirmation is None and not supplied and template.get("narration_revision")
+        affirmation is None and not supplied and revision_affirmation_defaults
     ):
         features.discard("affirmation")
     elif affirmation is not None:
@@ -829,7 +835,7 @@ def compose(
             doc[key] = template[key]
     if function_id:
         doc["function_id"] = function_id
-    if affirmation is not None or template.get("narration_revision"):
+    if affirmation is not None or revision_affirmation_defaults:
         doc["affirmation_selection"] = affirmation or (
             "custom" if supplied and "affirmation" in features else "none"
         )

@@ -261,6 +261,11 @@ def _build_parser() -> argparse.ArgumentParser:
 
     commands = sub.add_parser("commands", help="localized command documentation and export")
     command_sub = commands.add_subparsers(dest="command_kind", required=True)
+    shared_states = command_sub.add_parser(
+        "shared-state",
+        help="reviewed shared state-intention cue references; not application commands",
+    )
+    shared_states.add_argument("--locale", default="en-US")
     command_list = command_sub.add_parser(
         "list", help="list primary function commands (use --all-roles for all)"
     )
@@ -1662,6 +1667,10 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "build-index":
             return cmd_build_index(args)
         if args.command == "commands":
+            if args.command_kind == "shared-state":
+                from .shared_state_cues import run_cli
+
+                return run_cli(args)
             from .command_docs import run_cli
 
             return run_cli(args)

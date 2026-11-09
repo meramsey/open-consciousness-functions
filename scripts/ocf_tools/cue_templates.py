@@ -22,7 +22,7 @@ ROLES = {
     "cue.access_close": "access-close",
 }
 SYMBOL = re.compile(
-    r"(?:cue\.(?:primary|mode\.(?:increase|decrease)|release|cancel|close|retrieval|access_close|id\.OCF-CMD-[A-Z0-9-]+)(?:\.variant\.[a-z][a-z0-9_-]*)?|function\.title)\Z"
+    r"(?:cue\.(?:primary|mode\.(?:increase|decrease)|release|cancel|close|retrieval|access_close|id\.OCF-CMD-[A-Z0-9-]+)(?:\.variant\.[a-z][a-z0-9_-]*)?|function\.title|state\.access\.(?:open|close))\Z"
 )
 
 
@@ -199,6 +199,10 @@ def draft_cue(owner, command, locale, catalog):
 
 
 def expand(entry, locale, catalog, *, draft_review=False):
+    if entry.cue_template.get("shared_state") is not None:
+        from .shared_state_cues import expand as expand_shared
+
+        return expand_shared(entry, locale, catalog)
     contract = entry.cue_template
     owner_id = contract.get("function_id")
     try:

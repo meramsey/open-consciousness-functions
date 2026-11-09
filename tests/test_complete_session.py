@@ -30,10 +30,10 @@ def test_sleep_easy_complete_template_expands_existing_focus_and_sleep_sequence(
     )
     assert plan["session_completeness"] == "complete"
     assert plan["template"] == {
-        "id": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
-        "version": "5.0.0",
+        "id": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+        "version": "7.0.0",
         "origin": "reference-derived",
-        "content_status": "draft",
+        "content_status": "reviewed",
     }
     assert [stage["id"] for stage in plan["stages"]] == [
         "function-opener",
@@ -53,7 +53,6 @@ def test_sleep_easy_complete_template_expands_existing_focus_and_sleep_sequence(
         "session-complete",
     ]
     assert [row["to"] for row in plan["state_directives"]] == [
-        "focus-10",
         "focus-11",
         "focus-10",
         "focus-20",
@@ -65,11 +64,12 @@ def test_sleep_easy_complete_template_expands_existing_focus_and_sleep_sequence(
         "focus-10",
     ]
     assert {row["event_id"] for row in plan["ignored_state_directives"]} == {
-        "focus-ten.transition",
         "focus20-enter.transition",
         "focus20-close.transition",
         "return.complete",
     }
+    # V3 recognizes the established F10 state without a second arrival ramp.
+    assert not any(row["event_id"] == "focus-ten.transition" for row in plan["state_directives"])
     state_choices = plan["dsp_profile"]["states"]
     assert state_choices["focus-10"] == {"mode": "preset", "preset": "OCF-BG-0012"}
     assert state_choices["focus-11"] == {"mode": "preset", "preset": "OCF-BG-0006"}
@@ -81,7 +81,7 @@ def test_sleep_easy_complete_template_expands_existing_focus_and_sleep_sequence(
     assert stages["focus11-body"]["background_policy_states"] == ["focus-11"]
     assert stages["sleep20-body"]["background_policy_states"] == ["focus-10"]
     assert stages["function-closer"]["background_policy_states"] == ["focus-10"]
-    assert len(plan["dsp_profile"]["ignored_state_events"]) == 4
+    assert len(plan["dsp_profile"]["ignored_state_events"]) == 3
     assert plan["approval_state"]["function_review_status"] == "required"
     assert plan["approval_state"]["release_ready"] is False
     sleep_stage = next(stage for stage in plan["stages"] if stage["id"] == "sleep20-body")
@@ -111,14 +111,12 @@ def test_sleep_easy_complete_template_expands_existing_focus_and_sleep_sequence(
         "Nine.",
         "Ten.",
     ]
-    torso = next(
-        item
+    assert not any(
+        unit["text"] == "Sleep."
         for item in plan["narration_pacing_plan"]
-        if item["narration_key"] == "hplus.shared.relaxation.torso"
+        if item["narration_key"].startswith("hplus.shared.relaxation.")
+        for unit in item["units"]
     )
-    sleep_landings = [unit for unit in torso["units"] if unit["text"] == "Sleep."]
-    assert [unit["kind"] for unit in sleep_landings] == ["landing"] * 4
-    assert [unit["pause_after_s"] for unit in sleep_landings] == [5.0, 5.0, 5.0, 6.0]
     focus20 = paced["focus20-enter.enter"]["units"]
     assert [unit["text"] for unit in focus20[4:]] == [
         "Ten.",

@@ -3,8 +3,21 @@ locale: en-US
 language_name: English (United States)
 direction: ltr
 status: canonical
-semantic_version: 1.12.0
+semantic_version: 3.0.0
 resources:
+- file: shared-session-003.yaml
+  domain: narration
+  revision: OCF-SHARED-SESSION-003
+  description: Exact approved shared-session v3 words and shared state-intention cues; internal selection only.
+- file: preparation-learning-002.yaml
+  domain: narration
+  revision: OCF-SHARED-SESSION-003
+  description: Exact approved learning-only v3 supplement; independently selectable, RC1 unchanged.
+- file: relaxation-long-002.yaml
+  domain: narration
+  revision: OCF-SHARED-SESSION-003
+  revision_aliases: [OCF-RELAXATION-LONG-002]
+  description: Reuse the one approved long-form authority without copying its narration.
 - file: OCF-EXP-006-Intuition.yaml
   domain: function
   description: Sole editable localized function metadata and canonical narration.

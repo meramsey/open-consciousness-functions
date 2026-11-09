@@ -113,4 +113,4 @@ def test_current_locale_has_single_canonical_function_files_and_valid_locks():
         "hplus-waking-return.yaml",
     ):
         assert name in declared and (pack.path / name).is_file()
-    assert check_lock()["id"] == "OCF-AUDIO-DEFAULTS-HPLUS-015"
+    assert check_lock()["id"] == "OCF-AUDIO-DEFAULTS-HPLUS-018"

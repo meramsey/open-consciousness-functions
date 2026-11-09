@@ -28,6 +28,7 @@ SCHEMA_FILES = {
     "cue-profile": "audio/cues/profiles/OCF-CUE-PROFILE-DEFAULT.yaml",
     "function": "tests/fixtures/function-sample.yaml",
     "locale-manifest": "locales/en-US/manifest.yaml",
+    "shared-state-cues": "function-content/shared-state-cues.yaml",
     "locale-resource": "locales/en-US/shared-ui.yaml",
     "semantic-dsp-profile": "audio/background/state-profiles/OCF-DSP-DEFAULT-001.yaml",
     "session-pacing": "audio/templates/pacing/OCF-PACING-HPLUS-STANDARD-001.yaml",

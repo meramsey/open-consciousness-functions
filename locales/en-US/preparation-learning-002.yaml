@@ -1,0 +1,119 @@
+# Learning-only Appendix B, exact maintainer approval; RC1 is not edited.
+schema_version: '1.0'
+locale: en-US
+domain: narration
+entries:
+  preparation.learning.v3.orientation:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction, instruction, instruction]
+    text: |-
+      In this preparation, you will become familiar with Focus Ten and Focus Eleven.
+      In Focus Ten, your physical body rests deeply while your awareness remains clear.
+      In Focus Eleven, your Access Channel, your awareness opens
+      for learning and communication throughout your total self.
+      You will practice opening and closing this working period,
+      then return fully to your normal waking awareness in Focus One.
+
+  preparation.learning.v3.intro:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction, instruction, instruction]
+    text: |-
+      We will move between Focus Ten and Focus Eleven several times.
+      Each time, become familiar with the state you are experiencing.
+      There is nothing to force and no particular sensation to search for.
+      Let your own experience become recognizable.
+
+  preparation.learning.v3.ready-1:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction, instruction, instruction]
+    text: |-
+      Your Access Channel is now open.
+      Become familiar with this openness throughout your total self.
+      Let gratitude connect your mind, emotions, physical being, and higher self.
+      Remain quietly receptive and notice how this way of working feels to you.
+
+  preparation.learning.v3.open-2:
+    status: reviewed
+    version: 3.0.0
+    cue_template:
+      shared_state: OCF-SHARED-STATE-CUES-001
+      allowed: [state.access.open]
+    timing:
+      pacing_units: [instruction, instruction, instruction]
+    text: |-
+      Now choose to open your Access Channel again.
+      Think or say in your mind, “{{ state.access.open }}.”
+      Let the familiar transition unfold while your body remains relaxed.
+
+  preparation.learning.v3.ready-2:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction, instruction, instruction]
+    text: |-
+      Your Access Channel is open.
+      Recognize this working awareness and the connection throughout your total self.
+      Notice what helps you distinguish it from resting in Focus Ten.
+      Remain here and let the experience become more familiar.
+
+  preparation.learning.v3.open-3:
+    status: reviewed
+    version: 3.0.0
+    cue_template:
+      shared_state: OCF-SHARED-STATE-CUES-001
+      allowed: [state.access.open]
+    timing:
+      pacing_units: [instruction, instruction, instruction]
+    text: |-
+      Once more, choose to open your Access Channel.
+      Think or say in your mind, “{{ state.access.open }}.”
+      Allow yourself to return to this familiar working awareness.
+
+  preparation.learning.v3.ready-3:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction, instruction]
+    text: |-
+      Your Access Channel is open.
+      Rest in this connection throughout your total self.
+      Let the experience settle without needing to follow more instructions.
+
+  preparation.learning.v3.integrate:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction, instruction, instruction]
+    text: |-
+      You have practiced opening your Access Channel
+      and returning to the calm awareness of Focus Ten.
+      Keep the recognition of each state with you.
+      You choose when to open and when to close.
+      The learning remains available as you prepare to return fully awake.
+
+  preparation.learning.v3.return:
+    status: reviewed
+    version: 3.0.0
+    timing:
+      pacing_units: [instruction, instruction, instruction, countdown, countdown, countdown, countdown, countdown, countdown, countdown, countdown, countdown, final_countdown, instruction, instruction, instruction, instruction]
+    text: |-
+      We will now return from Focus Ten to ordinary waking awareness.
+      As I count down to One, bring your attention back to your body
+      and the space around you.
+      Keep the learning and understanding you have gained.
+
+      Ten. Nine. Eight. Seven. Six.
+      Five. Four. Three. Two.
+
+      One.
+      You are fully awake.
+      Open your eyes, or let your gaze become more attentive.
+      Feel your hands and feet, and begin to move comfortably.
+      Take a moment to settle into clear, ordinary awareness
+      before continuing with your day.
