@@ -174,36 +174,27 @@ The old `relaxation-long-002` task's transcript/timeline remain in the sibling
 The user directed durable private pack storage outside `.ocf-work`. Accordingly,
 `audio/voices/private-packs/` is gitignored except its usage README and keep-file;
 `OCF_VOICE_PROFILE_DIR` and `OCF_VOICE_ASSETS` select durable paths. Workspace
-cleanup does not touch this directory. Source Mike archive was copied, not
-moved, from `/home/mike/Documents/OCF-Private-Backups/voice-packs/`; source/copy
-ZIP hashes both equal
-`146e80d402570fc4c27c6d68de0ab6ca27151742afdf3e4a048ced19d91c9b3c`.
-Supported import verified and persisted its profile/reference/consent under the
-ignored store. The original source remains in place. No private assets or profile
-are staged. Voice doctor/pack inspection finds three shipped profiles plus the
-Mike pack; the required Chatterbox Nano runtime is not installed. The archive
-contains only the profile/reference/consent/provenance, not model weights.
-Source and copied archive hashes both equal
-`146e80d402570fc4c27c6d68de0ab6ca27151742afdf3e4a048ced19d91c9b3c`. The profile
-is `OCF-VOICE-9100`, private-only; its transcript status is not-provided. Its
-durable profile and asset roots are the ignored private-packs `profiles/` and
-`assets/` folders, outside cleanup-targeted workspace paths.
-No runtime or weights were downloaded, and no different voice was substituted.
-Thus requested Mike Hearing/Seeing and learning audio renders are still blocked
-on compatible already-local Chatterbox runtime/weights. `voice doctor` reports
-the 0.1.7 Chatterbox optional environment absent; `audio check-engine` reports
-Farfield unavailable (SBaGenX alone is available), while the locked current F10
-BG-0012 requires Farfield. Full sessions cannot be built faithfully without both;
-no alternate voice/background is substituted. Allen's approved pack
-has not been supplied in this follow-up; Allen renders are deferred per request.
+cleanup does not touch this directory. A user-supplied private archive was copied
+there without removing its source, then imported through the supported
+checksum-verified importer. Its identity, filename, source path, and asset hashes
+are intentionally withheld from this public/shared report. No pack contents or
+profile metadata are staged. The private-only profile/reference/consent remain in
+the ignored store. The same assets were copied into the configured persistent
+XDG user-data root with checksummed migration receipts; the repository copy is
+retained as a second local backup.
+
+The profile's Chatterbox Nano runtime/model are being restored using prior
+verified pack receipts. No voice sample/audio is uploaded. An additional
+authorized private pack was not recovered; its render remains deferred per request.
 
 The user's requested Farfield Focus 10 SAM/gamma switch is not silently applied.
 The identified committed OCF-BG-0006 is explicitly canonical Focus 11 pure-SAM;
 current evidence labels Focus 10 OCF-BG-0012 approximate V4-derived and does not
 establish SAM in Focus 10. Per user choice, v3 leaves the current Focus 10 profile
-unchanged. A5/A6 private settings are not present in the tracked defaults and the
-old deleted shared workspace; no settings were guessed. No audition audio has
-been synthesized/listened to/published. For a future private render, outputs go
+unchanged. A5 settings are being reinstated from the explicit approved gain record;
+the original profile bytes were not recovered, and the reconstructed file is
+labeled as such. A6 remains unknown and no A6 profile is invented. No audition
+audio has been listened to or published. For private renders, outputs go
 only in main-checkout gitignored `audio/rendered/`, never nested `.ocf-work`.
 
 ## Verification and checkpoint status
@@ -223,7 +214,7 @@ failed isolated tests; that run is invalid because it overrode each fixture's
 temporary `OCF_WORK_DIR`. The supported rerun unset those variables and passed.
 
 All 58 compact session plans were regenerated for defaults lock 018. Docs
-inventory (206 documents), examples (110 CLI/43 schemas), current cue report,
+inventory (207 documents), examples (110 CLI/43 schemas), current cue report,
 locale validation and the 177-entry historical narration integrity check pass.
 The initial full suite at a source tree being edited found a duplicate manifest
 resource and stale docs inventory; those were corrected with a single long-form
@@ -237,11 +228,16 @@ estimate is 1,889.780 seconds; the explicit LOCKED-006 predecessor is 1,891.619
 seconds (estimated delta -1.839 seconds). Longest of 20 optional combinations is
 2,173.405 seconds, below the soft target. Learning estimate is 1,924.070 seconds
 with exactly 510 seconds of designated practice. These are planning estimates,
-not measured TTS or mix times. Mike voice samples are not synthesized: the pack's
-required Chatterbox runtime is absent; Farfield is absent for complete locked
-mixes. No model or dependency was downloaded. Allen is deferred. A5/A6 settings
-were not recovered from the user-deleted workspace and are not guessed. No audio,
-listening approval or publication is claimed.
+not measured TTS or mix times. Requested private-voice audio is not yet rendered:
+the authorized Chatterbox runtime/model install is pending. Farfield is installed
+in the project `.venv` and detected when `.venv/bin` is on PATH; the earlier
+unavailable result was caused by a PATH omission. The tracked Focus-10 assignment
+remains BG-0012 as explicitly selected. The exact original A5 file bytes remain
+missing; approved settings are restored separately in the ignored persistent
+store with a recovery record that marks the reconstruction and historical source
+hash as unverified against the lost original. A6 is unknown and not invented.
+The additional private pack is deferred. No rendered audio, listening approval or
+publication is claimed yet.
 
 No PR merge or audio publication. The draft PR is pushed for review while final
 verification continues. Rollback is a scoped revert of v3 commits or explicit
