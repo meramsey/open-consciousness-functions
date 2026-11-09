@@ -12,6 +12,7 @@ import os
 import re
 import signal
 import ssl
+import stat
 import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -76,12 +77,31 @@ def read_object(path, limit):
     return json.loads(data)
 
 
-def file_hash(path):
-    result = hashlib.sha256()
+def file_signature(info):
+    """Compare descriptor metadata consistently, including on Windows."""
+    if not stat.S_ISREG(info.st_mode):
+        raise ValueError("regular artifact required")
+    return (info.st_dev, info.st_ino, info.st_size, info.st_mtime_ns, info.st_ctime_ns)
+
+
+def verified_signature(path, item, cache):
+    """Bind the manifest hash and cache entry to the same opened file."""
     with os.fdopen(open_regular(path), "rb") as stream:
-        for block in iter(lambda: stream.read(1024 * 1024), b""):
-            result.update(block)
-    return result.hexdigest()
+        info = os.fstat(stream.fileno())
+        signature = file_signature(info)
+        if info.st_size != item["size_bytes"]:
+            raise ValueError("size mismatch")
+        key = (path, signature, item["sha256"])
+        if key not in cache:
+            result = hashlib.sha256()
+            for block in iter(lambda: stream.read(1024 * 1024), b""):
+                result.update(block)
+            if result.hexdigest() != item["sha256"]:
+                raise ValueError("hash mismatch")
+        if file_signature(os.fstat(stream.fileno())) != signature:
+            raise ValueError("artifact changed during verification")
+        cache[key] = True
+        return signature
 
 
 def byte_range(value, size):
@@ -167,21 +187,7 @@ class Library:
                         path = regular_file(folder, item["file"])
                         if path.suffix.lower() not in EXTENSIONS[role]:
                             raise ValueError("unsupported media")
-                        info = path.stat()
-                        signature = (
-                            info.st_dev,
-                            info.st_ino,
-                            info.st_size,
-                            info.st_mtime_ns,
-                            info.st_ctime_ns,
-                        )
-                        key = (path, signature, item["sha256"])
-                        if info.st_size != item["size_bytes"]:
-                            raise ValueError("size mismatch")
-                        if key not in self.cache:
-                            if file_hash(path) != item["sha256"]:
-                                raise ValueError("hash mismatch")
-                            self.cache[key] = True
+                        signature = verified_signature(path, item, self.cache)
                         url = "/media/" + identity + "/" + str(number)
                         pending[url] = (path, signature)
                         media.append({"role": role, "url": url})
@@ -284,13 +290,7 @@ def handler(library, authorization):
                 fd = open_regular(file)
                 with os.fdopen(fd, "rb") as stream:
                     info = os.fstat(stream.fileno())
-                    if signature != (
-                        info.st_dev,
-                        info.st_ino,
-                        info.st_size,
-                        info.st_mtime_ns,
-                        info.st_ctime_ns,
-                    ):
+                    if signature != file_signature(info):
                         raise ValueError("artifact changed")
                     start, end, status = byte_range(self.headers.get("Range"), info.st_size)
                     self.send_response(status)
