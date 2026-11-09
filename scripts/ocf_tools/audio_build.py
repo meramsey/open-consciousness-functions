@@ -46,12 +46,14 @@ from .voice import DEFAULT_SAMPLE_RATE, render_narration
 
 
 def _clip(value: int) -> int:
-    return max(-32768, min(32767, value))
+    if value < 32767:
+        return value if value > -32768 else -32768
+    return 32767
 
 
 def _read_mono_pcm(path: Path, target_rate: int | None = None) -> tuple[int, list[int]]:
     """Read a 16-bit WAV into (rate, mono int16 samples), downmixing stereo."""
-    from .voice import _resample
+    from .voice import _resample, struct_unpack_le16
 
     with wave.open(str(path), "rb") as reader:
         rate = reader.getframerate()
@@ -60,11 +62,7 @@ def _read_mono_pcm(path: Path, target_rate: int | None = None) -> tuple[int, lis
         frames = reader.readframes(reader.getnframes())
     if width != 2:
         raise OCFError(f"{path.name}: expected 16-bit PCM (got {width * 8}-bit)")
-    sample_count = len(frames) // 2
-    samples = [
-        int.from_bytes(frames[i * 2 : i * 2 + 2], "little", signed=True)
-        for i in range(sample_count)
-    ]
+    samples = struct_unpack_le16(frames)
     if channels == 2:
         samples = [(samples[i] + samples[i + 1]) // 2 for i in range(0, len(samples) - 1, 2)]
     elif channels != 1:
@@ -81,15 +79,14 @@ def _write_wav(
     if path.exists() and not overwrite:
         raise OCFError(f"Refusing to overwrite existing file: {path} (use --force)")
     ensure_dir(path.parent)
+    from .voice import _pcm16_bytes
+
     buffer = io.BytesIO()
     with wave.open(buffer, "wb") as writer:
         writer.setnchannels(channels)
         writer.setsampwidth(2)
         writer.setframerate(sample_rate)
-        frames = bytearray()
-        for sample in samples:
-            frames.extend(int(_clip(sample)).to_bytes(2, "little", signed=True))
-        writer.writeframes(bytes(frames))
+        writer.writeframes(_pcm16_bytes(samples))
     path.write_bytes(buffer.getvalue())
 
 

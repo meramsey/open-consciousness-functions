@@ -100,18 +100,11 @@ def test_current_locale_has_single_canonical_function_files_and_valid_locks():
     assert (
         len(pack.localized_function_files) == len(set(pack.localized_function_files.values())) == 58
     )
-    assert not list(pack.path.glob("hplus-OCF-*.yaml"))
-    assert not list(pack.path.glob("original-OCF-*.yaml"))
-    assert not (REPO_ROOT / "functions").exists()
-    for directory in (
-        "function-content/editorial/historical-functions",
-        "function-content/editorial/historical-locales",
-        "function-content/bindings",
-        "function-content/specifications",
-        "function-content/decisions",
-        "function-content/evidence",
-    ):
-        assert not (REPO_ROOT / directory).exists()
+    # Authority is structural, not a blacklist of predecessor filenames.
+    for path, data in resources(REPO_ROOT):
+        assert path.name in declared
+        assert data["domain"] == "function"
+        assert pack.localized_function_files[data["function_id"]] == path.name
     for name in (
         "hplus-focus10.yaml",
         "hplus-focus11-open.yaml",

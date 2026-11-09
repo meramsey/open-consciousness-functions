@@ -1,4 +1,4 @@
-"""Initialize separated, explicitly partial research specifications without narration."""
+"""Prepare isolated, non-authoritative partial research proposals without narration."""
 
 from __future__ import annotations
 
@@ -10,8 +10,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 from ocf_tools.content import BLOCKS, validate_layers  # noqa: E402
+from ocf_tools.editorial import require_local_output  # noqa: E402
 from ocf_tools.indexes import load_all_functions, load_yaml_file  # noqa: E402
-from ocf_tools.utils import OCFError, write_text_atomic, yaml_safe_dump  # noqa: E402
+from ocf_tools.utils import OCFError, write_text_atomic  # noqa: E402
 
 MATCH_BLOCK = {
     "opener": "opener",
@@ -119,6 +120,7 @@ def main() -> None:
     )
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
+    require_local_output(args.output)
     inventory = json.loads(args.inventory.read_text(encoding="utf-8"))
     templates = [
         load_yaml_file(path) for path in (ROOT / "audio/templates/sessions").glob("*.yaml")
@@ -129,17 +131,29 @@ def main() -> None:
         errors = validate_layers(layers, record.id)
         if errors:
             raise OCFError(" | ".join(errors))
-        for layer, data in layers.items():
-            path = args.output / layer / f"{record.id}.yaml"
-            if path.exists() and load_yaml_file(path) != data:
-                raise OCFError(
-                    f"refusing to overwrite reviewed/customized content: {path}; choose a separate output for comparison"
-                )
-            pending.append((path, data))
+        path = args.output / f"{record.id}.research-proposal.json"
+        require_local_output(path)
+        data = {
+            "format": "ocf-editorial-research-proposal-v1",
+            "authority": "none",
+            "target_function": record.id,
+            "release_status": "pending-human-review",
+            "candidate_layers": layers,
+        }
+        if path.is_symlink():
+            raise OCFError("research proposal destination must not be a symlink")
+        if path.exists() and json.loads(path.read_text(encoding="utf-8")) != data:
+            raise OCFError(
+                f"refusing to overwrite reviewed/customized content: {path}; choose a separate output for comparison"
+            )
+        pending.append((path, data))
     for path, data in pending:
-        write_text_atomic(path, yaml_safe_dump(data))
+        if not path.exists():
+            write_text_atomic(
+                path, json.dumps(data, ensure_ascii=False, indent=2) + "\n", overwrite=False
+            )
     print(
-        f"Initialized {len(pending) // 4} partial research records; no localized wording authored"
+        f"Initialized {len(pending)} partial research records as local proposals; no resources installed or wording authored"
     )
 
 

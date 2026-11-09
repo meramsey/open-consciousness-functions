@@ -1269,6 +1269,7 @@ class LocaleCatalog:
         if not any(pack.localized_functions for pack in self.packs.values()):
             return
         records = {record.id: record for record in self.function_records()}
+        relationship_snapshot = None
         for pack in self.packs.values():
             for function_id, metadata in pack.localized_functions.items():
                 record = records.get(function_id)
@@ -1329,9 +1330,11 @@ class LocaleCatalog:
                     key = relation.get("description_key")
                     if not key:
                         continue
-                    from .guide_review import relationships
+                    from .guide_review import relationships, resource_snapshot
 
-                    approved = relationships(record)
+                    if relationship_snapshot is None:
+                        relationship_snapshot = resource_snapshot()
+                    approved = relationships(record, snapshot=relationship_snapshot)
                     if not any(
                         row["description_key"] == key
                         and row["related_id"] == relation["function_id"]

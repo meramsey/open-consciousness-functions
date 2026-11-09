@@ -396,12 +396,16 @@ def build_complete_session_plan(
             "complete session plan failed timed-script validation: "
             + " | ".join(issue.message for issue in validation.errors)
         )
-    resolved = resolve_document(doc, plan["requested_locale"], strict=True)
+    resolved = resolve_document(
+        doc, plan["requested_locale"], catalog=completeness_catalog, strict=True
+    )
     resolved_resources = list((resolved.get("narration") or {}).get("resolved", []))
     from .locale import NARRATION_DOMAIN
     from .narration_pacing import plan_event_pacing
 
-    catalog = LocaleCatalog().with_revision(doc.get("narration_revision"), plan["requested_locale"])
+    catalog = completeness_catalog.with_revision(
+        doc.get("narration_revision"), plan["requested_locale"]
+    )
     for item in resolved_resources:
         if item.get("key") == "inline":
             if item.get("id") == "affirmation.practice" and options.get("affirmation") == "custom":

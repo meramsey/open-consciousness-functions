@@ -1,0 +1,351 @@
+{
+  "baseline_sha": "83094a3c6f781a87a315d1b6185f136c9df69e4c",
+  "optimized_sha": "fd4a7886c562324e84e330e8708d63c08375a152",
+  "scope": "real public eSpeak TTS, OCF narration/PCM mix/FLAC; synthetic AM bed; fixture ZIP only",
+  "sessions_per_batch": 4,
+  "seconds": 20,
+  "python": "3.12.3",
+  "platform": "Linux-7.2.6-76070206-generic-x86_64-with-glibc2.39",
+  "tool_sha256": {
+    "espeak-ng": "34191438b1e0f8f5aac5d4fdc5df574762b6fbb3c7a219a8c6f14feceb1bd076",
+    "ffmpeg": "ed16af623947494a72e284b6eb8ff225f2da22b38b5d5069c2fd4b4ba3384e41"
+  },
+  "independent_pairs": 3,
+  "same_harness_sha256": "a28d13856ebcd8315fb781ed16d70f7e5b5a5ceac88be3f96351d01c1a0c9a51",
+  "cases": [
+    {
+      "workers": 1,
+      "all_artifacts_byte_exact": true,
+      "phases": {
+        "cold": {
+          "baseline_seconds": [
+            7.791058162110858,
+            7.917200973955914,
+            7.982807417050935
+          ],
+          "optimized_seconds": [
+            3.814674164983444,
+            3.8580265709897503,
+            3.862724820850417
+          ],
+          "baseline_median_seconds": 7.917200973955914,
+          "optimized_median_seconds": 3.8580265709897503,
+          "median_reduction_percent": 51.2703216240064,
+          "baseline_sessions_per_hour": 1818.8246133159464,
+          "optimized_sessions_per_hour": 3732.4781815346023,
+          "cache_counts_each": {
+            "hit": 3,
+            "miss": 5,
+            "invalidated": 0,
+            "bypassed": 0
+          },
+          "rendered_each": 4,
+          "verified_reused_each": 0
+        },
+        "warm": {
+          "baseline_seconds": [
+            7.243178830947727,
+            7.180754196015187,
+            7.325741959037259
+          ],
+          "optimized_seconds": [
+            3.1033500969642773,
+            3.140564825036563,
+            3.1301729190163314
+          ],
+          "baseline_median_seconds": 7.243178830947727,
+          "optimized_median_seconds": 3.1301729190163314,
+          "median_reduction_percent": 56.784541814125454,
+          "baseline_sessions_per_hour": 1988.0773809523416,
+          "optimized_sessions_per_hour": 4600.3848261920475,
+          "cache_counts_each": {
+            "hit": 8,
+            "miss": 0,
+            "invalidated": 0,
+            "bypassed": 0
+          },
+          "rendered_each": 4,
+          "verified_reused_each": 0
+        },
+        "verified_resume": {
+          "baseline_seconds": [
+            0.008550164988264441,
+            0.00923843402415514,
+            0.008568851044401526
+          ],
+          "optimized_seconds": [
+            0.00849963491782546,
+            0.0099780079908669,
+            0.008484859019517899
+          ],
+          "baseline_median_seconds": 0.008568851044401526,
+          "optimized_median_seconds": 0.00849963491782546,
+          "median_reduction_percent": 0.8077643807484325,
+          "baseline_sessions_per_hour": 1680505.347261027,
+          "optimized_sessions_per_hour": 1694190.4139671077,
+          "cache_counts_each": {
+            "hit": 0,
+            "miss": 0,
+            "invalidated": 0,
+            "bypassed": 0
+          },
+          "rendered_each": 0,
+          "verified_reused_each": 4
+        },
+        "recovery": {
+          "baseline_seconds": [
+            1.8365998839726672,
+            1.7435902499128133,
+            1.8169403159990907
+          ],
+          "optimized_seconds": [
+            0.7685314579866827,
+            0.766208206070587,
+            0.8157326710643247
+          ],
+          "baseline_median_seconds": 1.8169403159990907,
+          "optimized_median_seconds": 0.7685314579866827,
+          "median_reduction_percent": 57.701887551320795,
+          "baseline_sessions_per_hour": 7925.411678743996,
+          "optimized_sessions_per_hour": 18737.0339240551,
+          "cache_counts_each": {
+            "hit": 2,
+            "miss": 0,
+            "invalidated": 0,
+            "bypassed": 0
+          },
+          "rendered_each": 1,
+          "verified_reused_each": 3
+        }
+      }
+    },
+    {
+      "workers": 2,
+      "all_artifacts_byte_exact": true,
+      "phases": {
+        "cold": {
+          "baseline_seconds": [
+            7.257736540981568,
+            7.340281251934357,
+            7.380458649946377
+          ],
+          "optimized_seconds": [
+            3.1766930640442297,
+            3.2179295409005135,
+            3.2405166189419106
+          ],
+          "baseline_median_seconds": 7.340281251934357,
+          "optimized_median_seconds": 3.2179295409005135,
+          "median_reduction_percent": 56.160677902464506,
+          "baseline_sessions_per_hour": 1961.7776902220498,
+          "optimized_sessions_per_hour": 4474.92706629315,
+          "cache_counts_each": {
+            "hit": 3,
+            "miss": 5,
+            "invalidated": 0,
+            "bypassed": 0
+          },
+          "rendered_each": 4,
+          "verified_reused_each": 0
+        },
+        "warm": {
+          "baseline_seconds": [
+            6.909423280041665,
+            6.829013708047569,
+            7.079732974991202
+          ],
+          "optimized_seconds": [
+            2.8182625450426713,
+            2.802135459962301,
+            2.8333564039785415
+          ],
+          "baseline_median_seconds": 6.909423280041665,
+          "optimized_median_seconds": 2.8182625450426713,
+          "median_reduction_percent": 59.21132009406034,
+          "baseline_sessions_per_hour": 2084.110267436556,
+          "optimized_sessions_per_hour": 5109.531056760352,
+          "cache_counts_each": {
+            "hit": 8,
+            "miss": 0,
+            "invalidated": 0,
+            "bypassed": 0
+          },
+          "rendered_each": 4,
+          "verified_reused_each": 0
+        },
+        "verified_resume": {
+          "baseline_seconds": [
+            0.00605397205799818,
+            0.005627681966871023,
+            0.005826318054459989
+          ],
+          "optimized_seconds": [
+            0.0056485149543732405,
+            0.005712365033105016,
+            0.005840240977704525
+          ],
+          "baseline_median_seconds": 0.005826318054459989,
+          "optimized_median_seconds": 0.005712365033105016,
+          "median_reduction_percent": 1.9558324878564348,
+          "baseline_sessions_per_hour": 2471543.754631957,
+          "optimized_sessions_per_hour": 2520847.305196238,
+          "cache_counts_each": {
+            "hit": 0,
+            "miss": 0,
+            "invalidated": 0,
+            "bypassed": 0
+          },
+          "rendered_each": 0,
+          "verified_reused_each": 4
+        },
+        "recovery": {
+          "baseline_seconds": [
+            1.7750389169668779,
+            1.7438126410124823,
+            1.901488873991184
+          ],
+          "optimized_seconds": [
+            0.7552275999914855,
+            0.7574229489546269,
+            0.7779358410043642
+          ],
+          "baseline_median_seconds": 1.7750389169668779,
+          "optimized_median_seconds": 0.7574229489546269,
+          "median_reduction_percent": 57.329220124993995,
+          "baseline_sessions_per_hour": 8112.498189395305,
+          "optimized_sessions_per_hour": 19011.834827389983,
+          "cache_counts_each": {
+            "hit": 2,
+            "miss": 0,
+            "invalidated": 0,
+            "bypassed": 0
+          },
+          "rendered_each": 1,
+          "verified_reused_each": 3
+        }
+      }
+    }
+  ],
+  "sampled_resources": {
+    "audio-repeat1-fd4a788": {
+      "baseline": {
+        "source_sha": "83094a3c6f781a87a315d1b6185f136c9df69e4c",
+        "exit_code": 0,
+        "wall_seconds": 46.87552911497187,
+        "user_cpu_seconds": 49.260011,
+        "system_cpu_seconds": 25.712998000000002,
+        "average_cpu_percent": 159.9406138245678,
+        "sampled_process_tree_peak_rss_bytes": 185753600,
+        "sampled_owned_fixture_disk_peak_bytes": 84213968,
+        "sample_period_seconds": 0.1,
+        "samples": 457,
+        "linux_input_blocks": 8,
+        "linux_output_blocks": 179480,
+        "sampling_note": "100ms samples may miss short-lived peaks; includes only owned fixture trees and child process tree"
+      },
+      "optimized": {
+        "source_sha": "fd4a7886c562324e84e330e8708d63c08375a152",
+        "exit_code": 0,
+        "wall_seconds": 20.619705119985156,
+        "user_cpu_seconds": 23.176859,
+        "system_cpu_seconds": 26.591851000000002,
+        "average_cpu_percent": 241.36479988631297,
+        "sampled_process_tree_peak_rss_bytes": 134737920,
+        "sampled_owned_fixture_disk_peak_bytes": 84213969,
+        "sample_period_seconds": 0.1,
+        "samples": 201,
+        "linux_input_blocks": 8,
+        "linux_output_blocks": 179992,
+        "sampling_note": "100ms samples may miss short-lived peaks; includes only owned fixture trees and child process tree"
+      }
+    },
+    "audio-repeat2-fd4a788": {
+      "baseline": {
+        "source_sha": "83094a3c6f781a87a315d1b6185f136c9df69e4c",
+        "exit_code": 0,
+        "wall_seconds": 47.94620747200679,
+        "user_cpu_seconds": 49.996545,
+        "system_cpu_seconds": 25.273641,
+        "average_cpu_percent": 156.98882136599897,
+        "sampled_process_tree_peak_rss_bytes": 195756032,
+        "sampled_owned_fixture_disk_peak_bytes": 84213967,
+        "sample_period_seconds": 0.1,
+        "samples": 467,
+        "linux_input_blocks": 0,
+        "linux_output_blocks": 179480,
+        "sampling_note": "100ms samples may miss short-lived peaks; includes only owned fixture trees and child process tree"
+      },
+      "optimized": {
+        "source_sha": "fd4a7886c562324e84e330e8708d63c08375a152",
+        "exit_code": 0,
+        "wall_seconds": 21.724082118016668,
+        "user_cpu_seconds": 23.108173,
+        "system_cpu_seconds": 27.027596999999997,
+        "average_cpu_percent": 230.78429609884577,
+        "sampled_process_tree_peak_rss_bytes": 134512640,
+        "sampled_owned_fixture_disk_peak_bytes": 84213968,
+        "sample_period_seconds": 0.1,
+        "samples": 212,
+        "linux_input_blocks": 8,
+        "linux_output_blocks": 179992,
+        "sampling_note": "100ms samples may miss short-lived peaks; includes only owned fixture trees and child process tree"
+      }
+    }
+  },
+  "planning": {
+    "baseline_sha": "c8ea153ef18e0d349bdb687f7ad445edc0bdbe01",
+    "optimized_sha": "fd4a7886c562324e84e330e8708d63c08375a152",
+    "functions": 58,
+    "all_complete_plans_byte_exact": true,
+    "baseline_planning_median_seconds": 496.25388009945164,
+    "optimized_planning_median_seconds": 161.4582237864961,
+    "planning_reduction_percent": 67.4645921651758
+  },
+  "farfield_cache_characterization": {
+    "source_sha": "b4567bec0cd70861456bee4111b1b0d944665746",
+    "duration_seconds": 40,
+    "runs": [
+      {
+        "seconds": 105.78338535991497,
+        "output_sha256": "da848c3b6b088935ea29f8f7cbd35a02133fa1d2271c4938f5e24cb43940ed6e",
+        "states": {
+          "focus-10": {
+            "stem_cache": "miss",
+            "stem_cache_stored": true,
+            "stem_sha256": "a6c2ea7c8324a6c7a935c61010e60d6f3eefbc2c1cd7e1d92a02a68e6793613b"
+          },
+          "focus-11": {
+            "stem_cache": "miss",
+            "stem_cache_stored": true,
+            "stem_sha256": "b6de97d745695fcedd5eebfebe66bafb0d457413d6d2661d55106f5c782743ec"
+          }
+        }
+      },
+      {
+        "seconds": 8.575504165957682,
+        "output_sha256": "da848c3b6b088935ea29f8f7cbd35a02133fa1d2271c4938f5e24cb43940ed6e",
+        "states": {
+          "focus-10": {
+            "stem_cache": "hit",
+            "stem_cache_stored": null,
+            "stem_sha256": "a6c2ea7c8324a6c7a935c61010e60d6f3eefbc2c1cd7e1d92a02a68e6793613b"
+          },
+          "focus-11": {
+            "stem_cache": "hit",
+            "stem_cache_stored": null,
+            "stem_sha256": "b6de97d745695fcedd5eebfebe66bafb0d457413d6d2661d55106f5c782743ec"
+          }
+        }
+      }
+    ],
+    "is_new_optimization_claim": false,
+    "listening_approval": null
+  },
+  "limitations": [
+    "20-second public CPU fixtures, not full private function sessions",
+    "fixture ZIP, not production release packaging",
+    "GPU/private voice models not used",
+    "100ms sampling may miss short-lived peaks",
+    "Farfield measured separately, not inside paired eSpeak batches"
+  ]
+}

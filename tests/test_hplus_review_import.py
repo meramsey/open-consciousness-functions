@@ -1,12 +1,14 @@
-"""Offline review importer integration with synthetic source files."""
+"""Offline proposals cannot become a second function authority."""
 
 import hashlib
 import importlib.util
+import json
 from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
 import yaml
+from ocf_tools.utils import OCFError
 
 pytestmark = pytest.mark.integration
 SPEC = importlib.util.spec_from_file_location(
@@ -19,228 +21,216 @@ SPEC.loader.exec_module(review)
 
 @pytest.fixture
 def importer(tmp_path, monkeypatch):
-    workspace = tmp_path / "workspace"
-    (workspace / "functions").mkdir(parents=True)
     sources = tmp_path / "sources"
     sources.mkdir()
-    output = tmp_path / "en-US"
-    output.mkdir()
     raw = b"Specific opener.\nSpecific body.\nSpecific closer.\n"
     (sources / "fixture.txt").write_bytes(raw)
-    record = {
-        "function_id": "OCF-COG-001",
-        "source_availability": "available",
-        "source_status": "transcript_unverified",
-        "source": {
-            "file": "fixture.txt",
-            "sha256": hashlib.sha256(raw).hexdigest(),
-            "line_count": 3,
+    digest = hashlib.sha256(raw).hexdigest()
+    function = SimpleNamespace(
+        id="OCF-COG-001",
+        source_availability="available",
+        data={
+            "legacy": {"name": "FIXTURE", "commands": ["PLUS-FIXTURE"]},
+            "content": {
+                "specifications": {
+                    "analysis_review": {
+                        "source_extent": {
+                            "file": "fixture.txt",
+                            "source_sha256": digest,
+                            "start_line": 1,
+                            "end_line": 3,
+                        }
+                    }
+                },
+                "evidence": {
+                    "sources": [
+                        {
+                            "path": "fixture.txt",
+                            "sha256": digest,
+                            "evidence_class": "source_transcript",
+                        }
+                    ]
+                },
+            },
         },
-    }
-    (workspace / "functions/OCF-COG-001.yaml").write_text(yaml.safe_dump(record))
+    )
     plan = tmp_path / "plan.yaml"
     plan.write_text(
         yaml.safe_dump(
             {
                 "schema_version": "1.0",
                 "selections": {
-                    "OCF-COG-001": {
+                    function.id: {
                         "slots": {
-                            slot: [{"start_line": line, "end_line": line}]
-                            for line, slot in enumerate(("opener", "function-body", "closer"), 1)
+                            slot: [{"start_line": n, "end_line": n}]
+                            for n, slot in enumerate(review.SLOTS, 1)
                         },
                         "missing": {},
                         "notes": [],
-                    },
+                    }
                 },
             }
         )
     )
-    (output / "manifest.yaml").write_text(
-        yaml.safe_dump(
-            {
-                "schema_version": "1.0",
-                "locale": "en-US",
-                "language_name": "English",
-                "direction": "ltr",
-                "status": "canonical",
-                "semantic_version": "1.3.0",
-                "resources": [],
-            }
-        )
+    monkeypatch.setattr(review, "load_all_functions", lambda: [function])
+    return SimpleNamespace(
+        sources=sources,
+        output=tmp_path / "proposals",
+        plan=plan,
+        function=function,
+        target=tmp_path / "proposals/OCF-COG-001.review-proposal.json",
     )
-    monkeypatch.setattr(
-        review,
-        "load_all_functions",
-        lambda: [
-            SimpleNamespace(id="OCF-COG-001", canonical_name="Synthetic fixture"),
-        ],
-    )
-    return workspace, sources, output, plan, tmp_path / "review.md"
 
 
-def run(inputs, write):
-    workspace, sources, output, plan, report = inputs
-    return review.prepare(workspace, sources, output, plan, write=write, report_path=report)
+def run(f, write=True, **kwargs):
+    return review.prepare(f.sources, f.output, f.plan, write=write, **kwargs)
 
 
-def test_dry_run_and_reimport_preserve_human_wording_and_versions(importer):
-    _, _, output, _, report = importer
-    target = output / "hplus-OCF-COG-001.yaml"
-    before = (output / "manifest.yaml").read_bytes()
-    run(importer, False)
-    assert not target.exists() and not report.exists()
-    assert (output / "manifest.yaml").read_bytes() == before
-    run(importer, True)
-    data = yaml.safe_load(target.read_text(encoding="utf-8"))
-    data["entries"]["hplus.function.ocf-cog-001.opener"]["text"] = "Human-edited opener."
-    target.write_text(yaml.safe_dump(data))
-    edited = target.read_bytes()
-    manifest = yaml.safe_load((output / "manifest.yaml").read_text(encoding="utf-8"))
-    manifest["semantic_version"] = "2.0.0"
-    (output / "manifest.yaml").write_text(yaml.safe_dump(manifest))
-    run(importer, True)
-    assert target.read_bytes() == edited
-    manifest = yaml.safe_load((output / "manifest.yaml").read_text(encoding="utf-8"))
-    assert len(manifest["resources"]) == 1 and manifest["semantic_version"] == "2.0.0"
+def test_dry_run_then_idempotent_proposal_never_installs_resources(importer):
+    f = importer
+    before = json.dumps(f.function.data, sort_keys=True)
+    run(f, False)
+    assert not f.output.exists()
+    run(f)
+    original = f.target.read_bytes()
+    run(f)
+    assert f.target.read_bytes() == original
+    data = json.loads(original)
+    assert data["authority"] == "none"
+    assert data["release_status"] == "pending-human-review"
+    assert not {"domain", "locale", "entries", "function_id"} & data.keys()
+    assert len(data["candidate_entries"]) == 3
+    assert list(f.output.iterdir()) == [f.target]
+    assert json.dumps(f.function.data, sort_keys=True) == before
+
+
+def test_reimport_preserves_human_wording_and_refuses_changed_inputs(importer):
+    f = importer
+    run(f)
+    data = json.loads(f.target.read_text())
+    next(iter(data["candidate_entries"].values()))["text"] = "Human edit."
+    f.target.write_text(json.dumps(data))
+    before = f.target.read_bytes()
+    with pytest.raises(ValueError, match="human edits"):
+        run(f)
+    assert f.target.read_bytes() == before
 
 
 def test_hash_mismatch_fails_before_any_output_is_written(importer):
-    _, sources, output, _, report = importer
-    (sources / "fixture.txt").write_text("Changed source.")
-    before = (output / "manifest.yaml").read_bytes()
-    with pytest.raises(ValueError, match="source hash changed"):
-        run(importer, True)
-    assert not (output / "hplus-OCF-COG-001.yaml").exists() and not report.exists()
-    assert (output / "manifest.yaml").read_bytes() == before
+    (importer.sources / "fixture.txt").write_text("Changed source.")
+    with pytest.raises(OCFError, match="checksum mismatch"):
+        run(importer)
+    assert not importer.output.exists()
 
 
-def test_manifest_domain_conflict_fails_before_creating_the_resource(importer):
-    _, _, output, _, _ = importer
-    manifest = yaml.safe_load((output / "manifest.yaml").read_text(encoding="utf-8"))
-    manifest["resources"] = [{"file": "hplus-OCF-COG-001.yaml", "domain": "ui"}]
-    (output / "manifest.yaml").write_text(yaml.safe_dump(manifest))
-    with pytest.raises(ValueError, match="manifest domain mismatch"):
-        run(importer, True)
-    assert not (output / "hplus-OCF-COG-001.yaml").exists()
+@pytest.mark.parametrize("root", ["locales/en-US", "function-content", "brand", "audio/scripts"])
+def test_runtime_output_rejected_before_reading_sources(importer, root):
+    importer.output = review.REPO_ROOT / root
+    with pytest.raises(OCFError, match="packaged runtime"):
+        run(importer)
+
+
+def test_output_symlink_into_runtime_rejected(importer):
+    importer.output.symlink_to(review.REPO_ROOT / "locales/en-US", target_is_directory=True)
+    with pytest.raises(OCFError, match="packaged runtime"):
+        run(importer)
+
+
+def test_source_and_output_must_not_overlap(importer):
+    importer.output = importer.sources / "proposals"
+    with pytest.raises(ValueError, match="immutable source"):
+        run(importer)
+
+
+@pytest.mark.parametrize("path", ["../outside.txt", "/outside.txt"])
+def test_source_escape_rejected_before_output(importer, path):
+    importer.function.data["content"]["specifications"]["analysis_review"]["source_extent"][
+        "file"
+    ] = path
+    with pytest.raises(OCFError, match="escapes its root"):
+        run(importer)
+    assert not importer.output.exists()
 
 
 @pytest.fixture
-def proposal_importer(importer, monkeypatch):
-    workspace, sources, output, plan, report = importer
-    historical = {
-        "function_id": "OCF-COG-001",
-        "source_availability": "unavailable",
-        "source_status": "unavailable",
-        "source": None,
-    }
-    (workspace / "functions/OCF-COG-001.yaml").write_text(yaml.safe_dump(historical))
-    plan.write_text(yaml.safe_dump({"schema_version": "1.0", "selections": {}}))
+def proposal_importer(importer):
+    f = importer
+    f.function.source_availability = "unavailable"
+    f.function.data["content"] = {}
+    f.plan.write_text(yaml.safe_dump({"schema_version": "1.0", "selections": {}}))
     raw = (
         "FIXTURE (test) — RECONSTRUCTED SCRIPT\nPLUS-FIXTURE\nCLEAN RECORDING SCRIPT\n"
         "Proposed opener.\nProposed body.\nProposed closer.\nEND OF RECONSTRUCTED SCRIPT\n"
     ).encode()
-    (sources / "proposal.txt").write_bytes(raw)
-    proposal_plan = sources / "proposals.yaml"
-    proposal_plan.write_text(
+    (f.sources / "proposal.txt").write_bytes(raw)
+    f.proposal_plan = f.sources / "proposals.yaml"
+    f.proposal_plan.write_text(
         yaml.safe_dump(
             {
                 "schema_version": "1.0",
                 "selections": {},
                 "proposals": {
-                    "OCF-COG-001": {
+                    f.function.id: {
                         "input": {
                             "file": "proposal.txt",
-                            "header": raw.decode().splitlines()[0],
                             "sha256": hashlib.sha256(raw).hexdigest(),
+                            "header": raw.decode().splitlines()[0],
                         },
                         "selection": {
                             "slots": {
-                                slot: [{"start_line": line, "end_line": line}]
-                                for line, slot in enumerate(
-                                    ("opener", "function-body", "closer"), 4
-                                )
+                                slot: [{"start_line": n, "end_line": n}]
+                                for n, slot in enumerate(review.SLOTS, 4)
                             },
                             "missing": {},
                             "notes": [],
                         },
-                    },
+                    }
                 },
             }
         )
     )
-    target = output / "hplus-OCF-COG-001.yaml"
-    target.write_text(yaml.safe_dump(review.resource_for(historical, None, None)[0]))
-    manifest = yaml.safe_load((output / "manifest.yaml").read_text(encoding="utf-8"))
-    manifest["resources"] = [{"file": target.name, "domain": "ui"}]
-    (output / "manifest.yaml").write_text(yaml.safe_dump(manifest))
-    monkeypatch.setattr(
-        review,
-        "load_all_functions",
-        lambda: [
-            SimpleNamespace(
-                id="OCF-COG-001",
-                canonical_name="Synthetic fixture",
-                data={"legacy": {"name": "FIXTURE", "commands": ["PLUS-FIXTURE"]}},
-            )
-        ],
-    )
-    return importer, proposal_plan
+    return f
 
 
-def apply_proposal(inputs, write, apply=True):
-    importer, proposal_plan = inputs
-    workspace, sources, output, plan, report = importer
-    return review.prepare(
-        workspace,
-        sources,
-        output,
-        plan,
-        write=write,
-        report_path=report,
-        proposal_plan=proposal_plan,
-        apply_proposals=apply,
-    )
+def test_proposals_remain_unavailable_and_pending_without_promoting_wording(proposal_importer):
+    f = proposal_importer
+    run(f, False, proposal_plan=f.proposal_plan)
+    assert not f.output.exists()
+    run(f, proposal_plan=f.proposal_plan)
+    data = json.loads(f.target.read_text())
+    assert data["source_status"] == "unavailable"
+    assert data["release_status"] == "pending-human-review"
+    assert all(entry["status"] == "draft" for entry in data["candidate_entries"].values())
+    before = f.target.read_bytes()
+    run(f, proposal_plan=f.proposal_plan)
+    assert f.target.read_bytes() == before
+    assert f.function.source_availability == "unavailable"
 
 
-def test_explicit_proposal_upgrade_changes_only_the_placeholder_and_preserves_later_edits(
-    proposal_importer,
-):
-    importer, _ = proposal_importer
-    workspace, _, output, _, _ = importer
-    target = output / "hplus-OCF-COG-001.yaml"
-    original = target.read_bytes()
-    historical_bytes = (workspace / "functions/OCF-COG-001.yaml").read_bytes()
-    apply_proposal(proposal_importer, True, apply=False)
-    assert target.read_bytes() == original
-    apply_proposal(proposal_importer, False)
-    assert target.read_bytes() == original
-    apply_proposal(proposal_importer, True)
-    data = yaml.safe_load(target.read_text(encoding="utf-8"))
-    assert data["domain"] == "narration"
-    manifest = yaml.safe_load((output / "manifest.yaml").read_text(encoding="utf-8"))
-    assert manifest["resources"][0]["domain"] == "narration"
-    assert manifest["semantic_version"] == "1.5.0"
-    assert (workspace / "functions/OCF-COG-001.yaml").read_bytes() == historical_bytes
-    data["entries"]["hplus.function.ocf-cog-001.opener"]["text"] = (
-        "Human edit after proposal import."
-    )
-    target.write_text(yaml.safe_dump(data))
-    edited = target.read_bytes()
-    apply_proposal(proposal_importer, True)
-    assert target.read_bytes() == edited
+def test_proposal_hash_failure_preserves_existing_draft(proposal_importer):
+    f = proposal_importer
+    run(f, proposal_plan=f.proposal_plan)
+    before = f.target.read_bytes()
+    (f.sources / "proposal.txt").write_text("Changed proposal.")
+    with pytest.raises(ValueError, match="proposal hash changed"):
+        run(f, proposal_plan=f.proposal_plan)
+    assert f.target.read_bytes() == before
 
 
-def test_proposal_import_does_not_overwrite_a_human_edited_status_file(proposal_importer):
-    importer, _ = proposal_importer
-    _, _, output, _, _ = importer
-    target = output / "hplus-OCF-COG-001.yaml"
-    data = yaml.safe_load(target.read_text(encoding="utf-8"))
-    next(iter(data["entries"].values()))["notes"] = "User's own review note."
-    target.write_text(yaml.safe_dump(data))
-    before = target.read_bytes()
-    manifest = (output / "manifest.yaml").read_bytes()
+def test_batch_preflights_every_destination_before_writing(importer, monkeypatch):
+    from copy import deepcopy
+
+    f = importer
+    second = deepcopy(f.function)
+    second.id = "OCF-COG-002"
+    plan = yaml.safe_load(f.plan.read_text())
+    plan["selections"][second.id] = deepcopy(plan["selections"][f.function.id])
+    f.plan.write_text(yaml.safe_dump(plan))
+    f.output.mkdir()
+    edited = f.output / "OCF-COG-002.review-proposal.json"
+    edited.write_text('{"human": "edit"}')
+    monkeypatch.setattr(review, "load_all_functions", lambda: [f.function, second])
     with pytest.raises(ValueError, match="human edits"):
-        apply_proposal(proposal_importer, True)
-    assert target.read_bytes() == before
-    assert (output / "manifest.yaml").read_bytes() == manifest
+        run(f)
+    assert not f.target.exists()
+    assert edited.read_text() == '{"human": "edit"}'

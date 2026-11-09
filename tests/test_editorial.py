@@ -122,10 +122,7 @@ def test_repeated_batch_skeletonization_preserves_new_shared_claim_flags(authori
     (first.source_root / f"{second.id}.txt").write_bytes(second.raw)
     review = copy.deepcopy(second.review)
     review["claim_categories"] = ["new-second-source-flag"]
-    write_yaml(
-        first.content_root / "specifications" / f"{second.id}.yaml", {"analysis_review": review}
-    )
-    write_yaml(first.content_root / "evidence" / f"{second.id}.yaml", second.evidence)
+    second.record.data["content"]["specifications"]["analysis_review"] = review
 
     editorial.skeletonize(first.source_root, first.workspace, [first.record], first.content_root)
     editorial.skeletonize(
@@ -390,11 +387,11 @@ def authoring(tmp_path, monkeypatch):
         evidence = {
             "sources": [{"path": filename, "sha256": sha(raw), "evidence_class": evidence_class}]
         }
-        record = SimpleNamespace(id=function_id, source_availability=availability)
-        write_yaml(
-            content_root / "specifications" / f"{function_id}.yaml", {"analysis_review": review}
+        record = SimpleNamespace(
+            id=function_id,
+            source_availability=availability,
+            data={"content": {"specifications": {"analysis_review": review}, "evidence": evidence}},
         )
-        write_yaml(content_root / "evidence" / f"{function_id}.yaml", evidence)
         fixture = SimpleNamespace(
             id=function_id,
             record=record,
@@ -757,21 +754,21 @@ def test_partial_transcript_is_uncertain_without_changing_text(authoring):
             "OCF-FND-004",
             [
                 "audio/templates/sessions/OCF-TPL-SESSION-PILOT-RELAX-001.yaml",
-                "locales/en-US/functions.yaml",
+                "Canonical locale resource (previous candidate; not promoted)",
             ],
         ),
         (
             "OCF-SEN-001",
             [
                 "audio/templates/sessions/OCF-TPL-SESSION-PILOT-HEARING-001.yaml",
-                "locales/en-US/functions.yaml",
+                "Canonical locale resource (previous candidate; not promoted)",
             ],
         ),
         (
             "OCF-SLP-005",
             [
                 "audio/templates/sessions/OCF-TPL-SESSION-PILOT-SLEEP-EASY-001.yaml",
-                "locales/en-US/functions.yaml",
+                "Canonical locale resource (previous candidate; not promoted)",
             ],
         ),
     ],
@@ -825,7 +822,6 @@ def test_source_path_escape_fails_before_workspace_writes(authoring, tmp_path, e
         (f.source_root / "linked.txt").symlink_to(outside)
         path = "linked.txt"
     f.review["source_extent"]["file"] = path
-    write_yaml(f.content_root / "specifications" / f"{f.id}.yaml", {"analysis_review": f.review})
     with pytest.raises(OCFError, match="path escapes its root"):
         editorial.skeletonize(f.source_root, f.workspace, [f.record], f.content_root)
     assert not f.workspace.exists()

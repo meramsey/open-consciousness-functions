@@ -4,7 +4,6 @@ import pytest
 from ocf_tools import content, eligibility, session_plans
 from ocf_tools.audio_defaults import TEMPLATE_ID
 from ocf_tools.indexes import load_function_by_id
-from ocf_tools.paths import REPO_ROOT
 
 
 @pytest.mark.integration
@@ -17,8 +16,8 @@ def test_canonical_function_to_binding_projection_and_plan_without_sidecars(tmp_
     binding = layers["bindings"]
     assert binding["narration_plan"] == record.data["narration"]
     assert binding["default_session_template"] == TEMPLATE_ID
-    assert not (REPO_ROOT / "function-content/bindings" / f"{owner}.yaml").exists()
-    assert not (REPO_ROOT / "functions").exists()
+    assert record.path.parent.name == "en-US"
+    assert record.data["content"]["bindings"]["default_session_template"] == TEMPLATE_ID
 
     dry_run = eligibility.migrate_bindings([owner], dry_run=True)
     assert dry_run[0] == {

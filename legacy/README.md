@@ -5,11 +5,15 @@ historical **Monroe H-PLUS** function system for research and compatibility.
 
 ## Contents
 
-- `README.md` — this file, the authoritative 55-function legacy record.
+- `README.md` — this explanatory inventory, not a function-definition authority.
 - `hplus-command-map.json` / `hplus-command-map.csv` — *generated* command maps
   (run `python3 scripts/ocf.py build-index` to regenerate).
 - `source-notes/` — optional structured notes from source reviews
   (see `templates/source-review.md`).
+
+Function identities, historical metadata and approved localized wording are owned
+by the manifest-listed canonical locale resources. These generated maps are
+read-only research/compatibility views; editing them cannot author a function.
 
 ## The 55 documented functions
 

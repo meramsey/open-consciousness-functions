@@ -10,27 +10,38 @@ from .utils import OCFError
 ID = "OCF-GUIDE-REVIEW-001"
 
 
+def resource_snapshot(root=REPO_ROOT):
+    """One validated read for a single operation; never a cross-call cache."""
+    return {data["function_id"]: data for _path, data in resources(root, "en-US")}
+
+
+def _decisions(localized):
+    identity = localized["function_id"]
+    return [
+        {
+            "relationship_id": decision["relationship_id"],
+            "source_id": identity,
+            "related_id": decision["related_function_id"],
+            "relationship_type": decision["relationship_type"],
+            "dependency": decision["dependency"],
+            "reciprocal_approved": decision["reciprocal_approved"],
+            "decision_source": decision["decision_source"],
+            "source_row_sha256": decision["source_row_sha256"],
+        }
+        for decision in localized.get("record_metadata", {}).get("editorial_decisions", [])
+        if decision.get("kind") == "approved-relationship"
+    ]
+
+
 def record(root=REPO_ROOT):
     rows = []
     source_revision = None
     for _path, localized in resources(root, "en-US"):
-        identity = localized["function_id"]
         for decision in localized.get("record_metadata", {}).get("editorial_decisions", []):
             if decision.get("kind") != "approved-relationship":
                 continue
             source_revision = source_revision or decision["source_commit"]
-            rows.append(
-                {
-                    "relationship_id": decision["relationship_id"],
-                    "source_id": identity,
-                    "related_id": decision["related_function_id"],
-                    "relationship_type": decision["relationship_type"],
-                    "dependency": decision["dependency"],
-                    "reciprocal_approved": decision["reciprocal_approved"],
-                    "decision_source": decision["decision_source"],
-                    "source_row_sha256": decision["source_row_sha256"],
-                }
-            )
+        rows.extend(_decisions(localized))
     return {
         "id": ID,
         "source_commit": source_revision,
@@ -38,16 +49,13 @@ def record(root=REPO_ROOT):
     }
 
 
-def relationships(owner, *, root=REPO_ROOT):
+def relationships(owner, *, root=REPO_ROOT, snapshot=None):
     """Expose only reviewed relationships whose explanation is in the owner resource."""
-    data = record(root)
-    decisions = [row for row in data["decisions"] if row["source_id"] == owner.id]
-    resource = next(
-        (data for _path, data in resources(root, "en-US") if data["function_id"] == owner.id),
-        None,
-    )
+    snapshot = resource_snapshot(root) if snapshot is None else snapshot
+    resource = snapshot.get(owner.id)
     if resource is None:
         raise OCFError("canonical relationship owner resource is missing: " + owner.id)
+    decisions = sorted(_decisions(resource), key=lambda row: row["relationship_id"])
     values = {
         (row["function_id"], relation_type): row
         for relation_type in ("related_functions", "complementary_functions")
@@ -78,13 +86,14 @@ def relationships(owner, *, root=REPO_ROOT):
 def verify(root=REPO_ROOT):
     records = {row.id: row for row in load_all_functions(root=root)}
     decision_data = record(root)
+    snapshot = resource_snapshot(root)
     errors = []
     for identity in sorted({row["source_id"] for row in decision_data["decisions"]}):
         owner = records.get(identity)
         if owner is None:
             errors.append("approved relationship owner is missing: " + identity)
             continue
-        projected = relationships(owner, root=root)
+        projected = relationships(owner, root=root, snapshot=snapshot)
         approved_related = {
             row["related_id"] for row in projected if row["relationship_type"] == "related"
         }
