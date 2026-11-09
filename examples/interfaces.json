@@ -733,7 +733,7 @@
         "audio",
         "render-many"
       ],
-      "usage": "usage: ocf audio render-many [-h] [--all] [--locale LOCALE] --voice VOICE\n                             [--pacing {normal,relaxed,sleep}] [--rate RATE]\n                             [--workers WORKERS] [--dsp-profile DSP_PROFILE]\n                             [--dry-run] [--resume] [--force]\n                             [--fresh-synthesis]\n                             [--speech-cache {auto,off,refresh,require-hit}]\n                             [function_ids ...]",
+      "usage": "usage: ocf audio render-many [-h] [--all] [--locale LOCALE] --voice VOICE\n                             [--pacing {normal,relaxed,sleep}] [--rate RATE]\n                             [--workers WORKERS] [--dsp-profile DSP_PROFILE]\n                             [--overrides OVERRIDES]\n                             [--mix-profile MIX_PROFILE] [--dry-run]\n                             [--resume] [--force] [--fresh-synthesis]\n                             [--speech-cache {auto,off,refresh,require-hit}]\n                             [function_ids ...]",
       "verification": "parser-only; placeholders are not dispatched"
     },
     {
@@ -2224,11 +2224,11 @@
     "schemas/narration-package.schema.json": "8a9e55379eec1481cdde5fbfa55b91af471dc45fe0ae30c64da36ab5d9b1a15d",
     "schemas/narration-sources.schema.json": "5c084f128351d6a2a879b5a971007cbc9efe3fb269deb3eeb12832895e729c3e",
     "schemas/narration-stem.schema.json": "6e377d585c16ed0c77178862a99f6de5be75786183cef36361ed4e717faa1efd",
-    "schemas/private-session.schema.json": "8be1f81c1236e15cf4e18079186902d76907cf05431fece8a3c4e4c81871ec1e",
+    "schemas/private-session.schema.json": "b897511ef47e30d1a8b1a9885b6ac9ab60961801cdb8d6371f8dd4af659f6b8d",
     "schemas/proposal.schema.json": "110b6780ef9fda7154fcd5358c4502ea589c6a26356afd24da5668d4be2482a0",
     "schemas/recording-processing.schema.json": "7062e488510f3703db3392200d8a9f5ace7500dd41eb01496f3d5dad8a17ceec",
     "schemas/semantic-dsp-profile.schema.json": "2b02bb6c1e577bd6ccd2cfe4f429fe43408efd0c7717ea3d1e896f4cb4cdfe79",
-    "schemas/session-overrides.schema.json": "5b4ec8159917e7103e1a218b2a78d0047fc82400440c65fa83096fdd86a39bd3",
+    "schemas/session-overrides.schema.json": "cf4291d252d07931ec9822e8315c0ac84bbc05bbe2c3f68006626aebe9479413",
     "schemas/session-pacing.schema.json": "0f364e26798ad8c37d5d25b5bf36679ed19b121186450ca5e8349325b67f9388",
     "schemas/session-plan.schema.json": "824a833d7751536b8a1ded3784d6268847bc3bc101b06d8b649b25c163487805",
     "schemas/session-stage.schema.json": "fcdccd53577a0df9f444439199332bcc097cd9083a30c2b583f23811e48f2981",
@@ -2239,7 +2239,7 @@
     "schemas/voice-dataset.schema.json": "0307327f3f52eeaaaed71abaa6d1950c0b665fc677b43547e2452e9c31000ed8",
     "schemas/voice-profile.schema.json": "bff61d964e36686802129b9631fed45c3baa5262d5359d330a0b3f59763ee40e",
     "scripts/ocf_tools/agent_api.py": "9d6d5453ff75639b6ca8c0ea8977593f393fa5f3674eb070fb94665e0631d706",
-    "scripts/ocf_tools/cli.py": "970dad00c957b3ce8e9c4750fd104bd08b0acd030d41199f8e021b94a90d072f",
+    "scripts/ocf_tools/cli.py": "7cf4a0f6b616d08ba9f7802d171b4dc0f3bff799d4c820fb45463ae45c1ac1c1",
     "scripts/ocf_tools/lsp_server.py": "a753b91b1b73609ecd6886470a037a9bbf1259e2a77f08203546e55ef4cbae09",
     "scripts/ocf_tools/mcp_server.py": "d8641d4160888abbe7152fca2117623de4dfb061793b95b161dbfb4534a2be54",
     "scripts/ocf_tools/narration_cli.py": "5f13a05251816e5d3b80419d9ed67184b5c6c48722175700bbc88ec2b429bd41",

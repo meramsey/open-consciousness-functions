@@ -107,21 +107,31 @@ def render(
     *,
     output,
     voice,
-    mix_profile,
+    mix_profile=None,
     locale="en-US",
     enabled_stages=(),
     affirmation=None,
     dry_run=False,
     native_speed=False,
     pacing_profile=None,
+    backend_defaults=True,
 ):
     """Render using existing OCF APIs; retain failed staging and refuse overwrite."""
+    from . import backend_defaults as defaults
     from .complete_session import _probe_audio, _stereo_metrics, _verify_decode
     from .dev_jobs import lock
     from .listener_text import write_listener_text
     from .paths import REPO_ROOT, workspace_temp_directory
+    from .voice import resolve_backend
     from .voice_packs import persistent_worker
 
+    resolved_voice = resolve_backend(voice, locale=locale)
+    dsp = semantic_dsp.load_profile(load_template(TEMPLATE)["dsp_profile"])
+    use_defaults = defaults.eligible(resolved_voice.get("name"), dsp, enabled=backend_defaults)
+    if use_defaults and pacing_profile is None:
+        pacing_profile = defaults.pacing_id(learning=True)
+    if use_defaults and mix_profile is None:
+        mix_profile = defaults.mix_profile()
     planned = plan(
         locale=locale,
         enabled_stages=enabled_stages,
@@ -129,15 +139,14 @@ def render(
         native_speed=native_speed,
         pacing_profile=pacing_profile,
     )
-    profile = load_mix_profile(mix_profile)
+    profile = load_mix_profile({} if mix_profile is None else mix_profile)
     target = Path(output).expanduser().resolve()
     from .speech_cache import voice_identity
-    from .voice import resolve_backend
 
     identity = {
         "plan": planned,
         "mix_profile": profile,
-        "voice": voice_identity(resolve_backend(voice, locale=locale)),
+        "voice": voice_identity(resolved_voice),
         "dsp_dependencies": semantic_dsp.dependency_identity(planned["dsp"]),
         "source_sha256": {
             str(path.relative_to(REPO_ROOT)): sha256_of_file(path)
@@ -150,7 +159,12 @@ def render(
     }
     identity_hash = hashlib.sha256(json.dumps(identity, sort_keys=True).encode()).hexdigest()
     if dry_run:
-        return {"dry_run": True, "identity_sha256": identity_hash, **planned}
+        return {
+            "dry_run": True,
+            "identity_sha256": identity_hash,
+            "mix_profile": profile,
+            **planned,
+        }
     lock_id = hashlib.sha256(str(target).encode()).hexdigest()
     with lock("standalone-learning-" + lock_id, wait=False) as acquired:
         if not acquired or target.exists() or target.is_symlink():
