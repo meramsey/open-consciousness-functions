@@ -2,7 +2,7 @@
 
 OCF can generate a self-contained, offline guide collection without including
 private reference audio or source recordings. The generator derives the 58
-function entries from the canonical registry and uses the existing approved
+function entries from the canonical per-locale function resources and uses the existing approved
 guide/content services.
 
 From the repository root:
@@ -16,7 +16,7 @@ PYTHONPATH=scripts .venv/bin/python -m ocf_tools.listening_guides \
 The output contains:
 
 - `index.html`: searchable offline guide browser with embedded CSS/JavaScript,
-  grouped by canonical function domain in stable registry order.
+  grouped by canonical function domain in stable catalog order.
 - `index.md` and `index.pdf`: matching category-grouped, concise directories with
   verified handbook page references and clickable page links.
 - `listening-guide.{md,html,pdf}`: general listening guidance.
@@ -25,7 +25,12 @@ The output contains:
   cross-guide navigation. Pagination is resolved by ReportLab's multi-pass layout
   and checked against the finished PDF using the optional guide dependency pypdf.
 - `functions/<FUNCTION-ID>.{md,html,pdf}`: one guide in three formats for each
-  implemented function.
+  catalog function, with its implementation and source status retained.
+- `cue-reference`, `relationship-map`, `complementary-map`, `learning-order` and
+  `tag-discovery` in Markdown, HTML and PDF: current cues, reviewed directional
+  links, separately labeled draft suggestions and browsing references.
+- Build provenance, integrity checksums and a developer audit, kept separate from
+  reader-facing practice instructions.
 
 The output directory must be new or empty; generation refuses to overwrite an
 existing collection. The ZIP is optional and is suitable for relocation or
@@ -54,3 +59,18 @@ certify PDF/UA accessibility or replace visual review.
 The standalone PDF is reader-facing documentation; it does not grant human
 listening approval, publication authorization, or rights clearance for any
 audio edition.
+
+## How relationships reach every format
+
+The owning function YAML supplies `tags`, `common_uses` and `relationships`.
+Reviewed links require the matching embedded approval record; draft proposals
+retain their status. The generator uses the same Markdown content for HTML and
+PDF, and the portable browser searches the canonical tags and common uses.
+A historical companion suggestion does not by itself approve an OCF practice
+sequence. The learning-order reference is a browsing directory, not a routine
+or activation chain.
+
+Keep a fresh versioned collection after metadata or guide changes. Compare
+individual function links, the relationship map and handbook destinations when
+reviewing an edition; a successful build alone does not establish that the
+catalog contains every relationship in an external reference.

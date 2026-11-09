@@ -1,38 +1,47 @@
-<p align="center">
-  <img src="brand/versions/0.3.0/presentation/readme-hero.png" alt="Open Consciousness Functions — luminous Cosmic Path and Resonance Rings in a deep-blue star field" width="100%">
-</p>
-
 # Open Consciousness Functions
 
-**Intentional practice. Declarative sessions. Local audio.**
+**Choose a practice. Make it your own. Listen locally.**
 
-[![Validation](https://github.com/meramsey/open-consciousness-functions/actions/workflows/validate.yml/badge.svg)](https://github.com/meramsey/open-consciousness-functions/actions/workflows/validate.yml)
-[![Tests](https://github.com/meramsey/open-consciousness-functions/actions/workflows/test.yml/badge.svg)](https://github.com/meramsey/open-consciousness-functions/actions/workflows/test.yml)
-[![Lint](https://github.com/meramsey/open-consciousness-functions/actions/workflows/lint.yml/badge.svg)](https://github.com/meramsey/open-consciousness-functions/actions/workflows/lint.yml)
-[![Generated files](https://github.com/meramsey/open-consciousness-functions/actions/workflows/generated-index-check.yml/badge.svg)](https://github.com/meramsey/open-consciousness-functions/actions/workflows/generated-index-check.yml)
+OCF helps you create and use guided audio practices for intentions such as
+relaxation, attention, learning and sleep. Each *function* is a named practice
+with its own description, cues and documented instructions. Choose a function,
+read its guide, then use an available listening edition or create one with a
+voice you choose—including a private reference-based version of your own voice.
 
-Python 3.11+ · Linux · macOS · Windows · Apache-2.0
+You control the voice, optional session choices and listening experience. Keep
+your recordings, voice references and review notes on your own computer. The
+catalog includes both available and planned work; a listed function is not
+necessarily a finished recording or a promise of an effect.
 
-OCF is an open-source toolkit for building consciousness-oriented, intention-driven
-practices as versioned functions and measured audio sessions. Author constructive
-narration, choose a voice or your own recordings, compose a continuous stereo
-background, and inspect the timing and provenance behind every result.
+[Quickstart](docs/QUICKSTART.md) · [Use your own voice](docs/VOICE_PACKS.md) ·
+[Browse functions](FUNCTION_INDEX.md) · [Listening guide](docs/LISTENING_GUIDE.md)
 
-Canonical YAML and schemas define the practice. Python tools validate and execute
-it. Everything from planning to auditions can run locally; paid services and
-provider credentials are not required.
-
-Function YAML owns English titles and complete spoken cue identities. Narration
-can use [strict localized cue references](docs/SYMBOLIC_CUES.md), with a
-no-synthesis preview: `python scripts/ocf.py functions preview OCF-SLP-005 --locale en-US`.
-Existing approved speech resolves byte-for-byte unchanged; remaining naming
-decisions are reviewed one function at a time.
-
-[Get started](#get-started) · [Function catalog](#explore-the-functions) ·
-[Audio workflows](#from-intention-to-audio) · [Artwork](#artwork-with-a-cosmic-identity) ·
-[Agent tools](#local-agent-workflows) · [Documentation](docs/README.md)
+<p align="center">
+  <img src="brand/versions/0.3.0/presentation/readme-hero.png" alt="Open Consciousness Functions — Cosmic Path and Resonance Rings" width="100%">
+</p>
 
 ## Get started
+
+1. **Choose one intention.** Browse the function catalog and read that function's
+   instructions, cues and precautions. Tags help discovery; optional companion
+   links help you compare separate practices.
+2. **Choose how to listen.** Open a completed edition in your private listening
+   portal or listener package. To create audio, choose an installed narrator,
+   your own authorized voice reference, or existing recordings.
+3. **Preview, then create.** Inspect the session plan and required tools before
+   rendering. Planning does not need an audio engine. Rendering writes a new
+   edition, leaving earlier editions available for comparison.
+4. **Listen and review.** Start at a comfortable volume, use the matching
+   transcript, and save your notes. Technical verification and your listening
+   judgment are separate.
+
+Follow the [step-by-step quickstart](docs/QUICKSTART.md) for these paths. If you
+already have a listener package, open its `guides/index.html`; a guide can be
+included without a matching recording. A private listening portal lists only
+completed, verified editions.
+
+<details>
+<summary>Install from source and try your first plan</summary>
 
 Clone this repository, install Git LFS for its supplied visual assets, and run
 commands from the checkout root. Use Python 3.11 or newer.
@@ -78,9 +87,21 @@ python scripts/ocf.py audio eligibility --all --locale en-US
 A plan is a declaration, not a render. It reports the bound narration,
 template, pacing and background policy without synthesizing speech.
 
+</details>
+
+<details>
+<summary>Advanced workflows and developer reference</summary>
+
+Python 3.11+ · Linux · macOS · Windows · Apache-2.0
+
+[![Validation](https://github.com/meramsey/open-consciousness-functions/actions/workflows/validate.yml/badge.svg)](https://github.com/meramsey/open-consciousness-functions/actions/workflows/validate.yml)
+[![Tests](https://github.com/meramsey/open-consciousness-functions/actions/workflows/test.yml/badge.svg)](https://github.com/meramsey/open-consciousness-functions/actions/workflows/test.yml)
+[![Lint](https://github.com/meramsey/open-consciousness-functions/actions/workflows/lint.yml/badge.svg)](https://github.com/meramsey/open-consciousness-functions/actions/workflows/lint.yml)
+[![Generated files](https://github.com/meramsey/open-consciousness-functions/actions/workflows/generated-index-check.yml/badge.svg)](https://github.com/meramsey/open-consciousness-functions/actions/workflows/generated-index-check.yml)
+
 ## Explore the functions
 
-The current catalog contains **58 OCF function records**, **83 structured
+The current catalog contains **58 OCF function records**, **102 structured
 command records** and **58 generated English session plans**. It comprises 55
 legacy-mapped functions (39 with historical source available and 16 without)
 plus 3 OCF-original functions. Historical source availability is not OCF
@@ -203,6 +224,8 @@ describe bounded jobs, targeted validation and protected-data rules.
   deliberate packaging. Successful encoding is not publication approval.
 - **Editorial review?** Read [editorial review boundaries](docs/EDITORIAL_REVIEW.md)
   and the generated [current title/cue view](docs/releases/OCF_TITLE_CUE_CURRENT.md).
+
+</details>
 
 OCF is independent and unaffiliated with The Monroe Institute, Hemi-Sync or
 related entities. Historical source recordings and private voices/models are

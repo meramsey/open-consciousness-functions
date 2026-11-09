@@ -17,31 +17,30 @@ timeline are never duplicated per language.
 
 ## Explicit localized spoken cues
 
-Source-English `commands[].spoken` in function YAML is authoritative. The existing
-en-US cue resources are checked compatibility copies. Localized languages retain
-their own reviewed realizations. [Symbolic cue templates](SYMBOLIC_CUES.md) resolve
-through the same LocaleCatalog before segmentation and audio/source selection;
-raw templates and effective speech have separate hashes.
+Each canonical `locales/<tag>/OCF-*.yaml` function owns its primary
+`activation.spoken_cue` / `activation.display_cue` and secondary command cue
+values. The internal `commands[].spoken` view is derived compatibility data,
+not a separate editable function definition. LocaleCatalog projects stable
+cue keys from the owning resource; do not maintain a second narration resource
+for the same cue.
 
-The approved English primary cues are explicitly bound through each stable
-command's optional `localization.spoken_cue_key`. The separate
-`localization.display_cue_key` resolves the exact display spelling, while
-`label_key` continues to describe the command role. No cue is constructed from
-a translated title or role label. Existing unbound records remain compatible
-and report `unbound`; they are not silently given a spoken-cue approval.
+[Symbolic cue templates](SYMBOLIC_CUES.md) resolve through LocaleCatalog before
+segmentation and audio/source selection. Raw templates and effective speech
+have separate hashes. No cue is constructed from a translated title or role
+label. Missing reviewed speech is reported rather than fabricated.
 
-The complete narration resource is registered in the en-US manifest:
+For example, these fields belong inside a complete canonical function resource
+(the excerpt is not a standalone resource):
 
 ```yaml
-schema_version: '1.0'
-locale: en-US
-domain: narration
-entries:
-  commands.ocf-cmd-exp-001-primary.spoken-cue:
+activation:
+  command_id: OCF-CMD-EXP-001-PRIMARY
+  display_cue:
+    text: PLUS-MANIFEST
+  spoken_cue:
     text: Plus Manifest
     status: reviewed
     version: 1.0.0
-    notes: English terminology approved in OCF-EDITORIAL-TITLE-CUES-001; listening and release approval remain separate.
 ```
 
 `commands.localized_cue` uses the existing `LocaleCatalog`: UI display fallback

@@ -3,6 +3,8 @@
 Start with [the project README](../README.md). Pick one workflow rather than
 loading the entire documentation tree:
 
+- Start as a listener or create your first session: [quickstart](QUICKSTART.md).
+- Make a private reference-based voice: [voice pack walkthrough](VOICE_PACKS.md).
 - Author a function: [lifecycle](FUNCTION_LIFECYCLE.md), then
   [source-first narration](SOURCE_FIRST_AUTHORING.md), within the
   [per-locale function authority](PER_LOCALE_FUNCTION_AUTHORITY.md) model.

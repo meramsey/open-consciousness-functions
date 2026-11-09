@@ -1,9 +1,14 @@
 # Structured Function Commands — Compatibility Design
 
-Status: implementation design for Milestone 2. This document records the
-architecture and migration boundaries before schema or runtime changes.
+Status: historical Milestone 2 compatibility design. The proposed `commands`
+array, field counts and migration steps below describe that earlier model, not
+today's authoring format. Current function identity, primary/secondary commands,
+spoken cues and narration live together in each canonical locale resource; see
+[per-locale function authority](PER_LOCALE_FUNCTION_AUTHORITY.md) and
+[localized cue authoring](LOCALIZATION.md). Internal compatibility projections
+do not create a second editable definition.
 
-## Current authoritative data
+## Historical model and compatibility context
 
 Current source-English speech is explicit in each command's `spoken` and
 `spoken_review`; missing/unresolved wording is not inferred from display cues.

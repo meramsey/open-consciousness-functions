@@ -1,8 +1,9 @@
 # Voice capabilities and portable profiles
 
 OCF supports Piper/eSpeak and an optional local Chatterbox Nano reference-audio
-adapter. Chatterbox Nano runs in a separate project-local Python environment;
-Piper's existing environment/default is unchanged. F5-TTS remains unsupported.
+adapter. Chatterbox Nano can run in a separately provisioned Python environment selected
+by `OCF_CHATTERBOX_PYTHON`; a durable user-data directory keeps it independent of
+checkout and workspace cleanup. Piper's existing environment/default is unchanged. F5-TTS remains unsupported.
 Installing a package or importing profile metadata does not itself verify
 inference or create a personalized voice.
 
@@ -47,8 +48,11 @@ metadata and a local consent reference; reattach the reference on import with
 directory. A consent declaration is not independent authorization verification,
 and portable metadata grants no redistribution rights.
 
-Private profiles/models use `.ocf-work/cache/voices/{profiles,models}/`;
-`OCF_VOICE_ASSETS` overrides the asset root. Packs use `voice prepare-reference`,
+Without overrides, private profiles/models use the disposable
+`.ocf-work/cache/voices/{profiles,models}/` cache. Set `OCF_VOICE_PROFILE_DIR` and
+`OCF_VOICE_ASSETS` to durable directories before creating reusable packs; select
+durable model storage with `HF_HOME` / `HF_HUB_CACHE`. See
+[private storage and runtime provisioning](PRIVATE_LISTENING_DELIVERY.md#durable-private-storage). Packs use `voice prepare-reference`,
 `voice create-pack`, `voice inspect-pack`, `voice export-profile` and
 `voice import-profile`; see [private packs](VOICE_PACKS.md). Test new text with
 `voice audition-pack ID --text ...`, then route a single OCF voice smoke through

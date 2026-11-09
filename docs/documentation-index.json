@@ -244,7 +244,6 @@
         "doctor",
         "functions describe",
         "functions list",
-        "functions preview",
         "mcp",
         "narration sources",
         "voice capabilities",
@@ -252,7 +251,7 @@
         "voice doctor"
       ],
       "related_schemas": [],
-      "sha256": "80f1cf56fceba30eefdc11050f69eb31b723c37fb7192773f7f1a605ba049ca9",
+      "sha256": "5ba1df85db6acb9838deeba76b170d767e9ae1ba241f16378ac9c565172c6ff5",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -892,7 +891,7 @@
         "schemas/function.schema.json",
         "schemas/localized-function.schema.json"
       ],
-      "sha256": "d7f0110a8c45a8aa7fac089dc8bf8b2f617129b3924bd969864dfcc71463c3bb",
+      "sha256": "0239035b3413fddccee949cd80781e0036271c1ef32ebcc7bbb293a75b402b73",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1188,7 +1187,7 @@
       "purpose": "Generating listening and function guides",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "8138286c89a1b424f0689db5ba4531a7c2daf1f86f3161f060d1c5fffe1e8676",
+      "sha256": "a6e9f643a08bc36a5d19b1d3ae9224c8390c7098a2484506a902a6f18bc65795",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1336,7 +1335,7 @@
       "purpose": "Welcome to OCF",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "f26250c423e00cd25f2f8d11f3af278cabed8c0d3f375631fd410ebb6e10ec24",
+      "sha256": "f7ee307e611f50293e20964166757176bb20ec16bcf18949b43ae6006e29d1b6",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1368,7 +1367,7 @@
         "voice render"
       ],
       "related_schemas": [],
-      "sha256": "2e5bb323bed2a5904a82ebb3196a89eddc023c98256a0453fe921e05f8aaf896",
+      "sha256": "37df8a0a2aa2072234196530d46931d950b548355b18b51451539b1dd97c6b6f",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1406,7 +1405,7 @@
       "purpose": "Persistent local auditions",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "5eedb671c3de56ae80ceb422fab13c27662379c87a13c4a6adfcc0edb5af4bea",
+      "sha256": "8eb1dd5f8529f91fa437d2692aefefed8643ea5be19b94dc91cda9dc44ac4883",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1595,7 +1594,7 @@
       "purpose": "Portable OCF guide collection",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "7c2a2879ddcf76f9327a64570c1a13f604d4d042342398671d12e32f4d61ad79",
+      "sha256": "7df31c1c693da4df5f058e34baf77b6a291c999a3856202304b8e2cc4c99431a",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1747,12 +1746,40 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "docs/QUICKSTART.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "OCF quickstart",
+      "related_commands": [
+        "audio eligibility",
+        "audio plan",
+        "audio render",
+        "doctor",
+        "functions describe",
+        "functions list",
+        "voice capabilities",
+        "voice doctor",
+        "voice list"
+      ],
+      "related_schemas": [],
+      "sha256": "0e2d0dd2ee6deac3b4bb83176399c546323b181ad74cdd2d9ca22eed874f337d",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "docs/README.md",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "Documentation map",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "53a0d7809f14f59604b707106ec86adf727cba7ca228a4df0d470e1b62d358a8",
+      "sha256": "74fabfdb50612450cb8a556c03fcd7bcbe2b5865a4bb325de75453fcb7a6f3e2",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1960,7 +1987,7 @@
         "voice smoke"
       ],
       "related_schemas": [],
-      "sha256": "a4a2e208e01b438d5b88d5bb02d217a4f5c0dec1d22b9a2203ddd39f98284262",
+      "sha256": "62db21d829eb283a91a583e26ac48765b75fad4fd0cbd6b3dd7118934730bb22",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -2087,7 +2114,7 @@
       "purpose": "Unit coverage policy and current gap",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "ffb5025f5d8038bb399c5dd805fd45f1c7912928db85920553ac19092d961f88",
+      "sha256": "6ef6cebf01a3bf0f534eba3a02d695bfd0afc54fdf6c8fc22cc86fc9f79a8a8c",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -2228,7 +2255,7 @@
         "voice render"
       ],
       "related_schemas": [],
-      "sha256": "7c931d3d5663c05a6952ce2d90e9761c177183cf8cc6069456d09e5296642ccd",
+      "sha256": "fcaaed29893014cd58173a4d87bc0400fcf0ddc3fe70626565d4327ddcb0b623",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -2252,7 +2279,7 @@
       "related_schemas": [
         "schemas/narration-package.schema.json"
       ],
-      "sha256": "0537c282f7dd8e461d7572d129e5281e1cac9c94c3f3b2534b12c3f92ef1f3c6",
+      "sha256": "7970ab28daa665afc181a586e2f53174d148d671677890bb270e5cbb541c9794",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -2274,7 +2301,7 @@
         "voice import-profile"
       ],
       "related_schemas": [],
-      "sha256": "393df74160dd7ad5ac6183652543f1bb9eb8c4110fc7fa7e94fc18bf8583ce50",
+      "sha256": "2849aac22ce1a0c2583568478767fe529d730c7547985295e6a77409058be993",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -2289,20 +2316,20 @@
       "missing_information": [],
       "path": "docs/VOICE_PACKS.md",
       "proposed_correction": "use docs/README.md for authoritative navigation",
-      "purpose": "Private zero-shot voice packs (MVP)",
+      "purpose": "Use your own voice with a private reference pack",
       "related_commands": [
         "audio render",
         "audio render-many",
         "voice audition-pack",
+        "voice capabilities",
         "voice create-pack",
         "voice export-profile",
         "voice import-profile",
         "voice inspect-pack",
-        "voice prepare-reference",
-        "workspace clean"
+        "voice prepare-reference"
       ],
       "related_schemas": [],
-      "sha256": "3c56b6e91e02791b3674e9400e3db60f006241b56d6a6ac97d5600b0e5a18a24",
+      "sha256": "964dbd63ec33bd6435522dacc5a696980cea2efaee00309a9404d282500952ca",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -2362,7 +2389,7 @@
         "voice validate-profile"
       ],
       "related_schemas": [],
-      "sha256": "a3011bc02b1e486b657748208b2067a2ece5c56c58a5355c4e0d6b60a29b1516",
+      "sha256": "c558aec70898b044be79b43b88e4ed8e4220048e6ec23b4bfc0f14be6ffcf038",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4605,5 +4632,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 214
+  "total": 215
 }
