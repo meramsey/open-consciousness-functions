@@ -97,25 +97,15 @@ common_uses:
 - text: Clarifying daily intentions without expecting control over other people or external events.
   status: draft
 relationships:
-  related_functions: []
-  complementary_functions: []
-  proposals:
+  related_functions:
   - function_id: OCF-EXP-001
-    relationship_type: related
+    description_key: relationships.rel-prf005-exp001.description
     description:
       text: Compare a day-oriented intention with selecting a particular future condition and completion
         time; neither guarantees external events.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-PRF-005
-      field: description
-      sha256: 886715fb4fe76c91f0300085673f0402228b0263c129b0bc2e52633de4dafcbc
-    - function_id: OCF-EXP-001
-      field: description
-      sha256: 96441a2896d4d0275209296acfa7772b18459b57d672c7a0d5a3932475680e74
+      status: reviewed
+      version: 1.0.0
+  complementary_functions: []
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -284,15 +274,15 @@ editorial:
     recommended_primary_cue: PLUS-THIS DAY
     prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
       association plan; approve controls together. No narration replacement text selected.
-    contextual_review: Each morning before activities, picture/express chosen internal states AND experiences/conditions/outcomes,
-      inhale/hold/cue/exhale. Same-day manifestation, not merely setting mood; renewed daily rather than
-      indefinite future programming.
+    contextual_review: Each morning before activities, picture/express chosen internal states AND
+      experiences/conditions/outcomes, inhale/hold/cue/exhale. Same-day manifestation, not merely
+      setting mood; renewed daily rather than indefinite future programming.
     pair_reason: A short personal temporal cue is already meaningful for the morning/day-pattern practice.
       A verb-first rewrite is optional and not justified solely by stylistic uniformity.
-    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
-      outcome or contextual mode can reinforce an umbrella title without copying it. A short personal
-      temporal cue is already meaningful for the morning/day-pattern practice. A verb-first rewrite is
-      optional and not justified solely by stylistic uniformity.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. A short
+      personal temporal cue is already meaningful for the morning/day-pattern practice. A verb-first
+      rewrite is optional and not justified solely by stylistic uniformity.
     teaching_disposition: Preserve complete taught cue; metadata/title alignment only
     documentary_intent: Brochure describes morning self-programming of desired physical/mental/emotional
       daily patterns, emphasizing clear verbal/visual desire expression.
@@ -300,15 +290,15 @@ editorial:
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: da258856804a482c086e13c028a773629a3095900be7b3fa18c3e4ae91aba1c5
+  contract_sha256: fed5cda2b2905b03b82aaf8b37a3c583580aca798a91bc5b486c8075e0a3957e
 record_metadata:
   legacy:
     command_ids:
@@ -361,6 +351,27 @@ record_metadata:
       purpose_key: functions.ocf-prf-005.purpose
       explanation_key: commands.ocf-cmd-prf-005-primary.explanation
   predecessor_resource_sha256: 014ce0e90f86f0b18f18e892d0740e6de038ac4b4e25e554f659ae50977f327a
+  editorial_decisions:
+  - id: REL-PRF005-EXP001
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: fecc91f05198696f3311482a1f3f7313a20b7ff8fba235f2dec9de9bad90555c
+    current_values_sha256: 47350699787775fc1bae2b2a2826505fc800f0dda57e8c9cdd378a48c0e2ab76
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-PRF-005", "sha256": "886715fb4fe76c91f0300085673f0402228b0263c129b0bc2e52633de4dafcbc"},
+      {"field": "description", "function_id": "OCF-EXP-001", "sha256": "96441a2896d4d0275209296acfa7772b18459b57d672c7a0d5a3932475680e74"}]'
+    relationship_id: REL-PRF005-EXP001
+    related_function_id: OCF-EXP-001
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -565,8 +576,8 @@ content:
       source_sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: unverified
       completeness: pending-source-review
@@ -608,8 +619,8 @@ content:
       - inferred-opportunity-recognition
       family: daily-pattern-intention
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -619,8 +630,8 @@ content:
             source_sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
             start_line: 55
           status: inferred
-          summary: Known command/purpose metadata is paired in the mockup with a proposed internal cue/breath
-            procedure; the exact historical association wording/method is unknown.
+          summary: Known command/purpose metadata is paired in the mockup with a proposed internal
+            cue/breath procedure; the exact historical association wording/method is unknown.
         closer:
           locators:
           - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
@@ -629,8 +640,8 @@ content:
             source_sha256: c62e6c9ac298d7094182fe9093b5765768d5c0f923b4acb858355fc5c4352101
             start_line: 124
           status: inferred
-          summary: Historical closer unknown; annotated mockup borrows remember/use, access close and
-            return shell from related transcripts.
+          summary: Historical closer unknown; annotated mockup borrows remember/use, access close
+            and return shell from related transcripts.
         consolidation:
           locators:
           - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
@@ -666,8 +677,8 @@ content:
             page: 2
             source_sha256: fae7c06e728b1cc98472562288b227d841fc6005b2a6e1d8f020470a947e5031
           status: inferred
-          summary: First morning activity and clear expression are catalogue assertions; detailed visualization,
-            flexibility and recognition procedure are reconstructed.
+          summary: First morning activity and clear expression are catalogue assertions; detailed
+            visualization, flexibility and recognition procedure are reconstructed.
         handoff:
           locators:
           - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
@@ -691,8 +702,8 @@ content:
             page: 2
             source_sha256: fae7c06e728b1cc98472562288b227d841fc6005b2a6e1d8f020470a947e5031
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
@@ -744,12 +755,12 @@ content:
             page: 2
             source_sha256: fae7c06e728b1cc98472562288b227d841fc6005b2a6e1d8f020470a947e5031
           status: inferred
-          summary: Complete available reconstructed_mockup text inspected; shared representations are
-            not independent corroboration. Source accuracy/authentication remains unresolved. Annotated
-            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
-            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
-            historical operations remain unknown. Both brochure pages inspected separately; catalogue
-            assertions are documentary evidence, not recovered audio instructions.
+          summary: Complete available reconstructed_mockup text inspected; shared representations
+            are not independent corroboration. Source accuracy/authentication remains unresolved.
+            Annotated VERIFIED labels are reconstruction-author assertions, not independent authentication.
+            Catalogue purpose/command/use limits and proposed mockup operations are separate evidence
+            axes. Missing historical operations remain unknown. Both brochure pages inspected separately;
+            catalogue assertions are documentary evidence, not recovered audio instructions.
         purpose:
           locators:
           - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
@@ -764,8 +775,8 @@ content:
             page: 2
             source_sha256: fae7c06e728b1cc98472562288b227d841fc6005b2a6e1d8f020470a947e5031
           status: supported
-          summary: Brochure describes morning self-programming of desired physical/mental/emotional daily
-            patterns, emphasizing clear verbal/visual desire expression.
+          summary: Brochure describes morning self-programming of desired physical/mental/emotional
+            daily patterns, emphasizing clear verbal/visual desire expression.
         rehearsal:
           locators:
           - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
@@ -775,9 +786,9 @@ content:
             start_line: 1
           status: unknown
           summary: Investigated the full available source; this operation is not established. Annotated
-            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
-            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
-            historical operations remain unknown.
+            VERIFIED labels are reconstruction-author assertions, not independent authentication.
+            Catalogue purpose/command/use limits and proposed mockup operations are separate evidence
+            axes. Missing historical operations remain unknown.
         safety_claims:
           locators:
           - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
@@ -803,7 +814,8 @@ content:
             start_line: 1
           status: inferred
           summary: Historical target recording's exact state sequence remains unknown. Mockup imports
-            ten/eleven/ten/sleep/waking grammar from surviving Hearing/Seeing, not recovered target audio.
+            ten/eleven/ten/sleep/waking grammar from surviving Hearing/Seeing, not recovered target
+            audio.
         suspend_cancel_reset:
           locators:
           - content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
@@ -813,9 +825,9 @@ content:
             start_line: 1
           status: unknown
           summary: Investigated the full available source; this operation is not established. Annotated
-            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
-            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
-            historical operations remain unknown.
+            VERIFIED labels are reconstruction-author assertions, not independent authentication.
+            Catalogue purpose/command/use limits and proposed mockup operations are separate evidence
+            axes. Missing historical operations remain unknown.
       source_extent:
         content_group_sha256: 91e439da18ab2cc91361691cc2925b509f46fe4b2554da6af75091ab84b0ee65
         end_line: 127
@@ -900,8 +912,9 @@ content:
     - Annotated VERIFIED labels are reconstruction-author assertions, not independent authentication.
       Catalogue purpose/command/use limits and proposed mockup operations are separate evidence axes.
       Missing historical operations remain unknown.
-    - Original OCF design is still required; do not convert mockup expression by synonyms or adopt unsupported
-      mechanisms. Any safer/material reframing needs explicit human review, not historical promotion.
+    - Original OCF design is still required; do not convert mockup expression by synonyms or adopt
+      unsupported mechanisms. Any safer/material reframing needs explicit human review, not historical
+      promotion.
     states:
       preferred: []
       required: []

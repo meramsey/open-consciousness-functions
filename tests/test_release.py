@@ -452,8 +452,8 @@ def test_package_publishes_complete_verified_release_and_blocks_collision(
     assert result["manifest"]["title_resolution"]["fallback"] is False
     audio_names = [name for name in result["artifacts"] if name.endswith((".flac", ".mp3"))]
     assert audio_names == [
-        "OCF-BOD-010 - Nutricia - en-US - fixture-voice.flac",
-        "OCF-BOD-010 - Nutricia - en-US - fixture-voice.mp3",
+        "OCF-BOD-010 - Nutricia - en-US - fixture-voice - v0.1.0.flac",
+        "OCF-BOD-010 - Nutricia - en-US - fixture-voice - v0.1.0.mp3",
     ]
     transcript = next(release_dir.glob("*.txt"))
     assert transcript.read_text(encoding="utf-8") == "First transformed text.\n\nSecond sentence.\n"
@@ -495,7 +495,11 @@ def test_package_publishes_complete_verified_release_and_blocks_collision(
     assert Path(replaced["release_directory"]) == release_dir
     assert len(previous) == 1 and (previous[0] / "manifest.json").is_file()
     late_root = tmp_path / "late"
-    late_dir = late_root / "en-US" / "OCF-BOD-010-Nutricia"
+    late_dir = Path(
+        rel.package_release(
+            "OCF-BOD-010", formats=["flac"], artwork=cover, output=late_root, dry_run=True
+        )["release_directory"]
+    )
 
     def racing_build(*args, **kwargs):
         result = fake_build(*args, **kwargs)
@@ -512,7 +516,8 @@ def test_package_publishes_complete_verified_release_and_blocks_collision(
 @pytest.mark.integration
 @pytest.mark.audio_integration
 @pytest.mark.external_tool
-def test_failed_manifest_validation_never_publishes_partial_release(tmp_path, monkeypatch):
+def test_failed_manifest_validation_never_publishes_partial_release(tmp_path_factory, monkeypatch):
+    tmp_path = tmp_path_factory.mktemp("failed-release")
     audio_manifest = {
         "id": "OCF-AUDIO-9910",
         "function_id": "OCF-BOD-010",

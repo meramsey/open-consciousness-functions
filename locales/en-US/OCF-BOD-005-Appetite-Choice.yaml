@@ -15,8 +15,8 @@ metadata_entries:
   functions.ocf-bod-005.lifecycle.scopes.capability.description:
     text: The ability to recognize unnecessary cravings and choose deliberately remains available.
   functions.ocf-bod-005.lifecycle.scopes.baseline.description:
-    text: Appetite awareness and deliberate eating choices persist while genuine nutritional needs and
-      freedom to eat remain intact.
+    text: Appetite awareness and deliberate eating choices persist while genuine nutritional needs
+      and freedom to eat remain intact.
   functions.ocf-bod-005.lifecycle.scopes.application.description:
     text: Conscious release of one selected unnecessary craving; not permanent hunger suppression.
 activation:
@@ -109,25 +109,15 @@ common_uses:
 - text: Practicing deliberate food choices while remaining responsive to hunger and nutritional needs.
   status: draft
 relationships:
-  related_functions: []
-  complementary_functions: []
-  proposals:
+  related_functions:
   - function_id: OCF-LIF-001
-    relationship_type: related
+    description_key: relationships.rel-bod005-lif001.description
     description:
       text: Compare deliberate eating choices that preserve nourishment needs with changing a selected
         unwanted habit; neither justifies ignoring hunger.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-BOD-005
-      field: description
-      sha256: 66ec6d5b0d7eaca812f487524dd3b4ee3e546456ef63785a84a45977a8615bd0
-    - function_id: OCF-LIF-001
-      field: description
-      sha256: b696385bce51f81503108a0c8b948eb5b0ff0765593b07dd1bf4e23248338ffe
+      status: reviewed
+      version: 1.0.0
+  complementary_functions: []
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -423,29 +413,29 @@ editorial:
       need and chosen eating. Pause, attend to craving, inhale/hold/cue/exhale. No independent appetite-increase
       mode is taught; do not split the two words into directions.
     pair_reason: The preserved main installation is incomplete. SATISFIED/SUPPLIED could encode different
-      appetite directions; do not invent a directional pair from the title alone. Separate appetite from
-      Nutricia's food-energy utilization intent.
-    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
-      outcome or contextual mode can reinforce an umbrella title without copying it. The preserved main
-      installation is incomplete. SATISFIED/SUPPLIED could encode different appetite directions; do not
-      invent a directional pair from the title alone. Separate appetite from Nutricia's food-energy utilization
-      intent.
+      appetite directions; do not invent a directional pair from the title alone. Separate appetite
+      from Nutricia's food-energy utilization intent.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. The preserved
+      main installation is incomplete. SATISFIED/SUPPLIED could encode different appetite directions;
+      do not invent a directional pair from the title alone. Separate appetite from Nutricia's food-energy
+      utilization intent.
     teaching_disposition: Preserve complete taught cue; metadata/title alignment only
-    documentary_intent: Direct desire/appetite for food; the main installation instruction is not preserved
-      in this derivative.
+    documentary_intent: Direct desire/appetite for food; the main installation instruction is not
+      preserved in this derivative.
     alternatives: []
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 1f56bda829eb5501ab32cf7d61a1a8d25326040c820b06699a4559ba52cabb18
+  contract_sha256: b1af13863eca6860320bea443227b31ea98cb245ab67a1d769ce856cc43afcaf
 record_metadata:
   legacy:
     command_ids:
@@ -463,8 +453,8 @@ record_metadata:
     - Eat/No Eat
   compatibility:
     state: historical-lookup
-    rationale: Approved presentation successor OCF-COMMAND-SIMPLIFICATION-001; superseded wording remains
-      historical lookup.
+    rationale: Approved presentation successor OCF-COMMAND-SIMPLIFICATION-001; superseded wording
+      remains historical lookup.
   historical_lookup:
   - text: Eat/No Eat
     kind: former-title
@@ -518,9 +508,10 @@ record_metadata:
   - id: OCF-EDITORIAL-TITLE-CUES-004
     kind: approved-title-cue
     source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
-    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
-      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
-      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup.
+      Preserve procedures, controls, semantics, provenance and separately flagged metadata questions.
+      Later user instruction releases the draft-pilot freeze; pilot bindings follow current approved
+      titles and cues.
     decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
       request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
     source_row_sha256: 0a2e497a96d7ff508c40dcec4db84708afd5688fae57c0b2bb53ceb54e795c2d
@@ -533,11 +524,11 @@ record_metadata:
       hplus.function.ocf-bod-005.closer: c652817fbd3d05fa0f420e64cd77f15cb89ff1a6f202a8f4aa149fc85fb21128
     current_resolved_text_sha256:
       hplus.function.ocf-bod-005.closer: e2aa5229b7f58a55b80ceba459795b36603db6b45e59e71f31c885b72bdf5501
-    review_note: Change title from Eat/No Eat to Appetite Choice and update exercise sign-off. Keep complete
-      display and spoken cue unchanged. Preserve breathing sequence, automatic reinforcement, genuine
-      nutritional need recognition and freedom to eat when chosen. Retain Eat/No Eat as historical lookup.
-      Satisfied Supplied remains one complete cue; introduce no separate appetite-increase or appetite-decrease
-      mode.
+    review_note: Change title from Eat/No Eat to Appetite Choice and update exercise sign-off. Keep
+      complete display and spoken cue unchanged. Preserve breathing sequence, automatic reinforcement,
+      genuine nutritional need recognition and freedom to eat when chosen. Retain Eat/No Eat as historical
+      lookup. Satisfied Supplied remains one complete cue; introduce no separate appetite-increase
+      or appetite-decrease mode.
     approval_response: '1'
     review_position: 13
     separate_review_needed: true
@@ -564,8 +555,8 @@ record_metadata:
   - id: OCF-COMMAND-SIMPLIFICATION-001
     kind: approved-command-simplification
     source_commit: 8ec5b0395c7a5c05fa629d64297d3bf048b097f9
-    scope: Explicitly approved command title/display/spoken substitutions only; commands, lifecycle, procedure
-      and audio settings are unchanged.
+    scope: Explicitly approved command title/display/spoken substitutions only; commands, lifecycle,
+      procedure and audio settings are unchanged.
     decision_source: 'Explicit user confirmation: Confirm implementation'
     source_row_sha256: 6899c7b27f20d7b2e5d8463a77b0bd01a8a373c424d8ff3c91f529d7d9e2a353
     status: accepted
@@ -574,8 +565,28 @@ record_metadata:
     changed_narration_keys: []
     previous_resolved_text_sha256: {}
     current_resolved_text_sha256: {}
-    review_note: Narration fingerprints and synthesis cache identity follow the approved canonical wording;
-      listening and release approval remain false.
+    review_note: Narration fingerprints and synthesis cache identity follow the approved canonical
+      wording; listening and release approval remain false.
+  - id: REL-BOD005-LIF001
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: b93cfa7f712421adb552e0fc3fb5027f97d484054d0a934c7f9a0329aeb40777
+    current_values_sha256: ebdf93f3476aba607b1e51642a3e4a4ce46a8fb7301b6ef8aeed292acfdccaa0
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-BOD-005", "sha256": "66ec6d5b0d7eaca812f487524dd3b4ee3e546456ef63785a84a45977a8615bd0"},
+      {"field": "description", "function_id": "OCF-LIF-001", "sha256": "b696385bce51f81503108a0c8b948eb5b0ff0765593b07dd1bf4e23248338ffe"}]'
+    relationship_id: REL-BOD005-LIF001
+    related_function_id: OCF-LIF-001
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -744,8 +755,8 @@ content:
       source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -793,8 +804,8 @@ content:
       - missing-main-claim-content
       family: appetite-direction-incomplete-main
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -804,8 +815,8 @@ content:
             source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
             start_line: 346
           status: supported
-          summary: Only final cue reminder supports a breathing/cue association; do not invent the missing
-            main response or mode behavior.
+          summary: Only final cue reminder supports a breathing/cue association; do not invent the
+            missing main response or mode behavior.
         closer:
           locators:
           - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
@@ -833,10 +844,10 @@ content:
             source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
             start_line: 346
           status: inferred
-          summary: Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological
-            reinterpretation is equivalent. Useful experiential operations and material purpose changes
-            require explicit content review; medical management and breath-hold issues remain outside
-            software efficacy claims.
+          summary: Do not reproduce unsupported physiological/medical mechanisms as fact or assume
+            a psychological reinterpretation is equivalent. Useful experiential operations and material
+            purpose changes require explicit content review; medical management and breath-hold issues
+            remain outside software efficacy claims.
         future_use:
           locators:
           - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
@@ -864,8 +875,8 @@ content:
             source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
             start_line: 346
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
@@ -874,7 +885,8 @@ content:
             source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
             start_line: 346
           status: supported
-          summary: remember-appetite-direction-goal; hold-breath-and-issue-satisfied-supplied-cue; exhale
+          summary: remember-appetite-direction-goal; hold-breath-and-issue-satisfied-supplied-cue;
+            exhale
         opener:
           locators:
           - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
@@ -883,9 +895,10 @@ content:
             source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
             start_line: 18
           status: unknown
-          summary: Investigated the full available source; this operation is not established. Large numeric
-            segment replaces expected access/main material; full physiological/behavioral claim and activation
-            conditions cannot be recovered from this TXT. Analytical completeness retains these unknowns.
+          summary: Investigated the full available source; this operation is not established. Large
+            numeric segment replaces expected access/main material; full physiological/behavioral
+            claim and activation conditions cannot be recovered from this TXT. Analytical completeness
+            retains these unknowns.
         preparation:
           locators:
           - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
@@ -904,10 +917,11 @@ content:
             source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
             start_line: 1
           status: supported
-          summary: Complete available source_transcript text inspected; shared representations are not
-            independent corroboration. Source accuracy/authentication remains unresolved. Large numeric
-            segment replaces expected access/main material; full physiological/behavioral claim and activation
-            conditions cannot be recovered from this TXT. Analytical completeness retains these unknowns.
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Large
+            numeric segment replaces expected access/main material; full physiological/behavioral
+            claim and activation conditions cannot be recovered from this TXT. Analytical completeness
+            retains these unknowns.
         purpose:
           locators:
           - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
@@ -926,9 +940,10 @@ content:
             source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
             start_line: 18
           status: unknown
-          summary: Investigated the full available source; this operation is not established. Large numeric
-            segment replaces expected access/main material; full physiological/behavioral claim and activation
-            conditions cannot be recovered from this TXT. Analytical completeness retains these unknowns.
+          summary: Investigated the full available source; this operation is not established. Large
+            numeric segment replaces expected access/main material; full physiological/behavioral
+            claim and activation conditions cannot be recovered from this TXT. Analytical completeness
+            retains these unknowns.
         safety_claims:
           locators:
           - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
@@ -937,8 +952,8 @@ content:
             source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
             start_line: 1
           status: supported
-          summary: appetite-direction; missing-main-claim-content. Claims are classified as source assertions,
-            not accepted OCF mechanisms/outcomes.
+          summary: appetite-direction; missing-main-claim-content. Claims are classified as source
+            assertions, not accepted OCF mechanisms/outcomes.
         state:
           locators:
           - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
@@ -947,8 +962,8 @@ content:
             source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
             start_line: 143
           status: supported
-          summary: Ten-state preparation, later closure to ten, sleep-to-twenty and waking return are
-            present; explicit learning-context opening is not preserved.
+          summary: Ten-state preparation, later closure to ten, sleep-to-twenty and waking return
+            are present; explicit learning-context opening is not preserved.
         suspend_cancel_reset:
           locators:
           - content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
@@ -957,9 +972,10 @@ content:
             source_sha256: beab13d0e0ee43b4abeebc494430f0d281cb897d55081659f2869f922c922ac9
             start_line: 1
           status: unknown
-          summary: Investigated the full available source; this operation is not established. Large numeric
-            segment replaces expected access/main material; full physiological/behavioral claim and activation
-            conditions cannot be recovered from this TXT. Analytical completeness retains these unknowns.
+          summary: Investigated the full available source; this operation is not established. Large
+            numeric segment replaces expected access/main material; full physiological/behavioral
+            claim and activation conditions cannot be recovered from this TXT. Analytical completeness
+            retains these unknowns.
       source_extent:
         content_group_sha256: 98cc42e9b32ca4db16c8254b6341fa524b3e0bc131be86c7e9bcdbdcd78f75e5
         end_line: 351
@@ -1039,13 +1055,13 @@ content:
     metadata_ref: canonical-function-record
     preparation: []
     questions:
-    - Large numeric segment replaces expected access/main material; full physiological/behavioral claim
-      and activation conditions cannot be recovered from this TXT. Analytical completeness retains these
-      unknowns.
+    - Large numeric segment replaces expected access/main material; full physiological/behavioral
+      claim and activation conditions cannot be recovered from this TXT. Analytical completeness retains
+      these unknowns.
     - Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological
-      reinterpretation is equivalent. Useful experiential operations and material purpose changes require
-      explicit content review; medical management and breath-hold issues remain outside software efficacy
-      claims.
+      reinterpretation is equivalent. Useful experiential operations and material purpose changes
+      require explicit content review; medical management and breath-hold issues remain outside software
+      efficacy claims.
     states:
       preferred: []
       required: []

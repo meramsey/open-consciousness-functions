@@ -247,7 +247,8 @@ def _function_document(
                 "title": _localized(catalog, target.documentation["title_key"], locale),
                 "description": _localized(catalog, relation["description_key"], locale),
                 "dependency": "optional",
-                "approval": "OCF-GUIDE-REVIEW-001",
+                "approval": relation["decision_source"],
+                "relationship_type": relation["relationship_type"],
             }
         )
     result = {

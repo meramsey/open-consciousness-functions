@@ -294,7 +294,8 @@ def test_export_preflight_failure_retains_sources_and_never_publishes(tmp_path, 
         exports.export_audition(source, edition_version="0.1.0", output=output)
 
 
-def test_release_cover_uses_registered_version_without_cli_override(tmp_path, monkeypatch):
+def test_release_cover_uses_registered_version_without_cli_override(tmp_path_factory, monkeypatch):
+    tmp_path = tmp_path_factory.mktemp("cover-version")
     from ocf_tools import release
 
     pytest.importorskip("PIL")

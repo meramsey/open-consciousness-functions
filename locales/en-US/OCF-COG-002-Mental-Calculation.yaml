@@ -99,24 +99,14 @@ common_uses:
   status: draft
 relationships:
   related_functions: []
-  complementary_functions: []
-  proposals:
+  complementary_functions:
   - function_id: OCF-FND-002
-    relationship_type: complementary
+    description_key: relationships.rel-cog002-fnd002.description
     description:
       text: Number practice and directed attention address calculation and concentration respectively;
         either may be practiced independently.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-COG-002
-      field: description
-      sha256: 57ff0a5168d935e358c53450af35cf5b5d20d57f4c4de0ce389d1353e4466c5b
-    - function_id: OCF-FND-002
-      field: description
-      sha256: 5589edf7e5fa4b3687d6ce74a83a0697d44ac80d155cee2f100481105c29d57d
+      status: reviewed
+      version: 1.0.0
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -339,14 +329,14 @@ editorial:
     prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
       association plan; approve controls together. No narration replacement text selected.
     contextual_review: Automatic mathematical understanding, numerical memory and symbolic reasoning,
-      optionally intensified with inhale/hold/cue/candle-like exhale. Mental Calculation must not narrow
-      scope to arithmetic.
-    pair_reason: CALCULATE is a natural, memorable action. A descriptive title is clearer than the Buy/By
-      the Numbers pun without changing the cue or its broader numerical-memory purpose.
-    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
-      outcome or contextual mode can reinforce an umbrella title without copying it. CALCULATE is a natural,
-      memorable action. A descriptive title is clearer than the Buy/By the Numbers pun without changing
-      the cue or its broader numerical-memory purpose.
+      optionally intensified with inhale/hold/cue/candle-like exhale. Mental Calculation must not
+      narrow scope to arithmetic.
+    pair_reason: CALCULATE is a natural, memorable action. A descriptive title is clearer than the
+      Buy/By the Numbers pun without changing the cue or its broader numerical-memory purpose.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. CALCULATE
+      is a natural, memorable action. A descriptive title is clearer than the Buy/By the Numbers pun
+      without changing the cue or its broader numerical-memory purpose.
     teaching_disposition: Preserve complete taught cue; metadata/title alignment only
     documentary_intent: Improve numerical memory, arithmetic, symbolic understanding and mathematical
       expression, with an optional intensification cue.
@@ -354,15 +344,15 @@ editorial:
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 5656a5a46370303d583ca0ca8ce7cb375e7bedf4ded73561b0d1088d1730ff2d
+  contract_sha256: e2eeb3427b51c67b4337bf1b2b99d0b2ce852151d7f0abb6b6c221acb3f66244
 record_metadata:
   legacy:
     command_ids:
@@ -425,9 +415,10 @@ record_metadata:
   - id: OCF-EDITORIAL-TITLE-CUES-004
     kind: approved-title-cue
     source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
-    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
-      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
-      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup.
+      Preserve procedures, controls, semantics, provenance and separately flagged metadata questions.
+      Later user instruction releases the draft-pilot freeze; pilot bindings follow current approved
+      titles and cues.
     decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
       request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
     source_row_sha256: d0aec76db86c79b835b8835f194db27be00babfca23f303f3a85823f441d5258
@@ -441,13 +432,33 @@ record_metadata:
     current_resolved_text_sha256:
       hplus.function.ocf-cog-002.closer: 7c628adfb28b0596792d0b3ba7095714307c0513be3dda0633b06a2bf985784d
     review_note: Change title from Buy the Numbers to Mental Calculation and update exercise sign-off.
-      Keep display and spoken cue unchanged. Preserve full mathematical scope including numerical memory,
-      arithmetic, algebra, geometry, trigonometry, symbolic reasoning, visualization and problem-solving,
+      Keep display and spoken cue unchanged. Preserve full mathematical scope including numerical
+      memory, arithmetic, algebra, geometry, trigonometry, symbolic reasoning, visualization and problem-solving,
       automatic development and optional conscious reinforcement. Preserve inhale/hold/cue/slow mouth
-      exhale; do not add candle-blowing instructions. Retain Buy the Numbers as historical lookup; introduce
-      no mode or release. Do not narrow scope to arithmetic alone.
+      exhale; do not add candle-blowing instructions. Retain Buy the Numbers as historical lookup;
+      introduce no mode or release. Do not narrow scope to arithmetic alone.
     approval_response: '1'
     review_position: 24
+  - id: REL-COG002-FND002
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 8f80b6d89838b2b7ce4970f6b7021bccc2588bb6f1d67331fb4b56bc29f9a51c
+    current_values_sha256: 1b551bfd8aaeeee8d4105f60d1558a93e075001a4f7729c46abf0d451951eb8a
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-COG-002", "sha256": "57ff0a5168d935e358c53450af35cf5b5d20d57f4c4de0ce389d1353e4466c5b"},
+      {"field": "description", "function_id": "OCF-FND-002", "sha256": "5589edf7e5fa4b3687d6ce74a83a0697d44ac80d155cee2f100481105c29d57d"}]'
+    relationship_id: REL-COG002-FND002
+    related_function_id: OCF-FND-002
+    relationship_type: complementary
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -621,8 +632,8 @@ content:
       source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -671,8 +682,8 @@ content:
       - automatic-whole-system-learning
       family: cognitive-enhancement
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -692,7 +703,8 @@ content:
             source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
             start_line: 109
           status: supported
-          summary: Reinforce future remembering, close the learning channel and return to ten-state rest.
+          summary: Reinforce future remembering, close the learning channel and return to ten-state
+            rest.
         consolidation:
           locators:
           - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
@@ -721,8 +733,8 @@ content:
             source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
             start_line: 88
           status: supported
-          summary: Use the cue to focus/intensify mathematical ability; repeated use is asserted to improve
-            efficiency.
+          summary: Use the cue to focus/intensify mathematical ability; repeated use is asserted to
+            improve efficiency.
         handoff:
           locators:
           - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
@@ -731,9 +743,9 @@ content:
             source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
             start_line: 126
           status: unknown
-          summary: Investigated the full available source; this operation is not established. ASR count
-            artifacts and missing later content do not establish timing, deliberate repetition or a complete
-            return sequence.
+          summary: Investigated the full available source; this operation is not established. ASR
+            count artifacts and missing later content do not establish timing, deliberate repetition
+            or a complete return sequence.
         identity:
           locators:
           - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
@@ -742,8 +754,8 @@ content:
             source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
             start_line: 88
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
@@ -781,10 +793,10 @@ content:
             source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
             start_line: 1
           status: supported
-          summary: Complete available source_transcript text inspected; shared representations are not
-            independent corroboration. Source accuracy/authentication remains unresolved. ASR count artifacts
-            and missing later content do not establish timing, deliberate repetition or a complete return
-            sequence.
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. ASR
+            count artifacts and missing later content do not establish timing, deliberate repetition
+            or a complete return sequence.
         purpose:
           locators:
           - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
@@ -803,8 +815,8 @@ content:
             source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
             start_line: 67
           status: supported
-          summary: Instruction describes the procedure but no distinct listener practice trial is established
-            in the inspected intelligible portion.
+          summary: Instruction describes the procedure but no distinct listener practice trial is
+            established in the inspected intelligible portion.
         safety_claims:
           locators:
           - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
@@ -823,8 +835,8 @@ content:
             source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
             start_line: 26
           status: supported
-          summary: Ten-state entry, eleven learning opening, ten-state closing; subsequent numbered sleep-like
-            progression is incomplete and final return unavailable.
+          summary: Ten-state entry, eleven learning opening, ten-state closing; subsequent numbered
+            sleep-like progression is incomplete and final return unavailable.
         suspend_cancel_reset:
           locators:
           - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
@@ -833,9 +845,9 @@ content:
             source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
             start_line: 1
           status: unknown
-          summary: Investigated the full available source; this operation is not established. ASR count
-            artifacts and missing later content do not establish timing, deliberate repetition or a complete
-            return sequence.
+          summary: Investigated the full available source; this operation is not established. ASR
+            count artifacts and missing later content do not establish timing, deliberate repetition
+            or a complete return sequence.
       source_extent:
         content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
         end_line: 330
@@ -917,10 +929,10 @@ content:
     metadata_ref: canonical-function-record
     preparation: []
     questions:
-    - ASR count artifacts and missing later content do not establish timing, deliberate repetition or
-      a complete return sequence.
-    - Distinguish a deliberate math-task cue from promises of permanent ability; concrete rehearsal must
-      be an explicit OCF design, not recovered content.
+    - ASR count artifacts and missing later content do not establish timing, deliberate repetition
+      or a complete return sequence.
+    - Distinguish a deliberate math-task cue from promises of permanent ability; concrete rehearsal
+      must be an explicit OCF design, not recovered content.
     states:
       preferred: []
       required: []

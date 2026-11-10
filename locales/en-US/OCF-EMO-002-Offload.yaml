@@ -7,8 +7,8 @@ title:
   status: canonical
   version: 1.0.0
 description:
-  text: Reduces selected recurring thought and emotional-pattern interference while retaining useful memories
-    and conscious choice.
+  text: Reduces selected recurring thought and emotional-pattern interference while retaining useful
+    memories and conscious choice.
   status: canonical
   version: 1.0.0
 metadata_entries: {}
@@ -134,25 +134,15 @@ common_uses:
     choice.
   status: draft
 relationships:
-  related_functions: []
-  complementary_functions: []
-  proposals:
+  related_functions:
   - function_id: OCF-EXP-003
-    relationship_type: related
+    description_key: relationships.rel-emo002-exp003.description
     description:
       text: Compare recurring thought and emotional-pattern interference with a broader selected belief,
         expectation or recurring life pattern; useful learning remains valued.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-EMO-002
-      field: description
-      sha256: f378a57210d0e3bb9ca07959bca9b895beb486615582a1c040afd2f7b3112e2f
-    - function_id: OCF-EXP-003
-      field: description
-      sha256: bff68807fb37db657e26d9bbfec0c53c91b73555b75a80ca2601a757f718726f
+      status: reviewed
+      version: 1.0.0
+  complementary_functions: []
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -369,30 +359,30 @@ editorial:
     prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
       association plan; approve controls together. No narration replacement text selected.
     contextual_review: Select recurring thought/emotional pattern, inhale/hold/cue/exhale then breathe
-      naturally. Selected interference stays inactive until consciously desired otherwise; useful memories
-      remain. Neither registry CLEAR nor proposed OFFLOAD is currently taught.
-    pair_reason: OFFLOAD identifies reducing a selected recurring mental/emotional load better than generic
-      CLEAR. Preserve selective salience reduction; do not imply erasing memory or automatically change
-      the FADE association.
-    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
-      outcome or contextual mode can reinforce an umbrella title without copying it. OFFLOAD identifies
-      reducing a selected recurring mental/emotional load better than generic CLEAR. Preserve selective
-      salience reduction; do not imply erasing memory or automatically change the FADE association.
+      naturally. Selected interference stays inactive until consciously desired otherwise; useful
+      memories remain. Neither registry CLEAR nor proposed OFFLOAD is currently taught.
+    pair_reason: OFFLOAD identifies reducing a selected recurring mental/emotional load better than
+      generic CLEAR. Preserve selective salience reduction; do not imply erasing memory or automatically
+      change the FADE association.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. OFFLOAD
+      identifies reducing a selected recurring mental/emotional load better than generic CLEAR. Preserve
+      selective salience reduction; do not imply erasing memory or automatically change the FADE association.
     teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
     documentary_intent: Reduce/remove a chosen recurring thought or emotion from conscious salience.
     alternatives: []
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 1f8ca80c6047540ea2efbf84dfdc5e6fa8c9aa342b06af65763094b975a8957b
+  contract_sha256: d9301dd8c39d3bbf20c55036238b3ac9724c271eaedbd40dba0e4be01096d771
 record_metadata:
   legacy:
     command_ids:
@@ -493,6 +483,26 @@ record_metadata:
       hplus.function.ocf-emo-002.closer: 734dea8ffc6db26279ceb329a591de8822cd73a704940b192cf2a761beb9770f
     review_note: Selected recurring thought/emotional-pattern interference, useful memory and conscious
       choice; not indiscriminate clearing or memory erasure.
+  - id: REL-EMO002-EXP003
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 54296a99514275ac31cb7c536d753a9197a81982d9e80f273012b14282f7dcef
+    current_values_sha256: 4afca31238b93ce56582ed4afd7ae1050b285a3c64640db2c25aa15ce161ae85
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-EMO-002", "sha256": "f378a57210d0e3bb9ca07959bca9b895beb486615582a1c040afd2f7b3112e2f"},
+      {"field": "description", "function_id": "OCF-EXP-003", "sha256": "bff68807fb37db657e26d9bbfec0c53c91b73555b75a80ca2601a757f718726f"}]'
+    relationship_id: REL-EMO002-EXP003
+    related_function_id: OCF-EXP-003
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -681,8 +691,8 @@ content:
       source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -731,8 +741,8 @@ content:
       - automatic-whole-system-learning
       family: selective-thought-emotion-reduction
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -742,8 +752,8 @@ content:
             source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
             start_line: 45
           status: supported
-          summary: Pair the deliberately selected legacy cue with the target response and breathing procedure;
-            canonical spelling/compatibility remains separate metadata.
+          summary: Pair the deliberately selected legacy cue with the target response and breathing
+            procedure; canonical spelling/compatibility remains separate metadata.
         closer:
           locators:
           - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
@@ -771,9 +781,9 @@ content:
             source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
             start_line: 45
           status: inferred
-          summary: Preserve voluntary target selection and learned association where appropriate; breath
-            holding, guaranteed response and automatic whole-system learning require editorial review
-            rather than scientific endorsement.
+          summary: Preserve voluntary target selection and learned association where appropriate;
+            breath holding, guaranteed response and automatic whole-system learning require editorial
+            review rather than scientific endorsement.
         future_use:
           locators:
           - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
@@ -782,8 +792,8 @@ content:
             source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
             start_line: 45
           status: supported
-          summary: Selective target/cue routine, with claimed continued absence from awareness until desired
-            otherwise.
+          summary: Selective target/cue routine, with claimed continued absence from awareness until
+            desired otherwise.
         handoff:
           locators:
           - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
@@ -801,8 +811,8 @@ content:
             source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
             start_line: 45
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
@@ -821,7 +831,8 @@ content:
             source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
             start_line: 40
           status: supported
-          summary: Orient to the target function and establish receptive learning context before the instruction.
+          summary: Orient to the target function and establish receptive learning context before the
+            instruction.
         preparation:
           locators:
           - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
@@ -830,8 +841,8 @@ content:
             source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
             start_line: 10
           status: supported
-          summary: Supported uninterrupted relaxed posture, settling movements/breathing, temporary setting-aside
-            in repository representation and counted ten-state entry.
+          summary: Supported uninterrupted relaxed posture, settling movements/breathing, temporary
+            setting-aside in repository representation and counted ten-state entry.
         provenance:
           locators:
           - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
@@ -840,10 +851,11 @@ content:
             source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
             start_line: 1
           status: supported
-          summary: Complete available source_transcript text inspected; shared representations are not
-            independent corroboration. Source accuracy/authentication remains unresolved. Interleaved
-            inhale/exhale tokens53-57 are ambiguous practice versus ASR material; explicit listener rehearsal
-            remains unknown. Legacy fade cue and canonical CLEAR differ and require compatibility review.
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Interleaved
+            inhale/exhale tokens53-57 are ambiguous practice versus ASR material; explicit listener
+            rehearsal remains unknown. Legacy fade cue and canonical CLEAR differ and require compatibility
+            review.
         purpose:
           locators:
           - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
@@ -862,8 +874,9 @@ content:
             start_line: 53
           status: unknown
           summary: Investigated the full available source; this operation is not established. Interleaved
-            inhale/exhale tokens53-57 are ambiguous practice versus ASR material; explicit listener rehearsal
-            remains unknown. Legacy fade cue and canonical CLEAR differ and require compatibility review.
+            inhale/exhale tokens53-57 are ambiguous practice versus ASR material; explicit listener
+            rehearsal remains unknown. Legacy fade cue and canonical CLEAR differ and require compatibility
+            review.
         safety_claims:
           locators:
           - content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
@@ -892,7 +905,8 @@ content:
             source_sha256: cbe93dddbd342e089ffaa00ca0cd82d21cb12a6db2c6accd39b03c022367eb48
             start_line: 50
           status: supported
-          summary: Return is described as desire-dependent, but no specific undo/restore command is established.
+          summary: Return is described as desire-dependent, but no specific undo/restore command is
+            established.
       source_extent:
         content_group_sha256: dfff9478c0bce3ec1a2bdfcaa9cd0de9db1f527971f0818b09a69235b9130485
         end_line: 102
@@ -979,8 +993,9 @@ content:
     - Interleaved inhale/exhale tokens53-57 are ambiguous practice versus ASR material; explicit listener
       rehearsal remains unknown. Legacy fade cue and canonical CLEAR differ and require compatibility
       review.
-    - Preserve voluntary target selection and learned association where appropriate; breath holding, guaranteed
-      response and automatic whole-system learning require editorial review rather than scientific endorsement.
+    - Preserve voluntary target selection and learned association where appropriate; breath holding,
+      guaranteed response and automatic whole-system learning require editorial review rather than
+      scientific endorsement.
     states:
       preferred: []
       required: []

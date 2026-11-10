@@ -106,6 +106,10 @@ the "Planned: focus-state auditory cue events" section of
 
 ## v0.4 — Voices, preparation, and audio build
 
+- [ ] Optional Voicebox backend integration is deferred. Retain Chatterbox Nano
+      and its current defaults; future opt-in support needs verified runtime,
+      model/reference identities, recovery and private profile portability.
+
 - [x] Voice profiles (`voice-profile.schema.json`, `audio/voices/profiles/`) +
       `ocf voice` CLI (`list-backends`, `doctor`, `list`, `render`).
 - [x] TTS backends: espeak-ng, espeak, Piper (external-command, detected on

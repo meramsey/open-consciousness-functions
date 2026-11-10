@@ -7,7 +7,8 @@ title:
   status: canonical
   version: 1.0.0
 description:
-  text: Requests an answer or constructive solution through sleep, with useful insight recognized on awakening.
+  text: Requests an answer or constructive solution through sleep, with useful insight recognized
+    on awakening.
   status: canonical
   version: 1.0.0
 metadata_entries: {}
@@ -133,24 +134,14 @@ common_uses:
   status: draft
 relationships:
   related_functions: []
-  complementary_functions: []
-  proposals:
+  complementary_functions:
   - function_id: OCF-COG-005
-    relationship_type: complementary
+    description_key: relationships.rel-slp004-cog005.description
     description:
-      text: Sleep-oriented reflection and waking exploration of alternatives offer separate ways to consider
-        a question without prescribing an order.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-SLP-004
-      field: description
-      sha256: f30ef62a98a7374314d9354bc525b9755da92e31b094edb88da43bfd70844019
-    - function_id: OCF-COG-005
-      field: description
-      sha256: 574105e00d0317828bef7d3ce5db9df7734faf5e1aa43b68fa433cdf70eb50cd
+      text: Sleep-oriented reflection and waking exploration of alternatives offer separate ways to
+        consider a question without prescribing an order.
+      status: reviewed
+      version: 1.0.0
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -318,32 +309,33 @@ editorial:
     recommended_primary_cue: PLUS-SLEEP INSIGHT
     prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
       association plan; approve controls together. No narration replacement text selected.
-    contextual_review: Select question/problem and intention, inhale/hold/cue/exhale then slow deep breathing;
-      recognize answer through varied experiential forms on waking. Sleep problem incubation, not wake-time
-      selection.
-    pair_reason: The actual intended operation is question/problem incubation and recalled insight on
-      waking, not knowing when to wake. The proposed phrase is distinctive and purpose-specific without
-      claiming answers are factually correct.
-    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
-      outcome or contextual mode can reinforce an umbrella title without copying it. The actual intended
-      operation is question/problem incubation and recalled insight on waking, not knowing when to wake.
-      The proposed phrase is distinctive and purpose-specific without claiming answers are factually correct.
+    contextual_review: Select question/problem and intention, inhale/hold/cue/exhale then slow deep
+      breathing; recognize answer through varied experiential forms on waking. Sleep problem incubation,
+      not wake-time selection.
+    pair_reason: The actual intended operation is question/problem incubation and recalled insight
+      on waking, not knowing when to wake. The proposed phrase is distinctive and purpose-specific
+      without claiming answers are factually correct.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. The actual
+      intended operation is question/problem incubation and recalled insight on waking, not knowing
+      when to wake. The proposed phrase is distinctive and purpose-specific without claiming answers
+      are factually correct.
     teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
-    documentary_intent: Select a question/problem before sleep and remember an asserted constructive solution
-      on waking.
+    documentary_intent: Select a question/problem before sleep and remember an asserted constructive
+      solution on waking.
     alternatives: []
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 128a558a2b9b2f985f865395c4b8b7431688fa6a1df6f33cba033ebe9e0af4ef
+  contract_sha256: 692707fe95bb33834f7b3a3dabe4e5220f902cf8c4dae353afa7e86e4eae2f8f
 record_metadata:
   legacy:
     command_ids:
@@ -442,8 +434,28 @@ record_metadata:
     current_resolved_text_sha256:
       hplus.function.ocf-slp-004.function-body: 8f94db81413f5444838360db6515e134c4b9b5f3ead57d6c08dfd5ee20757fee
       hplus.function.ocf-slp-004.closer: 891d6ed2cabfa955ba89a8907d9d9df0f8f900663ef522c083959c2d9985dfe8
-    review_note: Request an answer/insight through sleep and recognize it on waking; not choosing a wake-up
-      time.
+    review_note: Request an answer/insight through sleep and recognize it on waking; not choosing
+      a wake-up time.
+  - id: REL-SLP004-COG005
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 0aade422b50c7f00e844ddfa524de3da9ec6f9a9e84c861d4378ace50f83c6ac
+    current_values_sha256: 7dee10104049a37f8b46ba068fa1615eae141a63b1a538c95e93779ece18b2fb
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-SLP-004", "sha256": "f30ef62a98a7374314d9354bc525b9755da92e31b094edb88da43bfd70844019"},
+      {"field": "description", "function_id": "OCF-COG-005", "sha256": "574105e00d0317828bef7d3ce5db9df7734faf5e1aa43b68fa433cdf70eb50cd"}]'
+    relationship_id: REL-SLP004-COG005
+    related_function_id: OCF-COG-005
+    relationship_type: complementary
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -621,8 +633,8 @@ content:
       source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -671,8 +683,8 @@ content:
       - guaranteed-waking-answer
       family: sleep-problem-incubation
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -732,9 +744,9 @@ content:
             source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
             start_line: 158
           status: unknown
-          summary: Investigated the full available source; this operation is not established. Final waking
-            ending absent; religious and repeated speech at158-194 is contaminated/unverified and cannot
-            become historical doctrine or OCF requirement.
+          summary: Investigated the full available source; this operation is not established. Final
+            waking ending absent; religious and repeated speech at158-194 is contaminated/unverified
+            and cannot become historical doctrine or OCF requirement.
         identity:
           locators:
           - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
@@ -743,8 +755,8 @@ content:
             source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
             start_line: 32
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
@@ -763,7 +775,8 @@ content:
             source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
             start_line: 27
           status: supported
-          summary: Orient to the function and establish receptive learning context before the target instruction.
+          summary: Orient to the function and establish receptive learning context before the target
+            instruction.
         preparation:
           locators:
           - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
@@ -782,10 +795,10 @@ content:
             source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
             start_line: 1
           status: supported
-          summary: Complete available source_transcript text inspected; shared representations are not
-            independent corroboration. Source accuracy/authentication remains unresolved. Final waking
-            ending absent; religious and repeated speech at158-194 is contaminated/unverified and cannot
-            become historical doctrine or OCF requirement.
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Final
+            waking ending absent; religious and repeated speech at158-194 is contaminated/unverified
+            and cannot become historical doctrine or OCF requirement.
         purpose:
           locators:
           - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
@@ -804,9 +817,9 @@ content:
             source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
             start_line: 32
           status: unknown
-          summary: Investigated the full available source; this operation is not established. Final waking
-            ending absent; religious and repeated speech at158-194 is contaminated/unverified and cannot
-            become historical doctrine or OCF requirement.
+          summary: Investigated the full available source; this operation is not established. Final
+            waking ending absent; religious and repeated speech at158-194 is contaminated/unverified
+            and cannot become historical doctrine or OCF requirement.
         safety_claims:
           locators:
           - content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
@@ -835,9 +848,9 @@ content:
             source_sha256: 8ca02bcccb99d600cf4adc0d499f4d4b4159c787d010121f38a981267170d745
             start_line: 1
           status: unknown
-          summary: Investigated the full available source; this operation is not established. Final waking
-            ending absent; religious and repeated speech at158-194 is contaminated/unverified and cannot
-            become historical doctrine or OCF requirement.
+          summary: Investigated the full available source; this operation is not established. Final
+            waking ending absent; religious and repeated speech at158-194 is contaminated/unverified
+            and cannot become historical doctrine or OCF requirement.
       source_extent:
         content_group_sha256: 14e05da1fca5ae48d099157be14325bd02a15f7568d7785ebe0fa18c745e5098
         end_line: 194
@@ -920,11 +933,11 @@ content:
     metadata_ref: canonical-function-record
     preparation: []
     questions:
-    - Final waking ending absent; religious and repeated speech at158-194 is contaminated/unverified and
-      cannot become historical doctrine or OCF requirement.
-    - Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and automatic
-      whole-system learning need review. Reframing a physical/metaphysical goal is a material choice,
-      not assumed equivalence.
+    - Final waking ending absent; religious and repeated speech at158-194 is contaminated/unverified
+      and cannot become historical doctrine or OCF requirement.
+    - Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and
+      automatic whole-system learning need review. Reframing a physical/metaphysical goal is a material
+      choice, not assumed equivalence.
     states:
       preferred: []
       required: []

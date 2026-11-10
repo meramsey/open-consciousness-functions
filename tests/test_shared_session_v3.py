@@ -266,7 +266,7 @@ def test_whole_unaffected_map_commands_bindings_and_frozen_editions(approval):
     assert {e["id"]: sha(e.get("text", "")) for e in iter_events(rc1)} == approval[
         "rc1_event_text_sha256"
     ]
-    assert audio_defaults.check_lock()["id"] == "OCF-AUDIO-DEFAULTS-HPLUS-018"
+    assert audio_defaults.check_lock()["id"] == "OCF-AUDIO-DEFAULTS-HPLUS-020"
 
 
 def test_long_form_revision_is_an_explicit_manifest_alias_without_duplicate_resource():

@@ -15,10 +15,11 @@ metadata_entries:
   functions.ocf-cog-004.lifecycle.scopes.capability.description:
     text: Learned imprinting ability remains available.
   functions.ocf-cog-004.lifecycle.scopes.baseline.description:
-    text: Deliberately imprinted material is retained and maintained; storage is distinct from an individual
-      recall action.
+    text: Deliberately imprinted material is retained and maintained; storage is distinct from an
+      individual recall action.
   functions.ocf-cog-004.lifecycle.scopes.application.description:
-    text: A single deliberate imprint or recall invocation; no continuously running imprinting or recall.
+    text: A single deliberate imprint or recall invocation; no continuously running imprinting or
+      recall.
 activation:
   command_id: OCF-CMD-COG-004-PRIMARY
   display_cue:
@@ -184,25 +185,15 @@ common_uses:
     memory is infallible.
   status: draft
 relationships:
-  related_functions: []
-  complementary_functions: []
-  proposals:
+  related_functions:
   - function_id: OCF-COG-006
-    relationship_type: related
+    description_key: relationships.rel-cog004-cog006.description
     description:
       text: Compare deliberate capture and retention with separately chosen retrieval of learned material.
         The Imprint recall command is not the same function identity as Recall.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-COG-004
-      field: description
-      sha256: 098e88038844417a6241fc8ae022de3ada9529b0e189e64b2d68691b6c607c92
-    - function_id: OCF-COG-006
-      field: description
-      sha256: f1121b371e1d9c5a81ad6fd3197fb75a81f5d4ae79f40daf939066db0d4e0c01
+      status: reviewed
+      version: 1.0.0
+  complementary_functions: []
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -430,28 +421,28 @@ editorial:
     contextual_review: 'Selected information/experience encoding: inhale/hold/complete repeated cue/focus
       target/exhale. Plus Recall retrieves imprinted material. Registry suggestion/intention rehearsal
       understates actual memory encoding/consolidation; the shorter Imprint is not independently taught.'
-    pair_reason: IMPRINT clearly identifies deliberate encoding. The separate PLUS-RECALL retrieval record
-      is functional reuse, not a duplicate activation to delete.
-    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
-      outcome or contextual mode can reinforce an umbrella title without copying it. IMPRINT clearly identifies
-      deliberate encoding. The separate PLUS-RECALL retrieval record is functional reuse, not a duplicate
-      activation to delete.
+    pair_reason: IMPRINT clearly identifies deliberate encoding. The separate PLUS-RECALL retrieval
+      record is functional reuse, not a duplicate activation to delete.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. IMPRINT
+      clearly identifies deliberate encoding. The separate PLUS-RECALL retrieval record is functional
+      reuse, not a duplicate activation to delete.
     teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
-    documentary_intent: Deliberately encode selected experience/information and later retrieve it using
-      a separate recall cue.
+    documentary_intent: Deliberately encode selected experience/information and later retrieve it
+      using a separate recall cue.
     alternatives: []
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 3cc419ea11d9988060954c83c760b030a8725f081fc67b72f34155f9bc5140bb
+  contract_sha256: 73558164bec64ab8fff581970c16d65ad0c4fd4cda8c9601971e295d03636f12
 record_metadata:
   legacy:
     command_ids:
@@ -471,8 +462,8 @@ record_metadata:
     - Imprint
   compatibility:
     state: historical-lookup
-    rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording is
-      historical lookup. Existing controls remain unchanged.
+    rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording
+      is historical lookup. Existing controls remain unchanged.
   historical_lookup:
   - text: Plus Imprint Imprint
     kind: former-teaching
@@ -535,9 +526,10 @@ record_metadata:
   - id: OCF-EDITORIAL-TITLE-CUES-004
     kind: approved-title-cue
     source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
-    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
-      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
-      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup.
+      Preserve procedures, controls, semantics, provenance and separately flagged metadata questions.
+      Later user instruction releases the draft-pilot freeze; pilot bindings follow current approved
+      titles and cues.
     decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
       request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
     source_row_sha256: 0a1f0fbe0549a0a609f78c9cc26bc84c0c240e174c36483bb715d9b2eb6fd713
@@ -553,9 +545,9 @@ record_metadata:
     current_resolved_text_sha256:
       hplus.function.ocf-cog-004.function-body: 35d356c7b19b77ed8c0360920fe0d7af4b7bdceaed97ce17160d9486a326b212
       hplus.function.ocf-cog-004.closer: 7f07c48613b98a737cf77fa1186778f8727319267a7b09396a248fbcf793bf5a
-    review_note: Shorten two body mentions and one closer mention from Plus Imprint Imprint to Plus Imprint.
-      Preserve title, breathing/attention sequence and memory suggestions. Keep Plus Recall active and
-      unchanged; retain repeated legacy phrase as historical lookup.
+    review_note: Shorten two body mentions and one closer mention from Plus Imprint Imprint to Plus
+      Imprint. Preserve title, breathing/attention sequence and memory suggestions. Keep Plus Recall
+      active and unchanged; retain repeated legacy phrase as historical lookup.
     approval_response: '1'
     review_position: 4
     separate_review_needed: true
@@ -569,6 +561,26 @@ record_metadata:
     current_values_sha256: bc56f9cec40be3793fd652de8620c5c1bfe5e8fe972a24aee4773e848accdcfd
     review_note: 'Imprint: 1'
     approval_response: approve
+  - id: REL-COG004-COG006
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 5342f6ee388c29a203190f5ffd240ee06c1f0a4b7cc9e01cc8b694f1c36c5002
+    current_values_sha256: e5f24ca6ef4ffa030390fb8f7c0132f119e526b9dde5432cf9909a2e474b2c1e
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-COG-004", "sha256": "098e88038844417a6241fc8ae022de3ada9529b0e189e64b2d68691b6c607c92"},
+      {"field": "description", "function_id": "OCF-COG-006", "sha256": "f1121b371e1d9c5a81ad6fd3197fb75a81f5d4ae79f40daf939066db0d4e0c01"}]'
+    relationship_id: REL-COG004-COG006
+    related_function_id: OCF-COG-006
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -759,8 +771,8 @@ content:
       source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -810,8 +822,8 @@ content:
       - automatic-whole-system-learning
       family: cognitive-encoding-retrieval
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -821,8 +833,8 @@ content:
             source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
             start_line: 32
           status: supported
-          summary: Imprint cue is paired with attention/encoding; recall cue retrieves the selected sensory
-            record. Legacy repeated imprint command differs from the canonical shortened metadata.
+          summary: Imprint cue is paired with attention/encoding; recall cue retrieves the selected
+            sensory record. Legacy repeated imprint command differs from the canonical shortened metadata.
         closer:
           locators:
           - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
@@ -841,8 +853,8 @@ content:
             source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
             start_line: 65
           status: supported
-          summary: Sleep-to-twenty interval described; repeated ASR twenties are not intelligible reinforcement
-            evidence.
+          summary: Sleep-to-twenty interval described; repeated ASR twenties are not intelligible
+            reinforcement evidence.
         conversion:
           locators:
           - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
@@ -851,8 +863,8 @@ content:
             source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
             start_line: 32
           status: inferred
-          summary: Preserve selection/attention/recall linkage; guarantees and implied anatomical storage
-            cannot be accepted as mechanisms. Do not invent an erase command.
+          summary: Preserve selection/attention/recall linkage; guarantees and implied anatomical
+            storage cannot be accepted as mechanisms. Do not invent an erase command.
         future_use:
           locators:
           - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
@@ -861,8 +873,8 @@ content:
             source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
             start_line: 39
           status: supported
-          summary: Encode a chosen target on demand; invoke recall for the whole retained record or selected
-            parts.
+          summary: Encode a chosen target on demand; invoke recall for the whole retained record or
+            selected parts.
         handoff:
           locators:
           - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
@@ -880,8 +892,8 @@ content:
             source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
             start_line: 32
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
@@ -890,8 +902,8 @@ content:
             source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
             start_line: 32
           status: supported
-          summary: select-information-or-experience; inhale-and-hold; internally-issue-imprint-cue; focus-attention-on-target;
-            exhale; later-issue-recall-cue
+          summary: select-information-or-experience; inhale-and-hold; internally-issue-imprint-cue;
+            focus-attention-on-target; exhale; later-issue-recall-cue
         opener:
           locators:
           - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
@@ -909,7 +921,8 @@ content:
             source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
             start_line: 3
           status: supported
-          summary: Supported uninterrupted relaxation, temporary setting-aside and counted ten-state entry.
+          summary: Supported uninterrupted relaxation, temporary setting-aside and counted ten-state
+            entry.
         provenance:
           locators:
           - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
@@ -918,10 +931,10 @@ content:
             source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
             start_line: 1
           status: supported
-          summary: Complete available source_transcript text inspected; shared representations are not
-            independent corroboration. Source accuracy/authentication remains unresolved. Source precision/retention
-            claims and legacy versus canonical command shortening require review; no confirmed automatic
-            subconscious process.
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Source
+            precision/retention claims and legacy versus canonical command shortening require review;
+            no confirmed automatic subconscious process.
         purpose:
           locators:
           - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
@@ -930,8 +943,8 @@ content:
             source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
             start_line: 1
           status: supported
-          summary: Deliberately encode selected experience/information and later retrieve it using a separate
-            recall cue.
+          summary: Deliberately encode selected experience/information and later retrieve it using
+            a separate recall cue.
         rehearsal:
           locators:
           - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
@@ -1058,8 +1071,8 @@ content:
     questions:
     - Source precision/retention claims and legacy versus canonical command shortening require review;
       no confirmed automatic subconscious process.
-    - Preserve selection/attention/recall linkage; guarantees and implied anatomical storage cannot be
-      accepted as mechanisms. Do not invent an erase command.
+    - Preserve selection/attention/recall linkage; guarantees and implied anatomical storage cannot
+      be accepted as mechanisms. Do not invent an erase command.
     states:
       preferred: []
       required: []

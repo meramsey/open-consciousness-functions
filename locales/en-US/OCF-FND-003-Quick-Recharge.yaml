@@ -95,29 +95,19 @@ tags:
 common_uses:
 - text: Choosing a brief rest when it is safe and appropriate to sleep.
   status: draft
-- text: Reflecting on the intention to wake from a short rest feeling refreshed, without replacing adequate
-    sleep.
+- text: Reflecting on the intention to wake from a short rest feeling refreshed, without replacing
+    adequate sleep.
   status: draft
 relationships:
-  related_functions: []
-  complementary_functions: []
-  proposals:
+  related_functions:
   - function_id: OCF-SLP-002
-    relationship_type: related
+    description_key: relationships.rel-fnd003-slp002.description
     description:
       text: Compare a short restorative rest with general sleep onset and a desired waking time; neither
         replaces adequate sleep or a needed alarm.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-FND-003
-      field: description
-      sha256: c96ac8b11d5e8a7974e3be3c590432b8f299b5c1eeaa1fa6dd54de2d2ad0cf1b
-    - function_id: OCF-SLP-002
-      field: description
-      sha256: f25c3964bcb1d1c34e63bebd2bc7d271d5d05e9757459c0a65e171d7ca6c1bca
+      status: reviewed
+      version: 1.0.0
+  complementary_functions: []
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -304,29 +294,29 @@ editorial:
     prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
       association plan; approve controls together. No narration replacement text selected.
     contextual_review: Settle for brief natural sleep/rest, inhale/hold/cue/candle-like exhale; awakening
-      within minutes. No programmable timer or wake/abort cue is supplied; distinguish energy access and
-      overnight restoration.
+      within minutes. No programmable timer or wake/abort cue is supplied; distinguish energy access
+      and overnight restoration.
     pair_reason: RECHARGE naturally communicates the short-rest intended outcome. Preserve the nap/waking
       mechanics rather than merging it with general energy access or overnight restoration.
-    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
-      outcome or contextual mode can reinforce an umbrella title without copying it. RECHARGE naturally
-      communicates the short-rest intended outcome. Preserve the nap/waking mechanics rather than merging
-      it with general energy access or overnight restoration.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. RECHARGE
+      naturally communicates the short-rest intended outcome. Preserve the nap/waking mechanics rather
+      than merging it with general energy access or overnight restoration.
     teaching_disposition: Preserve complete taught cue; metadata/title alignment only
     documentary_intent: Enter a short nap with claimed rapid restoration and awakening after minutes.
     alternatives: []
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: e19b3271950e6925f0c326d0aac5f2ffc386a1b5eeed8936a23d17a63bc999dc
+  contract_sha256: 1d544e6a9e4af6eab724a5b27859e7e5e7e8b05badb60628f70ea1cc77c35244
 record_metadata:
   legacy:
     command_ids:
@@ -389,9 +379,10 @@ record_metadata:
   - id: OCF-EDITORIAL-TITLE-CUES-004
     kind: approved-title-cue
     source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
-    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
-      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
-      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup.
+      Preserve procedures, controls, semantics, provenance and separately flagged metadata questions.
+      Later user instruction releases the draft-pilot freeze; pilot bindings follow current approved
+      titles and cues.
     decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
       request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
     source_row_sha256: 22386ace19503614491524c3b11e918b8441eb39026ceab3f0ec899f6d8625bf
@@ -406,11 +397,31 @@ record_metadata:
       hplus.function.ocf-fnd-003.closer: 60a480ee63089a5f1b323040657bf3eb137c1d95a3fd96a5d3153908fcc7be19
     review_note: Change title from Recharge to Quick Recharge and update exercise sign-off. Keep display
       and spoken cue unchanged. Preserve deliberately chosen brief natural sleep, restoration, natural
-      awakening within minutes and inhale/hold/cue/candle-like exhale sequence. Retain Recharge as former-title
-      lookup. Introduce no programmable timer, wake-up cue or release command. Preserve lasting learned
-      availability without persistent drowsiness.
+      awakening within minutes and inhale/hold/cue/candle-like exhale sequence. Retain Recharge as
+      former-title lookup. Introduce no programmable timer, wake-up cue or release command. Preserve
+      lasting learned availability without persistent drowsiness.
     approval_response: '1'
     review_position: 25
+  - id: REL-FND003-SLP002
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: f2ef2c5702b7eb9463b430d224bb4d333c5afa22b3ea70264c1a28acf520af65
+    current_values_sha256: a7901574f21dc9e6e98631c24d5c825ed223d792be9b68ee086e08534eb091d3
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-FND-003", "sha256": "c96ac8b11d5e8a7974e3be3c590432b8f299b5c1eeaa1fa6dd54de2d2ad0cf1b"},
+      {"field": "description", "function_id": "OCF-SLP-002", "sha256": "f25c3964bcb1d1c34e63bebd2bc7d271d5d05e9757459c0a65e171d7ca6c1bca"}]'
+    relationship_id: REL-FND003-SLP002
+    related_function_id: OCF-SLP-002
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -606,8 +617,8 @@ content:
       source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -657,8 +668,8 @@ content:
       - automatic-whole-system-learning
       family: short-sleep-restoration
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -668,8 +679,8 @@ content:
             source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
             start_line: 38
           status: supported
-          summary: Pair the deliberately selected legacy cue with the target response and breathing procedure;
-            canonical spelling/compatibility remains separate metadata.
+          summary: Pair the deliberately selected legacy cue with the target response and breathing
+            procedure; canonical spelling/compatibility remains separate metadata.
         closer:
           locators:
           - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
@@ -697,8 +708,8 @@ content:
             source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
             start_line: 38
           status: inferred
-          summary: Safe short-rest planning is useful but source restoration/timing claims are not guarantees.
-            Rest context and breath holding require review.
+          summary: Safe short-rest planning is useful but source restoration/timing claims are not
+            guarantees. Rest context and breath holding require review.
         future_use:
           locators:
           - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
@@ -707,8 +718,8 @@ content:
             source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
             start_line: 38
           status: supported
-          summary: Breathing/cue routine for a short sleep; source claims automatic restoration and waking
-            within minutes, not an explicit programmable timer.
+          summary: Breathing/cue routine for a short sleep; source claims automatic restoration and
+            waking within minutes, not an explicit programmable timer.
         handoff:
           locators:
           - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
@@ -726,8 +737,8 @@ content:
             source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
             start_line: 38
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
@@ -736,8 +747,8 @@ content:
             source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
             start_line: 38
           status: supported
-          summary: select-short-rest-period; inhale-and-hold; internally-issue-recharge-cue; exhale; enter-sleep;
-            anticipate-near-term-waking
+          summary: select-short-rest-period; inhale-and-hold; internally-issue-recharge-cue; exhale;
+            enter-sleep; anticipate-near-term-waking
         opener:
           locators:
           - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
@@ -746,7 +757,8 @@ content:
             source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
             start_line: 32
           status: supported
-          summary: Orient to the target function and establish receptive learning context before the instruction.
+          summary: Orient to the target function and establish receptive learning context before the
+            instruction.
         preparation:
           locators:
           - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
@@ -755,8 +767,8 @@ content:
             source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
             start_line: 3
           status: supported
-          summary: Supported uninterrupted relaxed posture, settling movements/breathing, temporary setting-aside
-            in repository representation and counted ten-state entry.
+          summary: Supported uninterrupted relaxed posture, settling movements/breathing, temporary
+            setting-aside in repository representation and counted ten-state entry.
         provenance:
           locators:
           - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
@@ -765,10 +777,10 @@ content:
             source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
             start_line: 1
           status: supported
-          summary: Complete available source_transcript text inspected; shared representations are not
-            independent corroboration. Source accuracy/authentication remains unresolved. Generic video
-            sign-off insertions at61-62 and ASR repetition are not historical instructions; no user-set
-            wake duration or suspend cue established.
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Generic
+            video sign-off insertions at61-62 and ASR repetition are not historical instructions;
+            no user-set wake duration or suspend cue established.
         purpose:
           locators:
           - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
@@ -786,8 +798,8 @@ content:
             source_sha256: 56acb044e85ca8b34a54bb5cdc2c6f361a24b6818d0cac47a835fdb0fbf399a4
             start_line: 38
           status: not-present
-          summary: Repeated instruction does not establish a distinct listener performance trial; apparent
-            ambient transcription artifacts are not practice evidence.
+          summary: Repeated instruction does not establish a distinct listener performance trial;
+            apparent ambient transcription artifacts are not practice evidence.
         safety_claims:
           locators:
           - content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
@@ -818,8 +830,8 @@ content:
             start_line: 1
           status: unknown
           summary: Investigated the full available source; this operation is not established. Generic
-            video sign-off insertions at61-62 and ASR repetition are not historical instructions; no user-set
-            wake duration or suspend cue established.
+            video sign-off insertions at61-62 and ASR repetition are not historical instructions;
+            no user-set wake duration or suspend cue established.
       source_extent:
         content_group_sha256: 57bb65f6c52177966beaec966f7eb584b617c4f9758563d9f03a5e162441eb33
         end_line: 190
@@ -903,10 +915,10 @@ content:
     metadata_ref: canonical-function-record
     preparation: []
     questions:
-    - Generic video sign-off insertions at61-62 and ASR repetition are not historical instructions; no
-      user-set wake duration or suspend cue established.
-    - Safe short-rest planning is useful but source restoration/timing claims are not guarantees. Rest
-      context and breath holding require review.
+    - Generic video sign-off insertions at61-62 and ASR repetition are not historical instructions;
+      no user-set wake duration or suspend cue established.
+    - Safe short-rest planning is useful but source restoration/timing claims are not guarantees.
+      Rest context and breath holding require review.
     states:
       preferred: []
       required: []

@@ -7,8 +7,8 @@ title:
   status: canonical
   version: 1.0.0
 description:
-  text: Strengthens recognition and expression of total-self strength, unity, resources, and power throughout
-    daily life.
+  text: Strengthens recognition and expression of total-self strength, unity, resources, and power
+    throughout daily life.
   status: canonical
   version: 1.0.0
 metadata_entries: {}
@@ -127,25 +127,15 @@ common_uses:
 - text: Practicing a calm sense of inner strength in daily life without assuming extraordinary abilities.
   status: draft
 relationships:
-  related_functions: []
-  complementary_functions: []
-  proposals:
+  related_functions:
   - function_id: OCF-FND-005
-    relationship_type: related
+    description_key: relationships.rel-prf002-fnd005.description
     description:
-      text: Compare ongoing recognition of inner resources with a deliberately invoked shift from weariness
-        toward renewed confidence.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-PRF-002
-      field: description
-      sha256: b5bcd3eb460963a8e14c23231c41f5ad7b43e97e8663f09fda3358e79470ebb1
-    - function_id: OCF-FND-005
-      field: description
-      sha256: f9cde5900e2d3cee6be500dea088f649423c46216824daa3a410fa32e9b5be5f
+      text: Compare ongoing recognition of inner resources with a deliberately invoked shift from
+        weariness toward renewed confidence.
+      status: reviewed
+      version: 1.0.0
+  complementary_functions: []
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -328,30 +318,31 @@ editorial:
     recommended_primary_cue: PLUS-INNER POWER
     prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
       association plan; approve controls together. No narration replacement text selected.
-    contextual_review: Ongoing total-self greatness/power, conscious/subconscious/higher-self unity, wisdom
-      and expression throughout life. OPTIONAL inhale/hold/cue/candle-like reinforcement. Inner Power
-      retains this scope better than task competence or momentary physical force.
-    pair_reason: Names total-self power, unity and expression throughout life; distinguishes ongoing development
-      from Strong-Quick's exceptional temporary physical response.
+    contextual_review: Ongoing total-self greatness/power, conscious/subconscious/higher-self unity,
+      wisdom and expression throughout life. OPTIONAL inhale/hold/cue/candle-like reinforcement. Inner
+      Power retains this scope better than task competence or momentary physical force.
+    pair_reason: Names total-self power, unity and expression throughout life; distinguishes ongoing
+      development from Strong-Quick's exceptional temporary physical response.
     title_cue_relationship_or_exception: Names total-self power, unity and expression throughout life;
       distinguishes ongoing development from Strong-Quick's exceptional temporary physical response.
     teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
-    documentary_intent: Claimed recognition of total inner capability/strength for life problems and activity.
+    documentary_intent: Claimed recognition of total inner capability/strength for life problems and
+      activity.
     alternatives:
     - title: Inner Capability
       cue: PLUS-CAPABLE
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 227715d8cdf59d28091e128e0561039e1e4c6a418a9a395c26a76b8c5992be6d
+  contract_sha256: aa338494888eff346ca84c60ae880f31c6a72b96014fc925f3a7abd0587b26b9
 record_metadata:
   legacy:
     command_ids:
@@ -450,8 +441,28 @@ record_metadata:
     current_resolved_text_sha256:
       hplus.function.ocf-prf-002.function-body: 9ddc7f135a7cc0e763bc356c6f1f05314452f2a414dbf1e246e03a4d627be407
       hplus.function.ocf-prf-002.closer: 50ea2c64e0ed16ece928c5c15643bf9f2a4c04bfafe161dbfcadfb0a8e01b070
-    review_note: Retain total-self strength, unity, resources and expression; not only confidence or temporary
-      physical performance.
+    review_note: Retain total-self strength, unity, resources and expression; not only confidence
+      or temporary physical performance.
+  - id: REL-PRF002-FND005
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 2c70b69ec64e13d4f1eff38cfb88bcfd8b64d65e761f71c80bf22784d3712d28
+    current_values_sha256: 9db77afe124667da81b26a3eb310418e3aaa72d346257a6e37de582c7e0b29e3
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-PRF-002", "sha256": "b5bcd3eb460963a8e14c23231c41f5ad7b43e97e8663f09fda3358e79470ebb1"},
+      {"field": "description", "function_id": "OCF-FND-005", "sha256": "f9cde5900e2d3cee6be500dea088f649423c46216824daa3a410fa32e9b5be5f"}]'
+    relationship_id: REL-PRF002-FND005
+    related_function_id: OCF-FND-005
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -641,8 +652,8 @@ content:
       source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -691,8 +702,8 @@ content:
       - automatic-whole-system-learning
       family: inner-capability-intensification
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -761,8 +772,8 @@ content:
             source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
             start_line: 42
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
@@ -781,7 +792,8 @@ content:
             source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
             start_line: 29
           status: supported
-          summary: Orient to the function and establish receptive learning context before the target instruction.
+          summary: Orient to the function and establish receptive learning context before the target
+            instruction.
         preparation:
           locators:
           - content_group_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
@@ -800,8 +812,8 @@ content:
             source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
             start_line: 1
           status: supported
-          summary: Complete available source_transcript text inspected; shared representations are not
-            independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
             text is unauthenticated; corrupted counts/ambient material cannot establish original repetition,
             timing or mechanism.
         purpose:
@@ -936,11 +948,11 @@ content:
     metadata_ref: canonical-function-record
     preparation: []
     questions:
-    - Source-designated text is unauthenticated; corrupted counts/ambient material cannot establish original
-      repetition, timing or mechanism.
-    - Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and automatic
-      whole-system learning need review. Reframing a physical/metaphysical goal is a material choice,
-      not assumed equivalence.
+    - Source-designated text is unauthenticated; corrupted counts/ambient material cannot establish
+      original repetition, timing or mechanism.
+    - Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and
+      automatic whole-system learning need review. Reframing a physical/metaphysical goal is a material
+      choice, not assumed equivalence.
     states:
       preferred: []
       required: []

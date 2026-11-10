@@ -98,24 +98,14 @@ common_uses:
   status: draft
 relationships:
   related_functions: []
-  complementary_functions: []
-  proposals:
+  complementary_functions:
   - function_id: OCF-FND-002
-    relationship_type: complementary
+    description_key: relationships.rel-prf001-fnd002.description
     description:
       text: Starting or completing a task and sustaining attention address different aspects of chosen
         activity; no combined activation is required.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-PRF-001
-      field: description
-      sha256: b2fa2f63091e863dad0d7a819f82833cfef1a294ea68d6c36317dc76a7c7603e
-    - function_id: OCF-FND-002
-      field: description
-      sha256: 5589edf7e5fa4b3687d6ce74a83a0697d44ac80d155cee2f100481105c29d57d
+      status: reviewed
+      version: 1.0.0
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -304,25 +294,26 @@ editorial:
       continuing and completing belong to one activity-directed operation, not three modes.
     pair_reason: The phrase is natural and immediately actionable. Hyphens are a representation/spoken-tokenization
       audit issue, not authorization to normalize an existing command.
-    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
-      outcome or contextual mode can reinforce an umbrella title without copying it. The phrase is natural
-      and immediately actionable. Hyphens are a representation/spoken-tokenization audit issue, not authorization
-      to normalize an existing command.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. The phrase
+      is natural and immediately actionable. Hyphens are a representation/spoken-tokenization audit
+      issue, not authorization to normalize an existing command.
     teaching_disposition: Preserve complete taught cue; metadata/title alignment only
-    documentary_intent: Begin, continue or complete a chosen activity with increased enthusiasm and readiness.
+    documentary_intent: Begin, continue or complete a chosen activity with increased enthusiasm and
+      readiness.
     alternatives: []
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 782ffc0caf81140bff7f948b21f7a2ae29542241e76c4afca83cef3419d6a778
+  contract_sha256: bcc35d2ae003ddf17fe8f6d027d275fdc07f014e5ec6ce0ebfee15f721193505
 record_metadata:
   legacy:
     command_ids:
@@ -375,6 +366,27 @@ record_metadata:
       purpose_key: functions.ocf-prf-001.purpose
       explanation_key: commands.ocf-cmd-prf-001-primary.explanation
   predecessor_resource_sha256: 74e418df3ca906d999ac850c9a63719036ae81afc7d21d83bbd57e1caeca1cdc
+  editorial_decisions:
+  - id: REL-PRF001-FND002
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 9829ead6cf9f4d2d2064812b3f86efc493b79594351fcfd2caadcc09895caefc
+    current_values_sha256: b70c3e62ce86009dedea6485a79924adaeb3a7a60fe83506e3eac4ca979c3cb6
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-PRF-001", "sha256": "b2fa2f63091e863dad0d7a819f82833cfef1a294ea68d6c36317dc76a7c7603e"},
+      {"field": "description", "function_id": "OCF-FND-002", "sha256": "5589edf7e5fa4b3687d6ce74a83a0697d44ac80d155cee2f100481105c29d57d"}]'
+    relationship_id: REL-PRF001-FND002
+    related_function_id: OCF-FND-002
+    relationship_type: complementary
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -509,8 +521,8 @@ content:
       source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -554,8 +566,8 @@ content:
       - life-force-or-reality-creation
       family: activity-initiation-and-completion
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -584,8 +596,8 @@ content:
             source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
             start_line: 97
           status: supported
-          summary: Post-close ten-state enjoyment/rest of the asserted new pattern; sleep-to-twenty is
-            not established in this available text.
+          summary: Post-close ten-state enjoyment/rest of the asserted new pattern; sleep-to-twenty
+            is not established in this available text.
         conversion:
           locators:
           - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
@@ -615,8 +627,9 @@ content:
             source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
             start_line: 140
           status: unknown
-          summary: Investigated the full available source; this operation is not established. Final ending/return
-            unavailable; numeric contamination before main instruction is not evidence of additional states.
+          summary: Investigated the full available source; this operation is not established. Final
+            ending/return unavailable; numeric contamination before main instruction is not evidence
+            of additional states.
         identity:
           locators:
           - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
@@ -625,8 +638,8 @@ content:
             source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
             start_line: 66
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
@@ -644,8 +657,8 @@ content:
             source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
             start_line: 1
           status: supported
-          summary: Explain self-programming, receptivity and intended future waking use; describe access
-            reaching remembered patterns/beliefs/habits/body.
+          summary: Explain self-programming, receptivity and intended future waking use; describe
+            access reaching remembered patterns/beliefs/habits/body.
         preparation:
           locators:
           - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
@@ -654,8 +667,8 @@ content:
             source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
             start_line: 6
           status: supported
-          summary: Quiet comfortable environment and explicit benefit intention; counted relaxation. Repository-box
-            step is not established in this version.
+          summary: Quiet comfortable environment and explicit benefit intention; counted relaxation.
+            Repository-box step is not established in this version.
         provenance:
           locators:
           - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
@@ -664,9 +677,10 @@ content:
             source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
             start_line: 1
           status: supported
-          summary: Complete available source_transcript text inspected; shared representations are not
-            independent corroboration. Source accuracy/authentication remains unresolved. Final ending/return
-            unavailable; numeric contamination before main instruction is not evidence of additional states.
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Final
+            ending/return unavailable; numeric contamination before main instruction is not evidence
+            of additional states.
         purpose:
           locators:
           - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
@@ -694,8 +708,9 @@ content:
             source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
             start_line: 64
           status: supported
-          summary: automatic-resistance-removal; subconscious-self-programming; guaranteed-momentum; life-force-or-reality-creation.
-            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+          summary: automatic-resistance-removal; subconscious-self-programming; guaranteed-momentum;
+            life-force-or-reality-creation. Claims are classified as source assertions, not accepted
+            OCF mechanisms/outcomes.
         state:
           locators:
           - content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
@@ -714,8 +729,9 @@ content:
             source_sha256: 24b0ce36548cdaea9f3f70cb0266efe9ce025306c3d2bc2745176ef2fd39c5b2
             start_line: 1
           status: unknown
-          summary: Investigated the full available source; this operation is not established. Final ending/return
-            unavailable; numeric contamination before main instruction is not evidence of additional states.
+          summary: Investigated the full available source; this operation is not established. Final
+            ending/return unavailable; numeric contamination before main instruction is not evidence
+            of additional states.
       source_extent:
         content_group_sha256: b872f5be9092cf379eb5c451c50b75249f9b22e30b7cf816c0a6e10060aaaece
         end_line: 276
@@ -798,11 +814,11 @@ content:
     metadata_ref: canonical-function-record
     preparation: []
     questions:
-    - Final ending/return unavailable; numeric contamination before main instruction is not evidence of
-      additional states.
-    - Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and automatic
-      whole-system learning need review. Reframing a physical/metaphysical goal is a material choice,
-      not assumed equivalence.
+    - Final ending/return unavailable; numeric contamination before main instruction is not evidence
+      of additional states.
+    - Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and
+      automatic whole-system learning need review. Reframing a physical/metaphysical goal is a material
+      choice, not assumed equivalence.
     states:
       preferred: []
       required: []

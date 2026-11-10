@@ -25,6 +25,8 @@ def test_portable_collection_is_self_contained_and_has_all_functions(tmp_path):
     assert (package / "complete-guide.pdf").is_file()
     assert (package / "listening-guide.pdf").is_file()
     assert b"/Outlines" in (package / "complete-guide.pdf").read_bytes()
+    handbook = PdfReader(package / "complete-guide.pdf")
+    assert any("Historical H-Plus lookup" in page.extract_text() for page in handbook.pages)
     for record in load_all_functions():
         for suffix in (".md", ".html", ".pdf"):
             assert (package / "functions" / f"{record.id}{suffix}").is_file()
@@ -43,9 +45,9 @@ def test_portable_collection_can_be_relocated_without_external_links(tmp_path, c
         assert "localhost" not in text
     assert (relocated / "complete-guide.pdf").is_file()
     result = listening_guides.validate_portable_collection(relocated)
-    assert (result["files"], result["markdown"], result["html"], result["pdf"]) == (199, 65, 65, 66)
+    assert (result["files"], result["markdown"], result["html"], result["pdf"]) == (202, 66, 66, 67)
     assert result["individual_function_pdfs"] == 58
-    assert result["extracted_canonical_resources"] == 175
+    assert result["extracted_canonical_resources"] == 174
     assert result["broken_links"] == 0
     assert result["toc_entries"] > 58
     assert result["toc_links"] == 2 * result["toc_entries"]

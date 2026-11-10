@@ -234,25 +234,15 @@ common_uses:
     is safe.
   status: draft
 relationships:
-  related_functions: []
-  complementary_functions: []
-  proposals:
+  related_functions:
   - function_id: OCF-SEN-004
-    relationship_type: related
+    description_key: relationships.rel-sen003-sen004.description
     description:
-      text: Compare aroma memory with flavor memory as distinct sensory intentions, not as tests of substance
-        or food safety.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-SEN-003
-      field: description
-      sha256: bc8e7fedeb81229219334941a92eba2e62bf55869bcf10c079ad8850e53a1d58
-    - function_id: OCF-SEN-004
-      field: description
-      sha256: 6a467469931140ade8c5b0819640983b47ca0e0d16ae37e5ba34be01973756a9
+      text: Compare aroma memory with flavor memory as distinct sensory intentions, not as tests of
+        substance or food safety.
+      status: reviewed
+      version: 1.0.0
+  complementary_functions: []
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -427,15 +417,15 @@ editorial:
     recommended_primary_cue: PLUS-SMELL MORE
     prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
       association plan; approve controls together. No narration replacement text selected.
-    contextual_review: Close eyes, inhale/hold/chosen MORE or LESS cue/exhale/open eyes; external aromas
-      or intended inner scent. GREATER/LESSER aliases are not current teaching; no third normal/reset
+    contextual_review: Close eyes, inhale/hold/chosen MORE or LESS cue/exhale/open eyes; external
+      aromas or intended inner scent. GREATER/LESSER aliases are not current teaching; no third normal/reset
       cue.
     pair_reason: The paired sensory directions are concise and intelligible; preserve historical GREATER/LESSER
       records as provenance rather than adding new synonyms.
-    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
-      outcome or contextual mode can reinforce an umbrella title without copying it. The paired sensory
-      directions are concise and intelligible; preserve historical GREATER/LESSER records as provenance
-      rather than adding new synonyms.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. The paired
+      sensory directions are concise and intelligible; preserve historical GREATER/LESSER records
+      as provenance rather than adding new synonyms.
     teaching_disposition: Preserve complete taught cue; metadata/title alignment only
     documentary_intent: Brochure specifies smell identification/sensitivity increase or reduced input;
       GREATER/LESSER are legacy commands, not an approved physiological mechanism.
@@ -443,15 +433,15 @@ editorial:
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 65931109abf61710520b1410782fa48f8bb87dfa0831c766547cec48b09891fe
+  contract_sha256: a8ce1412c8400662da3bcda8039ae85ee29805e3868a97ced74842e36c6d4a2a
 record_metadata:
   legacy:
     command_ids:
@@ -542,9 +532,10 @@ record_metadata:
   - id: OCF-EDITORIAL-TITLE-CUES-004
     kind: approved-title-cue
     source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
-    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
-      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
-      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup.
+      Preserve procedures, controls, semantics, provenance and separately flagged metadata questions.
+      Later user instruction releases the draft-pilot freeze; pilot bindings follow current approved
+      titles and cues.
     decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
       request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
     source_row_sha256: e868ea59e2c9a744f50c70e80d169863a5769dd24f0bea931b47c1900490c4b9
@@ -557,14 +548,34 @@ record_metadata:
       hplus.function.ocf-sen-003.closer: 2ef41769c22f385743e2432faea57f5b838cec794c97fc30f89ffb28bdf083f8
     current_resolved_text_sha256:
       hplus.function.ocf-sen-003.closer: 2b038d8e7dfc6f29d6effc7a4be098097ae50099583f2a47392104d8164be875
-    review_note: 'Change title from Sensory: Smell to Smell and update exercise sign-off. Keep BOTH cues
-      unchanged: PLUS-SMELL MORE / Plus Smell More and PLUS-SMELL LESS / Plus Smell Less. Preserve close
-      eyes/inhale/hold/selected cue/slow mouth exhale/open eyes sequence, consciously selected temporary
-      physical adjustments, scent recall and lasting olfactory imagination. Retain Sensory: Smell as historical
-      lookup; introduce no third normal, reset or release cue. Do not replace current MORE/LESS teaching
-      with older GREATER/LESSER wording.'
+    review_note: 'Change title from Sensory: Smell to Smell and update exercise sign-off. Keep BOTH
+      cues unchanged: PLUS-SMELL MORE / Plus Smell More and PLUS-SMELL LESS / Plus Smell Less. Preserve
+      close eyes/inhale/hold/selected cue/slow mouth exhale/open eyes sequence, consciously selected
+      temporary physical adjustments, scent recall and lasting olfactory imagination. Retain Sensory:
+      Smell as historical lookup; introduce no third normal, reset or release cue. Do not replace
+      current MORE/LESS teaching with older GREATER/LESSER wording.'
     approval_response: '1'
     review_position: 30
+  - id: REL-SEN003-SEN004
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 72a8569c066ed3c2f1f2ed09ee3efdd131721665719f98f8290a674458800c34
+    current_values_sha256: dc6af962e5bac99e4daf2071ddf649a060f0d9ac008b1ba1ac6e03440d3bcc2f
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-SEN-003", "sha256": "bc8e7fedeb81229219334941a92eba2e62bf55869bcf10c079ad8850e53a1d58"},
+      {"field": "description", "function_id": "OCF-SEN-004", "sha256": "6a467469931140ade8c5b0819640983b47ca0e0d16ae37e5ba34be01973756a9"}]'
+    relationship_id: REL-SEN003-SEN004
+    related_function_id: OCF-SEN-004
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -790,8 +801,8 @@ content:
       source_sha256: 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: unverified
       completeness: pending-source-review
@@ -833,8 +844,8 @@ content:
       - inferred-persistence-until-return
       family: adjustable-sensory-perception
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -844,8 +855,8 @@ content:
             source_sha256: 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6
             start_line: 21
           status: inferred
-          summary: Known command/purpose metadata is paired in the mockup with a proposed internal cue/breath
-            procedure; the exact historical association wording/method is unknown.
+          summary: Known command/purpose metadata is paired in the mockup with a proposed internal
+            cue/breath procedure; the exact historical association wording/method is unknown.
         closer:
           locators:
           - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
@@ -854,8 +865,8 @@ content:
             source_sha256: 84e872aa377c495b0cabfbbe3837bf6a4f19d5ed526fcc3d8a839b8314b3a9c6
             start_line: 48
           status: inferred
-          summary: Historical closer unknown; annotated mockup borrows remember/use, access close and
-            return shell from related transcripts.
+          summary: Historical closer unknown; annotated mockup borrows remember/use, access close
+            and return shell from related transcripts.
         consolidation:
           locators:
           - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
@@ -916,8 +927,8 @@ content:
             page: 2
             source_sha256: e29281de2c8f742195b53556352b9d141cc679bd0e7d97ea524eeade74e98858
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
@@ -968,12 +979,12 @@ content:
             page: 2
             source_sha256: e29281de2c8f742195b53556352b9d141cc679bd0e7d97ea524eeade74e98858
           status: inferred
-          summary: Complete available reconstructed_mockup text inspected; shared representations are
-            not independent corroboration. Source accuracy/authentication remains unresolved. Annotated
-            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
-            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
-            historical operations remain unknown. Both brochure pages inspected separately; catalogue
-            assertions are documentary evidence, not recovered audio instructions.
+          summary: Complete available reconstructed_mockup text inspected; shared representations
+            are not independent corroboration. Source accuracy/authentication remains unresolved.
+            Annotated VERIFIED labels are reconstruction-author assertions, not independent authentication.
+            Catalogue purpose/command/use limits and proposed mockup operations are separate evidence
+            axes. Missing historical operations remain unknown. Both brochure pages inspected separately;
+            catalogue assertions are documentary evidence, not recovered audio instructions.
         purpose:
           locators:
           - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
@@ -988,8 +999,8 @@ content:
             page: 2
             source_sha256: e29281de2c8f742195b53556352b9d141cc679bd0e7d97ea524eeade74e98858
           status: supported
-          summary: Brochure specifies smell identification/sensitivity increase or reduced input; GREATER/LESSER
-            are legacy commands, not an approved physiological mechanism.
+          summary: Brochure specifies smell identification/sensitivity increase or reduced input;
+            GREATER/LESSER are legacy commands, not an approved physiological mechanism.
         rehearsal:
           locators:
           - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
@@ -999,9 +1010,9 @@ content:
             start_line: 1
           status: unknown
           summary: Investigated the full available source; this operation is not established. Annotated
-            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
-            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
-            historical operations remain unknown.
+            VERIFIED labels are reconstruction-author assertions, not independent authentication.
+            Catalogue purpose/command/use limits and proposed mockup operations are separate evidence
+            axes. Missing historical operations remain unknown.
         safety_claims:
           locators:
           - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
@@ -1027,7 +1038,8 @@ content:
             start_line: 1
           status: inferred
           summary: Historical target recording's exact state sequence remains unknown. Mockup imports
-            ten/eleven/ten/sleep/waking grammar from surviving Hearing/Seeing, not recovered target audio.
+            ten/eleven/ten/sleep/waking grammar from surviving Hearing/Seeing, not recovered target
+            audio.
         suspend_cancel_reset:
           locators:
           - content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
@@ -1037,9 +1049,9 @@ content:
             start_line: 1
           status: unknown
           summary: Investigated the full available source; this operation is not established. Annotated
-            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
-            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
-            historical operations remain unknown.
+            VERIFIED labels are reconstruction-author assertions, not independent authentication.
+            Catalogue purpose/command/use limits and proposed mockup operations are separate evidence
+            axes. Missing historical operations remain unknown.
       source_extent:
         content_group_sha256: 04cfca8132a3bc593f5ed4e6e531c0f29c77c07462e52442a108ac5e471a9c2b
         end_line: 60
@@ -1123,8 +1135,9 @@ content:
     - Annotated VERIFIED labels are reconstruction-author assertions, not independent authentication.
       Catalogue purpose/command/use limits and proposed mockup operations are separate evidence axes.
       Missing historical operations remain unknown.
-    - Original OCF design is still required; do not convert mockup expression by synonyms or adopt unsupported
-      mechanisms. Any safer/material reframing needs explicit human review, not historical promotion.
+    - Original OCF design is still required; do not convert mockup expression by synonyms or adopt
+      unsupported mechanisms. Any safer/material reframing needs explicit human review, not historical
+      promotion.
     states:
       preferred: []
       required: []

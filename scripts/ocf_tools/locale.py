@@ -1326,7 +1326,11 @@ class LocaleCatalog:
                             self.problems.append(
                                 f"{pack.locale}: relationship description evidence drift"
                             )
-                for relation in metadata.get("relationships", {}).get("related_functions", []):
+                for relation in [
+                    row
+                    for kind in ("related_functions", "complementary_functions")
+                    for row in metadata.get("relationships", {}).get(kind, [])
+                ]:
                     key = relation.get("description_key")
                     if not key:
                         continue
@@ -2029,7 +2033,11 @@ def build_pseudo_pack(
         result["metadata_entries"] = {
             key: pseudo_alias(key) for key in metadata.get("metadata_entries", {})
         }
-        for relation in result.get("relationships", {}).get("related_functions", []):
+        for relation in [
+            row
+            for kind in ("related_functions", "complementary_functions")
+            for row in result.get("relationships", {}).get(kind, [])
+        ]:
             if relation.get("description_key"):
                 relation["description"] = pseudo_alias(relation["description_key"])
         for field_name in ("tags", "common_uses"):

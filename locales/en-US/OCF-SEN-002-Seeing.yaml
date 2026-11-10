@@ -114,29 +114,19 @@ tags:
 common_uses:
 - text: Exploring remembered or deliberately imagined visual detail in your own way.
   status: draft
-- text: Practicing attention to seeing without treating imagery as vision correction or requiring vivid
-    mental pictures.
+- text: Practicing attention to seeing without treating imagery as vision correction or requiring
+    vivid mental pictures.
   status: draft
 relationships:
   related_functions: []
-  complementary_functions: []
-  proposals:
+  complementary_functions:
   - function_id: OCF-SEN-001
-    relationship_type: complementary
+    description_key: relationships.rel-sen002-sen001.description
     description:
-      text: Visual imagery and inner sound offer different optional modes of imaginative awareness; vivid
-        imagery is not required and sensory restoration is not claimed.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-SEN-002
-      field: description
-      sha256: 1cc04c5b74cdd9b6b04881ccff576ea1a736a512e8385859f9a1078a0bf1e9fd
-    - function_id: OCF-SEN-001
-      field: description
-      sha256: 863922bf2c9a9ad33643e8de48977dde9489d1d48cae1de1b5dffcf63a03a185
+      text: Visual imagery and inner sound offer different optional modes of imaginative awareness;
+        vivid imagery is not required and sensory restoration is not claimed.
+      status: reviewed
+      version: 1.0.0
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -308,30 +298,30 @@ editorial:
     recommended_primary_cue: PLUS-SEE BETTER
     prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
       association plan; approve controls together. No narration replacement text selected.
-    contextual_review: Inhale/hold/cue/exhale reinforces physical sight, inner visualization or both by
-      intention. Preserve protected SEE BETTER and physical/inner scope; superseded MORE/LESS must not
-      return as artificial modes.
+    contextual_review: Inhale/hold/cue/exhale reinforces physical sight, inner visualization or both
+      by intention. Preserve protected SEE BETTER and physical/inner scope; superseded MORE/LESS must
+      not return as artificial modes.
     pair_reason: The exact current cue is strong and explicitly protected. The extracted seeing-system
       intent is broader than inner visualization; clarify scope separately without rewriting the cue.
-    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
-      outcome or contextual mode can reinforce an umbrella title without copying it. The exact current
-      cue is strong and explicitly protected. The extracted seeing-system intent is broader than inner
-      visualization; clarify scope separately without rewriting the cue.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. The exact
+      current cue is strong and explicitly protected. The extracted seeing-system intent is broader
+      than inner visualization; clarify scope separately without rewriting the cue.
     teaching_disposition: Preserve complete taught cue; metadata/title alignment only
     documentary_intent: Claimed ongoing improvement of physical sight and seeing-system function.
     alternatives: []
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 816178b999e737fbfb8d0d32a3df82ffd75a667fdd379e4c7a7b4f715296f511
+  contract_sha256: a9f3a616c4cde592169a1ffb31308d9cbec47fef68be3f6005eb5f007352e52f
 record_metadata:
   legacy:
     command_ids:
@@ -350,8 +340,8 @@ record_metadata:
   compatibility:
     legacy_commands:
     - PLUS-SEE BETTER
-    rationale: The canonical activation command is PLUS-SEE BETTER, matching the approved narration. The
-      previous MORE/LESS directional pair (PLUS-SEE MORE / PLUS-SEE LESS) is superseded and preserved
+    rationale: The canonical activation command is PLUS-SEE BETTER, matching the approved narration.
+      The previous MORE/LESS directional pair (PLUS-SEE MORE / PLUS-SEE LESS) is superseded and preserved
       as historical provenance.
     state: alias-listed
   historical_lookup:
@@ -409,9 +399,10 @@ record_metadata:
   - id: OCF-EDITORIAL-TITLE-CUES-004
     kind: approved-title-cue
     source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
-    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
-      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
-      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup.
+      Preserve procedures, controls, semantics, provenance and separately flagged metadata questions.
+      Later user instruction releases the draft-pilot freeze; pilot bindings follow current approved
+      titles and cues.
     decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
       request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
     source_row_sha256: bd4dc512f5304898de333245b1d43ebafe7ed5f4a37d7ca13233871656370b58
@@ -442,6 +433,26 @@ record_metadata:
     current_values_sha256: 1b88d67b0ab6a9c5104e393c32d620e1b4f516203d3bfbcd5796c5f43c5b17e7
     review_note: 'Seeing: 1'
     approval_response: approve
+  - id: REL-SEN002-SEN001
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: ab4649f068970f4b4ecb3ce83642f19b232a5e480e8c6ed094b3ff11728e043c
+    current_values_sha256: a0e34f2e93d893d0917bb584cddbaf45e3ad834f44adbe1405208d7517d4be2a
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-SEN-002", "sha256": "1cc04c5b74cdd9b6b04881ccff576ea1a736a512e8385859f9a1078a0bf1e9fd"},
+      {"field": "description", "function_id": "OCF-SEN-001", "sha256": "863922bf2c9a9ad33643e8de48977dde9489d1d48cae1de1b5dffcf63a03a185"}]'
+    relationship_id: REL-SEN002-SEN001
+    related_function_id: OCF-SEN-001
+    relationship_type: complementary
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -627,8 +638,8 @@ content:
       source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -678,8 +689,8 @@ content:
       - persistent-physiological-improvement
       family: sensory-organ-improvement-intensification
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -689,8 +700,8 @@ content:
             source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
             start_line: 55
           status: supported
-          summary: One intensification cue is in this source; canonical MORE/LESS metadata does not establish
-            a historical two-mode seeing instruction here.
+          summary: One intensification cue is in this source; canonical MORE/LESS metadata does not
+            establish a historical two-mode seeing instruction here.
         closer:
           locators:
           - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
@@ -718,8 +729,8 @@ content:
             source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
             start_line: 35
           status: inferred
-          summary: Do not propagate Hearing's attention reinterpretation to Seeing. Ongoing physical sight
-            claims and canonical mode differences require independent review.
+          summary: Do not propagate Hearing's attention reinterpretation to Seeing. Ongoing physical
+            sight claims and canonical mode differences require independent review.
         future_use:
           locators:
           - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
@@ -746,8 +757,8 @@ content:
             source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
             start_line: 55
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
@@ -766,7 +777,8 @@ content:
             source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
             start_line: 30
           status: supported
-          summary: Orient to the function and establish receptive learning context before the target instruction.
+          summary: Orient to the function and establish receptive learning context before the target
+            instruction.
         preparation:
           locators:
           - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
@@ -785,8 +797,8 @@ content:
             source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
             start_line: 1
           status: supported
-          summary: Complete available source_transcript text inspected; shared representations are not
-            independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
             text is unauthenticated; corrupted counts/ambient material cannot establish original repetition,
             timing or mechanism.
         purpose:
@@ -816,8 +828,9 @@ content:
             source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
             start_line: 35
           status: supported
-          summary: tear-and-eyelid-regulation; optical-focus-improvement; eye-brain-signal-accuracy; persistent-physiological-improvement.
-            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+          summary: tear-and-eyelid-regulation; optical-focus-improvement; eye-brain-signal-accuracy;
+            persistent-physiological-improvement. Claims are classified as source assertions, not
+            accepted OCF mechanisms/outcomes.
         state:
           locators:
           - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
@@ -920,10 +933,10 @@ content:
     metadata_ref: canonical-function-record
     preparation: []
     questions:
-    - Source-designated text is unauthenticated; corrupted counts/ambient material cannot establish original
-      repetition, timing or mechanism.
-    - Do not propagate Hearing's attention reinterpretation to Seeing. Ongoing physical sight claims and
-      canonical mode differences require independent review.
+    - Source-designated text is unauthenticated; corrupted counts/ambient material cannot establish
+      original repetition, timing or mechanism.
+    - Do not propagate Hearing's attention reinterpretation to Seeing. Ongoing physical sight claims
+      and canonical mode differences require independent review.
     states:
       preferred: []
       required: []

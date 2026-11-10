@@ -7,7 +7,7 @@ import shutil
 from pathlib import Path, PureWindowsPath
 
 from . import artwork, audio_build
-from .artifact_names import ArtifactNamer
+from .artifact_names import listener_export_names
 from .indexes import find_audio_manifest, load_function_by_id
 from .locale import LocaleCatalog
 from .paths import (
@@ -427,10 +427,20 @@ def export_audition(
     title, title_resolution = _function_title(function_id, locale, LocaleCatalog())
     if not narrator:
         raise OCFError("completed report must declare its narrator/voice display name")
+    delivery_names = listener_export_names(
+        function_id,
+        title,
+        locale,
+        ["flac", "mp3", *(["txt", "lrc", "srt", "vtt", "timing.json"] if lyrics else [])],
+        voice_label=narrator,
+        version=version,
+    )
     final = (
         Path(output).expanduser().resolve()
         if output
-        else work_path("renders", "listening-exports", unique_run_id(function_id + "-v" + version))
+        else work_path(
+            "renders", "listening-exports", unique_run_id("edition"), delivery_names["directory"]
+        )
     )
     if not final.is_relative_to(work_root().resolve()):
         raise OCFError("private audition exports must remain inside the OCF workspace")
@@ -487,15 +497,7 @@ def export_audition(
         show_cue=show_cue,
         show_description=show_description,
     )
-    namer = ArtifactNamer()
-    all_names = namer.filenames(
-        function_id,
-        title,
-        locale,
-        ["flac", "mp3", *(["txt", "lrc", "srt", "vtt", "timing.json"] if lyrics else [])],
-        variant=narrator,
-        version=version,
-    )
+    all_names = delivery_names["files"]
     names = {fmt: all_names[fmt] for fmt in ("flac", "mp3")}
     if dry_run:
         return {

@@ -161,7 +161,7 @@ def test_current_registry_all_58_guides_have_exact_active_cues():
         assert "hplus.function." not in text
         assert "Canonical function:" not in text
         for command in record.command_records:
-            if not is_active(command) or command.role == "legacy-alias":
+            if not is_active(command) or command.role in {"legacy-alias", "access-close"}:
                 continue
             cue = localized_cue(record, command, catalog=catalog, strict=False)
             assert f"Display cue: {guides._literal(cue['display_cue'])}" in text

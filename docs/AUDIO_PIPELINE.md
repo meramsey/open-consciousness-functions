@@ -548,3 +548,28 @@ regression coverage in `tests/test_audio_build.py` and
 
 See `docs/SEMANTIC_DSP.md`, `docs/SEMANTIC_SESSIONS.md`, and
 `docs/AUDIO_STANDARD.md` for contracts and schemas.
+
+
+### Readable listener export names
+
+Private listening exports and public release packages share the naming helper
+`listener_export_names`. Delivered media and transcript sidecars use:
+
+`OCF-ID - Function-Title - locale - Voice-Display-Label - vEDITION.ext`
+
+The title is shortened before the declared voice/version suffixes. The version
+is the actual audio edition, not an inferred release approval or the guide
+version. Automatic export folders include a readable title; explicit operator
+destinations remain authoritative and existing editions are never overwritten.
+
+Standalone Preparation Learning uses `00 - Preparation-Learning - locale -
+Voice-Display-Label - vEDITION.ext`, plus the explicit `preparation-learning`
+session kind. The `00` is a sorting prefix, not a fabricated function identity.
+Portal manifests use this session kind to place preparation before functions.
+Low-level engine scratch files and arbitrary explicitly named recording outputs
+retain their own filenames; they are not listener release packages.
+
+Renaming an existing completed collection must preserve media bytes and its
+original render identity, update relative manifest/playlist/portal links and
+recompute delivery checksums. A new named collection may hard-link verified
+media to avoid another audio copy while preserving its predecessor.

@@ -105,28 +105,18 @@ relationships:
     description_key: relationships.rel-fnd002-cog007.description
     description:
       text: Compare directed-attention practice with thinking-oriented practice. Choose either independently;
-        neither is required to activate or benefit from the other. The Focus function is not a Focus 10/11
-        audio stage.
+        neither is required to activate or benefit from the other. The Focus function is not a Focus
+        10/11 audio stage.
       status: reviewed
       version: 0.0.1
-  complementary_functions: []
-  proposals:
+  complementary_functions:
   - function_id: OCF-COG-004
-    relationship_type: complementary
+    description_key: relationships.rel-fnd002-cog004.description
     description:
-      text: Directed attention and deliberate memory capture have different learning intentions that may
-        be explored as separate practices.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-FND-002
-      field: description
-      sha256: 5589edf7e5fa4b3687d6ce74a83a0697d44ac80d155cee2f100481105c29d57d
-    - function_id: OCF-COG-004
-      field: description
-      sha256: 098e88038844417a6241fc8ae022de3ada9529b0e189e64b2d68691b6c607c92
+      text: Directed attention and deliberate memory capture have different learning intentions that
+        may be explored as separate practices.
+      status: reviewed
+      version: 1.0.0
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -324,29 +314,30 @@ editorial:
     prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
       association plan; approve controls together. No narration replacement text selected.
     contextual_review: Select activity/thought/experience, inhale/hold/cue/candle-like exhale. Sustained
-      attention permits conscious shifts; not entry to a numbered Focus state. Preserve protected FOCUS.
+      attention permits conscious shifts; not entry to a numbered Focus state. Preserve protected
+      FOCUS.
     pair_reason: The current cue is clear, short and explicitly protected. Keep it; a historical label
       does not justify an unnecessary rename.
-    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
-      outcome or contextual mode can reinforce an umbrella title without copying it. The current cue is
-      clear, short and explicitly protected. Keep it; a historical label does not justify an unnecessary
-      rename.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. The current
+      cue is clear, short and explicitly protected. Keep it; a historical label does not justify an
+      unnecessary rename.
     teaching_disposition: Preserve complete taught cue; metadata/title alignment only
-    documentary_intent: Deliberately concentrate sensory/thought attention on a selected activity, with
-      claimed detailed retention.
+    documentary_intent: Deliberately concentrate sensory/thought attention on a selected activity,
+      with claimed detailed retention.
     alternatives: []
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 7c2d45e0c9dfdd581687e95229917bad4cd60d74ee6645df9d13310c85d6934c
+  contract_sha256: e2b861a6a31850730be4dcb8143033e09db713de217252c191895433183f7dab
 record_metadata:
   legacy:
     command_ids:
@@ -364,8 +355,8 @@ record_metadata:
     - Attention
   compatibility:
     state: historical-lookup
-    rationale: Approved presentation successor OCF-COMMAND-SIMPLIFICATION-001; superseded wording remains
-      historical lookup.
+    rationale: Approved presentation successor OCF-COMMAND-SIMPLIFICATION-001; superseded wording
+      remains historical lookup.
   historical_lookup:
   - text: Attention
     kind: former-title
@@ -388,12 +379,12 @@ record_metadata:
     original_authors: []
   history:
   - date: '2026-09-30'
-    note: Corrected the background Focus-state design. OCF-BG-0001 metadata described a 'focus-3 -> focus-10
-      -> focus-3' arc; the analyzed Human Plus / Focus 11 Access Channel source establishes Focus 10 ->
-      Focus 11 -> Focus 10. OCF-BG-0001 now records that sequence with a machine-readable focus_sequence;
-      the superseded arc is no longer authoritative. Focus 3 remains available only as an optional induction/preparation
-      mechanism. The dated 2026-09-20 entry above is left as the historical record of the bed that was
-      actually built at that time.
+    note: Corrected the background Focus-state design. OCF-BG-0001 metadata described a 'focus-3 ->
+      focus-10 -> focus-3' arc; the analyzed Human Plus / Focus 11 Access Channel source establishes
+      Focus 10 -> Focus 11 -> Focus 10. OCF-BG-0001 now records that sequence with a machine-readable
+      focus_sequence; the superseded arc is no longer authoritative. Focus 3 remains available only
+      as an optional induction/preparation mechanism. The dated 2026-09-20 entry above is left as
+      the historical record of the bed that was actually built at that time.
     version: 0.11.0
   - date: '2026-09-12'
     note: Initial legacy mapping record created by bootstrap generator.
@@ -403,62 +394,63 @@ record_metadata:
       locally with Piper lessac TTS (OCF-AUDIO-0001). Transcript wording kept local, not committed.
     version: 0.2.0
   - date: '2026-09-20'
-    note: Farfield engine installed locally (0.1.0, OCF-VOICE venv); focus-3 -> focus-10 -> focus-3 arc
-      bed built (OCF-BG-0001) and mixed under the narration into a stereo master. Transcript wording kept
-      local, not committed.
+    note: Farfield engine installed locally (0.1.0, OCF-VOICE venv); focus-3 -> focus-10 -> focus-3
+      arc bed built (OCF-BG-0001) and mixed under the narration into a stereo master. Transcript wording
+      kept local, not committed.
     version: 0.3.0
   - date: '2026-09-25'
-    note: SBaGenX engine added as a supported background backend (engine sbagenx, GPL-2.0, public CLI
-      only); Attention bed switched to an OCF-authored binaural 10-16 Hz arc (OCF-BG-0002) and remastered
-      with the same Piper narration. Transcript wording kept local, not committed.
+    note: SBaGenX engine added as a supported background backend (engine sbagenx, GPL-2.0, public
+      CLI only); Attention bed switched to an OCF-authored binaural 10-16 Hz arc (OCF-BG-0002) and
+      remastered with the same Piper narration. Transcript wording kept local, not committed.
     version: 0.4.0
   - date: '2026-09-25'
-    note: 'Composite bed OCF-BG-0003: an operator-supplied, operator-reported-open-source Focus 11 excerpt
-      (F11 V4.flac, 47:30-52:57) spliced into the 6:31-11:58 access window of the SBaGenX arc bed and
-      remastered. Excerpt kept local and citation-only; license to verify before redistribution. Transcript
-      wording kept local, not committed.'
+    note: 'Composite bed OCF-BG-0003: an operator-supplied, operator-reported-open-source Focus 11
+      excerpt (F11 V4.flac, 47:30-52:57) spliced into the 6:31-11:58 access window of the SBaGenX
+      arc bed and remastered. Excerpt kept local and citation-only; license to verify before redistribution.
+      Transcript wording kept local, not committed.'
     version: 0.5.0
   - date: '2026-09-25'
     note: 'Narration re-rendered with adaptive per-cue pacing (timing_mode fit-soft, ocf voice render
       --fit): per-line TTS trailing pads trimmed and short flow slots stretched up to a cap, deliberate
-      source pauses preserved; remastered against the OCF-BG-0003 composite bed. Transcript wording kept
-      local, not committed.'
+      source pauses preserved; remastered against the OCF-BG-0003 composite bed. Transcript wording
+      kept local, not committed.'
     version: 0.6.0
   - date: '2026-09-26'
     note: 'Narration re-rendered as flowing sentences (timing_mode natural, ocf voice render --flow):
-      consecutive whisper sentence fragments merged into single utterances so line splits no longer create
-      unnatural mid-sentence pauses, while bare countdown markers stay spaced as authored; remastered
-      against the OCF-BG-0003 composite bed. Transcript wording kept local, not committed.'
+      consecutive whisper sentence fragments merged into single utterances so line splits no longer
+      create unnatural mid-sentence pauses, while bare countdown markers stay spaced as authored;
+      remastered against the OCF-BG-0003 composite bed. Transcript wording kept local, not committed.'
     version: 0.7.0
   - date: '2026-09-26'
-    note: 'Bed switched to the operator reference-master (OCF-BG-0004): F10 V4 full-length tonal bed with
-      the F11 V4 access excerpt (47:30-52:57) spliced into the 6:31-11:58 access window, replacing the
-      synthesized backend; narration re-rendered with even-spaced count cues (timing_mode natural+even-counts,
-      ocf voice render --even-counts) that re-time pure-count runs onto even grids anchored by their first/last
-      counts without rewriting transcript wording; remastered at 0.15 bed gain. Transcript wording kept
-      local, not committed.'
+    note: 'Bed switched to the operator reference-master (OCF-BG-0004): F10 V4 full-length tonal bed
+      with the F11 V4 access excerpt (47:30-52:57) spliced into the 6:31-11:58 access window, replacing
+      the synthesized backend; narration re-rendered with even-spaced count cues (timing_mode natural+even-counts,
+      ocf voice render --even-counts) that re-time pure-count runs onto even grids anchored by their
+      first/last counts without rewriting transcript wording; remastered at 0.15 bed gain. Transcript
+      wording kept local, not committed.'
     version: 0.8.0
   - date: '2026-09-29'
     note: 'Original-OCF Attention session committed: dedicated session template OCF-TPL-SESSION-ATTENTION-001
       (tenth-state opening, Focus-11 window, sleep induction, count to 20, twentieth-state reinforcement,
       return, closing) composed from four slot files (opener/focus11/sleep20/closer) into the committable
       script audio/scripts/attention-ocf.yaml; wording substantially rephrased for OCF while the legacy
-      transcript is retained unchanged as citation-only reference. Section gain_db support added to the
-      transcript/session-template schemas, the session composer and ocf audio build, so the twentieth-state
-      reinforcement is mixed as a barely-audible underlay (1156.40-1582.64 s at -24 dB, measured 0.5 dB
-      above the bed floor) instead of a silent hold. OCF-owned Focus-11 preset mirrors stored under audio/background/presets/
-      (farfield + sbagenx; sbagenx -R 1000 -> -R 10 crash fix) and registered as OCF-BG-0005..OCF-BG-0010;
-      bed switched to the fully OCF-authored composite OCF-BG-0011 (10-16 Hz binaural arc with the gamma+theta+pink
-      Focus-11 access state spliced into the 6:31-12:50 access window). Narration re-rendered from the
-      OCF script with Piper lessac, --flow --even-counts (92 cues, 29:23.6), and OCF-AUDIO-0001 rebuilt
-      to 0.6.0 as tagged WAV/FLAC/MP3 with OCF_SESSION_TEMPLATE provenance.'
+      transcript is retained unchanged as citation-only reference. Section gain_db support added to
+      the transcript/session-template schemas, the session composer and ocf audio build, so the twentieth-state
+      reinforcement is mixed as a barely-audible underlay (1156.40-1582.64 s at -24 dB, measured 0.5
+      dB above the bed floor) instead of a silent hold. OCF-owned Focus-11 preset mirrors stored under
+      audio/background/presets/ (farfield + sbagenx; sbagenx -R 1000 -> -R 10 crash fix) and registered
+      as OCF-BG-0005..OCF-BG-0010; bed switched to the fully OCF-authored composite OCF-BG-0011 (10-16
+      Hz binaural arc with the gamma+theta+pink Focus-11 access state spliced into the 6:31-12:50
+      access window). Narration re-rendered from the OCF script with Piper lessac, --flow --even-counts
+      (92 cues, 29:23.6), and OCF-AUDIO-0001 rebuilt to 0.6.0 as tagged WAV/FLAC/MP3 with OCF_SESSION_TEMPLATE
+      provenance.'
     version: 0.9.0
   - date: '2026-09-29'
     note: 'Attention session reworked onto the converted legacy wording: template OCF-TPL-SESSION-ATTENTION-001
-      is now a reference-derived shell carrying the adapted Monroe H-PLUS narration (stray legacy ''12''
-      at 07:19.60 dropped), with a single required slot audio/slots/attention/focus11.txt (five-line PLUS-FOCUS
-      instruction); composer gained from_slot+repeat so the twentieth-state hold re-runs the focus-11
-      wording twice as a -24 dB underlay (~17:41-26:22). The composed narration is adapted-from-legacy
+      is now a reference-derived shell carrying the adapted Monroe H-PLUS narration (stray legacy
+      ''12'' at 07:19.60 dropped), with a single required slot audio/slots/attention/focus11.txt (five-line
+      PLUS-FOCUS instruction); composer gained from_slot+repeat so the twentieth-state hold re-runs
+      the focus-11 wording twice as a -24 dB underlay (~17:41-26:22). The composed narration is adapted-from-legacy
       and citation-only, never OCF-authored. OCF-AUDIO-0001 rebuilt (77 cues); legacy transcript retained
       untouched.'
     version: 0.10.0
@@ -483,8 +475,8 @@ record_metadata:
   - id: OCF-COMMAND-SIMPLIFICATION-001
     kind: approved-command-simplification
     source_commit: 8ec5b0395c7a5c05fa629d64297d3bf048b097f9
-    scope: Explicitly approved command title/display/spoken substitutions only; commands, lifecycle, procedure
-      and audio settings are unchanged.
+    scope: Explicitly approved command title/display/spoken substitutions only; commands, lifecycle,
+      procedure and audio settings are unchanged.
     decision_source: 'Explicit user confirmation: Confirm implementation'
     source_row_sha256: 64c965b91dfcc60a5586b1a7485f1d870d7970c99f1d80bed69842b0ac923a61
     status: accepted
@@ -493,8 +485,8 @@ record_metadata:
     changed_narration_keys: []
     previous_resolved_text_sha256: {}
     current_resolved_text_sha256: {}
-    review_note: Narration fingerprints and synthesis cache identity follow the approved canonical wording;
-      listening and release approval remain false.
+    review_note: Narration fingerprints and synthesis cache identity follow the approved canonical
+      wording; listening and release approval remain false.
   - id: REL-FND002-COG007
     kind: approved-relationship
     source_commit: 2b26883148ee1c218a917cd7ff4119943d2eb03f
@@ -503,12 +495,32 @@ record_metadata:
     source_row_sha256: 7ff296ad15201981682266fada6d19460926ed22ab079216ade3367aac9ec520
     status: accepted
     current_values_sha256: ec9f972b35418bc3adc6dabec61b318906cfe29d4b234e3719df4e9932709411
-    review_note: Approved optional relationship remains embedded in the canonical locale resource. Evidence
-      provenance and reciprocal approval are retained as metadata.
+    review_note: Approved optional relationship remains embedded in the canonical locale resource.
+      Evidence provenance and reciprocal approval are retained as metadata.
     approval_response: '1'
     relationship_id: REL-FND002-COG007
     related_function_id: OCF-COG-007
     relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
+  - id: REL-FND002-COG004
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 533098efa33295c69fdec583c1adb7934867b8f89d909ab88629b1ea715c1adb
+    current_values_sha256: 093153b190b063065bd9d780750b75e91105634a83a443c20ba2b22bd6b8637e
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-FND-002", "sha256": "5589edf7e5fa4b3687d6ce74a83a0697d44ac80d155cee2f100481105c29d57d"},
+      {"field": "description", "function_id": "OCF-COG-004", "sha256": "098e88038844417a6241fc8ae022de3ada9529b0e189e64b2d68691b6c607c92"}]'
+    relationship_id: REL-FND002-COG004
+    related_function_id: OCF-COG-004
+    relationship_type: complementary
     dependency: optional
     reciprocal_approved: false
 content:
@@ -701,8 +713,8 @@ content:
       source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -747,8 +759,8 @@ content:
       - automatic-whole-system-learning
       family: attentional-narrowing
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -758,8 +770,8 @@ content:
             source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
             start_line: 31
           status: supported
-          summary: Pair the deliberately selected legacy cue with the target response and breathing procedure;
-            canonical spelling/compatibility remains separate metadata.
+          summary: Pair the deliberately selected legacy cue with the target response and breathing
+            procedure; canonical spelling/compatibility remains separate metadata.
         closer:
           locators:
           - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
@@ -787,9 +799,9 @@ content:
             source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
             start_line: 31
           status: inferred
-          summary: Preserve voluntary target selection and learned association where appropriate; breath
-            holding, guaranteed response and automatic whole-system learning require editorial review
-            rather than scientific endorsement.
+          summary: Preserve voluntary target selection and learned association where appropriate;
+            breath holding, guaranteed response and automatic whole-system learning require editorial
+            review rather than scientific endorsement.
         future_use:
           locators:
           - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
@@ -817,8 +829,8 @@ content:
             source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
             start_line: 31
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
@@ -837,7 +849,8 @@ content:
             source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
             start_line: 24
           status: supported
-          summary: Orient to the target function and establish receptive learning context before the instruction.
+          summary: Orient to the target function and establish receptive learning context before the
+            instruction.
         preparation:
           locators:
           - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
@@ -846,8 +859,8 @@ content:
             source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
             start_line: 3
           status: supported
-          summary: Supported uninterrupted relaxed posture, settling movements/breathing, temporary setting-aside
-            in repository representation and counted ten-state entry.
+          summary: Supported uninterrupted relaxed posture, settling movements/breathing, temporary
+            setting-aside in repository representation and counted ten-state entry.
         provenance:
           locators:
           - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
@@ -856,8 +869,8 @@ content:
             source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
             start_line: 1
           status: supported
-          summary: Complete available source_transcript text inspected; shared representations are not
-            independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
             derivative is not authenticated; ASR repetition/count artifacts do not establish original
             wording, duration or repetition intent. Undeclared reset/termination remains unknown.
         purpose:
@@ -868,8 +881,8 @@ content:
             source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
             start_line: 1
           status: supported
-          summary: Deliberately concentrate sensory/thought attention on a selected activity, with claimed
-            detailed retention.
+          summary: Deliberately concentrate sensory/thought attention on a selected activity, with
+            claimed detailed retention.
         rehearsal:
           locators:
           - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
@@ -878,8 +891,8 @@ content:
             source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
             start_line: 31
           status: not-present
-          summary: Repeated instruction does not establish a distinct listener performance trial; apparent
-            ambient transcription artifacts are not practice evidence.
+          summary: Repeated instruction does not establish a distinct listener performance trial;
+            apparent ambient transcription artifacts are not practice evidence.
         safety_claims:
           locators:
           - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
@@ -888,8 +901,8 @@ content:
             source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
             start_line: 26
           status: supported
-          summary: guaranteed-total-focus; detailed-memory; automatic-whole-system-learning. Claims are
-            classified as source assertions, not accepted OCF mechanisms/outcomes.
+          summary: guaranteed-total-focus; detailed-memory; automatic-whole-system-learning. Claims
+            are classified as source assertions, not accepted OCF mechanisms/outcomes.
         state:
           locators:
           - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
@@ -995,8 +1008,9 @@ content:
     questions:
     - Source-designated derivative is not authenticated; ASR repetition/count artifacts do not establish
       original wording, duration or repetition intent. Undeclared reset/termination remains unknown.
-    - Preserve voluntary target selection and learned association where appropriate; breath holding, guaranteed
-      response and automatic whole-system learning require editorial review rather than scientific endorsement.
+    - Preserve voluntary target selection and learned association where appropriate; breath holding,
+      guaranteed response and automatic whole-system learning require editorial review rather than
+      scientific endorsement.
     states:
       preferred: []
       required: []
