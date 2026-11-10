@@ -1027,6 +1027,38 @@ def _paced_voice_spec(
     }
 
 
+def _measure_placed_cue(
+    cue: dict,
+    measured: dict,
+    authored: dict,
+    frame_offset: int,
+    frame_count: int,
+    sample_rate: int,
+    channels: int,
+) -> None:
+    """Measure from the PCM insertion origin, without changing its schedule.
+
+    Unit offsets count interleaved scalar samples. Keep them integral until
+    conversion here so independently rounded offsets cannot escape their event.
+    The caller allocates and places PCM using the original scheduled timestamps.
+    """
+    origin = frame_offset * channels
+    divisor = sample_rate * channels
+    cue["at"] = measured["at"] = round(frame_offset / sample_rate, 6)
+    extent_frames = max(
+        frame_count, float((authored.get("dsp") or {}).get("transition_s", 0)) * sample_rate
+    )
+    pause = float((authored.get("timing") or {}).get("pause_after", 0))
+    measured["end"] = round((frame_offset + extent_frames + pause * sample_rate) / sample_rate, 6)
+    for unit in cue.get("spoken_units", []):
+        unit["start_seconds"] = round((origin + unit.pop("start_offset_samples")) / divisor, 6)
+        unit["end_seconds"] = round((origin + unit.pop("end_offset_samples")) / divisor, 6)
+        audible_end = unit.pop("audible_end_offset_samples", None)
+        unit["audible_end_seconds"] = (
+            round((origin + audible_end) / divisor, 6) if audible_end is not None else None
+        )
+
+
 def render_narration(
     doc: dict[str, Any],
     out_path: str | Path,
@@ -1384,7 +1416,7 @@ def render_narration(
                         unit_source["gain_db"]
                         + (unit_spec.get("gain_db", 0) if unit_source["source"] == "tts" else 0),
                     )
-                unit_start = cursor_samples / (sample_rate * channels)
+                unit_start_samples = cursor_samples
                 unit_duration = len(unit_samples) / (sample_rate * channels)
                 cue_samples.extend(unit_samples)
                 speech_samples += len(unit_samples)
@@ -1412,12 +1444,10 @@ def render_narration(
                         "rate_control_applied": rate_report["rate_control_applied"],
                         "effective_piper_length_scale": effective_spec.get("piper_length_scale"),
                         "effective_wpm": effective_spec.get("wpm"),
-                        "start_offset_s": round(unit_start, 6),
+                        "start_offset_samples": unit_start_samples,
                         "speech_duration_s": round(unit_duration, 6),
-                        "end_offset_s": round(unit_start + unit_duration, 6),
-                        "audible_end_offset_s": round(
-                            unit_start + audible_last / (sample_rate * channels), 6
-                        )
+                        "end_offset_samples": unit_start_samples + len(unit_samples),
+                        "audible_end_offset_samples": unit_start_samples + audible_last
                         if audible_last > audible_first
                         else None,
                         "pause_after_s": round(pause_after, 6),
@@ -1590,20 +1620,48 @@ def render_narration(
     track: list[int] = _silence(
         int(max((event["end"] for event in scheduled), default=0) * sample_rate) * channels
     )
+    scheduling_by_id = {event["id"]: event for event in scheduling_events}
+    placed_starts = {}
     for cue in cue_stats:
-        cue["at"] = actual[cue["id"]]["at"]
-        for unit in cue.get("spoken_units", []):
-            unit["start_seconds"] = round(cue["at"] + unit.pop("start_offset_s"), 6)
-            unit["end_seconds"] = round(cue["at"] + unit.pop("end_offset_s"), 6)
-            audible_end = unit.pop("audible_end_offset_s", None)
-            unit["audible_end_seconds"] = (
-                round(cue["at"] + audible_end, 6) if audible_end is not None else None
-            )
-        offset = int(round(cue["at"] * sample_rate)) * channels
+        event = actual[cue["id"]]
+        frame_offset = int(round(event["at"] * sample_rate))
+        placed_starts[cue["id"]] = frame_offset / sample_rate
+        offset = frame_offset * channels
         samples = rendered[cue["id"]]
+        _measure_placed_cue(
+            cue,
+            event,
+            scheduling_by_id[cue["id"]],
+            frame_offset,
+            len(samples) // channels,
+            sample_rate,
+            channels,
+        )
         if offset + len(samples) > len(track):
             track.extend(_silence(offset + len(samples) - len(track)))
         track[offset : offset + len(samples)] = samples
+    # Resolve silent dependent markers against the same physical speech clock.
+    # Spoken PCM has already been placed; this never reschedules its samples.
+    measured_events, problems = resolve_timeline(
+        {"timeline": scheduling_events},
+        speech_durations=durations,
+        start_overrides=placed_starts,
+    )
+    if problems:
+        raise OCFError("measured timeline problems: " + " | ".join(problems))
+    for marker in measured_events:
+        if marker.id in rendered:
+            continue
+        if marker.at is None:
+            raise OCFError(f"measured marker {marker.id} has no timestamp")
+        authored = scheduling_by_id[marker.id]
+        actual[marker.id]["at"] = round(marker.at, 6)
+        actual[marker.id]["end"] = round(
+            marker.at
+            + float((authored.get("dsp") or {}).get("transition_s", 0))
+            + float((authored.get("timing") or {}).get("pause_after", 0)),
+            6,
+        )
     for binding in auditory_cues:
         identifier = event_to_group.get(binding["event_id"], binding["event_id"])
         binding["at"] = actual[identifier]["at"]
