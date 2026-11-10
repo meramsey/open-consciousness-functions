@@ -7,7 +7,7 @@ import shutil
 from pathlib import Path, PureWindowsPath
 
 from . import artwork, audio_build
-from .artifact_names import listener_export_names
+from .artifact_names import listener_export_names, safe_component
 from .indexes import find_audio_manifest, load_function_by_id
 from .locale import LocaleCatalog
 from .paths import (
@@ -439,7 +439,9 @@ def export_audition(
         Path(output).expanduser().resolve()
         if output
         else work_path(
-            "renders", "listening-exports", unique_run_id("edition"), delivery_names["directory"]
+            "renders",
+            "listening-exports",
+            unique_run_id(function_id + "-" + safe_component(title, max_length=32)),
         )
     )
     if not final.is_relative_to(work_root().resolve()):

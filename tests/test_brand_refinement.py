@@ -122,7 +122,8 @@ def test_comparison_is_deterministic_non_destructive_and_responsive(tmp_path):
         refined.comparison_gallery(root, vector_only=True, check=True)
 
 
-def test_release_preview_retains_refined_candidate_provenance(monkeypatch, tmp_path):
+def test_release_preview_retains_refined_candidate_provenance(monkeypatch, tmp_path_factory):
+    tmp_path = tmp_path_factory.mktemp("refined")
     pytest.importorskip("PIL")
     pytest.importorskip("fontTools")
     from ocf_tools import release

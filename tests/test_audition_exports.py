@@ -210,9 +210,13 @@ def test_private_streamcopy_artwork_tags_and_pcm_roundtrip(tmp_path, monkeypatch
         flac_source=compressed["flac"],
         mp3_source=compressed["mp3"],
         artwork_resolution=320,
-        output=output,
+        output=None if choice == "default" else output,
         **options,
     )
+    if choice == "default":
+        output = Path(result["output_directory"])
+        assert output.parent == workspace / "renders" / "listening-exports"
+        assert output.name.startswith("OCF-EXP-001-Manifest-")
     manifest = result["manifest"]
     if choice == "lyrics":
         assert set(manifest["listener_text"]["artifacts"]) == {"txt", "lrc", "srt", "vtt"}

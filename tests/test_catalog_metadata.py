@@ -12,6 +12,9 @@ pytestmark = pytest.mark.integration
 
 
 def test_all_function_metadata_is_useful_draft_without_changing_approved_content():
+    from ocf_tools.guide_review import approved_successor
+
+    successor = approved_successor()
     catalog = LocaleCatalog()
     assert not catalog.problems
     pack = catalog.require("en-US")
@@ -45,10 +48,15 @@ def test_all_function_metadata_is_useful_draft_without_changing_approved_content
         digest = hashlib.sha256(
             json.dumps(approved, sort_keys=True, ensure_ascii=False).encode()
         ).hexdigest()
-        assert digest == baseline["functions"][identity]["reviewed_relationships_sha256"]
+        expected = baseline["functions"][identity]["reviewed_relationships_sha256"]
+        if identity in successor["functions"]:
+            row = successor["functions"][identity]
+            assert row["previous_reviewed_relationships_sha256"] == expected
+            expected = row["reviewed_relationships_sha256"]
+        assert digest == expected
 
 
-def test_proposals_are_evidenced_drafts_and_six_approved_edges_remain_exact():
+def test_owner_approved_related_and_complementary_edges_remain_exact():
     from ocf_tools.guide_review import record, relationships, verify
     from ocf_tools.indexes import load_function_by_id
 
@@ -58,20 +66,11 @@ def test_proposals_are_evidenced_drafts_and_six_approved_edges_remain_exact():
     actual = []
     kinds = []
     for identity, data in pack.localized_functions.items():
-        for edge in data["relationships"]["related_functions"]:
-            actual.append((identity, edge["function_id"], edge["description"]["text"]))
-        for proposal in data["relationships"].get("proposals", []):
-            assert proposal["status"] == proposal["description"]["status"] == "draft"
-            assert proposal["dependency"] == "optional"
-            assert proposal["reciprocal_proposed"] is False
-            assert {v["function_id"] for v in proposal["evidence"]} == {
-                identity,
-                proposal["function_id"],
-            }
-            for evidence in proposal["evidence"]:
-                text = pack.localized_functions[evidence["function_id"]]["description"]["text"]
-                assert hashlib.sha256(text.encode()).hexdigest() == evidence["sha256"]
-            kinds.append(proposal["relationship_type"])
+        assert not data["relationships"].get("proposals", [])
+        for kind in ("related_functions", "complementary_functions"):
+            for edge in data["relationships"][kind]:
+                actual.append((identity, edge["function_id"], edge["description"]["text"]))
+                kinds.append(kind)
     expected = []
     for decision in ledger["decisions"]:
         owner = load_function_by_id(decision["source_id"])
@@ -84,9 +83,9 @@ def test_proposals_are_evidenced_drafts_and_six_approved_edges_remain_exact():
             (decision["source_id"], decision["related_id"], edge["approved_explanation"])
         )
     assert sorted(actual) == sorted(expected)
-    assert len(actual) == 6
-    assert kinds.count("related") == 14
-    assert kinds.count("complementary") == 13
+    assert len(actual) == 33
+    assert kinds.count("related_functions") == 20
+    assert kinds.count("complementary_functions") == 13
 
 
 def test_current_locale_has_single_canonical_function_files_and_valid_locks():

@@ -103,7 +103,8 @@ def test_function_theme_explicit_override_cache_and_existing_cover_preservation(
     assert artwork.generate_cover("OCF-SLP-005", resolution=320)["cache"] == "hit"
 
 
-def test_release_implementation_theme_and_custom_cover_precedence(monkeypatch, tmp_path):
+def test_release_implementation_theme_and_custom_cover_precedence(monkeypatch, tmp_path_factory):
+    tmp_path = tmp_path_factory.mktemp("brand")
     pytest.importorskip("PIL")
     pytest.importorskip("fontTools")
     monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))

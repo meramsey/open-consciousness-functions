@@ -259,3 +259,11 @@ collection includes Markdown, HTML and PDF versions of that lookup page.
 The metadata-only `OCF-AUDIO-DEFAULTS-HPLUS-020` successor locks the newly
 approved relationship resources while retaining the predecessor dependency set
 and identical template, pacing and DSP profiles. Earlier locks are untouched.
+
+
+The hash-only `function-content/editorial/guide-relationships-002.json` receipt
+binds the 27 approved additions to the original semantic, catalog and shared-session
+baselines. Validation accepts only the recorded structural-contract successors;
+narration, commands, lifecycle and presentation retain their original hashes.
+The predecessor files are preserved. Existing locale-entry snapshots remain exact,
+with only the 27 specifically approved description keys added.
