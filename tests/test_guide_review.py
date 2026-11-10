@@ -1,6 +1,7 @@
 """Canonical optional relationship decisions feed read-only guide projections."""
 
 from pathlib import Path
+from urllib.parse import quote
 
 import pytest
 from ocf_tools import guide_review as review
@@ -35,7 +36,7 @@ def test_all_canonical_guides_render_the_existing_commands_and_scopes():
     catalog = LocaleCatalog()
     count = 0
     for owner in load_all_functions():
-        text = documents[f"functions/{owner.id}.md"]
+        text = documents["functions/" + guides.function_guide_stem(owner, catalog=catalog) + ".md"]
         document = _function_document(owner, "en-US", catalog)
         for command in document["commands"]:
             if command["role"] in {"legacy-alias", "access-close"}:
@@ -74,7 +75,10 @@ def test_reader_guides_adopt_relationships_and_separate_historical_lookup():
     assert len(legacy) == 55
     for record in legacy:
         assert record.data["legacy"]["name"] in refs["historical-lookup.md"]
-        assert f"functions/{record.id}.md" in refs["historical-lookup.md"]
+        assert (
+            quote("functions/" + guides.function_guide_stem(record) + ".md")
+            in refs["historical-lookup.md"]
+        )
     assert "DRAFT" not in refs["relationship-map.md"]
     assert "OCF-BOD-003" in refs["complementary-map.md"]
     assert "(draft)" not in refs["tag-discovery.md"]

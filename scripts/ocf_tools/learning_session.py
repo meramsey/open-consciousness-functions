@@ -199,6 +199,7 @@ def render(
                 document_override=document,
                 manifest_override={
                     "title": "Preparation Learning",
+                    "session_kind": "preparation-learning",
                     "language": locale,
                     "narrator": voice_label,
                     "version": edition_version,
@@ -219,6 +220,16 @@ def render(
                 retain_background_stem=True,
             )
         timing = verify_timing(document, built)
+        if not built.get("artwork"):
+            raise OCFError("Learning build did not retain its standalone cover")
+        cover = built["artwork"]
+        if cover["file"] != "cover.png":
+            if (stage / "cover.png").exists():
+                raise OCFError("Learning companion cover already exists")
+            (stage / cover["file"]).rename(stage / "cover.png")
+            cover["file"] = "cover.png"
+        if sha256_of_file(stage / "cover.png") != cover["sha256"]:
+            raise OCFError("Learning cover integrity mismatch")
         renamed = {}
         for item in built["outputs"]:
             old = item["file"]

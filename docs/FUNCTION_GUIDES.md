@@ -267,3 +267,18 @@ baselines. Validation accepts only the recorded structural-contract successors;
 narration, commands, lifecycle and presentation retain their original hashes.
 The predecessor files are preserved. Existing locale-entry snapshots remain exact,
 with only the 27 specifically approved description keys added.
+
+## Readable guide filenames
+
+Per-function Markdown, HTML and PDF filenames use the canonical localized title:
+`OCF-AUT-001 - Automatic-Action.md` (and `.html` / `.pdf`). Voice and audio
+edition are omitted because these are shared function guides. Bundle edition
+and source hashes remain in the build manifest and document metadata. The
+manifest pins each function ID to its filename; old ID-only bundles remain
+verifiable without recalculating names from today's titles.
+
+All directory, relationship, companion and download links use relative,
+percent-encoded paths. Handbook anchors retain stable function IDs. The same
+files work offline or under a static hosting subdirectory, including GitHub
+Pages; this repository does not currently configure a Pages deployment.
+Listener packages and release guide attachments use the same naming helper.

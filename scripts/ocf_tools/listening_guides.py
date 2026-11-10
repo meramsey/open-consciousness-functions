@@ -12,9 +12,10 @@ from html import escape as html_escape
 from html.parser import HTMLParser
 from io import BytesIO
 from pathlib import Path
-from urllib.parse import unquote, urlsplit
+from urllib.parse import quote, unquote, urlsplit
 from xml.sax.saxutils import escape
 
+from .artifact_names import safe_component
 from .artwork_content import function_artwork_content
 from .indexes import load_all_functions
 from .locale import LocaleCatalog
@@ -24,6 +25,43 @@ from .utils import OCFError, write_bytes_atomic, write_text_atomic
 MISSING = (
     "Reviewed guide instructions and relationships are not supplied here; no instructions inferred."
 )
+
+
+def guide_stem(function_id, title):
+    """Edition-independent filename: stable identity plus readable localized title."""
+    if not isinstance(function_id, str) or not re.fullmatch(
+        r"OCF-[A-Z]{3}-[A-Z0-9]{3,4}", function_id
+    ):
+        raise OCFError("invalid function guide identity")
+    name = function_id + " - " + safe_component(title, max_length=96)
+    while len(name.encode("utf-8")) > 200:
+        name = name[:-1]
+    return name.rstrip(" .-")
+
+
+def function_guide_stem(record, *, catalog=None):
+    from .localized_authority import title
+
+    return guide_stem(record.id, title(record, catalog=catalog))
+
+
+def _guide_href(function_id, title, *, prefix=""):
+    return quote(prefix + guide_stem(function_id, title) + ".md", safe="/")
+
+
+def validate_guide_stems(mapping, identities):
+    """Keep manifest-pinned historical names; never resolve them from today's titles."""
+    if not isinstance(mapping, dict) or set(mapping) != set(identities):
+        raise OCFError("guide filename identity inventory mismatch")
+    for identity, stem in mapping.items():
+        if (
+            not isinstance(stem, str)
+            or not stem.startswith(identity + " - ")
+            or any(c in stem for c in "/\\")
+            or stem != guide_stem(identity, stem[len(identity) + 3 :])
+        ):
+            raise OCFError("invalid guide filename mapping")
+    return mapping
 
 
 def _literal(value):
@@ -434,7 +472,7 @@ def reader_function_markdown(record, content, *, documentation, narration_sectio
     if documentation["related_functions"]:
         lines += ["## Related functions", ""]
         lines += [
-            f"- [{row['title']['text']}]({row['function_id']}.md). {row['description']['text']}"
+            f"- [{row['title']['text']}]({_guide_href(row['function_id'], row['title']['text'])}). {row['description']['text']}"
             for row in documentation["related_functions"]
         ]
         lines += [""]
@@ -473,7 +511,7 @@ def markdown_documents():
     }
     records = load_all_functions()
     for record in records:
-        filename = f"functions/{record.id}.md"
+        filename = "functions/" + function_guide_stem(record, catalog=catalog) + ".md"
         documents[filename] = function_guide_markdown(record, catalog=catalog)
     documents["index.md"] = _guide_catalog(records)
     return documents
@@ -484,6 +522,7 @@ def reference_documents(records, *, catalog=None):
     from .command_docs import build_command_index
     from .commands import is_active, resolve_phrase
 
+    catalog = catalog or LocaleCatalog()
     index = build_command_index("en-US", catalog=catalog)
     cues = [
         "# Cue reference",
@@ -513,7 +552,7 @@ def reference_documents(records, *, catalog=None):
     tag_rows = {}
     for function in index["functions"]:
         identity = function["function_id"]
-        heading = f"## [{identity}: {function['title']['text']}](functions/{identity}.md)"
+        heading = f"## [{identity}: {function['title']['text']}]({_guide_href(identity, function['title']['text'], prefix='functions/')})"
         cues += [heading, ""]
         for command in function["commands"]:
             if command["role"] in {"legacy-alias", "access-close"}:
@@ -525,7 +564,7 @@ def reference_documents(records, *, catalog=None):
             ]
         cues += [""]
         for relation in function["related_functions"]:
-            line = f"- [{identity}: {function['title']['text']}](functions/{identity}.md) -> [{relation['function_id']}: {relation['title']['text']}](functions/{relation['function_id']}.md). {relation['description']['text']}"
+            line = f"- [{identity}: {function['title']['text']}]({_guide_href(identity, function['title']['text'], prefix='functions/')}) -> [{relation['function_id']}: {relation['title']['text']}]({_guide_href(relation['function_id'], relation['title']['text'], prefix='functions/')}). {relation['description']['text']}"
             relations.append(line)
             if relation["relationship_type"] == "complementary":
                 complementary.append(line)
@@ -546,14 +585,17 @@ def reference_documents(records, *, catalog=None):
         ]
         if rows:
             historical += [
-                f"## [{record.id}: {record.canonical_name}](functions/{record.id}.md)",
+                f"## [{record.id}: {record.canonical_name}]({quote('functions/' + function_guide_stem(record, catalog=catalog) + '.md', safe='/')})",
                 "",
                 *rows,
                 "",
             ]
     for tag, members in sorted(tag_rows.items()):
         tags += [f"## {tag}", ""]
-        tags += [f"- [{identity}: {name}](functions/{identity}.md)." for identity, name in members]
+        tags += [
+            f"- [{identity}: {name}]({_guide_href(identity, name, prefix='functions/')})."
+            for identity, name in members
+        ]
         tags += [""]
     order = _guide_catalog(records).replace(
         "# Open Consciousness Functions — Guide Collection", "# Learning order", 1
@@ -724,7 +766,7 @@ def _guide_catalog(records, page_map=None):
             f" · [Complete handbook p. {page}](complete-guide.pdf#page={page})" if page else ""
         )
         categories.setdefault(record.primary_domain or "Uncategorized", []).append(
-            f"- [{localized_title(record, catalog=catalog)}](functions/{record.id}.md) — `{record.id}`{page_text}."
+            f"- [{localized_title(record, catalog=catalog)}]({quote('functions/' + function_guide_stem(record, catalog=catalog) + '.md', safe='/')}) — `{record.id}`{page_text}."
         )
     lines = [
         "# Open Consciousness Functions — Guide Collection",
@@ -823,6 +865,9 @@ def complete_pdf_bytes(records, documents, *, edition="0.3.0"):
     toc.dotsMinLevel = 0
     story.extend([toc, PageBreak()])
 
+    guide_ids = {function_guide_stem(record, catalog=catalog): record.id for record in records}
+    guide_ids.update({record.id: record.id for record in records})
+
     def append_markdown(text, *, remove_title=False):
         def internal_link(match):
             title, target = match.groups()
@@ -830,8 +875,8 @@ def complete_pdf_bytes(records, documents, *, edition="0.3.0"):
                 target = "#handbook-contents"
             elif target.endswith("listening-guide.md"):
                 target = "#ocf-guide-0"
-            elif re.fullmatch(r"OCF-[A-Z]+-\d+\.md", target):
-                target = "#" + target[:-3]
+            elif Path(unquote(target)).stem in guide_ids and target.endswith(".md"):
+                target = "#" + guide_ids[Path(unquote(target)).stem]
             return f"[{title}]({target})"
 
         text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", internal_link, text)
@@ -869,7 +914,9 @@ def complete_pdf_bytes(records, documents, *, edition="0.3.0"):
     ):
         story.extend([PageBreak(), Paragraph(escape(category), category_style)])
         for record in functions:
-            lines = documents[f"functions/{record.id}.md"].splitlines()
+            lines = documents[
+                "functions/" + function_guide_stem(record, catalog=catalog) + ".md"
+            ].splitlines()
             story.append(
                 Paragraph(
                     _inline(f"{record.id}: {localized_title(record, catalog=catalog)}"),
@@ -1099,14 +1146,12 @@ def portable_index_html(records, *, edition="0.3.0", include_references=False) -
                     )
                 ),
                 html_escape(category),
-                record.id,
+                quote(function_guide_stem(record, catalog=catalog), safe=""),
                 escape(localized_title(record, catalog=catalog)),
                 escape(record.id),
                 escape(cue),
                 escape(str(description)),
-                record.id,
-                record.id,
-                record.id,
+                *([quote(function_guide_stem(record, catalog=catalog), safe="")] * 3),
             )
         )
     sections = "".join(
@@ -1163,6 +1208,15 @@ def validate_portable_collection(output):
     build_metadata = None
     if (output / "build-manifest.json").is_file():
         build_metadata = json.loads((output / "build-manifest.json").read_text(encoding="utf-8"))
+        filename_layout = build_metadata.get("filename_layout")
+        if filename_layout not in (None, "function-id-title-1"):
+            raise OCFError("unsupported guide filename layout")
+        if filename_layout == "function-id-title-1" and not isinstance(
+            build_metadata.get("function_files"), dict
+        ):
+            raise OCFError("declared guide filename layout requires its pinned filename map")
+        if filename_layout is None and "function_files" in build_metadata:
+            raise OCFError("guide filename map requires a declared filename layout")
         if not (output / "checksums.sha256").is_file():
             raise OCFError("guide build has no checksum manifest")
         seen = set()
@@ -1210,6 +1264,15 @@ def validate_portable_collection(output):
     pdf_functions = set()
     extracted_resources = 0
     record_map = {record.id: record for record in records}
+    pinned = (build_metadata or {}).get("function_files")
+    if pinned is not None:
+        validate_guide_stems(pinned, record_map)
+        filename_ids = {stem: identity for identity, stem in pinned.items()}
+    else:
+        filename_ids = {record.id: record.id for record in records}
+        filename_ids.update(
+            {function_guide_stem(record, catalog=catalog): record.id for record in records}
+        )
 
     def check_link(path, target):
         nonlocal checked
@@ -1247,8 +1310,10 @@ def validate_portable_collection(output):
             pdf_text = "\n".join(page.extract_text() for page in reader.pages)
             if any(token in pdf_text for token in ("/home/", "/mnt/", "file:///", "Documents/dev")):
                 raise OCFError("PDF contains machine-local paths: " + path.name)
-            if path.parent.name == "functions" and path.stem in record_map:
-                record = record_map[path.stem]
+            if path.parent.name == "functions":
+                if path.stem not in filename_ids or filename_ids[path.stem] in pdf_functions:
+                    raise OCFError("unexpected or duplicate function PDF: " + path.name)
+                record = record_map[filename_ids[path.stem]]
                 if build_metadata:
                     metadata, _ = catalog.localized_function(record.id, "en-US", fallback=False)
                     expected = {
@@ -1411,6 +1476,7 @@ def guide_build_manifest(records, edition, *, source_revision=None):
             "commands",
             "cue_templates",
             "guide_review",
+            "artifact_names",
             "lifecycle",
             "function_catalog",
         )
@@ -1419,6 +1485,10 @@ def guide_build_manifest(records, edition, *, source_revision=None):
         "schema_version": "1.0",
         "kind": "source-driven-reader-guide-build",
         "reader_layout": "listener-focused-3",
+        "filename_layout": "function-id-title-1",
+        "function_files": {
+            record.id: function_guide_stem(record, catalog=catalog) for record in records
+        },
         "edition": edition,
         "locale": "en-US",
         "source_revision": source_revision,

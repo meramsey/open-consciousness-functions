@@ -27,6 +27,27 @@ that its vector companion reproduces the reference board exactly. Formal
 candidate approval remains unset. Imported originals and previous brand
 geometry/assets remain unchanged.
 
+## Standalone Preparation Learning covers
+
+Preparation Learning declares `session_kind="preparation-learning"` without a
+function ID. The shared `artwork.generate_cover` and
+`audition_exports.select_cover` APIs accept that explicit identity and generate
+its title, locale and audio edition using the normal theme/layout machinery.
+Function cues and descriptions are omitted. English regional variants record their en-US fallback. Non-English locales
+require an explicit localized title; English is never presented as translated.
+
+`learning_session.render` declares this identity to `audio_build.build`, which
+retains a companion cover and embeds it in requested FLAC/MP3 outputs. Learning
+publication preserves it as `cover.png`, updates the render reference and fails
+if the cover is absent or corrupt. Explicit custom artwork remains an override;
+existing audio and artwork are not rewritten by this default.
+
+Do not use `artwork.export_brand(variant="album")` to fill missing session art:
+it intentionally exports the supplied Sleep Easy example. Standalone covers
+must use the session identity rather than a borrowed function or sample album.
+Registered function releases and the function-bound audition edition schema
+remain unchanged; standalone builds use the manifest/document override pathway.
+
 ## Supplied Cosmic Path import 0.3.0
 
 ### Primary cues and localized artwork copy
