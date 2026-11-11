@@ -353,7 +353,7 @@ def test_learning_publication_and_no_overwrite(tmp_path, monkeypatch, cover_stat
     assert (target / "completion.json").is_file()
     import yaml
 
-    rendered = yaml.safe_load((target / "OCF-RENDER-learning.yaml").read_text())
+    rendered = yaml.safe_load((target / "OCF-RENDER-learning.yaml").read_text(encoding="utf-8"))
     assert all((target / item["file"]).is_file() for item in rendered["outputs"])
     assert (target / rendered["master"]["file"]).is_file()
     assert rendered["artwork"]["file"] == "cover.png"
