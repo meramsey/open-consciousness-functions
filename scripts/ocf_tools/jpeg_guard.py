@@ -64,6 +64,7 @@ class _JPEG:
         self.components = {}
         self.tables = {}
         self.quantizers = set()
+        self.used_huffman = set()
         self.interval = 0
         self.scans = 0
         self.progressive = False
@@ -118,17 +119,19 @@ class _JPEG:
                     code += 1
                     index += 1
                 code <<= 1
+            _require(selector not in self.tables or selector in self.used_huffman)
+            self.used_huffman.discard(selector)
             self.tables[selector] = table
             position += total
         _require(position == len(payload))
 
     def quantization(self, payload):
-        _require(payload)
+        _require(payload and not self.scans)
         position = 0
         while position < len(payload):
             selector = payload[position]
             precision, identity = selector >> 4, selector & 15
-            _require(precision <= 1 and identity <= 3)
+            _require(precision <= 1 and identity <= 3 and identity not in self.quantizers)
             size = 1 + 64 * (precision + 1)
             _require(position + size <= len(payload))
             values = payload[position + 1 : position + size]
@@ -218,6 +221,10 @@ class _JPEG:
             _require(selector >> 4 <= 3 and selector & 15 <= 3)
             dc, ac = self.tables.get(selector >> 4), self.tables.get(16 | (selector & 15))
             _require((start > 0 or high or dc is not None) and (stop == 0 or ac is not None))
+            if start == 0 and not high:
+                self.used_huffman.add(selector >> 4)
+            if stop > 0:
+                self.used_huffman.add(16 | (selector & 15))
             selected.append((c, dc, ac))
         bits = _Bits(data, position)
         columns = self.columns if count > 1 else selected[0][0]["columns"]
@@ -264,6 +271,8 @@ def check_jpeg(data):
                 position == len(data)
                 and jpeg.scans
                 and all(c["levels"][0] >= 0 for c in jpeg.components.values())
+                and jpeg.quantizers == {c["q"] for c in jpeg.components.values()}
+                and set(jpeg.tables) == jpeg.used_huffman
             )
             return
         _require(position + 2 <= len(data))

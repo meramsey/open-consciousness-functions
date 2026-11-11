@@ -51,7 +51,8 @@ Ordinary and progressive 8-bit Huffman JPEGs use the same full export and
 dry-run checks. Their scan data is decoded symbol by symbol to the declared
 block count, with exact entropy padding and restart boundaries. Unused bytes
 before EOI or between progressive scans fail even when Pillow accepts the
-image. Unsupported JPEG coding modes fail closed. This validation never
+image. Unused or overwritten coding-table definitions also fail; quantization tables
+are fixed before the first scan. Unsupported JPEG coding modes fail closed. This validation never
 re-encodes or changes the approved cover.
 Transcripts, subtitles and the selected cover
 are copied unchanged and still require content and rights review. Preparation

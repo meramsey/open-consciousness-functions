@@ -517,3 +517,40 @@ def test_jpeg_unused_entropy_rejected_by_full_export_without_modification(
         exports.export_delivery(path, **arguments(path, tmp_path / "out"), dry_run=dry_run)
     assert sha256_of_file(cover) == checksum
     assert not (tmp_path / "out").exists()
+
+
+@pytest.mark.parametrize("progressive", [False, True])
+@pytest.mark.parametrize("dry_run", [False, True])
+@pytest.mark.parametrize("placement", ["before-scan", "before-eoi"])
+@pytest.mark.parametrize("table", ["quantizer", "huffman"])
+def test_unused_jpeg_coding_tables_fail_full_export(
+    tmp_path, monkeypatch, progressive, dry_run, placement, table
+):
+    from PIL import Image
+
+    path, originals = delivery(tmp_path, monkeypatch, cover_format="jpg", progressive=progressive)
+    cover = originals[2]
+    with Image.open(cover) as image:
+        original_pixels = image.tobytes()
+    data = cover.read_bytes()
+    if table == "quantizer":
+        payload = b"\x03" + b"PRIVATE_METADATA_FIXTURE".ljust(64, b"\x01")
+        marker = b"\xff\xdb"
+    else:
+        # Unused AC table3 with a valid one-symbol canonical tree.
+        payload = b"\x13\x01" + bytes(15) + b"\x00"
+        marker = b"\xff\xc4"
+    segment = marker + (len(payload) + 2).to_bytes(2, "big") + payload
+    position = data.index(b"\xff\xda") if placement == "before-scan" else len(data) - 2
+    cover.write_bytes(data[:position] + segment + data[position:])
+    with Image.open(cover) as image:
+        assert image.tobytes() == original_pixels
+        assert not image.getexif()
+    checksum = sha256_of_file(cover)
+    document = json.loads(path.read_text())
+    document["artifacts"][2].update(bytes=cover.stat().st_size, sha256=checksum)
+    path.write_text(json.dumps(document))
+    with pytest.raises(OCFError, match="JPEG coding"):
+        exports.export_delivery(path, **arguments(path, tmp_path / "out"), dry_run=dry_run)
+    assert sha256_of_file(cover) == checksum
+    assert not (tmp_path / "out").exists()

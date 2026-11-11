@@ -111,3 +111,13 @@ def test_coding_segment_payloads_cannot_carry_opaque_trailers(marker):
     )
     with pytest.raises(OCFError):
         check_jpeg(corrupt)
+
+
+@pytest.mark.parametrize("marker", [b"\xff\xdb", b"\xff\xc4"])
+def test_overwritten_unused_table_definitions_fail(marker):
+    data = jpeg()
+    position = data.index(marker)
+    length = int.from_bytes(data[position + 2 : position + 4], "big")
+    segment = data[position : position + 2 + length]
+    with pytest.raises(OCFError):
+        check_jpeg(data[:position] + segment + data[position:])
