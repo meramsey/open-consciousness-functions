@@ -242,7 +242,6 @@ folders. For Plexamp, use a private server/library under your control.
 Actual UI result: **awaiting user verification** for all five players. Do not
 change narration, reencode audio or upload private text to diagnose player issues.
 
-
 ## Listener layout and historical lookup
 
 The `listener-focused-3` layout contains all 174 function-specific narration
@@ -259,7 +258,6 @@ collection includes Markdown, HTML and PDF versions of that lookup page.
 The metadata-only `OCF-AUDIO-DEFAULTS-HPLUS-020` successor locks the newly
 approved relationship resources while retaining the predecessor dependency set
 and identical template, pacing and DSP profiles. Earlier locks are untouched.
-
 
 The hash-only `function-content/editorial/guide-relationships-002.json` receipt
 binds the 27 approved additions to the original semantic, catalog and shared-session
