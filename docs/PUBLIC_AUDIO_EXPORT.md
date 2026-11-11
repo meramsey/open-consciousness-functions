@@ -77,3 +77,28 @@ A successful export removes only its owned assembly snapshots. Failed scratch
 is retained for diagnosis. Existing candidates are never overwritten. For a
 large batch, use the project's supervised production controller and independent
 watchdog; a CLI process alone is not durable production monitoring.
+
+## Organization transfer handoff (publication held)
+
+The planned source destination is `ocfproject-org/open-consciousness-functions`;
+the existing distribution repository will become
+`ocfproject-org/open-consciousness-functions-audio`. Transfer the existing
+repositories with their names and history intact. The human publisher remains
+`meramsey`; organization ownership does not replace human attribution or approval.
+The intended public site is `https://ocfproject.org`, pending organization domain
+verification and a separate Pages/DNS cutover.
+
+The source exporter has no GitHub destination and grants no publication approval.
+Keep existing candidate bytes, stable IDs, original source/export commits and
+technical receipts unchanged. Destination binding belongs to the distribution
+publication manifest, not to the retained master or export candidate. A transfer
+must not trigger another render or rewrite historical provenance URLs.
+
+Keep publication paused through transfer. In the distribution repository, prepare
+a separate destination-bound manifest and obtain new approval for its exact digest;
+never reuse an old approval for a changed manifest. Preserve the frozen packet,
+its approval and receipt as historical evidence. Follow the distribution
+repository's migration checklist to reconcile draft release identity and every
+asset's bytes before any publication. Revalidate origin URLs, CI and integration
+access in each actual agent/service environment after transfer, without resuming
+controllers merely because repository ownership changed.

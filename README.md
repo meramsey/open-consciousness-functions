@@ -98,10 +98,10 @@ template, pacing and background policy without synthesizing speech.
 
 Python 3.11+ · Linux · macOS · Windows · Apache-2.0
 
-[![Validation](https://github.com/meramsey/open-consciousness-functions/actions/workflows/validate.yml/badge.svg)](https://github.com/meramsey/open-consciousness-functions/actions/workflows/validate.yml)
-[![Tests](https://github.com/meramsey/open-consciousness-functions/actions/workflows/test.yml/badge.svg)](https://github.com/meramsey/open-consciousness-functions/actions/workflows/test.yml)
-[![Lint](https://github.com/meramsey/open-consciousness-functions/actions/workflows/lint.yml/badge.svg)](https://github.com/meramsey/open-consciousness-functions/actions/workflows/lint.yml)
-[![Generated files](https://github.com/meramsey/open-consciousness-functions/actions/workflows/generated-index-check.yml/badge.svg)](https://github.com/meramsey/open-consciousness-functions/actions/workflows/generated-index-check.yml)
+[![Validation](https://github.com/ocfproject-org/open-consciousness-functions/actions/workflows/validate.yml/badge.svg)](https://github.com/ocfproject-org/open-consciousness-functions/actions/workflows/validate.yml)
+[![Tests](https://github.com/ocfproject-org/open-consciousness-functions/actions/workflows/test.yml/badge.svg)](https://github.com/ocfproject-org/open-consciousness-functions/actions/workflows/test.yml)
+[![Lint](https://github.com/ocfproject-org/open-consciousness-functions/actions/workflows/lint.yml/badge.svg)](https://github.com/ocfproject-org/open-consciousness-functions/actions/workflows/lint.yml)
+[![Generated files](https://github.com/ocfproject-org/open-consciousness-functions/actions/workflows/generated-index-check.yml/badge.svg)](https://github.com/ocfproject-org/open-consciousness-functions/actions/workflows/generated-index-check.yml)
 
 ## Explore the functions
 
