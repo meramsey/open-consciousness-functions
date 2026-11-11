@@ -258,6 +258,61 @@ def _check_cover_container(path: Path) -> None:
     raise OCFError("JPEG cover has no end marker")
 
 
+def _repair_new_mp3_padding(path, expected_frames):
+    """Repair only FFmpeg's recognized MPEG-1 stereo multi-packet padding loss.
+
+    The caller must supply a newly encoded, owned temporary output and the exact
+    validated lossless master frame count. Compressed audio bytes are unchanged.
+    Unknown layouts and other length disagreements fail without writing.
+    """
+
+    def require(value):
+        if not value:
+            raise OCFError("unrecognized MP3 gapless padding mismatch")
+
+    def crc16(data):
+        value = 0
+        for byte in data:
+            value ^= byte
+            for _ in range(8):
+                value = (value >> 1) ^ (0xA001 if value & 1 else 0)
+        return value
+
+    path = Path(path)
+    with path.open("r+b") as stream:
+        tag = stream.read(10)
+        require(len(tag) == 10 and tag[:3] == b"ID3" and tag[3] == 3 and tag[5] == 0)
+        require(all(byte < 128 for byte in tag[6:10]))
+        position = 10 + sum(byte << shift for byte, shift in zip(tag[6:10], (21, 14, 7, 0)))
+        stream.seek(position)
+        header = bytearray(stream.read(192))
+        require(len(header) == 192)
+        require(header[0] == 255 and header[1] == 251)  # MPEG-1 Layer III, no CRC.
+        require(header[2] >> 4 == 14)  # This export path encodes 320 kbps.
+        require((header[3] >> 6) != 3 and (header[2] & 12) != 12)
+        require(header[36:40] in (b"Info", b"Xing") and header[40:44] == b"\0\0\0\x0f")
+        require(header[156:160] in (b"Lavf", b"Lavc"))
+        require(crc16(header[:190]) == int.from_bytes(header[190:192], "big"))
+        count = int.from_bytes(header[44:48], "big")
+        combined = int.from_bytes(header[177:180], "big")
+        delay, padding = combined >> 12, combined & 4095
+        decoded = count * 1152 - delay - padding
+        excess = decoded - expected_frames
+        require(delay == 576 and padding == 1681 and 0 < excess <= 47)
+        corrected = padding + excess
+        require(corrected <= 4095)
+        header[177:180] = ((delay << 12) | corrected).to_bytes(3, "big")
+        header[190:192] = crc16(header[:190]).to_bytes(2, "big")
+        stream.seek(position)
+        stream.write(header)
+    return {
+        "discard_padding_samples_before": padding,
+        "discard_padding_samples_after": corrected,
+        "corrected_samples": excess,
+        "frames": expected_frames,
+    }
+
+
 def export_delivery(
     source_manifest: str | Path,
     *,
@@ -470,6 +525,8 @@ def export_delivery(
                 mp3_bitrate="320k" if not copy_audio else None,
                 copy_metadata=False,
             )
+            if fmt == "mp3" and not copy_audio and sf.info(destination).frames != info.frames:
+                _repair_new_mp3_padding(destination, info.frames)
             after_pcm, after_packets = (
                 audio_hash(destination),
                 audio_hash(destination, packets=True),
@@ -487,13 +544,18 @@ def export_delivery(
                     and decoded.channels == info.channels,
                     "MP3 decoded frame alignment differs from master",
                 )
+                decoded_frames = 0
                 for block in sf.blocks(
                     destination, blocksize=262144, dtype="float64", always_2d=True
                 ):
+                    decoded_frames += len(block)
                     _require(
                         bool(np.isfinite(block).all()) and not np.any(np.abs(block) >= 1),
                         "MP3 decode contains non-finite or full-scale samples",
                     )
+                _require(
+                    decoded_frames == info.frames, "MP3 decoded frame count differs from master"
+                )
             _verify_embedded_cover(destination, cover)
             probe = _probe(destination)
             allowed = {key.lower() for key in tags} | {"encoder"}

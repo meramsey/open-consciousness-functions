@@ -32,6 +32,12 @@ PCM, without claiming it has a higher bitrate. Existing files are never
 recompressed in place. The retained FLAC is identified as the master; this does
 not claim to recover an original WAV that was not retained.
 
+For the recognized FFmpeg MPEG-1 padding-overflow case, the exporter corrects
+only the newly encoded candidate's gapless padding and header CRC. Compressed
+audio packets stay unchanged, and the decoded sample count must still match
+the validated master exactly. Unknown length mismatches remain errors. Existing
+MP3s selected for reuse are never repaired or changed this way.
+
 The exporter validates source sizes/checksums, stereo sample counts, finite
 samples, clipping, output decode alignment, embedded cover bytes and public
 metadata. Global and audio-stream metadata and chapters are discarded before

@@ -22,6 +22,7 @@ def delivery(
     subtype="PCM_16",
     cover_format="png",
     progressive=False,
+    frames=44100,
 ):
     if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
         pytest.skip("public export requires optional FFmpeg/ffprobe")
@@ -31,7 +32,7 @@ def delivery(
     monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
     source = tmp_path / "source"
     source.mkdir()
-    t = np.arange(44100) / 44100
+    t = np.arange(frames) / 44100
     samples = np.column_stack((0.1 * np.sin(t * 1300), 0.08 * np.sin(t * 1700)))
     master = source / "retained.flac"
     sf.write(master, samples, 44100, subtype=subtype)
@@ -61,7 +62,7 @@ def delivery(
             "clipped_sample_count": 0,
             "channels": 2,
             "sample_rate": 44100,
-            "frames": 44100,
+            "frames": frames,
         },
         "artifacts": [
             {"file": p.name, "bytes": p.stat().st_size, "sha256": sha256_of_file(p)} for p in files
@@ -407,3 +408,77 @@ def test_interlaced_png_complete_idat_stream_is_supported(tmp_path):
         assert image.size == (9, 7)
     exports._check_cover_container(path)
     assert path.read_bytes() == data
+
+
+@pytest.mark.parametrize("remainder", [0, 1, 27, 46, 47, 1151])
+def test_export_mp3_gapless_frame_boundaries(tmp_path, monkeypatch, remainder):
+    import soundfile as sf
+
+    frames = 40 * 1152 + remainder
+    path, originals = delivery(tmp_path, monkeypatch, frames=frames)
+    before = {p.name: sha256_of_file(p) for p in originals}
+    output = tmp_path / "public-candidate"
+    report = exports.export_delivery(path, **arguments(path, output))["candidate"]
+    mp3 = next(output.glob("*.mp3"))
+    assert sf.info(mp3).frames == frames
+    assert sum(len(block) for block in sf.blocks(mp3, blocksize=4096)) == frames
+    assert report["audio"]["mp3"]["decoded_pcm_sha256"] == audio_hash(mp3)
+    assert {p.name: sha256_of_file(p) for p in originals} == before
+
+
+def test_gapless_padding_correction_preserves_compressed_audio_packets(tmp_path, monkeypatch):
+    import soundfile as sf
+
+    frames = 40 * 1152 + 27
+    _, originals = delivery(tmp_path, monkeypatch, frames=frames)
+    mp3 = tmp_path / "newly-encoded.mp3"
+    audio_build._encode(
+        originals[0],
+        "mp3",
+        mp3,
+        {},
+        artwork=originals[2],
+        copy_metadata=False,
+        mp3_bitrate="320k",
+    )
+    before_packets = audio_hash(mp3, packets=True)
+    decoded_frames = sf.info(mp3).frames
+    # Newer FFmpeg already accumulates multi-packet discard padding correctly.
+    if decoded_frames != frames:
+        correction = exports._repair_new_mp3_padding(mp3, frames)
+        assert correction["corrected_samples"] == decoded_frames - frames
+    assert sf.info(mp3).frames == frames
+    assert audio_hash(mp3, packets=True) == before_packets
+
+
+@pytest.mark.parametrize("corruption", ["id3", "crc", "mismatch", "truncated"])
+def test_gapless_padding_repair_rejects_unknown_damage_without_writing(
+    tmp_path, monkeypatch, corruption
+):
+    frames = 40 * 1152 + 27
+    _, originals = delivery(tmp_path, monkeypatch, frames=frames)
+    mp3 = tmp_path / "newly-encoded.mp3"
+    audio_build._encode(
+        originals[0],
+        "mp3",
+        mp3,
+        {},
+        artwork=originals[2],
+        copy_metadata=False,
+        mp3_bitrate="320k",
+    )
+    data = bytearray(mp3.read_bytes())
+    offset = 10 + sum(byte << shift for byte, shift in zip(data[6:10], (21, 14, 7, 0)))
+    if corruption == "id3":
+        data[0] = 0
+    elif corruption == "crc":
+        data[offset + 185] ^= 1
+    elif corruption == "truncated":
+        data = data[: offset + 100]
+    else:
+        frames += 10000
+    mp3.write_bytes(data)
+    checksum = sha256_of_file(mp3)
+    with pytest.raises(OCFError, match="unrecognized MP3 gapless padding mismatch"):
+        exports._repair_new_mp3_padding(mp3, frames)
+    assert sha256_of_file(mp3) == checksum
