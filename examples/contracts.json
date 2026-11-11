@@ -285,5 +285,66 @@
     "locale": "en-US",
     "native_speed": true,
     "enabled_stages": []
+  },
+  "public-export-candidate.schema.json": {
+    "schema_version": 1,
+    "session": {
+      "kind": "preparation-learning",
+      "function_id": null,
+      "title": "Synthetic Preparation Learning Example",
+      "locale": "en-US",
+      "voice_id": "example-review-only",
+      "voice_name": "Synthetic Schema Example",
+      "edition": "0.0.0-example"
+    },
+    "source_commit": "0000000000000000000000000000000000000000",
+    "source_version": "0.0.0-example",
+    "source_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "master_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "technical_receipt_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "audio": {
+      "flac": {
+        "decoded_pcm_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "packet_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "operation": "stream-copy",
+        "sample_rate_hz": 44100,
+        "channels": 2,
+        "duration_seconds": 1,
+        "encoding": "flac",
+        "bit_depth": 16
+      },
+      "mp3": {
+        "decoded_pcm_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "packet_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "operation": "encode-from-lossless",
+        "sample_rate_hz": 44100,
+        "channels": 2,
+        "duration_seconds": 1,
+        "encoding": "MP3 320 kbps"
+      }
+    },
+    "artifacts": [
+      {
+        "file": "EXAMPLE.flac",
+        "bytes": 1,
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "file": "EXAMPLE.mp3",
+        "bytes": 1,
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "file": "EXAMPLE.png",
+        "bytes": 1,
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "file": "EXAMPLE.json",
+        "bytes": 1,
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "publication_approved": false
   }
 }

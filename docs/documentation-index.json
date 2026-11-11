@@ -1768,6 +1768,28 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "docs/PUBLIC_AUDIO_EXPORT.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Export existing masters for public review",
+      "related_commands": [
+        "audio export-public"
+      ],
+      "related_schemas": [
+        "schemas/public-export-candidate.schema.json"
+      ],
+      "sha256": "7df806018e2e5d0a2e7bb89132a891c2f363f79dd1cdb5f2ac245bc901641570",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "docs/QUICKSTART.md",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "OCF quickstart",
@@ -4226,6 +4248,26 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "schemas/public-export-candidate.schema.json",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "public-export-candidate.schema",
+      "related_commands": [],
+      "related_schemas": [
+        "schemas/public-export-candidate.schema.json"
+      ],
+      "sha256": "7be2ef6ffe5a99412b427e54e990beca0fbf7cab520e8dc917a40a3314f9475a",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "schemas/recording-processing.schema.json",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "recording-processing.schema",
@@ -4654,5 +4696,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 216
+  "total": 218
 }
