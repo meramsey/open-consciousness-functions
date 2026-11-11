@@ -65,7 +65,7 @@ def test_local_untracked_readme_image_cannot_pass_a_clean_checkout_guard(tmp_pat
     for name in ("lint", "validate", "generated-index-check", "test"):
         (workflows / (name + ".yml")).write_text("name: " + name, encoding="utf-8")
         badges.append(
-            f"![{name}](https://github.com/meramsey/open-consciousness-functions/actions/workflows/{name}.yml/badge.svg)"
+            f"![{name}](https://github.com/ocfproject-org/open-consciousness-functions/actions/workflows/{name}.yml/badge.svg)"
         )
     (tmp_path / "hero.png").write_bytes(b"locally present but untracked")
     (tmp_path / "README.md").write_text("![OCF](hero.png)\n" + "\n".join(badges), encoding="utf-8")
