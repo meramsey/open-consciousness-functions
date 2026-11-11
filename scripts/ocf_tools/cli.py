@@ -679,6 +679,22 @@ def _build_parser() -> argparse.ArgumentParser:
     release_cmd.add_argument(
         "--force", action="store_true", help="replace an existing release directory"
     )
+    export_cmd = audio_sub.add_parser(
+        "export-public", help="prepare a local public candidate from a verified retained delivery"
+    )
+    export_cmd.add_argument("manifest", type=Path)
+    export_cmd.add_argument("--expected-source-sha256", required=True)
+    export_cmd.add_argument("--public-voice-id", required=True)
+    export_cmd.add_argument("--public-voice-name", required=True)
+    export_cmd.add_argument("--source-commit", required=True)
+    export_cmd.add_argument("--source-version", required=True)
+    export_cmd.add_argument("--export-commit")
+    export_cmd.add_argument(
+        "--render-source", type=Path, help="explicit frozen-source provenance JSON"
+    )
+    export_cmd.add_argument("--output", required=True, type=Path, help="new final export directory")
+    export_cmd.add_argument("--reuse-existing-mp3", action="store_true")
+    export_cmd.add_argument("--dry-run", action="store_true")
     inspect_cmd = audio_sub.add_parser("inspect", help="show audio file metadata")
     inspect_cmd.add_argument("file", help="audio file")
     state_render = audio_sub.add_parser(
@@ -1992,6 +2008,30 @@ def main(argv: list[str] | None = None) -> int:
                     strict=not getattr(args, "allow_fallback", False),
                     **({"mix_profile": args.mix_profile} if args.mix_profile is not None else {}),
                 )
+                return 0
+            if args.audio_kind == "export-public":
+                import json
+
+                from .public_audio_export import export_delivery
+
+                result = export_delivery(
+                    args.manifest,
+                    expected_source_sha256=args.expected_source_sha256,
+                    public_voice_id=args.public_voice_id,
+                    public_voice_name=args.public_voice_name,
+                    source_commit=args.source_commit,
+                    source_version=args.source_version,
+                    export_commit=args.export_commit,
+                    render_source=(
+                        json.loads(args.render_source.read_text(encoding="utf-8"))
+                        if args.render_source
+                        else None
+                    ),
+                    output=args.output,
+                    reuse_existing_mp3=args.reuse_existing_mp3,
+                    dry_run=args.dry_run,
+                )
+                print(json.dumps(result, ensure_ascii=False, indent=2))
                 return 0
             if args.audio_kind == "release":
                 import json

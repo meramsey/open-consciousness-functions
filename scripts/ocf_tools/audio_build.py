@@ -208,11 +208,13 @@ def _encode(
     *,
     copy_audio: bool = False,
     mp3_bitrate: str | None = None,
+    copy_metadata: bool = True,
 ) -> str:
     """Encode a WAV to another format; returns encoder name.
 
     ``tags`` (key -> value) are embedded as FLAC Vorbis comments or ID3v2
-    tags on MP3. WAV is plain PCM and is never tagged.
+    tags on MP3. WAV is plain PCM and is never tagged. Set ``copy_metadata=False``
+    to discard inherited metadata and chapters before applying explicit tags.
     """
     tags = tags or {}
     if fmt == "wav":
@@ -234,7 +236,10 @@ def _encode(
                 "-metadata:s:v:0",
                 "comment=Cover (front)",
             ]
-        cmd += ["-map_metadata", "0", "-codec:a", "copy" if copy_audio else codec]
+        cmd += ["-map_metadata", "0" if copy_metadata else "-1"]
+        if not copy_metadata:
+            cmd += ["-map_metadata:s:a:0", "-1", "-map_chapters", "-1"]
+        cmd += ["-codec:a", "copy" if copy_audio else codec]
         if fmt == "mp3" and mp3_bitrate and not copy_audio:
             cmd += ["-b:a", mp3_bitrate]
         for key, value in tags.items():

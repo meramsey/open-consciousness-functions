@@ -16,6 +16,10 @@ necessarily a finished recording or a promise of an effect.
 [Quickstart](docs/QUICKSTART.md) · [Use your own voice](docs/VOICE_PACKS.md) ·
 [Browse functions](FUNCTION_INDEX.md) · [Listening guide](docs/LISTENING_GUIDE.md)
 
+[Listen & Download OCF Audio](https://meramsey.github.io/open-consciousness-functions-audio/)
+is the public distribution companion. The library is preparing its first approved
+release; local candidate recordings are awaiting listening, rights and publication review.
+
 <p align="center">
   <img src="brand/versions/0.3.0/presentation/readme-hero.png" alt="Open Consciousness Functions — Cosmic Path and Resonance Rings" width="100%">
 </p>

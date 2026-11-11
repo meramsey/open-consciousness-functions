@@ -251,7 +251,7 @@
         "voice doctor"
       ],
       "related_schemas": [],
-      "sha256": "5ba1df85db6acb9838deeba76b170d767e9ae1ba241f16378ac9c565172c6ff5",
+      "sha256": "092c1bfe5926bd3af6932c08ccd6d78a75a1c88864ad32e19bb9cd66d9798602",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -438,7 +438,29 @@
       "audience": "contributors and agents",
       "broken_references": [],
       "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
-      "duplicate_or_contradictory_information": [],
+      "duplicate_or_contradictory_information": [
+        "identical content: brand/versions/0.2.0/gallery/index.html"
+      ],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
+      "path": "brand/versions/0.2.0/gallery-20261111/index.html",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "OCF · Visual refinement 0.2.0 comparison",
+      "related_commands": [],
+      "related_schemas": [],
+      "sha256": "1d92305ac5bd320dae9ceed884cad49007d4381c5bd777b713727229e0146a8a",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [
+        "identical content: brand/versions/0.2.0/gallery-20261111/index.html"
+      ],
       "historical": false,
       "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
       "last_verified_implementation_checkpoint": null,
@@ -1779,7 +1801,7 @@
       "purpose": "Documentation map",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "74fabfdb50612450cb8a556c03fcd7bcbe2b5865a4bb325de75453fcb7a6f3e2",
+      "sha256": "7c84867bd685a784b0a826e9aa0cc8662a4fd8083016df47fb5574c485bfad14",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4519,7 +4541,7 @@
         "workspace clean"
       ],
       "related_schemas": [],
-      "sha256": "7cf4a0f6b616d08ba9f7802d171b4dc0f3bff799d4c820fb45463ae45c1ac1c1",
+      "sha256": "2105485299ea7e083e6c62dc0dd69162dcd297b79691d93e275565415a6f05dc",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4632,5 +4654,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 215
+  "total": 216
 }

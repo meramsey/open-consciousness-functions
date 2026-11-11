@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-consciousness-functions.org/schemas/public-export-candidate.schema.json",
+  "title": "OCF Existing-Master Public Export Candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "function",
+            "preparation-learning"
+          ]
+        },
+        "function_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^OCF-[A-Z]{3}-[A-Z0-9]{3,4}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "voice_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "voice_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "edition": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "kind",
+        "function_id",
+        "title",
+        "locale",
+        "voice_id",
+        "voice_name",
+        "edition"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "preparation-learning"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "function_id": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "function_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "source_commit": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "source_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_manifest_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "master_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "technical_receipt_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "audio": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "flac": {
+          "$ref": "#/$defs/audio"
+        },
+        "mp3": {
+          "$ref": "#/$defs/audio"
+        }
+      },
+      "required": [
+        "flac",
+        "mp3"
+      ]
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "file": {
+            "type": "string",
+            "minLength": 1
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "file",
+          "bytes",
+          "sha256"
+        ]
+      }
+    },
+    "publication_approved": {
+      "const": false
+    },
+    "render_source": {
+      "$ref": "#/$defs/renderSource"
+    },
+    "export_commit": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "session",
+    "source_commit",
+    "source_version",
+    "source_manifest_sha256",
+    "master_sha256",
+    "technical_receipt_sha256",
+    "audio",
+    "artifacts",
+    "publication_approved"
+  ],
+  "$defs": {
+    "audio": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "decoded_pcm_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "packet_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "operation": {
+          "enum": [
+            "stream-copy",
+            "encode-from-lossless"
+          ]
+        },
+        "sample_rate_hz": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "channels": {
+          "const": 2
+        },
+        "duration_seconds": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "encoding": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bit_depth": {
+          "enum": [
+            16,
+            24,
+            32
+          ]
+        }
+      },
+      "required": [
+        "decoded_pcm_sha256",
+        "packet_sha256",
+        "operation",
+        "sample_rate_hz",
+        "channels",
+        "duration_seconds",
+        "encoding"
+      ]
+    },
+    "renderSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "enum": [
+            "committed",
+            "frozen-working-tree"
+          ]
+        },
+        "base_commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "snapshot_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "snapshot_scope": {
+          "const": "public-repository-files"
+        },
+        "audio_code_equivalent_commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        }
+      },
+      "required": [
+        "state",
+        "base_commit",
+        "snapshot_sha256",
+        "snapshot_scope"
+      ]
+    }
+  }
+}
