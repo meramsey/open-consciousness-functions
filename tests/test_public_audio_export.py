@@ -482,3 +482,38 @@ def test_gapless_padding_repair_rejects_unknown_damage_without_writing(
     with pytest.raises(OCFError, match="unrecognized MP3 gapless padding mismatch"):
         exports._repair_new_mp3_padding(mp3, frames)
     assert sha256_of_file(mp3) == checksum
+
+
+@pytest.mark.parametrize("progressive", [False, True])
+@pytest.mark.parametrize("dry_run", [False, True])
+def test_jpeg_unused_entropy_rejected_by_full_export_without_modification(
+    tmp_path, monkeypatch, progressive, dry_run
+):
+    from PIL import Image
+
+    path, originals = delivery(tmp_path, monkeypatch, cover_format="jpg", progressive=progressive)
+    cover = originals[2]
+    with Image.open(cover) as image:
+        original_pixels = image.tobytes()
+    data = cover.read_bytes()
+    assert data[-2:] == b"\xff\xd9"
+    cover.write_bytes(data[:-2] + b"PRIVATE_METADATA_FIXTURE" + data[-2:])
+    with Image.open(cover) as image:
+        assert image.tobytes() == original_pixels
+        assert not image.getexif()
+        assert set(image.info) <= {
+            "jfif",
+            "jfif_version",
+            "jfif_unit",
+            "jfif_density",
+            "progressive",
+            "progression",
+        }
+    checksum = sha256_of_file(cover)
+    document = json.loads(path.read_text())
+    document["artifacts"][2].update(bytes=cover.stat().st_size, sha256=checksum)
+    path.write_text(json.dumps(document))
+    with pytest.raises(OCFError, match="unused scan data"):
+        exports.export_delivery(path, **arguments(path, tmp_path / "out"), dry_run=dry_run)
+    assert sha256_of_file(cover) == checksum
+    assert not (tmp_path / "out").exists()

@@ -47,7 +47,12 @@ segments, nested thumbnails and trailing container data are also rejected.
 Permitted PNG chunks must have valid payload sizes, values, order and CRCs. All
 IDAT chunks form one complete zlib stream with the exact scanline byte count;
 unused compressed input, additional streams and decoded trailers fail preflight.
-Ordinary and progressive JPEGs use the same full export and dry-run checks.
+Ordinary and progressive 8-bit Huffman JPEGs use the same full export and
+dry-run checks. Their scan data is decoded symbol by symbol to the declared
+block count, with exact entropy padding and restart boundaries. Unused bytes
+before EOI or between progressive scans fail even when Pillow accepts the
+image. Unsupported JPEG coding modes fail closed. This validation never
+re-encodes or changes the approved cover.
 Transcripts, subtitles and the selected cover
 are copied unchanged and still require content and rights review. Preparation
 Learning sorts first and has its own session kind, with no fabricated function ID.
