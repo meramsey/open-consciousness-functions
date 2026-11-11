@@ -14,8 +14,8 @@ metadata_entries:
   functions.ocf-cog-005.lifecycle.scopes.capability.description:
     text: The ability to explore possibilities remains available.
   functions.ocf-cog-005.lifecycle.scopes.baseline.description:
-    text: Connections and insights continue forming in the background; no selected situation remains permanently
-      active.
+    text: Connections and insights continue forming in the background; no selected situation remains
+      permanently active.
   functions.ocf-cog-005.lifecycle.scopes.application.description:
     text: One consciously chosen, situation-focused exploration.
 activation:
@@ -140,24 +140,14 @@ common_uses:
   status: draft
 relationships:
   related_functions: []
-  complementary_functions: []
-  proposals:
+  complementary_functions:
   - function_id: OCF-EXP-006
-    relationship_type: complementary
+    description_key: relationships.rel-cog005-exp006.description
     description:
       text: Exploring alternative choices and considering intuitive impressions offer different optional
         perspectives on a question; check facts independently.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-COG-005
-      field: description
-      sha256: 574105e00d0317828bef7d3ce5db9df7734faf5e1aa43b68fa433cdf70eb50cd
-    - function_id: OCF-EXP-006
-      field: description
-      sha256: b10fe904bf3c9d6eb4f9bb5833b6499429bcfe5d8d9ed76340b5832d0ec617c5
+      status: reviewed
+      version: 1.0.0
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -425,26 +415,26 @@ editorial:
       Plus Options is nested only, not independently taught or verified prediction.
     pair_reason: OPTIONS directly evokes alternatives and is concise. Distinguish selected possibilities
       from verified predictions without flattening the intended contemplative approach.
-    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
-      outcome or contextual mode can reinforce an umbrella title without copying it. OPTIONS directly
-      evokes alternatives and is concise. Distinguish selected possibilities from verified predictions
-      without flattening the intended contemplative approach.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. OPTIONS
+      directly evokes alternatives and is concise. Distinguish selected possibilities from verified
+      predictions without flattening the intended contemplative approach.
     teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
-    documentary_intent: Consider possibilities/probabilities for a chosen life activity, including claimed
-      information beyond personal experience.
+    documentary_intent: Consider possibilities/probabilities for a chosen life activity, including
+      claimed information beyond personal experience.
     alternatives: []
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 91f318b7db02f1dcb6f05acc17bab70f239f5f2a19e138c1396cce8ae174d10e
+  contract_sha256: 7dd9be2830900fee2135cd5dead7450e865df806d6587183ff5ab45f18532ba8
 record_metadata:
   legacy:
     command_ids:
@@ -518,11 +508,13 @@ record_metadata:
   editorial_decisions:
   - id: OCF-OPTIONS-001
     kind: approved-command-presentation-change
-    decision_source: 'Explicit user approval: OCF COMPLETE OPTIONS MIGRATION AND EDITORIAL CANDIDATE INTEGRATION'
+    decision_source: 'Explicit user approval: OCF COMPLETE OPTIONS MIGRATION AND EDITORIAL CANDIDATE
+      INTEGRATION'
     source_commit: e4226aac3feac72d62049314f807175175717a48
     command_id: OCF-CMD-COG-005-PRIMARY
-    scope: Approved substitution of the primary Options command from the historical teaching phrase to
-      the canonical cue; only two narration entries changed. No DSP, pacing, listening, or release approval.
+    scope: Approved substitution of the primary Options command from the historical teaching phrase
+      to the canonical cue; only two narration entries changed. No DSP, pacing, listening, or release
+      approval.
     previous_resolved_text_sha256:
       hplus.function.ocf-cog-005.closer: 5116920052aab54b5e9fca23909db9d9cc0af7b4203f5caae663b1e9f772e848
       hplus.function.ocf-cog-005.function-body: 311b98d65798bb5b6e35c4ee78002e98e8372c53cfcfa580e3ea7eb462126b3e
@@ -539,7 +531,8 @@ record_metadata:
     kind: approved-title-cue
     source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
     scope: Keep all current Options wording and metadata unchanged, including actual taught Plus Options
-      Choices. Do not implement the proposed shortening to Plus Options or retire its active legacy alias.
+      Choices. Do not implement the proposed shortening to Plus Options or retire its active legacy
+      alias.
     decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
       request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
     source_row_sha256: d0ae183302fa48de2fee709bffc9aac4b37788bc48a29f86ebbd6b305aa021db
@@ -548,9 +541,9 @@ record_metadata:
     changed_narration_keys: []
     previous_resolved_text_sha256: {}
     current_resolved_text_sha256: {}
-    review_note: Close eyes, inhale/hold, select situation, complete cue, exhale with eyes remaining closed.
-      Explore greater-self possibilities/probabilities and consequences while preserving choice. Plus
-      Options is nested only, not independently taught or verified prediction.
+    review_note: Close eyes, inhale/hold, select situation, complete cue, exhale with eyes remaining
+      closed. Explore greater-self possibilities/probabilities and consequences while preserving choice.
+      Plus Options is nested only, not independently taught or verified prediction.
   - id: OCF-FUNCTIONAL-METADATA-PERSISTENCE
     kind: approved-functional-metadata
     source_commit: 4da47a5740ead0be6bc3127437ee7b36a9c86ddf
@@ -561,6 +554,26 @@ record_metadata:
     current_values_sha256: 3a40971c1021c1b9f971ef5e4f5488a1efd2f5a8e429c36f90b91ede84ba2285
     review_note: 'Options: 1'
     approval_response: approve
+  - id: REL-COG005-EXP006
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 3fbac700068c00141fa612c8989ad7cc00d6f465c4b12a4bb8470321157fbeb2
+    current_values_sha256: 4c1c04afbbd820e481bcf0c67ab2422f00cdb40ecfbc584f8852038b537df20e
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-COG-005", "sha256": "574105e00d0317828bef7d3ce5db9df7734faf5e1aa43b68fa433cdf70eb50cd"},
+      {"field": "description", "function_id": "OCF-EXP-006", "sha256": "b10fe904bf3c9d6eb4f9bb5833b6499429bcfe5d8d9ed76340b5832d0ec617c5"}]'
+    relationship_id: REL-COG005-EXP006
+    related_function_id: OCF-EXP-006
+    relationship_type: complementary
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -746,8 +759,8 @@ content:
       source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -797,8 +810,8 @@ content:
       - automatic-whole-system-learning
       family: cognitive-alternatives
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -808,8 +821,8 @@ content:
             source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
             start_line: 38
           status: supported
-          summary: Cue plus chosen activity is associated with clear detailed options, purportedly supplied
-            by a greater self.
+          summary: Cue plus chosen activity is associated with clear detailed options, purportedly
+            supplied by a greater self.
         closer:
           locators:
           - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
@@ -846,7 +859,8 @@ content:
             source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
             start_line: 38
           status: supported
-          summary: Request alternatives for a chosen activity; repeated use is asserted to improve effectiveness.
+          summary: Request alternatives for a chosen activity; repeated use is asserted to improve
+            effectiveness.
         handoff:
           locators:
           - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
@@ -865,8 +879,8 @@ content:
             source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
             start_line: 38
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
@@ -875,8 +889,8 @@ content:
             source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
             start_line: 38
           status: supported
-          summary: select-life-activity; close-eyes-and-hold-breath; internally-issue-options-cue; exhale-with-eyes-closed;
-            attend-to-presented-possibilities
+          summary: select-life-activity; close-eyes-and-hold-breath; internally-issue-options-cue;
+            exhale-with-eyes-closed; attend-to-presented-possibilities
         opener:
           locators:
           - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
@@ -894,8 +908,8 @@ content:
             source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
             start_line: 11
           status: supported
-          summary: Supported uninterrupted relaxation, temporary setting-aside and counted ten-state entry;
-            ASR counts are corrupted.
+          summary: Supported uninterrupted relaxation, temporary setting-aside and counted ten-state
+            entry; ASR counts are corrupted.
         provenance:
           locators:
           - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
@@ -905,8 +919,9 @@ content:
             start_line: 1
           status: supported
           summary: Complete available partial_source_transcript text inspected; shared representations
-            are not independent corroboration. Source accuracy/authentication remains unresolved. Missing
-            ending and ASR artifacts preclude exact return/timing claims. No suspend/reset cue established.
+            are not independent corroboration. Source accuracy/authentication remains unresolved.
+            Missing ending and ASR artifacts preclude exact return/timing claims. No suspend/reset
+            cue established.
         purpose:
           locators:
           - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77
@@ -945,8 +960,8 @@ content:
             source_sha256: 355fc430a981e1f1c97f529d2e80dc5febc6b0dea989ac6f271e4382aefce195
             start_line: 34
           status: supported
-          summary: Eleven learning opening, ten close, sleep-to-twenty instructions; final waking return
-            unavailable in this derivative.
+          summary: Eleven learning opening, ten close, sleep-to-twenty instructions; final waking
+            return unavailable in this derivative.
         suspend_cancel_reset:
           locators:
           - content_group_sha256: c6d6d433b99d46769a1348b7d09f5590a5b5558f058a4f2ce17dc11db76fdd77

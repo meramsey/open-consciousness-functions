@@ -134,7 +134,8 @@ def test_yaml_title_and_description_propagate_across_reader_outputs(
     assert discover(record)["localized_relationships"]["proposals"] == [proposal]
     assert "Synthetic optional separate practice." in generators.function_index_json()
     references = listening_guides.reference_documents(records, catalog=changed)
-    assert "DRAFT complementary" in references["complementary-map.md"]
+    assert "DRAFT complementary" not in references["complementary-map.md"]
+    assert proposal["description"]["text"] not in references["complementary-map.md"]
     assert "Synthetic fixture tag" in references["tag-discovery.md"]
     from ocf_tools.localized_authority import matches
 
@@ -149,7 +150,8 @@ def test_yaml_title_and_description_propagate_across_reader_outputs(
     )
     guide = listening_guides.function_guide_markdown(record, catalog=changed)
     assert "Synthetic fixture tag" in guide and "Synthetic fixture use" in guide
-    assert "Draft optional suggestions" in guide
+    assert "Draft optional suggestions" not in guide
+    assert proposal["description"]["text"] not in guide
     listing = agent_api.list_functions(query="Distinctive fixture title")
     assert any(r["name"] == "Distinctive fixture title" for r in listing["items"])
     assert "Distinctive fixture title" in listening_guides._guide_catalog(records)
@@ -249,11 +251,31 @@ def test_unapproved_proposal_cannot_gain_approval_or_lose_valid_evidence(literal
     pack = catalog.require("en-US")
     source = pack.path / pack.localized_function_files["OCF-COG-004"]
     data = yaml.safe_load(source.read_text())
-    proposal = deepcopy(
-        original.require("en-US").localized_functions["OCF-COG-004"]["relationships"]["proposals"][
-            0
-        ]
+    relation = deepcopy(
+        original.require("en-US").localized_functions["OCF-COG-004"]["relationships"][
+            "related_functions"
+        ][0]
     )
+    proposal = {
+        "function_id": relation["function_id"],
+        "relationship_type": "related",
+        "description": {**relation["description"], "status": "draft"},
+        "status": "draft",
+        "dependency": "optional",
+        "reciprocal_proposed": False,
+        "evidence": [
+            {
+                "function_id": identity,
+                "field": "description",
+                "sha256": hashlib.sha256(
+                    original.require("en-US")
+                    .localized_functions[identity]["description"]["text"]
+                    .encode()
+                ).hexdigest(),
+            }
+            for identity in ["OCF-COG-004", relation["function_id"]]
+        ],
+    }
     if mutation == "reviewed":
         proposal["status"] = proposal["description"]["status"] = "reviewed"
     elif mutation == "prerequisite":

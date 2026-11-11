@@ -39,6 +39,7 @@ loading the entire documentation tree:
 - Understand state audio: [semantic DSP](SEMANTIC_DSP.md) and
   [background audio](../audio/background/README.md).
 - Package: [verified releases](AUDIO_PIPELINE.md#final-release-packages).
+- Prepare existing lossless deliveries for public review: [public audio export](PUBLIC_AUDIO_EXPORT.md).
 - Develop: [agent guide](AGENT_DEVELOPMENT.md), [testing](TEST_COVERAGE.md),
   [contributing](../CONTRIBUTING.md).
 - Automate: [local MCP and jobs](MCP.md), with the CLI as the fallback.

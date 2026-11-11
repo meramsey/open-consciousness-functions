@@ -152,7 +152,7 @@ def test_current_registry_all_58_guides_have_exact_active_cues():
     )
     catalog = LocaleCatalog()
     for record in records:
-        text = documents[f"functions/{record.id}.md"]
+        text = documents["functions/" + guides.function_guide_stem(record) + ".md"]
         assert f"# {record.id}: {record.canonical_name}" in text
         assert guides.MISSING not in text
         assert "## Activation" in text
@@ -161,13 +161,13 @@ def test_current_registry_all_58_guides_have_exact_active_cues():
         assert "hplus.function." not in text
         assert "Canonical function:" not in text
         for command in record.command_records:
-            if not is_active(command) or command.role == "legacy-alias":
+            if not is_active(command) or command.role in {"legacy-alias", "access-close"}:
                 continue
             cue = localized_cue(record, command, catalog=catalog, strict=False)
             assert f"Display cue: {guides._literal(cue['display_cue'])}" in text
             if cue["binding_status"] == "resolved":
                 assert f"Spoken cue: {guides._literal(cue['spoken_cue'])}" in text
-    assert "Spoken cue: `Plus Focus`" in documents["functions/OCF-FND-002.md"]
+    assert "Spoken cue: `Plus Focus`" in documents["functions/OCF-FND-002 - Focus.md"]
 
 
 @pytest.mark.integration
@@ -215,7 +215,9 @@ def test_current_registry_pdf_and_markdown_freshness(tmp_path):
 
     catalog = LocaleCatalog()
     for record in load_all_functions():
-        path = tmp_path / "functions" / f"{record.id}.pdf"
+        path = (
+            tmp_path / "functions" / (guides.function_guide_stem(record, catalog=catalog) + ".pdf")
+        )
         result = subprocess.run(
             [tool, "-enc", "UTF-8", str(path), "-"], check=True, capture_output=True
         )
@@ -239,3 +241,49 @@ def test_current_registry_pdf_and_markdown_freshness(tmp_path):
             assert all(
                 any(character == candidate for candidate in remaining) for character in spoken
             ), f"{record.id}: incomplete transcript {key} in {path.name}"
+
+
+@pytest.mark.unit
+def test_guide_names_are_readable_encoded_and_edition_independent():
+    from urllib.parse import unquote, urlsplit
+
+    identity = "OCF-EXP-001"
+    title = "Café #1 % Notes"
+    stem = guides.guide_stem(identity, title)
+    assert stem == "OCF-EXP-001 - Café-#1-%-Notes"
+    href = guides._guide_href(identity, title, prefix="functions/")
+    assert "%20" in href and "%23" in href and "%25" in href
+    assert not urlsplit(href).fragment
+    assert unquote(href) == "functions/" + stem + ".md"
+    assert href.replace(".md", ".html") in guides.html_bytes(f"[Read]({href})").decode()
+    assert guides.validate_guide_stems({identity: stem}, [identity]) == {identity: stem}
+    for bad in ({}, {identity: "../other"}, {identity: "OCF-EXP-002 - Other"}):
+        with pytest.raises(OCFError):
+            guides.validate_guide_stems(bad, [identity])
+
+
+@pytest.mark.unit
+def test_guide_name_utf8_component_stays_portable():
+    name = guides.guide_stem("OCF-EXP-001", "界" * 200)
+    assert len(name.encode("utf-8")) <= 200
+    assert name.startswith("OCF-EXP-001 - ")
+    assert guides.validate_guide_stems({"OCF-EXP-001": name}, ["OCF-EXP-001"])
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize(
+    "metadata",
+    [
+        {"filename_layout": "function-id-title-1"},
+        {"filename_layout": "unknown"},
+        {"filename_layout": []},
+        {"filename_layout": "function-id-title-1", "function_files": None},
+        {"function_files": {}},
+    ],
+)
+def test_declared_guide_filename_contract_cannot_fall_back(tmp_path, metadata):
+    import json
+
+    (tmp_path / "build-manifest.json").write_text(json.dumps(metadata))
+    with pytest.raises(OCFError, match="filename"):
+        guides.validate_portable_collection(tmp_path)

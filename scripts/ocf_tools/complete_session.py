@@ -14,7 +14,7 @@ from functools import wraps
 from pathlib import Path
 from typing import Any
 
-from .artifact_names import ArtifactNamer, safe_component
+from .artifact_names import ArtifactNamer, listener_export_names, safe_component
 from .content import load_layers
 from .locale import LocaleCatalog, iter_events, resolve_document
 from .paths import (
@@ -1185,6 +1185,7 @@ def _render_complete_session_unlocked(
         / "-".join(
             (
                 function_id,
+                safe_component(tts_plan["title"], max_length=48),
                 safe_component(tts_plan["requested_locale"], max_length=16),
                 safe_component(tts_plan["voice_profile"]["id"], max_length=24),
                 "complete-session",
@@ -1303,13 +1304,14 @@ def _render_complete_session_unlocked(
         if not background_info:
             raise OCFError("complete session rendered no retained background layer")
         render_background = render_dir / background_info["file"]
-        listener_names = ArtifactNamer().filenames(
+        listener_names = listener_export_names(
             function_id,
             tts_plan["title"],
             tts_plan["requested_locale"],
             ["wav", "txt", "lrc", "srt", "vtt", "timing.json"],
-            variant=f"{tts_plan['voice_profile']['id']}-session",
-        )
+            voice_label=tts_plan["voice_profile"]["name"],
+            version=audition_version,
+        )["files"]
         master_name = listener_names["wav"]
         background_name = ArtifactNamer().filename(
             function_id,

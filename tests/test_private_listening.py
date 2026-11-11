@@ -281,7 +281,8 @@ def test_learning_rejects_changed_holds_and_words():
         verify_timing(document, changed)
 
 
-def test_learning_publication_and_no_overwrite(tmp_path, monkeypatch):
+@pytest.mark.parametrize("cover_state", ["valid", "missing", "corrupt"])
+def test_learning_publication_and_no_overwrite(tmp_path, monkeypatch, cover_state):
     from contextlib import nullcontext
 
     from ocf_tools import learning_session as learning
@@ -305,19 +306,58 @@ def test_learning_publication_and_no_overwrite(tmp_path, monkeypatch):
 
     def build(*a, **kw):
         assert "function_id" not in kw["manifest_override"]
+        assert kw["manifest_override"]["session_kind"] == "preparation-learning"
+        assert kw["manifest_override"]["version"] == "0.1.0"
+        assert kw["manifest_override"]["narrator"] == "synthetic"
         built = synthetic_learning(kw["document_override"])
         built["master"] = {
             "file": "master.wav",
             "duration": max(row["end"] for row in built["event_timing"]) + 1,
         }
         (kw["out_root"] / "master.wav").write_bytes(b"public synthetic fixture")
+        (kw["out_root"] / "audio.mp3").write_bytes(b"synthetic encoded fixture")
+        built["outputs"] = [
+            {"file": "master.wav", "format": "wav"},
+            {"file": "audio.mp3", "format": "mp3"},
+        ]
+        if cover_state != "missing":
+            cover = kw["out_root"] / "preparation-learning-cover.png"
+            cover.write_bytes(b"standalone synthetic cover")
+            built["artwork"] = {
+                "file": cover.name,
+                "sha256": hashlib.sha256(cover.read_bytes()).hexdigest()
+                if cover_state == "valid"
+                else "0" * 64,
+                "provenance": {"source": "synthetic"},
+            }
+        import yaml
+
+        (kw["out_root"] / "OCF-RENDER-learning.yaml").write_text(yaml.safe_dump(built))
         return built
 
     monkeypatch.setattr(learning.audio_build, "build", build)
     target = tmp_path / "published"
+    if cover_state != "valid":
+        with pytest.raises(OCFError, match="cover"):
+            learning.render(output=target, voice="synthetic", mix_profile={})
+        assert not target.exists()
+        return
     result = learning.render(output=target, voice="synthetic", mix_profile={})
     assert result["status"] == "completed" and calls
+    assert (
+        result["delivery_names"]["mp3"]
+        == "00 - Preparation-Learning - en-US - synthetic - v0.1.0.mp3"
+    )
+    assert (target / result["delivery_names"]["mp3"]).read_bytes() == b"synthetic encoded fixture"
+    assert (target / result["delivery_names"]["wav"]).read_bytes() == b"public synthetic fixture"
     assert (target / "completion.json").is_file()
+    import yaml
+
+    rendered = yaml.safe_load((target / "OCF-RENDER-learning.yaml").read_text(encoding="utf-8"))
+    assert all((target / item["file"]).is_file() for item in rendered["outputs"])
+    assert (target / rendered["master"]["file"]).is_file()
+    assert rendered["artwork"]["file"] == "cover.png"
+    assert (target / "cover.png").read_bytes() == b"standalone synthetic cover"
     assert all(not name.startswith(".") for name in result["artifacts"])
     for row in result["artifacts"].values():
         assert hashlib.sha256((target / row["path"]).read_bytes()).hexdigest() == row["sha256"]
@@ -467,3 +507,17 @@ def test_portal_rejects_same_bytes_replacement_after_discovery(tmp_path):
         server.shutdown()
         server.server_close()
         worker.join(timeout=3)
+
+
+def test_explicit_preparation_kind_sorts_first_without_changing_identity(tmp_path):
+    import shutil
+
+    folder, doc = completed(tmp_path)
+    other = tmp_path / "zzz-preparation"
+    shutil.copytree(folder, other)
+    doc.update(title="Preparation Learning", session_kind="preparation-learning")
+    (other / "listening.json").write_text(json.dumps(doc))
+    rows, _ = Library(tmp_path).discover()
+    assert rows[0]["title"] == "Preparation Learning"
+    assert rows[0]["id"] == hashlib.sha256(other.name.encode()).hexdigest()
+    assert rows[1]["title"] == "Synthetic"

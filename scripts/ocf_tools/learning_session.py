@@ -115,17 +115,38 @@ def render(
     native_speed=False,
     pacing_profile=None,
     backend_defaults=True,
+    edition_version="0.1.0",
 ):
     """Render using existing OCF APIs; retain failed staging and refuse overwrite."""
     from . import backend_defaults as defaults
+    from .artifact_names import listener_export_names
     from .complete_session import _probe_audio, _stereo_metrics, _verify_decode
     from .dev_jobs import lock
+    from .indexes import load_voice_profiles
     from .listener_text import write_listener_text
     from .paths import REPO_ROOT, workspace_temp_directory
     from .voice import resolve_backend
     from .voice_packs import persistent_worker
 
     resolved_voice = resolve_backend(voice, locale=locale)
+    voice_record = next(
+        (
+            row
+            for row in load_voice_profiles()
+            if row["id"] == resolved_voice.get("profile_id", voice)
+        ),
+        None,
+    )
+    voice_label = voice_record["name"] if voice_record else str(voice)
+    delivery_names = listener_export_names(
+        None,
+        "Preparation Learning",
+        locale,
+        ["wav", "mp3", "txt", "srt", "vtt", "lrc"],
+        voice_label=voice_label,
+        version=edition_version,
+        session_kind="preparation-learning",
+    )["files"]
     dsp = semantic_dsp.load_profile(load_template(TEMPLATE)["dsp_profile"])
     use_defaults = defaults.eligible(resolved_voice.get("name"), dsp, enabled=backend_defaults)
     if use_defaults and pacing_profile is None:
@@ -145,6 +166,7 @@ def render(
 
     identity = {
         "plan": planned,
+        "delivery_names": delivery_names,
         "mix_profile": profile,
         "voice": voice_identity(resolved_voice),
         "dsp_dependencies": semantic_dsp.dependency_identity(planned["dsp"]),
@@ -177,7 +199,11 @@ def render(
                 document_override=document,
                 manifest_override={
                     "title": "Preparation Learning",
+                    "session_kind": "preparation-learning",
                     "language": locale,
+                    "narrator": voice_label,
+                    "version": edition_version,
+                    "release_version": edition_version,
                     "background_audio": {"strategy": "none", "preset": None},
                 },
                 render_label="preparation-learning",
@@ -194,6 +220,34 @@ def render(
                 retain_background_stem=True,
             )
         timing = verify_timing(document, built)
+        if not built.get("artwork"):
+            raise OCFError("Learning build did not retain its standalone cover")
+        cover = built["artwork"]
+        if cover["file"] != "cover.png":
+            if (stage / "cover.png").exists():
+                raise OCFError("Learning companion cover already exists")
+            (stage / cover["file"]).rename(stage / "cover.png")
+            cover["file"] = "cover.png"
+        if sha256_of_file(stage / "cover.png") != cover["sha256"]:
+            raise OCFError("Learning cover integrity mismatch")
+        renamed = {}
+        for item in built["outputs"]:
+            old = item["file"]
+            if item["format"] in delivery_names:
+                new = delivery_names[item["format"]]
+                if new != old:
+                    if (stage / new).exists():
+                        raise OCFError("Learning delivery name already exists")
+                    (stage / old).rename(stage / new)
+                item["file"] = new
+                renamed[old] = new
+        built["master"]["file"] = renamed.get(built["master"]["file"], built["master"]["file"])
+        from .utils import generated_content, yaml_safe_dump
+
+        for render_manifest in stage.glob("OCF-RENDER-*.yaml"):
+            render_manifest.write_text(
+                "# " + generated_content(yaml_safe_dump(built)), encoding="utf-8"
+            )
         master = stage / built["master"]["file"]
         probe = _probe_audio(master)
         if (probe["sample_rate"], probe["channels"]) != (44100, 2):
@@ -202,7 +256,7 @@ def render(
         if metrics["clipped_sample_count"]:
             raise OCFError("Learning master contains clipped samples")
         _verify_decode(master)
-        write_listener_text(built, built["master"]["duration"], stage / "transcript.txt")
+        write_listener_text(built, built["master"]["duration"], stage / delivery_names["txt"])
         (stage / "source-identity.json").write_text(json.dumps(identity, indent=2))
         (stage / "plan.json").write_text(json.dumps(planned, indent=2))
         (stage / "render.json").write_text(json.dumps(built, indent=2))
@@ -214,6 +268,8 @@ def render(
         receipt = {
             "status": "completed",
             "render_type": "standalone-preparation-learning",
+            "edition_version": edition_version,
+            "delivery_names": delivery_names,
             "render_identity_sha256": identity_hash,
             "timing": timing,
             "measurements": {**probe, **metrics},

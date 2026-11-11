@@ -123,29 +123,19 @@ tags:
 common_uses:
 - text: Preparing for natural sleep in a safe place.
   status: draft
-- text: Reflecting on a desired waking time without relying on the exercise instead of an alarm when timing
-    matters.
+- text: Reflecting on a desired waking time without relying on the exercise instead of an alarm when
+    timing matters.
   status: draft
 relationships:
-  related_functions: []
-  complementary_functions: []
-  proposals:
+  related_functions:
   - function_id: OCF-SLP-005
-    relationship_type: related
+    description_key: relationships.rel-slp002-slp005.description
     description:
-      text: Compare general sleep onset with rest amid unfamiliar or distracting surroundings; first ensure
-        the surroundings are safe.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-SLP-002
-      field: description
-      sha256: f25c3964bcb1d1c34e63bebd2bc7d271d5d05e9757459c0a65e171d7ca6c1bca
-    - function_id: OCF-SLP-005
-      field: description
-      sha256: c3a871929526f06ce83de524a830914f8bfad2b355a3f0c4534564eb5a9156e3
+      text: Compare general sleep onset with rest amid unfamiliar or distracting surroundings; first
+        ensure the surroundings are safe.
+      status: reviewed
+      version: 1.0.0
+  complementary_functions: []
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -325,26 +315,26 @@ editorial:
       registry SLEEP is not taught.
     pair_reason: The title and direct sleep-onset cue align. Preserve the distinct exhalation procedure
       and desire-dependent waking; do not merge with Sleep Easy or question incubation.
-    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
-      outcome or contextual mode can reinforce an umbrella title without copying it. The title and direct
-      sleep-onset cue align. Preserve the distinct exhalation procedure and desire-dependent waking; do
-      not merge with Sleep Easy or question incubation.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. The title
+      and direct sleep-onset cue align. Preserve the distinct exhalation procedure and desire-dependent
+      waking; do not merge with Sleep Easy or question incubation.
     teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
-    documentary_intent: Move into normal restful sleep when desired, with progressive cue use and desire-dependent
-      waking.
+    documentary_intent: Move into normal restful sleep when desired, with progressive cue use and
+      desire-dependent waking.
     alternatives: []
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 7a0d9986ba8883e9837ad2c40f85ce4478e6302b03c64b2d8a1baa6c3e75e4df
+  contract_sha256: 45e9b8a36e17bc94f2a597dccb070645287e0f2a24c39c931e68f688b8c8689d
 record_metadata:
   legacy:
     command_ids:
@@ -363,8 +353,8 @@ record_metadata:
   compatibility:
     legacy_commands:
     - PLUS-20-20
-    rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording is
-      historical lookup. Existing controls remain unchanged.
+    rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording
+      is historical lookup. Existing controls remain unchanged.
     state: historical-lookup
   historical_lookup:
   - text: Plus Twenty Twenty
@@ -422,9 +412,10 @@ record_metadata:
   - id: OCF-EDITORIAL-TITLE-CUES-004
     kind: approved-title-cue
     source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
-    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
-      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
-      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup.
+      Preserve procedures, controls, semantics, provenance and separately flagged metadata questions.
+      Later user instruction releases the draft-pilot freeze; pilot bindings follow current approved
+      titles and cues.
     decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
       request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
     source_row_sha256: cf7b3c96ec93f05e8f2750ca04364f046755dd24d2863348d1ee1acaa3a1286f
@@ -440,13 +431,33 @@ record_metadata:
     current_resolved_text_sha256:
       hplus.function.ocf-slp-002.function-body: 4a30cab667ad3cdf68ba3c3254e949f8e99495412fe1b0be3c2ff0854e09bd33
       hplus.function.ocf-slp-002.closer: ef9c2624e22f72ce0e38238747fca833456fc82f29955e99ef022b37c920ba3e
-    review_note: Replace two body mentions and one closer mention from Plus Twenty Twenty to Plus Sleep.
-      Preserve title, cue during exhalation, successive gentle-breath repetition, chosen waking time and
-      surrounding suggestions. Do not add breath-hold or candle-blowing instructions. Retain superseded
-      numeric phrase as historical lookup; introduce no mode or release. Preserve deliberately invoked
-      sleep, lasting learned ability and clear ordinary waking awareness at other times.
+    review_note: Replace two body mentions and one closer mention from Plus Twenty Twenty to Plus
+      Sleep. Preserve title, cue during exhalation, successive gentle-breath repetition, chosen waking
+      time and surrounding suggestions. Do not add breath-hold or candle-blowing instructions. Retain
+      superseded numeric phrase as historical lookup; introduce no mode or release. Preserve deliberately
+      invoked sleep, lasting learned ability and clear ordinary waking awareness at other times.
     approval_response: '1'
     review_position: 10
+  - id: REL-SLP002-SLP005
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 38e36e80e28bfee653c7d412d264adc04007ce3575b5a8e2a114e72e4bdfd690
+    current_values_sha256: 417a48af7859c2df5e07430f2ff54a69d0f8f93fa4edcae4ecf5bc9a35f270a1
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-SLP-002", "sha256": "f25c3964bcb1d1c34e63bebd2bc7d271d5d05e9757459c0a65e171d7ca6c1bca"},
+      {"field": "description", "function_id": "OCF-SLP-005", "sha256": "c3a871929526f06ce83de524a830914f8bfad2b355a3f0c4534564eb5a9156e3"}]'
+    relationship_id: REL-SLP002-SLP005
+    related_function_id: OCF-SLP-005
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -627,8 +638,8 @@ content:
       source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -677,8 +688,8 @@ content:
       - desire-dependent-awakening
       family: sleep-on-exhalation
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -688,8 +699,8 @@ content:
             source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
             start_line: 72
           status: supported
-          summary: Exhalation rather than a required breath hold pairs with the cue; repeated cue is associated
-            with deeper sleep.
+          summary: Exhalation rather than a required breath hold pairs with the cue; repeated cue
+            is associated with deeper sleep.
         closer:
           locators:
           - content_group_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
@@ -747,8 +758,8 @@ content:
             source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
             start_line: 72
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
@@ -767,7 +778,8 @@ content:
             source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
             start_line: 56
           status: supported
-          summary: Orient to the function and establish receptive learning context before the target instruction.
+          summary: Orient to the function and establish receptive learning context before the target
+            instruction.
         preparation:
           locators:
           - content_group_sha256: 440a73690ff6bd0cb12419fb5d5e7a46be3e791c127ecffa73b40c21982dbaab
@@ -786,8 +798,8 @@ content:
             source_sha256: 0cc14bfba521241845bb953fb31ffdc29140bd4e34b63cd102845d01068a61fd
             start_line: 1
           status: supported
-          summary: Complete available source_transcript text inspected; shared representations are not
-            independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
             text is unauthenticated; corrupted counts/ambient material cannot establish original repetition,
             timing or mechanism.
         purpose:
@@ -922,11 +934,11 @@ content:
     metadata_ref: canonical-function-record
     preparation: []
     questions:
-    - Source-designated text is unauthenticated; corrupted counts/ambient material cannot establish original
-      repetition, timing or mechanism.
-    - Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and automatic
-      whole-system learning need review. Reframing a physical/metaphysical goal is a material choice,
-      not assumed equivalence.
+    - Source-designated text is unauthenticated; corrupted counts/ambient material cannot establish
+      original repetition, timing or mechanism.
+    - Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and
+      automatic whole-system learning need review. Reframing a physical/metaphysical goal is a material
+      choice, not assumed equivalence.
     states:
       preferred: []
       required: []

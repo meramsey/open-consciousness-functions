@@ -104,29 +104,19 @@ tags:
 common_uses:
 - text: Recognizing a specific unwanted repeated behavior.
   status: draft
-- text: Reflecting on a chosen change in a habit without treating the exercise as a substitute for needed
-    professional support.
+- text: Reflecting on a chosen change in a habit without treating the exercise as a substitute for
+    needed professional support.
   status: draft
 relationships:
-  related_functions: []
-  complementary_functions: []
-  proposals:
+  related_functions:
   - function_id: OCF-AUT-001
-    relationship_type: related
+    description_key: relationships.rel-lif001-aut001.description
     description:
-      text: Compare changing an unwanted repeated habit with cultivating a desired automatic way of responding;
-        these are different intentions, not a required sequence.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-LIF-001
-      field: description
-      sha256: b696385bce51f81503108a0c8b948eb5b0ff0765593b07dd1bf4e23248338ffe
-    - function_id: OCF-AUT-001
-      field: description
-      sha256: 95072a83ada3fc93d60106caad1df381f1b1c3d9884ea5e69915c0b5dff46063
+      text: Compare changing an unwanted repeated habit with cultivating a desired automatic way of
+        responding; these are different intentions, not a required sequence.
+      status: reviewed
+      version: 1.0.0
+  complementary_functions: []
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -330,12 +320,12 @@ editorial:
     prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
       association plan; approve controls together. No narration replacement text selected.
     contextual_review: Recognize selected unwanted physical/mental habit as it arises, inhale/hold/complete
-      cue/candle-like exhale for progressive lasting elimination. Preserve wanted memories/skills. This
-      is habit change, not ending a temporary OCF application.
-    pair_reason: Targeted lasting habit change stays distinct from temporary application Release; cue
-      explicitly selects this habit rather than ending every pattern.
-    title_cue_relationship_or_exception: Targeted lasting habit change stays distinct from temporary application
-      Release; cue explicitly selects this habit rather than ending every pattern.
+      cue/candle-like exhale for progressive lasting elimination. Preserve wanted memories/skills.
+      This is habit change, not ending a temporary OCF application.
+    pair_reason: Targeted lasting habit change stays distinct from temporary application Release;
+      cue explicitly selects this habit rather than ending every pattern.
+    title_cue_relationship_or_exception: Targeted lasting habit change stays distinct from temporary
+      application Release; cue explicitly selects this habit rather than ending every pattern.
     teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
     documentary_intent: Reduce/remove an unwanted physical or mental habit pattern when it arises.
     alternatives:
@@ -344,15 +334,15 @@ editorial:
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 35147cea2f310c6e40e0c3f6f24ac34082ce9d5af8ad5cbc5557197b2d337cdc
+  contract_sha256: ab5a4c1a4c48af6217fd82a9b52dd616573a325f11d5186c269155631438a4a5
 record_metadata:
   legacy:
     command_ids:
@@ -371,8 +361,8 @@ record_metadata:
   compatibility:
     legacy_commands:
     - PLUS-NO MORE, NO MORE
-    rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording is
-      historical lookup. Existing controls remain unchanged.
+    rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording
+      is historical lookup. Existing controls remain unchanged.
     state: historical-lookup
   historical_lookup:
   - text: De-Hab
@@ -431,9 +421,10 @@ record_metadata:
   - id: OCF-EDITORIAL-TITLE-CUES-004
     kind: approved-title-cue
     source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
-    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
-      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
-      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup.
+      Preserve procedures, controls, semantics, provenance and separately flagged metadata questions.
+      Later user instruction releases the draft-pilot freeze; pilot bindings follow current approved
+      titles and cues.
     decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
       request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
     source_row_sha256: 8fe3d2f67a8ec07622253ac0d17085222c81d9ce5f2060593b4767540a0ceb19
@@ -449,12 +440,12 @@ record_metadata:
     current_resolved_text_sha256:
       hplus.function.ocf-lif-001.function-body: 1dcf1e26f65825ffe40c066373507b607470e7b627c8abe3cc64760002965ed7
       hplus.function.ocf-lif-001.closer: 862738bbea56f75de688dadb7bcaf9fd05df21fdf770210913d1493c2a7650b8
-    review_note: Change title from De-Hab to Habit Freedom and update exercise sign-off. Replace two body
-      mentions and one closer mention from Plus No More No More to Plus Free This Habit. Preserve deliberate
-      recognition and selection of the unwanted physical or mental habit as it arises, progressive lasting
-      change, inhale/hold/cue/candle-like exhale and useful memories, knowledge and skills. Retain De-Hab
-      and superseded cue as historical lookup; introduce no mode or release. Do not reinterpret as cancelling
-      other functions or stopping a temporary application.
+    review_note: Change title from De-Hab to Habit Freedom and update exercise sign-off. Replace two
+      body mentions and one closer mention from Plus No More No More to Plus Free This Habit. Preserve
+      deliberate recognition and selection of the unwanted physical or mental habit as it arises,
+      progressive lasting change, inhale/hold/cue/candle-like exhale and useful memories, knowledge
+      and skills. Retain De-Hab and superseded cue as historical lookup; introduce no mode or release.
+      Do not reinterpret as cancelling other functions or stopping a temporary application.
     approval_response: '1'
     review_position: 26
     separate_review_needed: true
@@ -468,6 +459,26 @@ record_metadata:
     current_values_sha256: 65873d6180b659d7ee6a058db8e4d29cd6c8931b0d35be86a81e7fe39bd8afc3
     review_note: 'Habit Freedom: 1'
     approval_response: approve
+  - id: REL-LIF001-AUT001
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 63d1c5fd80f6e1df4738b393cf98d361f8d331ed92f9fb26ca4759116d5767ee
+    current_values_sha256: 9baa7d76bfe2a0e41b3c7ec22711f2bc7d1661e5049a04d5f2e73e482008af2c
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-LIF-001", "sha256": "b696385bce51f81503108a0c8b948eb5b0ff0765593b07dd1bf4e23248338ffe"},
+      {"field": "description", "function_id": "OCF-AUT-001", "sha256": "95072a83ada3fc93d60106caad1df381f1b1c3d9884ea5e69915c0b5dff46063"}]'
+    relationship_id: REL-LIF001-AUT001
+    related_function_id: OCF-AUT-001
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -649,8 +660,8 @@ content:
       source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -699,8 +710,8 @@ content:
       - automatic-whole-system-learning
       family: habit-pattern-reduction
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -769,8 +780,8 @@ content:
             source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
             start_line: 148
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
@@ -789,7 +800,8 @@ content:
             source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
             start_line: 144
           status: supported
-          summary: Orient to the function and establish receptive learning context before the target instruction.
+          summary: Orient to the function and establish receptive learning context before the target
+            instruction.
         preparation:
           locators:
           - content_group_sha256: b3bab8878e2e154ca30353b5a89e69cbbb1ffb285c3e1308aba05c02ece17ee9
@@ -808,9 +820,9 @@ content:
             source_sha256: 77aadde917a6a06b9534060d2ecbfa904b6d107deb2a204ea2f81f0f39f82be6
             start_line: 1
           status: supported
-          summary: Complete available source_transcript text inspected; shared representations are not
-            independent corroboration. Source accuracy/authentication remains unresolved. Corrupted counts
-            and possible underlay196-207 are not authenticated reinforcement. No specific undo/reversal
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Corrupted
+            counts and possible underlay196-207 are not authenticated reinforcement. No specific undo/reversal
             or habit-type exception is supplied.
         purpose:
           locators:
@@ -944,11 +956,11 @@ content:
     metadata_ref: canonical-function-record
     preparation: []
     questions:
-    - Corrupted counts and possible underlay196-207 are not authenticated reinforcement. No specific undo/reversal
-      or habit-type exception is supplied.
-    - Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and automatic
-      whole-system learning need review. Reframing a physical/metaphysical goal is a material choice,
-      not assumed equivalence.
+    - Corrupted counts and possible underlay196-207 are not authenticated reinforcement. No specific
+      undo/reversal or habit-type exception is supplied.
+    - Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and
+      automatic whole-system learning need review. Reframing a physical/metaphysical goal is a material
+      choice, not assumed equivalence.
     states:
       preferred: []
       required: []

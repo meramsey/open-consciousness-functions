@@ -303,8 +303,8 @@ content:
       source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -353,8 +353,8 @@ content:
       - automatic-whole-system-learning
       family: relaxation-release
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -364,8 +364,8 @@ content:
             source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
             start_line: 34
           status: supported
-          summary: Pair the deliberately selected legacy cue with the target response and breathing procedure;
-            canonical spelling/compatibility remains separate metadata.
+          summary: Pair the deliberately selected legacy cue with the target response and breathing
+            procedure; canonical spelling/compatibility remains separate metadata.
         closer:
           locators:
           - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
@@ -393,8 +393,8 @@ content:
             source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
             start_line: 34
           status: inferred
-          summary: Existing Relax pilot remains frozen/provisional; this documents legacy breath/cue and
-            physiological claims without approving that pilot's reframing or source mechanism.
+          summary: Existing Relax pilot remains frozen/provisional; this documents legacy breath/cue
+            and physiological claims without approving that pilot's reframing or source mechanism.
         future_use:
           locators:
           - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
@@ -422,8 +422,8 @@ content:
             source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
             start_line: 34
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
@@ -441,7 +441,8 @@ content:
             source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
             start_line: 30
           status: supported
-          summary: Orient to the target function and establish receptive learning context before the instruction.
+          summary: Orient to the target function and establish receptive learning context before the
+            instruction.
         preparation:
           locators:
           - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
@@ -450,8 +451,8 @@ content:
             source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
             start_line: 2
           status: supported
-          summary: Supported uninterrupted relaxed posture, settling movements/breathing, temporary setting-aside
-            in repository representation and counted ten-state entry.
+          summary: Supported uninterrupted relaxed posture, settling movements/breathing, temporary
+            setting-aside in repository representation and counted ten-state entry.
         provenance:
           locators:
           - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
@@ -460,10 +461,10 @@ content:
             source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
             start_line: 1
           status: supported
-          summary: Complete available source_transcript text inspected; shared representations are not
-            independent corroboration. Source accuracy/authentication remains unresolved. Apparent underlay/ASR
-            content at120-153 is not authenticated reinforcement wording. Canonical cue shortening is
-            metadata, not a rewritten reference.
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Apparent
+            underlay/ASR content at120-153 is not authenticated reinforcement wording. Canonical cue
+            shortening is metadata, not a rewritten reference.
         purpose:
           locators:
           - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
@@ -481,8 +482,8 @@ content:
             source_sha256: c0402141cd983ce02818c6a0bd427577c637810c572524e6e05e1a3168143209
             start_line: 33
           status: not-present
-          summary: Repeated instruction does not establish a distinct listener performance trial; apparent
-            ambient transcription artifacts are not practice evidence.
+          summary: Repeated instruction does not establish a distinct listener performance trial;
+            apparent ambient transcription artifacts are not practice evidence.
         safety_claims:
           locators:
           - content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
@@ -512,8 +513,8 @@ content:
             start_line: 1
           status: unknown
           summary: Investigated the full available source; this operation is not established. Apparent
-            underlay/ASR content at120-153 is not authenticated reinforcement wording. Canonical cue shortening
-            is metadata, not a rewritten reference.
+            underlay/ASR content at120-153 is not authenticated reinforcement wording. Canonical cue
+            shortening is metadata, not a rewritten reference.
       source_extent:
         content_group_sha256: 592d8ddb22a426e5a2470294d68d24ced80a26337309e6ad7ad0abed729dfeeb
         end_line: 188
@@ -595,8 +596,8 @@ content:
     metadata_ref: canonical-function-record
     preparation: []
     questions:
-    - Apparent underlay/ASR content at120-153 is not authenticated reinforcement wording. Canonical cue
-      shortening is metadata, not a rewritten reference.
+    - Apparent underlay/ASR content at120-153 is not authenticated reinforcement wording. Canonical
+      cue shortening is metadata, not a rewritten reference.
     - Existing Relax pilot remains frozen/provisional; this documents legacy breath/cue and physiological
       claims without approving that pilot's reframing or source mechanism.
     states:
@@ -620,23 +621,23 @@ editorial:
     recommended_primary_cue: PLUS-RELAX
     prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
       association plan; approve controls together. No narration replacement text selected.
-    contextual_review: Inhale/hold/complete repeated cue/candle-like exhale releases physical/mental tension
-      while allowing relaxed alert activity. Shorter RELAX is not independently taught; frozen editorial
-      checkpoint remains pending.
-    pair_reason: RELAX is direct and positive. The repeated spoken association remains frozen; no spelling
-      or grammar uniformity requires changing it.
-    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
-      outcome or contextual mode can reinforce an umbrella title without copying it. RELAX is direct and
-      positive. The repeated spoken association remains frozen; no spelling or grammar uniformity requires
-      changing it.
+    contextual_review: Inhale/hold/complete repeated cue/candle-like exhale releases physical/mental
+      tension while allowing relaxed alert activity. Shorter RELAX is not independently taught; frozen
+      editorial checkpoint remains pending.
+    pair_reason: RELAX is direct and positive. The repeated spoken association remains frozen; no
+      spelling or grammar uniformity requires changing it.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. RELAX is
+      direct and positive. The repeated spoken association remains frozen; no spelling or grammar
+      uniformity requires changing it.
     teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
     documentary_intent: Relax body/mind by associating a breathing/cue routine with tension release.
     alternatives: []
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
@@ -777,7 +778,7 @@ lifecycle:
   trigger_conditions: []
 locale: en-US
 localization:
-  contract_sha256: 4a0ecf86317880a63f43b1738232aed7e90bb3d1c54ec144420fcfed7f3c2518
+  contract_sha256: 3df6d4a029c89c36ce5bdd72daaf6ab1925aad003b969abf6192f5031fea91c1
   status: complete
 metadata_entries: {}
 narration:
@@ -824,8 +825,8 @@ record_metadata:
       purpose_key: functions.ocf-fnd-004.purpose
       usage_key: commands.ocf-cmd-fnd-004-legacy-01.usage
   compatibility:
-    rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording is
-      historical lookup. Existing controls remain unchanged.
+    rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording
+      is historical lookup. Existing controls remain unchanged.
     state: historical-lookup
   documentation:
     purpose_key: functions.ocf-fnd-004.purpose
@@ -866,9 +867,10 @@ record_metadata:
   - id: OCF-EDITORIAL-TITLE-CUES-004
     kind: approved-title-cue
     source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
-    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
-      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
-      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup.
+      Preserve procedures, controls, semantics, provenance and separately flagged metadata questions.
+      Later user instruction releases the draft-pilot freeze; pilot bindings follow current approved
+      titles and cues.
     decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
       request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
     source_row_sha256: 0e0e2868d893c6677b34e55273cbbf51299486823b55189f676c029ed62803bb
@@ -884,32 +886,42 @@ record_metadata:
     current_resolved_text_sha256:
       hplus.function.ocf-fnd-004.function-body: 9798a9e119c48a21e1cc8395e95273389855df3cff80de3920c7a8cd9e21b8c0
       hplus.function.ocf-fnd-004.closer: 92c53b9251e5167cc02235548ab3c290deb01870e991c2290a6cce9eb4bbe64c
-    review_note: Shorten two current function-body mentions and one closer mention from Plus Relax Relax
-      to Plus Relax. Preserve title, breathing sequence, surrounding suggestions and alert activity. Retain
-      repeated legacy phrase as historical lookup; introduce no mode or release. This approval covers
-      current function-specific narration only; frozen Relax pilot resources and listening checkpoints
-      remain untouched.
+    review_note: Shorten two current function-body mentions and one closer mention from Plus Relax
+      Relax to Plus Relax. Preserve title, breathing sequence, surrounding suggestions and alert activity.
+      Retain repeated legacy phrase as historical lookup; introduce no mode or release. This approval
+      covers current function-specific narration only; frozen Relax pilot resources and listening
+      checkpoints remain untouched.
     approval_response: '1'
     review_position: 6
-relationships:
-  complementary_functions: []
-  proposals:
-  - dependency: optional
-    description:
-      status: draft
-      text: Physical and mental relaxation differs from releasing a selected interfering emotion; choose
-        whichever intention fits the situation.
-    evidence:
-    - field: description
-      function_id: OCF-FND-004
-      sha256: 7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9
-    - field: description
-      function_id: OCF-EMO-001
-      sha256: 864bf2596a2262e1921925522d903dca921655e4d26850f86ba2b9a6e296d1b0
-    function_id: OCF-EMO-001
-    reciprocal_proposed: false
+  - id: REL-FND004-EMO001
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 33af72e56072d21d85c6106dbc4299a2b7358d54632d2258de280b1ab7fa9dc4
+    current_values_sha256: 3298bf8ab9a6cbc5851fc43544da57e5b334836d61e289aa919e5f3751b09f0c
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-FND-004", "sha256": "7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9"},
+      {"field": "description", "function_id": "OCF-EMO-001", "sha256": "864bf2596a2262e1921925522d903dca921655e4d26850f86ba2b9a6e296d1b0"}]'
+    relationship_id: REL-FND004-EMO001
+    related_function_id: OCF-EMO-001
     relationship_type: complementary
-    status: draft
+    dependency: optional
+    reciprocal_approved: false
+relationships:
+  complementary_functions:
+  - function_id: OCF-EMO-001
+    description_key: relationships.rel-fnd004-emo001.description
+    description:
+      status: reviewed
+      text: Physical and mental relaxation differs from releasing a selected interfering emotion;
+        choose whichever intention fits the situation.
+      version: 1.0.0
   related_functions: []
 safety:
   level: general

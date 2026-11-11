@@ -94,24 +94,14 @@ common_uses:
   status: draft
 relationships:
   related_functions: []
-  complementary_functions: []
-  proposals:
+  complementary_functions:
   - function_id: OCF-COM-001
-    relationship_type: complementary
+    description_key: relationships.rel-emo003-com001.description
     description:
-      text: Considering another being's perspective and practicing clear expression offer distinct intentions
-        for communication; neither establishes knowledge of another's private thoughts.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-EMO-003
-      field: description
-      sha256: 8f58776ae03f2ca89f2b5df60679b5efc69a3adbdc6d11523fecdbd576827033
-    - function_id: OCF-COM-001
-      field: description
-      sha256: 4064576c22f3f99553735cfd8b962c8389288b329ee75f16291026b90d280df0
+      text: Considering another being's perspective and practicing clear expression offer distinct
+        intentions for communication; neither establishes knowledge of another's private thoughts.
+      status: reviewed
+      version: 1.0.0
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -322,9 +312,10 @@ editorial:
     contextual_review: Select another being, quiet expectations and receive impressions with inhale/hold/complete
       cue/exhale. Retain total-self, wordless/nonphysical communion scope without treating impressions
       as verified knowledge/control of another being.
-    pair_reason: Natural action title and cue align directly while retaining total-self communion scope.
-    title_cue_relationship_or_exception: Natural action title and cue align directly while retaining total-self
-      communion scope.
+    pair_reason: Natural action title and cue align directly while retaining total-self communion
+      scope.
+    title_cue_relationship_or_exception: Natural action title and cue align directly while retaining
+      total-self communion scope.
     teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
     documentary_intent: Brochure describes nonconscious perception of another being's drives/emotional/mental/physical
       state in communication situations.
@@ -334,15 +325,15 @@ editorial:
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 98f9a6302f7761bf34ae6c9ff76a7075f8925bcc27635e481913ab4e65315b35
+  contract_sha256: 6b268551e92f44ac52c23148a1dc0e1e3251da6691498658443eeccc6e470ade
 record_metadata:
   legacy:
     command_ids:
@@ -437,6 +428,26 @@ record_metadata:
       hplus.function.ocf-emo-003.closer: c042c3988afe45d63ee4193465f233f2fb81f687f207719ee4fbf48727895e06
     review_note: Retain the existing understanding/communication and total-self intention; impressions
       are not independently verified knowledge.
+  - id: REL-EMO003-COM001
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 68d7d0579f409792b1f554b32c6f324847b5590bcb459e90b477d5e15c90d08f
+    current_values_sha256: c8fec461757bc1da38255776395467bc94f5044c06c59b209b9dec625d273b64
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-EMO-003", "sha256": "8f58776ae03f2ca89f2b5df60679b5efc69a3adbdc6d11523fecdbd576827033"},
+      {"field": "description", "function_id": "OCF-COM-001", "sha256": "4064576c22f3f99553735cfd8b962c8389288b329ee75f16291026b90d280df0"}]'
+    relationship_id: REL-EMO003-COM001
+    related_function_id: OCF-COM-001
+    relationship_type: complementary
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -650,8 +661,8 @@ content:
       source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: unverified
       completeness: pending-source-review
@@ -699,8 +710,8 @@ content:
       - reconstructed-physical-signal-integration
       family: other-being-perception-claims
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -710,8 +721,8 @@ content:
             source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
             start_line: 64
           status: inferred
-          summary: Known command/purpose metadata is paired in the mockup with a proposed internal cue/breath
-            procedure; the exact historical association wording/method is unknown.
+          summary: Known command/purpose metadata is paired in the mockup with a proposed internal
+            cue/breath procedure; the exact historical association wording/method is unknown.
         closer:
           locators:
           - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
@@ -720,8 +731,8 @@ content:
             source_sha256: 0206e70a66f880c774446643ec0f1e3e39c5005629fc950d2d1332870c7fd5bc
             start_line: 136
           status: inferred
-          summary: Historical closer unknown; annotated mockup borrows remember/use, access close and
-            return shell from related transcripts.
+          summary: Historical closer unknown; annotated mockup borrows remember/use, access close
+            and return shell from related transcripts.
         consolidation:
           locators:
           - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
@@ -782,8 +793,8 @@ content:
             page: 2
             source_sha256: 3b2216f844e33572ad3bea7a16e9f1b586e78ba5a5c2bb45c288d8f4800cd04a
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
@@ -835,12 +846,12 @@ content:
             page: 2
             source_sha256: 3b2216f844e33572ad3bea7a16e9f1b586e78ba5a5c2bb45c288d8f4800cd04a
           status: inferred
-          summary: Complete available reconstructed_mockup text inspected; shared representations are
-            not independent corroboration. Source accuracy/authentication remains unresolved. Annotated
-            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
-            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
-            historical operations remain unknown. Both brochure pages inspected separately; catalogue
-            assertions are documentary evidence, not recovered audio instructions.
+          summary: Complete available reconstructed_mockup text inspected; shared representations
+            are not independent corroboration. Source accuracy/authentication remains unresolved.
+            Annotated VERIFIED labels are reconstruction-author assertions, not independent authentication.
+            Catalogue purpose/command/use limits and proposed mockup operations are separate evidence
+            axes. Missing historical operations remain unknown. Both brochure pages inspected separately;
+            catalogue assertions are documentary evidence, not recovered audio instructions.
         purpose:
           locators:
           - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
@@ -866,9 +877,9 @@ content:
             start_line: 1
           status: unknown
           summary: Investigated the full available source; this operation is not established. Annotated
-            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
-            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
-            historical operations remain unknown.
+            VERIFIED labels are reconstruction-author assertions, not independent authentication.
+            Catalogue purpose/command/use limits and proposed mockup operations are separate evidence
+            axes. Missing historical operations remain unknown.
         safety_claims:
           locators:
           - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
@@ -883,8 +894,9 @@ content:
             page: 2
             source_sha256: 3b2216f844e33572ad3bea7a16e9f1b586e78ba5a5c2bb45c288d8f4800cd04a
           status: inferred
-          summary: nonconscious-other-being-state-perception; accurate-inner-condition-knowledge; reconstructed-physical-signal-integration.
-            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+          summary: nonconscious-other-being-state-perception; accurate-inner-condition-knowledge;
+            reconstructed-physical-signal-integration. Claims are classified as source assertions,
+            not accepted OCF mechanisms/outcomes.
         state:
           locators:
           - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
@@ -894,7 +906,8 @@ content:
             start_line: 1
           status: inferred
           summary: Historical target recording's exact state sequence remains unknown. Mockup imports
-            ten/eleven/ten/sleep/waking grammar from surviving Hearing/Seeing, not recovered target audio.
+            ten/eleven/ten/sleep/waking grammar from surviving Hearing/Seeing, not recovered target
+            audio.
         suspend_cancel_reset:
           locators:
           - content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
@@ -904,9 +917,9 @@ content:
             start_line: 1
           status: unknown
           summary: Investigated the full available source; this operation is not established. Annotated
-            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
-            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
-            historical operations remain unknown.
+            VERIFIED labels are reconstruction-author assertions, not independent authentication.
+            Catalogue purpose/command/use limits and proposed mockup operations are separate evidence
+            axes. Missing historical operations remain unknown.
       source_extent:
         content_group_sha256: e274a874dded62a3bcaa3a430f04aecd9dd0c2f55e1b1a2c0b5aadaa33ddb948
         end_line: 139
@@ -991,8 +1004,9 @@ content:
     - Annotated VERIFIED labels are reconstruction-author assertions, not independent authentication.
       Catalogue purpose/command/use limits and proposed mockup operations are separate evidence axes.
       Missing historical operations remain unknown.
-    - Original OCF design is still required; do not convert mockup expression by synonyms or adopt unsupported
-      mechanisms. Any safer/material reframing needs explicit human review, not historical promotion.
+    - Original OCF design is still required; do not convert mockup expression by synonyms or adopt
+      unsupported mechanisms. Any safer/material reframing needs explicit human review, not historical
+      promotion.
     states:
       preferred: []
       required: []

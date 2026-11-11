@@ -101,24 +101,14 @@ common_uses:
   status: draft
 relationships:
   related_functions: []
-  complementary_functions: []
-  proposals:
+  complementary_functions:
   - function_id: OCF-PRF-004
-    relationship_type: complementary
+    description_key: relationships.rel-prf003-prf004.description
     description:
-      text: Whole-body coordination and attention to lighter, quieter steps offer separate movement intentions;
-        both remain subject to physical limits.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-PRF-003
-      field: description
-      sha256: 56f2f35f08b831873fbaf58aeba4425962dfd125f63abdfbe54cc09eb93a729b
-    - function_id: OCF-PRF-004
-      field: description
-      sha256: a5f87338ce54fdd206623aae7f43f3949599780e756e96400e8911c8e5bc3765
+      text: Whole-body coordination and attention to lighter, quieter steps offer separate movement
+        intentions; both remain subject to physical limits.
+      status: reviewed
+      version: 1.0.0
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -311,30 +301,30 @@ editorial:
     recommended_primary_cue: PLUS-SMOOTH, FAST
     prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
       association plan; approve controls together. No narration replacement text selected.
-    contextual_review: Increasing mind/nervous-system/muscle coordination, balance, precision and timing;
-      optional inhale/hold/cue/candle-like reinforcement. Smooth and Fast are one cue; steady precision,
-      not indiscriminate speed.
-    pair_reason: The paired positive outcomes fit motor coordination. Prefer a clearer title/purpose over
-      changing a strong meaningful cue merely for uniformity.
-    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
-      outcome or contextual mode can reinforce an umbrella title without copying it. The paired positive
-      outcomes fit motor coordination. Prefer a clearer title/purpose over changing a strong meaningful
-      cue merely for uniformity.
+    contextual_review: Increasing mind/nervous-system/muscle coordination, balance, precision and
+      timing; optional inhale/hold/cue/candle-like reinforcement. Smooth and Fast are one cue; steady
+      precision, not indiscriminate speed.
+    pair_reason: The paired positive outcomes fit motor coordination. Prefer a clearer title/purpose
+      over changing a strong meaningful cue merely for uniformity.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. The paired
+      positive outcomes fit motor coordination. Prefer a clearer title/purpose over changing a strong
+      meaningful cue merely for uniformity.
     teaching_disposition: Preserve complete taught cue; metadata/title alignment only
     documentary_intent: Claimed faster/smoother body-mind and nerve-muscle coordination.
     alternatives: []
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 6948c79ed3d82f0109ad159e3529674ceb83f3a445cfb4b8ee541e315c8cd321
+  contract_sha256: 6a70020ba7777aee94fd69f61028477d3ff645de8ac581ed6176bfbd26ae4271
 record_metadata:
   legacy:
     command_ids:
@@ -352,8 +342,8 @@ record_metadata:
     - Synchronizing
   compatibility:
     state: historical-lookup
-    rationale: Approved presentation successor OCF-COMMAND-SIMPLIFICATION-001; superseded wording remains
-      historical lookup.
+    rationale: Approved presentation successor OCF-COMMAND-SIMPLIFICATION-001; superseded wording
+      remains historical lookup.
   historical_lookup:
   - text: Synchronizing
     kind: former-title
@@ -407,9 +397,10 @@ record_metadata:
   - id: OCF-EDITORIAL-TITLE-CUES-004
     kind: approved-title-cue
     source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
-    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
-      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
-      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup.
+      Preserve procedures, controls, semantics, provenance and separately flagged metadata questions.
+      Later user instruction releases the draft-pilot freeze; pilot bindings follow current approved
+      titles and cues.
     decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
       request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
     source_row_sha256: 84bc6c3217800482a75d78f51ed40d67173a378fc0e801f9c34c4586cc25216e
@@ -422,19 +413,19 @@ record_metadata:
       hplus.function.ocf-prf-003.closer: 9af3232852fba1dd3116d16ba69c2e18832736d98770d474a95746430b9d4e68
     current_resolved_text_sha256:
       hplus.function.ocf-prf-003.closer: 9089cdaf69de706439c62972e923cbe1912d2d5b4721a36056d545adfecbc254
-    review_note: Change title from Synchronizing to Coordination and update exercise sign-off. Keep display
-      and spoken cue unchanged. Preserve automatic everyday improvement, optional conscious reinforcement,
-      mind/nervous-system/muscle coordination, balance, precision, timing and inhale/hold/cue/candle-like
-      exhale. Retain Synchronizing as historical lookup. Smooth Fast remains one complete cue, not separate
-      modes. Preserve quick responses when needed and steady precision when careful control is needed,
-      with speed coordinated with intention and accuracy.
+    review_note: Change title from Synchronizing to Coordination and update exercise sign-off. Keep
+      display and spoken cue unchanged. Preserve automatic everyday improvement, optional conscious
+      reinforcement, mind/nervous-system/muscle coordination, balance, precision, timing and inhale/hold/cue/candle-like
+      exhale. Retain Synchronizing as historical lookup. Smooth Fast remains one complete cue, not
+      separate modes. Preserve quick responses when needed and steady precision when careful control
+      is needed, with speed coordinated with intention and accuracy.
     approval_response: '1'
     review_position: 27
   - id: OCF-COMMAND-SIMPLIFICATION-001
     kind: approved-command-simplification
     source_commit: 8ec5b0395c7a5c05fa629d64297d3bf048b097f9
-    scope: Explicitly approved command title/display/spoken substitutions only; commands, lifecycle, procedure
-      and audio settings are unchanged.
+    scope: Explicitly approved command title/display/spoken substitutions only; commands, lifecycle,
+      procedure and audio settings are unchanged.
     decision_source: 'Explicit user confirmation: Confirm implementation'
     source_row_sha256: 64afb85258b9e7f9341d166e0ed971fd31e91840a02c568a51793ae971b8966e
     status: accepted
@@ -443,8 +434,28 @@ record_metadata:
     changed_narration_keys: []
     previous_resolved_text_sha256: {}
     current_resolved_text_sha256: {}
-    review_note: Narration fingerprints and synthesis cache identity follow the approved canonical wording;
-      listening and release approval remain false.
+    review_note: Narration fingerprints and synthesis cache identity follow the approved canonical
+      wording; listening and release approval remain false.
+  - id: REL-PRF003-PRF004
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: fd562e2d3ef2b34b26cdb8b3de01f63a2325eca531dcd8a563a36058329a34aa
+    current_values_sha256: ec309ce256420581837f40c5fa1da319bb5dc2e4eac5b52eda31d96c1eade937
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-PRF-003", "sha256": "56f2f35f08b831873fbaf58aeba4425962dfd125f63abdfbe54cc09eb93a729b"},
+      {"field": "description", "function_id": "OCF-PRF-004", "sha256": "a5f87338ce54fdd206623aae7f43f3949599780e756e96400e8911c8e5bc3765"}]'
+    relationship_id: REL-PRF003-PRF004
+    related_function_id: OCF-PRF-004
+    relationship_type: complementary
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -636,8 +647,8 @@ content:
       source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -686,8 +697,8 @@ content:
       - automatic-whole-system-learning
       family: motor-coordination-intensification
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -737,8 +748,8 @@ content:
             source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
             start_line: 49
           status: supported
-          summary: Optional cue intensifies asserted ongoing motor coordination; repeated breathing material
-            does not establish a body-movement practice trial.
+          summary: Optional cue intensifies asserted ongoing motor coordination; repeated breathing
+            material does not establish a body-movement practice trial.
         handoff:
           locators:
           - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
@@ -756,8 +767,8 @@ content:
             source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
             start_line: 49
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
@@ -776,7 +787,8 @@ content:
             source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
             start_line: 38
           status: supported
-          summary: Orient to the function and establish receptive learning context before the target instruction.
+          summary: Orient to the function and establish receptive learning context before the target
+            instruction.
         preparation:
           locators:
           - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
@@ -795,10 +807,10 @@ content:
             source_sha256: 9c80709afee191a06538894c6b7b3315e11a6142c2e95e400ccdb48cace1b248
             start_line: 1
           status: supported
-          summary: Complete available source_transcript text inspected; shared representations are not
-            independent corroboration. Source accuracy/authentication remains unresolved. Repeated exhalation
-            material54-66 may be instruction or ASR duplication; no observed performance or verified neurological
-            mechanism.
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Repeated
+            exhalation material54-66 may be instruction or ASR duplication; no observed performance
+            or verified neurological mechanism.
         purpose:
           locators:
           - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
@@ -817,8 +829,8 @@ content:
             start_line: 54
           status: unknown
           summary: Investigated the full available source; this operation is not established. Repeated
-            exhalation material54-66 may be instruction or ASR duplication; no observed performance or
-            verified neurological mechanism.
+            exhalation material54-66 may be instruction or ASR duplication; no observed performance
+            or verified neurological mechanism.
         safety_claims:
           locators:
           - content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
@@ -848,8 +860,8 @@ content:
             start_line: 1
           status: unknown
           summary: Investigated the full available source; this operation is not established. Repeated
-            exhalation material54-66 may be instruction or ASR duplication; no observed performance or
-            verified neurological mechanism.
+            exhalation material54-66 may be instruction or ASR duplication; no observed performance
+            or verified neurological mechanism.
       source_extent:
         content_group_sha256: 5a2ed8d9d673dbcc1ac6967d4c026e51f31c1d9d9d7e563be4ad4b4cc01bb236
         end_line: 155
@@ -933,9 +945,9 @@ content:
     questions:
     - Repeated exhalation material54-66 may be instruction or ASR duplication; no observed performance
       or verified neurological mechanism.
-    - Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and automatic
-      whole-system learning need review. Reframing a physical/metaphysical goal is a material choice,
-      not assumed equivalence.
+    - Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and
+      automatic whole-system learning need review. Reframing a physical/metaphysical goal is a material
+      choice, not assumed equivalence.
     states:
       preferred: []
       required: []

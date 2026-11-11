@@ -16,7 +16,7 @@ import stat
 import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import quote, urlsplit
 from uuid import uuid4
 
 ROLES = {"audio", "master", "transcript", "subtitles"}
@@ -212,11 +212,22 @@ class Library:
                             "duration_seconds": data["duration_seconds"],
                             "media": media,
                             "notes": notes,
+                            "sort_order": 0
+                            if data.get("session_kind") == "preparation-learning"
+                            else 1,
                         }
                     )
                     files.update(pending)
                 except (OSError, ValueError, KeyError, TypeError):
                     continue
+        catalog.sort(
+            key=lambda row: (
+                row["sort_order"],
+                row["title"].casefold(),
+                row["edition"].casefold(),
+                row["id"],
+            )
+        )
         return catalog, files
 
     def save_notes(self, identity, notes):
@@ -300,6 +311,10 @@ def handler(library, authorization):
                     )
                     self.send_header("Content-Length", str(end - start + 1))
                     self.send_header("Accept-Ranges", "bytes")
+                    self.send_header(
+                        "Content-Disposition",
+                        "inline; filename*=UTF-8''" + quote(file.name, safe=""),
+                    )
                     self.send_header("Cache-Control", "private, no-store")
                     self.send_header("X-Content-Type-Options", "nosniff")
                     if status == 206:

@@ -15,7 +15,7 @@ from pathlib import Path
 from .artifact_names import ArtifactNamer
 from .audio_defaults import overlay
 from .indexes import load_function_by_id
-from .locale import LocaleCatalog, normalize_tag
+from .locale import LocaleCatalog, locale_language, normalize_tag
 from .paths import REPO_ROOT, work_path
 from .session_plans import digest
 from .utils import OCFError, read_json_object, sha256_of_file, write_text_atomic
@@ -390,14 +390,15 @@ def select_theme(record, explicit: str | None = None, implementation: dict | Non
         return explicit, "explicit"
     if (implementation or {}).get("artwork_theme"):
         return implementation["artwork_theme"], "audio-implementation"
-    if record.data.get("audio", {}).get("artwork_theme"):
+    if record is not None and record.data.get("audio", {}).get("artwork_theme"):
         return record.data["audio"]["artwork_theme"], "function"
     return None, "artwork-surface-default"
 
 
 def generate_cover(
-    function_id: str,
+    function_id: str | None,
     *,
+    session_kind: str = "function",
     locale: str = "en-US",
     theme: str | None = None,
     resolution: int = 1400,
@@ -424,18 +425,39 @@ def generate_cover(
         len(status_label) > 32 or any(ord(c) < 32 for c in status_label)
     ):
         raise OCFError("cover status label must be at most 32 printable characters")
-    record = load_function_by_id(function_id)
-    if record is None:
-        raise OCFError("unknown function")
     locale = normalize_tag(locale)
     catalog = LocaleCatalog()
-    from .release import _function_title
+    if session_kind == "preparation-learning":
+        if function_id is not None:
+            raise OCFError("standalone preparation must not have a function identifier")
+        if locale_language(locale) != "en" and title_override is None:
+            raise OCFError(
+                "standalone artwork requires an explicit localized title outside English"
+            )
+        record = None
+        localized_title = "Preparation Learning"
+        title_resolution = {
+            "requested_locale": locale,
+            "resolved_locale": "en-US",
+            "resource_key": None,
+            "fallback": locale != "en-US",
+        }
+        identity_label = title_override or localized_title
+        show_cue = show_description = False
+    elif session_kind == "function":
+        record = load_function_by_id(function_id) if function_id else None
+        if record is None:
+            raise OCFError("unknown function")
+        from .release import _function_title
 
-    localized_title, title_resolution = _function_title(function_id, locale, catalog)
+        localized_title, title_resolution = _function_title(function_id, locale, catalog)
+        identity_label = function_id
+    else:
+        raise OCFError("unsupported artwork session kind")
     title = unicodedata.normalize(
         "NFC", title_override if title_override is not None else localized_title
     )
-    if not title.strip() or title.strip().casefold() == function_id.casefold():
+    if not title.strip() or (function_id and title.strip().casefold() == function_id.casefold()):
         raise OCFError("artwork requires a meaningful function title, not only its identifier")
     if any(word in title.casefold() for word in ("hemi-sync", "human plus", "monroe")):
         raise OCFError("OCF artwork cannot include third-party brand names")
@@ -450,7 +472,7 @@ def generate_cover(
     description_color = data["palette"]["foreground"]
     if data.get("brand_revision") == "0.3.0" and (show_cue or show_description):
         from .artwork_content import function_artwork_content
-        from .locale import LocalizationError, locale_language
+        from .locale import LocalizationError
 
         if strict_locale and locale_language(
             title_resolution["resolved_locale"]
@@ -494,7 +516,7 @@ def generate_cover(
     suffix = (f" - {version_label}" if version_label else "") + (
         f" - {status_label}" if status_label else ""
     )
-    footer = function_id + suffix
+    footer = identity_label + suffix
     texts = [brand["name"], title, footer, cue_text or "", description_text or ""]
     missing = sorted(
         {ord(c) for text in texts for c in text if not c.isspace() and ord(c) not in glyphs}
@@ -538,6 +560,8 @@ def generate_cover(
         "cue_color": data["palette"]["accent"],
         "description_color": description_color,
     }
+    if session_kind != "function":
+        settings["session_kind"] = session_kind
     if data.get("brand_revision") == "0.3.0":
         from .brand_import import asset, verify
 
@@ -547,7 +571,7 @@ def generate_cover(
         )
         settings["supplied_emblem"] = asset("icon", data, "png").name
         settings["composition"] = "supplied-emblem-with-localized-ocf-layout"
-        footer = function_id + " / " + locale + suffix
+        footer = identity_label + " / " + locale + suffix
         # Validate the final footer, including the locale, through the same font contract.
         if any(ord(c) not in glyphs for c in footer if not c.isspace()):
             raise OCFError("font lacks required Unicode glyphs for cover metadata")
@@ -591,6 +615,7 @@ def generate_cover(
         "png" if format == "png" else "jpg",
         variant="cover",
         version=version,
+        session_kind=session_kind,
     )
     path = root / filename
     report_path = root / "artwork.json"

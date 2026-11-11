@@ -132,25 +132,15 @@ common_uses:
 - text: Reflecting on dream recall after waking without assuming dreams report external facts.
   status: draft
 relationships:
-  related_functions: []
-  complementary_functions: []
-  proposals:
+  related_functions:
   - function_id: OCF-SLP-004
-    relationship_type: related
+    description_key: relationships.rel-slp003-slp004.description
     description:
       text: Compare choosing a dream theme with inviting ideas about a question through sleep; dreams
         and morning impressions are not verified facts.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-SLP-003
-      field: description
-      sha256: 20c0c076eef89d4f32a11e4a0002856094f2af32be035d08b83f3aef8d08c1a2
-    - function_id: OCF-SLP-004
-      field: description
-      sha256: f30ef62a98a7374314d9354bc525b9755da92e31b094edb88da43bfd70844019
+      status: reviewed
+      version: 1.0.0
+  complementary_functions: []
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -325,30 +315,30 @@ editorial:
     recommended_primary_cue: PLUS-DREAM
     prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
       association plan; approve controls together. No narration replacement text selected.
-    contextual_review: Select/represent dream theme, inhale/hold/complete cue/exhale, then slow deep breathing.
-      Preserve selected dream experience AND clear joyful waking recall; do not add lucid-control or cancellation
-      modes.
-    pair_reason: DREAM is concise and useful for a selected dream pattern. Dream Theme may describe the
-      actual range better than only pleasant dreams, without changing activation.
-    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
-      outcome or contextual mode can reinforce an umbrella title without copying it. DREAM is concise
-      and useful for a selected dream pattern. Dream Theme may describe the actual range better than only
-      pleasant dreams, without changing activation.
+    contextual_review: Select/represent dream theme, inhale/hold/complete cue/exhale, then slow deep
+      breathing. Preserve selected dream experience AND clear joyful waking recall; do not add lucid-control
+      or cancellation modes.
+    pair_reason: DREAM is concise and useful for a selected dream pattern. Dream Theme may describe
+      the actual range better than only pleasant dreams, without changing activation.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. DREAM is
+      concise and useful for a selected dream pattern. Dream Theme may describe the actual range better
+      than only pleasant dreams, without changing activation.
     teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
     documentary_intent: Choose a desired dream pattern and remember a corresponding dream on waking.
     alternatives: []
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 73be17182cb8154330c58de136157719146ca00655c166bd8ca5696e62729ded
+  contract_sha256: 5b5644999cdd01c90c0a153fbfea1250ef7f8cf64bbc4ab4669e50ea66c92791
 record_metadata:
   legacy:
     command_ids:
@@ -367,8 +357,8 @@ record_metadata:
   compatibility:
     legacy_commands:
     - PLUS-THEME, DREAM, SLEEP
-    rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording is
-      historical lookup. Existing controls remain unchanged.
+    rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording
+      is historical lookup. Existing controls remain unchanged.
     state: historical-lookup
   historical_lookup:
   - text: Sweet Dreams
@@ -429,9 +419,10 @@ record_metadata:
   - id: OCF-EDITORIAL-TITLE-CUES-004
     kind: approved-title-cue
     source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
-    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
-      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
-      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup.
+      Preserve procedures, controls, semantics, provenance and separately flagged metadata questions.
+      Later user instruction releases the draft-pilot freeze; pilot bindings follow current approved
+      titles and cues.
     decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
       request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
     source_row_sha256: 0fcb351333089c0147766c1da4acede473a91919383e1b85d05d9cca3dce678d
@@ -447,14 +438,34 @@ record_metadata:
     current_resolved_text_sha256:
       hplus.function.ocf-slp-003.function-body: 513d3bad0aebf1bbcb400b279198a3e266ddbdbc7bdb6140bee0fed9400b54bb
       hplus.function.ocf-slp-003.closer: 1e8d827d3a242bcb02260c64e7fb41bf6540aacbb36377cab6e24f946a628ebb
-    review_note: Change title from Sweet Dreams to Dream Theme and update exercise sign-off. Replace two
-      body mentions and one closer mention from Plus Theme Dream Sleep to Plus Dream. Preserve theme selection,
-      inhale/hold/cue/exhale followed by slow deep breathing, dream suggestions and clear joyful waking
-      recall. Retain Sweet Dreams and superseded cue wording as historical lookup; introduce no lucid-control,
-      cancellation or release mode. Preserve a theme selected for each use and lasting availability of
-      the learned ability.
+    review_note: Change title from Sweet Dreams to Dream Theme and update exercise sign-off. Replace
+      two body mentions and one closer mention from Plus Theme Dream Sleep to Plus Dream. Preserve
+      theme selection, inhale/hold/cue/exhale followed by slow deep breathing, dream suggestions and
+      clear joyful waking recall. Retain Sweet Dreams and superseded cue wording as historical lookup;
+      introduce no lucid-control, cancellation or release mode. Preserve a theme selected for each
+      use and lasting availability of the learned ability.
     approval_response: '1'
     review_position: 11
+  - id: REL-SLP003-SLP004
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 2cba1b5c940495882833741e04d59ed673910b14e0db6423e0c62a0b980ae256
+    current_values_sha256: e30795174e701081b2262e5a32d92b784ea22827d68490a5b21c494481b6aa23
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-SLP-003", "sha256": "20c0c076eef89d4f32a11e4a0002856094f2af32be035d08b83f3aef8d08c1a2"},
+      {"field": "description", "function_id": "OCF-SLP-004", "sha256": "f30ef62a98a7374314d9354bc525b9755da92e31b094edb88da43bfd70844019"}]'
+    relationship_id: REL-SLP003-SLP004
+    related_function_id: OCF-SLP-004
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -653,8 +664,8 @@ content:
       source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -703,8 +714,8 @@ content:
       - automatic-whole-system-learning
       family: selected-dream-experience
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -773,8 +784,8 @@ content:
             source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
             start_line: 37
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
@@ -793,7 +804,8 @@ content:
             source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
             start_line: 30
           status: supported
-          summary: Orient to the function and establish receptive learning context before the target instruction.
+          summary: Orient to the function and establish receptive learning context before the target
+            instruction.
         preparation:
           locators:
           - content_group_sha256: 83ab8863aaa45bc118b136c26740eec27ea931cc7f3cebe1f3281128601bdc74
@@ -812,8 +824,8 @@ content:
             source_sha256: 5bae75dc8c9da67c1e51a2d6aeac79bdc4b665bcbf19bcd04af4054ab5dde3d3
             start_line: 1
           status: supported
-          summary: Complete available source_transcript text inspected; shared representations are not
-            independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
             text is unauthenticated; corrupted counts/ambient material cannot establish original repetition,
             timing or mechanism.
         purpose:
@@ -948,11 +960,11 @@ content:
     metadata_ref: canonical-function-record
     preparation: []
     questions:
-    - Source-designated text is unauthenticated; corrupted counts/ambient material cannot establish original
-      repetition, timing or mechanism.
-    - Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and automatic
-      whole-system learning need review. Reframing a physical/metaphysical goal is a material choice,
-      not assumed equivalence.
+    - Source-designated text is unauthenticated; corrupted counts/ambient material cannot establish
+      original repetition, timing or mechanism.
+    - Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and
+      automatic whole-system learning need review. Reframing a physical/metaphysical goal is a material
+      choice, not assumed equivalence.
     states:
       preferred: []
       required: []

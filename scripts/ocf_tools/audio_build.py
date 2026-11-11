@@ -208,11 +208,13 @@ def _encode(
     *,
     copy_audio: bool = False,
     mp3_bitrate: str | None = None,
+    copy_metadata: bool = True,
 ) -> str:
     """Encode a WAV to another format; returns encoder name.
 
     ``tags`` (key -> value) are embedded as FLAC Vorbis comments or ID3v2
-    tags on MP3. WAV is plain PCM and is never tagged.
+    tags on MP3. WAV is plain PCM and is never tagged. Set ``copy_metadata=False``
+    to discard inherited metadata and chapters before applying explicit tags.
     """
     tags = tags or {}
     if fmt == "wav":
@@ -234,7 +236,10 @@ def _encode(
                 "-metadata:s:v:0",
                 "comment=Cover (front)",
             ]
-        cmd += ["-map_metadata", "0", "-codec:a", "copy" if copy_audio else codec]
+        cmd += ["-map_metadata", "0" if copy_metadata else "-1"]
+        if not copy_metadata:
+            cmd += ["-map_metadata:s:a:0", "-1", "-map_chapters", "-1"]
+        cmd += ["-codec:a", "copy" if copy_audio else codec]
         if fmt == "mp3" and mp3_bitrate and not copy_audio:
             cmd += ["-b:a", mp3_bitrate]
         for key, value in tags.items():
@@ -845,6 +850,11 @@ def build(
         raise OCFError("audio manifest and transcript disagree about command-owning function_id")
     if manifest.get("function_id"):
         doc["function_id"] = manifest["function_id"]
+    session_kind = manifest.get("session_kind", "function")
+    if session_kind not in {"function", "preparation-learning"}:
+        raise OCFError("unsupported audio session kind")
+    if session_kind == "preparation-learning" and manifest.get("function_id"):
+        raise OCFError("standalone preparation must not have a function identifier")
     selected_voice = voice or manifest.get("voice_profile") or doc.get("voice_profile")
     selected_voice_id = (
         selected_voice.get("profile_id") or selected_voice.get("id")
@@ -869,11 +879,13 @@ def build(
     render_name = f"OCF-RENDER-{audio_id.split('-')[-1]}"
     render_manifest = out_root / f"{render_name}.yaml"
     background_stem_path = out_root / f"{audio_id}-background.wav"
-    default_cover = (
-        artwork is None
-        and registered_audio_id
-        and manifest.get("function_id")
-        and load_function_by_id(manifest["function_id"]) is not None
+    default_cover = artwork is None and (
+        session_kind == "preparation-learning"
+        or (
+            registered_audio_id
+            and manifest.get("function_id")
+            and load_function_by_id(manifest["function_id"]) is not None
+        )
     )
     cover_output = out_root / f"{audio_id}-cover.png"
     planned_outputs = (
@@ -886,6 +898,18 @@ def build(
         occupied = next((path for path in planned_outputs if path.exists()), None)
         if occupied is not None:
             raise OCFError(f"refusing to overwrite existing output: {occupied}; use --force")
+    cover_provenance = None
+    if default_cover:
+        from .audition_exports import select_cover
+
+        edition_version = str(manifest.get("version") or "0.1.0")
+        selected, cover_provenance, _ = select_cover(
+            manifest.get("function_id"),
+            locale or manifest.get("language") or "en-US",
+            edition_version,
+            artwork_theme=manifest.get("artwork_theme"),
+            session_kind=session_kind,
+        )
     stage_dir = workspace_temp_directory(prefix=f"ocf-build-{audio_id}-")
     (stage_dir / "build-context.json").write_text(
         json.dumps({"audio_id": audio_id, "query": query, "status": "rendering"}, indent=2) + "\n",
@@ -1005,17 +1029,9 @@ def build(
     tags = _resolve_tags(
         manifest, doc, narration_meta, tag_overrides, voice_profile_id=selected_voice_id
     )
-    cover_provenance = None
     if default_cover:
-        from .audition_exports import copy_cover, select_cover
+        from .audition_exports import copy_cover
 
-        edition_version = str(manifest.get("version") or "0.1.0")
-        selected, cover_provenance, _ = select_cover(
-            manifest["function_id"],
-            locale or manifest.get("language") or "en-US",
-            edition_version,
-            artwork_theme=manifest.get("artwork_theme"),
-        )
         # Build's ordinary overwrite policy is unchanged; cover files obey it too.
         if cover_output.exists():
             if not overwrite:

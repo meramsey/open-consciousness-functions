@@ -97,25 +97,15 @@ common_uses:
 - text: Reflecting on a past experience while recognizing that recollection can be incomplete or mistaken.
   status: draft
 relationships:
-  related_functions: []
-  complementary_functions: []
-  proposals:
+  related_functions:
   - function_id: OCF-COG-001
-    relationship_type: related
+    description_key: relationships.rel-cog006-cog001.description
     description:
-      text: Compare bringing a specific memory to mind with broader reflection on personal knowledge and
-        experience; neither guarantees accurate information.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-COG-006
-      field: description
-      sha256: f1121b371e1d9c5a81ad6fd3197fb75a81f5d4ae79f40daf939066db0d4e0c01
-    - function_id: OCF-COG-001
-      field: description
-      sha256: e6cc8c734bf0a96b4e47520263a133949dcaa134561fb74a5098843a8ffecbe3
+      text: Compare bringing a specific memory to mind with broader reflection on personal knowledge
+        and experience; neither guarantees accurate information.
+      status: reviewed
+      version: 1.0.0
+  complementary_functions: []
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -291,31 +281,32 @@ editorial:
     recommended_primary_cue: PLUS-RECALL
     prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
       association plan; approve controls together. No narration replacement text selected.
-    contextual_review: Select memory/information, inhale/hold/cue/candle-like exhale for detailed retrieval.
-      Shared Imprint retrieval is related but uses its own context/procedure; no global dispatcher precedence
-      is implied.
-    pair_reason: RECALL is a strong, specific retrieval cue and is intentionally shared with Imprint retrieval.
-      Clarify experience recall versus Information Access through purpose documentation, not arbitrary
-      vocabulary churn.
-    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
-      outcome or contextual mode can reinforce an umbrella title without copying it. RECALL is a strong,
-      specific retrieval cue and is intentionally shared with Imprint retrieval. Clarify experience recall
-      versus Information Access through purpose documentation, not arbitrary vocabulary churn.
+    contextual_review: Select memory/information, inhale/hold/cue/candle-like exhale for detailed
+      retrieval. Shared Imprint retrieval is related but uses its own context/procedure; no global
+      dispatcher precedence is implied.
+    pair_reason: RECALL is a strong, specific retrieval cue and is intentionally shared with Imprint
+      retrieval. Clarify experience recall versus Information Access through purpose documentation,
+      not arbitrary vocabulary churn.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. RECALL
+      is a strong, specific retrieval cue and is intentionally shared with Imprint retrieval. Clarify
+      experience recall versus Information Access through purpose documentation, not arbitrary vocabulary
+      churn.
     teaching_disposition: Preserve complete taught cue; metadata/title alignment only
     documentary_intent: Recall a chosen past experience/information in detail.
     alternatives: []
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 4d3d2a277035b8d08893b9d51073500a2eb49cbdf2f893037f474285e55de02a
+  contract_sha256: 8bab3d73bd9f0d49925df6a34e50bac12abf49966806c90b7f54c6eab17a6a7d
 record_metadata:
   legacy:
     command_ids:
@@ -368,6 +359,27 @@ record_metadata:
       purpose_key: functions.ocf-cog-006.purpose
       explanation_key: commands.ocf-cmd-cog-006-primary.explanation
   predecessor_resource_sha256: 4af80f09eacd62aa71cc3891f726ce2cac01c56100d2e6b83e7768ae7b6c30f6
+  editorial_decisions:
+  - id: REL-COG006-COG001
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: fdf9b5b42698001d8236712e46c536e279f8bafc3ce09c503b76f0e72c74760f
+    current_values_sha256: f0d2c0f7a79fe7e5b09e128dbda4acf6d891e2a3a8b89faa18767034f36cff04
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-COG-006", "sha256": "f1121b371e1d9c5a81ad6fd3197fb75a81f5d4ae79f40daf939066db0d4e0c01"},
+      {"field": "description", "function_id": "OCF-COG-001", "sha256": "e6cc8c734bf0a96b4e47520263a133949dcaa134561fb74a5098843a8ffecbe3"}]'
+    relationship_id: REL-COG006-COG001
+    related_function_id: OCF-COG-001
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -550,8 +562,8 @@ content:
       source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -600,8 +612,8 @@ content:
       - ambiguous-religious-insertion
       family: cognitive-retrieval
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -611,7 +623,8 @@ content:
             source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
             start_line: 32
           status: supported
-          summary: Recall cue plus specified target is associated with immediate conscious detailed remembering.
+          summary: Recall cue plus specified target is associated with immediate conscious detailed
+            remembering.
         closer:
           locators:
           - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
@@ -639,8 +652,9 @@ content:
             source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
             start_line: 32
           status: inferred
-          summary: Preserve voluntary retrieval strategy without asserting remembered material is necessarily
-            accurate. Religious sentence in derivative is not a verified legacy instruction or OCF requirement.
+          summary: Preserve voluntary retrieval strategy without asserting remembered material is
+            necessarily accurate. Religious sentence in derivative is not a verified legacy instruction
+            or OCF requirement.
         future_use:
           locators:
           - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
@@ -658,9 +672,9 @@ content:
             source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
             start_line: 88
           status: unknown
-          summary: Investigated the full available source; this operation is not established. Line26 religious
-            insertion and numerous count/gap artifacts require audio authentication; final return missing.
-            Do not silently correct the reference.
+          summary: Investigated the full available source; this operation is not established. Line26
+            religious insertion and numerous count/gap artifacts require audio authentication; final
+            return missing. Do not silently correct the reference.
         identity:
           locators:
           - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
@@ -669,8 +683,8 @@ content:
             source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
             start_line: 32
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
@@ -698,7 +712,8 @@ content:
             source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
             start_line: 2
           status: supported
-          summary: Supported uninterrupted relaxation, temporary setting-aside and counted ten-state entry.
+          summary: Supported uninterrupted relaxation, temporary setting-aside and counted ten-state
+            entry.
         provenance:
           locators:
           - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
@@ -708,9 +723,9 @@ content:
             start_line: 1
           status: supported
           summary: Complete available partial_source_transcript text inspected; shared representations
-            are not independent corroboration. Source accuracy/authentication remains unresolved. Line26
-            religious insertion and numerous count/gap artifacts require audio authentication; final return
-            missing. Do not silently correct the reference.
+            are not independent corroboration. Source accuracy/authentication remains unresolved.
+            Line26 religious insertion and numerous count/gap artifacts require audio authentication;
+            final return missing. Do not silently correct the reference.
         purpose:
           locators:
           - content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
@@ -757,9 +772,9 @@ content:
             source_sha256: db0966369de99e181a3d2fc0a633454332785f322cc16b21e3836e5a8a92e3e3
             start_line: 1
           status: unknown
-          summary: Investigated the full available source; this operation is not established. Line26 religious
-            insertion and numerous count/gap artifacts require audio authentication; final return missing.
-            Do not silently correct the reference.
+          summary: Investigated the full available source; this operation is not established. Line26
+            religious insertion and numerous count/gap artifacts require audio authentication; final
+            return missing. Do not silently correct the reference.
       source_extent:
         content_group_sha256: 442a613cb25a444f7825f031c200f588bd119b7945e59698112ff614067703b9
         end_line: 189

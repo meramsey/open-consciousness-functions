@@ -11,7 +11,7 @@ from datetime import UTC, datetime
 from pathlib import Path, PureWindowsPath
 from typing import Any
 
-from .artifact_names import ArtifactNamer, safe_component
+from .artifact_names import listener_export_names, safe_component
 from .indexes import find_audio_manifest, load_audio_manifests, load_function_by_id
 from .listener_text import plain_transcript as transcript_from_render
 from .locale import LocaleCatalog, normalize_tag
@@ -363,15 +363,45 @@ def package_release(
             "resource_key": None,
             "source": "operator-title-override",
         }
-    namer = ArtifactNamer()
-    names = namer.filenames(
+    narrator_label = overrides.get("artist") or audio_manifest.get("narrator")
+    selected_voice = voice or audio_manifest.get("voice_profile")
+    if not selected_voice and audio_manifest.get("transcript_path"):
+        from .transcript import load_timed_doc
+
+        transcript = REPO_ROOT / audio_manifest["transcript_path"]
+        if transcript.is_file():
+            selected_voice = load_timed_doc(transcript).get("voice_profile")
+    if selected_voice:
+        from .indexes import load_voice_profiles
+
+        key = (
+            selected_voice.get("profile_id")
+            or selected_voice.get("id")
+            or selected_voice.get("name")
+            if isinstance(selected_voice, dict)
+            else selected_voice
+        )
+        profile = next(
+            (
+                row
+                for row in load_voice_profiles()
+                if str(key).casefold()
+                in {str(row.get(field, "")).casefold() for field in ("id", "name", "slug")}
+            ),
+            None,
+        )
+        narrator_label = (
+            profile.get("name") if profile else str(key) if voice else narrator_label or str(key)
+        )
+    delivery_names = listener_export_names(
         function_id,
         title,
         requested_locale,
         [*formats, "txt", "lrc", "srt", "vtt", "timing.json"],
-        variant=voice,
-        version=version,
+        voice_label=narrator_label or "Unspecified narrator",
+        version=release_version,
     )
+    names = delivery_names["files"]
     artifact_names = {fmt: names[fmt] for fmt in formats}
     transcript_name = names["txt"]
     listener_names = [names[fmt] for fmt in ("lrc", "srt", "vtt", "timing.json")]
@@ -383,8 +413,7 @@ def package_release(
     directory_name = f"{function_id}-{safe_component(title, max_length=64)}"
     if voice:
         directory_name += f"-{safe_component(voice, max_length=32)}"
-    if version:
-        directory_name += f"-v{safe_component(version, max_length=24)}"
+    directory_name += f"-v{safe_component(release_version, max_length=24)}"
     final_dir = output_root / requested_locale / directory_name
     if any(
         len(str(final_dir / name)) > 240

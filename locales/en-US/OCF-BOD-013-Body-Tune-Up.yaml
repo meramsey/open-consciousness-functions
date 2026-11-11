@@ -116,25 +116,15 @@ common_uses:
 - text: Visualizing whole-body maintenance and renewal without claiming healing or replacing treatment.
   status: draft
 relationships:
-  related_functions: []
-  complementary_functions: []
-  proposals:
+  related_functions:
   - function_id: OCF-BOD-014
-    relationship_type: related
+    description_key: relationships.rel-bod013-bod014.description
     description:
       text: Compare general maintenance imagery with more specific regeneration imagery, without claiming
         healing or tissue regrowth.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-BOD-013
-      field: description
-      sha256: a44fe521028bb9f0c208a287a719b331457a6e3ba2a33cdf36f688c8a08e8fcd
-    - function_id: OCF-BOD-014
-      field: description
-      sha256: 2cea77591e70794d361ca5fb500eebea9a729e02833f8b6a9b6d104a85d67468
+      status: reviewed
+      version: 1.0.0
+  complementary_functions: []
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -367,31 +357,31 @@ editorial:
     recommended_primary_cue: PLUS-BALANCE, HEAL
     prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
       association plan; approve controls together. No narration replacement text selected.
-    contextual_review: Whole-body automatic maintenance and selected-area inward perception/repair. Close
-      eyes, select area, inhale/hold/complete cue/exhale/open eyes. Balance and Heal are one cue, not
-      separate modes; inner perception is not verified diagnosis.
-    pair_reason: The two positive operations fit the intended targeted body-balancing practice. HEAL need
-      not be reflexively weakened in proposed intention language; intended outcome and established efficacy
-      remain separate.
-    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
-      outcome or contextual mode can reinforce an umbrella title without copying it. The two positive
-      operations fit the intended targeted body-balancing practice. HEAL need not be reflexively weakened
-      in proposed intention language; intended outcome and established efficacy remain separate.
+    contextual_review: Whole-body automatic maintenance and selected-area inward perception/repair.
+      Close eyes, select area, inhale/hold/complete cue/exhale/open eyes. Balance and Heal are one
+      cue, not separate modes; inner perception is not verified diagnosis.
+    pair_reason: The two positive operations fit the intended targeted body-balancing practice. HEAL
+      need not be reflexively weakened in proposed intention language; intended outcome and established
+      efficacy remain separate.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. The two
+      positive operations fit the intended targeted body-balancing practice. HEAL need not be reflexively
+      weakened in proposed intention language; intended outcome and established efficacy remain separate.
     teaching_disposition: Preserve complete taught cue; metadata/title alignment only
     documentary_intent: Claimed intuitive perception and balance/regeneration of a selected body part.
     alternatives: []
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 18338f405b1531a9c4da9bc87c5c1122ab4abb01fa2d70b6ef2379d220eec50a
+  contract_sha256: 18ba853b6469efc1d900604f183b6d448a2e8d66b56331ce6960574f2052549a
 record_metadata:
   legacy:
     command_ids:
@@ -409,8 +399,8 @@ record_metadata:
     - Tune-Up
   compatibility:
     state: historical-lookup
-    rationale: Approved presentation successor OCF-COMMAND-SIMPLIFICATION-001; superseded wording remains
-      historical lookup.
+    rationale: Approved presentation successor OCF-COMMAND-SIMPLIFICATION-001; superseded wording
+      remains historical lookup.
   historical_lookup:
   - text: Tune-Up
     kind: former-title
@@ -464,9 +454,10 @@ record_metadata:
   - id: OCF-EDITORIAL-TITLE-CUES-004
     kind: approved-title-cue
     source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
-    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
-      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
-      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup.
+      Preserve procedures, controls, semantics, provenance and separately flagged metadata questions.
+      Later user instruction releases the draft-pilot freeze; pilot bindings follow current approved
+      titles and cues.
     decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
       request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
     source_row_sha256: 5e036473f24a7aea4d7f2904e9c8e5bd08a99be87938e95c25534573ed3b4d4a
@@ -500,8 +491,8 @@ record_metadata:
   - id: OCF-COMMAND-SIMPLIFICATION-001
     kind: approved-command-simplification
     source_commit: 8ec5b0395c7a5c05fa629d64297d3bf048b097f9
-    scope: Explicitly approved command title/display/spoken substitutions only; commands, lifecycle, procedure
-      and audio settings are unchanged.
+    scope: Explicitly approved command title/display/spoken substitutions only; commands, lifecycle,
+      procedure and audio settings are unchanged.
     decision_source: 'Explicit user confirmation: Confirm implementation'
     source_row_sha256: 771814f87529e78dd2cc3e982bd9bce2b5d0c58679916891e0baa23e54853b02
     status: accepted
@@ -510,8 +501,28 @@ record_metadata:
     changed_narration_keys: []
     previous_resolved_text_sha256: {}
     current_resolved_text_sha256: {}
-    review_note: Narration fingerprints and synthesis cache identity follow the approved canonical wording;
-      listening and release approval remain false.
+    review_note: Narration fingerprints and synthesis cache identity follow the approved canonical
+      wording; listening and release approval remain false.
+  - id: REL-BOD013-BOD014
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 83a8911930818c2ae253afe2f639327fc99bcc47a861af601cfed3467f79063f
+    current_values_sha256: 573f5d30faecc34ef76f60f325024840010c4a318f2a38ea9c3b207693d47134
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-BOD-013", "sha256": "a44fe521028bb9f0c208a287a719b331457a6e3ba2a33cdf36f688c8a08e8fcd"},
+      {"field": "description", "function_id": "OCF-BOD-014", "sha256": "2cea77591e70794d361ca5fb500eebea9a729e02833f8b6a9b6d104a85d67468"}]'
+    relationship_id: REL-BOD013-BOD014
+    related_function_id: OCF-BOD-014
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -703,8 +714,8 @@ content:
       source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -753,8 +764,8 @@ content:
       - automatic-self-regulation
       family: targeted-body-perception-and-balance
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -803,8 +814,8 @@ content:
             source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
             start_line: 31
           status: supported
-          summary: Use the cue/breathing procedure as described for the selected response; asserted effectiveness
-            is a claim, not an observed result.
+          summary: Use the cue/breathing procedure as described for the selected response; asserted
+            effectiveness is a claim, not an observed result.
         handoff:
           locators:
           - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
@@ -822,8 +833,8 @@ content:
             source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
             start_line: 31
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
@@ -832,8 +843,8 @@ content:
             source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
             start_line: 31
           status: supported
-          summary: choose-body-region; close-eyes-inhale-and-hold; direct-inner-attention-to-region; issue-balance-heal-cue;
-            exhale-and-open-eyes
+          summary: choose-body-region; close-eyes-inhale-and-hold; direct-inner-attention-to-region;
+            issue-balance-heal-cue; exhale-and-open-eyes
         opener:
           locators:
           - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
@@ -842,8 +853,8 @@ content:
             source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
             start_line: 26
           status: supported
-          summary: Introduce a body-oriented intended response and receptive learning context, not evidence
-            that the physiology changed.
+          summary: Introduce a body-oriented intended response and receptive learning context, not
+            evidence that the physiology changed.
         preparation:
           locators:
           - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
@@ -862,10 +873,10 @@ content:
             source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
             start_line: 1
           status: supported
-          summary: Complete available source_transcript text inspected; shared representations are not
-            independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
-            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing
-            or original underlay; unspecified cancellation remains unknown.
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
+            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact
+            timing or original underlay; unspecified cancellation remains unknown.
         purpose:
           locators:
           - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
@@ -914,8 +925,8 @@ content:
             start_line: 1
           status: unknown
           summary: Investigated the full available source; this operation is not established. Source-designated
-            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing
-            or original underlay; unspecified cancellation remains unknown.
+            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact
+            timing or original underlay; unspecified cancellation remains unknown.
       source_extent:
         content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
         end_line: 196

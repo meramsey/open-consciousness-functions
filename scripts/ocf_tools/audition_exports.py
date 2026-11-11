@@ -7,7 +7,7 @@ import shutil
 from pathlib import Path, PureWindowsPath
 
 from . import artwork, audio_build
-from .artifact_names import ArtifactNamer
+from .artifact_names import listener_export_names, safe_component
 from .indexes import find_audio_manifest, load_function_by_id
 from .locale import LocaleCatalog
 from .paths import (
@@ -194,12 +194,17 @@ def select_cover(
     artwork_file=None,
     artwork_theme=None,
     no_artwork=False,
+    session_kind="function",
     artwork_resolution=1400,
     dry_run=False,
     show_cue=True,
     show_description=True,
 ):
-    """Common render/export cover policy; approval never suppresses artwork."""
+    """Common render/export cover policy; never substitute a sample album."""
+    if session_kind not in {"function", "preparation-learning"}:
+        raise OCFError("unsupported artwork session kind")
+    if session_kind == "preparation-learning" and function_id is not None:
+        raise OCFError("standalone preparation must not have a function identifier")
     if no_artwork:
         if artwork_file or artwork_theme:
             raise OCFError("--no-artwork cannot be combined with artwork/theme overrides")
@@ -219,10 +224,11 @@ def select_cover(
             },
             None,
         )
-    record = load_function_by_id(function_id)
+    record = load_function_by_id(function_id) if function_id else None
     theme, theme_source = artwork.select_theme(record, artwork_theme)
     generated = artwork.generate_cover(
         function_id,
+        session_kind=session_kind,
         locale=locale,
         theme=theme,
         resolution=artwork_resolution,
@@ -236,6 +242,15 @@ def select_cover(
         Path(generated["path"]),
         {
             "source": "generated-ocf",
+            **(
+                {
+                    "session_kind": session_kind,
+                    "function_id": None,
+                    "title": generated["settings"]["title"],
+                }
+                if session_kind == "preparation-learning"
+                else {}
+            ),
             "theme_selection": theme_source,
             "theme_id": generated["settings"]["theme"]["id"],
             "brand_version": generated["settings"]["brand"]["version"],
@@ -427,10 +442,22 @@ def export_audition(
     title, title_resolution = _function_title(function_id, locale, LocaleCatalog())
     if not narrator:
         raise OCFError("completed report must declare its narrator/voice display name")
+    delivery_names = listener_export_names(
+        function_id,
+        title,
+        locale,
+        ["flac", "mp3", *(["txt", "lrc", "srt", "vtt", "timing.json"] if lyrics else [])],
+        voice_label=narrator,
+        version=version,
+    )
     final = (
         Path(output).expanduser().resolve()
         if output
-        else work_path("renders", "listening-exports", unique_run_id(function_id + "-v" + version))
+        else work_path(
+            "renders",
+            "listening-exports",
+            unique_run_id(function_id + "-" + safe_component(title, max_length=32)),
+        )
     )
     if not final.is_relative_to(work_root().resolve()):
         raise OCFError("private audition exports must remain inside the OCF workspace")
@@ -487,15 +514,7 @@ def export_audition(
         show_cue=show_cue,
         show_description=show_description,
     )
-    namer = ArtifactNamer()
-    all_names = namer.filenames(
-        function_id,
-        title,
-        locale,
-        ["flac", "mp3", *(["txt", "lrc", "srt", "vtt", "timing.json"] if lyrics else [])],
-        variant=narrator,
-        version=version,
-    )
+    all_names = delivery_names["files"]
     names = {fmt: all_names[fmt] for fmt in ("flac", "mp3")}
     if dry_run:
         return {

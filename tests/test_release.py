@@ -135,10 +135,10 @@ def test_manifest_checks_relative_files_and_hashes(tmp_path):
             rel._verify_manifest(tmp_path, _valid_manifest(artifact))
 
 
-def test_dry_run_reports_paths_without_rendering_or_writing(tmp_path_factory, monkeypatch):
+def test_dry_run_reports_paths_without_rendering_or_writing(release_tmp_path, monkeypatch):
     # Repository-local scratch includes the checkout path on CI. Keep this
     # success fixture short; the explicit overlong-path regression stays below.
-    tmp_path = tmp_path_factory.mktemp("release")
+    tmp_path = release_tmp_path
     monkeypatch.setattr(
         rel,
         "_select_audio_manifest",
@@ -174,8 +174,8 @@ def test_release_rejects_unsupported_or_path_bearing_metadata(tmp_path):
         rel.package_release("OCF-BOD-010", artwork=image, metadata_overrides={"api_key": "secret"})
 
 
-def test_portable_path_guard_includes_longer_timing_sidecar(tmp_path_factory, monkeypatch):
-    root = tmp_path_factory.mktemp("r")
+def test_portable_path_guard_includes_longer_timing_sidecar(release_tmp_path, monkeypatch):
+    root = release_tmp_path
     monkeypatch.setattr(
         rel,
         "_select_audio_manifest",
@@ -365,9 +365,9 @@ def test_real_codec_metadata_and_artwork_round_trip(tmp_path, fmt, cover_kind, m
 @pytest.mark.external_tool
 @pytest.mark.parametrize("lyrics", [False, True])
 def test_package_publishes_complete_verified_release_and_blocks_collision(
-    tmp_path_factory, monkeypatch, lyrics
+    release_tmp_path, monkeypatch, lyrics
 ):
-    tmp_path = tmp_path_factory.mktemp("p")
+    tmp_path = release_tmp_path
     if lyrics:
         pytest.importorskip("mutagen")
     if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
@@ -452,8 +452,8 @@ def test_package_publishes_complete_verified_release_and_blocks_collision(
     assert result["manifest"]["title_resolution"]["fallback"] is False
     audio_names = [name for name in result["artifacts"] if name.endswith((".flac", ".mp3"))]
     assert audio_names == [
-        "OCF-BOD-010 - Nutricia - en-US - fixture-voice.flac",
-        "OCF-BOD-010 - Nutricia - en-US - fixture-voice.mp3",
+        "OCF-BOD-010 - Nutricia - en-US - fixture-voice - v0.1.0.flac",
+        "OCF-BOD-010 - Nutricia - en-US - fixture-voice - v0.1.0.mp3",
     ]
     transcript = next(release_dir.glob("*.txt"))
     assert transcript.read_text(encoding="utf-8") == "First transformed text.\n\nSecond sentence.\n"
@@ -495,7 +495,11 @@ def test_package_publishes_complete_verified_release_and_blocks_collision(
     assert Path(replaced["release_directory"]) == release_dir
     assert len(previous) == 1 and (previous[0] / "manifest.json").is_file()
     late_root = tmp_path / "late"
-    late_dir = late_root / "en-US" / "OCF-BOD-010-Nutricia"
+    late_dir = Path(
+        rel.package_release(
+            "OCF-BOD-010", formats=["flac"], artwork=cover, output=late_root, dry_run=True
+        )["release_directory"]
+    )
 
     def racing_build(*args, **kwargs):
         result = fake_build(*args, **kwargs)
@@ -512,7 +516,8 @@ def test_package_publishes_complete_verified_release_and_blocks_collision(
 @pytest.mark.integration
 @pytest.mark.audio_integration
 @pytest.mark.external_tool
-def test_failed_manifest_validation_never_publishes_partial_release(tmp_path, monkeypatch):
+def test_failed_manifest_validation_never_publishes_partial_release(release_tmp_path, monkeypatch):
+    tmp_path = release_tmp_path
     audio_manifest = {
         "id": "OCF-AUDIO-9910",
         "function_id": "OCF-BOD-010",

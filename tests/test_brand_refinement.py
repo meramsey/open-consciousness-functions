@@ -122,7 +122,8 @@ def test_comparison_is_deterministic_non_destructive_and_responsive(tmp_path):
         refined.comparison_gallery(root, vector_only=True, check=True)
 
 
-def test_release_preview_retains_refined_candidate_provenance(monkeypatch, tmp_path):
+def test_release_preview_retains_refined_candidate_provenance(monkeypatch, release_tmp_path):
+    tmp_path = release_tmp_path
     pytest.importorskip("PIL")
     pytest.importorskip("fontTools")
     from ocf_tools import release
@@ -150,8 +151,8 @@ def test_committed_vector_gallery_matches_declared_inputs():
     pytest.importorskip("PIL")
     pytest.importorskip("fontTools")
     assert (
-        refined.comparison_gallery(refined.SOURCE.parent / "gallery", vector_only=True, check=True)[
-            "status"
-        ]
+        refined.comparison_gallery(
+            refined.SOURCE.parent / "gallery-20261111", vector_only=True, check=True
+        )["status"]
         == "passed"
     )

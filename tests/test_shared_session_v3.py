@@ -241,14 +241,22 @@ def test_whole_unaffected_map_commands_bindings_and_frozen_editions(approval):
         }
         for k, v in catalog.require("en-US").entries.items()
     }
-    assert actual == approval["unchanged_canonical_entries"]
+    from ocf_tools.guide_review import approved_successor
+
+    successor = approved_successor()
+    assert actual == {
+        **approval["unchanged_canonical_entries"],
+        **successor["added_canonical_entries"],
+    }
     for record in load_all_functions():
         data = copy.deepcopy(record.data)
         binding = data["content"].pop("bindings")
-        assert (
-            struct_sha(data)
-            == approval["unchanged_function_records_without_bindings_sha256"][record.id]
-        )
+        expected = approval["unchanged_function_records_without_bindings_sha256"][record.id]
+        if record.id in successor["functions"]:
+            row = successor["functions"][record.id]
+            assert row["previous_record_without_bindings_sha256"] == expected
+            expected = row["record_without_bindings_sha256"]
+        assert struct_sha(data) == expected
         assert binding.pop("default_session_template") == ROUTINE
         assert binding.pop("session_templates") == sorted(
             set(approval["previous_session_templates"][record.id]) | {ROUTINE}
@@ -266,7 +274,7 @@ def test_whole_unaffected_map_commands_bindings_and_frozen_editions(approval):
     assert {e["id"]: sha(e.get("text", "")) for e in iter_events(rc1)} == approval[
         "rc1_event_text_sha256"
     ]
-    assert audio_defaults.check_lock()["id"] == "OCF-AUDIO-DEFAULTS-HPLUS-018"
+    assert audio_defaults.check_lock()["id"] == "OCF-AUDIO-DEFAULTS-HPLUS-020"
 
 
 def test_long_form_revision_is_an_explicit_manifest_alias_without_duplicate_resource():

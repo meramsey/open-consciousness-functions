@@ -144,25 +144,15 @@ common_uses:
 - text: Exploring internal dialogue while distinguishing impressions from verified facts.
   status: draft
 relationships:
-  related_functions: []
-  complementary_functions: []
-  proposals:
+  related_functions:
   - function_id: OCF-EXP-006
-    relationship_type: related
+    description_key: relationships.rel-cog003-exp006.description
     description:
       text: Compare a deliberately opened and closed reflective space with ongoing intuitive awareness
         and discernment.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-COG-003
-      field: description
-      sha256: 08c9b123c414deeb14992ee27edad26887bd199e9b85dbe80c576c2761bd6db6
-    - function_id: OCF-EXP-006
-      field: description
-      sha256: b10fe904bf3c9d6eb4f9bb5833b6499429bcfe5d8d9ed76340b5832d0ec617c5
+      status: reviewed
+      version: 1.0.0
+  complementary_functions: []
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -401,15 +391,15 @@ editorial:
     prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
       association plan; approve controls together. No narration replacement text selected.
     contextual_review: Close eyes, inhale/hold/Open/exhale, then natural breathing opens total/greater-self
-      communication. Plus Closed ends current contemplation, not learned access or a shared numbered Focus-state
-      return. Review the reciprocal operation together.
-    pair_reason: Opening and closing total-self communication form an explicitly taught reciprocal operation;
-      semantic reinforcement justifies not copying the full title.
+      communication. Plus Closed ends current contemplation, not learned access or a shared numbered
+      Focus-state return. Review the reciprocal operation together.
+    pair_reason: Opening and closing total-self communication form an explicitly taught reciprocal
+      operation; semantic reinforcement justifies not copying the full title.
     title_cue_relationship_or_exception: Opening and closing total-self communication form an explicitly
       taught reciprocal operation; semantic reinforcement justifies not copying the full title.
     teaching_disposition: Preserve complete taught cue; metadata/title alignment only
-    documentary_intent: Enter a voluntary contemplative communication/recall context described as communion
-      with a greater/total self.
+    documentary_intent: Enter a voluntary contemplative communication/recall context described as
+      communion with a greater/total self.
     alternatives:
     - title: Contemplation
       cue: PLUS-CONTEMPLATE
@@ -417,15 +407,15 @@ editorial:
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 7c691443d97b2aa41b18b2584d3191d1a063c52866b3f6ee5957d4a1326eac5c
+  contract_sha256: 12f7ad2126a338bc5fb7813611067d0c6f1788815e40c45288be8e9a1114c28e
 record_metadata:
   legacy:
     command_ids:
@@ -486,6 +476,27 @@ record_metadata:
       purpose_key: functions.ocf-cog-003.purpose
       explanation_key: commands.ocf-cmd-cog-003-closed.explanation
   predecessor_resource_sha256: 619f2751456247cfed5664626cbf6fe5465df95db0cffe81e0c38b1c5b4f4172
+  editorial_decisions:
+  - id: REL-COG003-EXP006
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: b15e8a010bef3d2c0a7890abea8a32df7f4535d88159880095f3df3d6b306e78
+    current_values_sha256: 29966193e2d67ad28c6c45360db3ffe9f44c04fb1a31285b2db06e8a534a25e1
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-COG-003", "sha256": "08c9b123c414deeb14992ee27edad26887bd199e9b85dbe80c576c2761bd6db6"},
+      {"field": "description", "function_id": "OCF-EXP-006", "sha256": "b10fe904bf3c9d6eb4f9bb5833b6499429bcfe5d8d9ed76340b5832d0ec617c5"}]'
+    relationship_id: REL-COG003-EXP006
+    related_function_id: OCF-EXP-006
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -678,8 +689,8 @@ content:
       source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -729,8 +740,8 @@ content:
       - automatic-whole-system-learning
       family: cognitive-open-close
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -750,8 +761,8 @@ content:
             source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
             start_line: 55
           status: supported
-          summary: Future-use reinforcement, learning-channel closure to ten, sleep/consolidation and
-            waking return with open-cue reminder.
+          summary: Future-use reinforcement, learning-channel closure to ten, sleep/consolidation
+            and waking return with open-cue reminder.
         consolidation:
           locators:
           - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
@@ -760,7 +771,8 @@ content:
             source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
             start_line: 63
           status: supported
-          summary: Counted sleep-to-twenty shell present; effectiveness/automatic consolidation not established.
+          summary: Counted sleep-to-twenty shell present; effectiveness/automatic consolidation not
+            established.
         conversion:
           locators:
           - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
@@ -798,8 +810,8 @@ content:
             source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
             start_line: 31
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
@@ -818,7 +830,8 @@ content:
             source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
             start_line: 25
           status: supported
-          summary: Prepare receptivity and distinguish learning context from future contemplation activation.
+          summary: Prepare receptivity and distinguish learning context from future contemplation
+            activation.
         preparation:
           locators:
           - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
@@ -827,7 +840,8 @@ content:
             source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
             start_line: 2
           status: supported
-          summary: Supported uninterrupted relaxation and temporary setting-aside; counted ten-state preparation.
+          summary: Supported uninterrupted relaxation and temporary setting-aside; counted ten-state
+            preparation.
         provenance:
           locators:
           - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
@@ -836,10 +850,10 @@ content:
             source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
             start_line: 1
           status: supported
-          summary: Complete available source_transcript text inspected; shared representations are not
-            independent corroboration. Source accuracy/authentication remains unresolved. Transcript is
-            source-designated but not authenticated; breath holding and automatic outcome claims need
-            content review.
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Transcript
+            is source-designated but not authenticated; breath holding and automatic outcome claims
+            need content review.
         purpose:
           locators:
           - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
@@ -858,8 +872,8 @@ content:
             source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
             start_line: 31
           status: not-present
-          summary: Two full instruction presentations are present; they are repeated teaching, not proof
-            of two explicit listener performance trials.
+          summary: Two full instruction presentations are present; they are repeated teaching, not
+            proof of two explicit listener performance trials.
         safety_claims:
           locators:
           - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
@@ -879,8 +893,8 @@ content:
             source_sha256: 0246ff60f52cd8a9f13b23ea1df19350397b0eb0d07d7ce7e47005e6b3d9ef7d
             start_line: 25
           status: supported
-          summary: Eleven learning context closes to ten; sleep-to-twenty and waking-to-one shell are
-            present. Future contemplative state is described separately.
+          summary: Eleven learning context closes to ten; sleep-to-twenty and waking-to-one shell
+            are present. Future contemplative state is described separately.
         suspend_cancel_reset:
           locators:
           - content_group_sha256: 469e6e62661cab6f811cd16e30c479f54f231f95ade9c26ecbca709c074c5c75
@@ -973,8 +987,8 @@ content:
     metadata_ref: canonical-function-record
     preparation: []
     questions:
-    - Transcript is source-designated but not authenticated; breath holding and automatic outcome claims
-      need content review.
+    - Transcript is source-designated but not authenticated; breath holding and automatic outcome
+      claims need content review.
     - Preserve deliberate open/close control; metaphysical and perfect-memory interpretations require
       explicit review rather than automatic secular equivalence.
     states:

@@ -528,32 +528,17 @@
       "lifecycle_scopes": [],
       "localized_relationships": {
         "complementary_functions": [],
-        "proposals": [
+        "related_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Compare brain-and-neck circulation imagery with whole-body circulation imagery; these are wellness intentions, not proven vascular treatments."
+              "status": "reviewed",
+              "text": "Compare brain-and-neck circulation imagery with whole-body circulation imagery; these are wellness intentions, not proven vascular treatments.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-BOD-001",
-                "sha256": "b36a447f0ab1aa40ed7cbee48571818a187987599f70cbc8c28f9c329fca1cdd"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-BOD-002",
-                "sha256": "7fc2e780a45fd9903a9813e306164e3b1a9782e8401a51f587c347c176d0665d"
-              }
-            ],
-            "function_id": "OCF-BOD-002",
-            "reciprocal_proposed": false,
-            "relationship_type": "related",
-            "status": "draft"
+            "description_key": "relationships.rel-bod001-bod002.description",
+            "function_id": "OCF-BOD-002"
           }
-        ],
-        "related_functions": []
+        ]
       },
       "persistence": "permanent",
       "persistence_label": {
@@ -571,30 +556,20 @@
         "text": "Supports balanced brain and neck circulation and maintenance, with conscious reinforcement when desired."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-bod001-bod002.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Compare brain-and-neck circulation imagery with whole-body circulation imagery; these are wellness intentions, not proven vascular treatments."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-BOD-001",
-              "sha256": "b36a447f0ab1aa40ed7cbee48571818a187987599f70cbc8c28f9c329fca1cdd"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-BOD-002",
-              "sha256": "7fc2e780a45fd9903a9813e306164e3b1a9782e8401a51f587c347c176d0665d"
-            }
-          ],
           "function_id": "OCF-BOD-002",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-BOD001-BOD002",
           "relationship_type": "related",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-bod-002.title",
@@ -604,6 +579,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-bod-001.short-description",
@@ -1096,30 +1072,15 @@
       "function_id": "OCF-BOD-003",
       "lifecycle_scopes": [],
       "localized_relationships": {
-        "complementary_functions": [],
-        "proposals": [
+        "complementary_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Area-focused comfort and whole-body relaxation offer separate intentions for ease, without dismissing symptoms or replacing care."
+              "status": "reviewed",
+              "text": "Area-focused comfort and whole-body relaxation offer separate intentions for ease, without dismissing symptoms or replacing care.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-BOD-003",
-                "sha256": "ec52113b6d7e845f6235c7b27e94cc87b0166f6c478f1fb69b5e3ab0c4a9c404"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-FND-004",
-                "sha256": "7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9"
-              }
-            ],
-            "function_id": "OCF-FND-004",
-            "reciprocal_proposed": false,
-            "relationship_type": "complementary",
-            "status": "draft"
+            "description_key": "relationships.rel-bod003-fnd004.description",
+            "function_id": "OCF-FND-004"
           }
         ],
         "related_functions": []
@@ -1140,30 +1101,20 @@
         "text": "Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-bod003-fnd004.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Area-focused comfort and whole-body relaxation offer separate intentions for ease, without dismissing symptoms or replacing care."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-BOD-003",
-              "sha256": "ec52113b6d7e845f6235c7b27e94cc87b0166f6c478f1fb69b5e3ab0c4a9c404"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-FND-004",
-              "sha256": "7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9"
-            }
-          ],
           "function_id": "OCF-FND-004",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-BOD003-FND004",
           "relationship_type": "complementary",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-fnd-004.title",
@@ -1173,6 +1124,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-bod-003.short-description",
@@ -1737,32 +1689,17 @@
       ],
       "localized_relationships": {
         "complementary_functions": [],
-        "proposals": [
+        "related_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Compare deliberate eating choices that preserve nourishment needs with changing a selected unwanted habit; neither justifies ignoring hunger."
+              "status": "reviewed",
+              "text": "Compare deliberate eating choices that preserve nourishment needs with changing a selected unwanted habit; neither justifies ignoring hunger.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-BOD-005",
-                "sha256": "66ec6d5b0d7eaca812f487524dd3b4ee3e546456ef63785a84a45977a8615bd0"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-LIF-001",
-                "sha256": "b696385bce51f81503108a0c8b948eb5b0ff0765593b07dd1bf4e23248338ffe"
-              }
-            ],
-            "function_id": "OCF-LIF-001",
-            "reciprocal_proposed": false,
-            "relationship_type": "related",
-            "status": "draft"
+            "description_key": "relationships.rel-bod005-lif001.description",
+            "function_id": "OCF-LIF-001"
           }
-        ],
-        "related_functions": []
+        ]
       },
       "persistence": "permanent",
       "persistence_label": {
@@ -1780,30 +1717,20 @@
         "text": "Supports deliberate eating choices and release of unnecessary cravings while preserving awareness of genuine nutritional needs."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-bod005-lif001.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Compare deliberate eating choices that preserve nourishment needs with changing a selected unwanted habit; neither justifies ignoring hunger."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-BOD-005",
-              "sha256": "66ec6d5b0d7eaca812f487524dd3b4ee3e546456ef63785a84a45977a8615bd0"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-LIF-001",
-              "sha256": "b696385bce51f81503108a0c8b948eb5b0ff0765593b07dd1bf4e23248338ffe"
-            }
-          ],
           "function_id": "OCF-LIF-001",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-BOD005-LIF001",
           "relationship_type": "related",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-lif-001.title",
@@ -1813,6 +1740,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-bod-005.short-description",
@@ -2082,7 +2010,7 @@
       "reimplementation_status": "planned",
       "related_functions": [
         {
-          "approval": "OCF-GUIDE-REVIEW-001",
+          "approval": "Explicit user-approved guide relationship review.",
           "dependency": "optional",
           "description": {
             "fallback": false,
@@ -2093,6 +2021,7 @@
           },
           "function_id": "OCF-BOD-002",
           "relationship_id": "REL-BOD006-BOD002",
+          "relationship_type": "related",
           "title": {
             "fallback": false,
             "key": "functions.ocf-bod-002.title",
@@ -2885,30 +2814,15 @@
       "function_id": "OCF-BOD-009",
       "lifecycle_scopes": [],
       "localized_relationships": {
-        "complementary_functions": [],
-        "proposals": [
+        "complementary_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Comfortable breathing awareness and relaxation offer distinct wellness intentions; breathing difficulty still requires appropriate medical attention."
+              "status": "reviewed",
+              "text": "Comfortable breathing awareness and relaxation offer distinct wellness intentions; breathing difficulty still requires appropriate medical attention.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-BOD-009",
-                "sha256": "e03a7abc8e329c42fc38ada310b455fb49bfdfda577ccc2fccfc382ffe02b3df"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-FND-004",
-                "sha256": "7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9"
-              }
-            ],
-            "function_id": "OCF-FND-004",
-            "reciprocal_proposed": false,
-            "relationship_type": "complementary",
-            "status": "draft"
+            "description_key": "relationships.rel-bod009-fnd004.description",
+            "function_id": "OCF-FND-004"
           }
         ],
         "related_functions": []
@@ -2929,30 +2843,20 @@
         "text": "Supports efficient breathing and respiratory maintenance, with conscious reinforcement when desired."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-bod009-fnd004.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Comfortable breathing awareness and relaxation offer distinct wellness intentions; breathing difficulty still requires appropriate medical attention."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-BOD-009",
-              "sha256": "e03a7abc8e329c42fc38ada310b455fb49bfdfda577ccc2fccfc382ffe02b3df"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-FND-004",
-              "sha256": "7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9"
-            }
-          ],
           "function_id": "OCF-FND-004",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-BOD009-FND004",
           "relationship_type": "complementary",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-fnd-004.title",
@@ -2962,6 +2866,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-bod-009.short-description",
@@ -4705,32 +4610,17 @@
       ],
       "localized_relationships": {
         "complementary_functions": [],
-        "proposals": [
+        "related_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Compare general maintenance imagery with more specific regeneration imagery, without claiming healing or tissue regrowth."
+              "status": "reviewed",
+              "text": "Compare general maintenance imagery with more specific regeneration imagery, without claiming healing or tissue regrowth.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-BOD-013",
-                "sha256": "a44fe521028bb9f0c208a287a719b331457a6e3ba2a33cdf36f688c8a08e8fcd"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-BOD-014",
-                "sha256": "2cea77591e70794d361ca5fb500eebea9a729e02833f8b6a9b6d104a85d67468"
-              }
-            ],
-            "function_id": "OCF-BOD-014",
-            "reciprocal_proposed": false,
-            "relationship_type": "related",
-            "status": "draft"
+            "description_key": "relationships.rel-bod013-bod014.description",
+            "function_id": "OCF-BOD-014"
           }
-        ],
-        "related_functions": []
+        ]
       },
       "persistence": "permanent",
       "persistence_label": {
@@ -4748,30 +4638,20 @@
         "text": "A general self-directed balance-and-heal tune-up practice."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-bod013-bod014.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Compare general maintenance imagery with more specific regeneration imagery, without claiming healing or tissue regrowth."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-BOD-013",
-              "sha256": "a44fe521028bb9f0c208a287a719b331457a6e3ba2a33cdf36f688c8a08e8fcd"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-BOD-014",
-              "sha256": "2cea77591e70794d361ca5fb500eebea9a729e02833f8b6a9b6d104a85d67468"
-            }
-          ],
           "function_id": "OCF-BOD-014",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-BOD013-BOD014",
           "relationship_type": "related",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-bod-014.title",
@@ -4781,6 +4661,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-bod-013.short-description",
@@ -6022,30 +5903,15 @@
       "function_id": "OCF-COG-002",
       "lifecycle_scopes": [],
       "localized_relationships": {
-        "complementary_functions": [],
-        "proposals": [
+        "complementary_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Number practice and directed attention address calculation and concentration respectively; either may be practiced independently."
+              "status": "reviewed",
+              "text": "Number practice and directed attention address calculation and concentration respectively; either may be practiced independently.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-COG-002",
-                "sha256": "57ff0a5168d935e358c53450af35cf5b5d20d57f4c4de0ce389d1353e4466c5b"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-FND-002",
-                "sha256": "5589edf7e5fa4b3687d6ce74a83a0697d44ac80d155cee2f100481105c29d57d"
-              }
-            ],
-            "function_id": "OCF-FND-002",
-            "reciprocal_proposed": false,
-            "relationship_type": "complementary",
-            "status": "draft"
+            "description_key": "relationships.rel-cog002-fnd002.description",
+            "function_id": "OCF-FND-002"
           }
         ],
         "related_functions": []
@@ -6066,30 +5932,20 @@
         "text": "Speeds mental arithmetic and number processing."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-cog002-fnd002.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Number practice and directed attention address calculation and concentration respectively; either may be practiced independently."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-COG-002",
-              "sha256": "57ff0a5168d935e358c53450af35cf5b5d20d57f4c4de0ce389d1353e4466c5b"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-FND-002",
-              "sha256": "5589edf7e5fa4b3687d6ce74a83a0697d44ac80d155cee2f100481105c29d57d"
-            }
-          ],
           "function_id": "OCF-FND-002",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-COG002-FND002",
           "relationship_type": "complementary",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-fnd-002.title",
@@ -6099,6 +5955,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-cog-002.short-description",
@@ -6452,32 +6309,17 @@
       "lifecycle_scopes": [],
       "localized_relationships": {
         "complementary_functions": [],
-        "proposals": [
+        "related_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Compare a deliberately opened and closed reflective space with ongoing intuitive awareness and discernment."
+              "status": "reviewed",
+              "text": "Compare a deliberately opened and closed reflective space with ongoing intuitive awareness and discernment.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-COG-003",
-                "sha256": "08c9b123c414deeb14992ee27edad26887bd199e9b85dbe80c576c2761bd6db6"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-EXP-006",
-                "sha256": "b10fe904bf3c9d6eb4f9bb5833b6499429bcfe5d8d9ed76340b5832d0ec617c5"
-              }
-            ],
-            "function_id": "OCF-EXP-006",
-            "reciprocal_proposed": false,
-            "relationship_type": "related",
-            "status": "draft"
+            "description_key": "relationships.rel-cog003-exp006.description",
+            "function_id": "OCF-EXP-006"
           }
-        ],
-        "related_functions": []
+        ]
       },
       "persistence": "temporary",
       "persistence_label": {
@@ -6495,30 +6337,20 @@
         "text": "Opens an internal space for quiet reflection; closes it again on completion."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-cog003-exp006.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Compare a deliberately opened and closed reflective space with ongoing intuitive awareness and discernment."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-COG-003",
-              "sha256": "08c9b123c414deeb14992ee27edad26887bd199e9b85dbe80c576c2761bd6db6"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-EXP-006",
-              "sha256": "b10fe904bf3c9d6eb4f9bb5833b6499429bcfe5d8d9ed76340b5832d0ec617c5"
-            }
-          ],
           "function_id": "OCF-EXP-006",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-COG003-EXP006",
           "relationship_type": "related",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-exp-006.title",
@@ -6528,6 +6360,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-cog-003.short-description",
@@ -6986,32 +6819,17 @@
       ],
       "localized_relationships": {
         "complementary_functions": [],
-        "proposals": [
+        "related_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Compare deliberate capture and retention with separately chosen retrieval of learned material. The Imprint recall command is not the same function identity as Recall."
+              "status": "reviewed",
+              "text": "Compare deliberate capture and retention with separately chosen retrieval of learned material. The Imprint recall command is not the same function identity as Recall.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-COG-004",
-                "sha256": "098e88038844417a6241fc8ae022de3ada9529b0e189e64b2d68691b6c607c92"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-COG-006",
-                "sha256": "f1121b371e1d9c5a81ad6fd3197fb75a81f5d4ae79f40daf939066db0d4e0c01"
-              }
-            ],
-            "function_id": "OCF-COG-006",
-            "reciprocal_proposed": false,
-            "relationship_type": "related",
-            "status": "draft"
+            "description_key": "relationships.rel-cog004-cog006.description",
+            "function_id": "OCF-COG-006"
           }
-        ],
-        "related_functions": []
+        ]
       },
       "persistence": "permanent",
       "persistence_label": {
@@ -7029,30 +6847,20 @@
         "text": "Consciously capture and retain selected information or experiences, with Plus Recall for deliberate retrieval."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-cog004-cog006.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Compare deliberate capture and retention with separately chosen retrieval of learned material. The Imprint recall command is not the same function identity as Recall."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-COG-004",
-              "sha256": "098e88038844417a6241fc8ae022de3ada9529b0e189e64b2d68691b6c607c92"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-COG-006",
-              "sha256": "f1121b371e1d9c5a81ad6fd3197fb75a81f5d4ae79f40daf939066db0d4e0c01"
-            }
-          ],
           "function_id": "OCF-COG-006",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-COG004-COG006",
           "relationship_type": "related",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-cog-006.title",
@@ -7062,6 +6870,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-cog-004.short-description",
@@ -7378,30 +7187,15 @@
         }
       ],
       "localized_relationships": {
-        "complementary_functions": [],
-        "proposals": [
+        "complementary_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Exploring alternative choices and considering intuitive impressions offer different optional perspectives on a question; check facts independently."
+              "status": "reviewed",
+              "text": "Exploring alternative choices and considering intuitive impressions offer different optional perspectives on a question; check facts independently.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-COG-005",
-                "sha256": "574105e00d0317828bef7d3ce5db9df7734faf5e1aa43b68fa433cdf70eb50cd"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-EXP-006",
-                "sha256": "b10fe904bf3c9d6eb4f9bb5833b6499429bcfe5d8d9ed76340b5832d0ec617c5"
-              }
-            ],
-            "function_id": "OCF-EXP-006",
-            "reciprocal_proposed": false,
-            "relationship_type": "complementary",
-            "status": "draft"
+            "description_key": "relationships.rel-cog005-exp006.description",
+            "function_id": "OCF-EXP-006"
           }
         ],
         "related_functions": []
@@ -7422,30 +7216,20 @@
         "text": "Opens perception of choices and alternatives."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-cog005-exp006.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Exploring alternative choices and considering intuitive impressions offer different optional perspectives on a question; check facts independently."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-COG-005",
-              "sha256": "574105e00d0317828bef7d3ce5db9df7734faf5e1aa43b68fa433cdf70eb50cd"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-EXP-006",
-              "sha256": "b10fe904bf3c9d6eb4f9bb5833b6499429bcfe5d8d9ed76340b5832d0ec617c5"
-            }
-          ],
           "function_id": "OCF-EXP-006",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-COG005-EXP006",
           "relationship_type": "complementary",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-exp-006.title",
@@ -7455,6 +7239,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-cog-005.short-description",
@@ -7680,32 +7465,17 @@
       "lifecycle_scopes": [],
       "localized_relationships": {
         "complementary_functions": [],
-        "proposals": [
+        "related_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Compare bringing a specific memory to mind with broader reflection on personal knowledge and experience; neither guarantees accurate information."
+              "status": "reviewed",
+              "text": "Compare bringing a specific memory to mind with broader reflection on personal knowledge and experience; neither guarantees accurate information.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-COG-006",
-                "sha256": "f1121b371e1d9c5a81ad6fd3197fb75a81f5d4ae79f40daf939066db0d4e0c01"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-COG-001",
-                "sha256": "e6cc8c734bf0a96b4e47520263a133949dcaa134561fb74a5098843a8ffecbe3"
-              }
-            ],
-            "function_id": "OCF-COG-001",
-            "reciprocal_proposed": false,
-            "relationship_type": "related",
-            "status": "draft"
+            "description_key": "relationships.rel-cog006-cog001.description",
+            "function_id": "OCF-COG-001"
           }
-        ],
-        "related_functions": []
+        ]
       },
       "persistence": "temporary",
       "persistence_label": {
@@ -7723,30 +7493,20 @@
         "text": "Brings specific memories or learned material to mind on request."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-cog006-cog001.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Compare bringing a specific memory to mind with broader reflection on personal knowledge and experience; neither guarantees accurate information."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-COG-006",
-              "sha256": "f1121b371e1d9c5a81ad6fd3197fb75a81f5d4ae79f40daf939066db0d4e0c01"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-COG-001",
-              "sha256": "e6cc8c734bf0a96b4e47520263a133949dcaa134561fb74a5098843a8ffecbe3"
-            }
-          ],
           "function_id": "OCF-COG-001",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-COG006-COG001",
           "relationship_type": "related",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-cog-001.title",
@@ -7756,6 +7516,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-cog-006.short-description",
@@ -7980,30 +7741,15 @@
       "function_id": "OCF-COG-007",
       "lifecycle_scopes": [],
       "localized_relationships": {
-        "complementary_functions": [],
-        "proposals": [
+        "complementary_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Reasoning about details and exploring alternatives offer distinct approaches to considering a problem, without requiring a combined exercise."
+              "status": "reviewed",
+              "text": "Reasoning about details and exploring alternatives offer distinct approaches to considering a problem, without requiring a combined exercise.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-COG-007",
-                "sha256": "3e3440b8f1061424dc185c48ec0fcd32ed71d524bdb20f8d2032cfd80e559562"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-COG-005",
-                "sha256": "574105e00d0317828bef7d3ce5db9df7734faf5e1aa43b68fa433cdf70eb50cd"
-              }
-            ],
-            "function_id": "OCF-COG-005",
-            "reciprocal_proposed": false,
-            "relationship_type": "complementary",
-            "status": "draft"
+            "description_key": "relationships.rel-cog007-cog005.description",
+            "function_id": "OCF-COG-005"
           }
         ],
         "related_functions": []
@@ -8024,30 +7770,20 @@
         "text": "Accelerates thinking speed and mental processing."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-cog007-cog005.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Reasoning about details and exploring alternatives offer distinct approaches to considering a problem, without requiring a combined exercise."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-COG-007",
-              "sha256": "3e3440b8f1061424dc185c48ec0fcd32ed71d524bdb20f8d2032cfd80e559562"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-COG-005",
-              "sha256": "574105e00d0317828bef7d3ce5db9df7734faf5e1aa43b68fa433cdf70eb50cd"
-            }
-          ],
           "function_id": "OCF-COG-005",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-COG007-COG005",
           "relationship_type": "complementary",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-cog-005.title",
@@ -8057,6 +7793,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-cog-007.short-description",
@@ -9406,32 +9143,17 @@
       "lifecycle_scopes": [],
       "localized_relationships": {
         "complementary_functions": [],
-        "proposals": [
+        "related_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Compare recurring thought and emotional-pattern interference with a broader selected belief, expectation or recurring life pattern; useful learning remains valued."
+              "status": "reviewed",
+              "text": "Compare recurring thought and emotional-pattern interference with a broader selected belief, expectation or recurring life pattern; useful learning remains valued.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-EMO-002",
-                "sha256": "f378a57210d0e3bb9ca07959bca9b895beb486615582a1c040afd2f7b3112e2f"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-EXP-003",
-                "sha256": "bff68807fb37db657e26d9bbfec0c53c91b73555b75a80ca2601a757f718726f"
-              }
-            ],
-            "function_id": "OCF-EXP-003",
-            "reciprocal_proposed": false,
-            "relationship_type": "related",
-            "status": "draft"
+            "description_key": "relationships.rel-emo002-exp003.description",
+            "function_id": "OCF-EXP-003"
           }
-        ],
-        "related_functions": []
+        ]
       },
       "persistence": "temporary",
       "persistence_label": {
@@ -9449,30 +9171,20 @@
         "text": "Reduces selected recurring thought and emotional-pattern interference while retaining useful memories and conscious choice."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-emo002-exp003.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Compare recurring thought and emotional-pattern interference with a broader selected belief, expectation or recurring life pattern; useful learning remains valued."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-EMO-002",
-              "sha256": "f378a57210d0e3bb9ca07959bca9b895beb486615582a1c040afd2f7b3112e2f"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-EXP-003",
-              "sha256": "bff68807fb37db657e26d9bbfec0c53c91b73555b75a80ca2601a757f718726f"
-            }
-          ],
           "function_id": "OCF-EXP-003",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-EMO002-EXP003",
           "relationship_type": "related",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-exp-003.title",
@@ -9482,6 +9194,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-emo-002.short-description",
@@ -9694,30 +9407,15 @@
       "function_id": "OCF-EMO-003",
       "lifecycle_scopes": [],
       "localized_relationships": {
-        "complementary_functions": [],
-        "proposals": [
+        "complementary_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Considering another being's perspective and practicing clear expression offer distinct intentions for communication; neither establishes knowledge of another's private thoughts."
+              "status": "reviewed",
+              "text": "Considering another being's perspective and practicing clear expression offer distinct intentions for communication; neither establishes knowledge of another's private thoughts.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-EMO-003",
-                "sha256": "8f58776ae03f2ca89f2b5df60679b5efc69a3adbdc6d11523fecdbd576827033"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-COM-001",
-                "sha256": "4064576c22f3f99553735cfd8b962c8389288b329ee75f16291026b90d280df0"
-              }
-            ],
-            "function_id": "OCF-COM-001",
-            "reciprocal_proposed": false,
-            "relationship_type": "complementary",
-            "status": "draft"
+            "description_key": "relationships.rel-emo003-com001.description",
+            "function_id": "OCF-COM-001"
           }
         ],
         "related_functions": []
@@ -9738,30 +9436,20 @@
         "text": "Develops consciously directed understanding and communication with another being through sensory, intuitive, and total-self awareness."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-emo003-com001.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Considering another being's perspective and practicing clear expression offer distinct intentions for communication; neither establishes knowledge of another's private thoughts."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-EMO-003",
-              "sha256": "8f58776ae03f2ca89f2b5df60679b5efc69a3adbdc6d11523fecdbd576827033"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-COM-001",
-              "sha256": "4064576c22f3f99553735cfd8b962c8389288b329ee75f16291026b90d280df0"
-            }
-          ],
           "function_id": "OCF-COM-001",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-EMO003-COM001",
           "relationship_type": "complementary",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-com-001.title",
@@ -9771,6 +9459,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-emo-003.short-description",
@@ -10042,7 +9731,7 @@
       "reimplementation_status": "planned",
       "related_functions": [
         {
-          "approval": "OCF-GUIDE-REVIEW-001",
+          "approval": "Explicit user-approved guide relationship review.",
           "dependency": "optional",
           "description": {
             "fallback": false,
@@ -10053,6 +9742,7 @@
           },
           "function_id": "OCF-EXP-003",
           "relationship_id": "REL-EXP001-EXP003",
+          "relationship_type": "related",
           "title": {
             "fallback": false,
             "key": "functions.ocf-exp-003.title",
@@ -10062,7 +9752,7 @@
           }
         },
         {
-          "approval": "OCF-GUIDE-REVIEW-001",
+          "approval": "Explicit user-approved guide relationship review.",
           "dependency": "optional",
           "description": {
             "fallback": false,
@@ -10073,6 +9763,7 @@
           },
           "function_id": "OCF-EXP-006",
           "relationship_id": "REL-EXP001-EXP006",
+          "relationship_type": "related",
           "title": {
             "fallback": false,
             "key": "functions.ocf-exp-006.title",
@@ -10976,7 +10667,7 @@
       "reimplementation_status": "in-progress",
       "related_functions": [
         {
-          "approval": "OCF-GUIDE-REVIEW-001",
+          "approval": "Explicit user-approved guide relationship review.",
           "dependency": "optional",
           "description": {
             "fallback": false,
@@ -10987,6 +10678,7 @@
           },
           "function_id": "OCF-EXP-006",
           "relationship_id": "REL-EXP003-EXP006",
+          "relationship_type": "related",
           "title": {
             "fallback": false,
             "key": "functions.ocf-exp-006.title",
@@ -12304,30 +11996,15 @@
       "function_id": "OCF-FND-002",
       "lifecycle_scopes": [],
       "localized_relationships": {
-        "complementary_functions": [],
-        "proposals": [
+        "complementary_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Directed attention and deliberate memory capture have different learning intentions that may be explored as separate practices."
+              "status": "reviewed",
+              "text": "Directed attention and deliberate memory capture have different learning intentions that may be explored as separate practices.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-FND-002",
-                "sha256": "5589edf7e5fa4b3687d6ce74a83a0697d44ac80d155cee2f100481105c29d57d"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-COG-004",
-                "sha256": "098e88038844417a6241fc8ae022de3ada9529b0e189e64b2d68691b6c607c92"
-              }
-            ],
-            "function_id": "OCF-COG-004",
-            "reciprocal_proposed": false,
-            "relationship_type": "complementary",
-            "status": "draft"
+            "description_key": "relationships.rel-fnd002-cog004.description",
+            "function_id": "OCF-COG-004"
           }
         ],
         "related_functions": [
@@ -12360,7 +12037,28 @@
       "reimplementation_status": "complete",
       "related_functions": [
         {
-          "approval": "OCF-GUIDE-REVIEW-001",
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
+          "dependency": "optional",
+          "description": {
+            "fallback": false,
+            "key": "relationships.rel-fnd002-cog004.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Directed attention and deliberate memory capture have different learning intentions that may be explored as separate practices."
+          },
+          "function_id": "OCF-COG-004",
+          "relationship_id": "REL-FND002-COG004",
+          "relationship_type": "complementary",
+          "title": {
+            "fallback": false,
+            "key": "functions.ocf-cog-004.title",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
+            "text": "Imprint"
+          }
+        },
+        {
+          "approval": "Explicit user-approved guide relationship review.",
           "dependency": "optional",
           "description": {
             "fallback": false,
@@ -12371,6 +12069,7 @@
           },
           "function_id": "OCF-COG-007",
           "relationship_id": "REL-FND002-COG007",
+          "relationship_type": "related",
           "title": {
             "fallback": false,
             "key": "functions.ocf-cog-007.title",
@@ -12380,38 +12079,7 @@
           }
         }
       ],
-      "relationship_proposals": [
-        {
-          "dependency": "optional",
-          "description": {
-            "status": "draft",
-            "text": "Directed attention and deliberate memory capture have different learning intentions that may be explored as separate practices."
-          },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-FND-002",
-              "sha256": "5589edf7e5fa4b3687d6ce74a83a0697d44ac80d155cee2f100481105c29d57d"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-COG-004",
-              "sha256": "098e88038844417a6241fc8ae022de3ada9529b0e189e64b2d68691b6c607c92"
-            }
-          ],
-          "function_id": "OCF-COG-004",
-          "reciprocal_proposed": false,
-          "relationship_type": "complementary",
-          "status": "draft",
-          "title": {
-            "fallback": false,
-            "key": "functions.ocf-cog-004.title",
-            "requested_locale": "en-US",
-            "resolved_locale": "en-US",
-            "text": "Imprint"
-          }
-        }
-      ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-fnd-002.short-description",
@@ -12639,32 +12307,17 @@
       "lifecycle_scopes": [],
       "localized_relationships": {
         "complementary_functions": [],
-        "proposals": [
+        "related_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Compare a short restorative rest with general sleep onset and a desired waking time; neither replaces adequate sleep or a needed alarm."
+              "status": "reviewed",
+              "text": "Compare a short restorative rest with general sleep onset and a desired waking time; neither replaces adequate sleep or a needed alarm.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-FND-003",
-                "sha256": "c96ac8b11d5e8a7974e3be3c590432b8f299b5c1eeaa1fa6dd54de2d2ad0cf1b"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-SLP-002",
-                "sha256": "f25c3964bcb1d1c34e63bebd2bc7d271d5d05e9757459c0a65e171d7ca6c1bca"
-              }
-            ],
-            "function_id": "OCF-SLP-002",
-            "reciprocal_proposed": false,
-            "relationship_type": "related",
-            "status": "draft"
+            "description_key": "relationships.rel-fnd003-slp002.description",
+            "function_id": "OCF-SLP-002"
           }
-        ],
-        "related_functions": []
+        ]
       },
       "persistence": "temporary",
       "persistence_label": {
@@ -12682,30 +12335,20 @@
         "text": "Replenishes a felt sense of energy and freshness."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-fnd003-slp002.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Compare a short restorative rest with general sleep onset and a desired waking time; neither replaces adequate sleep or a needed alarm."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-FND-003",
-              "sha256": "c96ac8b11d5e8a7974e3be3c590432b8f299b5c1eeaa1fa6dd54de2d2ad0cf1b"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-SLP-002",
-              "sha256": "f25c3964bcb1d1c34e63bebd2bc7d271d5d05e9757459c0a65e171d7ca6c1bca"
-            }
-          ],
           "function_id": "OCF-SLP-002",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-FND003-SLP002",
           "relationship_type": "related",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-slp-002.title",
@@ -12715,6 +12358,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-fnd-003.short-description",
@@ -12927,30 +12571,15 @@
       "function_id": "OCF-FND-004",
       "lifecycle_scopes": [],
       "localized_relationships": {
-        "complementary_functions": [],
-        "proposals": [
+        "complementary_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Physical and mental relaxation differs from releasing a selected interfering emotion; choose whichever intention fits the situation."
+              "status": "reviewed",
+              "text": "Physical and mental relaxation differs from releasing a selected interfering emotion; choose whichever intention fits the situation.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-FND-004",
-                "sha256": "7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-EMO-001",
-                "sha256": "864bf2596a2262e1921925522d903dca921655e4d26850f86ba2b9a6e296d1b0"
-              }
-            ],
-            "function_id": "OCF-EMO-001",
-            "reciprocal_proposed": false,
-            "relationship_type": "complementary",
-            "status": "draft"
+            "description_key": "relationships.rel-fnd004-emo001.description",
+            "function_id": "OCF-EMO-001"
           }
         ],
         "related_functions": []
@@ -12971,30 +12600,20 @@
         "text": "Deepens physical and mental relaxation."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-fnd004-emo001.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Physical and mental relaxation differs from releasing a selected interfering emotion; choose whichever intention fits the situation."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-FND-004",
-              "sha256": "7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-EMO-001",
-              "sha256": "864bf2596a2262e1921925522d903dca921655e4d26850f86ba2b9a6e296d1b0"
-            }
-          ],
           "function_id": "OCF-EMO-001",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-FND004-EMO001",
           "relationship_type": "complementary",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-emo-001.title",
@@ -13004,6 +12623,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-fnd-004.short-description",
@@ -13818,32 +13438,17 @@
       ],
       "localized_relationships": {
         "complementary_functions": [],
-        "proposals": [
+        "related_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Compare changing an unwanted repeated habit with cultivating a desired automatic way of responding; these are different intentions, not a required sequence."
+              "status": "reviewed",
+              "text": "Compare changing an unwanted repeated habit with cultivating a desired automatic way of responding; these are different intentions, not a required sequence.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-LIF-001",
-                "sha256": "b696385bce51f81503108a0c8b948eb5b0ff0765593b07dd1bf4e23248338ffe"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-AUT-001",
-                "sha256": "95072a83ada3fc93d60106caad1df381f1b1c3d9884ea5e69915c0b5dff46063"
-              }
-            ],
-            "function_id": "OCF-AUT-001",
-            "reciprocal_proposed": false,
-            "relationship_type": "related",
-            "status": "draft"
+            "description_key": "relationships.rel-lif001-aut001.description",
+            "function_id": "OCF-AUT-001"
           }
-        ],
-        "related_functions": []
+        ]
       },
       "persistence": "permanent",
       "persistence_label": {
@@ -13861,30 +13466,20 @@
         "text": "Supports stepping away from habitual, repeated behavior patterns."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-lif001-aut001.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Compare changing an unwanted repeated habit with cultivating a desired automatic way of responding; these are different intentions, not a required sequence."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-LIF-001",
-              "sha256": "b696385bce51f81503108a0c8b948eb5b0ff0765593b07dd1bf4e23248338ffe"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-AUT-001",
-              "sha256": "95072a83ada3fc93d60106caad1df381f1b1c3d9884ea5e69915c0b5dff46063"
-            }
-          ],
           "function_id": "OCF-AUT-001",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-LIF001-AUT001",
           "relationship_type": "related",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-aut-001.title",
@@ -13894,6 +13489,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-lif-001.short-description",
@@ -14118,30 +13714,15 @@
       "function_id": "OCF-PRF-001",
       "lifecycle_scopes": [],
       "localized_relationships": {
-        "complementary_functions": [],
-        "proposals": [
+        "complementary_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Starting or completing a task and sustaining attention address different aspects of chosen activity; no combined activation is required."
+              "status": "reviewed",
+              "text": "Starting or completing a task and sustaining attention address different aspects of chosen activity; no combined activation is required.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-PRF-001",
-                "sha256": "b2fa2f63091e863dad0d7a819f82833cfef1a294ea68d6c36317dc76a7c7603e"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-FND-002",
-                "sha256": "5589edf7e5fa4b3687d6ce74a83a0697d44ac80d155cee2f100481105c29d57d"
-              }
-            ],
-            "function_id": "OCF-FND-002",
-            "reciprocal_proposed": false,
-            "relationship_type": "complementary",
-            "status": "draft"
+            "description_key": "relationships.rel-prf001-fnd002.description",
+            "function_id": "OCF-FND-002"
           }
         ],
         "related_functions": []
@@ -14162,30 +13743,20 @@
         "text": "Moves from deliberation into immediate, present action."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-prf001-fnd002.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Starting or completing a task and sustaining attention address different aspects of chosen activity; no combined activation is required."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-PRF-001",
-              "sha256": "b2fa2f63091e863dad0d7a819f82833cfef1a294ea68d6c36317dc76a7c7603e"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-FND-002",
-              "sha256": "5589edf7e5fa4b3687d6ce74a83a0697d44ac80d155cee2f100481105c29d57d"
-            }
-          ],
           "function_id": "OCF-FND-002",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-PRF001-FND002",
           "relationship_type": "complementary",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-fnd-002.title",
@@ -14195,6 +13766,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-prf-001.short-description",
@@ -14427,32 +13999,17 @@
       "lifecycle_scopes": [],
       "localized_relationships": {
         "complementary_functions": [],
-        "proposals": [
+        "related_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Compare ongoing recognition of inner resources with a deliberately invoked shift from weariness toward renewed confidence."
+              "status": "reviewed",
+              "text": "Compare ongoing recognition of inner resources with a deliberately invoked shift from weariness toward renewed confidence.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-PRF-002",
-                "sha256": "b5bcd3eb460963a8e14c23231c41f5ad7b43e97e8663f09fda3358e79470ebb1"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-FND-005",
-                "sha256": "f9cde5900e2d3cee6be500dea088f649423c46216824daa3a410fa32e9b5be5f"
-              }
-            ],
-            "function_id": "OCF-FND-005",
-            "reciprocal_proposed": false,
-            "relationship_type": "related",
-            "status": "draft"
+            "description_key": "relationships.rel-prf002-fnd005.description",
+            "function_id": "OCF-FND-005"
           }
-        ],
-        "related_functions": []
+        ]
       },
       "persistence": "permanent",
       "persistence_label": {
@@ -14470,30 +14027,20 @@
         "text": "Strengthens recognition and expression of total-self strength, unity, resources, and power throughout daily life."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-prf002-fnd005.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Compare ongoing recognition of inner resources with a deliberately invoked shift from weariness toward renewed confidence."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-PRF-002",
-              "sha256": "b5bcd3eb460963a8e14c23231c41f5ad7b43e97e8663f09fda3358e79470ebb1"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-FND-005",
-              "sha256": "f9cde5900e2d3cee6be500dea088f649423c46216824daa3a410fa32e9b5be5f"
-            }
-          ],
           "function_id": "OCF-FND-005",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-PRF002-FND005",
           "relationship_type": "related",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-fnd-005.title",
@@ -14503,6 +14050,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-prf-002.short-description",
@@ -14729,30 +14277,15 @@
       "function_id": "OCF-PRF-003",
       "lifecycle_scopes": [],
       "localized_relationships": {
-        "complementary_functions": [],
-        "proposals": [
+        "complementary_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Whole-body coordination and attention to lighter, quieter steps offer separate movement intentions; both remain subject to physical limits."
+              "status": "reviewed",
+              "text": "Whole-body coordination and attention to lighter, quieter steps offer separate movement intentions; both remain subject to physical limits.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-PRF-003",
-                "sha256": "56f2f35f08b831873fbaf58aeba4425962dfd125f63abdfbe54cc09eb93a729b"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-PRF-004",
-                "sha256": "a5f87338ce54fdd206623aae7f43f3949599780e756e96400e8911c8e5bc3765"
-              }
-            ],
-            "function_id": "OCF-PRF-004",
-            "reciprocal_proposed": false,
-            "relationship_type": "complementary",
-            "status": "draft"
+            "description_key": "relationships.rel-prf003-prf004.description",
+            "function_id": "OCF-PRF-004"
           }
         ],
         "related_functions": []
@@ -14773,30 +14306,20 @@
         "text": "Aligns and smooths internal rhythms toward feeling faster and steadier."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-prf003-prf004.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Whole-body coordination and attention to lighter, quieter steps offer separate movement intentions; both remain subject to physical limits."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-PRF-003",
-              "sha256": "56f2f35f08b831873fbaf58aeba4425962dfd125f63abdfbe54cc09eb93a729b"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-PRF-004",
-              "sha256": "a5f87338ce54fdd206623aae7f43f3949599780e756e96400e8911c8e5bc3765"
-            }
-          ],
           "function_id": "OCF-PRF-004",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-PRF003-PRF004",
           "relationship_type": "complementary",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-prf-004.title",
@@ -14806,6 +14329,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-prf-003.short-description",
@@ -15361,32 +14885,17 @@
       "lifecycle_scopes": [],
       "localized_relationships": {
         "complementary_functions": [],
-        "proposals": [
+        "related_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Compare a day-oriented intention with selecting a particular future condition and completion time; neither guarantees external events."
+              "status": "reviewed",
+              "text": "Compare a day-oriented intention with selecting a particular future condition and completion time; neither guarantees external events.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-PRF-005",
-                "sha256": "886715fb4fe76c91f0300085673f0402228b0263c129b0bc2e52633de4dafcbc"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-EXP-001",
-                "sha256": "96441a2896d4d0275209296acfa7772b18459b57d672c7a0d5a3932475680e74"
-              }
-            ],
-            "function_id": "OCF-EXP-001",
-            "reciprocal_proposed": false,
-            "relationship_type": "related",
-            "status": "draft"
+            "description_key": "relationships.rel-prf005-exp001.description",
+            "function_id": "OCF-EXP-001"
           }
-        ],
-        "related_functions": []
+        ]
       },
       "persistence": "temporary",
       "persistence_label": {
@@ -15404,30 +14913,20 @@
         "text": "Sets a deliberate tone for the day ahead."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-prf005-exp001.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Compare a day-oriented intention with selecting a particular future condition and completion time; neither guarantees external events."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-PRF-005",
-              "sha256": "886715fb4fe76c91f0300085673f0402228b0263c129b0bc2e52633de4dafcbc"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-EXP-001",
-              "sha256": "96441a2896d4d0275209296acfa7772b18459b57d672c7a0d5a3932475680e74"
-            }
-          ],
           "function_id": "OCF-EXP-001",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-PRF005-EXP001",
           "relationship_type": "related",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-exp-001.title",
@@ -15437,6 +14936,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-prf-005.short-description",
@@ -16699,30 +16199,15 @@
       "function_id": "OCF-SEN-002",
       "lifecycle_scopes": [],
       "localized_relationships": {
-        "complementary_functions": [],
-        "proposals": [
+        "complementary_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Visual imagery and inner sound offer different optional modes of imaginative awareness; vivid imagery is not required and sensory restoration is not claimed."
+              "status": "reviewed",
+              "text": "Visual imagery and inner sound offer different optional modes of imaginative awareness; vivid imagery is not required and sensory restoration is not claimed.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-SEN-002",
-                "sha256": "1cc04c5b74cdd9b6b04881ccff576ea1a736a512e8385859f9a1078a0bf1e9fd"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-SEN-001",
-                "sha256": "863922bf2c9a9ad33643e8de48977dde9489d1d48cae1de1b5dffcf63a03a185"
-              }
-            ],
-            "function_id": "OCF-SEN-001",
-            "reciprocal_proposed": false,
-            "relationship_type": "complementary",
-            "status": "draft"
+            "description_key": "relationships.rel-sen002-sen001.description",
+            "function_id": "OCF-SEN-001"
           }
         ],
         "related_functions": []
@@ -16743,30 +16228,20 @@
         "text": "Supports physical seeing and inner visualization, including visual processing, visual memory, and deliberate creation and manipulation of mental images."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-sen002-sen001.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Visual imagery and inner sound offer different optional modes of imaginative awareness; vivid imagery is not required and sensory restoration is not claimed."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-SEN-002",
-              "sha256": "1cc04c5b74cdd9b6b04881ccff576ea1a736a512e8385859f9a1078a0bf1e9fd"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-SEN-001",
-              "sha256": "863922bf2c9a9ad33643e8de48977dde9489d1d48cae1de1b5dffcf63a03a185"
-            }
-          ],
           "function_id": "OCF-SEN-001",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-SEN002-SEN001",
           "relationship_type": "complementary",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-sen-001.title",
@@ -16776,6 +16251,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-sen-002.short-description",
@@ -17382,32 +16858,17 @@
       "lifecycle_scopes": [],
       "localized_relationships": {
         "complementary_functions": [],
-        "proposals": [
+        "related_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Compare aroma memory with flavor memory as distinct sensory intentions, not as tests of substance or food safety."
+              "status": "reviewed",
+              "text": "Compare aroma memory with flavor memory as distinct sensory intentions, not as tests of substance or food safety.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-SEN-003",
-                "sha256": "bc8e7fedeb81229219334941a92eba2e62bf55869bcf10c079ad8850e53a1d58"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-SEN-004",
-                "sha256": "6a467469931140ade8c5b0819640983b47ca0e0d16ae37e5ba34be01973756a9"
-              }
-            ],
-            "function_id": "OCF-SEN-004",
-            "reciprocal_proposed": false,
-            "relationship_type": "related",
-            "status": "draft"
+            "description_key": "relationships.rel-sen003-sen004.description",
+            "function_id": "OCF-SEN-004"
           }
-        ],
-        "related_functions": []
+        ]
       },
       "persistence": "temporary",
       "persistence_label": {
@@ -17425,30 +16886,20 @@
         "text": "Adjusts the felt sense of smell in either direction using the MORE/LESS grammar."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-sen003-sen004.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Compare aroma memory with flavor memory as distinct sensory intentions, not as tests of substance or food safety."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-SEN-003",
-              "sha256": "bc8e7fedeb81229219334941a92eba2e62bf55869bcf10c079ad8850e53a1d58"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-SEN-004",
-              "sha256": "6a467469931140ade8c5b0819640983b47ca0e0d16ae37e5ba34be01973756a9"
-            }
-          ],
           "function_id": "OCF-SEN-004",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-SEN003-SEN004",
           "relationship_type": "related",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-sen-004.title",
@@ -17458,6 +16909,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-sen-003.short-description",
@@ -18689,30 +18141,15 @@
       "function_id": "OCF-SEN-005",
       "lifecycle_scopes": [],
       "localized_relationships": {
-        "complementary_functions": [],
-        "proposals": [
+        "complementary_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Attention to touch and attention to coordinated movement offer distinct body-awareness intentions without implying protection from injury."
+              "status": "reviewed",
+              "text": "Attention to touch and attention to coordinated movement offer distinct body-awareness intentions without implying protection from injury.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-SEN-005",
-                "sha256": "c6215692359e2ce4272e470f52cd1c075bff7cf448f558a5c4a967ef7d454d73"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-PRF-003",
-                "sha256": "56f2f35f08b831873fbaf58aeba4425962dfd125f63abdfbe54cc09eb93a729b"
-              }
-            ],
-            "function_id": "OCF-PRF-003",
-            "reciprocal_proposed": false,
-            "relationship_type": "complementary",
-            "status": "draft"
+            "description_key": "relationships.rel-sen005-prf003.description",
+            "function_id": "OCF-PRF-003"
           }
         ],
         "related_functions": []
@@ -18733,30 +18170,20 @@
         "text": "Adjusts the felt sense of touch or skin sensation using the MORE/LESS grammar."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-sen005-prf003.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Attention to touch and attention to coordinated movement offer distinct body-awareness intentions without implying protection from injury."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-SEN-005",
-              "sha256": "c6215692359e2ce4272e470f52cd1c075bff7cf448f558a5c4a967ef7d454d73"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-PRF-003",
-              "sha256": "56f2f35f08b831873fbaf58aeba4425962dfd125f63abdfbe54cc09eb93a729b"
-            }
-          ],
           "function_id": "OCF-PRF-003",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-SEN005-PRF003",
           "relationship_type": "complementary",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-prf-003.title",
@@ -18766,6 +18193,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-sen-005.short-description",
@@ -19250,32 +18678,17 @@
       "lifecycle_scopes": [],
       "localized_relationships": {
         "complementary_functions": [],
-        "proposals": [
+        "related_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Compare general sleep onset with rest amid unfamiliar or distracting surroundings; first ensure the surroundings are safe."
+              "status": "reviewed",
+              "text": "Compare general sleep onset with rest amid unfamiliar or distracting surroundings; first ensure the surroundings are safe.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-SLP-002",
-                "sha256": "f25c3964bcb1d1c34e63bebd2bc7d271d5d05e9757459c0a65e171d7ca6c1bca"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-SLP-005",
-                "sha256": "c3a871929526f06ce83de524a830914f8bfad2b355a3f0c4534564eb5a9156e3"
-              }
-            ],
-            "function_id": "OCF-SLP-005",
-            "reciprocal_proposed": false,
-            "relationship_type": "related",
-            "status": "draft"
+            "description_key": "relationships.rel-slp002-slp005.description",
+            "function_id": "OCF-SLP-005"
           }
-        ],
-        "related_functions": []
+        ]
       },
       "persistence": "temporary",
       "persistence_label": {
@@ -19293,30 +18706,20 @@
         "text": "Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-slp002-slp005.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Compare general sleep onset with rest amid unfamiliar or distracting surroundings; first ensure the surroundings are safe."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-SLP-002",
-              "sha256": "f25c3964bcb1d1c34e63bebd2bc7d271d5d05e9757459c0a65e171d7ca6c1bca"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-SLP-005",
-              "sha256": "c3a871929526f06ce83de524a830914f8bfad2b355a3f0c4534564eb5a9156e3"
-            }
-          ],
           "function_id": "OCF-SLP-005",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-SLP002-SLP005",
           "relationship_type": "related",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-slp-005.title",
@@ -19326,6 +18729,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-slp-002.short-description",
@@ -19571,32 +18975,17 @@
       "lifecycle_scopes": [],
       "localized_relationships": {
         "complementary_functions": [],
-        "proposals": [
+        "related_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Compare choosing a dream theme with inviting ideas about a question through sleep; dreams and morning impressions are not verified facts."
+              "status": "reviewed",
+              "text": "Compare choosing a dream theme with inviting ideas about a question through sleep; dreams and morning impressions are not verified facts.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-SLP-003",
-                "sha256": "20c0c076eef89d4f32a11e4a0002856094f2af32be035d08b83f3aef8d08c1a2"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-SLP-004",
-                "sha256": "f30ef62a98a7374314d9354bc525b9755da92e31b094edb88da43bfd70844019"
-              }
-            ],
-            "function_id": "OCF-SLP-004",
-            "reciprocal_proposed": false,
-            "relationship_type": "related",
-            "status": "draft"
+            "description_key": "relationships.rel-slp003-slp004.description",
+            "function_id": "OCF-SLP-004"
           }
-        ],
-        "related_functions": []
+        ]
       },
       "persistence": "temporary",
       "persistence_label": {
@@ -19614,30 +19003,20 @@
         "text": "Sets dream themes and a restful dream-sleep mindset; activation cue PLUS-DREAM."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-slp003-slp004.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Compare choosing a dream theme with inviting ideas about a question through sleep; dreams and morning impressions are not verified facts."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-SLP-003",
-              "sha256": "20c0c076eef89d4f32a11e4a0002856094f2af32be035d08b83f3aef8d08c1a2"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-SLP-004",
-              "sha256": "f30ef62a98a7374314d9354bc525b9755da92e31b094edb88da43bfd70844019"
-            }
-          ],
           "function_id": "OCF-SLP-004",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-SLP003-SLP004",
           "relationship_type": "related",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-slp-004.title",
@@ -19647,6 +19026,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-slp-003.short-description",
@@ -19891,30 +19271,15 @@
       "function_id": "OCF-SLP-004",
       "lifecycle_scopes": [],
       "localized_relationships": {
-        "complementary_functions": [],
-        "proposals": [
+        "complementary_functions": [
           {
-            "dependency": "optional",
             "description": {
-              "status": "draft",
-              "text": "Sleep-oriented reflection and waking exploration of alternatives offer separate ways to consider a question without prescribing an order."
+              "status": "reviewed",
+              "text": "Sleep-oriented reflection and waking exploration of alternatives offer separate ways to consider a question without prescribing an order.",
+              "version": "1.0.0"
             },
-            "evidence": [
-              {
-                "field": "description",
-                "function_id": "OCF-SLP-004",
-                "sha256": "f30ef62a98a7374314d9354bc525b9755da92e31b094edb88da43bfd70844019"
-              },
-              {
-                "field": "description",
-                "function_id": "OCF-COG-005",
-                "sha256": "574105e00d0317828bef7d3ce5db9df7734faf5e1aa43b68fa433cdf70eb50cd"
-              }
-            ],
-            "function_id": "OCF-COG-005",
-            "reciprocal_proposed": false,
-            "relationship_type": "complementary",
-            "status": "draft"
+            "description_key": "relationships.rel-slp004-cog005.description",
+            "function_id": "OCF-COG-005"
           }
         ],
         "related_functions": []
@@ -19935,30 +19300,20 @@
         "text": "Requests an answer or constructive solution through sleep, with useful insight recognized on awakening."
       },
       "reimplementation_status": "planned",
-      "related_functions": [],
-      "relationship_proposals": [
+      "related_functions": [
         {
+          "approval": "Explicit owner approval to implement the existing relationship-map suggestions, 2026-11-10.",
           "dependency": "optional",
           "description": {
-            "status": "draft",
+            "fallback": false,
+            "key": "relationships.rel-slp004-cog005.description",
+            "requested_locale": "en-US",
+            "resolved_locale": "en-US",
             "text": "Sleep-oriented reflection and waking exploration of alternatives offer separate ways to consider a question without prescribing an order."
           },
-          "evidence": [
-            {
-              "field": "description",
-              "function_id": "OCF-SLP-004",
-              "sha256": "f30ef62a98a7374314d9354bc525b9755da92e31b094edb88da43bfd70844019"
-            },
-            {
-              "field": "description",
-              "function_id": "OCF-COG-005",
-              "sha256": "574105e00d0317828bef7d3ce5db9df7734faf5e1aa43b68fa433cdf70eb50cd"
-            }
-          ],
           "function_id": "OCF-COG-005",
-          "reciprocal_proposed": false,
+          "relationship_id": "REL-SLP004-COG005",
           "relationship_type": "complementary",
-          "status": "draft",
           "title": {
             "fallback": false,
             "key": "functions.ocf-cog-005.title",
@@ -19968,6 +19323,7 @@
           }
         }
       ],
+      "relationship_proposals": [],
       "short_description": {
         "fallback": false,
         "key": "functions.ocf-slp-004.short-description",
@@ -20256,7 +19612,7 @@
       "reimplementation_status": "planned",
       "related_functions": [
         {
-          "approval": "OCF-GUIDE-REVIEW-001",
+          "approval": "Explicit user-approved guide relationship review.",
           "dependency": "optional",
           "description": {
             "fallback": false,
@@ -20267,6 +19623,7 @@
           },
           "function_id": "OCF-SLP-001",
           "relationship_id": "REL-SLP005-SLP001",
+          "relationship_type": "related",
           "title": {
             "fallback": false,
             "key": "functions.ocf-slp-001.title",

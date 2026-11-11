@@ -7,7 +7,8 @@ title:
   status: canonical
   version: 1.0.0
 description:
-  text: Supports efficient breathing and respiratory maintenance, with conscious reinforcement when desired.
+  text: Supports efficient breathing and respiratory maintenance, with conscious reinforcement when
+    desired.
   status: canonical
   version: 1.0.0
 metadata_entries: {}
@@ -91,24 +92,14 @@ common_uses:
   status: draft
 relationships:
   related_functions: []
-  complementary_functions: []
-  proposals:
+  complementary_functions:
   - function_id: OCF-FND-004
-    relationship_type: complementary
+    description_key: relationships.rel-bod009-fnd004.description
     description:
       text: Comfortable breathing awareness and relaxation offer distinct wellness intentions; breathing
         difficulty still requires appropriate medical attention.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-BOD-009
-      field: description
-      sha256: e03a7abc8e329c42fc38ada310b455fb49bfdfda577ccc2fccfc382ffe02b3df
-    - function_id: OCF-FND-004
-      field: description
-      sha256: 7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9
+      status: reviewed
+      version: 1.0.0
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -330,31 +321,32 @@ editorial:
     recommended_primary_cue: PLUS-BREATHE BETTER
     prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
       association plan; approve controls together. No narration replacement text selected.
-    contextual_review: Respiratory-system maintenance, airway clearance, gas exchange and adaptive breathing.
-      Inhale/hold/cue/exhale, without an added eye-closing step. Breathe is a verb/pronunciation correction,
-      not formatting of Breath.
+    contextual_review: Respiratory-system maintenance, airway clearance, gas exchange and adaptive
+      breathing. Inhale/hold/cue/exhale, without an added eye-closing step. Breathe is a verb/pronunciation
+      correction, not formatting of Breath.
     pair_reason: BREATHE is the natural spoken verb and already appears in reviewed narration; BREATH
-      is the noun. A registry correction could align the phrase without rewriting that speech, but still
-      needs command approval.
-    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
-      outcome or contextual mode can reinforce an umbrella title without copying it. BREATHE is the natural
-      spoken verb and already appears in reviewed narration; BREATH is the noun. A registry correction
-      could align the phrase without rewriting that speech, but still needs command approval.
+      is the noun. A registry correction could align the phrase without rewriting that speech, but
+      still needs command approval.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. BREATHE
+      is the natural spoken verb and already appears in reviewed narration; BREATH is the noun. A
+      registry correction could align the phrase without rewriting that speech, but still needs command
+      approval.
     teaching_disposition: Preserve complete taught cue; metadata/title alignment only
     documentary_intent: Claimed improvement/renewal of breathing structures and oxygen/waste exchange.
     alternatives: []
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 7d15134464bb5c196efbe563828092e7bb0e286a9be61f930bf36e1f0c685dca
+  contract_sha256: 04f4efb1d19e7d6978f246e85aee6c4bf4d8ac6166fee153e94cb3ffeef3f93c
 record_metadata:
   legacy:
     command_ids:
@@ -446,6 +438,26 @@ record_metadata:
       hplus.function.ocf-bod-009.closer: 25f332161f349cc401b990a3797644bb003f60ed5f9951bee8ddb3431354635d
     review_note: Respiratory-support intent and procedures remain; Breathe is the approved verb. Existing
       body speech already matches.
+  - id: REL-BOD009-FND004
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 4d7f9153565295f225838b9246d7d946349c858172c780f7f18717134e8f25ab
+    current_values_sha256: 646748ded7ba7e35787749c0e3831a9756fa5ed03f888d35b3db7983ab8d4e3a
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-BOD-009", "sha256": "e03a7abc8e329c42fc38ada310b455fb49bfdfda577ccc2fccfc382ffe02b3df"},
+      {"field": "description", "function_id": "OCF-FND-004", "sha256": "7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9"}]'
+    relationship_id: REL-BOD009-FND004
+    related_function_id: OCF-FND-004
+    relationship_type: complementary
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -628,8 +640,8 @@ content:
       source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -679,14 +691,15 @@ content:
       - persistent-physiological-perfection
       family: organ-renewal-intensification
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
           - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
             end_line: 59
-            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and
+              Maintenance.txt
             source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
             start_line: 54
           status: supported
@@ -696,7 +709,8 @@ content:
           locators:
           - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
             end_line: 74
-            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and
+              Maintenance.txt
             source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
             start_line: 60
           status: supported
@@ -705,7 +719,8 @@ content:
           locators:
           - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
             end_line: 219
-            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and
+              Maintenance.txt
             source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
             start_line: 75
           status: supported
@@ -715,50 +730,55 @@ content:
           locators:
           - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
             end_line: 59
-            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and
+              Maintenance.txt
             source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
             start_line: 31
           status: inferred
-          summary: Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological
-            reinterpretation is equivalent. Useful experiential operations and material purpose changes
-            require explicit content review; medical management and breath-hold issues remain outside
-            software efficacy claims.
+          summary: Do not reproduce unsupported physiological/medical mechanisms as fact or assume
+            a psychological reinterpretation is equivalent. Useful experiential operations and material
+            purpose changes require explicit content review; medical management and breath-hold issues
+            remain outside software efficacy claims.
         future_use:
           locators:
           - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
             end_line: 63
-            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and
+              Maintenance.txt
             source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
             start_line: 54
           status: supported
-          summary: Use the cue/breathing procedure as described for the selected response; asserted effectiveness
-            is a claim, not an observed result.
+          summary: Use the cue/breathing procedure as described for the selected response; asserted
+            effectiveness is a claim, not an observed result.
         handoff:
           locators:
           - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
             end_line: 219
-            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and
+              Maintenance.txt
             source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
             start_line: 117
           status: unknown
-          summary: Investigated the full available source; this operation is not established. Final waking
-            ending absent. Source ASR renders breathe-better while canonical metadata uses BREATH BETTER;
-            command provenance needs audio review, not silent correction.
+          summary: Investigated the full available source; this operation is not established. Final
+            waking ending absent. Source ASR renders breathe-better while canonical metadata uses
+            BREATH BETTER; command provenance needs audio review, not silent correction.
         identity:
           locators:
           - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
             end_line: 59
-            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and
+              Maintenance.txt
             source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
             start_line: 54
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
             end_line: 59
-            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and
+              Maintenance.txt
             source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
             start_line: 31
           status: supported
@@ -768,17 +788,19 @@ content:
           locators:
           - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
             end_line: 30
-            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and
+              Maintenance.txt
             source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
             start_line: 26
           status: supported
-          summary: Introduce a body-oriented intended response and receptive learning context, not evidence
-            that the physiology changed.
+          summary: Introduce a body-oriented intended response and receptive learning context, not
+            evidence that the physiology changed.
         preparation:
           locators:
           - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
             end_line: 25
-            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and
+              Maintenance.txt
             source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
             start_line: 2
           status: supported
@@ -788,19 +810,21 @@ content:
           locators:
           - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
             end_line: 219
-            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and
+              Maintenance.txt
             source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
             start_line: 1
           status: supported
           summary: Complete available partial_source_transcript text inspected; shared representations
-            are not independent corroboration. Source accuracy/authentication remains unresolved. Final
-            waking ending absent. Source ASR renders breathe-better while canonical metadata uses BREATH
-            BETTER; command provenance needs audio review, not silent correction.
+            are not independent corroboration. Source accuracy/authentication remains unresolved.
+            Final waking ending absent. Source ASR renders breathe-better while canonical metadata
+            uses BREATH BETTER; command provenance needs audio review, not silent correction.
         purpose:
           locators:
           - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
             end_line: 1
-            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and
+              Maintenance.txt
             source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
             start_line: 1
           status: supported
@@ -809,18 +833,20 @@ content:
           locators:
           - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
             end_line: 63
-            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and
+              Maintenance.txt
             source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
             start_line: 31
           status: unknown
-          summary: Investigated the full available source; this operation is not established. Final waking
-            ending absent. Source ASR renders breathe-better while canonical metadata uses BREATH BETTER;
-            command provenance needs audio review, not silent correction.
+          summary: Investigated the full available source; this operation is not established. Final
+            waking ending absent. Source ASR renders breathe-better while canonical metadata uses
+            BREATH BETTER; command provenance needs audio review, not silent correction.
         safety_claims:
           locators:
           - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
             end_line: 59
-            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and
+              Maintenance.txt
             source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
             start_line: 31
           status: supported
@@ -830,7 +856,8 @@ content:
           locators:
           - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
             end_line: 30
-            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and
+              Maintenance.txt
             source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
             start_line: 26
           status: supported
@@ -840,13 +867,14 @@ content:
           locators:
           - content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
             end_line: 219
-            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and Maintenance.txt
+            file: +Transcripts From available tapes/Lung Support and Maintenance/Lung Support and
+              Maintenance.txt
             source_sha256: f390b85a71f1c00cc1f5c16708e7f0981da0d588edb67a26f365555a2dac2f87
             start_line: 1
           status: unknown
-          summary: Investigated the full available source; this operation is not established. Final waking
-            ending absent. Source ASR renders breathe-better while canonical metadata uses BREATH BETTER;
-            command provenance needs audio review, not silent correction.
+          summary: Investigated the full available source; this operation is not established. Final
+            waking ending absent. Source ASR renders breathe-better while canonical metadata uses
+            BREATH BETTER; command provenance needs audio review, not silent correction.
       source_extent:
         content_group_sha256: 5ea9180992bc432c5bd3cb637bfb523c6d88517608344df1b0c3a750f71256f6
         end_line: 219
@@ -928,12 +956,12 @@ content:
     metadata_ref: canonical-function-record
     preparation: []
     questions:
-    - Final waking ending absent. Source ASR renders breathe-better while canonical metadata uses BREATH
-      BETTER; command provenance needs audio review, not silent correction.
+    - Final waking ending absent. Source ASR renders breathe-better while canonical metadata uses
+      BREATH BETTER; command provenance needs audio review, not silent correction.
     - Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological
-      reinterpretation is equivalent. Useful experiential operations and material purpose changes require
-      explicit content review; medical management and breath-hold issues remain outside software efficacy
-      claims.
+      reinterpretation is equivalent. Useful experiential operations and material purpose changes
+      require explicit content review; medical management and breath-hold issues remain outside software
+      efficacy claims.
     states:
       preferred: []
       required: []

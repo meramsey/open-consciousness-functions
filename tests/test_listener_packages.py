@@ -20,7 +20,14 @@ def source(tmp_path, monkeypatch):
 
     def fake_guides(stage, function_ids, **kwargs):
         result = []
-        for stem in ["listening-guide", "index", *(f"functions/{fid}" for fid in function_ids)]:
+        for stem in [
+            "listening-guide",
+            "index",
+            *(
+                "functions/" + packages.function_guide_stem(packages.load_function_by_id(fid))
+                for fid in function_ids
+            ),
+        ]:
             for suffix in ("md", "pdf", "html"):
                 path = stage / "guides" / f"{stem}.{suffix}"
                 path.parent.mkdir(parents=True, exist_ok=True)
@@ -169,7 +176,12 @@ def test_collection_and_duplicate_identity(source, tmp_path):
     assert len(list((tmp_path / "collection").glob("*/manifest.json"))) == 2
     for function_id in (first_id, "OCF-EXP-001"):
         assert (tmp_path / "collection" / function_id / "listening-guide.pdf").is_file()
-        assert (tmp_path / "collection" / function_id / "function-guide.pdf").is_file()
+        assert (
+            tmp_path
+            / "collection"
+            / function_id
+            / (result["function_guides"][function_id] + ".pdf")
+        ).is_file()
 
 
 @pytest.mark.unit
@@ -194,13 +206,27 @@ def test_current_cached_guides_subset_and_corruption(tmp_path):
     cache.mkdir()
     artifacts = packages.attach_guides(cache, ["OCF-EXP-003"])
     assert len(artifacts) == 12
-    assert (cache / "guides/functions/OCF-EXP-006.pdf").is_file()
+    assert (
+        cache
+        / (
+            "guides/functions/"
+            + packages.function_guide_stem(packages.load_function_by_id("OCF-EXP-006"))
+            + ".pdf"
+        )
+    ).is_file()
     for item in artifacts:
         assert (cache / item["path"]).is_file()
     output = tmp_path / "output"
     output.mkdir()
     assert len(packages.attach_guides(output, ["OCF-EXP-003"], source=cache / "guides")) == 12
-    (cache / "guides/functions/OCF-EXP-003.pdf").write_bytes(b"%PDF-corrupt")
+    (
+        cache
+        / (
+            "guides/functions/"
+            + packages.function_guide_stem(packages.load_function_by_id("OCF-EXP-003"))
+            + ".pdf"
+        )
+    ).write_bytes(b"%PDF-corrupt")
     with pytest.raises(OCFError, match="corrupt or stale guide"):
         packages.attach_guides(tmp_path / "bad", ["OCF-EXP-003"], source=cache / "guides")
     with pytest.raises(OCFError, match="en-US"):
@@ -333,7 +359,36 @@ def test_related_guide_closure_and_encoded_edition_navigation(tmp_path):
         edition_files={"OCF-EXP-001": [{"path": "OCF-EXP-001/Café test.mp3", "label": ".mp3"}]},
     )
     assert len(artifacts) == 15
-    assert (tmp_path / "guides/functions/OCF-EXP-006.pdf").is_file()
+    assert (
+        tmp_path
+        / (
+            "guides/functions/"
+            + packages.function_guide_stem(packages.load_function_by_id("OCF-EXP-006"))
+            + ".pdf"
+        )
+    ).is_file()
     index = (tmp_path / "guides/index.md").read_text(encoding="utf-8")
     assert "Caf%C3%A9%20test.mp3" in index and "FLAC audio" not in index
     assert "MP3 audio" in index and "do not imply" in index
+
+
+@pytest.mark.unit
+def test_legacy_id_only_guide_package_remains_verifiable(source, tmp_path):
+    folder, _ = source
+    output = tmp_path / "legacy"
+    result = packages.package_auditions([folder], output)
+    mapping = result.pop("function_guides")
+    for item in result["artifacts"]:
+        previous = item["path"]
+        renamed = previous
+        for identity, stem in mapping.items():
+            renamed = renamed.replace(
+                "guides/functions/" + stem + ".", "guides/functions/" + identity + "."
+            )
+            if renamed == identity + "/" + stem + ".pdf":
+                renamed = identity + "/function-guide.pdf"
+        if renamed != previous:
+            (output / previous).rename(output / renamed)
+            item["path"] = renamed
+    (output / "package.json").write_text(json.dumps(result))
+    assert packages.verify_package(output)["sessions"] == result["sessions"]

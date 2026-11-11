@@ -1,0 +1,367 @@
+{
+  "schema_version": "1.0",
+  "id": "OCF-GUIDE-RELATIONSHIPS-002",
+  "source_revision": "0e7ca1199969f41f282b8cff5a5fb0ee459fdb46",
+  "scope": "Owner-approved adoption of the existing 27 optional relationship suggestions only. No narration, cue, lifecycle, pacing or DSP change. Hash-only approval evidence; canonical locale YAML remains the sole content authority.",
+  "predecessor_sha256": {
+    "semantic": "21e2e860818b225a67bba343568e2a829ddc53a2e01d32525be1c3f2b0f632b9",
+    "catalog": "6853b67e26e9ee2ea7a74926d5af98d56c72892eeb16b40e0c03e5aa75ab6fab",
+    "shared": "614947344808b446037addf290493dd6f26aefcfe2a17e81732ee166a7f53cc7",
+    "relaxation": "0cd0674ffbbc1b852ff5aee9fd0df754e3e92915f0d9ca914e235ca426a86eeb"
+  },
+  "functions": {
+    "OCF-BOD-001": {
+      "previous_contract_sha256": "daa6976302fc583bce87c1e8ae50afb6829c79daba986ce1856aef5700f2bbcf",
+      "contract_sha256": "7e98e83269e8928e05898c0782a444e5c50b94bab93b05fbd161a0701446a282",
+      "approved_decisions_sha256": "0aa2b5ff4aef9e2b81d3c5e463af88ab8bca1d9849b0a0f33a34042999d0d40b",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "cae9852c4b829bb75ffc3c89fcdf951d712b77681cc60bf1aa3d58962e86fea8",
+      "previous_record_without_bindings_sha256": "0fa53185c950d4299c691f81c5fe243c208f8384f8972ab35752b0512ab22f24",
+      "record_without_bindings_sha256": "740fb5eea7a1cc13ef0b8e0bb8df0ecdbee4bd0b5cccb6f2997d98813f5d3609"
+    },
+    "OCF-BOD-003": {
+      "previous_contract_sha256": "1ae5059f81035b9d72f5cc2c86bd803e8877e5a3dd699bd4f6b125896a2d4c14",
+      "contract_sha256": "f0468de3458ce2ca2df8dad0ba9be5a90069cacfcbd6a9b716b7cb95a82dbc84",
+      "approved_decisions_sha256": "d3b4c5eec4925b54b61d29dfab030e1fd6be27d136b32f42266f6b02f43035e8",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "a8c34a46c100e15ba3054449345ce868142b23c714ee9dd4b36e49906325c479",
+      "previous_record_without_bindings_sha256": "3caffdf65b9640b0ee2cef26f05dd12f9b2fd96e3032ce2b1db0927387c7a2ee",
+      "record_without_bindings_sha256": "3caffdf65b9640b0ee2cef26f05dd12f9b2fd96e3032ce2b1db0927387c7a2ee"
+    },
+    "OCF-BOD-005": {
+      "previous_contract_sha256": "42ba3c0dc6a83477f60a54a9fdb44452a44a3e7214cdb51cff4139987f96c509",
+      "contract_sha256": "d8aecf843c177fb347ad9c7c6334357b4927a3418bca6da44e7cb56ff5172825",
+      "approved_decisions_sha256": "073d0f298487e7448c8cc53c83572da2e21623bd37688998bb7572351607a482",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "25639a0f6fb360e602c9be08a5ca1f39194a7053b621f3718bd972735cf4190b",
+      "previous_record_without_bindings_sha256": "af59464a5a58414e679ed96053b24b7ff622a9687fe03511fbac98d5a3dbad6f",
+      "record_without_bindings_sha256": "de11b209cf4c6fdba3811ff6298309fae280f3c5c07414c6586e1c1cff30564a"
+    },
+    "OCF-BOD-009": {
+      "previous_contract_sha256": "ead3cc82a715d876b8f09aaa484adab5c3218e720a0cb67f1de87ed8a0ab8284",
+      "contract_sha256": "7616ec04c0fac97f7670a280ae19c82d1d15907c03c4137025e74c22f58a2832",
+      "approved_decisions_sha256": "36051ec078b328357048637ac4b3b067bd246a6046c4d64bbd888938b510a0c5",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "16971d6b414c5b6a2fc1a3c4be0b9b2d0ed1dd17f8377703670070cd25237ef1",
+      "previous_record_without_bindings_sha256": "a3107501844ded1fcef423f46a8af0df354de1d19422c37e5c53c3d3c9ff3510",
+      "record_without_bindings_sha256": "a3107501844ded1fcef423f46a8af0df354de1d19422c37e5c53c3d3c9ff3510"
+    },
+    "OCF-BOD-013": {
+      "previous_contract_sha256": "f6d61e0c796887431cbef119457ab3f1606f2888709b4c875df661bf1ef59b57",
+      "contract_sha256": "ce6a83f88f0867e6923f4f50850a47b7e678859e0b045eb66f340b14250034de",
+      "approved_decisions_sha256": "38ebf90cf4e6fbff945cae894478c443b72ad68dea89b5eb743b94b0974f8907",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "7b7f56e93432880b03678f03a17c3dce7c4a7701694ca3a946145cce25956bf6",
+      "previous_record_without_bindings_sha256": "0eae42a748426603ecfe4c4984159df776ebc5a08f4f58f17d0793b24c81cc6c",
+      "record_without_bindings_sha256": "44d82f20fa64012c631365ce606737a68cab2efeba861a3e5b6970fe58431e08"
+    },
+    "OCF-COG-002": {
+      "previous_contract_sha256": "4f2ca23fd4277e67cefd073516804685196b0c2f956fbc614e81e3869ace1e41",
+      "contract_sha256": "ad8a4f8fcf74c1a3308b2f1a42e723cbc6aea527844cd735b5b5482185cc6b5e",
+      "approved_decisions_sha256": "13151204f84056e30f5b1f227c4ee3f7d0970e26af0ffd4a02cf5d28fcaf4995",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "94d07ab8c18a6487acbe34bcc701ee0822479b442fbdb796f0bc6e3a9a565917",
+      "previous_record_without_bindings_sha256": "14c3a071b927c65941cb3eb7b25cd39359b9c6e687ee26395372aa8bfa4c0e18",
+      "record_without_bindings_sha256": "14c3a071b927c65941cb3eb7b25cd39359b9c6e687ee26395372aa8bfa4c0e18"
+    },
+    "OCF-COG-003": {
+      "previous_contract_sha256": "3433bb310097eb73597f2f06d9a754f3598498223c4023404a10484c1cc8eb15",
+      "contract_sha256": "47b4d211ca63b232e5f6b18cf8a63b2067e8df7909b40fc25831b26a2fe90a8a",
+      "approved_decisions_sha256": "f433ba1965bcb784bb6895995564c569d76c9c02b1a4df08a02b06f65bb9df30",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "e7acccd5070861dbd54d22184b0cf635db43ac39e970aa9c079d95f7843e74de",
+      "previous_record_without_bindings_sha256": "700c0430f51b7e262f44a716fb1c43e08453b2c66097a95a74e6c0869e6f9dbf",
+      "record_without_bindings_sha256": "c0d58181210b6a51329981f22e5a3964b1b5026829d079f1b1a005f392d622fa"
+    },
+    "OCF-COG-004": {
+      "previous_contract_sha256": "e1d7fd0fc18497800c15317d3f6523670a967f8c01ae874151d93f2794469a50",
+      "contract_sha256": "c1e5e1d16fa1d2a97bc4e004b77c04591e02664d1a8c01b1c4a9a6be15ce276a",
+      "approved_decisions_sha256": "2f011f9ee8e252c367c67e3e2c66bcc8909cee42a730d8a674a934691c06ccbe",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "d2ec9d391f8213e344add64e304db6c9213f54dae8cf043b0c453226ceb791d3",
+      "previous_record_without_bindings_sha256": "1b91684661a921853624719f86cba8fc172dce07d79de88e57a647dd7f7e7736",
+      "record_without_bindings_sha256": "667e153c787da492a33a5e4289113bcebd409f8be0be2b81a816c59c687583ad"
+    },
+    "OCF-COG-005": {
+      "previous_contract_sha256": "a71101ffe70bee863cac770b855070bafc8159a12692601523ee46714110b720",
+      "contract_sha256": "41f335f9bd22b14af2e59ca469247250486592c6923eb6abfbd18c628102898c",
+      "approved_decisions_sha256": "a997692e81df6a41b4ec51ad25b22395e3f5b06490baa04490e3e1524ab81376",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "fa1127305d6967f0b886ea471365364db0f27898d39653da2a4bf624042b8198",
+      "previous_record_without_bindings_sha256": "60e3f0d20e9f8271798bcf879831d26e7eea910966f3b2957dc4b296c458736c",
+      "record_without_bindings_sha256": "60e3f0d20e9f8271798bcf879831d26e7eea910966f3b2957dc4b296c458736c"
+    },
+    "OCF-COG-006": {
+      "previous_contract_sha256": "4584cec1fd2de42f7aa0e1f742f385dec340180fee9aca711e4f0fcd4e17ee65",
+      "contract_sha256": "2988e2c1e95537d3dec72300259c8956ed331c1e3f09e5925abafea74240a4ef",
+      "approved_decisions_sha256": "293f3e6f6c17fd8b3515be40b0581fc539ac2d18297625b223166b77952584fa",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "99b3f2d248b657ed97719fc051e01df392676ec1d6945b8dc3613eaeae7ab41e",
+      "previous_record_without_bindings_sha256": "69ceeda114640f4a584474bf1cd5a9b7993eb5259cae6f63eece9ac041430934",
+      "record_without_bindings_sha256": "b9495cd0a876763aa25777f078892edca019a0ece9815c16ea7b39ef0425e1a0"
+    },
+    "OCF-COG-007": {
+      "previous_contract_sha256": "d70d6e6a365e45120f36c040383a1c5add619ef2312c5fd37198f1e76b238481",
+      "contract_sha256": "e53c34838d1866ec5db5ce61057bca731c9dfe4af1060a472d15b68719d30f7e",
+      "approved_decisions_sha256": "0e7e3d27d8374235f8bddcf5c99c7557f7b4f9e7b73cbea406a87b016ea628d5",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "f83055c3f61fb3e804c6c4259b395cb15628a1f950fbb7acb90cd85525caaf7a",
+      "previous_record_without_bindings_sha256": "b100acdf9a15cf263aab5ca9796a9bd4f2c9f65c4d9d9dd768a3a9a00f9953f2",
+      "record_without_bindings_sha256": "b100acdf9a15cf263aab5ca9796a9bd4f2c9f65c4d9d9dd768a3a9a00f9953f2"
+    },
+    "OCF-EMO-002": {
+      "previous_contract_sha256": "e4dea58b8e704588245d3473b381f095c71d07665711281cf92fb849b10ee540",
+      "contract_sha256": "d6c30a664a0c04d7017a5598a08a6c347fe7302d4150db8b43f00b94e8eda142",
+      "approved_decisions_sha256": "c5870cbc71af258ea720690f264e2fc2bf401b672ce8b1b66eb74900320023da",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "6cd69713507072313c7542b4b093f36673929873e4b0494ec10d52244d55d291",
+      "previous_record_without_bindings_sha256": "19aafcad4503b5105d88c0f85224824e4e08e1045a3448895340272d5a9a2d4c",
+      "record_without_bindings_sha256": "67cecb14db887f5bae1f4a469aeeca6f89ace1fdf622bc1034bbed7c14518971"
+    },
+    "OCF-EMO-003": {
+      "previous_contract_sha256": "a0e1cb564261f66f23787c63064c0c64ff2311f7c9b3adfa6708dd1a398821e8",
+      "contract_sha256": "f1804ddb5a7029ecfc356097cb4b896e8d0705d8f06fea7c2defce1615598f05",
+      "approved_decisions_sha256": "aad787a8d85458ef1f04d6d6477658e351e144454b03bccddc31f7a95f87c3e7",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "8c4d59530d0b722323c4195b8f084ec3f13da086e116e6d00442b6f1483ec8ba",
+      "previous_record_without_bindings_sha256": "23b820bec069ccf60befbe509b10c61f5b0d460a00d8edbc259e472d12cd88b1",
+      "record_without_bindings_sha256": "23b820bec069ccf60befbe509b10c61f5b0d460a00d8edbc259e472d12cd88b1"
+    },
+    "OCF-FND-002": {
+      "previous_contract_sha256": "7c223ea3837a01355a12daf88fed310ec5f4d17b242e6efb503c5cf222053213",
+      "contract_sha256": "d87e8fcf8d4568363bc3f54b7bf8003b3a1df1fd4a66da2dbba61a544cf4bce2",
+      "approved_decisions_sha256": "95df54a16833ba6ea4de7b95c090eb472c31474cfdb3ce67f1491c9c87c7a375",
+      "previous_reviewed_relationships_sha256": "44fd6b6536297b944a33f56652eb21d25f1cfef248ac4fbf31d5f504bac26224",
+      "reviewed_relationships_sha256": "ebde0f807dd8b97feb2f7125561e1c553a881cca3a7dfe988fbcec737ec067ed",
+      "previous_record_without_bindings_sha256": "f04185a9cc1de5f73d4b7bcc01cb32d7abfa6a37497d49d8f3db6e3768ab39b9",
+      "record_without_bindings_sha256": "f04185a9cc1de5f73d4b7bcc01cb32d7abfa6a37497d49d8f3db6e3768ab39b9"
+    },
+    "OCF-FND-003": {
+      "previous_contract_sha256": "b4edde0c4bb85e364355781dc5974ddda0c2e9e96f10cbea689ec7ba88fdd707",
+      "contract_sha256": "33e32765ca94213960454dee68eca39f053818e4548288745be0d90d8b662ba4",
+      "approved_decisions_sha256": "0358b1ca250fa03f34457a305c2b32337e036b2c3fadfdb284197ff54e8985d3",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "050330f4e510c27aedb5b1dc0dd984c55370c5c120009d54d82932d5b3af115d",
+      "previous_record_without_bindings_sha256": "4d844eb3d6307d18669a41f929b479b2b249068adad6e07e1d4e07e279ce28a0",
+      "record_without_bindings_sha256": "4ff994dba8ee11dda1f7ad482002e67adf1002fea1dcbd4c489400a1f93d4475"
+    },
+    "OCF-FND-004": {
+      "previous_contract_sha256": "cc2c0eb6bf84c356ff9d7d60a7111f6cd67cfd67c5411e0d4d160e6078c45db5",
+      "contract_sha256": "a6633d56d238732a285a0f2a52f59d58a84eb0e8811f18e985844877e2f6689f",
+      "approved_decisions_sha256": "4730261f6d8d5f701c8594c5e7eb9bcb5925d1518d151fbc3665249ec409e112",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "28bb3c207c0051066ab6e250495bf448a29d9d8038a019df7eec161511887c6d",
+      "previous_record_without_bindings_sha256": "32558e7827f42c843f0d317e3e7b7dd91a77cb5babd66b1a6204c059f20c81f8",
+      "record_without_bindings_sha256": "32558e7827f42c843f0d317e3e7b7dd91a77cb5babd66b1a6204c059f20c81f8"
+    },
+    "OCF-LIF-001": {
+      "previous_contract_sha256": "ae30fcc78151f64e96ff07b73869f1cc78812721d394fe2bae09f4de2b79e095",
+      "contract_sha256": "f1d727e4d98de7622925f239e6f7152867306ff45e0a024505435a9297d1939c",
+      "approved_decisions_sha256": "c8d48d8976d380859fe69f9e57f3bb6a2b9f18b6d2e9e6f1369130cbe1f79600",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "756db4fcda8bb1639bc9452d9cb08e9636833f0c166c48b6d144f3221d551d6f",
+      "previous_record_without_bindings_sha256": "413af6fc9e86d51d477a8cb85e47b1d7f372e360e6aba10bab95b2ac1157743c",
+      "record_without_bindings_sha256": "803f1bbaf19baf9c4ce54a1f7f7a6c26fe7d316ff2e9dca79b49e42f9dc07294"
+    },
+    "OCF-PRF-001": {
+      "previous_contract_sha256": "0ab78c5143fef5d01252bf6a658a29ce0470c5b3c5aeeb3fa0e74d2f8d8f9627",
+      "contract_sha256": "e935c6ff2d2630f898d77238268d97e4ca397397c8bf5a692065bdf3e0d1b433",
+      "approved_decisions_sha256": "36d37dfd69115404cf2f005a241fffaf4c1dce97dcde431f36073876a7dffeb6",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "895091f00225b43d75379bf1f9f0ba94e5a647e55f20936a630d4948c5c4221c",
+      "previous_record_without_bindings_sha256": "85e1dbbefb3e5cd51b18382d42ab27fc541c62c8ed3b7b9a2a8faf5725383f42",
+      "record_without_bindings_sha256": "85e1dbbefb3e5cd51b18382d42ab27fc541c62c8ed3b7b9a2a8faf5725383f42"
+    },
+    "OCF-PRF-002": {
+      "previous_contract_sha256": "506359f12b926aed9645992c45db3eb1fde4ad052d39ae06f0a8c222e90779dd",
+      "contract_sha256": "c391f58ca7e8656b4035d092b0fe3625c48d8501ef963a0ef0e13ba3b226da77",
+      "approved_decisions_sha256": "ea2eb0ea915b47e1464204b4b173db91337b5074f4879cb3c4d0003049d502cb",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "7caaa0526ca424c100e3bf4e9b7995a306321c8a879281e38f4cb2ceb51ea736",
+      "previous_record_without_bindings_sha256": "e2a0d89813fbac427731fbc44af7a8b0e036f06b6f416880d791929eec14f47d",
+      "record_without_bindings_sha256": "1bd2fbe0db1c23fe22cb093c98d62405fb547aa8fd0077510d1307388fd0a6cd"
+    },
+    "OCF-PRF-003": {
+      "previous_contract_sha256": "96938d0f2ff5ac7da5ca5ecded6001e2f67842bbdd6748704495282fed6a1f99",
+      "contract_sha256": "374bbf0dfb3c79dcd1fb04f2523808499138996f7dfd7f328ee9f0d1cff5d1ca",
+      "approved_decisions_sha256": "89a17642490e26252b029adbf7b51c5bd8064d2c5370342014f62c0674fc064d",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "f36f484b5fe84d37b2bc9dd8fc33fcee51f0568cdcc62f9bdc37826a6b174ceb",
+      "previous_record_without_bindings_sha256": "797cccea3cbba1de53986b665d638d6739af6d3c54036ba1a61c62f4c763e943",
+      "record_without_bindings_sha256": "797cccea3cbba1de53986b665d638d6739af6d3c54036ba1a61c62f4c763e943"
+    },
+    "OCF-PRF-005": {
+      "previous_contract_sha256": "cc566b225cc123f82975fe91c1a3f1e1040e70fcbdc4100f234317839e7f61a7",
+      "contract_sha256": "d7b2b199ec6f5582b2ea9b1c8438539c8482d7aea8bd9c24438c7745821e3e69",
+      "approved_decisions_sha256": "9513f977813b7d8a4a8ca804049a2453a2599fdfa6edcc74dc2e9d8288bde65c",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "d6c1ce5d3b650d2c6e40b592edc3dc4a18adde875548f6af3a6be3cd35648262",
+      "previous_record_without_bindings_sha256": "a7fb07e1bf4956ebe119fda5d19f94fcbd973a7fe7bfc17b3f489b5cc06b5b5a",
+      "record_without_bindings_sha256": "c460c84ea18af40843a20ab3baf2110d46f299d089b3963fafcb90444d6d5a88"
+    },
+    "OCF-SEN-002": {
+      "previous_contract_sha256": "c7625b61ef923deccc38a471215fa9434e116d62e72d629c29f1cc31dfd050c7",
+      "contract_sha256": "d621f48e7e026ab82afb37054aaf2728699b51afe29210c58aa3dc9d79587f9d",
+      "approved_decisions_sha256": "2da2dacc1ea9d31c1d77c756083ec3f6df1cc77cc19c0f07cb47a8ddb011a0e8",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "9536cde89cf424db1f396f53e389e869cd02916a12ab0504f49ba28848c7e57e",
+      "previous_record_without_bindings_sha256": "5736c137be65aa9f69b5cc785d54b7336fb021299e0228a12d4340181ace608d",
+      "record_without_bindings_sha256": "5736c137be65aa9f69b5cc785d54b7336fb021299e0228a12d4340181ace608d"
+    },
+    "OCF-SEN-003": {
+      "previous_contract_sha256": "51acb7050ae4c55f442c2b967490fdb54df6925f6928e11321f36883cde6b7b2",
+      "contract_sha256": "711eb3cc133d8aeb111876cdac7594ec3a23f559a0358d52aaef542a88347b38",
+      "approved_decisions_sha256": "6366bc7210c2e77a302b698fe377d2e5d778a553eeea4f84ae6663097632f153",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "438d829289a0d427bbeaa0f2258faaeb25748b47cfdc563240bb9040833138d0",
+      "previous_record_without_bindings_sha256": "27abb10d0af831f3b0d23ba0dd148ca2d4a2d4baecdeeab7261648001092adcf",
+      "record_without_bindings_sha256": "2e2438ed1c0952f80676ee92cc8fbe6100d3fa7bed7adac1cb9638ea064eea91"
+    },
+    "OCF-SEN-005": {
+      "previous_contract_sha256": "5a102d92476974845cc11cafea70c1bba1c40537b2e96a5b12b238ce8e3b14cc",
+      "contract_sha256": "c29fca3915a861e6b08ff96fda59b23660ae4307171a8020c1cf0ab418aedb14",
+      "approved_decisions_sha256": "70e974932acf2188b208c8be9100407b91bf51785a1b22897ab5d72d550ec66e",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "7c30e8a3bcff1b776e6edb6323ad67f82098e511f12b7e519df172d2c9fdb3af",
+      "previous_record_without_bindings_sha256": "a301dddcb0d590d577a4deaed027e1ed35da1e6577eaf02d122af37af72dd99a",
+      "record_without_bindings_sha256": "a301dddcb0d590d577a4deaed027e1ed35da1e6577eaf02d122af37af72dd99a"
+    },
+    "OCF-SLP-002": {
+      "previous_contract_sha256": "9871314d14ca9ac8f3eb8a1a66a2cf3cc7203208f50bf5d74361d334be818059",
+      "contract_sha256": "b832de51450072e0e3498b1572d4b5ce01e643846757d72246d679616b0fde0b",
+      "approved_decisions_sha256": "1cc6215ca7a8683ebbb469e0a512dd26fdea47bf1166f0a36a81c756631a8e27",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "b5cbf4eac2041c29a5a0a360629dbd16b1a66d3c49214affd7f9439fe5ca9b43",
+      "previous_record_without_bindings_sha256": "ebcd66c7353b62c49a8b0ba9c404a1e2cf3c7ba777c301d026c8debf76d37022",
+      "record_without_bindings_sha256": "8c5eb7fcdb727ec1a394a1c6f01a94614ed9720d830f052f0819084cce2e2101"
+    },
+    "OCF-SLP-003": {
+      "previous_contract_sha256": "3b498d16b8832c12cfa6efb223e7fc4c5aa112ade5f00bec23f2524eda0e74e3",
+      "contract_sha256": "fc1295881c7ff29c1a8e738e890a3c29ff66c52f9bf046d59a5af03f46ab4419",
+      "approved_decisions_sha256": "a900cc0d7d8d0fb783c86932f1d32a2387c402096503fa6fb8d3416333db46bb",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "fd0fb3c20c473b20fc9fc1adc36da28c4cac9b354285a0731b0b91e4c9bf5a50",
+      "previous_record_without_bindings_sha256": "1570f854f5e11cf29825be4563195d6875e545c4f09e72cf4140a33ded19ffe3",
+      "record_without_bindings_sha256": "5d2595caa14de3663dc89a20e214b2ab7355a68bb6d405deea112b202f44f2d0"
+    },
+    "OCF-SLP-004": {
+      "previous_contract_sha256": "df2527e956444a9fd40bd32809264b0f4ce78b5af6d11ee7ba46a095efe7959b",
+      "contract_sha256": "052ee4e56dcba8d8675c61d7b5a03dcb0a3775d0fb59436e111315a8208cf442",
+      "approved_decisions_sha256": "daa054bc6878add2277e61bcc8f607d2afcc021b94d0a914c648819ccf01073b",
+      "previous_reviewed_relationships_sha256": "1d3d732c3e72aa37e2b6c70b21d9344d75b4d74bddbcc08f7af8c1829a727262",
+      "reviewed_relationships_sha256": "b68dcb00429d1d9bd036838fe773ec8a75edd5be018061dedd06498062fac3ea",
+      "previous_record_without_bindings_sha256": "26ba85c1f6bdb45cd9f4e6b209decb421a9c5124b0e54b841c3963f3c7e95888",
+      "record_without_bindings_sha256": "26ba85c1f6bdb45cd9f4e6b209decb421a9c5124b0e54b841c3963f3c7e95888"
+    }
+  },
+  "added_canonical_entries": {
+    "relationships.rel-bod001-bod002.description": {
+      "raw_sha256": "68b6ab9eecec9d6fa1301d0e94809bc4b98c8ed9af9f8c924533bf8bde0e0d0f",
+      "resolved_sha256": "68b6ab9eecec9d6fa1301d0e94809bc4b98c8ed9af9f8c924533bf8bde0e0d0f"
+    },
+    "relationships.rel-bod003-fnd004.description": {
+      "raw_sha256": "6bbd30f74a0f22c6565c6e8c5b7f859d51ed997bf2c08ddd896d3cc59363645b",
+      "resolved_sha256": "6bbd30f74a0f22c6565c6e8c5b7f859d51ed997bf2c08ddd896d3cc59363645b"
+    },
+    "relationships.rel-bod005-lif001.description": {
+      "raw_sha256": "00eb4b010cf3db9ade5ad1190ef3c4dc092f54ab72342424c92a862ef45d303c",
+      "resolved_sha256": "00eb4b010cf3db9ade5ad1190ef3c4dc092f54ab72342424c92a862ef45d303c"
+    },
+    "relationships.rel-bod009-fnd004.description": {
+      "raw_sha256": "1bcc775caf2fc6bfc1217c6e74983460a22c0f2c3a35acfa38bc0dfbdc45a8ba",
+      "resolved_sha256": "1bcc775caf2fc6bfc1217c6e74983460a22c0f2c3a35acfa38bc0dfbdc45a8ba"
+    },
+    "relationships.rel-bod013-bod014.description": {
+      "raw_sha256": "0b0b490b25a8dd3058bd8de5f631e4aca718ea30c4a067c2853539784a73ddfa",
+      "resolved_sha256": "0b0b490b25a8dd3058bd8de5f631e4aca718ea30c4a067c2853539784a73ddfa"
+    },
+    "relationships.rel-cog002-fnd002.description": {
+      "raw_sha256": "73a6cdc8165377808254cff0071924278b41438898666b00f6dd6d2304136018",
+      "resolved_sha256": "73a6cdc8165377808254cff0071924278b41438898666b00f6dd6d2304136018"
+    },
+    "relationships.rel-cog003-exp006.description": {
+      "raw_sha256": "ae7d2653831bab8cccc91f6bfe14238ade1c220e0a29def2f581a568d4c4a9ff",
+      "resolved_sha256": "ae7d2653831bab8cccc91f6bfe14238ade1c220e0a29def2f581a568d4c4a9ff"
+    },
+    "relationships.rel-cog004-cog006.description": {
+      "raw_sha256": "b00cf9ae13e3fbf2b647ea0fcaa2d5f69806bac868abc916206fa30fd2803368",
+      "resolved_sha256": "b00cf9ae13e3fbf2b647ea0fcaa2d5f69806bac868abc916206fa30fd2803368"
+    },
+    "relationships.rel-cog005-exp006.description": {
+      "raw_sha256": "89eabe3eb1498054049226496adcd509cae7423f16881b83db43bd5a03b8dc42",
+      "resolved_sha256": "89eabe3eb1498054049226496adcd509cae7423f16881b83db43bd5a03b8dc42"
+    },
+    "relationships.rel-cog006-cog001.description": {
+      "raw_sha256": "9f4adf959f6c7aff82f9bd255570e2e28a8f3ed3071d3cfbd4dcef669c4a4029",
+      "resolved_sha256": "9f4adf959f6c7aff82f9bd255570e2e28a8f3ed3071d3cfbd4dcef669c4a4029"
+    },
+    "relationships.rel-cog007-cog005.description": {
+      "raw_sha256": "bc87c623397564b6fbec38fba305a640424f4fde927f47444f514e019c52266f",
+      "resolved_sha256": "bc87c623397564b6fbec38fba305a640424f4fde927f47444f514e019c52266f"
+    },
+    "relationships.rel-emo002-exp003.description": {
+      "raw_sha256": "1ca2e298469a6a8a179977adacd7825df6152f565f5665467c9acf0562cd99fd",
+      "resolved_sha256": "1ca2e298469a6a8a179977adacd7825df6152f565f5665467c9acf0562cd99fd"
+    },
+    "relationships.rel-emo003-com001.description": {
+      "raw_sha256": "8da8f1ce966a0db8571bd496996a05e1dc9f73027f4d0db0ca6f8b3b6ebd5d65",
+      "resolved_sha256": "8da8f1ce966a0db8571bd496996a05e1dc9f73027f4d0db0ca6f8b3b6ebd5d65"
+    },
+    "relationships.rel-fnd002-cog004.description": {
+      "raw_sha256": "4bcc68afb93d829b2970cac6f7e8f39d7d780c300e4f9671e34bcc555f2f2a47",
+      "resolved_sha256": "4bcc68afb93d829b2970cac6f7e8f39d7d780c300e4f9671e34bcc555f2f2a47"
+    },
+    "relationships.rel-fnd003-slp002.description": {
+      "raw_sha256": "b7f80d0f3167ecf2a59af95875791e15c79db9dc94e958ce080952aaeff2a4c2",
+      "resolved_sha256": "b7f80d0f3167ecf2a59af95875791e15c79db9dc94e958ce080952aaeff2a4c2"
+    },
+    "relationships.rel-fnd004-emo001.description": {
+      "raw_sha256": "f5729fe9c21c4c0cf8bf684fa79cbdfda67895557f122c9a0c36fdd836baffc1",
+      "resolved_sha256": "f5729fe9c21c4c0cf8bf684fa79cbdfda67895557f122c9a0c36fdd836baffc1"
+    },
+    "relationships.rel-lif001-aut001.description": {
+      "raw_sha256": "f22961aa9a8d64f4445c09c588f057518108bb01fa4e80aaf00e5cc0a5f35b89",
+      "resolved_sha256": "f22961aa9a8d64f4445c09c588f057518108bb01fa4e80aaf00e5cc0a5f35b89"
+    },
+    "relationships.rel-prf001-fnd002.description": {
+      "raw_sha256": "cd2f7853c6bd9370022194d989a43eb2d4463f716ad82c0c22ebce07e09f74e9",
+      "resolved_sha256": "cd2f7853c6bd9370022194d989a43eb2d4463f716ad82c0c22ebce07e09f74e9"
+    },
+    "relationships.rel-prf002-fnd005.description": {
+      "raw_sha256": "5fa69c11b8e8c54bfcd10d2f7db9658dfe7d81974b1c4129729a38a98f31a964",
+      "resolved_sha256": "5fa69c11b8e8c54bfcd10d2f7db9658dfe7d81974b1c4129729a38a98f31a964"
+    },
+    "relationships.rel-prf003-prf004.description": {
+      "raw_sha256": "9604dc254f73c71cc2aae322fb773266f4c9b0c14d6a7938e67918875398fcc6",
+      "resolved_sha256": "9604dc254f73c71cc2aae322fb773266f4c9b0c14d6a7938e67918875398fcc6"
+    },
+    "relationships.rel-prf005-exp001.description": {
+      "raw_sha256": "2ec17697a939ad0c6f929d694655242c54c7a7af8c009cf21acd5bb3be3700ad",
+      "resolved_sha256": "2ec17697a939ad0c6f929d694655242c54c7a7af8c009cf21acd5bb3be3700ad"
+    },
+    "relationships.rel-sen002-sen001.description": {
+      "raw_sha256": "c1ac451bac5f55cff4e273ac6aaf82e056967a632fd560f9771d5cb75ab37def",
+      "resolved_sha256": "c1ac451bac5f55cff4e273ac6aaf82e056967a632fd560f9771d5cb75ab37def"
+    },
+    "relationships.rel-sen003-sen004.description": {
+      "raw_sha256": "8c16232e5563779113297bde4af9dc7b55e6a7c88ecfa5b4deb2ed7e0cae1021",
+      "resolved_sha256": "8c16232e5563779113297bde4af9dc7b55e6a7c88ecfa5b4deb2ed7e0cae1021"
+    },
+    "relationships.rel-sen005-prf003.description": {
+      "raw_sha256": "d4362ee48a91b1522c9549eb10bc232a3d1b82238642da8c98c3ed0bf1ca6e41",
+      "resolved_sha256": "d4362ee48a91b1522c9549eb10bc232a3d1b82238642da8c98c3ed0bf1ca6e41"
+    },
+    "relationships.rel-slp002-slp005.description": {
+      "raw_sha256": "2e97b33f6fb4c54d48d922cea7e43cc6afdbd90cc36a1cc14fd4b7947578d055",
+      "resolved_sha256": "2e97b33f6fb4c54d48d922cea7e43cc6afdbd90cc36a1cc14fd4b7947578d055"
+    },
+    "relationships.rel-slp003-slp004.description": {
+      "raw_sha256": "0ca84786369fb94da753367f5bb3bc2041cc72f0c861c7fb0c7eb31bcb42a7fc",
+      "resolved_sha256": "0ca84786369fb94da753367f5bb3bc2041cc72f0c861c7fb0c7eb31bcb42a7fc"
+    },
+    "relationships.rel-slp004-cog005.description": {
+      "raw_sha256": "fe6fe81158af4829cbeaa83db563ddf2cb019afd17cbfb8f7e453c036612731a",
+      "resolved_sha256": "fe6fe81158af4829cbeaa83db563ddf2cb019afd17cbfb8f7e453c036612731a"
+    }
+  }
+}

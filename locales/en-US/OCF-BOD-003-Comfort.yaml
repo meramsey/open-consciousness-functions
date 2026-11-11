@@ -126,28 +126,19 @@ tags:
 common_uses:
 - text: Practicing attention to a sense of physical ease.
   status: draft
-- text: Exploring a calmer response to discomfort without ignoring symptoms or delaying appropriate care.
+- text: Exploring a calmer response to discomfort without ignoring symptoms or delaying appropriate
+    care.
   status: draft
 relationships:
   related_functions: []
-  complementary_functions: []
-  proposals:
+  complementary_functions:
   - function_id: OCF-FND-004
-    relationship_type: complementary
+    description_key: relationships.rel-bod003-fnd004.description
     description:
       text: Area-focused comfort and whole-body relaxation offer separate intentions for ease, without
         dismissing symptoms or replacing care.
-      status: draft
-    status: draft
-    dependency: optional
-    reciprocal_proposed: false
-    evidence:
-    - function_id: OCF-BOD-003
-      field: description
-      sha256: ec52113b6d7e845f6235c7b27e94cc87b0166f6c478f1fb69b5e3ab0c4a9c404
-    - function_id: OCF-FND-004
-      field: description
-      sha256: 7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9
+      status: reviewed
+      version: 1.0.0
 changelog:
 - version: 1.0.0
   change: Structural migration; narration and cues unchanged.
@@ -348,30 +339,30 @@ editorial:
     recommended_primary_cue: PLUS-COMFORT
     prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
       association plan; approve controls together. No narration replacement text selected.
-    contextual_review: Locate physical discomfort, close eyes, inhale/hold/numeric cue/candle-like exhale.
-      Reduces signal salience while retaining bodily awareness; COMFORT is a new association, not speech
-      already taught. Distinct from temporary numbing.
+    contextual_review: Locate physical discomfort, close eyes, inhale/hold/numeric cue/candle-like
+      exhale. Reduces signal salience while retaining bodily awareness; COMFORT is a new association,
+      not speech already taught. Distinct from temporary numbing.
     pair_reason: COMFORT is a clear constructive outcome and a substantial usability improvement over
       a numeric mnemonic; do not conflate it with temporary numbing and its release procedure.
-    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
-      outcome or contextual mode can reinforce an umbrella title without copying it. COMFORT is a clear
-      constructive outcome and a substantial usability improvement over a numeric mnemonic; do not conflate
-      it with temporary numbing and its release procedure.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. COMFORT
+      is a clear constructive outcome and a substantial usability improvement over a numeric mnemonic;
+      do not conflate it with temporary numbing and its release procedure.
     teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
     documentary_intent: Reduce the importance of discomfort signals from a selected body location.
     alternatives: []
     technical_impact:
       cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
         timing; do not rewrite old receipts/immutable locks.
-      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
-        references are current metadata, not proof of taught speech.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
       recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
         composed nonspoken marker; preserve originals. No recording relabeling.
       rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: 472133be89c48549b940230a333baf2a52bb200f038b341f7674f39325287ee9
+  contract_sha256: b8da51742adf3257d590d781a763b4451b1ced7293b611fccf201cbd6527aa9d
 record_metadata:
   legacy:
     command_ids:
@@ -390,8 +381,8 @@ record_metadata:
   compatibility:
     legacy_commands:
     - PLUS-55515
-    rationale: User approved Comfort / PLUS-COMFORT / Plus Comfort in OCF-EDITORIAL-TITLE-CUES-002. Numeric
-      wording remains historical lookup only; no bridge lesson is added.
+    rationale: User approved Comfort / PLUS-COMFORT / Plus Comfort in OCF-EDITORIAL-TITLE-CUES-002.
+      Numeric wording remains historical lookup only; no bridge lesson is added.
     state: historical-lookup
   historical_lookup:
   - text: De-Discomfort
@@ -456,11 +447,11 @@ record_metadata:
   - id: OCF-EDITORIAL-TITLE-CUES-002
     kind: approved-title-cue
     source_commit: 848ac6381bd0832edf9ce60da8a8f794eefa8afe
-    scope: One function's English title/primary cue and necessary body, reinforcement, closer and sign-off
-      substitutions. Historical numeric lookup retained; no procedure, persistence, mechanism, mode, timing
-      or translation change.
-    decision_source: User response '1' to OCF FUNCTION REVIEW [1/32], explicitly approving Comfort / PLUS-COMFORT
-      / Plus Comfort
+    scope: One function's English title/primary cue and necessary body, reinforcement, closer and
+      sign-off substitutions. Historical numeric lookup retained; no procedure, persistence, mechanism,
+      mode, timing or translation change.
+    decision_source: User response '1' to OCF FUNCTION REVIEW [1/32], explicitly approving Comfort
+      / PLUS-COMFORT / Plus Comfort
     source_row_sha256: ebf4b5a091c8d0c16c9e13a8b84c4d18c60235e2f2a457196834da19d391e465
     status: accepted
     previous_values_sha256: ff84892fae5569c93b49e4aba708db999bb62e72b3adbea54d6c852df6476b6a
@@ -475,8 +466,28 @@ record_metadata:
       hplus.function.ocf-bod-003.function-body: 2ca65cb982d284bd894e933bf30869da8a4093437a18ff8e25df3309ebd6c2fb
       hplus.function.ocf-bod-003.closer: 13a57c7669c928555124e68094d9ded80c26acf25c9f506303538931db4a66b1
     review_note: Selected physical discomfort/signal salience, with bodily awareness retained. Preserve
-      targeting, close eyes, inhale/hold, internal cue and candle-like exhale; no separate mode or release
-      is introduced.
+      targeting, close eyes, inhale/hold, internal cue and candle-like exhale; no separate mode or
+      release is introduced.
+  - id: REL-BOD003-FND004
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: b2f13c200b70e5c8e699836ece963e0bf4d6111a2c24599691a8a8e9487ab258
+    current_values_sha256: 429a35f17d1ac61e5bfc6da1f7f6fd78f49c4ee32618335bc2d8bec242aae4cb
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-BOD-003", "sha256": "ec52113b6d7e845f6235c7b27e94cc87b0166f6c478f1fb69b5e3ab0c4a9c404"},
+      {"field": "description", "function_id": "OCF-FND-004", "sha256": "7a0cb36390047b6fa620b9fe2c3899c70fb1091c28b6779aed7e964288bc4cd9"}]'
+    relationship_id: REL-BOD003-FND004
+    related_function_id: OCF-FND-004
+    relationship_type: complementary
+    dependency: optional
+    reciprocal_approved: false
 content:
   bindings:
     default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
@@ -669,8 +680,8 @@ content:
       source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
     questions:
     - Source derivatives are not independently authenticated recordings
-    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
-      of an operation
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
     sources:
     - authentication: operator-designated
       completeness: pending-source-review; apparent boundaries do not prove completeness
@@ -719,8 +730,8 @@ content:
       - automatic-whole-system-learning
       family: targeted-sensation-reduction
       method: complete-available-source-content-review
-      scope: documentary extraction; not narration approval, historical authentication or runtime state
-        binding
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
       sections:
         association:
           locators:
@@ -759,8 +770,8 @@ content:
             source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
             start_line: 30
           status: inferred
-          summary: Pain/discomfort modulation is not treatment or proof of safety. Legacy numeric cue
-            differs from canonical COMFORT; preserve compatibility metadata and flag mechanism/purpose
+          summary: Pain/discomfort modulation is not treatment or proof of safety. Legacy numeric
+            cue differs from canonical COMFORT; preserve compatibility metadata and flag mechanism/purpose
             review.
         future_use:
           locators:
@@ -770,8 +781,8 @@ content:
             source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
             start_line: 30
           status: supported
-          summary: Use the cue/breathing procedure as described for the selected response; asserted effectiveness
-            is a claim, not an observed result.
+          summary: Use the cue/breathing procedure as described for the selected response; asserted
+            effectiveness is a claim, not an observed result.
         handoff:
           locators:
           - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
@@ -789,8 +800,8 @@ content:
             source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
             start_line: 30
           status: supported
-          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
-            cue association inspected without inventing a new command.
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
         main:
           locators:
           - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
@@ -809,8 +820,8 @@ content:
             source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
             start_line: 25
           status: supported
-          summary: Introduce a body-oriented intended response and receptive learning context, not evidence
-            that the physiology changed.
+          summary: Introduce a body-oriented intended response and receptive learning context, not
+            evidence that the physiology changed.
         preparation:
           locators:
           - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
@@ -829,10 +840,10 @@ content:
             source_sha256: bd84798ad0ac710ba5820ae872f077f2763ca20e7395d8880a78ac96e8492eae
             start_line: 1
           status: supported
-          summary: Complete available source_transcript text inspected; shared representations are not
-            independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
-            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing
-            or original underlay; unspecified cancellation remains unknown.
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
+            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact
+            timing or original underlay; unspecified cancellation remains unknown.
         purpose:
           locators:
           - content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
@@ -881,8 +892,8 @@ content:
             start_line: 1
           status: unknown
           summary: Investigated the full available source; this operation is not established. Source-designated
-            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing
-            or original underlay; unspecified cancellation remains unknown.
+            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact
+            timing or original underlay; unspecified cancellation remains unknown.
       source_extent:
         content_group_sha256: 3e48c5159247f04ff42bd252cbd10c3db59210c2abc7b90576b330c38f8cc6de
         end_line: 109

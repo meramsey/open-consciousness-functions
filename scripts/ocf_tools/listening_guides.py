@@ -12,9 +12,10 @@ from html import escape as html_escape
 from html.parser import HTMLParser
 from io import BytesIO
 from pathlib import Path
-from urllib.parse import unquote, urlsplit
+from urllib.parse import quote, unquote, urlsplit
 from xml.sax.saxutils import escape
 
+from .artifact_names import safe_component
 from .artwork_content import function_artwork_content
 from .indexes import load_all_functions
 from .locale import LocaleCatalog
@@ -24,6 +25,43 @@ from .utils import OCFError, write_bytes_atomic, write_text_atomic
 MISSING = (
     "Reviewed guide instructions and relationships are not supplied here; no instructions inferred."
 )
+
+
+def guide_stem(function_id, title):
+    """Edition-independent filename: stable identity plus readable localized title."""
+    if not isinstance(function_id, str) or not re.fullmatch(
+        r"OCF-[A-Z]{3}-[A-Z0-9]{3,4}", function_id
+    ):
+        raise OCFError("invalid function guide identity")
+    name = function_id + " - " + safe_component(title, max_length=96)
+    while len(name.encode("utf-8")) > 200:
+        name = name[:-1]
+    return name.rstrip(" .-")
+
+
+def function_guide_stem(record, *, catalog=None):
+    from .localized_authority import title
+
+    return guide_stem(record.id, title(record, catalog=catalog))
+
+
+def _guide_href(function_id, title, *, prefix=""):
+    return quote(prefix + guide_stem(function_id, title) + ".md", safe="/")
+
+
+def validate_guide_stems(mapping, identities):
+    """Keep manifest-pinned historical names; never resolve them from today's titles."""
+    if not isinstance(mapping, dict) or set(mapping) != set(identities):
+        raise OCFError("guide filename identity inventory mismatch")
+    for identity, stem in mapping.items():
+        if (
+            not isinstance(stem, str)
+            or not stem.startswith(identity + " - ")
+            or any(c in stem for c in "/\\")
+            or stem != guide_stem(identity, stem[len(identity) + 3 :])
+        ):
+            raise OCFError("invalid guide filename mapping")
+    return mapping
 
 
 def _literal(value):
@@ -304,6 +342,11 @@ def function_markdown(record, content, *, documentation=None, narration_sections
     return "\n".join(lines)
 
 
+def function_guide_entry_keys(metadata):
+    """Function-only narration inventory; preparation closure stays in its own guide."""
+    return [key for key in metadata.get("entries", {}) if key.rsplit(".", 1)[-1] != "access-close"]
+
+
 def function_guide_markdown(record, *, catalog=None, locale="en-US"):
     """One production projection of existing command/locale/lifecycle services."""
     from .command_docs import _function_document
@@ -317,7 +360,11 @@ def function_guide_markdown(record, *, catalog=None, locale="en-US"):
     seen_sections = {}
     for item in (record.data.get("narration") or {}).get("sequence", []):
         key = item.get("key")
-        if not key:
+        if (
+            not key
+            or item.get("role") == "access-close"
+            or key.rsplit(".", 1)[-1] == "access-close"
+        ):
             continue
         variables = item.get("variables") or {}
         identity = (key, json.dumps(variables, sort_keys=True, ensure_ascii=False))
@@ -345,7 +392,7 @@ def function_guide_markdown(record, *, catalog=None, locale="en-US"):
 
     function_metadata = localized_metadata(record, locale, catalog=catalog) or {}
     included_keys = {section["key"] for section in narration_sections}
-    for key in function_metadata.get("entries", {}):
+    for key in function_guide_entry_keys(function_metadata):
         if key in included_keys:
             continue
         entry, resolution = catalog.resource(key, locale, domain="narration", fallback=False)
@@ -381,6 +428,8 @@ def reader_function_markdown(record, content, *, documentation, narration_sectio
         "",
     ]
     for command in documentation["commands"]:
+        if command["role"] in {"access-close", "legacy-alias"}:
+            continue
         cue = command["cue_presentation"]
         lines += [
             "## "
@@ -411,34 +460,20 @@ def reader_function_markdown(record, content, *, documentation, narration_sectio
     if documentation.get("lifecycle_scopes"):
         lines += ["## Use and duration", ""]
         lines += [
-            scope["description"]["text"] + "\n" for scope in documentation["lifecycle_scopes"]
+            scope["description"]["text"] + "\n"
+            for scope in documentation["lifecycle_scopes"]
+            if scope["kind"] not in {"access-channel", "access_channel"}
         ]
     for field, heading in (("common_uses", "Common uses"), ("tags", "Tags")):
         if documentation.get(field):
             lines += ["## " + heading, ""]
-            lines += [
-                "- " + value["text"] + (" (draft)" if value.get("status") == "draft" else "")
-                for value in documentation[field]
-            ]
+            lines += ["- " + value["text"] for value in documentation[field]]
             lines += [""]
     if documentation["related_functions"]:
         lines += ["## Related functions", ""]
         lines += [
-            f"- [{row['title']['text']}]({row['function_id']}.md). {row['description']['text']}"
+            f"- [{row['title']['text']}]({_guide_href(row['function_id'], row['title']['text'])}). {row['description']['text']}"
             for row in documentation["related_functions"]
-        ]
-        lines += [""]
-    proposals = documentation.get("relationship_proposals", [])
-    if proposals:
-        lines += [
-            "## Draft optional suggestions",
-            "",
-            "Editorial suggestions for separate practices, not approved guidance or instructions to combine recordings.",
-            "",
-        ]
-        lines += [
-            f"- Draft {row['relationship_type']}: [{row['title']['text']}]({row['function_id']}.md). {row['description']['text']}"
-            for row in proposals
         ]
         lines += [""]
     if record.safety_notes:
@@ -453,6 +488,8 @@ def reader_function_markdown(record, content, *, documentation, narration_sectio
         "access-close": "Access channel closure",
     }
     for section in narration_sections:
+        if section["role"] == "access-close":
+            continue
         lines += [
             "### " + headings.get(section["role"], section["role"].replace("-", " ").capitalize()),
             "",
@@ -474,48 +511,52 @@ def markdown_documents():
     }
     records = load_all_functions()
     for record in records:
-        filename = f"functions/{record.id}.md"
+        filename = "functions/" + function_guide_stem(record, catalog=catalog) + ".md"
         documents[filename] = function_guide_markdown(record, catalog=catalog)
     documents["index.md"] = _guide_catalog(records)
     return documents
 
 
 def reference_documents(records, *, catalog=None):
-    """Source-derived references, not new procedures or relationship approvals."""
+    """Listener references; historical compatibility stays on its own lookup page."""
     from .command_docs import build_command_index
+    from .commands import is_active, resolve_phrase
 
     catalog = catalog or LocaleCatalog()
     index = build_command_index("en-US", catalog=catalog)
     cues = [
         "# Cue reference",
         "",
-        "Only declared cues are listed. Unavailable spoken wording is not invented. Compatibility and legacy roles are lookup records, not additional activation instructions.",
+        "Current function controls. Preparation access closure is taught in Preparation Learning.",
         "",
     ]
     relations = [
         "# Relationship map",
         "",
-        "The reviewed links below are optional comparisons, not prerequisites or combined protocols. Draft proposals are separated and are not approvals.",
+        "Optional comparisons between independently chosen practices; no prerequisite or combined protocol is implied.",
         "",
     ]
     complementary = [
         "# Complementary function map",
         "",
-        "No new complementary links have human approval. DRAFT suggestions below are optional separate practices, not combined protocols or audio-stacking instructions.",
+        "Optional separate practices, not instructions to combine or stack recordings.",
         "",
     ]
-    tags = [
-        "# Tag discovery",
+    tags = ["# Tag discovery", "", "Browse functions by topic and intended use.", ""]
+    historical = [
+        "# Historical H-Plus lookup",
         "",
-        "All current tag assignments and common-use additions are DRAFT editorial metadata, not spoken commands or reviewed efficacy claims.",
+        "Use this page to find current OCF functions from historical names and compatibility aliases. Historical wording is not an additional current activation instruction.",
         "",
     ]
     tag_rows = {}
-    proposed = []
     for function in index["functions"]:
         identity = function["function_id"]
-        cues += [f"## [{identity}: {function['title']['text']}](functions/{identity}.md)", ""]
+        heading = f"## [{identity}: {function['title']['text']}]({_guide_href(identity, function['title']['text'], prefix='functions/')})"
+        cues += [heading, ""]
         for command in function["commands"]:
+            if command["role"] in {"legacy-alias", "access-close"}:
+                continue
             cue = command["cue_presentation"]
             spoken = cue.get("spoken_cue") or "Not supplied as reviewed spoken wording"
             cues += [
@@ -523,24 +564,37 @@ def reference_documents(records, *, catalog=None):
             ]
         cues += [""]
         for relation in function["related_functions"]:
-            relations += [
-                f"- [{identity}: {function['title']['text']}](functions/{identity}.md) -> [{relation['function_id']}: {relation['title']['text']}](functions/{relation['function_id']}.md). {relation['description']['text']}"
-            ]
+            line = f"- [{identity}: {function['title']['text']}]({_guide_href(identity, function['title']['text'], prefix='functions/')}) -> [{relation['function_id']}: {relation['title']['text']}]({_guide_href(relation['function_id'], relation['title']['text'], prefix='functions/')}). {relation['description']['text']}"
+            relations.append(line)
+            if relation["relationship_type"] == "complementary":
+                complementary.append(line)
         for value in function.get("tags", []):
-            tag_rows.setdefault(value["text"], []).append(
-                (identity, function["title"]["text"], value.get("status", "unspecified"))
-            )
-        for proposal in function.get("relationship_proposals", []):
-            line = f"- DRAFT {proposal['relationship_type']}: [{identity}: {function['title']['text']}](functions/{identity}.md) -> [{proposal['function_id']}: {proposal['title']['text']}](functions/{proposal['function_id']}.md). {proposal['description']['text']} Reciprocal proposed: {str(proposal['reciprocal_proposed']).lower()}."
-            (
-                complementary if proposal["relationship_type"] == "complementary" else proposed
-            ).append(line)
-    relations += ["", "## Draft optional suggestions", "", *proposed]
+            tag_rows.setdefault(value["text"], []).append((identity, function["title"]["text"]))
+    for record in records:
+        rows = [
+            f"- {item['text']} ({item['kind']})."
+            for item in record.data.get("historical_lookup", [])
+        ]
+        legacy_name = record.data.get("legacy", {}).get("name")
+        if legacy_name:
+            rows.insert(0, f"- Historical H-Plus name: {_literal(legacy_name)}.")
+        rows += [
+            f"- Compatibility cue: {_literal(resolve_phrase(record, command))}."
+            for command in record.command_records
+            if command.role == "legacy-alias" or not is_active(command)
+        ]
+        if rows:
+            historical += [
+                f"## [{record.id}: {record.canonical_name}]({quote('functions/' + function_guide_stem(record, catalog=catalog) + '.md', safe='/')})",
+                "",
+                *rows,
+                "",
+            ]
     for tag, members in sorted(tag_rows.items()):
         tags += [f"## {tag}", ""]
         tags += [
-            f"- [{identity}: {name}](functions/{identity}.md) ({status})."
-            for identity, name, status in members
+            f"- [{identity}: {name}]({_guide_href(identity, name, prefix='functions/')})."
+            for identity, name in members
         ]
         tags += [""]
     order = _guide_catalog(records).replace(
@@ -548,15 +602,19 @@ def reference_documents(records, *, catalog=None):
     )
     order = order.replace(
         "Portable offline documentation.",
-        "Read the general guidance first, then the foundation directory before category-specific guides. This is navigation, not a prescribed activation sequence or prerequisite. Portable offline documentation.",
+        "Start with Preparation Learning and the general guidance, then choose a function by its purpose. This is navigation, not a required activation sequence. Portable offline documentation.",
         1,
     )
     return {
-        "cue-reference.md": "\n".join(cues).rstrip() + "\n",
-        "relationship-map.md": "\n".join(relations).rstrip() + "\n",
-        "learning-order.md": order,
-        "tag-discovery.md": "\n".join(tags).rstrip() + "\n",
-        "complementary-map.md": "\n".join(complementary).rstrip() + "\n",
+        name: "\n".join(lines).rstrip() + "\n"
+        for name, lines in {
+            "cue-reference.md": cues,
+            "relationship-map.md": relations,
+            "learning-order.md": [order],
+            "tag-discovery.md": tags,
+            "complementary-map.md": complementary,
+            "historical-lookup.md": historical,
+        }.items()
     }
 
 
@@ -708,7 +766,7 @@ def _guide_catalog(records, page_map=None):
             f" · [Complete handbook p. {page}](complete-guide.pdf#page={page})" if page else ""
         )
         categories.setdefault(record.primary_domain or "Uncategorized", []).append(
-            f"- [{localized_title(record, catalog=catalog)}](functions/{record.id}.md) — `{record.id}`{page_text}."
+            f"- [{localized_title(record, catalog=catalog)}]({quote('functions/' + function_guide_stem(record, catalog=catalog) + '.md', safe='/')}) — `{record.id}`{page_text}."
         )
     lines = [
         "# Open Consciousness Functions — Guide Collection",
@@ -807,6 +865,9 @@ def complete_pdf_bytes(records, documents, *, edition="0.3.0"):
     toc.dotsMinLevel = 0
     story.extend([toc, PageBreak()])
 
+    guide_ids = {function_guide_stem(record, catalog=catalog): record.id for record in records}
+    guide_ids.update({record.id: record.id for record in records})
+
     def append_markdown(text, *, remove_title=False):
         def internal_link(match):
             title, target = match.groups()
@@ -814,8 +875,8 @@ def complete_pdf_bytes(records, documents, *, edition="0.3.0"):
                 target = "#handbook-contents"
             elif target.endswith("listening-guide.md"):
                 target = "#ocf-guide-0"
-            elif re.fullmatch(r"OCF-[A-Z]+-\d+\.md", target):
-                target = "#" + target[:-3]
+            elif Path(unquote(target)).stem in guide_ids and target.endswith(".md"):
+                target = "#" + guide_ids[Path(unquote(target)).stem]
             return f"[{title}]({target})"
 
         text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", internal_link, text)
@@ -853,7 +914,9 @@ def complete_pdf_bytes(records, documents, *, edition="0.3.0"):
     ):
         story.extend([PageBreak(), Paragraph(escape(category), category_style)])
         for record in functions:
-            lines = documents[f"functions/{record.id}.md"].splitlines()
+            lines = documents[
+                "functions/" + function_guide_stem(record, catalog=catalog) + ".md"
+            ].splitlines()
             story.append(
                 Paragraph(
                     _inline(f"{record.id}: {localized_title(record, catalog=catalog)}"),
@@ -867,6 +930,7 @@ def complete_pdf_bytes(records, documents, *, edition="0.3.0"):
         "learning-order.md",
         "tag-discovery.md",
         "complementary-map.md",
+        "historical-lookup.md",
     ):
         if name in documents:
             heading = documents[name].splitlines()[0].removeprefix("# ")
@@ -901,6 +965,7 @@ def complete_pdf_bytes(records, documents, *, edition="0.3.0"):
                 "learning-order.md",
                 "tag-discovery.md",
                 "complementary-map.md",
+                "historical-lookup.md",
             )
             if name in documents
         },
@@ -950,6 +1015,10 @@ def validate_handbook(data, records, page_map, *, reference_titles=None):
         expected.update(reference_titles)
     elif references & set(outlines):
         expected.update(references)
+        # Older bundles have no build manifest; accept the named lookup chapter
+        # when present without requiring it in editions that predate it.
+        if "Historical H-Plus lookup" in outlines:
+            expected.add("Historical H-Plus lookup")
     if set(outlines) != expected or set(page_map) != {record.id for record in records}:
         raise OCFError("Handbook directory/outline inventory mismatch")
     for record in records:
@@ -1077,14 +1146,12 @@ def portable_index_html(records, *, edition="0.3.0", include_references=False) -
                     )
                 ),
                 html_escape(category),
-                record.id,
+                quote(function_guide_stem(record, catalog=catalog), safe=""),
                 escape(localized_title(record, catalog=catalog)),
                 escape(record.id),
                 escape(cue),
                 escape(str(description)),
-                record.id,
-                record.id,
-                record.id,
+                *([quote(function_guide_stem(record, catalog=catalog), safe="")] * 3),
             )
         )
     sections = "".join(
@@ -1117,12 +1184,12 @@ def portable_index_html(records, *, edition="0.3.0", include_references=False) -
         "<h1>Function Guides</h1><p>Readable, self-contained guides for all implemented OCF functions. These documents are not listening approval or release authorization.</p>"
         "<p><a href='listening-guide.html'>General listening guide</a> · <a href='complete-guide.pdf'>Complete PDF handbook</a> · <a href='index.pdf'>PDF directory</a>"
         + (
-            " · <a href='cue-reference.html'>Cue reference</a> · <a href='relationship-map.html'>Relationship map</a> · <a href='learning-order.html'>Learning order</a> · <a href='tag-discovery.html'>Tag discovery</a> · <a href='complementary-map.html'>Complementary map</a>"
+            " · <a href='cue-reference.html'>Cue reference</a> · <a href='relationship-map.html'>Relationship map</a> · <a href='learning-order.html'>Learning order</a> · <a href='tag-discovery.html'>Tag discovery</a> · <a href='complementary-map.html'>Complementary map</a> · <a href='historical-lookup.html'>Historical H-Plus lookup</a>"
             if include_references
             else ""
         )
         + "</p>"
-        "<label for='search'>Search by title, ID, cue, or description; also tags and common uses (draft metadata)</label><input id='search' type='search' placeholder='Search the 58 function guides'></header>"
+        "<label for='search'>Search by title, ID, cue, or description; also tags and common uses</label><input id='search' type='search' placeholder='Search the 58 function guides'></header>"
         "<p class='no-results' hidden>No matching guides.</p>"
         + sections
         + f"<script>{js}</script></main></body></html>\n"
@@ -1141,6 +1208,15 @@ def validate_portable_collection(output):
     build_metadata = None
     if (output / "build-manifest.json").is_file():
         build_metadata = json.loads((output / "build-manifest.json").read_text(encoding="utf-8"))
+        filename_layout = build_metadata.get("filename_layout")
+        if filename_layout not in (None, "function-id-title-1"):
+            raise OCFError("unsupported guide filename layout")
+        if filename_layout == "function-id-title-1" and not isinstance(
+            build_metadata.get("function_files"), dict
+        ):
+            raise OCFError("declared guide filename layout requires its pinned filename map")
+        if filename_layout is None and "function_files" in build_metadata:
+            raise OCFError("guide filename map requires a declared filename layout")
         if not (output / "checksums.sha256").is_file():
             raise OCFError("guide build has no checksum manifest")
         seen = set()
@@ -1188,6 +1264,15 @@ def validate_portable_collection(output):
     pdf_functions = set()
     extracted_resources = 0
     record_map = {record.id: record for record in records}
+    pinned = (build_metadata or {}).get("function_files")
+    if pinned is not None:
+        validate_guide_stems(pinned, record_map)
+        filename_ids = {stem: identity for identity, stem in pinned.items()}
+    else:
+        filename_ids = {record.id: record.id for record in records}
+        filename_ids.update(
+            {function_guide_stem(record, catalog=catalog): record.id for record in records}
+        )
 
     def check_link(path, target):
         nonlocal checked
@@ -1225,20 +1310,27 @@ def validate_portable_collection(output):
             pdf_text = "\n".join(page.extract_text() for page in reader.pages)
             if any(token in pdf_text for token in ("/home/", "/mnt/", "file:///", "Documents/dev")):
                 raise OCFError("PDF contains machine-local paths: " + path.name)
-            if path.parent.name == "functions" and path.stem in record_map:
-                record = record_map[path.stem]
+            if path.parent.name == "functions":
+                if path.stem not in filename_ids or filename_ids[path.stem] in pdf_functions:
+                    raise OCFError("unexpected or duplicate function PDF: " + path.name)
+                record = record_map[filename_ids[path.stem]]
                 if build_metadata:
                     metadata, _ = catalog.localized_function(record.id, "en-US", fallback=False)
                     expected = {
                         key: catalog.resource(key, "en-US", domain="narration", fallback=False)[
                             0
                         ].text
-                        for key in metadata["entries"]
+                        for key in (
+                            function_guide_entry_keys(metadata)
+                            if build_metadata.get("reader_layout") == "listener-focused-3"
+                            else metadata["entries"]
+                        )
                     }
                     extracted_resources += validate_extracted_narration(
                         pdf_text,
                         expected,
-                        markers=build_metadata.get("reader_layout") != "listener-focused-2",
+                        markers=build_metadata.get("reader_layout")
+                        not in {"listener-focused-2", "listener-focused-3"},
                     )
                 pdf_functions.add(record.id)
 
@@ -1384,6 +1476,7 @@ def guide_build_manifest(records, edition, *, source_revision=None):
             "commands",
             "cue_templates",
             "guide_review",
+            "artifact_names",
             "lifecycle",
             "function_catalog",
         )
@@ -1391,13 +1484,17 @@ def guide_build_manifest(records, edition, *, source_revision=None):
     return {
         "schema_version": "1.0",
         "kind": "source-driven-reader-guide-build",
-        "reader_layout": "listener-focused-2",
+        "reader_layout": "listener-focused-3",
+        "filename_layout": "function-id-title-1",
+        "function_files": {
+            record.id: function_guide_stem(record, catalog=catalog) for record in records
+        },
         "edition": edition,
         "locale": "en-US",
         "source_revision": source_revision,
         "functions": len(records),
         "canonical_resources": sum(
-            len(row["entries"]) for row in pack.localized_functions.values()
+            len(function_guide_entry_keys(row)) for row in pack.localized_functions.values()
         ),
         "reference_documents": {
             "cue-reference.md": "Cue reference",
@@ -1405,6 +1502,7 @@ def guide_build_manifest(records, edition, *, source_revision=None):
             "learning-order.md": "Learning order",
             "tag-discovery.md": "Tag discovery",
             "complementary-map.md": "Complementary function map",
+            "historical-lookup.md": "Historical H-Plus lookup",
         },
         "audio_included": False,
         "source_inputs": {
