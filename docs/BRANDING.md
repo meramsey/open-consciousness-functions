@@ -177,7 +177,7 @@ python -m pytest tests/test_brand_import.py tests/test_artwork.py tests/test_bra
 
 ## Visual refinement 0.2.0
 
-The new [comparison gallery](../brand/versions/0.2.0/gallery/index.html) retains
+The new [comparison gallery](../brand/versions/0.2.0/gallery-20261111/index.html) retains
 the 0.1.0 baseline alongside refined dark/light logos, a minimal icon, album
 artwork, an application tile and a dedicated 2:1 social composition. Download
 or open the directory locally to use the self-contained HTML gallery. It has
@@ -187,7 +187,9 @@ and 32/64/128-pixel icon comparisons. All designs remain unapproved candidates.
 `brand/versions/0.2.0/identity.json` owns the new geometry and composition sizes.
 `ocf-refined-dark`, `ocf-refined-light`, and `ocf-refined-minimal` are explicit
 opt-in themes. Existing identity, palettes, surface defaults, candidate SVGs and
-previous galleries remain available unchanged.
+previous galleries remain available unchanged. The current vector snapshot is
+`gallery-20261111`; the original `gallery` retains its historical input receipt.
+Regenerate into a new review directory whenever renderer inputs change.
 
 Generation uses the existing optional artwork extra:
 `python -m pip install -e '.[artwork]'`. Viewing the exported gallery requires
@@ -208,7 +210,7 @@ preview sizes, and procedural star placement is fixed-seed, not random per run.
 
 ```bash
 python scripts/ocf.py artwork refine --output .ocf-work/renders/new-brand-comparison
-python scripts/ocf.py artwork refine --output brand/versions/0.2.0/gallery --vector-only --check
+python scripts/ocf.py artwork refine --output brand/versions/0.2.0/gallery-20261111 --vector-only --check
 python scripts/ocf.py artwork brand --variant primary --theme ocf-refined-dark \
   --resolution 960 --output .ocf-work/renders/refined-logo.png
 python scripts/ocf.py artwork brand --variant app --theme ocf-refined-dark \

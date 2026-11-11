@@ -151,8 +151,8 @@ def test_committed_vector_gallery_matches_declared_inputs():
     pytest.importorskip("PIL")
     pytest.importorskip("fontTools")
     assert (
-        refined.comparison_gallery(refined.SOURCE.parent / "gallery", vector_only=True, check=True)[
-            "status"
-        ]
+        refined.comparison_gallery(
+            refined.SOURCE.parent / "gallery-20261111", vector_only=True, check=True
+        )["status"]
         == "passed"
     )
