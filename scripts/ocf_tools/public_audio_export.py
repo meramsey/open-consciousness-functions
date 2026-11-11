@@ -66,6 +66,99 @@ def _json_bytes(value: Any) -> bytes:
     ).encode("utf-8")
 
 
+def _check_cover_container(path: Path) -> None:
+    """Reject opaque container payloads that image-library metadata can omit."""
+    data = path.read_bytes()
+    message = "cover contains unreviewed image metadata or trailing data"
+    if data.startswith(b"\x89PNG\r\n\x1a\n"):
+        position = 8
+        allowed = {b"IHDR", b"PLTE", b"IDAT", b"IEND", b"tRNS", b"gAMA", b"cHRM", b"sRGB", b"pHYs"}
+        while position + 12 <= len(data):
+            length = int.from_bytes(data[position : position + 4], "big")
+            kind = data[position + 4 : position + 8]
+            _require(kind in allowed, message)
+            position += length + 12
+            _require(position <= len(data), "invalid PNG cover container")
+            if kind == b"IEND":
+                _require(length == 0 and position == len(data), message)
+                return
+        raise OCFError("invalid PNG cover container")
+    _require(data.startswith(b"\xff\xd8"), "unsupported cover container")
+    position = 2
+    coding = {
+        0xC0,
+        0xC1,
+        0xC2,
+        0xC3,
+        0xC4,
+        0xC5,
+        0xC6,
+        0xC7,
+        0xC9,
+        0xCA,
+        0xCB,
+        0xCC,
+        0xCD,
+        0xCE,
+        0xCF,
+        0xDA,
+        0xDB,
+        0xDC,
+        0xDD,
+        0xDE,
+        0xDF,
+    }
+    while position < len(data):
+        _require(data[position] == 0xFF, "invalid JPEG cover marker")
+        while position < len(data) and data[position] == 0xFF:
+            position += 1
+        _require(position < len(data), "truncated JPEG cover marker")
+        marker = data[position]
+        position += 1
+        if marker == 0xD9:
+            _require(position == len(data), message)
+            return
+        _require(position + 2 <= len(data), "truncated JPEG cover segment")
+        length = int.from_bytes(data[position : position + 2], "big")
+        end = position + length
+        _require(length >= 2 and end <= len(data), "invalid JPEG cover segment")
+        payload = data[position + 2 : end]
+        if marker == 0xE0:
+            # JFIF density/color interpretation only; no nested thumbnail.
+            _require(
+                len(payload) == 14
+                and payload.startswith(b"JFIF\x00")
+                and payload[12:] == b"\x00\x00",
+                message,
+            )
+        elif marker == 0xEE:
+            _require(
+                len(payload) == 12
+                and payload[:5] == b"Adobe"
+                and payload[7:11] == b"\x00" * 4
+                and payload[11] in {0, 1, 2},
+                message,
+            )
+        else:
+            _require(marker in coding, message)
+        position = end
+        if marker == 0xDA:
+            # Skip entropy-coded bytes, including stuffing and restart markers.
+            # Progressive JPEG may have several scans and intervening segments.
+            while True:
+                position = data.find(b"\xff", position)
+                _require(position >= 0, "JPEG cover has no end marker")
+                following = position + 1
+                while following < len(data) and data[following] == 0xFF:
+                    following += 1
+                _require(following < len(data), "truncated JPEG cover scan")
+                if data[following] == 0 or 0xD0 <= data[following] <= 0xD7:
+                    position = following + 1
+                    continue
+                break
+    raise OCFError("JPEG cover has no end marker")
+
+
 def export_delivery(
     source_manifest: str | Path,
     *,
@@ -153,6 +246,7 @@ def export_delivery(
     _require(len(covers) == 1, "delivery requires exactly one verified cover")
     cover_format = covers[0]
     _image_info(selected[cover_format])
+    _check_cover_container(selected[cover_format])
     from PIL import Image
 
     with Image.open(selected[cover_format]) as image:
@@ -162,7 +256,20 @@ def export_delivery(
         image.load()
         _require(
             not image.getexif()
-            and set(image.info) <= {"dpi", "gamma", "srgb", "chromaticity", "transparency"},
+            and set(image.info)
+            <= {
+                "dpi",
+                "gamma",
+                "srgb",
+                "chromaticity",
+                "transparency",
+                "jfif",
+                "jfif_version",
+                "jfif_unit",
+                "jfif_density",
+                "adobe",
+                "adobe_transform",
+            },
             "cover contains unreviewed image metadata; supply a metadata-free cover",
         )
     names = listener_export_names(

@@ -36,7 +36,9 @@ The exporter validates source sizes/checksums, stereo sample counts, finite
 samples, clipping, output decode alignment, embedded cover bytes and public
 metadata. Global and audio-stream metadata and chapters are discarded before
 explicit public tags are written. Covers containing EXIF or unreviewed image metadata are rejected; approved cover
-bytes are never silently changed. Transcripts, subtitles and the selected cover
+bytes are never silently changed. Unknown PNG chunks, unreviewed JPEG application/comment
+segments, nested thumbnails and trailing container data are also rejected.
+Transcripts, subtitles and the selected cover
 are copied unchanged and still require content and rights review. Preparation
 Learning sorts first and has its own session kind, with no fabricated function ID.
 

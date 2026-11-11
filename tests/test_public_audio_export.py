@@ -14,7 +14,7 @@ from ocf_tools.utils import OCFError, sha256_of_file
 pytestmark = pytest.mark.integration
 
 
-def delivery(tmp_path, monkeypatch, *, preparation=False, subtype="PCM_16"):
+def delivery(tmp_path, monkeypatch, *, preparation=False, subtype="PCM_16", cover_format="png"):
     if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
         pytest.skip("public export requires optional FFmpeg/ffprobe")
     sf = pytest.importorskip("soundfile")
@@ -31,7 +31,7 @@ def delivery(tmp_path, monkeypatch, *, preparation=False, subtype="PCM_16"):
     metadata["PRIVATE_REFERENCE"] = "/private/reference.wav"
     metadata["comment"] = "DO_NOT_PUBLISH"
     metadata.save()
-    cover = source / "cover.png"
+    cover = source / ("cover." + cover_format)
     image.new("RGB", (8, 8), "#19415c").save(cover)
     audio_build._encode(
         master, "mp3", source / "retained.mp3", {"comment": "DO_NOT_PUBLISH"}, artwork=cover
@@ -78,11 +78,16 @@ def arguments(path, output):
     }
 
 
-@pytest.mark.parametrize("preparation,subtype", [(False, "PCM_16"), (True, "PCM_24")])
+@pytest.mark.parametrize(
+    "preparation,subtype,cover_format",
+    [(False, "PCM_16", "png"), (True, "PCM_24", "png"), (False, "PCM_16", "jpg")],
+)
 def test_public_export_preserves_lossless_audio_and_encodes_mp3_once(
-    tmp_path, monkeypatch, preparation, subtype
+    tmp_path, monkeypatch, preparation, subtype, cover_format
 ):
-    path, originals = delivery(tmp_path, monkeypatch, preparation=preparation, subtype=subtype)
+    path, originals = delivery(
+        tmp_path, monkeypatch, preparation=preparation, subtype=subtype, cover_format=cover_format
+    )
     before = {p.name: sha256_of_file(p) for p in originals}
     output = tmp_path / "public-candidate"
     report = exports.export_delivery(path, **arguments(path, output))["candidate"]
@@ -225,3 +230,48 @@ def test_hidden_artwork_metadata_rejected_before_export(tmp_path, monkeypatch, l
     with pytest.raises(OCFError, match="image metadata"):
         exports.export_delivery(path, **arguments(path, tmp_path / "out"), dry_run=True)
     assert not (tmp_path / "out").exists()
+
+
+@pytest.mark.parametrize(
+    "kind", ["png-unknown", "png-trailing", "jpeg-unknown", "jpeg-after-scan", "jpeg-trailing"]
+)
+def test_opaque_cover_payloads_are_rejected_without_changing_artwork(tmp_path, monkeypatch, kind):
+    from PIL import Image, PngImagePlugin
+
+    jpeg = kind.startswith("jpeg")
+    path, originals = delivery(tmp_path, monkeypatch, cover_format="jpg" if jpeg else "png")
+    cover = originals[2]
+    if kind == "png-unknown":
+        metadata = PngImagePlugin.PngInfo()
+        metadata.add(b"vpAg", b"PRIVATE_METADATA_FIXTURE", after_idat=True)
+        with Image.open(cover) as image:
+            image.save(cover, pnginfo=metadata)
+    elif kind in {"jpeg-unknown", "jpeg-after-scan"}:
+        data = cover.read_bytes()
+        payload = b"PRIVATE_METADATA_FIXTURE"
+        segment = b"\xff\xef" + (len(payload) + 2).to_bytes(2, "big") + payload
+        cover.write_bytes(
+            data[:2] + segment + data[2:]
+            if kind == "jpeg-unknown"
+            else data[:-2] + segment + data[-2:]
+        )
+    else:
+        cover.write_bytes(cover.read_bytes() + b"PRIVATE_METADATA_FIXTURE")
+    document = json.loads(path.read_text())
+    checksum = sha256_of_file(cover)
+    document["artifacts"][2].update(bytes=cover.stat().st_size, sha256=checksum)
+    path.write_text(json.dumps(document))
+    with pytest.raises(OCFError, match="image metadata|trailing data"):
+        exports.export_delivery(path, **arguments(path, tmp_path / "out"), dry_run=True)
+    assert sha256_of_file(cover) == checksum
+    assert not (tmp_path / "out").exists()
+
+
+def test_progressive_jpeg_cover_container_remains_supported(tmp_path):
+    from PIL import Image
+
+    path = tmp_path / "progressive.jpg"
+    Image.new("RGB", (16, 16), "#19415c").save(path, progressive=True)
+    checksum = sha256_of_file(path)
+    exports._check_cover_container(path)
+    assert sha256_of_file(path) == checksum
