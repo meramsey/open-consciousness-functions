@@ -14,7 +14,15 @@ from ocf_tools.utils import OCFError, sha256_of_file
 pytestmark = pytest.mark.integration
 
 
-def delivery(tmp_path, monkeypatch, *, preparation=False, subtype="PCM_16", cover_format="png"):
+def delivery(
+    tmp_path,
+    monkeypatch,
+    *,
+    preparation=False,
+    subtype="PCM_16",
+    cover_format="png",
+    progressive=False,
+):
     if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
         pytest.skip("public export requires optional FFmpeg/ffprobe")
     sf = pytest.importorskip("soundfile")
@@ -32,7 +40,7 @@ def delivery(tmp_path, monkeypatch, *, preparation=False, subtype="PCM_16", cove
     metadata["comment"] = "DO_NOT_PUBLISH"
     metadata.save()
     cover = source / ("cover." + cover_format)
-    image.new("RGB", (8, 8), "#19415c").save(cover)
+    image.new("RGB", (8, 8), "#19415c").save(cover, progressive=progressive)
     audio_build._encode(
         master, "mp3", source / "retained.mp3", {"comment": "DO_NOT_PUBLISH"}, artwork=cover
     )
@@ -79,17 +87,29 @@ def arguments(path, output):
 
 
 @pytest.mark.parametrize(
-    "preparation,subtype,cover_format",
-    [(False, "PCM_16", "png"), (True, "PCM_24", "png"), (False, "PCM_16", "jpg")],
+    "preparation,subtype,cover_format,progressive",
+    [
+        (False, "PCM_16", "png", False),
+        (True, "PCM_24", "png", False),
+        (False, "PCM_16", "jpg", False),
+        (False, "PCM_16", "jpg", True),
+    ],
 )
 def test_public_export_preserves_lossless_audio_and_encodes_mp3_once(
-    tmp_path, monkeypatch, preparation, subtype, cover_format
+    tmp_path, monkeypatch, preparation, subtype, cover_format, progressive
 ):
     path, originals = delivery(
-        tmp_path, monkeypatch, preparation=preparation, subtype=subtype, cover_format=cover_format
+        tmp_path,
+        monkeypatch,
+        preparation=preparation,
+        subtype=subtype,
+        cover_format=cover_format,
+        progressive=progressive,
     )
     before = {p.name: sha256_of_file(p) for p in originals}
     output = tmp_path / "public-candidate"
+    assert exports.export_delivery(path, **arguments(path, output), dry_run=True)["dry_run"]
+    assert not output.exists()
     report = exports.export_delivery(path, **arguments(path, output))["candidate"]
     assert report["publication_approved"] is False
     assert report["session"]["function_id"] == (None if preparation else "OCF-EXP-001")
@@ -275,3 +295,115 @@ def test_progressive_jpeg_cover_container_remains_supported(tmp_path):
     checksum = sha256_of_file(path)
     exports._check_cover_container(path)
     assert sha256_of_file(path) == checksum
+
+
+@pytest.mark.parametrize(
+    "kind",
+    [
+        "gamma-extra",
+        "idat-unused",
+        "idat-second-stream",
+        "idat-decoded-extra",
+        "idat-truncated",
+        "bad-crc",
+    ],
+)
+def test_png_payload_leaks_fail_full_preflight_without_modifying_cover(tmp_path, monkeypatch, kind):
+    import zlib
+
+    path, originals = delivery(tmp_path, monkeypatch)
+    cover = originals[2]
+    data = cover.read_bytes()
+
+    def chunk(marker, payload):
+        return (
+            len(payload).to_bytes(4, "big")
+            + marker
+            + payload
+            + zlib.crc32(marker + payload).to_bytes(4, "big")
+        )
+
+    if kind == "gamma-extra":
+        data = (
+            data[:33]
+            + chunk(b"gAMA", (45455).to_bytes(4, "big") + b"PRIVATE_METADATA_FIXTURE")
+            + data[33:]
+        )
+    elif kind == "bad-crc":
+        data = data[:33] + chunk(b"gAMA", (45455).to_bytes(4, "big"))[:-1] + b"\x00" + data[33:]
+    else:
+        position = data.index(b"IDAT") - 4
+        size = int.from_bytes(data[position : position + 4], "big")
+        payload = data[position + 8 : position + 8 + size]
+        if kind == "idat-unused":
+            payload += b"PRIVATE_METADATA_FIXTURE"
+        elif kind == "idat-second-stream":
+            payload += zlib.compress(b"PRIVATE_METADATA_FIXTURE")
+        elif kind == "idat-decoded-extra":
+            payload = zlib.compress(zlib.decompress(payload) + b"PRIVATE_METADATA_FIXTURE")
+        else:
+            payload = payload[:-2]
+        data = data[:position] + chunk(b"IDAT", payload) + data[position + 12 + size :]
+    cover.write_bytes(data)
+    checksum = sha256_of_file(cover)
+    document = json.loads(path.read_text())
+    document["artifacts"][2].update(bytes=cover.stat().st_size, sha256=checksum)
+    path.write_text(json.dumps(document))
+    with pytest.raises(OCFError, match="image metadata|PNG data"):
+        exports.export_delivery(path, **arguments(path, tmp_path / "out"), dry_run=True)
+    assert sha256_of_file(cover) == checksum
+    assert not (tmp_path / "out").exists()
+
+
+@pytest.mark.parametrize("mode", ["1", "L", "LA", "P", "RGB", "RGBA", "I;16"])
+def test_valid_png_color_modes_and_structured_metadata_are_supported(tmp_path, mode):
+    from PIL import Image, PngImagePlugin
+
+    path = tmp_path / "cover.png"
+    metadata = PngImagePlugin.PngInfo()
+    metadata.add(b"gAMA", (45455).to_bytes(4, "big"))
+    metadata.add(b"sRGB", b"\x00")
+    Image.new(mode, (9, 7)).save(path, pnginfo=metadata, dpi=(72, 72))
+    checksum = sha256_of_file(path)
+    exports._check_cover_container(path)
+    assert sha256_of_file(path) == checksum
+
+
+def test_interlaced_png_complete_idat_stream_is_supported(tmp_path):
+    import struct
+    import zlib
+
+    from PIL import Image
+
+    def chunk(marker, payload):
+        return (
+            len(payload).to_bytes(4, "big")
+            + marker
+            + payload
+            + zlib.crc32(marker + payload).to_bytes(4, "big")
+        )
+
+    header = struct.pack(">IIBBBBB", 9, 7, 8, 2, 0, 0, 1)
+    rows = b""
+    for x, y, dx, dy in [
+        (0, 0, 8, 8),
+        (4, 0, 8, 8),
+        (0, 4, 4, 8),
+        (2, 0, 4, 4),
+        (0, 2, 2, 4),
+        (1, 0, 2, 2),
+        (0, 1, 1, 2),
+    ]:
+        width, height = max(0, (9 - x + dx - 1) // dx), max(0, (7 - y + dy - 1) // dy)
+        if width and height:
+            rows += b"\x00" * (height * (1 + width * 3))
+    compressed = zlib.compress(rows)
+    data = b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", header)
+    data += chunk(b"IDAT", compressed[:5]) + chunk(b"IDAT", compressed[5:]) + chunk(b"IEND", b"")
+    path = tmp_path / "cover.png"
+    path.write_bytes(data)
+    with Image.open(path) as image:
+        image.load()
+        assert image.size == (9, 7)
+    exports._check_cover_container(path)
+    assert path.read_bytes() == data

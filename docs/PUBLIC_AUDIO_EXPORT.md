@@ -38,6 +38,10 @@ metadata. Global and audio-stream metadata and chapters are discarded before
 explicit public tags are written. Covers containing EXIF or unreviewed image metadata are rejected; approved cover
 bytes are never silently changed. Unknown PNG chunks, unreviewed JPEG application/comment
 segments, nested thumbnails and trailing container data are also rejected.
+Permitted PNG chunks must have valid payload sizes, values, order and CRCs. All
+IDAT chunks form one complete zlib stream with the exact scanline byte count;
+unused compressed input, additional streams and decoded trailers fail preflight.
+Ordinary and progressive JPEGs use the same full export and dry-run checks.
 Transcripts, subtitles and the selected cover
 are copied unchanged and still require content and rights review. Preparation
 Learning sorts first and has its own session kind, with no fabricated function ID.

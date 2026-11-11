@@ -66,23 +66,122 @@ def _json_bytes(value: Any) -> bytes:
     ).encode("utf-8")
 
 
+def _check_png_container(data: bytes) -> None:
+    """Validate the complete PNG structure and one exact, bounded zlib stream."""
+    import struct
+    import zlib
+
+    message = "cover contains invalid image metadata or trailing PNG data"
+    position = 8
+    seen: set[bytes] = set()
+    compressed = bytearray()
+    width = height = depth = color = interlace = palette_entries = 0
+    idat_closed = False
+    allowed = {b"IHDR", b"PLTE", b"IDAT", b"IEND", b"tRNS", b"gAMA", b"cHRM", b"sRGB", b"pHYs"}
+    while position + 12 <= len(data):
+        length = int.from_bytes(data[position : position + 4], "big")
+        kind = data[position + 4 : position + 8]
+        end = position + length + 12
+        _require(kind in allowed and end <= len(data), message)
+        payload = data[position + 8 : end - 4]
+        _require(zlib.crc32(kind + payload) == int.from_bytes(data[end - 4 : end], "big"), message)
+        _require((not seen and kind == b"IHDR") or b"IHDR" in seen, message)
+        _require(kind == b"IDAT" or kind not in seen, message)
+        if b"IDAT" in seen and kind != b"IDAT":
+            idat_closed = True
+        if kind == b"IHDR":
+            _require(length == 13, message)
+            width, height, depth, color, compression, filtering, interlace = struct.unpack(
+                ">IIBBBBB", payload
+            )
+            legal_depths = {
+                0: {1, 2, 4, 8, 16},
+                2: {8, 16},
+                3: {1, 2, 4, 8},
+                4: {8, 16},
+                6: {8, 16},
+            }
+            _require(0 < width <= 12000 and 0 < height <= 12000, message)
+            _require(depth in legal_depths.get(color, set()), message)
+            _require(compression == filtering == 0 and interlace in {0, 1}, message)
+        elif kind in {b"gAMA", b"cHRM", b"sRGB"}:
+            _require(b"PLTE" not in seen and b"IDAT" not in seen, message)
+            if kind == b"gAMA":
+                _require(length == 4 and int.from_bytes(payload, "big") > 0, message)
+            elif kind == b"cHRM":
+                _require(length == 32, message)
+                coordinates = struct.unpack(">8I", payload)
+                _require(
+                    all(x + y <= 100000 for x, y in zip(coordinates[::2], coordinates[1::2])),
+                    message,
+                )
+            else:
+                _require(length == 1 and payload[0] <= 3, message)
+        elif kind == b"pHYs":
+            _require(b"IDAT" not in seen and length == 9 and payload[-1] <= 1, message)
+        elif kind == b"PLTE":
+            _require(b"IDAT" not in seen and b"tRNS" not in seen and color in {2, 3, 6}, message)
+            _require(0 < length <= 768 and length % 3 == 0, message)
+            palette_entries = length // 3
+            _require(color != 3 or palette_entries <= 2**depth, message)
+        elif kind == b"tRNS":
+            _require(b"IDAT" not in seen, message)
+            if color in {0, 2}:
+                _require(length == (2 if color == 0 else 6), message)
+                values = struct.unpack(">" + "H" * (length // 2), payload)
+                _require(all(value < 2**depth for value in values), message)
+            else:
+                _require(color == 3 and b"PLTE" in seen and 0 < length <= palette_entries, message)
+        elif kind == b"IDAT":
+            _require(not idat_closed and (color != 3 or b"PLTE" in seen), message)
+            compressed.extend(payload)
+        elif kind == b"IEND":
+            _require(length == 0 and end == len(data) and b"IDAT" in seen, message)
+            channels = {0: 1, 2: 3, 3: 1, 4: 2, 6: 4}[color]
+            passes = (
+                [(0, 0, 1, 1)]
+                if not interlace
+                else [
+                    (0, 0, 8, 8),
+                    (4, 0, 8, 8),
+                    (0, 4, 4, 8),
+                    (2, 0, 4, 4),
+                    (0, 2, 2, 4),
+                    (1, 0, 2, 2),
+                    (0, 1, 1, 2),
+                ]
+            )
+            expected = 0
+            for x, y, dx, dy in passes:
+                pass_width = max(0, (width - x + dx - 1) // dx)
+                pass_height = max(0, (height - y + dy - 1) // dy)
+                if pass_width and pass_height:
+                    expected += pass_height * (1 + (pass_width * channels * depth + 7) // 8)
+            decoder = zlib.decompressobj()
+            pending = bytes(compressed)
+            decoded = 0
+            try:
+                while pending:
+                    block = decoder.decompress(pending, 262144)
+                    decoded += len(block)
+                    _require(decoded <= expected and not decoder.unused_data, message)
+                    pending = decoder.unconsumed_tail
+                _require(decoder.eof and decoded == expected, message)
+            except zlib.error as exc:
+                raise OCFError(message) from exc
+            return
+        seen.add(kind)
+        position = end
+    raise OCFError(message)
+
+
 def _check_cover_container(path: Path) -> None:
     """Reject opaque container payloads that image-library metadata can omit."""
     data = path.read_bytes()
     message = "cover contains unreviewed image metadata or trailing data"
     if data.startswith(b"\x89PNG\r\n\x1a\n"):
-        position = 8
-        allowed = {b"IHDR", b"PLTE", b"IDAT", b"IEND", b"tRNS", b"gAMA", b"cHRM", b"sRGB", b"pHYs"}
-        while position + 12 <= len(data):
-            length = int.from_bytes(data[position : position + 4], "big")
-            kind = data[position + 4 : position + 8]
-            _require(kind in allowed, message)
-            position += length + 12
-            _require(position <= len(data), "invalid PNG cover container")
-            if kind == b"IEND":
-                _require(length == 0 and position == len(data), message)
-                return
-        raise OCFError("invalid PNG cover container")
+        _check_png_container(data)
+        return
     _require(data.startswith(b"\xff\xd8"), "unsupported cover container")
     position = 2
     coding = {
@@ -269,6 +368,8 @@ def export_delivery(
                 "jfif_density",
                 "adobe",
                 "adobe_transform",
+                "progressive",
+                "progression",
             },
             "cover contains unreviewed image metadata; supply a metadata-free cover",
         )
