@@ -112,15 +112,23 @@ def test_export_uses_only_approved_relationship_projection(monkeypatch):
     assert result["build_receipt"]["approved_relationship_count"] == 33
     assert len(exported["related_functions"]) == len(source["related_functions"])
     assert "Unapproved keyless description must not be published." not in str(result)
-    by_id = {row["function_id"]: row for row in exported["related_functions"]}
-    for relation in source["related_functions"]:
-        projected = by_id[relation["function_id"]]
-        assert projected["relationship_id"] == relation["relationship_id"]
-        assert projected["title"] == relation["title"]["text"]
-        assert projected["description"] == relation["description"]["text"]
-        assert projected["relationship_type"] == relation["relationship_type"]
-        assert projected["direction"] == "outgoing"
-        assert projected["dependency"] == relation["dependency"] == "optional"
+    approved_count = 0
+    exported_by_function = {row["function_id"]: row for row in result["functions"]}
+    for source_function in approved_index["functions"]:
+        relations = source_function["related_functions"]
+        approved_count += len(relations)
+        projected = exported_by_function[source_function["function_id"]]["related_functions"]
+        assert len(projected) == len(relations)
+        by_id = {row["function_id"]: row for row in projected}
+        for relation in relations:
+            item = by_id[relation["function_id"]]
+            assert item["relationship_id"] == relation["relationship_id"]
+            assert item["title"] == relation["title"]["text"]
+            assert item["description"] == relation["description"]["text"]
+            assert item["relationship_type"] == relation["relationship_type"]
+            assert item["direction"] == "outgoing"
+            assert item["dependency"] == relation["dependency"] == "optional"
+    assert approved_count == 33
 
 
 def test_draft_procedure_is_excluded_as_a_whole(monkeypatch):
