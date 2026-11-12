@@ -1,0 +1,231 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://open-consciousness-functions.dev/schemas/public-site-guide-export.schema.json",
+  "title": "Public OCF website documentation export",
+  "description": "Deterministic allowlisted documentation from canonical locale resources. Narration text, source evidence paths, and draft procedures are excluded.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "exporter",
+    "source_repository",
+    "source_commit",
+    "locale",
+    "functions",
+    "listening_guide",
+    "build_receipt"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "exporter": {"const": "ocf.public-site-guides/1"},
+    "source_repository": {"const": "https://github.com/ocfproject-org/open-consciousness-functions"},
+    "source_commit": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+    "locale": {"const": "en-US"},
+    "functions": {
+      "type": "array",
+      "minItems": 58,
+      "maxItems": 58,
+      "items": {"$ref": "#/definitions/function"}
+    },
+    "listening_guide": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["markdown", "source_sha256"],
+      "properties": {
+        "markdown": {"type": "string", "minLength": 1},
+        "source_sha256": {"$ref": "#/definitions/hash"}
+      }
+    },
+    "build_receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "function_count",
+        "approved_relationship_count",
+        "functions_sha256",
+        "export_content_sha256",
+        "narration_text_included",
+        "source_evidence_paths_included",
+        "draft_procedures_included",
+        "relationship_proposals_included"
+      ],
+      "properties": {
+        "function_count": {"const": 58},
+        "approved_relationship_count": {"type": "integer", "minimum": 0},
+        "functions_sha256": {"$ref": "#/definitions/hash"},
+        "export_content_sha256": {"$ref": "#/definitions/hash"},
+        "narration_text_included": {"const": false},
+        "source_evidence_paths_included": {"const": false},
+        "draft_procedures_included": {"const": false},
+        "relationship_proposals_included": {"const": false}
+      }
+    }
+  },
+  "definitions": {
+    "hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "localized": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "status"],
+      "properties": {
+        "text": {"type": "string"},
+        "status": {"enum": ["canonical", "reviewed", "historical"]}
+      }
+    },
+    "discovery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "status"],
+      "properties": {
+        "text": {"type": "string", "minLength": 1},
+        "status": {"type": "string", "minLength": 1}
+      }
+    },
+    "category": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "status"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "label": {"type": "string", "minLength": 1},
+        "status": {"enum": ["canonical", "reviewed"]}
+      }
+    },
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "operation", "instruction"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "operation": {"type": "string", "minLength": 1},
+        "instruction": {"type": "string", "minLength": 1}
+      }
+    },
+    "command": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "command_id",
+        "command_status",
+        "role",
+        "designation",
+        "display_cue",
+        "spoken_cue",
+        "spoken_status",
+        "label",
+        "usage",
+        "explanation",
+        "procedure_status",
+        "procedure_steps",
+        "effect_scope",
+        "invocation_scope"
+      ],
+      "properties": {
+        "command_id": {"type": "string", "pattern": "^OCF-CMD-[A-Z]{3}-[0-9]{3}-[A-Z0-9-]+$"},
+        "command_status": {"enum": ["active", "historical-inactive"]},
+        "role": {"type": "string"},
+        "designation": {"type": "string"},
+        "display_cue": {"$ref": "#/definitions/localized"},
+        "spoken_cue": {"type": ["string", "null"]},
+        "spoken_status": {"type": "string"},
+        "label": {"anyOf": [{"$ref": "#/definitions/localized"}, {"type": "null"}]},
+        "usage": {"anyOf": [{"$ref": "#/definitions/localized"}, {"type": "null"}]},
+        "explanation": {"anyOf": [{"$ref": "#/definitions/localized"}, {"type": "null"}]},
+        "procedure_status": {"enum": ["documented", "not-specified", "review-pending"]},
+        "procedure_steps": {"type": "array", "items": {"$ref": "#/definitions/step"}},
+        "effect_scope": {"type": ["string", "null"]},
+        "invocation_scope": {
+          "anyOf": [
+            {"type": "null"},
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "activation": {"type": "string"},
+                "persistence": {"type": "string"},
+                "description": {"type": "string"}
+              }
+            }
+          ]
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "label", "persistence", "activation", "description", "description_status"],
+      "properties": {
+        "kind": {"type": "string"},
+        "label": {"type": "string"},
+        "persistence": {"type": "string"},
+        "activation": {"type": ["string", "null"]},
+        "description": {"type": ["string", "null"]},
+        "description_status": {"enum": ["canonical", "reviewed", "unspecified", "unreviewed"]}
+      }
+    },
+    "relationship": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["function_id", "title", "description", "relationship_type", "direction", "dependency"],
+      "properties": {
+        "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
+        "title": {"type": "string"},
+        "description": {"type": "string"},
+        "relationship_type": {"type": "string"},
+        "direction": {"const": "outgoing"},
+        "dependency": {"const": "optional"}
+      }
+    },
+    "function": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "function_id",
+        "slug",
+        "canonical_resource",
+        "title",
+        "description",
+        "primary_category",
+        "categories",
+        "tags",
+        "common_uses",
+        "commands",
+        "historical_commands",
+        "lifecycle",
+        "safety_notes",
+        "related_functions",
+        "documentation_status",
+        "canonical_resource_sha256"
+      ],
+      "properties": {
+        "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
+        "slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+        "canonical_resource": {"type": "string", "pattern": "^locales/en-US/OCF-[A-Z]{3}-[A-Z0-9]{3,4}-.+\\.yaml$"},
+        "title": {"$ref": "#/definitions/localized"},
+        "description": {"$ref": "#/definitions/localized"},
+        "primary_category": {"type": "string"},
+        "categories": {"type": "array", "items": {"$ref": "#/definitions/category"}},
+        "tags": {"type": "array", "items": {"$ref": "#/definitions/discovery"}},
+        "common_uses": {"type": "array", "items": {"$ref": "#/definitions/discovery"}},
+        "commands": {"type": "array", "items": {"$ref": "#/definitions/command"}},
+        "historical_commands": {"type": "array", "items": {"$ref": "#/definitions/command"}},
+        "lifecycle": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["activation", "persistence", "trigger_conditions", "release_command", "scopes"],
+          "properties": {
+            "activation": {"type": ["string", "null"]},
+            "persistence": {"type": ["string", "null"]},
+            "trigger_conditions": {"type": "array", "items": {"type": "string"}},
+            "release_command": {"type": ["string", "null"]},
+            "scopes": {"type": "array", "items": {"$ref": "#/definitions/scope"}}
+          }
+        },
+        "safety_notes": {"type": "array", "items": {"type": "string"}},
+        "related_functions": {"type": "array", "items": {"$ref": "#/definitions/relationship"}},
+        "documentation_status": {"const": "canonical-function-resource"},
+        "canonical_resource_sha256": {"$ref": "#/definitions/hash"}
+      }
+    }
+  }
+}

@@ -198,6 +198,14 @@ def schema_examples():
                 }
             )
             continue
+        if stem == "public-site-guide-export":
+            rows.append(
+                {
+                    "schema": path.name,
+                    "verification": "deterministic export is generated from the pinned canonical locale resources and validated by public_site_export.py and test_public_site_export.py",
+                }
+            )
+            continue
         if stem in SCHEMA_FILES:
             source = SCHEMA_FILES[stem]
             if not (REPO_ROOT / source).is_file():

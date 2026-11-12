@@ -86,10 +86,12 @@ alert before resuming activities that require attention.
 ## Transcripts
 
 Use an edition-matched transcript when available to preview wording or follow
-along without audio. Current individual function guides include the complete
-canonical narration, shown once rather than repeating playback passes. Source transcripts,
-working drafts, and released wording have different review and rights statuses;
-missing or private text is not reproduced here.
+along without audio. An offline source guide may include canonical narration for
+reference. The public audio library instead shows only a transcript packaged
+with the selected published edition, so wording is never borrowed from a
+different or unreleased edition. Source transcripts, working drafts, and released
+wording have different review and rights statuses; missing or private text is
+not reproduced here.
 
 ## Players and playback settings
 
