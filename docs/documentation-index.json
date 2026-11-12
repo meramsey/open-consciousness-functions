@@ -1357,7 +1357,7 @@
       "purpose": "Welcome to OCF",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "f7ee307e611f50293e20964166757176bb20ec16bcf18949b43ae6006e29d1b6",
+      "sha256": "c83a8f893c2d96b8eec754015dbf1170bd96e54e621e700476d615dff90f90be",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -1790,6 +1790,26 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "docs/PUBLIC_WEBSITE_EXPORT.md",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "Public website documentation export",
+      "related_commands": [],
+      "related_schemas": [
+        "schemas/public-site-guide-export.schema.json"
+      ],
+      "sha256": "5387d01bcb1fd3d71a69e5257e8ccf445c6e246b303effc561b36b970a33261e",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "docs/QUICKSTART.md",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "OCF quickstart",
@@ -1823,7 +1843,7 @@
       "purpose": "Documentation map",
       "related_commands": [],
       "related_schemas": [],
-      "sha256": "7c84867bd685a784b0a826e9aa0cc8662a4fd8083016df47fb5574c485bfad14",
+      "sha256": "f8b9ac2ebfc68e3060505ab63c174a193fce3eed9fcb8a5c9f1ceed2091fc113",
       "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
     },
     {
@@ -4268,6 +4288,26 @@
       "last_verified_implementation_checkpoint": null,
       "maintenance": "manual",
       "missing_information": [],
+      "path": "schemas/public-site-guide-export.schema.json",
+      "proposed_correction": "use docs/README.md for authoritative navigation",
+      "purpose": "public-site-guide-export.schema",
+      "related_commands": [],
+      "related_schemas": [
+        "schemas/public-site-guide-export.schema.json"
+      ],
+      "sha256": "9616029789ca2ea71b6021dff0265c4d6154457000be215ed78735941a298dc4",
+      "verification": "machine inventory and internal-link check; not a semantic accuracy certification"
+    },
+    {
+      "audience": "contributors and agents",
+      "broken_references": [],
+      "canonical_source": "schemas and scripts/ocf_tools; CLI capabilities is the live command index",
+      "duplicate_or_contradictory_information": [],
+      "historical": false,
+      "implementation_baseline": "351985e8362879d8a2ddac74c36327641d9a6402",
+      "last_verified_implementation_checkpoint": null,
+      "maintenance": "manual",
+      "missing_information": [],
       "path": "schemas/recording-processing.schema.json",
       "proposed_correction": "use docs/README.md for authoritative navigation",
       "purpose": "recording-processing.schema",
@@ -4696,5 +4736,5 @@
   ],
   "generator": "ocf.doc_inventory/1",
   "schema_version": "1.0",
-  "total": 218
+  "total": 220
 }

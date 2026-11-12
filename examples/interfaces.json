@@ -2152,6 +2152,10 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
+      "schema": "public-site-guide-export.schema.json",
+      "verification": "deterministic export is generated from the pinned canonical locale resources and validated by public_site_export.py and test_public_site_export.py"
+    },
+    {
       "example_sha256": "9a45cf5b4594be2711988d64602a5d69cb7b87dad0ae3c58dd68a757f6aa6afa",
       "schema": "recording-processing.schema.json",
       "source": "examples/contracts.json#/recording-processing.schema.json",
@@ -2258,6 +2262,7 @@
     "schemas/private-session.schema.json": "b897511ef47e30d1a8b1a9885b6ac9ab60961801cdb8d6371f8dd4af659f6b8d",
     "schemas/proposal.schema.json": "110b6780ef9fda7154fcd5358c4502ea589c6a26356afd24da5668d4be2482a0",
     "schemas/public-export-candidate.schema.json": "7be2ef6ffe5a99412b427e54e990beca0fbf7cab520e8dc917a40a3314f9475a",
+    "schemas/public-site-guide-export.schema.json": "9616029789ca2ea71b6021dff0265c4d6154457000be215ed78735941a298dc4",
     "schemas/recording-processing.schema.json": "7062e488510f3703db3392200d8a9f5ace7500dd41eb01496f3d5dad8a17ceec",
     "schemas/semantic-dsp-profile.schema.json": "2b02bb6c1e577bd6ccd2cfe4f429fe43408efd0c7717ea3d1e896f4cb4cdfe79",
     "schemas/session-overrides.schema.json": "cf4291d252d07931ec9822e8315c0ac84bbc05bbe2c3f68006626aebe9479413",

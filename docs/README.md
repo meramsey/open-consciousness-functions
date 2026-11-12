@@ -23,6 +23,8 @@ loading the entire documentation tree:
 - Deliver private completed sessions: [private listening delivery](PRIVATE_LISTENING_DELIVERY.md).
 - Read the [general listening guide](LISTENING_GUIDE.md) and generate
   [function-specific Markdown/PDF/HTML guides](FUNCTION_GUIDES.md).
+- Build the reviewed, narration-free documentation projection for the public
+  audio website: [public website export](PUBLIC_WEBSITE_EXPORT.md).
 - Import/record/compare private voices: [voice workflows](VOICE_WORKFLOWS.md).
 - Use existing audio as speech: [recorded narration](RECORDED_NARRATION.md),
   including complete marked stems; mix sources with [hybrid narration](HYBRID_NARRATION.md).
