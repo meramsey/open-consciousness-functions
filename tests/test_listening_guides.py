@@ -147,9 +147,15 @@ def test_current_registry_all_58_guides_have_exact_active_cues():
     assert len(records) == 58
     documents = guides.markdown_documents()
     assert len(documents) == 60
-    assert (
-        sum(line.startswith("## ") for line in documents["listening-guide.md"].splitlines()) == 20
-    )
+    listening_sections = {
+        line for line in documents["listening-guide.md"].splitlines() if line.startswith("## ")
+    }
+    assert len(listening_sections) == 23
+    assert {
+        "## Before listening",
+        "## After the session",
+        "## Common questions",
+    } <= listening_sections
     catalog = LocaleCatalog()
     for record in records:
         text = documents["functions/" + guides.function_guide_stem(record) + ".md"]
