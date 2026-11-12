@@ -166,8 +166,9 @@
     "relationship": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["function_id", "title", "description", "relationship_type", "direction", "dependency"],
+      "required": ["relationship_id", "function_id", "title", "description", "relationship_type", "direction", "dependency"],
       "properties": {
+        "relationship_id": {"type": "string", "pattern": "^REL-[A-Z0-9-]+$"},
         "function_id": {"type": "string", "pattern": "^OCF-[A-Z]{3}-[0-9]{3}$"},
         "title": {"type": "string"},
         "description": {"type": "string"},

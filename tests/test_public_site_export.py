@@ -88,6 +88,41 @@ def test_export_requires_exact_source_commit_and_approved_function_fields(monkey
         export.export_data(source_commit=SOURCE_COMMIT)
 
 
+def test_export_uses_only_approved_relationship_projection(monkeypatch):
+    catalog = export.LocaleCatalog()
+    approved_index = export.build_command_index("en-US", catalog)
+    source = next(row for row in approved_index["functions"] if row["related_functions"])
+    identity = source["function_id"]
+    metadata = deepcopy(catalog.canonical.localized_functions[identity])
+    metadata.setdefault("relationships", {}).setdefault("related_functions", []).append(
+        {
+            "function_id": "OCF-FND-002",
+            "description": {
+                "text": "Unapproved keyless description must not be published.",
+                "status": "reviewed",
+            },
+            "relationship_type": "related",
+        }
+    )
+    catalog.canonical.localized_functions[identity] = metadata
+    monkeypatch.setattr(export, "LocaleCatalog", lambda *_args, **_kwargs: catalog)
+
+    result = export.export_data(source_commit=SOURCE_COMMIT)
+    exported = next(row for row in result["functions"] if row["function_id"] == identity)
+    assert result["build_receipt"]["approved_relationship_count"] == 33
+    assert len(exported["related_functions"]) == len(source["related_functions"])
+    assert "Unapproved keyless description must not be published." not in str(result)
+    by_id = {row["function_id"]: row for row in exported["related_functions"]}
+    for relation in source["related_functions"]:
+        projected = by_id[relation["function_id"]]
+        assert projected["relationship_id"] == relation["relationship_id"]
+        assert projected["title"] == relation["title"]["text"]
+        assert projected["description"] == relation["description"]["text"]
+        assert projected["relationship_type"] == relation["relationship_type"]
+        assert projected["direction"] == "outgoing"
+        assert projected["dependency"] == relation["dependency"] == "optional"
+
+
 def test_draft_procedure_is_excluded_as_a_whole(monkeypatch):
     original = export.build_command_index
 

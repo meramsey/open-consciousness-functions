@@ -26,6 +26,11 @@ def _digest(value: object) -> str:
     return hashlib.sha256(data.encode("utf-8")).hexdigest()
 
 
+def _require(condition: bool, message: str) -> None:
+    if not condition:
+        raise OCFError(message)
+
+
 def _approved_value(value, *, label: str) -> dict:
     if not isinstance(value, dict) or value.get("status") not in PUBLIC_VALUE_STATUSES:
         raise OCFError(f"public guide export requires reviewed {label}")
@@ -112,7 +117,15 @@ def _command(row: dict, local: dict, *, historical: bool = False) -> dict:
     }
 
 
-def _function(record, document, metadata, resource_path: Path, relation_titles: dict) -> dict:
+def _function(
+    record,
+    document,
+    metadata,
+    resource_path: Path,
+    relation_titles: dict,
+    *,
+    locale: str,
+) -> dict:
     identity = record.id
     title = _approved_value(metadata.get("title"), label=f"title {identity}")
     description = _approved_value(metadata.get("description"), label=f"description {identity}")
@@ -151,25 +164,45 @@ def _function(record, document, metadata, resource_path: Path, relation_titles: 
         ]
 
     relationships = []
-    for field, relationship_type in (
-        ("related_functions", "related"),
-        ("complementary_functions", "complementary"),
-    ):
-        for relation in metadata.get("relationships", {}).get(field, []):
-            description_value = _approved_value(
-                relation.get("description"),
-                label=f"approved {relationship_type} relationship {identity}/{relation['function_id']}",
-            )
-            relationships.append(
-                {
-                    "function_id": relation["function_id"],
-                    "title": relation_titles[relation["function_id"]],
-                    "description": description_value["text"],
-                    "relationship_type": relationship_type,
-                    "direction": "outgoing",
-                    "dependency": "optional",
-                }
-            )
+    for relation in document.get("related_functions", []):
+        relation_id = relation.get("relationship_id")
+        function_id = relation.get("function_id")
+        _require(
+            isinstance(relation_id, str) and relation_id,
+            f"approved relationship projection lacks a stable ID: {identity}",
+        )
+        _require(
+            function_id in relation_titles,
+            f"approved relationship projection has an unknown function: {identity}/{function_id}",
+        )
+        _require(
+            relation.get("relationship_type") in {"related", "complementary"}
+            and relation.get("dependency") == "optional",
+            f"approved relationship projection has an invalid type/scope: {identity}/{relation_id}",
+        )
+        localized_description = relation.get("description", {})
+        _require(
+            localized_description.get("requested_locale") == locale
+            and localized_description.get("resolved_locale") == locale
+            and localized_description.get("fallback") is False,
+            f"approved relationship description is not resolved for {locale}: {identity}/{relation_id}",
+        )
+        relation_description = localized_description.get("text")
+        _require(
+            isinstance(relation_description, str) and relation_description.strip(),
+            f"approved relationship description is empty: {identity}/{relation_id}",
+        )
+        relationships.append(
+            {
+                "relationship_id": relation_id,
+                "function_id": function_id,
+                "title": relation_titles[function_id],
+                "description": relation_description,
+                "relationship_type": relation["relationship_type"],
+                "direction": "outgoing",
+                "dependency": relation["dependency"],
+            }
+        )
 
     lifecycle = record.data.get("lifecycle", {})
     scopes = []
@@ -260,6 +293,7 @@ def export_data(*, source_commit: str, root: Path = REPO_ROOT, locale: str = "en
                 metadata,
                 resource_paths[record.id],
                 relation_titles,
+                locale=locale,
             )
         )
 
