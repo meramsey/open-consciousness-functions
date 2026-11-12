@@ -12,6 +12,12 @@ You remain in charge: pause, skip, or stop whenever you wish. A catalog entry do
 not promise a particular effect or mean a recording is available. This guide is
 editorial guidance, not reviewed session narration or medical advice.
 
+## Before listening
+
+Choose a time and place where you can safely attend, and make sure you can pause
+or stop playback comfortably. Do not listen while driving, operating equipment,
+or doing anything requiring vigilance.
+
 ## Choosing a function
 
 Start with one purpose that matters to you. Read its function guide, including
@@ -133,6 +139,42 @@ When reporting a problem, include function ID, edition/version, locale,
 player/settings, and the relevant time or cue. Distinguish what you heard from
 what you expected. Share only information you are comfortable disclosing; do not
 upload private source transcripts, voice recordings, or health details by default.
+
+## After the session
+
+Pause before returning to activities that require attention, especially after an
+edition intended for sleep. There is no universal listening schedule or required
+report. Repeating a recording is optional, not evidence of stronger results.
+
+## Common questions
+
+### Does every function have a recording?
+
+No. Function documentation and published audio availability are separate. Check
+the edition list on the function page; a catalog entry does not promise a
+recording.
+
+### Should I say a cue by itself?
+
+Use the function's documented activation steps. A cue identifies a command but
+does not supply missing timing, repetition, breathing, or release instructions.
+
+### Do I need to notice a particular sensation?
+
+No particular sensation is required. Read the documented purpose and choose
+whether the practice is useful or comfortable for you.
+
+### Can I listen without stereo headphones?
+
+Yes. Speakers, mono playback, or another accessibility setup remain options;
+they change editions designed for separate left/right channels. Accessibility
+and comfortable listening take priority over a particular presentation.
+
+### Which transcript should I read?
+
+Use the transcript attached to the exact voice, locale, and edition you selected.
+Do not substitute current function-guide wording for a published edition's
+transcript.
 
 ## Function guides
 
