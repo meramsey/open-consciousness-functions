@@ -24,7 +24,11 @@ PYTHONPATH=scripts python -m ocf_tools.public_site_export \
   --output .ocf-work/tmp/public-site-guides.json
 ```
 
-The export schema is `schemas/public-site-guide-export.schema.json`. The
+Approved relationships are projected through the existing canonical relationship
+service; raw per-locale relationship text is never treated as an approval.
+Descriptions, type, direction, dependency, and stable relationship ID are
+preserved from that projection. The export schema is
+`schemas/public-site-guide-export.schema.json`. The
 deterministic build receipt contains the source commit, function-resource
 fingerprints, an export content hash, and explicit false flags for excluded
 narration/evidence/draft content. The repository integration job checks schema,
