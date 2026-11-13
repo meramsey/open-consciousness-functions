@@ -206,6 +206,9 @@ def test_current_cached_guides_subset_and_corruption(tmp_path):
     cache.mkdir()
     artifacts = packages.attach_guides(cache, ["OCF-EXP-003"])
     assert len(artifacts) == 12
+    listening_guide = (cache / "guides" / "listening-guide.md").read_text(encoding="utf-8")
+    assert "Complete Preparation Learning before using any OCF function." in listening_guide
+    assert "## Preparation Learning first" in listening_guide
     assert (
         cache
         / (

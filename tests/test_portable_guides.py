@@ -25,6 +25,25 @@ def test_portable_collection_is_self_contained_and_has_all_functions(tmp_path):
     assert (package / "complete-guide.pdf").is_file()
     assert (package / "listening-guide.pdf").is_file()
     assert b"/Outlines" in (package / "complete-guide.pdf").read_bytes()
+    required = (
+        "Complete Preparation Learning before using any OCF function. Only people who "
+        "have already learned the official Human Plus preparation track may skip it."
+    )
+    listening_markdown = (package / "listening-guide.md").read_text(encoding="utf-8")
+    assert required in " ".join(listening_markdown.split())
+    assert listening_markdown.index("## Preparation Learning first") < listening_markdown.index(
+        "## Before listening"
+    )
+    assert required in " ".join(
+        (package / "listening-guide.html").read_text(encoding="utf-8").split()
+    )
+    listening_pdf = " ".join(
+        text or ""
+        for text in (
+            page.extract_text() for page in PdfReader(package / "listening-guide.pdf").pages
+        )
+    )
+    assert required in " ".join(listening_pdf.split())
     handbook = PdfReader(package / "complete-guide.pdf")
     assert any("Historical H-Plus lookup" in page.extract_text() for page in handbook.pages)
     for record in load_all_functions():
