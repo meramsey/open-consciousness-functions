@@ -39,10 +39,11 @@ while driving, operating equipment, or doing anything that requires vigilance.
 
 ## Headphones and stereo
 
-Check the edition's requirements. Stereo headphones keep the two channels
-separate for binaural designs; speakers or a mono accessibility setting change
-that presentation. Do not assume every OCF edition needs headphones or that a
-different presentation guarantees the same experience.
+Stereo headphones or stereo earbuds with separate left/right playback are
+required for the intended binaural/channel-separated audio. Speakers, mono
+mixing, or a single earpiece are not equivalent delivery of that audio. If you
+cannot use this setup, use the written guide or an edition-matched transcript if
+available, or skip the audio; no equivalent effects are promised.
 
 ## Volume
 
@@ -101,10 +102,13 @@ not reproduced here.
 
 ## Players and playback settings
 
-Use a player that supports the supplied format and seeking. Check whether repeat,
-shuffle, crossfade, playback speed, mono, equalization, or normalization is enabled;
-these can change timing, endings, or stereo presentation. Disable unwanted repeat
-before beginning. A player setting is not OCF approval of that playback path.
+Use a player that supports the supplied format and seeking. Preserve separate
+left/right stereo playback for intended binaural/channel-separated audio; mono
+mixing does not provide equivalent delivery. Separately, check whether repeat,
+shuffle, crossfade, playback speed, equalization, or normalization is enabled;
+these optional processing preferences can change timing, endings, or presentation.
+Disable unwanted repeat before beginning. A player setting is not OCF approval
+of that playback path.
 
 ## Editions and versions
 
@@ -115,10 +119,13 @@ rights clearance. Use the review status attached to the actual edition.
 
 ## Accessibility
 
-Choose the text or audio form that works for you. You can read first, pause,
-adjust playback, or decline headphones if unsuitable. Markdown remains the source
-text; the PDF uses selectable text rather than text images. The PDF is not claimed
-to be a tagged or certified accessible document.
+Keep any accessibility settings you rely on. If you cannot use separate
+left/right stereo headphones or earbuds, use the written guide or an
+edition-matched transcript if available, or skip the audio. These text options
+provide access to wording; they are not equivalent delivery of the binaural audio
+or a promise of equivalent effects. Markdown remains the source text; the PDF
+uses selectable text rather than text images. The PDF is not claimed to be a
+tagged or certified accessible document.
 
 ## Imagery is not required
 
@@ -164,11 +171,14 @@ does not supply missing timing, repetition, breathing, or release instructions.
 No particular sensation is required. Read the documented purpose and choose
 whether the practice is useful or comfortable for you.
 
-### Can I listen without stereo headphones?
+### Are stereo headphones required for binaural/channel-separated audio?
 
-Yes. Speakers, mono playback, or another accessibility setup remain options;
-they change editions designed for separate left/right channels. Accessibility
-and comfortable listening take priority over a particular presentation.
+Yes. Stereo headphones or stereo earbuds with separate left/right playback are
+required for the intended binaural/channel-separated audio. Speakers, mono
+mixing, or a single earpiece are not equivalent delivery of that audio. If you
+cannot use this setup, use the written guide or an edition-matched transcript if
+available, or skip the audio; no equivalent effects are promised. Keep any
+accessibility settings you rely on.
 
 ### Which transcript should I read?
 
