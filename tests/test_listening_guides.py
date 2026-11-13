@@ -59,6 +59,11 @@ def test_listening_guide_requires_separate_stereo_for_binaural_audio():
         "required for the intended binaural/channel-separated audio."
     )
     for text in (source_text, exported_text, public_export_text):
+        preparation = "Complete Preparation Learning before using any OCF function."
+        exception = "Only people who have already learned the official Human Plus preparation track may skip it."
+        assert preparation in text
+        assert exception in " ".join(text.split())
+        assert text.index("## Preparation Learning first") < text.index("## Before listening")
         assert required in text
         assert (
             "Speakers, mono\nmixing, or a single earpiece are not equivalent delivery of that audio."
@@ -71,6 +76,30 @@ def test_listening_guide_requires_separate_stereo_for_binaural_audio():
     assert "Binaural content requires stereo headphones" in background_text
     assert "separate left/right playback" in background_text
     assert "speakers, mono mixing, or a single earpiece" in background_text.lower()
+
+
+@pytest.mark.unit
+def test_readme_states_preparation_first_and_current_public_audio_release():
+    readme = " ".join(
+        (Path(__file__).resolve().parents[1] / "README.md").read_text(encoding="utf-8").split()
+    )
+    assert "Complete Preparation Learning before using any OCF function." in readme
+    assert (
+        "Only people who have already learned the official Human Plus preparation track may skip it."
+        in readme
+    )
+    assert (
+        "github.com/ocfproject-org/open-consciousness-functions-audio/releases/tag/audio-0.1.0-a6-20261111"
+        in readme
+    )
+    assert "https://ocfproject-org.github.io/open-consciousness-functions-audio/" in readme
+    assert (
+        "https://ocfproject-org.github.io/open-consciousness-functions-audio/preparation-learning/"
+        in readme
+    )
+    assert "meramsey.github.io" not in readme
+    assert "preparing its first approved release" not in readme
+    assert "Michael" not in readme
 
 
 @pytest.mark.unit
@@ -180,8 +209,9 @@ def test_current_registry_all_58_guides_have_exact_active_cues():
     listening_sections = {
         line for line in documents["listening-guide.md"].splitlines() if line.startswith("## ")
     }
-    assert len(listening_sections) == 23
+    assert len(listening_sections) == 24
     assert {
+        "## Preparation Learning first",
         "## Before listening",
         "## After the session",
         "## Common questions",

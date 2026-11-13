@@ -12,6 +12,11 @@ You remain in charge: pause, skip, or stop whenever you wish. A catalog entry do
 not promise a particular effect or mean a recording is available. This guide is
 editorial guidance, not reviewed session narration or medical advice.
 
+## Preparation Learning first
+
+Complete Preparation Learning before using any OCF function. Only people who
+have already learned the official Human Plus preparation track may skip it.
+
 ## Before listening
 
 Choose a time and place where you can safely attend, and make sure you can pause
