@@ -55,7 +55,10 @@ def test_listening_guide_requires_separate_stereo_for_binaural_audio():
     )
     for text in (source_text, exported_text):
         assert required in text
-        assert "Speakers, mono\nmixing, or a single earpiece are not equivalent delivery of that audio." in text
+        assert (
+            "Speakers, mono\nmixing, or a single earpiece are not equivalent delivery of that audio."
+            in text
+        )
         assert "### Are stereo headphones required for binaural/channel-separated audio?" in text
         assert "### Can I listen without stereo headphones?" not in text
         assert "Yes. Speakers, mono playback" not in text
