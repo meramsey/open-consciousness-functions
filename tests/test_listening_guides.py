@@ -44,6 +44,36 @@ def test_synthetic_missing_and_draft_data_are_honest():
 
 
 @pytest.mark.unit
+def test_listening_guide_requires_separate_stereo_for_binaural_audio():
+    root = Path(__file__).resolve().parents[1]
+    source_text = (root / "docs" / "LISTENING_GUIDE.md").read_text(encoding="utf-8")
+    background_text = (root / "docs" / "BACKGROUND_AUDIO.md").read_text(encoding="utf-8")
+    exported_text = guides.markdown_documents()["listening-guide.md"]
+    from ocf_tools.public_site_export import export_data
+
+    public_export_text = export_data(source_commit="a" * 40, root=root)["listening_guide"][
+        "markdown"
+    ]
+    required = (
+        "Stereo headphones or stereo earbuds with separate left/right playback are\n"
+        "required for the intended binaural/channel-separated audio."
+    )
+    for text in (source_text, exported_text, public_export_text):
+        assert required in text
+        assert (
+            "Speakers, mono\nmixing, or a single earpiece are not equivalent delivery of that audio."
+            in text
+        )
+        assert "### Are stereo headphones required for binaural/channel-separated audio?" in text
+        assert "### Can I listen without stereo headphones?" not in text
+        assert "Yes. Speakers, mono playback" not in text
+        assert "no equivalent effects are promised" in text
+    assert "Binaural content requires stereo headphones" in background_text
+    assert "separate left/right playback" in background_text
+    assert "speakers, mono mixing, or a single earpiece" in background_text.lower()
+
+
+@pytest.mark.unit
 def test_unreviewed_speech_is_not_published():
     record = FunctionRecord("OCF-TST-001", "test", Path("test.yaml"), {})
     content = {
