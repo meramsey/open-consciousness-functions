@@ -16,9 +16,19 @@ necessarily a finished recording or a promise of an effect.
 [Quickstart](docs/QUICKSTART.md) · [Use your own voice](docs/VOICE_PACKS.md) ·
 [Browse functions](FUNCTION_INDEX.md) · [Listening guide](docs/LISTENING_GUIDE.md)
 
-[Listen & Download OCF Audio](https://meramsey.github.io/open-consciousness-functions-audio/)
-is the public distribution companion. The library is preparing its first approved
-release; local candidate recordings are awaiting listening, rights and publication review.
+[Listen & Download OCF Audio](https://ocfproject-org.github.io/open-consciousness-functions-audio/)
+is the live public distribution companion. Its first public release,
+[audio-0.1.0-a6-20261111](https://github.com/ocfproject-org/open-consciousness-functions-audio/releases/tag/audio-0.1.0-a6-20261111),
+contains 59 published sessions. The canonical public Pages address is the
+organization URL above; the audio repository documents `ocfproject.org` as a
+planned custom-domain cutover, not the current live address.
+
+## Before using functions
+
+Complete Preparation Learning before using any OCF function. Only people who
+have already learned the official Human Plus preparation track may skip it.
+Open the [Preparation Learning session](https://ocfproject-org.github.io/open-consciousness-functions-audio/preparation-learning/)
+from the public audio library.
 
 <p align="center">
   <img src="brand/versions/0.3.0/presentation/readme-hero.png" alt="Open Consciousness Functions — Cosmic Path and Resonance Rings" width="100%">
