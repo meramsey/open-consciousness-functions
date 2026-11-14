@@ -471,11 +471,18 @@ supervision, cleanup, UI/mobile work or the proposed function concepts below.
 
 - [ ] `PLUS LUCKY`: positive intention, favorable opportunities, and recognition
       of beneficial possibilities.
-- [ ] `PLUS PROTECT`: rapid one-breath REBAL/resonant energy-balloon activation,
-      preserving original OCF wording and mechanics.
-- [ ] `PLUS HAIR GROWTH`: intention-based focus for encouraging desired hair
-      growth in selected regions; do not present unverified physiological
-      outcomes as established medical effects.
+- [ ] Energy Ball / REBAL (resonant energy balloon): draft original OCF exercises
+      using proposed spoken cue `Plus Inflate` to expand and `Plus Deflate` to
+      withdraw, per Michael's November 12 direction. These names replace the
+      earlier editorial placeholder `PLUS PROTECT`; they are not released cues.
+- [ ] Plus Hair Growth: draft an original exercise using proposed spoken cue
+      `Plus Sprout`, from a user suggestion confirmed by Michael on November 12.
+      Treat this as an experimental visualization/intention concept, not evidence
+      of hair regrowth or an established medical effect.
+- [ ] After the website fixes, prepare both exercise mockups for owner review.
+      Keep them as editorial drafts, separate from canonical function definitions,
+      activation instructions, narration and published audio. Do not promote them
+      to approved/released content or rerender audio without explicit review.
 
 ## Post-v1.0 — Per-state narration intelligibility
 
