@@ -50,7 +50,10 @@ Immune Readiness opener/body simplification, other function editorial proposals,
 - Coverage metrics met unchanged floors: combined statements 90.192%, branches 84.796%; unit-context statements 60.466%, branches 65.280%; integration-context statements 55.632%, branches 57.439%. The overall gate failed solely because pytest had the four freshness failures.
 - Skips require explicitly enabled full Piper/Farfield synthesis, private/authorized Chatterbox voice packs, or a built container image. Those optional/private operations were not enabled.
 - Aggregate `make check`, final worktree-local `make lint`, and en-US validation passed; optional markdownlint is unavailable. One derived interface-example fingerprint was regenerated after the 021 source-plan update.
-- Post-regeneration targeted tests and exact-head CI remain pending at this checkpoint.
+- Post-regeneration tests: 40 passed, including all four previously failing tests, complete affected report/inventory tests, and exact-content/integrity/configuration checks.
+- Final post-regeneration `make check`, `make lint`, and `docs-inventory --check`: PASS. Inventory: 221 documents, zero broken references; optional markdownlint remains unavailable.
+- The ROADMAP-only merged main `bd3ff7762d60cf3c4e97f712facf512d843de95f` is integrated into this isolated branch; its proposed cue TODOs are preserved.
+- Full exact-head remote CI is pending. No claim is made that the earlier local full-suite result was green; its four generated-only failures were fixed and all affected checks rerun. No coverage threshold, test selection or safety gate was weakened.
 
 No native Windows/macOS, physical-device, listening or audio-render verification is claimed.
 
