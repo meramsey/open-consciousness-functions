@@ -169,8 +169,9 @@ def test_resource_specificity_event_override_and_ambiguity(tmp_path):
         SourceResolver(doc, path)
 
 
+@pytest.mark.parametrize("grouped", [False, True])
 def test_semantic_unit_hybrid_inserts_internal_gap_once_and_whole_recording_none(
-    tmp_path, monkeypatch
+    tmp_path, monkeypatch, grouped
 ):
     doc, config, path = fixture(tmp_path)
     doc["timeline"] = [
@@ -204,6 +205,18 @@ def test_semantic_unit_hybrid_inserts_internal_gap_once_and_whole_recording_none
     monkeypatch.setattr(
         validators, "validate_narration_hygiene", lambda *_: validators.ValidationResult()
     )
+    if grouped:
+        doc["narration_pacing"]["profiles"]["guided"]["group_prose"] = True
+        with pytest.raises(OCFError, match="grouped prose.*hybrid unit"):
+            voice.render_narration(
+                doc,
+                tmp_path / "units.wav",
+                narration_sources=path,
+                sample_rate=8000,
+                render_cue_with_profile=lambda *_: pytest.fail("must reject before synthesis"),
+            )
+        assert not (tmp_path / "units.wav").exists()
+        return
     result = voice.render_narration(
         doc,
         tmp_path / "units.wav",

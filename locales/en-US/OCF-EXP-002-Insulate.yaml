@@ -1,0 +1,1224 @@
+schema_version: '2.0'
+locale: en-US
+domain: function
+function_id: OCF-EXP-002
+title:
+  text: Insulate
+  status: canonical
+  version: 1.0.0
+description:
+  text: Establishes an adjustable whole-body zone of temperature comfort; Cancel ends the current adjustment
+    and Release places the selected application on hold.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-EXP-002-PRIMARY
+  display_cue:
+    text: PLUS-INSULATE
+  spoken_cue:
+    text: Plus Insulate
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      order: 1
+      visible: true
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      before_steps:
+      - id: select-comfort-zone
+        localization_key: command.procedure.select-purpose
+        operation: select-purpose
+      evidence_keys:
+      - hplus.function.ocf-exp-002.function-body
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+    relationships: {}
+  procedure_steps:
+  - id: select-comfort-zone
+    operation: select-purpose
+    instruction:
+      text: Choose the purpose for using this function.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-EXP-002-CANCEL
+  display_cue:
+    text: PLUS-CANCEL
+  spoken_cue:
+    text: Plus Cancel
+    status: reviewed
+  label:
+    text: Cancellation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This command cancels the current adjustment.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use to cancel the current adjustment.
+    status: canonical
+    version: 1.0.0
+  role: cancel
+  control:
+    designation: secondary
+    phrase_ref:
+      command_id: OCF-CMD-EXP-002-CANCEL
+      source: canonical-mode
+    documentation:
+      order: 11
+      visible: true
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      before_steps: []
+      evidence_keys:
+      - hplus.function.ocf-exp-002.function-body
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+    relationships:
+      cancels:
+      - OCF-CMD-EXP-002-PRIMARY
+  procedure_steps:
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+- command_id: OCF-CMD-EXP-002-LEGACY-01
+  display_cue:
+    text: PLUS-INSULATE, INSULATE
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      command_id: OCF-CMD-EXP-002-LEGACY-01
+      source: legacy-command
+    availability: historical-lookup
+    documentation:
+      order: 101
+      visible: false
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
+- command_id: OCF-CMD-EXP-002-RELEASE
+  display_cue:
+    text: Plus Release
+  spoken_cue:
+    text: Plus Release
+    status: reviewed
+  label:
+    text: Release command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This command releases or suspends the current application as documented.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Places Insulate on hold; PLUS-CANCEL ends the current adjustment.
+    status: canonical
+    version: 1.0.0
+  role: release
+  control:
+    designation: special
+    phrase_ref:
+      phrase_id: OCF-CMD-EXP-002-RELEASE
+      source: special-phrase
+    documentation:
+      order: 200
+      visible: true
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      before_steps:
+      - id: focus-zoning
+        localization_key: command.procedure.focus-target
+        operation: focus-target
+      evidence_keys:
+      - hplus.function.ocf-exp-002.function-body
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+    relationships:
+      releases:
+      - OCF-CMD-EXP-002-PRIMARY
+  procedure_steps:
+  - id: focus-zoning
+    operation: focus-target
+    instruction:
+      text: Focus attention on the selected target.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+tags:
+- text: comfort
+  status: draft
+  semantic_id: comfort
+- text: temperature
+  status: draft
+  semantic_id: temperature
+- text: visualization
+  status: draft
+  semantic_id: visualization
+common_uses:
+- text: Exploring an imagined whole-body zone of temperature comfort.
+  status: draft
+- text: Reviewing adjustable comfort imagery without substituting it for suitable clothing, shelter, or
+    protection from heat and cold.
+  status: draft
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-exp-002.opener:
+    status: reviewed
+    version: 1.2.0
+    text: 'This OCF exercise will teach you to establish
+
+      an insulating zone around your physical body,
+
+      adjusting it to maintain your desired comfort
+
+      as the surrounding temperature changes.'
+  hplus.function.ocf-exp-002.function-body:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-EXP-002
+      allowed:
+      - cue.id.OCF-CMD-EXP-002-CANCEL
+      - cue.id.OCF-CMD-EXP-002-RELEASE
+      - cue.primary
+    text: 'From this moment forward, you have the ability
+
+      to create a balanced zone of temperature comfort
+
+      surrounding your entire physical body.
+
+
+      Whenever you desire this protection,
+
+      imagine a continuous, even layer of insulation
+
+      extending around you from head to toe.
+
+
+      Inhale deeply and gently hold your breath.
+
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+
+      Then exhale slowly through your mouth.
+
+
+      Your zone will immediately begin to form,
+
+      surrounding you in a smooth, balanced field
+
+      adjusted to the comfort you desire.
+
+
+      When the surroundings are cold,
+
+      the zone will resist excessive cooling,
+
+      conserving comfortable warmth around your body.
+
+
+      When the surroundings are hot,
+
+      the zone will resist excessive heating,
+
+      maintaining a comfortable, balanced condition.
+
+
+      As the environment changes, your zone
+
+      will adjust continuously and evenly,
+
+      strengthening or easing its insulating effect
+
+      according to what is needed.
+
+
+      Your physical body and your total self
+
+      will work together in this pattern of balance,
+
+      maintaining the zone without constant attention.
+
+
+      The ability to use Insulate is now
+
+      permanently available whenever you choose,
+
+      and the selected zone continues operating
+
+      until you consciously change or release it.
+
+
+      To cancel the current temperature adjustment,
+
+      inhale, hold your breath, think or say
+
+      in your mind, "{{ cue.id.OCF-CMD-EXP-002-CANCEL }}," then exhale.
+
+
+      That adjustment will end, leaving you free
+
+      to establish a different one whenever desired.
+
+
+      When you wish to place the entire Insulate
+
+      application on hold, bring Insulate into your mind.
+
+      Inhale, hold your breath, think or say
+
+      in your mind, "{{ cue.id.OCF-CMD-EXP-002-RELEASE }}," then exhale.
+
+
+      The present zone will rest, while your ability
+
+      to create it remains ready for future use.
+
+
+      Each time you use Insulate, establishing
+
+      and adjusting your zone will become
+
+      easier, smoother, and more effective.'
+  hplus.function.ocf-exp-002.closer:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-EXP-002
+      allowed:
+      - cue.id.OCF-CMD-EXP-002-CANCEL
+      - cue.id.OCF-CMD-EXP-002-RELEASE
+      - cue.primary
+    text: 'Remember, to establish your zone of temperature comfort,
+
+      inhale deeply, hold your breath, and think
+
+      or say in your mind, "{{ cue.primary }}."
+
+
+      Then exhale slowly through your mouth.
+
+
+      Use "{{ cue.id.OCF-CMD-EXP-002-CANCEL }}" to end the current adjustment,
+
+      or "{{ cue.id.OCF-CMD-EXP-002-RELEASE }}" to place Insulate on hold.
+
+
+      This concludes your OCF Insulate exercise.'
+slug: zoning
+classification:
+  primary_domain: experimental
+  secondary_domains: []
+category_labels:
+  experimental:
+    text: experimental
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    command_id: OCF-CMD-EXP-002-RELEASE
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-exp-002.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-exp-002.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-exp-002.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-EXP-002
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: 60c947da9550e6871cac5055d8a9df8c406b8f82f62e368add98483b382f3951
+    classification: RENAME TITLE/CUE — UPDATE TEACHING
+    recommended_title: Thermal Comfort
+    recommended_primary_cue: PLUS-INSULATE
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Represent head-to-toe insulating zone, inhale/hold/cue/exhale for temperature comfort.
+      Plus Cancel ends current adjustment; selected Zoning plus Plus Release puts whole application on
+      hold. Preserve distinct controls; not generic unwanted influence.
+    pair_reason: The actual described intent is a temperature-comfort field, not general protection from
+      unwanted influence. INSULATE restores functional specificity and bridges the spoken cue. Preserve
+      distinct CANCEL and RELEASE roles.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. The actual described
+      intent is a temperature-comfort field, not general protection from unwanted influence. INSULATE
+      restores functional specificity and bridges the spoken cue. Preserve distinct CANCEL and RELEASE
+      roles.
+    teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
+    documentary_intent: Brochure claims a body-surrounding temperature-comfort field; lists INSULATE and
+      CANCEL and advises RELEASE when need passes.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: 1f6416954dafcbb4456ec7383a85b19540bc244397e078a20f420c39cfbd89a6
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-EXP-002-LEGACY-01
+    - OCF-CMD-EXP-002-CANCEL
+    command_status: proposed
+    commands:
+    - PLUS-INSULATE, INSULATE
+    - PLUS-CANCEL
+    name: ZONING
+    source_availability: unavailable
+    source_system: Monroe H-PLUS
+  aliases:
+    command_ids: []
+    commands: []
+    names:
+    - Zoning
+  compatibility:
+    rationale: Former primary vocabulary is discovery-only under OCF-EDITORIAL-TITLE-CUES-001; secondary
+      operational commands remain unchanged.
+    state: historical-lookup
+  historical_lookup:
+  - decision: OCF-EDITORIAL-TITLE-CUES-001
+    kind: former-title
+    text: Zoning
+  - command_id: OCF-CMD-EXP-002-PRIMARY
+    decision: OCF-EDITORIAL-TITLE-CUES-001
+    kind: former-primary
+    text: PLUS-ZONE
+  - command_id: OCF-CMD-EXP-002-PRIMARY
+    decision: OCF-EDITORIAL-TITLE-CUES-001
+    kind: former-teaching
+    text: Plus Insulate Insulate
+  status:
+    evidence: community-hypothesis
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    purpose_key: functions.ocf-exp-002.purpose
+    short_description_key: functions.ocf-exp-002.short-description
+    title_key: functions.ocf-exp-002.title
+  commands:
+  - id: OCF-CMD-EXP-002-PRIMARY
+    localization:
+      display_cue_key: commands.ocf-cmd-exp-002-primary.display-cue
+      explanation_key: commands.ocf-cmd-exp-002-primary.explanation
+      label_key: commands.ocf-cmd-exp-002-primary.label
+      purpose_key: functions.ocf-exp-002.purpose
+      spoken_cue_key: commands.ocf-cmd-exp-002-primary.spoken-cue
+      usage_key: commands.ocf-cmd-exp-002-primary.usage
+    observed_phrase:
+      narration_key: hplus.function.ocf-exp-002.function-body
+      relationship: canonical-match
+      text: Plus Insulate
+  - id: OCF-CMD-EXP-002-CANCEL
+    localization:
+      explanation_key: commands.ocf-cmd-exp-002-cancel.explanation
+      label_key: commands.ocf-cmd-exp-002-cancel.label
+      purpose_key: functions.ocf-exp-002.purpose
+      usage_key: commands.ocf-cmd-exp-002-cancel.usage
+  - id: OCF-CMD-EXP-002-LEGACY-01
+    localization:
+      explanation_key: commands.ocf-cmd-exp-002-legacy-01.explanation
+      label_key: commands.ocf-cmd-exp-002-legacy-01.label
+      purpose_key: functions.ocf-exp-002.purpose
+      usage_key: commands.ocf-cmd-exp-002-legacy-01.usage
+  - id: OCF-CMD-EXP-002-RELEASE
+    localization:
+      explanation_key: commands.ocf-cmd-exp-002-release.explanation
+      label_key: commands.ocf-cmd-exp-002-release.label
+      purpose_key: functions.ocf-exp-002.purpose
+      usage_key: commands.ocf-cmd-exp-002-release.usage
+  command_phrases:
+  - id: OCF-CMD-EXP-002-RELEASE
+    phrase: Plus Release
+    source_narration_key: hplus.function.ocf-exp-002.function-body
+    status: observed
+  predecessor_resource_sha256: b8a5f8c2408e5816c8c9e3099a8f1e99163863815708bf462b369002c98b4f9f
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-001
+    kind: approved-title-cue
+    source_commit: 21e63ac6f8bf5a7bce9506f033330df967aa4f97
+    scope: English primary cue, finalized title where supplied, exact teaching substitutions and necessary
+      presentation summaries; procedures/mechanisms/secondary controls unchanged.
+    decision_source: Explicit user approval in the approved English title-cue migration task
+    source_row_sha256: 9fda11b8ac0ceec914aa1b18582493055e836aa056a9b08a0169d995879b4d7f
+    status: accepted
+    previous_values_sha256: 483617285d8a217e66af516c79e150bed694822d146d170f27a4280ad1911b05
+    current_values_sha256: 515b9fabae3c689df57bfe1aff219696efd30b8620dcba8a5e42818a69097344
+    changed_narration_keys:
+    - hplus.function.ocf-exp-002.closer
+    - hplus.function.ocf-exp-002.function-body
+    previous_resolved_text_sha256:
+      hplus.function.ocf-exp-002.function-body: 84ee0efb4b50af7cb8c3c4748fdba24664ff7bb67a93f5b05b6f958f1b065b2f
+      hplus.function.ocf-exp-002.closer: 16cbce6cc115b2fa5734098941c5ae2f31a882864b4eff1cf7d98aad12b67e68
+    current_resolved_text_sha256:
+      hplus.function.ocf-exp-002.function-body: 1f78fb1b9dc042f5053d82ad19c8e899858f92b4aa5e540be7dcd0673e132b4e
+      hplus.function.ocf-exp-002.closer: 50986eafe3f56f994fa8e0fcb3337f1c7ca4a915b13387f9c666d6c166b042fd
+    review_note: Temperature-comfort scope. Cancel ends the current adjustment; Release puts the selected
+      application on hold. Preserve both operations.
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    - OCF-TPL-SESSION-HPLUS-LOCKED-006
+    - OCF-TPL-SESSION-HPLUS-LOCKED-007
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7:opener
+      kind: structural-inference
+      line_candidates:
+      - 26
+      - 175
+      - 229
+      scope: document
+      source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+    - category: main
+      confidence: low
+      id: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7:main
+      kind: structural-inference
+      line_candidates:
+      - 68
+      - 71
+      scope: document
+      source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+    - category: closer
+      confidence: low
+      id: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7:closer
+      kind: structural-inference
+      line_candidates:
+      - 163
+      - 229
+      scope: document
+      source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+    - category: preparation
+      confidence: low
+      id: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7:preparation
+      kind: structural-inference
+      line_candidates:
+      - 26
+      - 38
+      - 47
+      - 50
+      - 56
+      - 166
+      - 178
+      scope: document
+      source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+    - category: command_association
+      confidence: low
+      id: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7:command_association
+      kind: structural-inference
+      line_candidates:
+      - 74
+      - 111
+      - 131
+      - 157
+      - 211
+      scope: document
+      source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+    - category: future_use
+      confidence: low
+      id: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7:future_use
+      kind: structural-inference
+      line_candidates:
+      - 139
+      - 160
+      scope: document
+      source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+    - category: return
+      confidence: low
+      id: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7:return
+      kind: structural-inference
+      line_candidates:
+      - 184
+      - 199
+      - 205
+      scope: document
+      source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+    - category: opener
+      confidence: low
+      id: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a:opener
+      kind: structural-inference
+      line_candidates:
+      - 55
+      - 249
+      - 358
+      scope: document
+      source_sha256: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a
+    - category: main
+      confidence: low
+      id: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a:main
+      kind: structural-inference
+      line_candidates:
+      - 148
+      - 152
+      scope: document
+      source_sha256: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a
+    - category: closer
+      confidence: low
+      id: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a:closer
+      kind: structural-inference
+      line_candidates:
+      - 234
+      - 358
+      scope: document
+      source_sha256: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a
+    - category: preparation
+      confidence: low
+      id: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a:preparation
+      kind: structural-inference
+      line_candidates:
+      - 34
+      - 35
+      - 56
+      - 73
+      - 87
+      - 97
+      - 133
+      - 238
+      - 251
+      scope: document
+      source_sha256: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a
+    - category: command_association
+      confidence: low
+      id: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a:command_association
+      kind: structural-inference
+      line_candidates:
+      - 156
+      - 189
+      - 204
+      - 229
+      - 344
+      scope: document
+      source_sha256: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a
+    - category: future_use
+      confidence: low
+      id: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a:future_use
+      kind: structural-inference
+      line_candidates:
+      - 210
+      - 231
+      scope: document
+      source_sha256: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a
+    - category: return
+      confidence: low
+      id: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a:return
+      kind: structural-inference
+      line_candidates:
+      - 257
+      - 316
+      - 339
+      scope: document
+      source_sha256: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a
+    - category: purpose
+      confidence: medium
+      id: review:OCF-EXP-002:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 22
+      - 23
+      scope: document
+      source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+    - category: opener
+      confidence: medium
+      id: review:OCF-EXP-002:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 232
+      scope: document
+      source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+    - category: main
+      confidence: medium
+      id: review:OCF-EXP-002:main
+      kind: function-specification-inference
+      line_candidates:
+      - 70
+      - 105
+      scope: document
+      source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+    - category: association
+      confidence: medium
+      id: review:OCF-EXP-002:association
+      kind: function-specification-inference
+      line_candidates:
+      - 71
+      - 105
+      scope: document
+      source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+    - category: rehearsal
+      confidence: unknown
+      id: review:OCF-EXP-002:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 232
+      scope: document
+      source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+    - category: future_use
+      confidence: medium
+      id: review:OCF-EXP-002:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 141
+      - 148
+      scope: document
+      source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+    - category: suspend_cancel_reset
+      confidence: medium
+      id: review:OCF-EXP-002:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 107
+      - 139
+      scope: document
+      source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+    - category: closer
+      confidence: medium
+      id: review:OCF-EXP-002:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 153
+      - 178
+      scope: document
+      source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-EXP-002:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 180
+      - 193
+      scope: document
+      source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+    - category: handoff
+      confidence: medium
+      id: review:OCF-EXP-002:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 195
+      - 232
+      scope: document
+      source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-EXP-002:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 232
+      scope: document
+      source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: Zoning/Zoning.ocr.pdf
+      related_sha256: []
+      sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: Zoning/Zoning_881033_README.md
+      related_sha256: []
+      sha256: 4e20d728b59e7b45d65c9c22e33fba3cff9d27e468c7fcc03cffbbf78699c611
+    - authentication: unverified
+      completeness: reconstruction; historical completeness not applicable
+      evidence_class: reconstructed_mockup
+      normalized_content_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+      path: Zoning/Zoning_881033_reconstructed_annotated.txt
+      related_sha256: []
+      sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+    - authentication: unverified
+      completeness: reconstruction; historical completeness not applicable
+      evidence_class: reconstructed_mockup
+      normalized_content_sha256: f83f233def607a11e78280cea30a5110023741a94baac45398f399f8abc594ed
+      path: Zoning/Zoning_881033_reconstructed_clean.txt
+      related_sha256: []
+      sha256: 9af5acc2517dbb4dfb6b9d9abb674b58530ae81595d361aab6b26fe9e08aba2a
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: Zoning/Zoning_881033_reconstruction_bundle.zip
+      related_sha256: []
+      sha256: 1a76508234d5d755475b12ae97b992ed39ccbff558ca748333f2ea09451d4d2c
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: Zoning/Zoning_881033_reconstruction_notes.md
+      related_sha256: []
+      sha256: 1d5bbed924f949b4025b0ffaf61ac8949eec395a18bc8d3e0328efbab376bac6
+  specifications:
+    analysis_review:
+      claim_categories:
+      - static-temperature-field
+      - heat-or-cold-resistance
+      - subjective-versus-physical-comfort-ambiguity
+      family: temperature-comfort-field-claims
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+            end_line: 105
+            file: Zoning/Zoning_881033_reconstructed_annotated.txt
+            source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+            start_line: 71
+          status: inferred
+          summary: Known command/purpose metadata is paired in the mockup with a proposed internal cue/breath
+            procedure; the exact historical association wording/method is unknown.
+        closer:
+          locators:
+          - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+            end_line: 178
+            file: Zoning/Zoning_881033_reconstructed_annotated.txt
+            source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+            start_line: 153
+          status: inferred
+          summary: Historical closer unknown; annotated mockup borrows remember/use, access close and
+            return shell from related transcripts.
+        consolidation:
+          locators:
+          - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+            end_line: 193
+            file: Zoning/Zoning_881033_reconstructed_annotated.txt
+            source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+            start_line: 180
+          status: inferred
+          summary: Historical target consolidation unknown; proposed sleep/ambient segment is related-function
+            inference, never measured target timing.
+        conversion:
+          locators:
+          - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+            end_line: 232
+            file: Zoning/Zoning_881033_reconstructed_annotated.txt
+            source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+            start_line: 1
+          status: inferred
+          summary: Original OCF design is still required; do not convert mockup expression by synonyms
+            or adopt unsupported mechanisms. Any safer/material reframing needs explicit human review,
+            not historical promotion.
+        future_use:
+          locators:
+          - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+            end_line: 148
+            file: Zoning/Zoning_881033_reconstructed_annotated.txt
+            source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+            start_line: 141
+          - file: Zoning/Zoning.ocr.pdf
+            page: 1
+            source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+          - file: Zoning/Zoning.ocr.pdf
+            page: 2
+            source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+          status: inferred
+          summary: As-needed environment compensation; physical insulation/protection is a claim, not
+            evidence of safety in heat/cold.
+        handoff:
+          locators:
+          - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+            end_line: 232
+            file: Zoning/Zoning_881033_reconstructed_annotated.txt
+            source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+            start_line: 195
+          status: inferred
+          summary: Historical handoff unknown; mockup's waking return/reminder is inferred, not recovered.
+        identity:
+          locators:
+          - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+            end_line: 105
+            file: Zoning/Zoning_881033_reconstructed_annotated.txt
+            source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+            start_line: 71
+          - file: Zoning/Zoning.ocr.pdf
+            page: 1
+            source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+          - file: Zoning/Zoning.ocr.pdf
+            page: 2
+            source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+            end_line: 105
+            file: Zoning/Zoning_881033_reconstructed_annotated.txt
+            source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+            start_line: 70
+          status: inferred
+          summary: select-temperature-comfort-goal; proposed-insulate-breath-cue; proposed-surrounding-zone-representation;
+            proposed-adaptation-to-environment
+        opener:
+          locators:
+          - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+            end_line: 232
+            file: Zoning/Zoning_881033_reconstructed_annotated.txt
+            source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+            start_line: 1
+          status: inferred
+          summary: Historical opener unknown; mockup supplies purpose orientation and related-function
+            learning shell as structural inference.
+        preparation:
+          locators:
+          - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+            end_line: 232
+            file: Zoning/Zoning_881033_reconstructed_annotated.txt
+            source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+            start_line: 1
+          - file: Zoning/Zoning.ocr.pdf
+            page: 1
+            source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+          - file: Zoning/Zoning.ocr.pdf
+            page: 2
+            source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+          status: supported
+          summary: Brochure gives prior Preparation Exercise or prior H-PLUS learning, a quiet supported
+            position, soft stereo/headphone listening and next-day target exercise. Exact lost narration
+            procedure is unknown; mockup shell is related-function inference.
+        provenance:
+          locators:
+          - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+            end_line: 232
+            file: Zoning/Zoning_881033_reconstructed_annotated.txt
+            source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+            start_line: 1
+          - file: Zoning/Zoning.ocr.pdf
+            page: 1
+            source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+          - file: Zoning/Zoning.ocr.pdf
+            page: 2
+            source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+          status: inferred
+          summary: Complete available reconstructed_mockup text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Annotated
+            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
+            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
+            historical operations remain unknown. Both brochure pages inspected separately; catalogue
+            assertions are documentary evidence, not recovered audio instructions.
+        purpose:
+          locators:
+          - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+            end_line: 23
+            file: Zoning/Zoning_881033_reconstructed_annotated.txt
+            source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+            start_line: 22
+          - file: Zoning/Zoning.ocr.pdf
+            page: 1
+            source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+          - file: Zoning/Zoning.ocr.pdf
+            page: 2
+            source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+          status: supported
+          summary: Brochure claims a body-surrounding temperature-comfort field; lists INSULATE and CANCEL
+            and advises RELEASE when need passes.
+        rehearsal:
+          locators:
+          - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+            end_line: 232
+            file: Zoning/Zoning_881033_reconstructed_annotated.txt
+            source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Annotated
+            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
+            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
+            historical operations remain unknown.
+        safety_claims:
+          locators:
+          - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+            end_line: 232
+            file: Zoning/Zoning_881033_reconstructed_annotated.txt
+            source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+            start_line: 1
+          - file: Zoning/Zoning.ocr.pdf
+            page: 1
+            source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+          - file: Zoning/Zoning.ocr.pdf
+            page: 2
+            source_sha256: 04826991f31a5044ffbb0a94f2da6e315395fd021fe578e7c3f230fab9ef4065
+          status: inferred
+          summary: static-temperature-field; heat-or-cold-resistance; subjective-versus-physical-comfort-ambiguity.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+            end_line: 232
+            file: Zoning/Zoning_881033_reconstructed_annotated.txt
+            source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+            start_line: 1
+          status: inferred
+          summary: Historical target recording's exact state sequence remains unknown. Mockup imports
+            ten/eleven/ten/sleep/waking grammar from surviving Hearing/Seeing, not recovered target audio.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+            end_line: 139
+            file: Zoning/Zoning_881033_reconstructed_annotated.txt
+            source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+            start_line: 107
+          status: inferred
+          summary: Catalogue CANCEL is listed but precise role is ambiguous; RELEASE-after-need is explicit.
+            Mockup's distinct cancel/hold sequence is not authenticated.
+      source_extent:
+        content_group_sha256: f520ad3ca377505fa100ec3ea55e21d8194458284a33426fc125e6b08986e66e
+        end_line: 232
+        file: Zoning/Zoning_881033_reconstructed_annotated.txt
+        source_sha256: 7bcb903f50833bbbb678b3a078ef432e3077434d406d0e2853169872fe77a2b7
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-EXP-002:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-EXP-002:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-EXP-002:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-EXP-002:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-EXP-002:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-EXP-002:main
+        operations:
+        - select-temperature-comfort-goal
+        - proposed-insulate-breath-cue
+        - proposed-surrounding-zone-representation
+        - proposed-adaptation-to-environment
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-EXP-002:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-EXP-002:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-EXP-002:rehearsal
+        operations: []
+        status: unknown
+      safety_claims:
+        evidence_refs:
+        - review:OCF-EXP-002:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-EXP-002:suspend_cancel_reset
+        operations:
+        - documented-suspend-cancel-reset
+        status: inferred
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Annotated VERIFIED labels are reconstruction-author assertions, not independent authentication.
+      Catalogue purpose/command/use limits and proposed mockup operations are separate evidence axes.
+      Missing historical operations remain unknown.
+    - Original OCF design is still required; do not convert mockup expression by synonyms or adopt unsupported
+      mechanisms. Any safer/material reframing needs explicit human review, not historical promotion.
+    states:
+      preferred: []
+      required: []
+      status: unknown

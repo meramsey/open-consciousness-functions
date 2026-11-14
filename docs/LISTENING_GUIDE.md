@@ -2,11 +2,26 @@
 
 ## What OCF is
 
-This listening guide is a starting point, not a promise of a particular experience.
-You remain in charge: pause, skip, or stop whenever you wish. OCF is a declarative
-function and audio authoring project; a catalog entry is not proof of an effect,
-a finished recording, or release approval. This is editorial guidance, not
-reviewed session narration or medical advice.
+OCF helps you choose and create guided audio practices for intentions such as
+relaxation, attention, learning and sleep. A function is a named practice with
+its own cues and documented instructions. Start with one intention, read its
+guide, then choose a completed recording or create an edition with your preferred
+voice. The project quickstart explains the creation workflow.
+
+You remain in charge: pause, skip, or stop whenever you wish. A catalog entry does
+not promise a particular effect or mean a recording is available. This guide is
+editorial guidance, not reviewed session narration or medical advice.
+
+## Preparation Learning first
+
+Complete Preparation Learning before using any OCF function. Only people who
+have already learned the official Human Plus preparation track may skip it.
+
+## Before listening
+
+Choose a time and place where you can safely attend, and make sure you can pause
+or stop playback comfortably. Do not listen while driving, operating equipment,
+or doing anything requiring vigilance.
 
 ## Choosing a function
 
@@ -29,10 +44,11 @@ while driving, operating equipment, or doing anything that requires vigilance.
 
 ## Headphones and stereo
 
-Check the edition's requirements. Stereo headphones keep the two channels
-separate for binaural designs; speakers or a mono accessibility setting change
-that presentation. Do not assume every OCF edition needs headphones or that a
-different presentation guarantees the same experience.
+Stereo headphones or stereo earbuds with separate left/right playback are
+required for the intended binaural/channel-separated audio. Speakers, mono
+mixing, or a single earpiece are not equivalent delivery of that audio. If you
+cannot use this setup, use the written guide or an edition-matched transcript if
+available, or skip the audio; no equivalent effects are promised.
 
 ## Volume
 
@@ -82,16 +98,22 @@ alert before resuming activities that require attention.
 ## Transcripts
 
 Use an edition-matched transcript when available to preview wording or follow
-along without audio. A function guide is not a transcript. Source transcripts,
-working drafts, and released wording have different review and rights statuses;
-missing or private text is not reproduced here.
+along without audio. An offline source guide may include canonical narration for
+reference. The public audio library instead shows only a transcript packaged
+with the selected published edition, so wording is never borrowed from a
+different or unreleased edition. Source transcripts, working drafts, and released
+wording have different review and rights statuses; missing or private text is
+not reproduced here.
 
 ## Players and playback settings
 
-Use a player that supports the supplied format and seeking. Check whether repeat,
-shuffle, crossfade, playback speed, mono, equalization, or normalization is enabled;
-these can change timing, endings, or stereo presentation. Disable unwanted repeat
-before beginning. A player setting is not OCF approval of that playback path.
+Use a player that supports the supplied format and seeking. Preserve separate
+left/right stereo playback for intended binaural/channel-separated audio; mono
+mixing does not provide equivalent delivery. Separately, check whether repeat,
+shuffle, crossfade, playback speed, equalization, or normalization is enabled;
+these optional processing preferences can change timing, endings, or presentation.
+Disable unwanted repeat before beginning. A player setting is not OCF approval
+of that playback path.
 
 ## Editions and versions
 
@@ -102,10 +124,13 @@ rights clearance. Use the review status attached to the actual edition.
 
 ## Accessibility
 
-Choose the text or audio form that works for you. You can read first, pause,
-adjust playback, or decline headphones if unsuitable. Markdown remains the source
-text; the PDF uses selectable text rather than text images. The PDF is not claimed
-to be a tagged or certified accessible document.
+Keep any accessibility settings you rely on. If you cannot use separate
+left/right stereo headphones or earbuds, use the written guide or an
+edition-matched transcript if available, or skip the audio. These text options
+provide access to wording; they are not equivalent delivery of the binaural audio
+or a promise of equivalent effects. Markdown remains the source text; the PDF
+uses selectable text rather than text images. The PDF is not claimed to be a
+tagged or certified accessible document.
 
 ## Imagery is not required
 
@@ -126,6 +151,45 @@ When reporting a problem, include function ID, edition/version, locale,
 player/settings, and the relevant time or cue. Distinguish what you heard from
 what you expected. Share only information you are comfortable disclosing; do not
 upload private source transcripts, voice recordings, or health details by default.
+
+## After the session
+
+Pause before returning to activities that require attention, especially after an
+edition intended for sleep. There is no universal listening schedule or required
+report. Repeating a recording is optional, not evidence of stronger results.
+
+## Common questions
+
+### Does every function have a recording?
+
+No. Function documentation and published audio availability are separate. Check
+the edition list on the function page; a catalog entry does not promise a
+recording.
+
+### Should I say a cue by itself?
+
+Use the function's documented activation steps. A cue identifies a command but
+does not supply missing timing, repetition, breathing, or release instructions.
+
+### Do I need to notice a particular sensation?
+
+No particular sensation is required. Read the documented purpose and choose
+whether the practice is useful or comfortable for you.
+
+### Are stereo headphones required for binaural/channel-separated audio?
+
+Yes. Stereo headphones or stereo earbuds with separate left/right playback are
+required for the intended binaural/channel-separated audio. Speakers, mono
+mixing, or a single earpiece are not equivalent delivery of that audio. If you
+cannot use this setup, use the written guide or an edition-matched transcript if
+available, or skip the audio; no equivalent effects are promised. Keep any
+accessibility settings you rely on.
+
+### Which transcript should I read?
+
+Use the transcript attached to the exact voice, locale, and edition you selected.
+Do not substitute current function-guide wording for a published edition's
+transcript.
 
 ## Function guides
 

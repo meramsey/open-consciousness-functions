@@ -162,7 +162,13 @@ def validate_function_schema(record: FunctionRecord) -> ValidationResult:
     """Validate one function record against function.schema.json."""
     result = ValidationResult()
     schema = _load_schema("function.schema.json")
-    for message in validate_against_schema(record.data, schema):
+    # The FunctionRecord API includes a read-only projection of consolidated
+    # locale content. Its legacy structural schema intentionally validates only
+    # the compatibility view; the full localized-function schema validates the
+    # embedded content authority separately.
+    compatibility = dict(record.data)
+    compatibility.pop("content", None)
+    for message in validate_against_schema(compatibility, schema):
         result.add("error", "schema", message, record.id)
     return result
 
@@ -370,10 +376,26 @@ def validate_command_metadata(records: list[FunctionRecord]) -> ValidationResult
 
     seen_ids: dict[str, str] = {}
     for record in records:
+        from .localized_authority import metadata as localized_metadata
+
+        literal_metadata = localized_metadata(record, "en-US", catalog=locale_catalog)
         for source_field, expected in (
-            ("title_key", record.canonical_name),
-            ("purpose_key", record.purpose_summary),
-            ("short_description_key", record.purpose_summary),
+            (
+                "title_key",
+                literal_metadata["title"]["text"] if literal_metadata else record.canonical_name,
+            ),
+            (
+                "purpose_key",
+                literal_metadata["description"]["text"]
+                if literal_metadata
+                else record.purpose_summary,
+            ),
+            (
+                "short_description_key",
+                literal_metadata["description"]["text"]
+                if literal_metadata
+                else record.purpose_summary,
+            ),
         ):
             key = record.documentation.get(source_field)
             entry = canonical_locale.get(key) if canonical_locale and key else None
@@ -662,6 +684,12 @@ def validate_timed_transcript(
         for problem in problems:
             result.add("error", "timed-timeline", problem, str(path))
         catalog = catalog or LocaleCatalog()
+        if data.get("narration_revision") is not None:
+            try:
+                catalog = catalog.with_revision(data["narration_revision"], document_locale(data))
+            except LocalizationError as exc:
+                result.add("error", "narration-revision", str(exc), str(path))
+                return result
         result.extend(
             validate_narration_usage(data, path, catalog)
             if records is None
@@ -897,7 +925,12 @@ def validate_narration_hygiene(
         if "text" in event and not key and (not isinstance(text, str) or not text.strip()):
             result.add("error", "narration-empty", f"event {event_id}: empty narration", str(path))
         if isinstance(text, str):
-            if re.search(r"\{[a-z][a-z0-9_]*(?:[,}])", text):
+            literal_custom = (
+                data.get("affirmation_selection") == "custom"
+                and event_id == "affirmation.practice"
+                and not key
+            )
+            if not literal_custom and re.search(r"\{[a-z][a-z0-9_]*(?:[,}])", text):
                 result.add(
                     "error",
                     "narration-variable",
@@ -1074,7 +1107,12 @@ def validate_locale_packs(catalog: LocaleCatalog | None = None) -> ValidationRes
                 )
         for resource in pack.manifest.get("resources") or []:
             filename = str(resource.get("file", ""))
-            data = load_yaml_file(Path(pack.path) / filename) if pack.path else {}
+            try:
+                reader = getattr(catalog, "_reader", None) or load_yaml_file
+                data = reader(Path(pack.path) / filename) if pack.path else {}
+            except OCFError as exc:
+                result.add("error", "locale-resource-read", str(exc), f"{target}/{filename}")
+                continue
             function_resource = resource.get("domain") == "function"
             schema = function_resource_schema if function_resource else resource_schema
             for message in validate_against_schema(data, schema):
@@ -1088,11 +1126,15 @@ def validate_locale_packs(catalog: LocaleCatalog | None = None) -> ValidationRes
                         "localized function ID/locale does not match a registered function and locale",
                         f"{target}/{filename}",
                     )
-                if not filename.startswith(str(data.get("function_id", "")) + "-"):
+                identity = str(data.get("function_id", ""))
+                if not (
+                    filename.startswith(identity + "-")
+                    or filename in {"hplus-" + identity + ".yaml", "original-" + identity + ".yaml"}
+                ):
                     result.add(
                         "error",
                         "localized-function-filename",
-                        "localized function filename must begin with its stable ID and readable title",
+                        "localized function filename must match its stable ID (legacy paths remain supported)",
                         f"{target}/{filename}",
                     )
                 localized_fields = [data.get("title"), data.get("description")]
@@ -1102,14 +1144,15 @@ def validate_locale_packs(catalog: LocaleCatalog | None = None) -> ValidationRes
                 )
                 if locale == CANONICAL_LOCALE:
                     invalid = any(
-                        not isinstance(value, dict) or value.get("source") != "function-yaml"
+                        not isinstance(value, dict)
+                        or not ("text" in value or value.get("source") == "function-yaml")
                         for value in localized_fields
                     )
                     if invalid:
                         result.add(
                             "error",
                             "canonical-localized-function-authority",
-                            "en-US title/description/cues must reference function YAML; do not create a second English authority",
+                            "en-US function metadata requires literal localized values or a historical registry reference",
                             f"{target}/{filename}",
                         )
                 elif any(
@@ -1356,6 +1399,17 @@ def validate_all() -> ValidationResult:
     result.extend(validate_timed_transcripts())
     result.extend(validate_voice_profiles())
     result.extend(validate_locale_packs())
+    try:
+        from .shared_state_cues import load as load_shared_state_cues
+
+        load_shared_state_cues()
+    except OCFError as exc:
+        result.add(
+            "error",
+            "shared-state-cues",
+            str(exc),
+            "function-content/shared-state-cues.yaml",
+        )
     result.extend(validate_session_library())
     result.extend(validate_semantic_dsp_profiles())
     from .content import validate_library
@@ -1474,8 +1528,11 @@ def validate_session_library() -> ValidationResult:
                     str(path),
                 )
             else:
-                result.extend(validate_narration_usage(doc, path))
-                result.extend(validate_narration_hygiene(doc, path, LocaleCatalog()))
+                catalog = LocaleCatalog()
+                if doc.get("narration_revision") is not None:
+                    catalog = catalog.with_revision(doc["narration_revision"], document_locale(doc))
+                result.extend(validate_narration_usage(doc, path, catalog))
+                result.extend(validate_narration_hygiene(doc, path, catalog))
         except OCFError as exc:
             result.add("error", "template-invalid", str(exc), str(path))
     return result
@@ -1485,6 +1542,20 @@ def validate_function_file(path: Path) -> ValidationResult:
     """Validate a single function YAML file."""
     result = ValidationResult()
     data = load_yaml_file(path)
+    if data.get("domain") == "function" and data.get("schema_version") == "2.0":
+        from .function_catalog import project
+
+        for message in validate_against_schema(
+            data, _load_schema("localized-function.schema.json")
+        ):
+            result.add("error", "schema", message, str(path))
+        if not result.ok:
+            return result
+        record = project(data, path, path.resolve().parents[2])
+        result.extend(validate_function_schema(record))
+        result.extend(validate_command_rules(record))
+        result.extend(validate_command_metadata([record]))
+        return result
     record = FunctionRecord(
         id=str(data.get("id", "")),
         slug=str(data.get("slug", "")),

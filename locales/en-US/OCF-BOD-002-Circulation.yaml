@@ -1,0 +1,996 @@
+schema_version: '2.0'
+locale: en-US
+domain: function
+function_id: OCF-BOD-002
+title:
+  text: Circulation
+  status: canonical
+  version: 1.0.0
+description:
+  text: Promotes a felt sense of smooth, comfortable circulation.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-BOD-002-PRIMARY
+  display_cue:
+    text: PLUS-CIRCULATE
+    status: reviewed
+    version: 0.1.0
+  spoken_cue:
+    text: Plus Circulate
+    status: reviewed
+    version: 0.1.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-CLOSE-FOCUS
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-bod-002.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: focus-target
+    operation: focus-target
+    instruction:
+      text: Focus attention on the selected target.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+secondary_commands: []
+tags:
+- text: circulation
+  status: draft
+  semantic_id: circulation
+- text: body-awareness
+  status: draft
+  semantic_id: body-awareness
+- text: visualization
+  status: draft
+  semantic_id: visualization
+common_uses:
+- text: Imagining smooth, comfortable circulation throughout the body.
+  status: draft
+- text: Exploring a felt sense of nourishment and vitality as a wellness practice, not a circulation treatment.
+  status: draft
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-bod-002.opener:
+    status: reviewed
+    version: 1.2.0
+    text: 'This OCF exercise will strengthen and reinforce your body''s
+
+      natural ability to maintain smooth, healthy circulation throughout
+
+      your entire body, establishing a lasting, automatic pattern of
+
+      balanced blood flow, nourishment, renewal, and maintenance.'
+  hplus.function.ocf-bod-002.function-body:
+    status: reviewed
+    version: 1.3.0
+    cue_template:
+      function_id: OCF-BOD-002
+      allowed:
+      - cue.primary
+    text: 'From this moment forward, bring your awareness to the blood
+
+      circulating throughout your entire physical body.
+
+
+      Feel your blood flowing smoothly and evenly, reaching every
+
+      part of you with the oxygen and nourishment it needs.
+
+
+      Become aware of the arteries, veins, and tiny blood vessels
+
+      that carry this flow throughout your body.
+
+
+      See and feel each vessel becoming stronger, healthier,
+
+      and more flexible, maintaining its ideal shape and size
+
+      for smooth and natural circulation.
+
+
+      Imagine every restriction clearing, and see the pathways
+
+      of circulation becoming open and free.
+
+
+      See your entire circulation system working smoothly,
+
+      evenly, and efficiently.
+
+
+      Now bring your awareness to the nourishment carried
+
+      by your blood.
+
+
+      With every breath, your lungs supply the oxygen your
+
+      body needs, and your digestive system provides the
+
+      nutrients that sustain your strength and vitality.
+
+
+      Your blood carries this oxygen and nourishment throughout
+
+      your body, delivering it where it is needed.
+
+
+      Feel the energy and vitality of this nourishment
+
+      reaching every part of you.
+
+
+      Your lungs, kidneys, liver, and other organs work
+
+      together to process and eliminate waste and to
+
+      maintain your body''s natural balance.
+
+
+      Your body''s protective and maintenance systems work
+
+      together in complete harmony, each doing exactly
+
+      what is needed.
+
+
+      Now know that this pattern of smooth circulation,
+
+      nourishment, and maintenance is firmly established
+
+      within you.
+
+
+      From this moment forward, your body will maintain
+
+      this healthy pattern automatically, without conscious
+
+      thought or effort.
+
+
+      Whether you are awake, resting, or sleeping, your
+
+      natural circulation and maintenance systems will
+
+      continue working for you.
+
+
+      Blood flow will adjust smoothly and appropriately
+
+      to the needs of each part of your body, supplying
+
+      more where needed and maintaining balance throughout.
+
+
+      This automatic process will remain naturally regulated,
+
+      providing exactly what your body needs without
+
+      unnecessary strain or excess.
+
+
+      The pattern is lasting and continuous, becoming a
+
+      natural part of your everyday life.
+
+
+      With each passing day, your circulation will become
+
+      smoother, more balanced, and more efficient.
+
+
+      You will feel stronger, refreshed, and full of
+
+      natural vitality.
+
+
+      Whenever you wish to give this established pattern
+
+      additional attention and reinforcement, you can
+
+      do so quickly and easily.
+
+
+      Simply close your eyes and bring your awareness
+
+      to the area you wish to improve.
+
+
+      Take a deep breath in and gently hold it.
+
+
+      While holding your breath, silently say to yourself,
+
+      "{{ cue.primary }}."
+
+
+      Then slowly exhale through your mouth, as though
+
+      gently blowing out a candle.
+
+
+      As you exhale, visualize smooth, balanced circulation
+
+      throughout your chosen area.
+
+
+      Your mind will reinforce this already-established
+
+      pattern of healthy circulation and maintenance.
+
+
+      Each time you use {{ cue.primary }}, conscious
+
+      reinforcement of this pattern becomes easier,
+
+      faster, and more effective.
+
+
+      Remember, your body''s natural circulation and
+
+      maintenance will continue automatically, whether
+
+      or not you think about it.
+
+
+      {{ cue.primary }} is always available whenever
+
+      you choose to focus and reinforce this pattern.
+
+
+      Your blood will flow smoothly and evenly,
+
+      bringing nourishment and vitality throughout
+
+      your body.'
+  hplus.function.ocf-bod-002.closer:
+    status: reviewed
+    version: 1.3.0
+    cue_template:
+      function_id: OCF-BOD-002
+      allowed:
+      - cue.primary
+    text: 'Remember, your body''s natural pattern of healthy circulation
+
+      and maintenance is now firmly established.
+
+
+      Whenever you wish to reinforce circulation in any part
+
+      of your body, simply close your eyes.
+
+
+      Bring your attention to the area you choose.
+
+
+      Inhale deeply and gently hold your breath.
+
+
+      Silently say to yourself, "{{ cue.primary }}."
+
+
+      Then slowly exhale through your mouth, as though
+
+      gently blowing out a candle, and open your eyes.
+
+
+      This concludes your OCF Circulation exercise.'
+slug: circulation
+classification:
+  primary_domain: body
+  secondary_domains:
+  - foundation
+category_labels:
+  body:
+    text: body
+    status: canonical
+  foundation:
+    text: foundation
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: health
+  medical_relevance: true
+  notes:
+  - Self-directed wellness practice; not a substitute for professional medical evaluation or treatment.
+    No guaranteed effects are claimed.
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-002.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-002.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-002.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-BOD-002
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: e0ee501a2f45112922ecf8e1f78f1bd96d6704129ab66578d9d0c148ab8579e6
+    classification: KEEP — TITLE, CUE, AND TEACHING ALREADY CONSISTENT
+    recommended_title: Circulation
+    recommended_primary_cue: PLUS-FLOW SMOOTH
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Whole-body circulation and vessel maintenance, distinct from brain/neck emphasis.
+      Select area, close eyes, inhale/hold/cue/slow mouth exhale; automatic baseline plus reinforcement.
+    pair_reason: Smooth flow is short and positive. Keep its whole-body circulation scope distinct from
+      Brain Flow and mental flow states.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. Smooth flow is short
+      and positive. Keep its whole-body circulation scope distinct from Brain Flow and mental flow states.
+    teaching_disposition: Preserve complete taught cue; metadata/title alignment only
+    documentary_intent: Claimed smooth balanced circulation and vessel renewal across the body.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: 547d059d7e0f4c6f611ab71a25a2daea08086ed94cf0d544a6269990d4976118
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-BOD-002-PRIMARY
+    command_status: unchanged
+    commands:
+    - PLUS-FLOW SMOOTH
+    name: CIRCULATION
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Circulation
+  compatibility:
+    state: historical-lookup
+    rationale: Approved presentation successor OCF-COMMAND-SIMPLIFICATION-001; superseded wording remains
+      historical lookup.
+  historical_lookup:
+  - text: PLUS-FLOW SMOOTH
+    kind: former-primary
+    decision: OCF-COMMAND-SIMPLIFICATION-001
+    command_id: OCF-CMD-BOD-002-PRIMARY
+  - text: Plus Flow Smooth
+    kind: former-teaching
+    decision: OCF-COMMAND-SIMPLIFICATION-001
+    command_id: OCF-CMD-BOD-002-PRIMARY
+  status:
+    evidence: source-described
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-bod-002.title
+    short_description_key: functions.ocf-bod-002.short-description
+    purpose_key: functions.ocf-bod-002.purpose
+  commands:
+  - id: OCF-CMD-BOD-002-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-bod-002-primary.label
+      usage_key: commands.ocf-cmd-bod-002-primary.usage
+      purpose_key: functions.ocf-bod-002.purpose
+      explanation_key: commands.ocf-cmd-bod-002-primary.explanation
+      display_cue_key: commands.ocf-cmd-bod-002-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-bod-002-primary.spoken-cue
+  predecessor_resource_sha256: 0f1fc183194fb7ca9a2355fcfee696d683b6c0f6be41e0902115f119cd9cb13b
+  editorial_decisions:
+  - id: OCF-COMMAND-SIMPLIFICATION-001
+    kind: approved-command-simplification
+    source_commit: 8ec5b0395c7a5c05fa629d64297d3bf048b097f9
+    scope: Explicitly approved command title/display/spoken substitutions only; commands, lifecycle, procedure
+      and audio settings are unchanged.
+    decision_source: 'Explicit user confirmation: Confirm implementation'
+    source_row_sha256: 5a46ce69c9cea2444931d6fe64c000affe48448400087ee1023d51e6f48ae197
+    status: accepted
+    previous_values_sha256: 9dc335f7fd99ef6082eb519fbc597095ed0d0c6c4cc0ad81e072bcdab657bd6b
+    current_values_sha256: a121bcaddbc0c12d410874f75c2b8749c679a5cae79a5c5eb1a90583ca741b87
+    changed_narration_keys: []
+    previous_resolved_text_sha256: {}
+    current_resolved_text_sha256: {}
+    review_note: Narration fingerprints and synthesis cache identity follow the approved canonical wording;
+      listening and release approval remain false.
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    - OCF-TPL-SESSION-HPLUS-LOCKED-006
+    - OCF-TPL-SESSION-HPLUS-LOCKED-007
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38:opener
+      kind: structural-inference
+      line_candidates:
+      - 3
+      - 88
+      - 166
+      scope: document
+      source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+    - category: main
+      confidence: low
+      id: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38:main
+      kind: structural-inference
+      line_candidates:
+      - 46
+      scope: document
+      source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+    - category: closer
+      confidence: low
+      id: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38:closer
+      kind: structural-inference
+      line_candidates:
+      - 80
+      - 166
+      scope: document
+      source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+    - category: preparation
+      confidence: low
+      id: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38:preparation
+      kind: structural-inference
+      line_candidates:
+      - 3
+      - 11
+      - 18
+      - 83
+      - 89
+      scope: document
+      source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+    - category: command_association
+      confidence: low
+      id: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38:command_association
+      kind: structural-inference
+      line_candidates:
+      - 72
+      - 78
+      - 164
+      scope: document
+      source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+    - category: future_use
+      confidence: low
+      id: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38:future_use
+      kind: structural-inference
+      line_candidates:
+      - 73
+      - 79
+      scope: document
+      source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+    - category: return
+      confidence: low
+      id: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38:return
+      kind: structural-inference
+      line_candidates:
+      - 91
+      - 130
+      - 131
+      - 152
+      - 159
+      scope: document
+      source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+    - category: purpose
+      confidence: medium
+      id: review:OCF-BOD-002:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 2
+      - 2
+      scope: document
+      source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+    - category: opener
+      confidence: medium
+      id: review:OCF-BOD-002:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 41
+      - 46
+      scope: document
+      source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+    - category: main
+      confidence: medium
+      id: review:OCF-BOD-002:main
+      kind: function-specification-inference
+      line_candidates:
+      - 47
+      - 74
+      scope: document
+      source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+    - category: association
+      confidence: medium
+      id: review:OCF-BOD-002:association
+      kind: function-specification-inference
+      line_candidates:
+      - 69
+      - 74
+      scope: document
+      source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-BOD-002:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 47
+      - 79
+      scope: document
+      source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+    - category: future_use
+      confidence: medium
+      id: review:OCF-BOD-002:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 69
+      - 79
+      scope: document
+      source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-BOD-002:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 166
+      scope: document
+      source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+    - category: closer
+      confidence: medium
+      id: review:OCF-BOD-002:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 75
+      - 89
+      scope: document
+      source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-BOD-002:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 90
+      - 129
+      scope: document
+      source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+    - category: handoff
+      confidence: medium
+      id: review:OCF-BOD-002:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 130
+      - 166
+      scope: document
+      source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-BOD-002:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 47
+      - 74
+      scope: document
+      source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+      path: +Transcripts From available tapes/Circulation/Circulation.lrc
+      related_sha256:
+      - 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+      - d6becaaf9d35b5480a5a937c4fed757feb8016d15123f052bf644313d46bbdb1
+      sha256: 6870bbc82f1a88a7629f46dbe7d27318a9d1d1020c7ab91922ec1bb73af12789
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Circulation/Circulation.ocr.pdf
+      related_sha256: []
+      sha256: 6257b40548e0d92605adad0589e0b07234939e43e50120c589a3201f3995924e
+    - authentication: operator-designated
+      completeness: explicit gaps
+      evidence_class: partial_source_transcript
+      normalized_content_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+      path: +Transcripts From available tapes/Circulation/Circulation.srt
+      related_sha256:
+      - 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+      - 6870bbc82f1a88a7629f46dbe7d27318a9d1d1020c7ab91922ec1bb73af12789
+      sha256: d6becaaf9d35b5480a5a937c4fed757feb8016d15123f052bf644313d46bbdb1
+    - authentication: operator-designated
+      completeness: explicit gaps
+      evidence_class: partial_source_transcript
+      normalized_content_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+      path: +Transcripts From available tapes/Circulation/Circulation.txt
+      related_sha256:
+      - 6870bbc82f1a88a7629f46dbe7d27318a9d1d1020c7ab91922ec1bb73af12789
+      - d6becaaf9d35b5480a5a937c4fed757feb8016d15123f052bf644313d46bbdb1
+      sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Circulation/folder.jpg
+      related_sha256: []
+      sha256: e6ec4255bc06e362a2419e410bf5a1c71752973c7d1d23681bf214795e152853
+  specifications:
+    analysis_review:
+      claim_categories:
+      - vascular-obstruction-removal
+      - blood-intake-and-elimination-perfection
+      - organism-exclusion
+      - persistent-physiological-improvement
+      family: body-renewal-with-targeted-intensification
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+            end_line: 74
+            file: +Transcripts From available tapes/Circulation/Circulation.txt
+            source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+            start_line: 69
+          status: supported
+          summary: Pair source cue/breathing with the selected body-related response; actual canonical
+            and legacy command variants stay in identity metadata.
+        closer:
+          locators:
+          - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+            end_line: 89
+            file: +Transcripts From available tapes/Circulation/Circulation.txt
+            source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+            start_line: 75
+          status: supported
+          summary: Reinforce remembered future use and close the learning context to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+            end_line: 129
+            file: +Transcripts From available tapes/Circulation/Circulation.txt
+            source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+            start_line: 90
+          status: supported
+          summary: Sleep-to-twenty shell present; physiological/automatic integration is not established
+            by that instruction.
+        conversion:
+          locators:
+          - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+            end_line: 74
+            file: +Transcripts From available tapes/Circulation/Circulation.txt
+            source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+            start_line: 47
+          status: inferred
+          summary: Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological
+            reinterpretation is equivalent. Useful experiential operations and material purpose changes
+            require explicit content review; medical management and breath-hold issues remain outside
+            software efficacy claims.
+        future_use:
+          locators:
+          - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+            end_line: 79
+            file: +Transcripts From available tapes/Circulation/Circulation.txt
+            source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+            start_line: 69
+          status: supported
+          summary: Use the cue/breathing procedure as described for the selected response; asserted effectiveness
+            is a claim, not an observed result.
+        handoff:
+          locators:
+          - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+            end_line: 166
+            file: +Transcripts From available tapes/Circulation/Circulation.txt
+            source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+            start_line: 130
+          status: supported
+          summary: Counted waking/eyes-open return with target command reminder where intelligible.
+        identity:
+          locators:
+          - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+            end_line: 74
+            file: +Transcripts From available tapes/Circulation/Circulation.txt
+            source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+            start_line: 69
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+            end_line: 74
+            file: +Transcripts From available tapes/Circulation/Circulation.txt
+            source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+            start_line: 47
+          status: supported
+          summary: represent-body-vessels-and-flow; imagine-obstructions-dissolving; imagine-intake-and-elimination-improving;
+            select-circulatory-area; close-eyes-inhale-hold-and-issue-flow-smooth-cue; exhale
+        opener:
+          locators:
+          - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+            end_line: 46
+            file: +Transcripts From available tapes/Circulation/Circulation.txt
+            source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+            start_line: 41
+          status: supported
+          summary: Introduce a body-oriented intended response and receptive learning context, not evidence
+            that the physiology changed.
+        preparation:
+          locators:
+          - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+            end_line: 40
+            file: +Transcripts From available tapes/Circulation/Circulation.txt
+            source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+            start_line: 3
+          status: supported
+          summary: Supported uninterrupted posture, settling movements/breathing, repository representation
+            for temporary setting-aside and counted ten-state preparation.
+        provenance:
+          locators:
+          - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+            end_line: 166
+            file: +Transcripts From available tapes/Circulation/Circulation.txt
+            source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+            start_line: 1
+          status: supported
+          summary: Complete available partial_source_transcript text inspected; shared representations
+            are not independent corroboration. Source accuracy/authentication remains unresolved. Content112-118
+            and count anomalies are contaminated/unverified. No direct circulatory measurement or reset
+            behavior is established.
+        purpose:
+          locators:
+          - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+            end_line: 2
+            file: +Transcripts From available tapes/Circulation/Circulation.txt
+            source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+            start_line: 2
+          status: supported
+          summary: Claimed smooth balanced circulation and vessel renewal across the body.
+        rehearsal:
+          locators:
+          - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+            end_line: 79
+            file: +Transcripts From available tapes/Circulation/Circulation.txt
+            source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+            start_line: 47
+          status: not-present
+          summary: No distinct listener test of physiological outcome is established; teaching repetition
+            and ASR ambient tokens are not outcome verification.
+        safety_claims:
+          locators:
+          - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+            end_line: 74
+            file: +Transcripts From available tapes/Circulation/Circulation.txt
+            source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+            start_line: 47
+          status: supported
+          summary: vascular-obstruction-removal; blood-intake-and-elimination-perfection; organism-exclusion;
+            persistent-physiological-improvement. Claims are classified as source assertions, not accepted
+            OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+            end_line: 46
+            file: +Transcripts From available tapes/Circulation/Circulation.txt
+            source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+            start_line: 41
+          status: supported
+          summary: Reference learning shell prepares ten, opens eleven, closes to ten and uses sleep-to-twenty
+            plus waking return where preserved; runtime OCF requirements remain separate and unknown.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+            end_line: 166
+            file: +Transcripts From available tapes/Circulation/Circulation.txt
+            source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Content112-118
+            and count anomalies are contaminated/unverified. No direct circulatory measurement or reset
+            behavior is established.
+      source_extent:
+        content_group_sha256: 5bceb468f137b9b2e923bd3e591ee34f7115c90fda46ddead1b9c0c90dcff961
+        end_line: 166
+        file: +Transcripts From available tapes/Circulation/Circulation.txt
+        source_sha256: 58c4daf1bd74356fe33220bf855593fe546ff58b9cd30496c8e373690eb3dc38
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-BOD-002:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-BOD-002:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-BOD-002:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-BOD-002:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-BOD-002:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-BOD-002:main
+        operations:
+        - represent-body-vessels-and-flow
+        - imagine-obstructions-dissolving
+        - imagine-intake-and-elimination-improving
+        - select-circulatory-area
+        - close-eyes-inhale-hold-and-issue-flow-smooth-cue
+        - exhale
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-BOD-002:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-BOD-002:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-BOD-002:rehearsal
+        operations: []
+        status: not-present
+      safety_claims:
+        evidence_refs:
+        - review:OCF-BOD-002:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-BOD-002:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Content112-118 and count anomalies are contaminated/unverified. No direct circulatory measurement
+      or reset behavior is established.
+    - Do not reproduce unsupported physiological/medical mechanisms as fact or assume a psychological
+      reinterpretation is equivalent. Useful experiential operations and material purpose changes require
+      explicit content review; medical management and breath-hold issues remain outside software efficacy
+      claims.
+    states:
+      preferred: []
+      required: []
+      status: unknown

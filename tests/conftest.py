@@ -18,12 +18,32 @@ if str(SCRIPTS_DIR) not in sys.path:
 
 def pytest_configure(config):
     """Keep pytest and every worker's OCF subprocess scratch local and isolated."""
-    root = REPO_ROOT / ".ocf-work" / "tmp"
+    from ocf_tools.paths import work_root
+
+    shared = getattr(config, "workerinput", {}).get("ocf_test_scratch_root")
+    root = Path(shared) if shared else work_root() / "tmp"
     root.mkdir(parents=True, exist_ok=True)
+    config._ocf_test_scratch_root = root
     if not config.option.basetemp:
         config.option.basetemp = tempfile.mkdtemp(prefix="pytest-run-", dir=root)
     worker = getattr(config, "workerinput", {}).get("workerid", "serial")
     os.environ["OCF_WORK_DIR"] = str(Path(config.option.basetemp) / f"ocf-{worker}")
+
+
+@pytest.hookimpl(optionalhook=True)
+def pytest_configure_node(node):
+    node.workerinput["ocf_test_scratch_root"] = str(node.config._ocf_test_scratch_root)
+
+
+@pytest.fixture()
+def release_tmp_path(request) -> Path:
+    """Keep successful portable release paths short, inside the shared workspace.
+
+    GitHub checkout paths plus pytest's worker/test subdirectories can exhaust
+    the real 240-character release limit. Retain unique fixture diagnostics at
+    the workspace temp root instead; explicit overlong-path tests still run.
+    """
+    return Path(tempfile.mkdtemp(prefix="r-", dir=request.config._ocf_test_scratch_root))
 
 
 @pytest.fixture()

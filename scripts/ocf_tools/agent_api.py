@@ -286,16 +286,23 @@ def list_functions(
     release_ready: bool | None = None,
     offset: int = 0,
     limit: int = 10,
+    tag: str | None = None,
+    query: str | None = None,
 ) -> dict:
     from .content import load_layers
     from .eligibility import eligibility
     from .indexes import load_all_functions
-    from .locale import normalize_tag
+    from .locale import LocaleCatalog, normalize_tag
+    from .localized_authority import matches, metadata, title
 
     normalize_tag(locale)
     page([], offset, limit)
     rows = []
+    catalog = LocaleCatalog()
+    locale_functions = catalog.function_completeness(locale) if catalog.get(locale) else {}
     for record in load_all_functions():
+        if not matches(record, locale, catalog=catalog, tag=tag, query=query):
+            continue
         domain = record.data["classification"]["primary_domain"]
         if category and domain != category:
             continue
@@ -306,10 +313,13 @@ def list_functions(
             continue  # Planning/audition APIs never establish release clearance.
         row = {
             "id": record.id,
-            "name": record.canonical_name,
+            "name": title(record, locale, catalog=catalog),
             "category": domain,
             "human_review": review,
             "source_availability": record.source_availability,
+            "localization": locale_functions.get(record.id, {"status": "missing"}),
+            "tags": (metadata(record, locale, catalog=catalog) or {}).get("tags", []),
+            "common_uses": (metadata(record, locale, catalog=catalog) or {}).get("common_uses", []),
         }
         if renderable is not None:
             eligible = eligibility(record.id, locale)["tts_renderable"]
@@ -348,27 +358,46 @@ def get_function(
 ) -> dict:
     from .commands import command_view, cue_presentation
     from .content import load_layers
+    from .locale import LocaleCatalog
+    from .localized_authority import description, metadata, title
 
     record = owner(function_id)
     layers = load_layers(function_id)
+    catalog = LocaleCatalog()
     data = {
         "id": record.id,
-        "name": record.canonical_name,
+        "name": title(record, locale, catalog=catalog),
         "commands": record.data["canonical"]["command"],
-        "purpose": record.purpose_summary,
+        "purpose": description(record, locale, catalog=catalog),
         "lifecycle": record.data["lifecycle"],
         "companions": record.data.get("companions", []),
-        "command_metadata": [command_view(record, command) for command in record.command_records],
+        "command_metadata": [
+            command_view(record, command, locale=locale, catalog=catalog)
+            for command in record.command_records
+        ],
         "source_availability": record.source_availability,
         "human_review": layers.get("specifications", {}).get("human_review", "unknown"),
         "binding": layers.get("bindings", {}),
         "provenance": {
-            "evidence_file": f"function-content/evidence/{record.id}.yaml",
+            "canonical_resource": record.path.relative_to(REPO_ROOT).as_posix(),
             "source_count": len(layers.get("evidence", {}).get("sources", [])),
         },
         "release_ready": False,
-        "cue_presentation": cue_presentation(record, locale),
+        "cue_presentation": cue_presentation(record, locale, catalog=catalog),
     }
+    localized = metadata(record, locale, catalog=catalog)
+    data["localization"] = (
+        catalog.function_completeness(locale).get(record.id, {"status": "missing"})
+        if catalog.get(locale)
+        else {"status": "missing"}
+    )
+    if localized is not None:
+        data["commands"] = {**data["commands"], "primary": data["cue_presentation"]["display_cue"]}
+        data.update(
+            tags=localized.get("tags", []),
+            common_uses=localized.get("common_uses", []),
+            localized_relationships=localized.get("relationships", {}),
+        )
     if preview:
         from .cue_templates import preview as preview_narration
 

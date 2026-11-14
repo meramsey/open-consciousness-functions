@@ -12,7 +12,13 @@ from urllib.parse import quote, unquote, urlsplit
 
 from .audition_exports import _artifact, _source_artifact, _verify_export_identity
 from .indexes import load_function_by_id
-from .listening_guides import function_guide_markdown, html_bytes, pdf_bytes
+from .listening_guides import (
+    function_guide_markdown,
+    function_guide_stem,
+    html_bytes,
+    pdf_bytes,
+    validate_guide_stems,
+)
 from .locale import LocaleCatalog
 from .paths import (
     REPO_ROOT,
@@ -94,9 +100,9 @@ def attach_guides(
         records[fid] = record
         pending.extend(row["related_id"] for row in relationships(record))
     for fid, record in sorted(records.items()):
-        name = f"functions/{fid}.md"
+        name = "functions/" + function_guide_stem(record, catalog=catalog) + ".md"
         documents[name] = function_guide_markdown(record, catalog=catalog, locale=locale)
-        index.append(f"- [{fid}]({name})")
+        index.append(f"- [{fid}]({quote(name, safe='/')})")
     index += ["", "Related guides do not imply that their recordings are included.", ""]
     if edition_files:
         index += ["## Included edition files", ""]
@@ -176,6 +182,9 @@ def verify_package(root: Path):
         _source_artifact(root, item)
     if not document.get("sessions"):
         raise OCFError("missing package sessions")
+    guide_files = document.get("function_guides")
+    if guide_files is not None:
+        validate_guide_stems(guide_files, [row["function_id"] for row in document["sessions"]])
     session_ids = set()
     for session in document["sessions"]:
         fid = session["function_id"]
@@ -197,10 +206,20 @@ def verify_package(root: Path):
                 raise OCFError("missing or conflicting session artifact receipt")
         if any(
             f"{fid}/{name}" not in receipts
-            for name in ("listening-guide.pdf", "function-guide.pdf")
+            for name in (
+                "listening-guide.pdf",
+                guide_files[fid] + ".pdf" if guide_files is not None else "function-guide.pdf",
+            )
         ):
             raise OCFError("missing per-function listening/function guide PDFs")
-    guide_stems = ["listening-guide", "index", *(f"functions/{fid}" for fid in session_ids)]
+    guide_stems = [
+        "listening-guide",
+        "index",
+        *(
+            "functions/" + (guide_files[fid] if guide_files is not None else fid)
+            for fid in session_ids
+        ),
+    ]
     if any(
         f"guides/{stem}.{fmt}" not in receipts
         for stem in guide_stems
@@ -298,8 +317,10 @@ def package_auditions(sources, output, *, guides=None, resume=False):
             for source_name, target_name in (
                 ("guides/listening-guide.pdf", "listening-guide.pdf"),
                 (
-                    f"guides/functions/{manifest['function_id']}.pdf",
-                    "function-guide.pdf",
+                    "guides/functions/"
+                    + function_guide_stem(load_function_by_id(manifest["function_id"]))
+                    + ".pdf",
+                    function_guide_stem(load_function_by_id(manifest["function_id"])) + ".pdf",
                 ),
             ):
                 guide = stage / source_name
@@ -332,6 +353,7 @@ def package_auditions(sources, output, *, guides=None, resume=False):
             "publication_approval": False,
             "human_listening_approval": None,
             "sessions": identities,
+            "function_guides": {fid: function_guide_stem(load_function_by_id(fid)) for fid in ids},
             "artifacts": artifacts,
             "audio_operation": "byte-for-byte copy; no reencoding or tag changes",
             "guide_review": "OCF-GUIDE-REVIEW-001",

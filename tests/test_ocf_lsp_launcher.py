@@ -45,7 +45,7 @@ def checkout_launcher(repo_root, tmp_path):
 def test_launcher_symbols_cross_file_definition_unsaved_error_and_clean_shutdown(
     repo_root, tmp_path, checkout_launcher
 ):
-    path = repo_root / "functions/sleep/sleep-easy.yaml"
+    path = repo_root / "locales/en-US/OCF-SLP-005-Sleep-Easy.yaml"
     original = path.read_text(encoding="utf-8")
     command = [sys.executable, str(checkout_launcher), "--stdio"]
     rpc = Client(repo_root, tmp_path / "launcher-stderr.log", command=command)
@@ -84,8 +84,15 @@ def test_launcher_symbols_cross_file_definition_unsaved_error_and_clean_shutdown
                 "position": position,
             },
         )
+        from ocf_tools.locale import LocaleCatalog
+
+        active_file = (
+            LocaleCatalog(repo_root / "locales")
+            .require("en-US")
+            .localized_function_files["OCF-SLP-005"]
+        )
         assert any(
-            row["uri"] == (repo_root / "locales/en-US/hplus-OCF-SLP-005.yaml").as_uri()
+            row["uri"] == (repo_root / "locales/en-US" / active_file).as_uri()
             for row in definition["result"]
         )
         rpc.send(

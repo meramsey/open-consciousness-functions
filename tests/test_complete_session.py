@@ -30,10 +30,10 @@ def test_sleep_easy_complete_template_expands_existing_focus_and_sleep_sequence(
     )
     assert plan["session_completeness"] == "complete"
     assert plan["template"] == {
-        "id": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
-        "version": "5.0.0",
+        "id": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+        "version": "7.0.0",
         "origin": "reference-derived",
-        "content_status": "draft",
+        "content_status": "reviewed",
     }
     assert [stage["id"] for stage in plan["stages"]] == [
         "function-opener",
@@ -53,7 +53,6 @@ def test_sleep_easy_complete_template_expands_existing_focus_and_sleep_sequence(
         "session-complete",
     ]
     assert [row["to"] for row in plan["state_directives"]] == [
-        "focus-10",
         "focus-11",
         "focus-10",
         "focus-20",
@@ -65,11 +64,12 @@ def test_sleep_easy_complete_template_expands_existing_focus_and_sleep_sequence(
         "focus-10",
     ]
     assert {row["event_id"] for row in plan["ignored_state_directives"]} == {
-        "focus-ten.transition",
         "focus20-enter.transition",
         "focus20-close.transition",
         "return.complete",
     }
+    # V3 recognizes the established F10 state without a second arrival ramp.
+    assert not any(row["event_id"] == "focus-ten.transition" for row in plan["state_directives"])
     state_choices = plan["dsp_profile"]["states"]
     assert state_choices["focus-10"] == {"mode": "preset", "preset": "OCF-BG-0012"}
     assert state_choices["focus-11"] == {"mode": "preset", "preset": "OCF-BG-0006"}
@@ -81,7 +81,7 @@ def test_sleep_easy_complete_template_expands_existing_focus_and_sleep_sequence(
     assert stages["focus11-body"]["background_policy_states"] == ["focus-11"]
     assert stages["sleep20-body"]["background_policy_states"] == ["focus-10"]
     assert stages["function-closer"]["background_policy_states"] == ["focus-10"]
-    assert len(plan["dsp_profile"]["ignored_state_events"]) == 4
+    assert len(plan["dsp_profile"]["ignored_state_events"]) == 3
     assert plan["approval_state"]["function_review_status"] == "required"
     assert plan["approval_state"]["release_ready"] is False
     sleep_stage = next(stage for stage in plan["stages"] if stage["id"] == "sleep20-body")
@@ -111,14 +111,12 @@ def test_sleep_easy_complete_template_expands_existing_focus_and_sleep_sequence(
         "Nine.",
         "Ten.",
     ]
-    torso = next(
-        item
+    assert not any(
+        unit["text"] == "Sleep."
         for item in plan["narration_pacing_plan"]
-        if item["narration_key"] == "hplus.shared.relaxation.torso"
+        if item["narration_key"].startswith("hplus.shared.relaxation.")
+        for unit in item["units"]
     )
-    sleep_landings = [unit for unit in torso["units"] if unit["text"] == "Sleep."]
-    assert [unit["kind"] for unit in sleep_landings] == ["landing"] * 4
-    assert [unit["pause_after_s"] for unit in sleep_landings] == [5.0, 5.0, 5.0, 6.0]
     focus20 = paced["focus20-enter.enter"]["units"]
     assert [unit["text"] for unit in focus20[4:]] == [
         "Ten.",
@@ -267,6 +265,348 @@ def test_background_activity_requires_each_selected_binaural_state(tmp_path):
             writer.writeframes(frame * 100)
         with pytest.raises(OCFError, match=message):
             _background_activity(path, stages, {"focus-11": {"mode": "preset"}})
+
+
+@pytest.mark.unit
+def test_ffprobe_inspection_is_required_and_rejects_failed_or_silent_streams(monkeypatch, tmp_path):
+    from types import SimpleNamespace
+
+    from ocf_tools import complete_session
+    from ocf_tools.utils import OCFError
+
+    path = tmp_path / "synthetic.wav"
+    monkeypatch.setattr(complete_session.shutil, "which", lambda _name: "ffprobe")
+    probe = {
+        "streams": [
+            {
+                "codec_type": "audio",
+                "codec_name": "pcm_s16le",
+                "sample_rate": "8000",
+                "channels": 2,
+                "channel_layout": "stereo",
+                "sample_fmt": "s16",
+            }
+        ],
+        "format": {"duration": "1.25", "bit_rate": "256000"},
+    }
+    monkeypatch.setattr(
+        complete_session,
+        "workspace_run",
+        lambda *_args, **_kwargs: SimpleNamespace(
+            returncode=0, stdout=json.dumps(probe), stderr=""
+        ),
+    )
+    result = complete_session._probe_audio(path)
+    assert result["codec"] == "pcm_s16le"
+    assert result["sample_rate"] == 8000 and result["channels"] == 2
+    assert result["duration_seconds"] == 1.25 and result["bit_rate"] == 256000
+
+    monkeypatch.setattr(complete_session.shutil, "which", lambda _name: None)
+    with pytest.raises(OCFError, match="ffprobe is required"):
+        complete_session._probe_audio(path)
+    monkeypatch.setattr(complete_session.shutil, "which", lambda _name: "ffprobe")
+    monkeypatch.setattr(
+        complete_session,
+        "workspace_run",
+        lambda *_args, **_kwargs: SimpleNamespace(returncode=1, stdout="", stderr="decode failed"),
+    )
+    with pytest.raises(OCFError, match="ffprobe could not inspect"):
+        complete_session._probe_audio(path)
+    monkeypatch.setattr(
+        complete_session,
+        "workspace_run",
+        lambda *_args, **_kwargs: SimpleNamespace(
+            returncode=0, stdout=json.dumps({"streams": [{"codec_type": "video"}]}), stderr=""
+        ),
+    )
+    with pytest.raises(OCFError, match="no audio stream"):
+        complete_session._probe_audio(path)
+
+
+@pytest.mark.unit
+def test_ffmpeg_decode_verification_has_explicit_success_and_failure_paths(monkeypatch, tmp_path):
+    from types import SimpleNamespace
+
+    from ocf_tools import complete_session
+    from ocf_tools.utils import OCFError
+
+    path = tmp_path / "synthetic.wav"
+    monkeypatch.setattr(complete_session.shutil, "which", lambda _name: None)
+    with pytest.raises(OCFError, match="ffmpeg is required"):
+        complete_session._verify_decode(path)
+
+    monkeypatch.setattr(complete_session.shutil, "which", lambda _name: "ffmpeg")
+    results = iter(
+        [
+            SimpleNamespace(returncode=0, stderr=""),
+            SimpleNamespace(returncode=1, stderr="bad frame"),
+        ]
+    )
+    monkeypatch.setattr(complete_session, "workspace_run", lambda *_a, **_k: next(results))
+    complete_session._verify_decode(path)
+    with pytest.raises(OCFError, match="audio decode failed"):
+        complete_session._verify_decode(path)
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize(
+    "case", ["stereo", "mono", "rate", "width", "empty", "identical", "silent"]
+)
+def test_stereo_measurement_validates_format_frames_and_channels(tmp_path, case):
+    import wave
+
+    from ocf_tools import complete_session
+    from ocf_tools.utils import OCFError
+
+    path = tmp_path / "synthetic.wav"
+    channels = 1 if case == "mono" else 2
+    sample_rate = 16000 if case == "rate" else 8000
+    sample_width = 1 if case == "width" else 2
+    frames = 0 if case == "empty" else 16
+    with wave.open(str(path), "wb") as writer:
+        writer.setnchannels(channels)
+        writer.setsampwidth(sample_width)
+        writer.setframerate(sample_rate)
+        if case == "identical":
+            writer.writeframes(
+                b"".join((1000).to_bytes(2, "little", signed=True) * 2 for _ in range(frames))
+            )
+        elif case == "silent":
+            writer.writeframes(
+                b"".join(
+                    (0).to_bytes(2, "little", signed=True)
+                    + (1000).to_bytes(2, "little", signed=True)
+                    for _ in range(frames)
+                )
+            )
+        elif sample_width == 1:
+            writer.writeframes(bytes([128, 129] * frames))
+        elif channels == 1:
+            writer.writeframes(b"\x01\x00" * frames)
+        else:
+            writer.writeframes(b"\x01\x00\xff\xff" * frames)
+
+    if case == "stereo":
+        metrics = complete_session._stereo_metrics(path, 8000)
+        assert metrics["channels"] == 2 and metrics["different_channel_frames"] == 16
+        assert metrics["left_peak_int16"] > 0 and metrics["right_peak_int16"] > 0
+    else:
+        with pytest.raises(OCFError):
+            complete_session._stereo_metrics(path, 8000)
+
+
+@pytest.mark.unit
+def test_session_structure_guard_accepts_complete_contract_and_rejects_drift():
+    from copy import deepcopy
+
+    from ocf_tools.complete_session import (
+        EXPECTED_STATE_TARGETS,
+        _verify_session_structure,
+    )
+    from ocf_tools.utils import OCFError
+
+    stage_semantics = [
+        "focus.ten.enter",
+        "focus.ten.transition",
+        "focus.eleven.transition.open",
+        "focus.eleven.transition.close",
+        "focus.twenty.enter",
+        "focus.twenty.transition.close",
+    ]
+    doc = {
+        "timeline": [
+            {
+                "id": f"state-{index}",
+                "semantic": semantic,
+                "dsp": {"state": target},
+            }
+            for index, (semantic, target) in enumerate(
+                zip(stage_semantics, EXPECTED_STATE_TARGETS, strict=True)
+            )
+        ]
+        + [{"id": "return-complete", "semantic": "session.return.complete"}]
+        + [{"id": "complete", "semantic": "session.complete"}]
+        + [{"id": f"body-{index}", "narration_key": "function.body"} for index in range(4)]
+    }
+    binding = {"narration_plan": {"sequence": [{"key": "function.body", "role": "function-body"}]}}
+    profile = {
+        "initial_state": "focus-10",
+        "states": {"focus-10": {"mode": "preset"}, "focus-11": {"mode": "preset"}},
+    }
+
+    _verify_session_structure(doc, binding, profile)
+    incomplete = deepcopy(doc)
+    incomplete["timeline"] = [
+        event for event in incomplete["timeline"] if event.get("semantic") != "session.complete"
+    ]
+    with pytest.raises(OCFError, match="missing required semantic stage"):
+        _verify_session_structure(incomplete, binding, profile)
+    with pytest.raises(OCFError, match="exactly 5 bound function-body passes"):
+        _verify_session_structure(doc, binding, profile, body_passes=5)
+    changed_state = deepcopy(doc)
+    changed_state["timeline"][0]["dsp"]["state"] = "focus-20"
+    with pytest.raises(OCFError, match="Focus progression differs"):
+        _verify_session_structure(changed_state, binding, profile)
+    with pytest.raises(OCFError, match="lacks required session state"):
+        _verify_session_structure(
+            doc,
+            binding,
+            {"initial_state": "focus-10", "states": {"focus-10": {"mode": "preset"}}},
+        )
+
+
+@pytest.mark.unit
+def test_template_resolution_requires_a_bound_declared_complete_template(monkeypatch):
+    from ocf_tools import complete_session, session
+    from ocf_tools.utils import OCFError
+
+    binding = {"session_templates": ["template.complete"], "default_session_template": None}
+    monkeypatch.setattr(complete_session, "load_layers", lambda _identity: {"bindings": binding})
+    monkeypatch.setattr(
+        session, "load_template", lambda name: {"id": name, "session_completeness": "complete"}
+    )
+
+    with pytest.raises(OCFError, match="no complete default session template"):
+        complete_session._resolve_template("OCF-FND-004", None)
+    with pytest.raises(OCFError, match="not bound to OCF-FND-004"):
+        complete_session._resolve_template("OCF-FND-004", "template.unbound")
+
+    monkeypatch.setattr(
+        session,
+        "load_template",
+        lambda name: {"id": name, "session_completeness": "draft"},
+    )
+    with pytest.raises(OCFError, match="not declared complete"):
+        complete_session._resolve_template("OCF-FND-004", "template.complete")
+
+    monkeypatch.setattr(
+        session,
+        "load_template",
+        lambda name: {"id": name, "session_completeness": "complete"},
+    )
+    template, returned_binding = complete_session._resolve_template(
+        "OCF-FND-004", "template.complete"
+    )
+    assert template["id"] == "template.complete" and returned_binding is binding
+
+
+@pytest.mark.unit
+def test_slot_key_projection_rejects_duplicate_and_missing_required_roles():
+    from ocf_tools.complete_session import _slot_keys
+    from ocf_tools.utils import OCFError
+
+    plan = {"narration_plan": {"sequence": [{"role": "function-body", "key": "body"}]}}
+    with pytest.raises(OCFError, match="not bound"):
+        _slot_keys(plan, {"slots": {"required": ["opener", "function_body"]}})
+
+    duplicate = {
+        "narration_plan": {
+            "sequence": [
+                {"role": "function-body", "key": "body.one"},
+                {"role": "function-body", "key": "body.two"},
+            ]
+        }
+    }
+    with pytest.raises(OCFError, match="duplicate block role"):
+        _slot_keys(duplicate, {"slots": {"required": ["function_body"]}})
+
+    assert _slot_keys(
+        {
+            "narration_plan": {
+                "sequence": [
+                    {"role": "opener", "key": "open"},
+                    {"role": "function-body", "key": "body"},
+                    {"role": "closer", "key": "close"},
+                    {"role": "unused", "key": "ignored"},
+                ]
+            }
+        },
+        {"slots": {"required": ["opener", "function_body", "closer"]}},
+    ) == {"opener": "open", "function_body": "body", "closer": "close"}
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize(
+    "case,message",
+    [
+        ("default", "default background must be active"),
+        ("unknown-section", "unknown section"),
+        ("default-mode", "default background state must select"),
+        ("ignored-event", "ignores state event"),
+        ("missing-stage-state", "selects unconfigured DSP state"),
+        ("disabled-stage", "expects disabled background state"),
+        ("incoming-state", "does not preserve its incoming background state"),
+        ("transition-source", "logical DSP transition from"),
+        ("transition-target", "transitions to unconfigured stage background"),
+    ],
+)
+def test_stage_background_policy_rejects_inconsistent_transitions(case, message):
+
+    from ocf_tools.complete_session import _verify_stage_background_policy
+    from ocf_tools.utils import OCFError
+
+    doc = {
+        "sections": [
+            {
+                "id": "body",
+                "timeline": [{"id": "switch", "dsp": {"state": "focus-11"}}],
+            }
+        ]
+    }
+    profile = {
+        "initial_state": "focus-10",
+        "default_background_state": "focus-10",
+        "states": {"focus-10": {"mode": "preset"}, "focus-11": {"mode": "preset"}},
+        "stage_backgrounds": {"body": ["focus-10", "focus-11"]},
+        "ignored_state_events": [],
+    }
+    if case == "default":
+        profile["default_background_state"] = "focus-11"
+    elif case == "unknown-section":
+        profile["stage_backgrounds"] = {"missing": ["focus-10"]}
+    elif case == "default-mode":
+        profile["states"]["focus-10"]["mode"] = "off"
+    elif case == "ignored-event":
+        profile["ignored_state_events"] = ["absent"]
+    elif case == "missing-stage-state":
+        profile["stage_backgrounds"]["body"] = ["unconfigured"]
+    elif case == "disabled-stage":
+        profile["states"]["focus-11"]["mode"] = "off"
+    elif case == "incoming-state":
+        profile["stage_backgrounds"]["body"] = ["focus-11"]
+    elif case == "transition-source":
+        doc["sections"][0]["timeline"][0]["dsp"]["state"] = {
+            "from": "focus-11",
+            "to": "focus-11",
+        }
+    elif case == "transition-target":
+        doc["sections"][0]["timeline"][0]["dsp"]["state"] = "unconfigured"
+
+    with pytest.raises(OCFError, match=message):
+        _verify_stage_background_policy(doc, profile)
+
+
+@pytest.mark.unit
+def test_stage_background_policy_accepts_explicit_state_continuity():
+    from ocf_tools.complete_session import _verify_stage_background_policy
+
+    _verify_stage_background_policy(
+        {
+            "sections": [
+                {
+                    "id": "body",
+                    "timeline": [{"id": "switch", "dsp": {"state": "focus-11"}}],
+                }
+            ]
+        },
+        {
+            "initial_state": "focus-10",
+            "default_background_state": "focus-10",
+            "states": {"focus-10": {"mode": "preset"}, "focus-11": {"mode": "preset"}},
+            "stage_backgrounds": {"body": ["focus-10", "focus-11"]},
+            "ignored_state_events": [],
+        },
+    )
 
 
 @pytest.mark.integration

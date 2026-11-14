@@ -1,0 +1,888 @@
+schema_version: '2.0'
+locale: en-US
+domain: function
+function_id: OCF-COG-001
+title:
+  text: Information Access
+  status: canonical
+  version: 1.0.0
+description:
+  text: Accesses intuition, memory, and inner knowledge on demand.
+  status: canonical
+  version: 1.0.0
+metadata_entries:
+  functions.ocf-cog-001.lifecycle.scopes.capability.description:
+    text: Access to the personal knowledge library remains available.
+  functions.ocf-cog-001.lifecycle.scopes.baseline.description:
+    text: Personal knowledge continues to be organized and connected in the background.
+  functions.ocf-cog-001.lifecycle.scopes.application.description:
+    text: One consciously chosen information request; not a permanently active search or stream of answers.
+activation:
+  command_id: OCF-CMD-COG-001-PRIMARY
+  display_cue:
+    text: PLUS-ACCESS INFO
+  spoken_cue:
+    text: Plus Access Info
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.scopes.application.persistence
+    invocation_scope_ref: lifecycle.scopes.application
+    procedure:
+      ref: OCF-PROC-QUESTION
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-cog-001.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: question
+    operation: select-question
+    instruction:
+      text: Choose a question to explore.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+secondary_commands: []
+tags:
+- text: memory
+  status: draft
+  semantic_id: memory
+- text: reflection
+  status: draft
+  semantic_id: reflection
+- text: inner-awareness
+  status: draft
+  semantic_id: inner-awareness
+common_uses:
+- text: Reflecting on knowledge and experience already available to you.
+  status: draft
+- text: Inviting relevant information to mind while checking impressions against reliable sources when
+    accuracy matters.
+  status: draft
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-cog-001.opener:
+    status: reviewed
+    version: 1.2.0
+    text: 'This OCF exercise will teach you to access your
+
+      personal library of information, knowledge,
+
+      and experience, bringing the information
+
+      you desire directly into your conscious awareness.'
+  hplus.function.ocf-cog-001.function-body:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-COG-001
+      allowed:
+      - cue.primary
+    text: 'From this moment forward, your ability to access
+
+      your personal library of information and knowledge
+
+      is becoming stronger, faster, and more effective.
+
+
+      Everything you have learned, experienced,
+
+      observed, and understood contributes
+
+      to this vast library within you.
+
+
+      Information may come into your awareness
+
+      as words, images, memories, feelings,
+
+      sensations, or sudden understanding.
+
+
+      Your mind recognizes these different forms
+
+      and brings them together to provide
+
+      the knowledge and understanding you seek.
+
+
+      Your personal library is always available,
+
+      ready to provide the information you desire.
+
+
+      From this moment forward, this ability
+
+      to access your knowledge is permanently
+
+      established within you.
+
+
+      Your mind will continue organizing
+
+      information automatically, connecting
+
+      related ideas and experiences,
+
+      even when you are not consciously
+
+      thinking about them.
+
+
+      Whenever you desire information
+
+      from your personal library,
+
+      simply think or say in your mind,
+
+      "{{ cue.primary }}."
+
+
+      Then focus clearly on the information,
+
+      knowledge, or understanding you desire.
+
+
+      The information you seek will immediately
+
+      begin moving into your conscious awareness.
+
+
+      The answer will become clear to you,
+
+      arriving naturally in whatever form
+
+      best communicates the knowledge you need.
+
+
+      Words, images, feelings, and understanding
+
+      will come together, allowing you
+
+      to recognize and use the information.
+
+
+      The more you use {{ cue.primary }},
+
+      the easier, faster, and more effective
+
+      this process will become.
+
+
+      Your personal library of knowledge
+
+      will remain available to you
+
+      whenever you desire to access it.
+
+
+      Now think of something you wish to know
+
+      or understand more clearly.
+
+
+      Silently say, "{{ cue.primary }}."
+
+
+      Allow the information to come
+
+      into your conscious awareness.
+
+
+      Begin exploring your personal
+
+      library of knowledge now.'
+  hplus.function.ocf-cog-001.closer:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-COG-001
+      allowed:
+      - cue.primary
+    text: 'Remember, whenever you wish to access
+
+      your personal library of knowledge,
+
+      think or say in your mind, "{{ cue.primary }}."
+
+
+      Then focus on the information you desire,
+
+      and allow it to enter your conscious awareness.
+
+
+      This concludes your OCF Information Access exercise.'
+slug: access-to-information
+classification:
+  primary_domain: cognition
+  secondary_domains:
+  - experimental
+category_labels:
+  cognition:
+    text: cognition
+    status: canonical
+  experimental:
+    text: experimental
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description_key: functions.ocf-cog-001.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description_key: functions.ocf-cog-001.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description_key: functions.ocf-cog-001.lifecycle.scopes.application.description
+      activation: manual
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-cog-001.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-cog-001.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-cog-001.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-COG-001
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: fb979f33b0a4335ec5404e0492eb8e776fe74284f06330096f4881caa1ec7a61
+    classification: RENAME TITLE/CUE — UPDATE TEACHING
+    recommended_title: Information Access
+    recommended_primary_cue: PLUS-ACCESS INFO
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Requests knowledge/experience from the personal library. Cue then target in instruction/closer;
+      practice selects target first. No breath instruction. Different from detailed event Recall; no external
+      knowledge or accuracy verification is established.
+    pair_reason: Access to a personal information/experience library overlaps Recall. ACCESS INFO may
+      improve distinction, but neither name establishes information accuracy or an external knowledge
+      source.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. Access to a personal
+      information/experience library overlaps Recall. ACCESS INFO may improve distinction, but neither
+      name establishes information accuracy or an external knowledge source.
+    teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
+    documentary_intent: Access one's personal information/experience library; the source promises immediate
+      availability rather than verification of accuracy.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: d7cc8cf3cbb26bd025046709796ba084d1cc390003ca334f2b6ff870d8b3bebf
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-COG-001-PRIMARY
+    command_status: unchanged
+    commands:
+    - PLUS-RETRIEVE
+    name: ACCESS TO INFORMATION
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Access to Information
+  compatibility:
+    state: historical-lookup
+    rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording is
+      historical lookup. Existing controls remain unchanged.
+  historical_lookup:
+  - text: Access to Information
+    kind: former-title
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+  - text: PLUS-RETRIEVE
+    kind: former-primary
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+    command_id: OCF-CMD-COG-001-PRIMARY
+  - text: Plus Retrieve
+    kind: former-teaching
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+    command_id: OCF-CMD-COG-001-PRIMARY
+  status:
+    evidence: source-described
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-cog-001.title
+    short_description_key: functions.ocf-cog-001.short-description
+    purpose_key: functions.ocf-cog-001.purpose
+  commands:
+  - id: OCF-CMD-COG-001-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-cog-001-primary.label
+      usage_key: commands.ocf-cmd-cog-001-primary.usage
+      purpose_key: functions.ocf-cog-001.purpose
+      explanation_key: commands.ocf-cmd-cog-001-primary.explanation
+      display_cue_key: commands.ocf-cmd-cog-001-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-cog-001-primary.spoken-cue
+    observed_phrase:
+      text: Plus Access Info
+      narration_key: hplus.function.ocf-cog-001.function-body
+      relationship: canonical-match
+  predecessor_resource_sha256: 35ccc6b8bc5020ecca19373b24166bc5188bc0b90f49564a03023f48741f0f8a
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-004
+    kind: approved-title-cue
+    source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
+      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
+      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
+      request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
+    source_row_sha256: 3684f24fdefeb93c8847c3a2c8c62b04acfb6c5928cb7725be7ea26c59a0cd6b
+    status: accepted
+    previous_values_sha256: d37d527fa6ef57a1482447b24362b609e6e2fe276dcdd43930f21eb2d6b43177
+    current_values_sha256: ef82a6702761db9e07319e8c3f58d10bc5ef447f581275c0d463889b071048a9
+    changed_narration_keys:
+    - hplus.function.ocf-cog-001.closer
+    - hplus.function.ocf-cog-001.function-body
+    previous_resolved_text_sha256:
+      hplus.function.ocf-cog-001.function-body: 1ff0d6d16bc19ccc09447bbb9f722ec25ac242b345a60a00aa690b829b2ac330
+      hplus.function.ocf-cog-001.closer: edcef1a9939bbfe1310cc94e9c394140cf97c341cac4c3bf5a87feb0207177c0
+    current_resolved_text_sha256:
+      hplus.function.ocf-cog-001.function-body: b2dd5c1e089d361c8798bcdca7366e271867ec841e86d81173c61d47aaa739bf
+      hplus.function.ocf-cog-001.closer: 736ed362121f2b09638b735363637fce1d128375b4e7684476951741ae298bd4
+    review_note: Change title from Access to Information to Information Access and update exercise sign-off.
+      Replace three body mentions and one closer mention from Plus Retrieve to Plus Access Info. Preserve
+      personal knowledge-library scope, cue-first then information-selection main instruction and closer,
+      target-first practice passage, and surrounding suggestions. Retain Access to Information and Plus
+      Retrieve as historical lookup. Introduce no breathing step, mode or release; keep separate Recall
+      cue unchanged.
+    approval_response: '1'
+    review_position: 23
+    separate_review_needed: true
+  - id: OCF-FUNCTIONAL-METADATA-PERSISTENCE
+    kind: approved-functional-metadata
+    source_commit: 4da47a5740ead0be6bc3127437ee7b36a9c86ddf
+    scope: OCF-COG-001:persistence
+    decision_source: Please do
+    source_row_sha256: 23fe5b07fbd84e6697b08f7fabe6ec97a89c0208aaf815124f4f36728f42bc8c
+    status: accepted
+    current_values_sha256: a41248f8929ff3348a433617d2eba531b8ddad287028de252bd615d4fadf42ad
+    review_note: 'Information Access: 1'
+    approval_response: approve
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    - OCF-TPL-SESSION-HPLUS-LOCKED-006
+    - OCF-TPL-SESSION-HPLUS-LOCKED-007
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: preparation
+      confidence: low
+      id: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14:preparation
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 4
+      - 5
+      scope: document
+      source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+    - category: command_association
+      confidence: low
+      id: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14:command_association
+      kind: structural-inference
+      line_candidates:
+      - 27
+      - 43
+      - 45
+      - 48
+      scope: document
+      source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+    - category: purpose
+      confidence: medium
+      id: review:OCF-COG-001:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 1
+      scope: document
+      source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+    - category: opener
+      confidence: medium
+      id: review:OCF-COG-001:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 25
+      - 38
+      scope: document
+      source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+    - category: main
+      confidence: medium
+      id: review:OCF-COG-001:main
+      kind: function-specification-inference
+      line_candidates:
+      - 39
+      - 46
+      scope: document
+      source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+    - category: association
+      confidence: medium
+      id: review:OCF-COG-001:association
+      kind: function-specification-inference
+      line_candidates:
+      - 43
+      - 46
+      scope: document
+      source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-COG-001:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 47
+      - 50
+      scope: document
+      source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+    - category: future_use
+      confidence: medium
+      id: review:OCF-COG-001:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 43
+      - 49
+      scope: document
+      source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-COG-001:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 147
+      scope: document
+      source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+    - category: closer
+      confidence: unknown
+      id: review:OCF-COG-001:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 50
+      - 147
+      scope: document
+      source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+    - category: consolidation
+      confidence: unknown
+      id: review:OCF-COG-001:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 50
+      - 147
+      scope: document
+      source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+    - category: handoff
+      confidence: unknown
+      id: review:OCF-COG-001:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 50
+      - 147
+      scope: document
+      source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-COG-001:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 31
+      - 49
+      scope: document
+      source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478
+      path: +Transcripts From available tapes/Access to Information/Access to Information.lrc
+      related_sha256:
+      - 4ae2e83c07220e728061c0dc77a18caf1b0b3fb957e3c284af6f81998bf01177
+      - f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+      sha256: 7414cbe861aa8d7e18df1da8d7607235df1b8f6968ac01ab18f085eb2d2ea735
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478
+      path: +Transcripts From available tapes/Access to Information/Access to Information.srt
+      related_sha256:
+      - 7414cbe861aa8d7e18df1da8d7607235df1b8f6968ac01ab18f085eb2d2ea735
+      - f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+      sha256: 4ae2e83c07220e728061c0dc77a18caf1b0b3fb957e3c284af6f81998bf01177
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478
+      path: +Transcripts From available tapes/Access to Information/Access to Information.txt
+      related_sha256:
+      - 4ae2e83c07220e728061c0dc77a18caf1b0b3fb957e3c284af6f81998bf01177
+      - 7414cbe861aa8d7e18df1da8d7607235df1b8f6968ac01ab18f085eb2d2ea735
+      sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Access to Information/folder.jpg
+      related_sha256: []
+      sha256: a5e61729221674dda386a98d06507d1a8867907150167c6e5838fe63a7250a96
+  specifications:
+    analysis_review:
+      claim_categories:
+      - guaranteed-immediate-memory-access
+      - unverified-complete-personal-library
+      - experiential-multimodal-retrieval
+      family: cognitive-retrieval
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478
+            end_line: 46
+            file: +Transcripts From available tapes/Access to Information/Access to Information.txt
+            source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+            start_line: 43
+          status: supported
+          summary: Cue is paired with selection of desired information and an asserted immediate response.
+        closer:
+          locators:
+          - content_group_sha256: aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478
+            end_line: 147
+            file: +Transcripts From available tapes/Access to Information/Access to Information.txt
+            source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+            start_line: 50
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Closing/return
+            and end conditions unavailable after the practice invitation; do not invent them. Source derivative
+            accuracy and generation unverified.
+        consolidation:
+          locators:
+          - content_group_sha256: aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478
+            end_line: 147
+            file: +Transcripts From available tapes/Access to Information/Access to Information.txt
+            source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+            start_line: 50
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Closing/return
+            and end conditions unavailable after the practice invitation; do not invent them. Source derivative
+            accuracy and generation unverified.
+        conversion:
+          locators:
+          - content_group_sha256: aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478
+            end_line: 46
+            file: +Transcripts From available tapes/Access to Information/Access to Information.txt
+            source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+            start_line: 39
+          status: inferred
+          summary: Preserve voluntary recall/search and modality flexibility; perfect/immediate answers
+            require review and accuracy caveats, not equivalence claims.
+        future_use:
+          locators:
+          - content_group_sha256: aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478
+            end_line: 49
+            file: +Transcripts From available tapes/Access to Information/Access to Information.txt
+            source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+            start_line: 43
+          status: supported
+          summary: Retrieval cue plus chosen information target; no breath-hold condition is specified
+            in the main instruction.
+        handoff:
+          locators:
+          - content_group_sha256: aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478
+            end_line: 147
+            file: +Transcripts From available tapes/Access to Information/Access to Information.txt
+            source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+            start_line: 50
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Closing/return
+            and end conditions unavailable after the practice invitation; do not invent them. Source derivative
+            accuracy and generation unverified.
+        identity:
+          locators:
+          - content_group_sha256: aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478
+            end_line: 46
+            file: +Transcripts From available tapes/Access to Information/Access to Information.txt
+            source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+            start_line: 43
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478
+            end_line: 46
+            file: +Transcripts From available tapes/Access to Information/Access to Information.txt
+            source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+            start_line: 39
+          status: supported
+          summary: request-personal-information; internally-state-retrieval-cue; specify-information-target;
+            attend-to-words-images-feelings-or-sensations
+        opener:
+          locators:
+          - content_group_sha256: aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478
+            end_line: 38
+            file: +Transcripts From available tapes/Access to Information/Access to Information.txt
+            source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+            start_line: 25
+          status: supported
+          summary: Frame the information-retrieval task and enter a receptive learning context.
+        preparation:
+          locators:
+          - content_group_sha256: aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478
+            end_line: 24
+            file: +Transcripts From available tapes/Access to Information/Access to Information.txt
+            source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+            start_line: 2
+          status: supported
+          summary: Comfortable supported position, loosen clothing, eyes closed; count to ten; no repository-box
+            step in this inspected version.
+        provenance:
+          locators:
+          - content_group_sha256: aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478
+            end_line: 147
+            file: +Transcripts From available tapes/Access to Information/Access to Information.txt
+            source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are not
+            independent corroboration. Source accuracy/authentication remains unresolved. Closing/return
+            and end conditions unavailable after the practice invitation; do not invent them. Source derivative
+            accuracy and generation unverified.
+        purpose:
+          locators:
+          - content_group_sha256: aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478
+            end_line: 1
+            file: +Transcripts From available tapes/Access to Information/Access to Information.txt
+            source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+            start_line: 1
+          status: supported
+          summary: Access one's personal information/experience library; the source promises immediate
+            availability rather than verification of accuracy.
+        rehearsal:
+          locators:
+          - content_group_sha256: aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478
+            end_line: 50
+            file: +Transcripts From available tapes/Access to Information/Access to Information.txt
+            source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+            start_line: 47
+          status: supported
+          summary: Explicitly recall a prior moment of knowledge/certainty, use the cue and explore information
+            while awaiting the narrator's return call.
+        safety_claims:
+          locators:
+          - content_group_sha256: aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478
+            end_line: 49
+            file: +Transcripts From available tapes/Access to Information/Access to Information.txt
+            source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+            start_line: 31
+          status: supported
+          summary: guaranteed-immediate-memory-access; unverified-complete-personal-library; experiential-multimodal-retrieval.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478
+            end_line: 38
+            file: +Transcripts From available tapes/Access to Information/Access to Information.txt
+            source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+            start_line: 25
+          status: supported
+          summary: Ten-state preparation, eleven/access opening, then unspecified deeper learning position;
+            later return is missing in the available derivative.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478
+            end_line: 147
+            file: +Transcripts From available tapes/Access to Information/Access to Information.txt
+            source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Closing/return
+            and end conditions unavailable after the practice invitation; do not invent them. Source derivative
+            accuracy and generation unverified.
+      source_extent:
+        content_group_sha256: aa0cd7e5f1ca26ad6c7bc6b3dbb78d426b761762fda0ecbdfc8ffee6e96bc478
+        end_line: 147
+        file: +Transcripts From available tapes/Access to Information/Access to Information.txt
+        source_sha256: f41db5dbb1bb123081cfb4dc8ce02d839c6b80f2d8c3f1213ee4e51b10a24a14
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-COG-001:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-COG-001:closer
+        operations: []
+        status: unknown
+      consolidation:
+        evidence_refs:
+        - review:OCF-COG-001:consolidation
+        operations: []
+        status: unknown
+      future_use:
+        evidence_refs:
+        - review:OCF-COG-001:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-COG-001:handoff
+        operations: []
+        status: unknown
+      main:
+        evidence_refs:
+        - review:OCF-COG-001:main
+        operations:
+        - request-personal-information
+        - internally-state-retrieval-cue
+        - specify-information-target
+        - attend-to-words-images-feelings-or-sensations
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-COG-001:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-COG-001:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-COG-001:rehearsal
+        operations:
+        - documented-rehearsal
+        status: inferred
+      safety_claims:
+        evidence_refs:
+        - review:OCF-COG-001:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-COG-001:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Closing/return and end conditions unavailable after the practice invitation; do not invent them.
+      Source derivative accuracy and generation unverified.
+    - Preserve voluntary recall/search and modality flexibility; perfect/immediate answers require review
+      and accuracy caveats, not equivalence claims.
+    states:
+      preferred: []
+      required: []
+      status: unknown

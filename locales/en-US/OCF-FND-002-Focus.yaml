@@ -1,0 +1,1017 @@
+schema_version: '2.0'
+locale: en-US
+domain: function
+function_id: OCF-FND-002
+title:
+  text: Focus
+  status: reviewed
+  version: 1.1.0
+description:
+  text: Directs and sustains focused attention.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-FND-002-PRIMARY
+  display_cue:
+    text: PLUS-FOCUS
+    status: reviewed
+    version: 0.1.0
+  spoken_cue:
+    text: Plus Focus
+    status: reviewed
+    version: 0.1.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-fnd-002.function-body
+      before_steps:
+      - id: select-attention-target
+        operation: select-purpose
+        localization_key: command.procedure.select-purpose
+    relationships: {}
+  procedure_steps:
+  - id: select-attention-target
+    operation: select-purpose
+    instruction:
+      text: Choose the purpose for using this function.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+secondary_commands: []
+tags:
+- text: attention
+  status: draft
+  semantic_id: attention
+- text: concentration
+  status: draft
+  semantic_id: concentration
+- text: self-direction
+  status: draft
+  semantic_id: self-direction
+common_uses:
+- text: Choosing one activity to receive sustained attention.
+  status: draft
+- text: Preparing for focused study or deliberate engagement with an experience.
+  status: draft
+relationships:
+  related_functions:
+  - function_id: OCF-COG-007
+    description_key: relationships.rel-fnd002-cog007.description
+    description:
+      text: Compare directed-attention practice with thinking-oriented practice. Choose either independently;
+        neither is required to activate or benefit from the other. The Focus function is not a Focus
+        10/11 audio stage.
+      status: reviewed
+      version: 0.0.1
+  complementary_functions:
+  - function_id: OCF-COG-004
+    description_key: relationships.rel-fnd002-cog004.description
+    description:
+      text: Directed attention and deliberate memory capture have different learning intentions that
+        may be explored as separate practices.
+      status: reviewed
+      version: 1.0.0
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-fnd-002.opener:
+    status: reviewed
+    version: 1.3.0
+    text: 'This OCF exercise will strengthen your ability
+
+      to focus your attention completely,
+
+      whenever and wherever you choose.'
+  hplus.function.ocf-fnd-002.function-body:
+    status: reviewed
+    version: 1.3.0
+    cue_template:
+      function_id: OCF-FND-002
+      allowed:
+      - cue.primary
+    text: 'From this moment forward, your ability to direct
+
+      and sustain your attention is becoming stronger,
+
+      clearer, and more effective.
+
+
+      Whenever you wish to focus completely,
+
+      choose the activity, thought, or experience
+
+      to which you desire to give your attention.
+
+
+      Inhale deeply and gently hold your breath.
+
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+
+      Then exhale slowly through your mouth,
+
+      as though gently blowing out a candle.
+
+
+      Your mind, body, and senses will immediately
+
+      bring their attention together, directing
+
+      your awareness toward the purpose you have chosen.
+
+
+      Your concentration will become clear,
+
+      steady, and unwavering.
+
+
+      Unnecessary distractions will fade away,
+
+      and your attention will remain naturally
+
+      centered on what matters to you.
+
+
+      You will perceive important details clearly,
+
+      understanding what you see, hear, feel,
+
+      and experience with greater awareness.
+
+
+      The information you attend to will become
+
+      vivid and distinct in your memory,
+
+      ready for clear and accurate recall.
+
+
+      You will remain bright, alert, calm,
+
+      confident, and completely at ease.
+
+
+      From this moment forward, this ability
+
+      to focus your attention is permanently
+
+      available to you whenever you desire.
+
+
+      Once you select your focus, your mind
+
+      will maintain it smoothly and naturally,
+
+      without unnecessary strain or effort.
+
+
+      You remain in complete control,
+
+      able to direct or shift your attention
+
+      whenever you choose.
+
+
+      Each time you use {{ cue.primary }},
+
+      concentration becomes easier, stronger,
+
+      and more effective.
+
+
+      Your natural ability to focus will continue
+
+      improving through every experience,
+
+      becoming an effortless part of your daily life.'
+  hplus.function.ocf-fnd-002.closer:
+    status: reviewed
+    version: 1.4.0
+    cue_template:
+      function_id: OCF-FND-002
+      allowed:
+      - cue.primary
+    text: 'Remember, whenever you wish to focus your attention
+
+      completely, choose what you desire to concentrate on.
+
+
+      Inhale deeply and hold your breath.
+
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+
+      Then exhale slowly through your mouth,
+
+      as though gently blowing out a candle.
+
+
+      This concludes your OCF Focus exercise.'
+slug: attention
+classification:
+  primary_domain: foundation
+  secondary_domains:
+  - cognition
+category_labels:
+  foundation:
+    text: foundation
+    status: canonical
+  cognition:
+    text: cognition
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: reference-master
+    preset: OCF-BG-0011
+    strategy: optional
+  implementation_status: completed
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.11.0
+  updated: '2026-09-30'
+narration:
+  sequence:
+  - key: hplus.function.ocf-fnd-002.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-fnd-002.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-fnd-002.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-FND-002
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: 7004edcb8ddf6559e33247138b84310605cc714c145783714ba1b819761c6153
+    classification: KEEP — TITLE, CUE, AND TEACHING ALREADY CONSISTENT
+    recommended_title: Attention
+    recommended_primary_cue: PLUS-FOCUS
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Select activity/thought/experience, inhale/hold/cue/candle-like exhale. Sustained
+      attention permits conscious shifts; not entry to a numbered Focus state. Preserve protected
+      FOCUS.
+    pair_reason: The current cue is clear, short and explicitly protected. Keep it; a historical label
+      does not justify an unnecessary rename.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. The current
+      cue is clear, short and explicitly protected. Keep it; a historical label does not justify an
+      unnecessary rename.
+    teaching_disposition: Preserve complete taught cue; metadata/title alignment only
+    documentary_intent: Deliberately concentrate sensory/thought attention on a selected activity,
+      with claimed detailed retention.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: e2b861a6a31850730be4dcb8143033e09db713de217252c191895433183f7dab
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-FND-002-PRIMARY
+    command_status: unchanged
+    commands:
+    - PLUS-FOCUS
+    name: ATTENTION
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Attention
+  compatibility:
+    state: historical-lookup
+    rationale: Approved presentation successor OCF-COMMAND-SIMPLIFICATION-001; superseded wording
+      remains historical lookup.
+  historical_lookup:
+  - text: Attention
+    kind: former-title
+    decision: OCF-COMMAND-SIMPLIFICATION-001
+  status:
+    evidence: source-described
+    implementation: implemented
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-30'
+    note: Corrected the background Focus-state design. OCF-BG-0001 metadata described a 'focus-3 ->
+      focus-10 -> focus-3' arc; the analyzed Human Plus / Focus 11 Access Channel source establishes
+      Focus 10 -> Focus 11 -> Focus 10. OCF-BG-0001 now records that sequence with a machine-readable
+      focus_sequence; the superseded arc is no longer authoritative. Focus 3 remains available only
+      as an optional induction/preparation mechanism. The dated 2026-09-20 entry above is left as
+      the historical record of the bed that was actually built at that time.
+    version: 0.11.0
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  - date: '2026-09-20'
+    note: Timed script imported from available Monroe H-PLUS Attention transcript; narration rendered
+      locally with Piper lessac TTS (OCF-AUDIO-0001). Transcript wording kept local, not committed.
+    version: 0.2.0
+  - date: '2026-09-20'
+    note: Farfield engine installed locally (0.1.0, OCF-VOICE venv); focus-3 -> focus-10 -> focus-3
+      arc bed built (OCF-BG-0001) and mixed under the narration into a stereo master. Transcript wording
+      kept local, not committed.
+    version: 0.3.0
+  - date: '2026-09-25'
+    note: SBaGenX engine added as a supported background backend (engine sbagenx, GPL-2.0, public
+      CLI only); Attention bed switched to an OCF-authored binaural 10-16 Hz arc (OCF-BG-0002) and
+      remastered with the same Piper narration. Transcript wording kept local, not committed.
+    version: 0.4.0
+  - date: '2026-09-25'
+    note: 'Composite bed OCF-BG-0003: an operator-supplied, operator-reported-open-source Focus 11
+      excerpt (F11 V4.flac, 47:30-52:57) spliced into the 6:31-11:58 access window of the SBaGenX
+      arc bed and remastered. Excerpt kept local and citation-only; license to verify before redistribution.
+      Transcript wording kept local, not committed.'
+    version: 0.5.0
+  - date: '2026-09-25'
+    note: 'Narration re-rendered with adaptive per-cue pacing (timing_mode fit-soft, ocf voice render
+      --fit): per-line TTS trailing pads trimmed and short flow slots stretched up to a cap, deliberate
+      source pauses preserved; remastered against the OCF-BG-0003 composite bed. Transcript wording
+      kept local, not committed.'
+    version: 0.6.0
+  - date: '2026-09-26'
+    note: 'Narration re-rendered as flowing sentences (timing_mode natural, ocf voice render --flow):
+      consecutive whisper sentence fragments merged into single utterances so line splits no longer
+      create unnatural mid-sentence pauses, while bare countdown markers stay spaced as authored;
+      remastered against the OCF-BG-0003 composite bed. Transcript wording kept local, not committed.'
+    version: 0.7.0
+  - date: '2026-09-26'
+    note: 'Bed switched to the operator reference-master (OCF-BG-0004): F10 V4 full-length tonal bed
+      with the F11 V4 access excerpt (47:30-52:57) spliced into the 6:31-11:58 access window, replacing
+      the synthesized backend; narration re-rendered with even-spaced count cues (timing_mode natural+even-counts,
+      ocf voice render --even-counts) that re-time pure-count runs onto even grids anchored by their
+      first/last counts without rewriting transcript wording; remastered at 0.15 bed gain. Transcript
+      wording kept local, not committed.'
+    version: 0.8.0
+  - date: '2026-09-29'
+    note: 'Original-OCF Attention session committed: dedicated session template OCF-TPL-SESSION-ATTENTION-001
+      (tenth-state opening, Focus-11 window, sleep induction, count to 20, twentieth-state reinforcement,
+      return, closing) composed from four slot files (opener/focus11/sleep20/closer) into the committable
+      script audio/scripts/attention-ocf.yaml; wording substantially rephrased for OCF while the legacy
+      transcript is retained unchanged as citation-only reference. Section gain_db support added to
+      the transcript/session-template schemas, the session composer and ocf audio build, so the twentieth-state
+      reinforcement is mixed as a barely-audible underlay (1156.40-1582.64 s at -24 dB, measured 0.5
+      dB above the bed floor) instead of a silent hold. OCF-owned Focus-11 preset mirrors stored under
+      audio/background/presets/ (farfield + sbagenx; sbagenx -R 1000 -> -R 10 crash fix) and registered
+      as OCF-BG-0005..OCF-BG-0010; bed switched to the fully OCF-authored composite OCF-BG-0011 (10-16
+      Hz binaural arc with the gamma+theta+pink Focus-11 access state spliced into the 6:31-12:50
+      access window). Narration re-rendered from the OCF script with Piper lessac, --flow --even-counts
+      (92 cues, 29:23.6), and OCF-AUDIO-0001 rebuilt to 0.6.0 as tagged WAV/FLAC/MP3 with OCF_SESSION_TEMPLATE
+      provenance.'
+    version: 0.9.0
+  - date: '2026-09-29'
+    note: 'Attention session reworked onto the converted legacy wording: template OCF-TPL-SESSION-ATTENTION-001
+      is now a reference-derived shell carrying the adapted Monroe H-PLUS narration (stray legacy
+      ''12'' at 07:19.60 dropped), with a single required slot audio/slots/attention/focus11.txt (five-line
+      PLUS-FOCUS instruction); composer gained from_slot+repeat so the twentieth-state hold re-runs
+      the focus-11 wording twice as a -24 dB underlay (~17:41-26:22). The composed narration is adapted-from-legacy
+      and citation-only, never OCF-authored. OCF-AUDIO-0001 rebuilt (77 cues); legacy transcript retained
+      untouched.'
+    version: 0.10.0
+  ocf:
+    command_review: approved
+    reimplementation_status: complete
+  documentation:
+    title_key: functions.ocf-fnd-002.title
+    short_description_key: functions.ocf-fnd-002.short-description
+    purpose_key: functions.ocf-fnd-002.purpose
+  commands:
+  - id: OCF-CMD-FND-002-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-fnd-002-primary.label
+      usage_key: commands.ocf-cmd-fnd-002-primary.usage
+      purpose_key: functions.ocf-fnd-002.purpose
+      explanation_key: commands.ocf-cmd-fnd-002-primary.explanation
+      display_cue_key: commands.ocf-cmd-fnd-002-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-fnd-002-primary.spoken-cue
+  predecessor_resource_sha256: 14dce1373af20dcf74240f67c98bccaf03311a6861a512fe852659127aaa36ec
+  editorial_decisions:
+  - id: OCF-COMMAND-SIMPLIFICATION-001
+    kind: approved-command-simplification
+    source_commit: 8ec5b0395c7a5c05fa629d64297d3bf048b097f9
+    scope: Explicitly approved command title/display/spoken substitutions only; commands, lifecycle,
+      procedure and audio settings are unchanged.
+    decision_source: 'Explicit user confirmation: Confirm implementation'
+    source_row_sha256: 64c965b91dfcc60a5586b1a7485f1d870d7970c99f1d80bed69842b0ac923a61
+    status: accepted
+    previous_values_sha256: ac7f37cf9cbd541088b755ff0056898641726452a1e80d0628a09b42515375c0
+    current_values_sha256: 5c2e2eab0675a470091eff2eaa9a876798d2845ba64f2c46b477de133a8bdace
+    changed_narration_keys: []
+    previous_resolved_text_sha256: {}
+    current_resolved_text_sha256: {}
+    review_note: Narration fingerprints and synthesis cache identity follow the approved canonical
+      wording; listening and release approval remain false.
+  - id: REL-FND002-COG007
+    kind: approved-relationship
+    source_commit: 2b26883148ee1c218a917cd7ff4119943d2eb03f
+    scope: Optional approved function relationship; discovery guidance only, never a runtime prerequisite.
+    decision_source: Explicit user-approved guide relationship review.
+    source_row_sha256: 7ff296ad15201981682266fada6d19460926ed22ab079216ade3367aac9ec520
+    status: accepted
+    current_values_sha256: ec9f972b35418bc3adc6dabec61b318906cfe29d4b234e3719df4e9932709411
+    review_note: Approved optional relationship remains embedded in the canonical locale resource.
+      Evidence provenance and reciprocal approval are retained as metadata.
+    approval_response: '1'
+    relationship_id: REL-FND002-COG007
+    related_function_id: OCF-COG-007
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
+  - id: REL-FND002-COG004
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 533098efa33295c69fdec583c1adb7934867b8f89d909ab88629b1ea715c1adb
+    current_values_sha256: 093153b190b063065bd9d780750b75e91105634a83a443c20ba2b22bd6b8637e
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-FND-002", "sha256": "5589edf7e5fa4b3687d6ce74a83a0697d44ac80d155cee2f100481105c29d57d"},
+      {"field": "description", "function_id": "OCF-COG-004", "sha256": "098e88038844417a6241fc8ae022de3ada9529b0e189e64b2d68691b6c607c92"}]'
+    relationship_id: REL-FND002-COG004
+    related_function_id: OCF-COG-004
+    relationship_type: complementary
+    dependency: optional
+    reciprocal_approved: false
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    - OCF-TPL-SESSION-HPLUS-LOCKED-006
+    - OCF-TPL-SESSION-HPLUS-LOCKED-007
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5:opener
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 57
+      - 86
+      scope: document
+      source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+    - category: main
+      confidence: low
+      id: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5:main
+      kind: structural-inference
+      line_candidates:
+      - 30
+      scope: document
+      source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+    - category: closer
+      confidence: low
+      id: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5:closer
+      kind: structural-inference
+      line_candidates:
+      - 54
+      - 86
+      scope: document
+      source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+    - category: preparation
+      confidence: low
+      id: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5:preparation
+      kind: structural-inference
+      line_candidates:
+      - 3
+      - 8
+      - 11
+      - 55
+      - 58
+      scope: document
+      source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+    - category: command_association
+      confidence: low
+      id: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5:command_association
+      kind: structural-inference
+      line_candidates:
+      - 32
+      - 42
+      - 53
+      - 85
+      scope: document
+      source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+    - category: future_use
+      confidence: low
+      id: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5:future_use
+      kind: structural-inference
+      line_candidates:
+      - 39
+      - 49
+      - 53
+      scope: document
+      source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+    - category: return
+      confidence: low
+      id: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5:return
+      kind: structural-inference
+      line_candidates:
+      - 60
+      - 70
+      - 71
+      - 73
+      - 79
+      - 83
+      scope: document
+      source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+    - category: purpose
+      confidence: medium
+      id: review:OCF-FND-002:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 2
+      scope: document
+      source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+    - category: opener
+      confidence: medium
+      id: review:OCF-FND-002:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 24
+      - 30
+      scope: document
+      source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+    - category: main
+      confidence: medium
+      id: review:OCF-FND-002:main
+      kind: function-specification-inference
+      line_candidates:
+      - 31
+      - 50
+      scope: document
+      source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+    - category: association
+      confidence: medium
+      id: review:OCF-FND-002:association
+      kind: function-specification-inference
+      line_candidates:
+      - 31
+      - 40
+      scope: document
+      source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-FND-002:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 31
+      - 50
+      scope: document
+      source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+    - category: future_use
+      confidence: medium
+      id: review:OCF-FND-002:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 31
+      - 54
+      scope: document
+      source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-FND-002:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 86
+      scope: document
+      source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+    - category: closer
+      confidence: medium
+      id: review:OCF-FND-002:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 51
+      - 58
+      scope: document
+      source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-FND-002:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 59
+      - 69
+      scope: document
+      source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+    - category: handoff
+      confidence: medium
+      id: review:OCF-FND-002:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 70
+      - 86
+      scope: document
+      source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-FND-002:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 26
+      - 50
+      scope: document
+      source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 7ead8c8f9df76d179810855f5e4c3f4b218b646dc6ecef7aaab98d32b056d96b
+      path: +Transcripts From available tapes/Attention/Attention.lrc
+      related_sha256:
+      - 4521bc85e45926e66fd073988a54d39dbd1ad43a3c1a3f4255178917bcbc903d
+      sha256: f12e20c5ef3020bef08563ad305d5c34fac9e6285f85c4808fe12607da6f21b6
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Attention/Attention.ocr.pdf
+      related_sha256: []
+      sha256: 4247e474e015772b0af2328938bbcffae1ad15a44d089206b3c7654841909f71
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 7ead8c8f9df76d179810855f5e4c3f4b218b646dc6ecef7aaab98d32b056d96b
+      path: +Transcripts From available tapes/Attention/Attention.srt
+      related_sha256:
+      - f12e20c5ef3020bef08563ad305d5c34fac9e6285f85c4808fe12607da6f21b6
+      sha256: 4521bc85e45926e66fd073988a54d39dbd1ad43a3c1a3f4255178917bcbc903d
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
+      path: +Transcripts From available tapes/Attention/Attention.txt
+      related_sha256: []
+      sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Attention/folder.jpg
+      related_sha256: []
+      sha256: e9e8b798868135365ea1702c699daf849c9e78f467ab3d89663f87d177e9f8e6
+  specifications:
+    analysis_review:
+      claim_categories:
+      - guaranteed-total-focus
+      - detailed-memory
+      - automatic-whole-system-learning
+      family: attentional-narrowing
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
+            end_line: 40
+            file: +Transcripts From available tapes/Attention/Attention.txt
+            source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+            start_line: 31
+          status: supported
+          summary: Pair the deliberately selected legacy cue with the target response and breathing
+            procedure; canonical spelling/compatibility remains separate metadata.
+        closer:
+          locators:
+          - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
+            end_line: 58
+            file: +Transcripts From available tapes/Attention/Attention.txt
+            source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+            start_line: 51
+          status: supported
+          summary: Reinforce future remembering/use and close the learning context to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
+            end_line: 69
+            file: +Transcripts From available tapes/Attention/Attention.txt
+            source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+            start_line: 59
+          status: supported
+          summary: Counted sleep-to-twenty segment is present; automatic integration is a source assertion,
+            not established mechanism.
+        conversion:
+          locators:
+          - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
+            end_line: 50
+            file: +Transcripts From available tapes/Attention/Attention.txt
+            source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+            start_line: 31
+          status: inferred
+          summary: Preserve voluntary target selection and learned association where appropriate;
+            breath holding, guaranteed response and automatic whole-system learning require editorial
+            review rather than scientific endorsement.
+        future_use:
+          locators:
+          - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
+            end_line: 54
+            file: +Transcripts From available tapes/Attention/Attention.txt
+            source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+            start_line: 31
+          status: supported
+          summary: Use PLUS-FOCUS for a selected task; repeated use is asserted to improve ease/effectiveness.
+            No explicit release phrase supplied.
+        handoff:
+          locators:
+          - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
+            end_line: 86
+            file: +Transcripts From available tapes/Attention/Attention.txt
+            source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+            start_line: 70
+          status: supported
+          summary: Waking countdown and eyes-open return, followed by target cue reminder.
+        identity:
+          locators:
+          - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
+            end_line: 40
+            file: +Transcripts From available tapes/Attention/Attention.txt
+            source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+            start_line: 31
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
+            end_line: 50
+            file: +Transcripts From available tapes/Attention/Attention.txt
+            source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+            start_line: 31
+          status: supported
+          summary: choose-activity; inhale-and-hold; internally-issue-focus-cue; direct-senses-and-thinking-to-one-area;
+            exhale
+        opener:
+          locators:
+          - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
+            end_line: 30
+            file: +Transcripts From available tapes/Attention/Attention.txt
+            source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+            start_line: 24
+          status: supported
+          summary: Orient to the target function and establish receptive learning context before the
+            instruction.
+        preparation:
+          locators:
+          - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
+            end_line: 23
+            file: +Transcripts From available tapes/Attention/Attention.txt
+            source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+            start_line: 3
+          status: supported
+          summary: Supported uninterrupted relaxed posture, settling movements/breathing, temporary
+            setting-aside in repository representation and counted ten-state entry.
+        provenance:
+          locators:
+          - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
+            end_line: 86
+            file: +Transcripts From available tapes/Attention/Attention.txt
+            source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
+            derivative is not authenticated; ASR repetition/count artifacts do not establish original
+            wording, duration or repetition intent. Undeclared reset/termination remains unknown.
+        purpose:
+          locators:
+          - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
+            end_line: 2
+            file: +Transcripts From available tapes/Attention/Attention.txt
+            source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+            start_line: 1
+          status: supported
+          summary: Deliberately concentrate sensory/thought attention on a selected activity, with
+            claimed detailed retention.
+        rehearsal:
+          locators:
+          - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
+            end_line: 50
+            file: +Transcripts From available tapes/Attention/Attention.txt
+            source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+            start_line: 31
+          status: not-present
+          summary: Repeated instruction does not establish a distinct listener performance trial;
+            apparent ambient transcription artifacts are not practice evidence.
+        safety_claims:
+          locators:
+          - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
+            end_line: 50
+            file: +Transcripts From available tapes/Attention/Attention.txt
+            source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+            start_line: 26
+          status: supported
+          summary: guaranteed-total-focus; detailed-memory; automatic-whole-system-learning. Claims
+            are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
+            end_line: 30
+            file: +Transcripts From available tapes/Attention/Attention.txt
+            source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+            start_line: 24
+          status: supported
+          summary: Reference learning shell uses ten preparation, eleven opening, ten closure, sleep-to-twenty
+            and waking return where the available ending supports it; not an OCF runtime requirement.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
+            end_line: 86
+            file: +Transcripts From available tapes/Attention/Attention.txt
+            source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Source-designated
+            derivative is not authenticated; ASR repetition/count artifacts do not establish original
+            wording, duration or repetition intent. Undeclared reset/termination remains unknown.
+      source_extent:
+        content_group_sha256: 8d66e6420eef7adea2bb37f910e2f583fa3d28b28f1a4660ff26e8458eaf7e3d
+        end_line: 86
+        file: +Transcripts From available tapes/Attention/Attention.txt
+        source_sha256: 0e9869897f01910a35cc33455545226ac6fff63a3f6432770726962a3e08e0e5
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-FND-002:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-FND-002:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-FND-002:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-FND-002:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-FND-002:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-FND-002:main
+        operations:
+        - choose-activity
+        - inhale-and-hold
+        - internally-issue-focus-cue
+        - direct-senses-and-thinking-to-one-area
+        - exhale
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-FND-002:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-FND-002:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-FND-002:rehearsal
+        operations: []
+        status: not-present
+      safety_claims:
+        evidence_refs:
+        - review:OCF-FND-002:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-FND-002:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Source-designated derivative is not authenticated; ASR repetition/count artifacts do not establish
+      original wording, duration or repetition intent. Undeclared reset/termination remains unknown.
+    - Preserve voluntary target selection and learned association where appropriate; breath holding,
+      guaranteed response and automatic whole-system learning require editorial review rather than
+      scientific endorsement.
+    states:
+      preferred: []
+      required: []
+      status: unknown

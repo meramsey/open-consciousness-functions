@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from pathlib import Path
+from copy import deepcopy
 
 from .commands import command_view
-from .indexes import load_all_functions, load_yaml_file
+from .indexes import load_all_functions
 from .paths import REPO_ROOT
 from .utils import OCFError
 
@@ -131,50 +131,53 @@ def validate_layers(layers: dict, function_id: str) -> list[str]:
     return errors
 
 
-def load_layers(function_id: str, root: Path | None = None) -> dict:
-    layers = {}
-    for layer in LAYERS:
-        path = (root or CONTENT_DIR) / layer / f"{function_id}.yaml"
-        if path.is_file():
-            layers[layer] = load_yaml_file(path)
-    errors = validate_layers(layers, function_id)
-    if root is None:
-        from .indexes import load_function_by_id
+def load_layers(function_id: str) -> dict:
+    """Project embedded canonical metadata as a read-only legacy-shaped view."""
+    from .indexes import load_function_by_id
 
-        owner = load_function_by_id(function_id)
-        if (
-            owner
-            and layers.get("bindings")
-            and not errors
-            and "narration" in owner.data
-            and layers.get("bindings", {}).get("narration_plan") != owner.data["narration"]
-        ):
-            errors.append(
-                "compatibility narration_plan conflicts with authoritative function YAML narration"
-            )
+    owner = load_function_by_id(function_id)
+    if owner is None:
+        raise OCFError(f"function content: unavailable canonical function: {function_id}")
+    layers = deepcopy(owner.data.get("content", {}))
+    for data in layers.values():
+        data.update(schema_version="1.0", function_id=function_id)
+    if "bindings" in layers and "narration" in owner.data:
+        layers["bindings"]["narration_plan"] = deepcopy(owner.data["narration"])
+    errors = validate_layers(layers, function_id)
     if errors:
         raise OCFError("function content: " + " | ".join(errors))
     return layers
 
 
-def discover(record) -> dict:
+def discover(record, *, catalog=None) -> dict:
     from .commands import is_active
+    from .locale import LocaleCatalog
+    from .localized_authority import description, metadata, title
 
+    catalog = catalog or LocaleCatalog()
     layers = load_layers(record.id)
     spec = layers.get("specifications")
     bindings = layers.get("bindings", {})
     command = record.data["canonical"]["command"]
+    localized = metadata(record, catalog=catalog) or {}
+    if localized:
+        from .commands import cue_presentation
+
+        command = {**command, "primary": cue_presentation(record, catalog=catalog)["display_cue"]}
     return {
         "function_id": record.id,
-        "title": record.canonical_name,
-        "purpose": record.data["purpose"]["summary"],
+        "title": title(record, catalog=catalog),
+        "purpose": description(record, catalog=catalog),
+        "tags": localized.get("tags", []),
+        "common_uses": localized.get("common_uses", []),
+        "localized_relationships": localized.get("relationships", {}),
         "lifecycle": record.data["lifecycle"],
         "companions": record.data.get("companions", []),
         # Keep the historic response shape; stable mode IDs are added only in
         # the separate structured commands view below.
         "activation": {key: command[key] for key in ("primary", "modes") if key in command},
         "commands": [
-            command_view(record, item, locale="en-US")
+            command_view(record, item, locale="en-US", catalog=catalog)
             for item in record.command_records
             if is_active(item)
         ],
@@ -210,6 +213,8 @@ def validate_library() -> list[str]:
         for path in (CONTENT_DIR / layer).glob("*.yaml"):
             if path.stem not in known:
                 errors.append(f"unknown function content: {path.stem}")
+            else:
+                errors.append(f"alternative function content layer: {path}")
     for function_id in sorted(known):
         try:
             load_layers(function_id)

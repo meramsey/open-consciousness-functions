@@ -2,7 +2,16 @@
 
 Get things done with OCF tooling.
 
-## Current checkpoint
+## Start here
+
+Follow the [quickstart](QUICKSTART.md) to choose a practice, select a voice,
+preview its plan, create a new listening edition and review it. If you already
+have a recording, begin with the [listening guide](LISTENING_GUIDE.md).
+For a private version using your own authorized voice reference, follow the
+[voice pack walkthrough](VOICE_PACKS.md).
+
+<details>
+<summary>Catalog and engineering checkpoint</summary>
 
 The catalog contains 58 functions, preserves 55 historical mappings, and has
 102 structured command records, 58 generated en-US session plans and all 177
@@ -16,6 +25,8 @@ The supplied Cosmic Path brand kit 0.3.0 remains a human-review candidate with
 an offline comparison gallery and pinned import provenance, not an automatically
 approved identity. See [branding](BRANDING.md). Engineering locks, RC1/V2/V2.1
 auditions and frozen editorial/listening decisions retain their existing status.
+
+</details>
 
 ## Entry points
 
@@ -191,13 +202,13 @@ python scripts/ocf.py new voice-dataset .ocf-work/voice-dataset/dataset.json
 Export assumes an existing private profile and unused destinations. Metadata-only
 is the default; `--include-assets` on both export/import deliberately copies a
 private asset bundle. Profile metadata does not grant redistribution rights or
-verify inference. The local `OCF-VOICE-9001` Lessac example is an ordinary imported
-Piper model, not cloning. The dataset wizard imports externally recorded exact
-prompt WAVs and preserves originals/splits. See [voice workflows](VOICE_WORKFLOWS.md),
-[capability/portability boundaries](VOICE_CLONING.md) and
-[training preparation](VOICE_TRAINING.md). F5/Torch are absent in the observed
-environment; OCF cloning/training remains unsupported until verified. Local GPU
-memory observations do not establish future training readiness.
+verify inference. The dataset wizard imports externally recorded exact prompt
+WAVs and preserves originals/splits. For supported reference-based inference,
+use the [private Chatterbox Nano walkthrough](VOICE_PACKS.md). OCF model training
+remains unsupported until an adapter produces and verifies a model. Inspect the
+selected runtime with `voice capabilities`; local GPU observations do not
+establish training readiness. See [voice workflows](VOICE_WORKFLOWS.md),
+[profile portability](VOICE_CLONING.md) and [training preparation](VOICE_TRAINING.md).
 
 ## Transcript & audio pipeline
 

@@ -1,0 +1,1042 @@
+schema_version: '2.0'
+locale: en-US
+domain: function
+function_id: OCF-EXP-001
+title:
+  text: Manifest
+  status: canonical
+  version: 1.0.0
+description:
+  text: Sets a consciously selected future condition and completion time through intention and total-self
+    alignment.
+  status: canonical
+  version: 1.0.0
+metadata_entries:
+  functions.ocf-exp-001.artwork-description:
+    text: Align your intention with the reality you choose
+    status: reviewed
+    version: 1.1.0
+activation:
+  command_id: OCF-CMD-EXP-001-PRIMARY
+  display_cue:
+    text: PLUS-MANIFEST
+  spoken_cue:
+    text: Plus Manifest
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      order: 1
+      visible: true
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      before_steps:
+      - id: select-outcome
+        localization_key: command.procedure.select-intention
+        operation: select-intention
+      evidence_keys:
+      - hplus.function.ocf-exp-001.function-body
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+    relationships: {}
+  procedure_steps:
+  - id: select-outcome
+    operation: select-intention
+    instruction:
+      text: Choose an intention.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-EXP-001-LEGACY-01
+  display_cue:
+    text: PLUS-CHANGE, CHANGE
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      command_id: OCF-CMD-EXP-001-LEGACY-01
+      source: legacy-command
+    availability: historical-lookup
+    documentation:
+      order: 101
+      visible: false
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
+tags:
+- text: intention
+  status: draft
+  semantic_id: intention
+- text: visualization
+  status: draft
+  semantic_id: visualization
+- text: self-direction
+  status: draft
+  semantic_id: self-direction
+common_uses:
+- text: Clarifying a personally chosen outcome and desired completion time.
+  status: draft
+- text: Exploring a felt or imagined fulfilled intention without treating it as a guarantee of external
+    events.
+  status: draft
+relationships:
+  related_functions:
+  - function_id: OCF-EXP-003
+    description_key: relationships.rel-exp001-exp003.description
+    description:
+      text: Compare intention-setting with releasing a selected unwanted pattern. These remain independent
+        exercises, not a required sequence.
+      status: reviewed
+      version: 0.0.1
+  - function_id: OCF-EXP-006
+    description_key: relationships.rel-exp001-exp006.description
+    description:
+      text: Intuition offers a separately chosen exercise for exploring understanding alongside purposeful
+        intention-setting. Intuitive impressions are not proof or instructions that must be followed.
+      status: reviewed
+      version: 0.0.1
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-exp-001.opener:
+    status: reviewed
+    version: 1.2.0
+    text: 'This OCF exercise will teach you to manifest with clear,
+
+      positive intention, aligning your total self with the reality
+
+      you choose to create.'
+    notes: 'OCF-adapted opener based on the unverified Möbius West transcript. Original SOURCE +Transcripts
+      From available tapes/Möbius West/Möbius West.txt; SHA-256 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78;
+      line 1. Original reference remains unchanged. Rewords the existing future-patterning purpose around
+      clear, positive intention and total-self alignment. This is adapted narration, not historical transcript
+      wording. Existing source rights: user_cleared, per user''s lawyer-clearance attestation. Revised
+      wording awaits explicit editorial approval; that earlier attestation does not independently authenticate
+      the comparison passage. Finished-session release remains pending.'
+  hplus.function.ocf-exp-001.function-body:
+    status: reviewed
+    version: 2.0.0
+    cue_template:
+      function_id: OCF-EXP-001
+      allowed:
+      - cue.primary
+    text: 'From this moment forward, you will direct your total self
+
+      toward the reality you choose to create,
+
+      with clear, positive intention.
+
+
+      Whenever you desire a change, choose the outcome
+
+      and when you wish it to take form.
+
+      Whether the need is immediate or further ahead,
+
+      picture, feel, or simply know the result as fulfilled.
+
+
+      Inhale deeply and gently hold your breath.
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth.
+
+
+      Your total self will immediately align with your intention.
+
+      Your conscious mind, subconscious mind, higher self,
+
+      and physical being will work together in harmony.
+
+
+      Struggle, fear, harsh judgment, and impatience will fall away.
+
+      Your intention remains clear as you release the need
+
+      to force each step or continually check the result.
+
+
+      Center yourself in your heart.
+
+      Let love fill your being and bring your energy centers
+
+      into open, balanced harmony.
+
+      Remain grounded and present, receptive to energy and light.
+
+      You are worthy to create and receive good.
+
+
+      Welcome the loving guidance of your higher self
+
+      and the helpers you recognize.
+
+      Your intuition will become clearer,
+
+      guiding you to recognize opportunities and act.
+
+
+      Your greater awareness will reach beyond your physical body,
+
+      connecting with universal consciousness.
+
+      Your intention will draw together and sustain
+
+      the conditions and connections that support your chosen reality.
+
+
+      Hold the essence of your desire while welcoming
+
+      its fulfillment or something better,
+
+      in harmony with your highest good and the good of others,
+
+      without destructive effects upon anyone.
+
+
+      This pattern will continue without constant conscious effort,
+
+      unfolding immediately or through its natural sequence.
+
+      Once learned, this ability remains permanently available,
+
+      ready for everyday use with your intention, breath, and command.
+
+
+      The more you use this function,
+
+      the clearer your intention, the stronger your alignment,
+
+      and the easier and more effective manifestation becomes.'
+    notes: 'OCF-adapted narration based on the unverified Möbius West transcript. Original SOURCE +Transcripts
+      From available tapes/Möbius West/Möbius West.txt; SHA-256 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78;
+      lines 55–84. Original reference remains unchanged; duplicate second pass remains excluded. Preserves
+      outcome and desired-time selection, the original inhale-hold-command-exhale sequence, total-self
+      alignment, intention beyond the physical self, continuing operation, and greater well-being without
+      destructive effects on others. The active command remains the reviewed Plus Manifest supplied through
+      cue.primary; no command definition changes. Version 2.0.0 adds substantive editorial content informed
+      by the user-supplied Plus Create comparison: release of struggle and impatience, heart-centered
+      love, balanced energy centers, grounded receptivity, worthiness, supportive guidance, and the intended
+      outcome or an aligned improvement. The comparison has no independently verified bibliographic attribution
+      in this review; additions are not represented as recovered historical wording. Clear intention is
+      supported through imagery, feeling, or conceptual knowing. Everyday use retains the existing breath
+      and command without requiring a new meditation or Focus-state transition. The process is intended
+      to begin immediately while fulfillment is not assigned a guaranteed deadline. Lasting availability
+      applies to deliberately chosen patterns, not every passing thought. Spiritual and energetic language
+      expresses the practice''s intention, not an established physical mechanism. Shared preparation,
+      state, and return wording remain excluded. One body retains four-pass reuse. Existing source rights:
+      user_cleared, per user''s lawyer-clearance attestation. Revised wording awaits explicit editorial
+      approval; predecessor approval and integrity records remain unchanged. Finished-session release
+      remains pending.'
+  hplus.function.ocf-exp-001.closer:
+    status: reviewed
+    version: 1.3.0
+    cue_template:
+      function_id: OCF-EXP-001
+      allowed:
+      - cue.primary
+    text: 'Remember, to manifest a chosen outcome,
+
+      bring it clearly into your awareness
+
+      and choose when you wish it to take form.
+
+
+      Inhale deeply and gently hold your breath.
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth.
+
+
+      This concludes your OCF exercise.'
+    notes: 'OCF-authored closer adapted from the previously approved reminder. Original SOURCE +Transcripts
+      From available tapes/Möbius West/Möbius West.txt; SHA-256 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78.
+      The unverified source ends in numeric runs and has no recoverable function-specific closer. Retains
+      one purpose reminder, desired outcome and timing, the original inhale-hold-command-exhale sequence,
+      and the existing OCF ending. Representation-neutral wording includes nonvisual intention. Plus Manifest
+      remains resolved through cue.primary. This is OCF-authored wording, not historical transcription.
+      Existing source rights: user_cleared, per user''s lawyer-clearance attestation. Revised wording
+      awaits explicit editorial approval. Finished-session release remains pending.'
+slug: mobius-west
+classification:
+  primary_domain: experimental
+  secondary_domains:
+  - foundation
+category_labels:
+  experimental:
+    text: experimental
+    status: canonical
+  foundation:
+    text: foundation
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-exp-001.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-exp-001.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-exp-001.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-EXP-001
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: f7fcae99700c26ee36742ff07f25f8a74f05151c7331f21ccb5d2bb6219f0246
+    classification: RENAME TITLE/CUE — UPDATE TEACHING
+    recommended_title: Future Pattern
+    recommended_primary_cue: PLUS-MANIFEST
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Select desired FUTURE CONDITION and COMPLETION TIME, inhale/hold/cue/slow mouth
+      exhale. Total-self manifestation with non-destructive outcome condition; not merely breaking loops
+      or generic goal rehearsal. Manifest is more specific than Create.
+    pair_reason: The extracted procedure selects a desired future condition and completion time. MANIFEST
+      best fits retained manifestation intent; CREATE is broader; CHANGE is the closest concise bridge
+      to current speech but is underspecified. Practical goal rehearsal would be a separate purpose redesign.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. The extracted procedure
+      selects a desired future condition and completion time. MANIFEST best fits retained manifestation
+      intent; CREATE is broader; CHANGE is the closest concise bridge to current speech but is underspecified.
+      Practical goal rehearsal would be a separate purpose redesign.
+    teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
+    documentary_intent: Specify a desired future personal condition and completion time, with claimed
+      internal/external reality changes conditional on well-being and nondestructive effects.
+    alternatives:
+    - title: Create
+      cue: PLUS-CREATE
+      note: Broader than future-condition manifestation; preserve completion-time instruction if chosen.
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: b95460e51105d95f0808fbe4b80737a5726c72d292717659c7ed8ec77ba02a37
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-EXP-001-LEGACY-01
+    command_status: proposed
+    commands:
+    - PLUS-CHANGE, CHANGE
+    name: MOBIUS WEST
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    command_ids: []
+    commands: []
+    names:
+    - Mobius West
+  compatibility:
+    rationale: Former primary vocabulary is discovery-only under OCF-EDITORIAL-TITLE-CUES-001; secondary
+      operational commands remain unchanged.
+    state: historical-lookup
+  historical_lookup:
+  - decision: OCF-EDITORIAL-TITLE-CUES-001
+    kind: former-title
+    text: Mobius West
+  - command_id: OCF-CMD-EXP-001-PRIMARY
+    decision: OCF-EDITORIAL-TITLE-CUES-001
+    kind: former-primary
+    text: PLUS-PROGRAM
+  - command_id: OCF-CMD-EXP-001-PRIMARY
+    decision: OCF-EDITORIAL-TITLE-CUES-001
+    kind: former-teaching
+    text: Plus Change Change
+  status:
+    evidence: community-hypothesis
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    purpose_key: functions.ocf-exp-001.purpose
+    short_description_key: functions.ocf-exp-001.short-description
+    title_key: functions.ocf-exp-001.title
+  commands:
+  - id: OCF-CMD-EXP-001-PRIMARY
+    localization:
+      display_cue_key: commands.ocf-cmd-exp-001-primary.display-cue
+      explanation_key: commands.ocf-cmd-exp-001-primary.explanation
+      label_key: commands.ocf-cmd-exp-001-primary.label
+      purpose_key: functions.ocf-exp-001.purpose
+      spoken_cue_key: commands.ocf-cmd-exp-001-primary.spoken-cue
+      usage_key: commands.ocf-cmd-exp-001-primary.usage
+    observed_phrase:
+      narration_key: hplus.function.ocf-exp-001.function-body
+      relationship: canonical-match
+      text: Plus Manifest
+  - id: OCF-CMD-EXP-001-LEGACY-01
+    localization:
+      explanation_key: commands.ocf-cmd-exp-001-legacy-01.explanation
+      label_key: commands.ocf-cmd-exp-001-legacy-01.label
+      purpose_key: functions.ocf-exp-001.purpose
+      usage_key: commands.ocf-cmd-exp-001-legacy-01.usage
+  predecessor_resource_sha256: d10b1950b856f5dd12893b240cefab2b8f60e476a5922c67d0d17862b47332d6
+  editorial_approval:
+    approval_id: OCF-APPROVED-CANDIDATES-001
+    decision: approve_full_draft
+    user_response: '1'
+    implementation_confirmation: Confirm implementation
+    scope: Exact presented narration, cues and procedures for all four candidates; Intuition registration;
+      no DSP, pacing, listening or release approval.
+    presented_snapshot_sha256: 6dc76e9827512efc1c2f4f532366def13480b68bf4d6793e8f7ca13f4903e608
+    resolved_text_sha256:
+      hplus.function.ocf-exp-001.closer: 88659b8cff9bb39e90eebe8ccff6b984668380e1fda11a774d2aa2bc42af7c7c
+      hplus.function.ocf-exp-001.function-body: ff908129faceac6740b5dc80057c95c6c9cb0635e265349ae12420180c06cd86
+      hplus.function.ocf-exp-001.opener: 5dd1bd0cc258c0d0f39d028667effe8a634e525abc9db11363748ea7345b1722
+    listening_approval: false
+    release_ready: false
+    source_commit: 911dbd0f24618091e34e8a816275ab7eabbf97bb
+    implementation_note: The revised resolved speech changes text fingerprints and synthesis-cache identity;
+      old recordings remain unmodified and must not be relabelled. Other protected speech, including the
+      Options successor, remains unchanged.
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-001
+    kind: approved-title-cue
+    source_commit: 21e63ac6f8bf5a7bce9506f033330df967aa4f97
+    scope: English primary cue, finalized title where supplied, exact teaching substitutions and necessary
+      presentation summaries; procedures/mechanisms/secondary controls unchanged.
+    decision_source: Explicit user approval in the approved English title-cue migration task
+    source_row_sha256: 9cb4bacaf93168ae2add9e5458495b5503406ae56860dd8fcf3b88fee129f034
+    status: accepted
+    previous_values_sha256: 65c73d7ae2147756412c53ddc9624b3f8334fb711ce7ff2f684fead16f93e915
+    current_values_sha256: f8d7f827607ef73a5d290a540b139d758e0e00a025e13d2ea6fbabae5589b0d8
+    changed_narration_keys:
+    - hplus.function.ocf-exp-001.closer
+    - hplus.function.ocf-exp-001.function-body
+    previous_resolved_text_sha256:
+      hplus.function.ocf-exp-001.function-body: 8250a18acc38c42206c22db0c6f879ccd161353944bbb86e567f8168676faf6c
+      hplus.function.ocf-exp-001.closer: 32a2fba7dc6754b73eff9b1194f672f6761ca62aeb32dbb462c54ac2ae1c5933
+    current_resolved_text_sha256:
+      hplus.function.ocf-exp-001.function-body: 025a052d05f536dcd341c349513d625a7676f1552890b171dd3da3fb8d78243c
+      hplus.function.ocf-exp-001.closer: 0a06b27050830d6fa36f437579fee509b9518ba6a5d50e357d80786db6a112ca
+    review_note: Retain desired future-condition selection, completion time and total-self manifestation;
+      not generic productivity or loop-breaking.
+  - id: REL-EXP001-EXP003
+    kind: approved-relationship
+    source_commit: 2b26883148ee1c218a917cd7ff4119943d2eb03f
+    scope: Optional approved function relationship; discovery guidance only, never a runtime prerequisite.
+    decision_source: Explicit user-approved guide relationship review.
+    source_row_sha256: a2cd3d6e5fcde830e336fa17e5e9a303dcec48d6d2c6587d3101d587a2b66b43
+    status: accepted
+    current_values_sha256: ad92c02a0f2d9e2f8c3a5ab68aafface1df3348e6bfa9f728d1c7d596ac5a27e
+    review_note: Approved optional relationship remains embedded in the canonical locale resource. Evidence
+      provenance and reciprocal approval are retained as metadata.
+    approval_response: '1'
+    relationship_id: REL-EXP001-EXP003
+    related_function_id: OCF-EXP-003
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
+  - id: REL-EXP001-EXP006
+    kind: approved-relationship
+    source_commit: 2b26883148ee1c218a917cd7ff4119943d2eb03f
+    scope: Optional approved function relationship; discovery guidance only, never a runtime prerequisite.
+    decision_source: Explicit user-approved guide relationship review.
+    source_row_sha256: 1c3f5add604a24f292d82d493e7cff2dc69d59ab0c84ab6da448ea7f5e793ef5
+    status: accepted
+    current_values_sha256: 42a885ee57407150fc5039d9db6cb935ae4819b753dc25592349af6835339728
+    review_note: Approved optional relationship remains embedded in the canonical locale resource. Evidence
+      provenance and reciprocal approval are retained as metadata.
+    approval_response: '1'
+    relationship_id: REL-EXP001-EXP006
+    related_function_id: OCF-EXP-006
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    - OCF-TPL-SESSION-HPLUS-LOCKED-006
+    - OCF-TPL-SESSION-HPLUS-LOCKED-007
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78:opener
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 94
+      scope: document
+      source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+    - category: main
+      confidence: low
+      id: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78:main
+      kind: structural-inference
+      line_candidates:
+      - 54
+      scope: document
+      source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+    - category: closer
+      confidence: low
+      id: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78:closer
+      kind: structural-inference
+      line_candidates:
+      - 90
+      scope: document
+      source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+    - category: preparation
+      confidence: low
+      id: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78:preparation
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 10
+      - 17
+      - 91
+      - 95
+      scope: document
+      source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+    - category: command_association
+      confidence: low
+      id: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78:command_association
+      kind: structural-inference
+      line_candidates:
+      - 59
+      - 73
+      - 88
+      scope: document
+      source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+    - category: future_use
+      confidence: low
+      id: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78:future_use
+      kind: structural-inference
+      line_candidates:
+      - 1
+      - 68
+      - 83
+      - 88
+      scope: document
+      source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+    - category: return
+      confidence: low
+      id: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78:return
+      kind: structural-inference
+      line_candidates:
+      - 97
+      scope: document
+      source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+    - category: purpose
+      confidence: medium
+      id: review:OCF-EXP-001:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 1
+      scope: document
+      source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+    - category: opener
+      confidence: medium
+      id: review:OCF-EXP-001:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 49
+      - 54
+      scope: document
+      source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+    - category: main
+      confidence: medium
+      id: review:OCF-EXP-001:main
+      kind: function-specification-inference
+      line_candidates:
+      - 55
+      - 84
+      scope: document
+      source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+    - category: association
+      confidence: medium
+      id: review:OCF-EXP-001:association
+      kind: function-specification-inference
+      line_candidates:
+      - 55
+      - 69
+      scope: document
+      source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-EXP-001:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 55
+      - 84
+      scope: document
+      source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+    - category: future_use
+      confidence: medium
+      id: review:OCF-EXP-001:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 55
+      - 89
+      scope: document
+      source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-EXP-001:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 257
+      scope: document
+      source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+    - category: closer
+      confidence: medium
+      id: review:OCF-EXP-001:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 85
+      - 95
+      scope: document
+      source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-EXP-001:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 96
+      - 227
+      scope: document
+      source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+    - category: handoff
+      confidence: unknown
+      id: review:OCF-EXP-001:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 228
+      - 257
+      scope: document
+      source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-EXP-001:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 60
+      - 84
+      scope: document
+      source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Möbius West/Moebius West.ocr.pdf
+      related_sha256: []
+      sha256: 9a4611e8df6066bbf7a3e6fde5a56a35a0cefaac3a15e63aafe97ad99371b86e
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
+      path: +Transcripts From available tapes/Möbius West/Möbius West.lrc
+      related_sha256:
+      - 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+      - cf5ee3c1fad7e9c4f4def8d27d06c4e689bb611c6d4c37bdbb50532d42c73fd0
+      sha256: ff2b4b3db8606e96e591c88bccc41a95ba439f53bb384e453d6ba65384045e06
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
+      path: +Transcripts From available tapes/Möbius West/Möbius West.srt
+      related_sha256:
+      - 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+      - ff2b4b3db8606e96e591c88bccc41a95ba439f53bb384e453d6ba65384045e06
+      sha256: cf5ee3c1fad7e9c4f4def8d27d06c4e689bb611c6d4c37bdbb50532d42c73fd0
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
+      path: +Transcripts From available tapes/Möbius West/Möbius West.txt
+      related_sha256:
+      - cf5ee3c1fad7e9c4f4def8d27d06c4e689bb611c6d4c37bdbb50532d42c73fd0
+      - ff2b4b3db8606e96e591c88bccc41a95ba439f53bb384e453d6ba65384045e06
+      sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Möbius West/folder.jpg
+      related_sha256: []
+      sha256: c35a25b6ae30e756b996c2b1a2388fb8fd4f9d46846aee075b067639fd3112be
+  specifications:
+    analysis_review:
+      claim_categories:
+      - physical-and-mental-self-modification
+      - beyond-body-reality-influence
+      - guaranteed-timed-goal-completion
+      - automatic-whole-system-learning
+      family: goal-and-completion-time-programming
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
+            end_line: 69
+            file: +Transcripts From available tapes/Möbius West/Möbius West.txt
+            source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+            start_line: 55
+          status: supported
+          summary: Pair the deliberately selected legacy cue with the target response and breathing procedure;
+            canonical spelling/compatibility remains separate metadata.
+        closer:
+          locators:
+          - content_group_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
+            end_line: 95
+            file: +Transcripts From available tapes/Möbius West/Möbius West.txt
+            source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+            start_line: 85
+          status: supported
+          summary: Reinforce future remembering/use and close the learning context to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
+            end_line: 227
+            file: +Transcripts From available tapes/Möbius West/Möbius West.txt
+            source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+            start_line: 96
+          status: supported
+          summary: Counted sleep-to-twenty segment is present; automatic integration is a source assertion,
+            not established mechanism.
+        conversion:
+          locators:
+          - content_group_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
+            end_line: 84
+            file: +Transcripts From available tapes/Möbius West/Möbius West.txt
+            source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+            start_line: 55
+          status: inferred
+          summary: Goal definition/future rehearsal is not equivalent to physical or external reality
+            control. Material purpose changes and timing guarantees require explicit review.
+        future_use:
+          locators:
+          - content_group_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
+            end_line: 89
+            file: +Transcripts From available tapes/Möbius West/Möbius West.txt
+            source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+            start_line: 55
+          status: supported
+          summary: Target and desired completion time accompany the cue; source conditions change on personal
+            well-being and not destructively affecting others.
+        handoff:
+          locators:
+          - content_group_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
+            end_line: 257
+            file: +Transcripts From available tapes/Möbius West/Möbius West.txt
+            source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+            start_line: 228
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Available
+            derivative lacks final waking ending; do not infer cancellation from the word change or programming
+            title. Canonical PROGRAM differs from legacy cue.
+        identity:
+          locators:
+          - content_group_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
+            end_line: 69
+            file: +Transcripts From available tapes/Möbius West/Möbius West.txt
+            source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+            start_line: 55
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
+            end_line: 84
+            file: +Transcripts From available tapes/Möbius West/Möbius West.txt
+            source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+            start_line: 55
+          status: supported
+          summary: choose-desired-personal-condition; specify-completion-time; inhale-and-hold; internally-issue-legacy-change-cue;
+            exhale; associate-goal-with-conditional-change
+        opener:
+          locators:
+          - content_group_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
+            end_line: 54
+            file: +Transcripts From available tapes/Möbius West/Möbius West.txt
+            source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+            start_line: 49
+          status: supported
+          summary: Orient to the target function and establish receptive learning context before the instruction.
+        preparation:
+          locators:
+          - content_group_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
+            end_line: 48
+            file: +Transcripts From available tapes/Möbius West/Möbius West.txt
+            source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+            start_line: 2
+          status: supported
+          summary: Supported uninterrupted relaxed posture, settling movements/breathing, temporary setting-aside
+            in repository representation and counted ten-state entry.
+        provenance:
+          locators:
+          - content_group_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
+            end_line: 257
+            file: +Transcripts From available tapes/Möbius West/Möbius West.txt
+            source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are not
+            independent corroboration. Source accuracy/authentication remains unresolved. Available derivative
+            lacks final waking ending; do not infer cancellation from the word change or programming title.
+            Canonical PROGRAM differs from legacy cue.
+        purpose:
+          locators:
+          - content_group_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
+            end_line: 1
+            file: +Transcripts From available tapes/Möbius West/Möbius West.txt
+            source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+            start_line: 1
+          status: supported
+          summary: Specify a desired future personal condition and completion time, with claimed internal/external
+            reality changes conditional on well-being and nondestructive effects.
+        rehearsal:
+          locators:
+          - content_group_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
+            end_line: 84
+            file: +Transcripts From available tapes/Möbius West/Möbius West.txt
+            source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+            start_line: 55
+          status: not-present
+          summary: Repeated instruction does not establish a distinct listener performance trial; apparent
+            ambient transcription artifacts are not practice evidence.
+        safety_claims:
+          locators:
+          - content_group_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
+            end_line: 84
+            file: +Transcripts From available tapes/Möbius West/Möbius West.txt
+            source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+            start_line: 60
+          status: supported
+          summary: physical-and-mental-self-modification; beyond-body-reality-influence; guaranteed-timed-goal-completion;
+            automatic-whole-system-learning. Claims are classified as source assertions, not accepted
+            OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
+            end_line: 54
+            file: +Transcripts From available tapes/Möbius West/Möbius West.txt
+            source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+            start_line: 49
+          status: supported
+          summary: Reference learning shell uses ten preparation, eleven opening, ten closure, sleep-to-twenty
+            and waking return where the available ending supports it; not an OCF runtime requirement.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
+            end_line: 257
+            file: +Transcripts From available tapes/Möbius West/Möbius West.txt
+            source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Available
+            derivative lacks final waking ending; do not infer cancellation from the word change or programming
+            title. Canonical PROGRAM differs from legacy cue.
+      source_extent:
+        content_group_sha256: d7217debdc1797a66e665bd31da9c67694f7dbef7f877573060ed133a373fdb8
+        end_line: 257
+        file: +Transcripts From available tapes/Möbius West/Möbius West.txt
+        source_sha256: 9013a12a0b32bb22db8433b49c2e834029456e01007534ebc42acfcd21adec78
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-EXP-001:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-EXP-001:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-EXP-001:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-EXP-001:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-EXP-001:handoff
+        operations: []
+        status: unknown
+      main:
+        evidence_refs:
+        - review:OCF-EXP-001:main
+        operations:
+        - choose-desired-personal-condition
+        - specify-completion-time
+        - inhale-and-hold
+        - internally-issue-legacy-change-cue
+        - exhale
+        - associate-goal-with-conditional-change
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-EXP-001:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-EXP-001:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-EXP-001:rehearsal
+        operations: []
+        status: not-present
+      safety_claims:
+        evidence_refs:
+        - review:OCF-EXP-001:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-EXP-001:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Available derivative lacks final waking ending; do not infer cancellation from the word change or
+      programming title. Canonical PROGRAM differs from legacy cue.
+    - Goal definition/future rehearsal is not equivalent to physical or external reality control. Material
+      purpose changes and timing guarantees require explicit review.
+    states:
+      preferred: []
+      required: []
+      status: unknown

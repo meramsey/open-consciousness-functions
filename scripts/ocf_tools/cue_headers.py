@@ -7,17 +7,13 @@ import hashlib
 import json
 from pathlib import Path
 
-import yaml
-
 from .cue_templates import is_active, value
 from .locale import LocaleCatalog
-from .models import function_from_dict
 from .paths import REPO_ROOT
 from .utils import OCFError
 
 START = "# BEGIN GENERATED CUE PREVIEW\n"
 END = "# END GENERATED CUE PREVIEW\n"
-LEDGER = "function-content/editorial/cue-headers-001.json"
 
 
 def sha(text: str) -> str:
@@ -63,17 +59,14 @@ def header(owner, locale: str, catalog: LocaleCatalog, root: Path, *, draft_revi
         "# English authority: " + owner.path.relative_to(root).as_posix(),
     ]
     if draft_review:
-        from .candidate_approval import record as approval_record
-
-        approval = approval_record(root)
+        localized = catalog.require(locale).localized_functions.get(owner.id, {})
+        approval = localized.get("record_metadata", {}).get("editorial_approval")
         lines.append(
-            "# Editorial status: approved by OCF-APPROVED-CANDIDATES-001; original draft snapshot retained; release pending."
+            "# Editorial status: approved narration is stored in the canonical locale resource; listening/release pending."
             if approval
-            else "# Editorial status: draft awaiting explicit review; preview is not production approval."
+            else "# Editorial status: no embedded approval; this preview does not authorize promotion."
         )
-        lines.append(
-            "# Entire working view is generated; edit a versioned candidate authority, not this copy."
-        )
+        lines.append("# Entire view is read-only; edit only the canonical locale resource.")
     for command in owner.command_records:
         if not is_active(command) or command.role == "legacy-alias":
             continue
@@ -107,57 +100,21 @@ def header(owner, locale: str, catalog: LocaleCatalog, root: Path, *, draft_revi
 
 
 def plans(root: Path = REPO_ROOT) -> dict[str, str]:
-    records = [
-        function_from_dict(yaml.safe_load(path.read_text(encoding="utf-8")), path)
-        for path in sorted((root / "functions").rglob("*.yaml"))
-    ]
-    catalog = LocaleCatalog(root / "locales", function_records=lambda: records)
-    result = {}
-    for owner in records:
-        # Existing complete source-English files only. Translated previews use
-        # header() with their reviewed locale; there is no English fallback.
-        path = root / "locales/en-US" / f"hplus-{owner.id}.yaml"
-        if not path.is_file():
-            path = root / "locales/en-US" / f"original-{owner.id}.yaml"
-        if not path.is_file():
-            continue
-        with path.open(encoding="utf-8", newline="") as stream:
-            text = stream.read()
-        _, body = split_header(text)
-        preview = header(owner, "en-US", catalog, root)
-        if "\r\n" in text:
-            preview = preview.replace("\n", "\r\n")
-        result[path.relative_to(root).as_posix()] = preview + body
-    result.update(draft_plans(root))
-    return result
+    """Canonical locale resources already contain cues; no source snapshots exist."""
+    from .function_catalog import resources
+
+    for path, data in resources(root):
+        text = path.read_text(encoding="utf-8")
+        if text.startswith(START) or data.get("domain") != "function":
+            raise OCFError(
+                "canonical function resource contains an obsolete cue preview: " + path.name
+            )
+    return {}
 
 
 def draft_plans(root: Path = REPO_ROOT) -> dict[str, str]:
-    """Generated working views retain the immutable supplied snapshots verbatim."""
-    from .editorial_candidates import CANDIDATES, context
-
-    directory = root / "function-content/editorial/candidates"
-    result = {}
-    for name in CANDIDATES:
-        source = directory / f"{name}.en-US.yaml"
-        if not source.is_file():
-            continue
-        owner, catalog = context(name, root=root)
-        with source.open(encoding="utf-8", newline="") as stream:
-            text = stream.read()
-        preview = header(owner, "en-US", catalog, root, draft_review=True)
-        if "\r\n" in text:
-            preview = preview.replace("\n", "\r\n")
-        target = directory / "working" / source.name
-        if target.is_file():
-            existing = target.read_text(encoding="utf-8")
-            if split_header(existing)[1] != split_header(text.replace("\r\n", "\n"))[1]:
-                raise OCFError(
-                    "edited generated candidate view; preserve edits in a versioned candidate before refresh: "
-                    + target.name
-                )
-        result[target.relative_to(root).as_posix()] = preview + split_header(text)[1]
-    return result
+    """There are no separate editable candidate or working function copies."""
+    return {}
 
 
 def check(root: Path = REPO_ROOT) -> list[str]:
@@ -169,111 +126,24 @@ def check(root: Path = REPO_ROOT) -> list[str]:
 
 
 def predecessor(root: Path, name: str, text: str) -> str:
-    """Replay the exact checked comment-only successor before older ledgers."""
-    from .cue_completion import predecessor as before_completion
-
-    text = before_completion(root, name, text)
-    path = root / LEDGER
-    if not path.is_file():
-        return text
-    record = json.loads(path.read_text(encoding="utf-8"))
-    generated = record.get("plans", {}).get(name)
-    if generated is not None:
-        if not name.startswith("audio/session-plans/en-US/"):
-            raise OCFError("cue header plan outside authorized scope")
-        old = generated["predecessor"]
-        if sha(text) != generated["after_sha256"] or sha(old) != generated["before_sha256"]:
-            raise OCFError("cue header plan successor drift: " + name)
-        previous, current = json.loads(old), json.loads(text)
-        if name.endswith("/_shared.json"):
-            for key in ("defaults_lock", "defaults_sha256"):
-                previous[key] = current[key]
-        else:
-            previous["defaults"]["sha256"] = current["defaults"]["sha256"]
-        if previous != current:
-            raise OCFError("cue header successor changed session behavior: " + name)
-        return old
-    row = record["files"].get(name)
-    if row is None:
-        return text
-    prefix, body = split_header(text)
-    if (
-        not prefix
-        or sha(text) != row["after_sha256"]
-        or sha(body) != row["before_sha256"]
-        or body != row["predecessor"]
-    ):
-        raise OCFError("cue preview successor source drift: " + name)
-    return body
+    """Current cue resources are authoritative; no predecessor projection exists."""
+    return text
 
 
 def verify(root: Path = REPO_ROOT) -> list[str]:
-    from tools.check_hplus_narration_integrity import narration_texts, text_fingerprints
-
-    from .cue_completion import verify as verify_completion
-    from .cue_migration import contained
-    from .validators import _load_schema, validate_against_schema
-
-    path = root / LEDGER
-    if not path.is_file():
-        return []
-    record = json.loads(path.read_text(encoding="utf-8"))
-    errors = validate_against_schema(record, _load_schema("cue-header-successor.schema.json"))
-    if errors:
-        return errors
-    for name in record["files"]:
-        predecessor(root, name, contained(root, name).read_text(encoding="utf-8"))
-    for name in record.get("plans", {}):
-        predecessor(root, name, contained(root, name).read_text(encoding="utf-8"))
-    from .options_successor import before_texts
-
-    if (
-        text_fingerprints(before_texts(root, narration_texts(root)))
-        != record["resolved_text_sha256"]
-    ):
-        errors.append("cue header successor changed resolved narration")
-    old_raw = contained(root, record["previous_defaults_lock"]).read_text(encoding="utf-8")
-    old = json.loads(old_raw)
-    new = json.loads(contained(root, record["defaults_lock"]).read_text(encoding="utf-8"))
-    if sha(old_raw) != record["previous_defaults_sha256"]:
-        errors.append("cue header predecessor lock changed")
-    if old["profiles"] != new["profiles"] or old["files"].keys() != new["files"].keys():
-        errors.append("cue header engineering profiles/dependencies changed")
-    for name, checksum in old["files"].items():
-        expected = record["files"].get(name, {}).get("after_sha256", checksum)
-        if new["files"].get(name) != expected:
-            errors.append("cue header lock changed beyond comments: " + name)
-    errors.extend(verify_completion(root))
-    errors.extend("stale cue preview: " + name for name in check(root))
-    return errors
+    return check(root)
 
 
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "--write", action="store_true", help="refresh comments, preserving authored bytes"
+        "--write", action="store_true", help="retired; canonical resources need no cue headers"
     )
     args = parser.parse_args(argv)
-    planned = plans()
     if args.write:
-        # Deliberate frozen-source changes need successor evidence. Never
-        # silently rewrite an existing record or baseline while refreshing.
-        if not (REPO_ROOT / LEDGER).is_file():
-            raise OCFError("protected source preview requires an explicit successor ledger first")
-        record = json.loads((REPO_ROOT / LEDGER).read_text(encoding="utf-8"))
-        drafts = draft_plans()
-        from .candidate_approval import record as approval_record
-
-        approved_files = (approval_record() or {}).get("files", {})
-        if set(planned) - record["files"].keys() - drafts.keys() - approved_files.keys():
-            raise OCFError("every preview write requires an explicit successor file record")
-        for name, text in planned.items():
-            if name not in drafts:
-                predecessor(REPO_ROOT, name, text.replace("\r\n", "\n"))
-        for name, text in planned.items():
-            if name in drafts:
-                (REPO_ROOT / name).parent.mkdir(parents=True, exist_ok=True)
-            (REPO_ROOT / name).write_bytes(text.encode("utf-8"))
+        raise OCFError(
+            "cue-header generation is retired; edit the canonical locale function resource"
+        )
     stale = check()
     print("\n".join(stale) if stale else "Generated cue previews: PASS")
     return int(bool(stale))

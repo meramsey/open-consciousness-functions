@@ -1,0 +1,180 @@
+# Original OCF long-form hypnotic v2, exact wording approved 2026-11-07.
+# Sole editable authority for revision OCF-RELAXATION-LONG-002.
+# Approval covers words and active selection, not listening/audio/publication.
+schema_version: '1.0'
+locale: en-US
+domain: narration
+entries:
+  hplus.shared.relaxation.begin:
+    status: reviewed
+    version: 2.0.0
+    notes: Original OCF approved long-form introduction; no historical source authentication claimed.
+    timing:
+      pacing_units: [sentence, sentence, sentence, sentence, sentence, sentence, sentence]
+    text: |-
+      Make yourself comfortable, and take a moment to settle.
+      If a small adjustment would help, make it now.
+      Then allow your breathing to become easy and unhurried.
+      You can close your eyes or let your gaze rest softly.
+
+      For this part of the exercise, there is nothing you need to solve.
+      You can simply listen.
+      I will guide you through ten steps,
+      giving your body time to relax while your awareness remains clear.
+
+  hplus.shared.relaxation.support:
+    status: reviewed
+    version: 2.0.0
+    timing:
+      pacing_units: [count, sentence, sentence, sentence, sentence, landing]
+    text: |-
+      One.
+      Feel the steady support beneath you.
+      Notice where your body is already resting,
+      and allow that support to take your weight.
+      As your next breath leaves, settle a little more comfortably.
+      There is no need to hurry into relaxation.
+      Let it develop, breath by breath,
+      as you give yourself this time to rest.
+
+  hplus.shared.relaxation.face:
+    status: reviewed
+    version: 2.0.0
+    timing:
+      pacing_units: [count, sentence, sentence, sentence, sentence, sentence, phrase, landing]
+    text: |-
+      Two.
+      Bring your attention to your face.
+      Let your forehead smooth as your expression relaxes.
+      Soften the muscles around your eyes,
+      and allow your eyes to rest easily.
+      Let your cheeks soften, and release the small tensions around your mouth.
+      As your face relaxes, let that ease begin to spread.
+      A little less effort. A little more comfort.
+
+  hplus.shared.relaxation.jaw-neck:
+    status: reviewed
+    version: 2.0.0
+    timing:
+      pacing_units: [count, sentence, sentence, sentence, sentence, sentence, landing]
+    text: |-
+      Three.
+      Allow your jaw to loosen.
+      Let your tongue rest naturally,
+      and ease any tension beneath your jaw.
+      Let this relaxation continue through the sides and back of your neck.
+      Your head rests comfortably in its support.
+      Let your neck relax as fully as your face.
+      Let these muscles soften as you breathe out,
+      and enjoy the feeling of settling a little more deeply.
+
+  hplus.shared.relaxation.shoulders:
+    status: reviewed
+    version: 2.0.0
+    timing:
+      pacing_units: [count, sentence, sentence, sentence, sentence, sentence, landing]
+    text: |-
+      Four.
+      Let your shoulders relax.
+      With your next out-breath, allow them to settle naturally.
+      Let the ease spread across your upper back
+      and between your shoulder blades.
+      Release the tension you have been carrying there.
+      Let it become a little easier to rest.
+      Your shoulders are at ease, and your upper back is relaxed.
+
+  hplus.shared.relaxation.hands:
+    status: reviewed
+    version: 2.0.0
+    timing:
+      pacing_units: [count, sentence, sentence, sentence, sentence, phrase, phrase, landing]
+    text: |-
+      Five.
+      Follow this relaxation through both arms.
+      From your upper arms to your elbows,
+      through your forearms and wrists, allow the muscles to soften.
+      Let your hands rest comfortably.
+      Your fingers loosen, and any small effort of gripping fades away.
+      Nothing to reach for. Nothing to hold.
+      Just the comfortable feeling of your arms and hands at rest.
+
+  hplus.shared.relaxation.chest-breathing:
+    status: reviewed
+    version: 2.0.0
+    timing:
+      pacing_units: [count, sentence, sentence, sentence, sentence, phrase, phrase, landing]
+    text: |-
+      Six.
+      Notice the gentle movement of your chest as you breathe.
+      Let each breath arrive and leave at its own comfortable pace.
+      There is no need to make it deeper or slower.
+      Simply allow your body to relax around this familiar rhythm.
+      Breathing in, breathing out.
+      Quietly and easily.
+      And with each out-breath, settle more deeply into comfort.
+
+  hplus.shared.relaxation.abdomen-lower-back:
+    status: reviewed
+    version: 2.0.0
+    timing:
+      pacing_units: [count, sentence, sentence, sentence, sentence, landing]
+    text: |-
+      Seven.
+      Let your abdomen soften.
+      Allow it to move naturally with your breathing,
+      without drawing it in or holding it tight.
+      Let the muscles around your waist and lower back relax as well.
+      Let your back rest comfortably as your abdomen softens.
+      With each easy breath, there is less tension to carry
+      and more comfort to rest in.
+
+  hplus.shared.relaxation.hips-thighs:
+    status: reviewed
+    version: 2.0.0
+    timing:
+      pacing_units: [count, sentence, sentence, sentence, sentence, landing]
+    text: |-
+      Eight.
+      Bring your attention to your hips and thighs.
+      Let the muscles there release their unnecessary effort.
+      Allow both legs to rest comfortably,
+      each in its own natural position.
+      Feel their weight settling into the support beneath them.
+      You can leave them there, relaxed and at ease,
+      as your attention continues down through your body.
+
+  hplus.shared.relaxation.lower-legs-feet:
+    status: reviewed
+    version: 2.0.0
+    timing:
+      pacing_units: [count, sentence, sentence, sentence, sentence, landing]
+    text: |-
+      Nine.
+      Let the relaxation continue through your knees,
+      into your calves and around your ankles.
+      Ease your feet and let your toes relax.
+      Allow the small muscles in each foot to rest.
+      From your hips to the tips of your toes,
+      your lower body is now comfortably settled.
+      Stay with that ease for a moment.
+
+  hplus.shared.relaxation.whole-body-awareness:
+    status: reviewed
+    version: 2.0.0
+    timing:
+      pacing_units: [count, sentence, sentence, phrase, sentence, sentence, sentence, sentence, sentence, sentence, sentence, landing]
+    text: |-
+      Ten.
+      Now rest with your whole body at ease.
+      Let the relaxation settle more deeply, from your head to your feet.
+      Your face is relaxed. Your shoulders are at ease.
+      Your arms, your back, and your legs are comfortably supported.
+      Breathing continues naturally.
+      Your mind is quiet, clear, and aware.
+
+      If a thought passes through, let it pass.
+      Return gently to the sound of my voice
+      and the comfort of your body at rest.
+      Let this relaxation deepen without needing to make anything happen.
+      Remain here, physically relaxed and clearly aware,
+      as we continue into the next part of the exercise.

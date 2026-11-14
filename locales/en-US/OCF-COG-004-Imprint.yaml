@@ -1,0 +1,1079 @@
+schema_version: '2.0'
+locale: en-US
+domain: function
+function_id: OCF-COG-004
+title:
+  text: Imprint
+  status: canonical
+  version: 1.0.0
+description:
+  text: Consciously capture and retain selected information or experiences, with Plus Recall for deliberate
+    retrieval.
+  status: reviewed
+  version: 1.0.1
+metadata_entries:
+  functions.ocf-cog-004.lifecycle.scopes.capability.description:
+    text: Learned imprinting ability remains available.
+  functions.ocf-cog-004.lifecycle.scopes.baseline.description:
+    text: Deliberately imprinted material is retained and maintained; storage is distinct from an
+      individual recall action.
+  functions.ocf-cog-004.lifecycle.scopes.application.description:
+    text: A single deliberate imprint or recall invocation; no continuously running imprinting or
+      recall.
+activation:
+  command_id: OCF-CMD-COG-004-PRIMARY
+  display_cue:
+    text: PLUS-IMPRINT
+  spoken_cue:
+    text: Plus Imprint
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.scopes.baseline.persistence
+    invocation_scope_ref: lifecycle.scopes.application
+    procedure:
+      ref: OCF-PROC-IMPRINT
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-cog-004.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: memory
+    operation: select-memory
+    instruction:
+      text: Select information or an experience to remember.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: focus-memory
+    operation: focus-target
+    instruction:
+      text: Focus attention on the selected target.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-COG-004-RECALL
+  display_cue:
+    text: PLUS-RECALL
+  spoken_cue:
+    text: Plus Recall
+    status: reviewed
+  label:
+    text: Retrieval command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This command retrieves selected or imprinted information.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use to retrieve information or experience selected or imprinted with this function.
+    status: canonical
+    version: 1.0.0
+  role: retrieval
+  control:
+    designation: secondary
+    phrase_ref:
+      source: canonical-mode
+      command_id: OCF-CMD-COG-004-RECALL
+    documentation:
+      visible: true
+      order: 11
+    effect_scope_ref: lifecycle.scopes.application.persistence
+    invocation_scope_ref: lifecycle.scopes.application
+    procedure:
+      ref: OCF-PROC-THINK-COMMAND
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-cog-004.function-body
+      before_steps: []
+    relationships:
+      retrieves:
+      - OCF-CMD-COG-004-PRIMARY
+  procedure_steps:
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+- command_id: OCF-CMD-COG-004-LEGACY-01
+  display_cue:
+    text: PLUS-IMPRINT, IMPRINT
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-COG-004-LEGACY-01
+    availability: historical-lookup
+    documentation:
+      visible: false
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
+tags:
+- text: memory
+  status: draft
+  semantic_id: memory
+- text: learning
+  status: draft
+  semantic_id: learning
+- text: attention
+  status: draft
+  semantic_id: attention
+common_uses:
+- text: Giving deliberate attention to material you wish to remember.
+  status: draft
+- text: Comparing information capture with the separately documented recall application, without assuming
+    memory is infallible.
+  status: draft
+relationships:
+  related_functions:
+  - function_id: OCF-COG-006
+    description_key: relationships.rel-cog004-cog006.description
+    description:
+      text: Compare deliberate capture and retention with separately chosen retrieval of learned material.
+        The Imprint recall command is not the same function identity as Recall.
+      status: reviewed
+      version: 1.0.0
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-cog-004.opener:
+    status: reviewed
+    version: 1.2.0
+    text: 'This OCF exercise will teach you to capture and
+
+      permanently store information, knowledge, and
+
+      experiences deep within your memory, preserving
+
+      them clearly and accurately for future recall.'
+  hplus.function.ocf-cog-004.function-body:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-COG-004
+      allowed:
+      - cue.id.OCF-CMD-COG-004-RECALL
+      - cue.primary
+    text: 'From this moment forward, your ability to capture,
+
+      store, and remember information and experiences
+
+      is becoming stronger, clearer, and more accurate.
+
+
+      Whenever you wish to preserve something in memory,
+
+      bring your complete attention to the information
+
+      or experience you desire to remember.
+
+
+      Inhale deeply and gently hold your breath.
+
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+
+      Focus clearly on what you wish to remember,
+
+      then exhale slowly and easily.
+
+
+      Your senses will become more attentive
+
+      to every important detail of your experience.
+
+
+      Images, sounds, words, feelings, and sensations
+
+      will be perceived clearly and precisely.
+
+
+      Your mind will organize this information,
+
+      connecting it with your existing knowledge
+
+      and placing it securely into long-term memory.
+
+
+      Every important detail will be preserved,
+
+      clear, complete, and accurate.
+
+
+      The information you have chosen to imprint
+
+      will remain firmly established within you,
+
+      available whenever you desire to remember it.
+
+
+      From this moment forward, your mind will
+
+      automatically strengthen and maintain
+
+      the memories you have consciously imprinted.
+
+
+      Whether awake, resting, or sleeping,
+
+      your natural processes of memory consolidation
+
+      will continue organizing and reinforcing
+
+      the information you have chosen to preserve.
+
+
+      Whenever you wish to remember an imprinted
+
+      experience or any part of its details,
+
+      simply think or say in your mind,
+
+      "{{ cue.id.OCF-CMD-COG-004-RECALL }}."
+
+
+      The information will return immediately
+
+      into your conscious awareness,
+
+      clear, vivid, and complete.
+
+
+      You will remember the knowledge,
+
+      sensations, and details you have stored
+
+      with confidence and accuracy.
+
+
+      From this moment forward, this ability
+
+      to consciously imprint information
+
+      is permanently available to you.
+
+
+      Each time you use {{ cue.primary }},
+
+      your ability to capture and retain
+
+      information becomes easier, faster,
+
+      and more effective.
+
+
+      Your selected memories will remain
+
+      clear and accessible, ready to return
+
+      to your awareness whenever you desire.'
+  hplus.function.ocf-cog-004.closer:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-COG-004
+      allowed:
+      - cue.primary
+    text: 'Remember, whenever you wish to preserve
+
+      information or an experience in your memory,
+
+      inhale deeply and hold your breath.
+
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+
+      Focus on what you wish to remember,
+
+      then exhale slowly and easily.
+
+
+      This concludes your OCF Imprint exercise.'
+slug: imprint
+classification:
+  primary_domain: cognition
+  secondary_domains: []
+category_labels:
+  cognition:
+    text: cognition
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description_key: functions.ocf-cog-004.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description_key: functions.ocf-cog-004.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description_key: functions.ocf-cog-004.lifecycle.scopes.application.description
+      activation: manual
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-cog-004.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-cog-004.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-cog-004.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-COG-004
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: 9f4fa11b9369d703dcfd294cc0de5add041cddc427cd5035412ea9e40b9ce387
+    classification: KEEP CUE — ALIGN TITLE OR NARRATION
+    recommended_title: Imprint
+    recommended_primary_cue: PLUS-IMPRINT
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: 'Selected information/experience encoding: inhale/hold/complete repeated cue/focus
+      target/exhale. Plus Recall retrieves imprinted material. Registry suggestion/intention rehearsal
+      understates actual memory encoding/consolidation; the shorter Imprint is not independently taught.'
+    pair_reason: IMPRINT clearly identifies deliberate encoding. The separate PLUS-RECALL retrieval
+      record is functional reuse, not a duplicate activation to delete.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. IMPRINT
+      clearly identifies deliberate encoding. The separate PLUS-RECALL retrieval record is functional
+      reuse, not a duplicate activation to delete.
+    teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
+    documentary_intent: Deliberately encode selected experience/information and later retrieve it
+      using a separate recall cue.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: 73558164bec64ab8fff581970c16d65ad0c4fd4cda8c9601971e295d03636f12
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-COG-004-LEGACY-01
+    - OCF-CMD-COG-004-RECALL
+    command_status: unchanged
+    commands:
+    - PLUS-IMPRINT, IMPRINT
+    - PLUS-RECALL
+    name: IMPRINT
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Imprint
+  compatibility:
+    state: historical-lookup
+    rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording
+      is historical lookup. Existing controls remain unchanged.
+  historical_lookup:
+  - text: Plus Imprint Imprint
+    kind: former-teaching
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+    command_id: OCF-CMD-COG-004-PRIMARY
+  status:
+    evidence: source-described
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-cog-004.title
+    short_description_key: functions.ocf-cog-004.short-description
+    purpose_key: functions.ocf-cog-004.purpose
+  commands:
+  - id: OCF-CMD-COG-004-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-cog-004-primary.label
+      usage_key: commands.ocf-cmd-cog-004-primary.usage
+      purpose_key: functions.ocf-cog-004.purpose
+      explanation_key: commands.ocf-cmd-cog-004-primary.explanation
+      display_cue_key: commands.ocf-cmd-cog-004-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-cog-004-primary.spoken-cue
+    observed_phrase:
+      text: Plus Imprint
+      narration_key: hplus.function.ocf-cog-004.function-body
+      relationship: canonical-match
+  - id: OCF-CMD-COG-004-RECALL
+    localization:
+      label_key: commands.ocf-cmd-cog-004-recall.label
+      usage_key: commands.ocf-cmd-cog-004-recall.usage
+      purpose_key: functions.ocf-cog-004.purpose
+      explanation_key: commands.ocf-cmd-cog-004-recall.explanation
+  - id: OCF-CMD-COG-004-LEGACY-01
+    localization:
+      label_key: commands.ocf-cmd-cog-004-legacy-01.label
+      usage_key: commands.ocf-cmd-cog-004-legacy-01.usage
+      purpose_key: functions.ocf-cog-004.purpose
+      explanation_key: commands.ocf-cmd-cog-004-legacy-01.explanation
+  predecessor_resource_sha256: 27aeaeb3c8ec19ded1b75a4fe4fbf6db10bdac388504cff4a9962aba7fa0c2cc
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-004
+    kind: approved-title-cue
+    source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup.
+      Preserve procedures, controls, semantics, provenance and separately flagged metadata questions.
+      Later user instruction releases the draft-pilot freeze; pilot bindings follow current approved
+      titles and cues.
+    decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
+      request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
+    source_row_sha256: 0a1f0fbe0549a0a609f78c9cc26bc84c0c240e174c36483bb715d9b2eb6fd713
+    status: accepted
+    previous_values_sha256: 7325bab7efb48ce33d54a3ac7ac6193d59b39478279a66deb30829ff927012ae
+    current_values_sha256: 98c44c6bda0ea30aa1d2b576f82a96b3b0a96eb26f7ab30ffb4c2504620542b1
+    changed_narration_keys:
+    - hplus.function.ocf-cog-004.closer
+    - hplus.function.ocf-cog-004.function-body
+    previous_resolved_text_sha256:
+      hplus.function.ocf-cog-004.function-body: 7cbaa66d2d445f7b0251534958fa5642409697f29ce4c3c19f6cdd3440683419
+      hplus.function.ocf-cog-004.closer: 500eac99a1a761fed33272b8170fd8f0c043c9081a46a67bd5a421226d8694e0
+    current_resolved_text_sha256:
+      hplus.function.ocf-cog-004.function-body: 35d356c7b19b77ed8c0360920fe0d7af4b7bdceaed97ce17160d9486a326b212
+      hplus.function.ocf-cog-004.closer: 7f07c48613b98a737cf77fa1186778f8727319267a7b09396a248fbcf793bf5a
+    review_note: Shorten two body mentions and one closer mention from Plus Imprint Imprint to Plus
+      Imprint. Preserve title, breathing/attention sequence and memory suggestions. Keep Plus Recall
+      active and unchanged; retain repeated legacy phrase as historical lookup.
+    approval_response: '1'
+    review_position: 4
+    separate_review_needed: true
+  - id: OCF-FUNCTIONAL-METADATA-PERSISTENCE
+    kind: approved-functional-metadata
+    source_commit: 4da47a5740ead0be6bc3127437ee7b36a9c86ddf
+    scope: OCF-COG-004:persistence
+    decision_source: Please do
+    source_row_sha256: c7e0b476dd560678ede68e3bb8826fa41fa2f61368e2f1cbec729b890591df8a
+    status: accepted
+    current_values_sha256: bc56f9cec40be3793fd652de8620c5c1bfe5e8fe972a24aee4773e848accdcfd
+    review_note: 'Imprint: 1'
+    approval_response: approve
+  - id: REL-COG004-COG006
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 5342f6ee388c29a203190f5ffd240ee06c1f0a4b7cc9e01cc8b694f1c36c5002
+    current_values_sha256: e5f24ca6ef4ffa030390fb8f7c0132f119e526b9dde5432cf9909a2e474b2c1e
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-COG-004", "sha256": "098e88038844417a6241fc8ae022de3ada9529b0e189e64b2d68691b6c607c92"},
+      {"field": "description", "function_id": "OCF-COG-006", "sha256": "f1121b371e1d9c5a81ad6fd3197fb75a81f5d4ae79f40daf939066db0d4e0c01"}]'
+    relationship_id: REL-COG004-COG006
+    related_function_id: OCF-COG-006
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    - OCF-TPL-SESSION-HPLUS-LOCKED-006
+    - OCF-TPL-SESSION-HPLUS-LOCKED-007
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9:opener
+      kind: structural-inference
+      line_candidates:
+      - 1
+      - 3
+      - 63
+      - 145
+      scope: document
+      source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+    - category: main
+      confidence: low
+      id: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9:main
+      kind: structural-inference
+      line_candidates:
+      - 31
+      scope: document
+      source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+    - category: closer
+      confidence: low
+      id: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9:closer
+      kind: structural-inference
+      line_candidates:
+      - 55
+      - 145
+      scope: document
+      source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+    - category: preparation
+      confidence: low
+      id: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9:preparation
+      kind: structural-inference
+      line_candidates:
+      - 3
+      - 8
+      - 11
+      - 13
+      - 58
+      - 64
+      scope: document
+      source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+    - category: command_association
+      confidence: low
+      id: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9:command_association
+      kind: structural-inference
+      line_candidates:
+      - 33
+      - 40
+      - 43
+      - 50
+      - 53
+      scope: document
+      source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+    - category: future_use
+      confidence: low
+      id: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9:future_use
+      kind: structural-inference
+      line_candidates:
+      - 41
+      - 51
+      - 54
+      scope: document
+      source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+    - category: return
+      confidence: low
+      id: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9:return
+      kind: structural-inference
+      line_candidates:
+      - 66
+      - 133
+      - 143
+      scope: document
+      source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+    - category: purpose
+      confidence: medium
+      id: review:OCF-COG-004:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 2
+      scope: document
+      source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+    - category: opener
+      confidence: medium
+      id: review:OCF-COG-004:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 26
+      - 31
+      scope: document
+      source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+    - category: main
+      confidence: medium
+      id: review:OCF-COG-004:main
+      kind: function-specification-inference
+      line_candidates:
+      - 32
+      - 51
+      scope: document
+      source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+    - category: association
+      confidence: medium
+      id: review:OCF-COG-004:association
+      kind: function-specification-inference
+      line_candidates:
+      - 32
+      - 40
+      scope: document
+      source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-COG-004:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 32
+      - 51
+      scope: document
+      source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+    - category: future_use
+      confidence: medium
+      id: review:OCF-COG-004:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 39
+      - 54
+      scope: document
+      source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+    - category: suspend_cancel_reset
+      confidence: medium
+      id: review:OCF-COG-004:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 36
+      - 40
+      scope: document
+      source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+    - category: closer
+      confidence: medium
+      id: review:OCF-COG-004:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 52
+      - 64
+      scope: document
+      source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-COG-004:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 65
+      - 119
+      scope: document
+      source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+    - category: handoff
+      confidence: medium
+      id: review:OCF-COG-004:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 120
+      - 145
+      scope: document
+      source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-COG-004:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 28
+      - 51
+      scope: document
+      source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+      path: +Transcripts From available tapes/Imprint/Imprint.lrc
+      related_sha256:
+      - 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+      - ab8de4e160d2ac2c511e5f486fc1097a873e94fd9a9f8908aef1edb90684852d
+      sha256: 97133fe82cd64df199750e2b7331d468b02dcff2c7e740a4dbc27ad80fbd899f
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Imprint/Imprint.ocr.pdf
+      related_sha256: []
+      sha256: 7e82dd7172c41ccb219970dd598486825868b590b22a3cd926301856b60d05d8
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+      path: +Transcripts From available tapes/Imprint/Imprint.srt
+      related_sha256:
+      - 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+      - 97133fe82cd64df199750e2b7331d468b02dcff2c7e740a4dbc27ad80fbd899f
+      sha256: ab8de4e160d2ac2c511e5f486fc1097a873e94fd9a9f8908aef1edb90684852d
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+      path: +Transcripts From available tapes/Imprint/Imprint.txt
+      related_sha256:
+      - 97133fe82cd64df199750e2b7331d468b02dcff2c7e740a4dbc27ad80fbd899f
+      - ab8de4e160d2ac2c511e5f486fc1097a873e94fd9a9f8908aef1edb90684852d
+      sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Imprint/folder.jpg
+      related_sha256: []
+      sha256: 9d96aacfaf9283e0df265fe2919a8449ebe4fd3257456043dc8b446841989500
+  specifications:
+    analysis_review:
+      claim_categories:
+      - guaranteed-detailed-sensory-encoding
+      - indefinite-retention
+      - immediate-perfect-retrieval
+      - automatic-whole-system-learning
+      family: cognitive-encoding-retrieval
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+            end_line: 40
+            file: +Transcripts From available tapes/Imprint/Imprint.txt
+            source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+            start_line: 32
+          status: supported
+          summary: Imprint cue is paired with attention/encoding; recall cue retrieves the selected
+            sensory record. Legacy repeated imprint command differs from the canonical shortened metadata.
+        closer:
+          locators:
+          - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+            end_line: 64
+            file: +Transcripts From available tapes/Imprint/Imprint.txt
+            source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+            start_line: 52
+          status: supported
+          summary: Reinforce remembered use, close learning context to ten, sleep interval and waking
+            return; final encoding reminder.
+        consolidation:
+          locators:
+          - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+            end_line: 119
+            file: +Transcripts From available tapes/Imprint/Imprint.txt
+            source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+            start_line: 65
+          status: supported
+          summary: Sleep-to-twenty interval described; repeated ASR twenties are not intelligible
+            reinforcement evidence.
+        conversion:
+          locators:
+          - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+            end_line: 51
+            file: +Transcripts From available tapes/Imprint/Imprint.txt
+            source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+            start_line: 32
+          status: inferred
+          summary: Preserve selection/attention/recall linkage; guarantees and implied anatomical
+            storage cannot be accepted as mechanisms. Do not invent an erase command.
+        future_use:
+          locators:
+          - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+            end_line: 54
+            file: +Transcripts From available tapes/Imprint/Imprint.txt
+            source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+            start_line: 39
+          status: supported
+          summary: Encode a chosen target on demand; invoke recall for the whole retained record or
+            selected parts.
+        handoff:
+          locators:
+          - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+            end_line: 145
+            file: +Transcripts From available tapes/Imprint/Imprint.txt
+            source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+            start_line: 120
+          status: supported
+          summary: Waking countdown/eyes open and final reminder.
+        identity:
+          locators:
+          - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+            end_line: 40
+            file: +Transcripts From available tapes/Imprint/Imprint.txt
+            source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+            start_line: 32
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+            end_line: 51
+            file: +Transcripts From available tapes/Imprint/Imprint.txt
+            source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+            start_line: 32
+          status: supported
+          summary: select-information-or-experience; inhale-and-hold; internally-issue-imprint-cue;
+            focus-attention-on-target; exhale; later-issue-recall-cue
+        opener:
+          locators:
+          - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+            end_line: 31
+            file: +Transcripts From available tapes/Imprint/Imprint.txt
+            source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+            start_line: 26
+          status: supported
+          summary: Introduce memory placement and receptivity before target attention/cue association.
+        preparation:
+          locators:
+          - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+            end_line: 25
+            file: +Transcripts From available tapes/Imprint/Imprint.txt
+            source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+            start_line: 3
+          status: supported
+          summary: Supported uninterrupted relaxation, temporary setting-aside and counted ten-state
+            entry.
+        provenance:
+          locators:
+          - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+            end_line: 145
+            file: +Transcripts From available tapes/Imprint/Imprint.txt
+            source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Source
+            precision/retention claims and legacy versus canonical command shortening require review;
+            no confirmed automatic subconscious process.
+        purpose:
+          locators:
+          - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+            end_line: 2
+            file: +Transcripts From available tapes/Imprint/Imprint.txt
+            source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+            start_line: 1
+          status: supported
+          summary: Deliberately encode selected experience/information and later retrieve it using
+            a separate recall cue.
+        rehearsal:
+          locators:
+          - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+            end_line: 51
+            file: +Transcripts From available tapes/Imprint/Imprint.txt
+            source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+            start_line: 32
+          status: not-present
+          summary: Two instruction presentations; no distinct explicit encoding-and-retrieval listener
+            trial is established.
+        safety_claims:
+          locators:
+          - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+            end_line: 51
+            file: +Transcripts From available tapes/Imprint/Imprint.txt
+            source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+            start_line: 28
+          status: supported
+          summary: guaranteed-detailed-sensory-encoding; indefinite-retention; immediate-perfect-retrieval;
+            automatic-whole-system-learning. Claims are classified as source assertions, not accepted
+            OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+            end_line: 31
+            file: +Transcripts From available tapes/Imprint/Imprint.txt
+            source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+            start_line: 26
+          status: supported
+          summary: Eleven learning context, ten-state close, sleep-to-twenty interval, waking return.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+            end_line: 40
+            file: +Transcripts From available tapes/Imprint/Imprint.txt
+            source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+            start_line: 36
+          status: supported
+          summary: Retention is said to persist until directed otherwise, but no specific erase/reset
+            command is supplied.
+      source_extent:
+        content_group_sha256: 9ff0aa8cb788e9ed3c9a1f65710ec2756dda5fd7035ff6554908b781146d6421
+        end_line: 145
+        file: +Transcripts From available tapes/Imprint/Imprint.txt
+        source_sha256: 679b468816d71bae4c02ec9a4192f074472735a466aecf1fcab0fbde8e9266e9
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-COG-004:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-COG-004:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-COG-004:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-COG-004:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-COG-004:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-COG-004:main
+        operations:
+        - select-information-or-experience
+        - inhale-and-hold
+        - internally-issue-imprint-cue
+        - focus-attention-on-target
+        - exhale
+        - later-issue-recall-cue
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-COG-004:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-COG-004:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-COG-004:rehearsal
+        operations: []
+        status: not-present
+      safety_claims:
+        evidence_refs:
+        - review:OCF-COG-004:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-COG-004:suspend_cancel_reset
+        operations:
+        - documented-suspend-cancel-reset
+        status: inferred
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Source precision/retention claims and legacy versus canonical command shortening require review;
+      no confirmed automatic subconscious process.
+    - Preserve selection/attention/recall linkage; guarantees and implied anatomical storage cannot
+      be accepted as mechanisms. Do not invent an erase command.
+    states:
+      preferred: []
+      required: []
+      status: unknown

@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Explicit private standalone session configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "voice"
+  ],
+  "properties": {
+    "voice": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mix_profile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "locale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "native_speed": {
+      "type": "boolean"
+    },
+    "enabled_stages": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "affirmation",
+          "resonant-tuning",
+          "energy-ball"
+        ]
+      }
+    },
+    "affirmation": {
+      "enum": [
+        "none",
+        "Gateway",
+        "SyncCreation",
+        "OCF"
+      ]
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "HF_HOME": {
+          "type": "string",
+          "minLength": 1
+        },
+        "HF_HUB_CACHE": {
+          "type": "string",
+          "minLength": 1
+        },
+        "HF_HUB_OFFLINE": {
+          "enum": [
+            "1"
+          ]
+        },
+        "OCF_VOICE_PROFILE_DIR": {
+          "type": "string",
+          "minLength": 1
+        },
+        "OCF_VOICE_ASSETS": {
+          "type": "string",
+          "minLength": 1
+        },
+        "OCF_CHATTERBOX_PYTHON": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "pacing_profile": {
+      "type": "string",
+      "pattern": "^OCF-PACING-[A-Z0-9-]+$"
+    },
+    "backend_defaults": {
+      "type": "boolean"
+    }
+  },
+  "$id": "https://open-consciousness-functions.dev/schemas/private-session.schema.json"
+}

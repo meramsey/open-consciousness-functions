@@ -17,8 +17,9 @@ checkpoint only; they are not current render or editorial-approval claims.
 There is **not one full, tracked OCF script per each of the 55 mapped
 functions**. The original transcripts are local input under
 `references/HumanPlusTranscripts/`. The 55 canonical function identities and
-the source analysis that points into those files are tracked under `functions/`
-and `function-content/`. Exact source snapshots and source-first block drafts
+the stable function identities are tracked in complete per-locale function
+resources under `locales/<tag>/`, with non-restricted analysis and binding
+metadata embedded in those resources. Exact source snapshots and source-first block drafts
 for all 55 are in the ignored `.ocf-authoring/` workspace (39 source snapshots;
 16 records remain source-unavailable). Only Attention currently has a complete
 tracked timed-session path: the citation-only import `audio/scripts/attention.yaml`,
@@ -62,7 +63,7 @@ Attention template or any function audio manifest.
 | `references/HumanPlusTranscripts/+Transcripts From available tapes/*/` | User-supplied `.txt`, `.srt`, `.lrc`, OCR PDFs and associated notes; available transcript text is unauthenticated or partial as marked in sidecars | Untracked user input; read-only, not committed | Research/source input only. It is not a runtime package resource. |
 | `references/HumanPlusTranscripts/<function>/*_reconstructed_clean.txt` and `*_reconstructed_annotated.txt` | Explicit reconstructions/mockups, not recovered transcripts | Untracked user input; not committed | Separate local reconstruction candidates. Does not change the 16 canonical source-unavailable statuses. |
 | `references/HumanPlusTranscripts/Preparation/PreparationExample{1,2,3}.txt` | User-selected preparation examples; authentication/completeness remain unverified | Untracked user input; not committed | Local Preparation Learning text review. Example 2 remains separate from the Example 1/3 basis. |
-| `functions/**/*.yaml` | Canonical 55 function identities, commands, availability, safety and reimplementation status | Tracked | Discovery/ownership metadata; not full narration scripts. Keep all 16 unavailable records `planned`. |
+| `locales/en-US/OCF-*.yaml` | Canonical 58 complete function resources, including identity, commands, availability, safety, narration, and embedded review/runtime metadata | Tracked | Sole function authority. Keep all 16 unavailable source mappings `planned`; availability never proves rights or authenticity. |
 | `function-content/{evidence,specifications,decisions,bindings}/OCF-*.yaml` | Hash-addressed observations, exact source extents, candidate section locators, OCF decisions and bindings | Tracked | Analytical/provenance sidecars. They do not authenticate source, approve wording, or define runtime state timing. |
 | `.ocf-authoring/functions/OCF-*.yaml`, `.ocf-authoring/sources/*.yaml`, `.ocf-authoring/blocks/*.yaml` | Exact SOURCE snapshots and initial WORKING blocks; candidate semantic partitioning | Ignored local workspace; 55 skeletons, 39 available source snapshots, 16 source-unavailable skeletons | `ocf content` workspace/review only. Not imported by `ocf audio build`, not packaged. |
 | `.ocf-authoring/preparation-learning-shared-defaults.yaml` | Previous human-selected local preparation wording defaults, including explicit edits | Ignored local workspace | Preparation Learning WIP only; not a global function-session template. |
@@ -74,7 +75,7 @@ Attention template or any function audio manifest.
 | `audio/templates/sessions/OCF-TPL-SESSION-PREP-LEARN-001.yaml` and `...PREP-ROUTINE...` | Preparation Learning / routine templates | Tracked | RC1 learning/recall shells; not legacy function-body templates. |
 | `audio/templates/stages/OCF-TPL-STAGE-*.yaml` | Versioned semantic stages (orientation, setting aside, relaxation, F10, F11 open/close, return, affirmation, tuning, etc.) | Tracked | `ocf session compose`; many stages have narration keys and measured speech-end dependencies. No shipped Energy Ball stage is present. |
 | `audio/slots/attention/focus11.txt` | Attention function instruction slot | Tracked | Attention template slot only; not a 55-function registry. |
-| `locales/en-US/functions.yaml` | OCF-owned keyed function narration resources | Tracked | Localized OCF wording and stage overrides, not historical Human Plus source text. |
+| Manifest-listed `locales/en-US/OCF-*.yaml` resources | Canonical function definitions and narration | Tracked | Localized wording and embedded provenance; shared stages remain separate. |
 | `audio/voices/profiles/piper-lessac.yaml` | Piper profile `OCF-VOICE-0002`; model path is operator-local | Tracked | Selects Piper/en-US/model. `words_per_min: null`; it does **not** encode the slow-session profile values. |
 | `audio/voices/profiles/piper-lessac-slow.yaml` | Piper profile `OCF-VOICE-0003` | Tracked, draft | Uses the locally selected `length_scale: 1.12` and `sentence_silence: 0.4`; still operator-local model/executable. |
 | `audio/background/state-profiles/OCF-DSP-DEFAULT-001.yaml`, `OCF-DSP-DEVELOPMENT-V4-*.yaml` | Semantic DSP state-to-preset mappings | Tracked | `ocf audio build --dsp-profile`/`render-state-program`; default binds F11 only. V4 induction profile binds F10 candidate + F11, not Focus 20. |

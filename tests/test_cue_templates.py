@@ -1,7 +1,5 @@
 """Strict scoped symbols, locale authority, zero-drift and downstream boundaries."""
 
-import hashlib
-import json
 from copy import deepcopy
 
 import pytest
@@ -376,39 +374,25 @@ def test_document_expansion_precedes_recording_fingerprints_and_release(tmp_path
 
 
 @pytest.mark.integration
-def test_all_approved_resolved_bytes_and_four_passes_match_predecessor():
-    from ocf_tools.editorial_successors import before_texts
+def test_all_canonical_resolved_bytes_and_four_passes_match_function_resources():
+    from ocf_tools.indexes import load_all_functions
+    from ocf_tools.locale import LocaleCatalog
     from ocf_tools.narration_first import plan_narration
-    from ocf_tools.paths import REPO_ROOT
-    from ocf_tools.symbolic_integrity import verify
-    from tools.check_hplus_narration_integrity import narration_texts
 
-    data = json.loads(
-        (REPO_ROOT / "function-content/editorial/symbolic-cues-001.json").read_text(
-            encoding="utf-8"
-        )
-    )
-    assert verify() == []
-    assert len(data["entries"]) == 22
-    current_texts = narration_texts()
-    assert {
-        key: hashlib.sha256(text.encode()).hexdigest()
-        for key, text in before_texts(REPO_ROOT, current_texts).items()
-    } == data["resolved_baseline"]
-    for owner in sorted({row["function_id"] for row in data["entries"]}):
+    catalog = LocaleCatalog()
+    for record in load_all_functions():
+        owner = record.id
         view = preview(owner)
         assert not view["synthesis"]
         plan = plan_narration(owner, locale="en-US")
-        for row in (item for item in data["entries"] if item["function_id"] == owner):
-            repetitions = 4 if row["key"].endswith("function-body") else 1
+        for row in record.data["narration"]["sequence"]:
+            resolved = catalog.resource(row["key"], "en-US", domain="narration", fallback=False)[0]
+            repetitions = row["repetitions"]
             for playback in range(1, repetitions + 1):
                 pieces = [
                     segment["canonical_text"]
                     for segment in plan["segments"]
                     if segment["resource_key"] == row["key"] and segment["playback"] == playback
                 ]
-                assert (
-                    "\n\n".join(pieces).encode()
-                    == current_texts[row["path"] + "::" + row["key"]].encode()
-                )
+                assert "\n\n".join(pieces).encode() == resolved.text.encode()
         assert all("{{" not in resource["resolved_text"] for resource in view["resources"])

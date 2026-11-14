@@ -44,6 +44,65 @@ def test_synthetic_missing_and_draft_data_are_honest():
 
 
 @pytest.mark.unit
+def test_listening_guide_requires_separate_stereo_for_binaural_audio():
+    root = Path(__file__).resolve().parents[1]
+    source_text = (root / "docs" / "LISTENING_GUIDE.md").read_text(encoding="utf-8")
+    background_text = (root / "docs" / "BACKGROUND_AUDIO.md").read_text(encoding="utf-8")
+    exported_text = guides.markdown_documents()["listening-guide.md"]
+    from ocf_tools.public_site_export import export_data
+
+    public_export_text = export_data(source_commit="a" * 40, root=root)["listening_guide"][
+        "markdown"
+    ]
+    required = (
+        "Stereo headphones or stereo earbuds with separate left/right playback are\n"
+        "required for the intended binaural/channel-separated audio."
+    )
+    for text in (source_text, exported_text, public_export_text):
+        preparation = "Complete Preparation Learning before using any OCF function."
+        exception = "Only people who have already learned the official Human Plus preparation track may skip it."
+        assert preparation in text
+        assert exception in " ".join(text.split())
+        assert text.index("## Preparation Learning first") < text.index("## Before listening")
+        assert required in text
+        assert (
+            "Speakers, mono\nmixing, or a single earpiece are not equivalent delivery of that audio."
+            in text
+        )
+        assert "### Are stereo headphones required for binaural/channel-separated audio?" in text
+        assert "### Can I listen without stereo headphones?" not in text
+        assert "Yes. Speakers, mono playback" not in text
+        assert "no equivalent effects are promised" in text
+    assert "Binaural content requires stereo headphones" in background_text
+    assert "separate left/right playback" in background_text
+    assert "speakers, mono mixing, or a single earpiece" in background_text.lower()
+
+
+@pytest.mark.unit
+def test_readme_states_preparation_first_and_current_public_audio_release():
+    readme = " ".join(
+        (Path(__file__).resolve().parents[1] / "README.md").read_text(encoding="utf-8").split()
+    )
+    assert "Complete Preparation Learning before using any OCF function." in readme
+    assert (
+        "Only people who have already learned the official Human Plus preparation track may skip it."
+        in readme
+    )
+    assert (
+        "github.com/ocfproject-org/open-consciousness-functions-audio/releases/tag/audio-0.1.0-a6-20261111"
+        in readme
+    )
+    assert "https://ocfproject-org.github.io/open-consciousness-functions-audio/" in readme
+    assert (
+        "https://ocfproject-org.github.io/open-consciousness-functions-audio/preparation-learning/"
+        in readme
+    )
+    assert "meramsey.github.io" not in readme
+    assert "preparing its first approved release" not in readme
+    assert "Michael" not in readme
+
+
+@pytest.mark.unit
 def test_unreviewed_speech_is_not_published():
     record = FunctionRecord("OCF-TST-001", "test", Path("test.yaml"), {})
     content = {
@@ -147,25 +206,34 @@ def test_current_registry_all_58_guides_have_exact_active_cues():
     assert len(records) == 58
     documents = guides.markdown_documents()
     assert len(documents) == 60
-    assert (
-        sum(line.startswith("## ") for line in documents["listening-guide.md"].splitlines()) == 20
-    )
+    listening_sections = {
+        line for line in documents["listening-guide.md"].splitlines() if line.startswith("## ")
+    }
+    assert len(listening_sections) == 24
+    assert {
+        "## Preparation Learning first",
+        "## Before listening",
+        "## After the session",
+        "## Common questions",
+    } <= listening_sections
     catalog = LocaleCatalog()
     for record in records:
-        text = documents[f"functions/{record.id}.md"]
+        text = documents["functions/" + guides.function_guide_stem(record) + ".md"]
         assert f"# {record.id}: {record.canonical_name}" in text
         assert guides.MISSING not in text
-        assert "Ordered activation procedure:" in text
-        assert "## Operating behavior and modes" in text
-        assert "## Complete readable canonical narration" in text
+        assert "## Activation" in text
+        assert "## Complete narration" in text
+        assert "## Declared catalog metadata" not in text
+        assert "hplus.function." not in text
+        assert "Canonical function:" not in text
         for command in record.command_records:
-            if not is_active(command) or command.role == "legacy-alias":
+            if not is_active(command) or command.role in {"legacy-alias", "access-close"}:
                 continue
             cue = localized_cue(record, command, catalog=catalog, strict=False)
             assert f"Display cue: {guides._literal(cue['display_cue'])}" in text
             if cue["binding_status"] == "resolved":
                 assert f"Spoken cue: {guides._literal(cue['spoken_cue'])}" in text
-    assert "Spoken cue: `Plus Focus`" in documents["functions/OCF-FND-002.md"]
+    assert "Spoken cue: `Plus Focus`" in documents["functions/OCF-FND-002 - Focus.md"]
 
 
 @pytest.mark.integration
@@ -213,7 +281,9 @@ def test_current_registry_pdf_and_markdown_freshness(tmp_path):
 
     catalog = LocaleCatalog()
     for record in load_all_functions():
-        path = tmp_path / "functions" / f"{record.id}.pdf"
+        path = (
+            tmp_path / "functions" / (guides.function_guide_stem(record, catalog=catalog) + ".pdf")
+        )
         result = subprocess.run(
             [tool, "-enc", "UTF-8", str(path), "-"], check=True, capture_output=True
         )
@@ -237,3 +307,49 @@ def test_current_registry_pdf_and_markdown_freshness(tmp_path):
             assert all(
                 any(character == candidate for candidate in remaining) for character in spoken
             ), f"{record.id}: incomplete transcript {key} in {path.name}"
+
+
+@pytest.mark.unit
+def test_guide_names_are_readable_encoded_and_edition_independent():
+    from urllib.parse import unquote, urlsplit
+
+    identity = "OCF-EXP-001"
+    title = "Café #1 % Notes"
+    stem = guides.guide_stem(identity, title)
+    assert stem == "OCF-EXP-001 - Café-#1-%-Notes"
+    href = guides._guide_href(identity, title, prefix="functions/")
+    assert "%20" in href and "%23" in href and "%25" in href
+    assert not urlsplit(href).fragment
+    assert unquote(href) == "functions/" + stem + ".md"
+    assert href.replace(".md", ".html") in guides.html_bytes(f"[Read]({href})").decode()
+    assert guides.validate_guide_stems({identity: stem}, [identity]) == {identity: stem}
+    for bad in ({}, {identity: "../other"}, {identity: "OCF-EXP-002 - Other"}):
+        with pytest.raises(OCFError):
+            guides.validate_guide_stems(bad, [identity])
+
+
+@pytest.mark.unit
+def test_guide_name_utf8_component_stays_portable():
+    name = guides.guide_stem("OCF-EXP-001", "界" * 200)
+    assert len(name.encode("utf-8")) <= 200
+    assert name.startswith("OCF-EXP-001 - ")
+    assert guides.validate_guide_stems({"OCF-EXP-001": name}, ["OCF-EXP-001"])
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize(
+    "metadata",
+    [
+        {"filename_layout": "function-id-title-1"},
+        {"filename_layout": "unknown"},
+        {"filename_layout": []},
+        {"filename_layout": "function-id-title-1", "function_files": None},
+        {"function_files": {}},
+    ],
+)
+def test_declared_guide_filename_contract_cannot_fall_back(tmp_path, metadata):
+    import json
+
+    (tmp_path / "build-manifest.json").write_text(json.dumps(metadata))
+    with pytest.raises(OCFError, match="filename"):
+        guides.validate_portable_collection(tmp_path)

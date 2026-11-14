@@ -1,19 +1,19 @@
 {
-  "defaults_lock": "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-015.json",
-  "defaults_sha256": "ee1a3cd80f416c3afd35d72581a2c2b92ba098c2ab899bd47e267725dfb4eb5e",
+  "defaults_lock": "audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-020.json",
+  "defaults_sha256": "339ff152899937803c91808ac0d12e306d87930296c4c71790c0e5282e418ac2",
   "generator": "ocf.audio.plan/1",
   "profiles": {
     "dsp": {
-      "id": "OCF-DSP-HPLUS-LOCKED-003",
-      "version": "3.0.0"
+      "id": "OCF-DSP-HPLUS-LOCKED-004",
+      "version": "4.0.0"
     },
     "pacing": {
-      "id": "OCF-PACING-HPLUS-LOCKED-005",
-      "version": "5.0.0"
+      "id": "OCF-PACING-HPLUS-LOCKED-007",
+      "version": "7.0.0"
     },
     "template": {
-      "id": "OCF-TPL-SESSION-HPLUS-LOCKED-005",
-      "version": "5.0.0"
+      "id": "OCF-TPL-SESSION-HPLUS-LOCKED-007",
+      "version": "7.0.0"
     }
   },
   "resources": [
@@ -23,35 +23,8 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "f72265b8dd3d5e073b7feea3f5e97a05c1c6a06fdf8278a74bc3d4b7221f7c5f",
-      "version": "1.0.0"
-    },
-    {
-      "fallback": false,
-      "key": "hplus.shared.focus10.count",
-      "locale": "en-US",
-      "requested_locale": "en-US",
-      "status": "reviewed",
-      "text_sha256": "9307b2fa13235f04188526d9413a2c0d2a4b28425726f01b95bdfcde4c79e943",
-      "version": "1.0.0"
-    },
-    {
-      "fallback": false,
-      "key": "hplus.shared.focus10.enter",
-      "locale": "en-US",
-      "requested_locale": "en-US",
-      "status": "reviewed",
-      "text_sha256": "4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5",
-      "version": "1.0.0"
-    },
-    {
-      "fallback": false,
-      "key": "hplus.shared.focus10.learn",
-      "locale": "en-US",
-      "requested_locale": "en-US",
-      "status": "reviewed",
-      "text_sha256": "70a7df9ac41f3898191394122df62fb16438e65653224e00ba38b5461a9cf53d",
-      "version": "1.0.0"
+      "text_sha256": "02bec9bfe40cf74b6cef84961be99fbd2785903e5aac4a0c583183c5f79c6623",
+      "version": "3.0.0"
     },
     {
       "fallback": false,
@@ -59,8 +32,8 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "926223f9c62e765aa31627ef5fb071fc685ddbe69b1c6757ca8bb3c490cd5a2a",
-      "version": "1.0.0"
+      "text_sha256": "4209527a48fff55efe4ffa9f1a25e7af1af685b942ab13693dbadfcf7eb07574",
+      "version": "3.0.0"
     },
     {
       "fallback": false,
@@ -68,17 +41,18 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "97f3f0590d4e137222aa0147b34f01e115cc8dd2405fb063b3f7ae98ddc0bd3c",
-      "version": "1.0.0"
+      "text_sha256": "46fdd293895c36986c79aac57a6e6ea0d1be040977c827cfce6db6ab36ede433",
+      "version": "3.0.0"
     },
     {
       "fallback": false,
       "key": "hplus.shared.focus11.close",
       "locale": "en-US",
+      "raw_template_sha256": "ecf8a199b27df22c8d90a9369b77759839cb79ffb6978ddeb327f19809fdec7f",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "4dbbf15e61e38b2bd14e670f4146cc19db0a5e553384e568b71e6bc94eb117a8",
-      "version": "1.0.0"
+      "text_sha256": "7956105c36dd2254d9284bf871846cc4dac664b6f7cb1740880e4498a0ad8260",
+      "version": "3.0.0"
     },
     {
       "fallback": false,
@@ -86,8 +60,17 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "910990ef4c81daeda952abfbb81b9055efae2f6c9fbecbcfc34666402c4e86d6",
-      "version": "1.0.0"
+      "text_sha256": "1db8c37c97a648671026a82bdcb731c5e834439b9f1d402a812f16adbb47279b",
+      "version": "3.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.focus11.closed",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "20b742b393ebf99c76ad96f71fc7cd312f2468f18701727674aa4e80d1a366ae",
+      "version": "3.0.0"
     },
     {
       "fallback": false,
@@ -95,17 +78,18 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8",
-      "version": "1.0.0"
+      "text_sha256": "1cc7065b8fe12f656f12f329c2f8f88f57ee490834760258468170da82b10247",
+      "version": "3.0.0"
     },
     {
       "fallback": false,
       "key": "hplus.shared.focus11.open.prepare",
       "locale": "en-US",
+      "raw_template_sha256": "4709d3c0801aa3663e0db2116682fbc7a441d8e2a7d842f660f8ad1f759ea59b",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "2bfcdff75326ea76e9edf955844db3e5e41b0dfd56471001f46958239203a892",
-      "version": "1.0.0"
+      "text_sha256": "701ba5a25b82d31dcecc8399405d2ad98f9f168f9ed502df01ce24ed825fc3ec",
+      "version": "3.0.0"
     },
     {
       "fallback": false,
@@ -113,8 +97,8 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "1b1117a21a0b6ec991e91976642e636938c5b13e27e0933285fb4e95bef15ec0",
-      "version": "1.0.0"
+      "text_sha256": "85fe840d3d1a29a443541be7ec55ccfc25d9b3d0b20f881f49db14a9f94f9c42",
+      "version": "3.0.0"
     },
     {
       "fallback": false,
@@ -131,8 +115,17 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "d69c94869d29965a742ed40d4747ba9fc62c3ed61b7f4416065ae72b9b9f5e77",
-      "version": "1.0.0"
+      "text_sha256": "287fb2380012e438e3b4acc7e0d8109a369ab598e90f9714b65dbb96b0e8222b",
+      "version": "3.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.relaxation.abdomen-lower-back",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "0b7a41a13cbe508f4803c89529e1a0efce109eb7b615992828700cf0381d4298",
+      "version": "2.0.0"
     },
     {
       "fallback": false,
@@ -140,8 +133,17 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "e53ae6871d1b075f6658ac7091e3a5590034f399b35733f80947b07caeccdd95",
-      "version": "1.1.0"
+      "text_sha256": "368add839e3ad60b2f982cb16a1aeb2ed17066325a2a3d4c8dea7b2cc7400ec2",
+      "version": "2.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.relaxation.chest-breathing",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "f4466dd60bdc821c1507595eca53521ca192a780b4d251ea0215f388d1e0248c",
+      "version": "2.0.0"
     },
     {
       "fallback": false,
@@ -149,8 +151,8 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "24511349423e69dab6a14a1f3aa9dbcebf83840ea7ffbff3d0504f9a75e45339",
-      "version": "1.1.0"
+      "text_sha256": "376111076b84ac36935bfc46cb29828bbd716da3f2eff87146974415f67e5582",
+      "version": "2.0.0"
     },
     {
       "fallback": false,
@@ -158,17 +160,35 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "14ca4b469a3922d815847202f1ea7bbba450708b01774102aa9efadf873f520b",
-      "version": "1.1.0"
+      "text_sha256": "10d9b60bd1ffa5c46d76ad53ed8a02fcb244c252c1dd818ee5c90f02c5b35bd7",
+      "version": "2.0.0"
     },
     {
       "fallback": false,
-      "key": "hplus.shared.relaxation.legs",
+      "key": "hplus.shared.relaxation.hips-thighs",
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "2ae472aa7758e18a640c0193c89bfafd4f4b4f55eabcb7f763e7a5bf83845aeb",
-      "version": "1.1.0"
+      "text_sha256": "cfa49684daacc83336981053b8da7a7fcb66364fce4c16083eb5bde40eb570f5",
+      "version": "2.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.relaxation.jaw-neck",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "13586690512167a4822800ac55c58139504337f34801e9a4d2a87aa28cd437f1",
+      "version": "2.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.relaxation.lower-legs-feet",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "a4c2c554d4a98777a97bedc0c045d9b37117ae89fab8ee7727930e9f3f4a3eda",
+      "version": "2.0.0"
     },
     {
       "fallback": false,
@@ -176,17 +196,26 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "2377049f930b06833eb3caba3d5757aa358c19e994025903f864124297a887bf",
-      "version": "1.1.0"
+      "text_sha256": "54015924510642670d4a10c4c695d2ef62e06dfec9eef5db51c7141b954cb06b",
+      "version": "2.0.0"
     },
     {
       "fallback": false,
-      "key": "hplus.shared.relaxation.torso",
+      "key": "hplus.shared.relaxation.support",
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "bc9905ba9824a1eabf035b9567d78b9b27c923cacc3b522317258dd2e8d537f7",
-      "version": "1.1.0"
+      "text_sha256": "c7ed821741f02f8df479e5ca0f7d6f440caf1dc6d43eb0d43505b6afa6d390aa",
+      "version": "2.0.0"
+    },
+    {
+      "fallback": false,
+      "key": "hplus.shared.relaxation.whole-body-awareness",
+      "locale": "en-US",
+      "requested_locale": "en-US",
+      "status": "reviewed",
+      "text_sha256": "dd27b7cb4b6cc075e867f09f333876353f647eedd0c45bcaa5563d764cd1a2db",
+      "version": "2.0.0"
     },
     {
       "fallback": false,
@@ -194,8 +223,8 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "5f49e4be789204ff66dc3ba1598349ad5c2670cdabc3a5102c1e5819cd3d3b79",
-      "version": "1.1.0"
+      "text_sha256": "eabb26b1af747550de228515e16985358a58a703fd727dd44782c77f43b5c521",
+      "version": "3.0.0"
     },
     {
       "fallback": false,
@@ -203,8 +232,8 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "15c650cd9f61b85618ef4bb77e44376ea31295e9667230735cc6f98c56f710c0",
-      "version": "1.1.0"
+      "text_sha256": "3a5f2f4a7242a51790f3855fae7073bd2acff4bffb12539b2d453009acdd636e",
+      "version": "3.0.0"
     },
     {
       "fallback": false,
@@ -212,8 +241,8 @@
       "locale": "en-US",
       "requested_locale": "en-US",
       "status": "reviewed",
-      "text_sha256": "3a23aed02ed3842562bcdf42b62938f6063a1c5323891eeb147823100974a6b8",
-      "version": "1.1.0"
+      "text_sha256": "8b2b32b752628bbdba47074d0efa7a0ebd3e62e4080157372dc55d054316384e",
+      "version": "3.0.0"
     },
     {
       "fallback": false,

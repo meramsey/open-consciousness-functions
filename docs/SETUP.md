@@ -54,19 +54,20 @@ that changes `HOME` is handled using the OS account home. Set
 or models are stored elsewhere. Piper model paths and expected hashes remain
 owned by the selected voice profile/cache; discovery never downloads a model.
 
-To validate the configured Amy Medium model and engine, then make one fresh,
-short synthesis without writing an audio file:
+Choose a configured, available profile from `voice list`, then make one fresh,
+short synthesis without exporting an audio file. Replace `VOICE_ID` below with
+that reported profile ID; private example IDs are not supplied by a clean checkout:
 
 ```bash
 .venv/bin/python scripts/ocf.py voice doctor
-.venv/bin/python scripts/ocf.py voice smoke OCF-VOICE-9003 --locale en-US
+.venv/bin/python scripts/ocf.py voice smoke VOICE_ID --locale en-US
 ```
 
 For a private complete session, use the regular OCF renderer after preflight:
 
 ```bash
 .venv/bin/python scripts/ocf.py audio render FUNCTION_ID \
-  --voice OCF-VOICE-9003 --pacing sleep
+  --voice VOICE_ID --pacing sleep
 ```
 
 If preflight says the executable is found but broken, inspect the reported

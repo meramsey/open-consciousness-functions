@@ -78,8 +78,10 @@ files or built-in programs (`-p drop|slide|sigmoid|curve`). OCF:
 - degrades gracefully with installation guidance when it is absent.
 
 SBaGenX renders are deterministic (no entropy), so `render.seed` stays `null`
-with `render.deterministic: true`. Binaural content requires headphones and is
-covered by each manifest's `headphone_notice`.
+with `render.deterministic: true`. Binaural content requires stereo headphones
+with separate left/right playback; speakers, mono mixing, or a single earpiece
+do not provide equivalent channel delivery. This requirement is covered by each
+manifest's `headphone_notice`.
 
 ## Reference-master
 

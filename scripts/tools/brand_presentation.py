@@ -168,7 +168,7 @@ def check_readme(root=REPO_ROOT):
         url = urlparse(source)
         if url.scheme or url.netloc:
             match = re.fullmatch(
-                r"https://github.com/meramsey/open-consciousness-functions/actions/workflows/([a-z-]+)\.yml/badge\.svg",
+                r"https://github.com/ocfproject-org/open-consciousness-functions/actions/workflows/([a-z-]+)\.yml/badge\.svg",
                 source,
             )
             if not match or not (root / ".github/workflows" / (match.group(1) + ".yml")).is_file():

@@ -1,0 +1,939 @@
+schema_version: '2.0'
+locale: en-US
+domain: function
+function_id: OCF-COG-002
+title:
+  text: Mental Calculation
+  status: canonical
+  version: 1.0.0
+description:
+  text: Speeds mental arithmetic and number processing.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-COG-002-PRIMARY
+  display_cue:
+    text: PLUS-CALCULATE
+  spoken_cue:
+    text: Plus Calculate
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-cog-002.function-body
+      before_steps:
+      - id: select-mathematical-task
+        operation: select-purpose
+        localization_key: command.procedure.select-purpose
+    relationships: {}
+  procedure_steps:
+  - id: select-mathematical-task
+    operation: select-purpose
+    instruction:
+      text: Choose the purpose for using this function.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+secondary_commands: []
+tags:
+- text: numbers
+  status: draft
+  semantic_id: numbers
+- text: concentration
+  status: draft
+  semantic_id: concentration
+- text: thinking
+  status: draft
+  semantic_id: thinking
+common_uses:
+- text: Preparing for mental arithmetic or number-based study.
+  status: draft
+- text: Practicing attention to numerical patterns while independently checking calculations.
+  status: draft
+relationships:
+  related_functions: []
+  complementary_functions:
+  - function_id: OCF-FND-002
+    description_key: relationships.rel-cog002-fnd002.description
+    description:
+      text: Number practice and directed attention address calculation and concentration respectively;
+        either may be practiced independently.
+      status: reviewed
+      version: 1.0.0
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-cog-002.opener:
+    status: reviewed
+    version: 1.2.0
+    text: 'This OCF exercise will strengthen your ability
+
+      to understand, remember, and work with numbers,
+
+      improving your mathematical understanding,
+
+      calculation speed, accuracy, and intuition.'
+  hplus.function.ocf-cog-002.function-body:
+    status: reviewed
+    version: 1.2.0
+    cue_template:
+      function_id: OCF-COG-002
+      allowed:
+      - cue.primary
+    text: 'From this moment forward, your ability to understand,
+
+      remember, and work with numbers is becoming
+
+      stronger, faster, and more accurate.
+
+
+      Whenever you see or hear numbers,
+
+      you recognize and understand them clearly.
+
+
+      Numbers and numerical sequences become easier
+
+      to remember and retrieve whenever you need them.
+
+
+      Your ability to perform arithmetic, algebra,
+
+      geometry, trigonometry, and other mathematical
+
+      operations becomes faster, clearer,
+
+      and increasingly accurate.
+
+
+      Mathematical equations and symbols
+
+      become clear and meaningful to you.
+
+
+      You recognize relationships between numbers,
+
+      shapes, angles, equations, and patterns,
+
+      understanding how they connect
+
+      and work together.
+
+
+      Your mind naturally recognizes the connections
+
+      between numbers, quantities, shapes,
+
+      patterns, form, and energy.
+
+
+      From basic arithmetic to advanced mathematics,
+
+      your mind will naturally recognize underlying
+
+      principles, visualize solutions, and solve
+
+      problems with increasing clarity and precision.
+
+
+      New mathematical ideas, insights, and solutions
+
+      will emerge naturally into your conscious awareness.
+
+
+      You will express these ideas with clarity,
+
+      confidence, and precise mathematical accuracy.
+
+
+      From this moment forward, this growing ability
+
+      is permanently established within you.
+
+
+      Your mind will automatically recognize,
+
+      organize, and understand numerical information
+
+      with increasing speed and efficiency.
+
+
+      Your mathematical knowledge and understanding
+
+      will continue expanding naturally,
+
+      becoming stronger with every experience.
+
+
+      Whenever you wish to focus your mathematical
+
+      abilities more intensely, inhale deeply
+
+      and gently hold your breath.
+
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+
+      Then exhale slowly through your mouth.
+
+
+      Your mind will immediately become clear,
+
+      focused, and responsive to the numbers
+
+      or mathematical problem before you.
+
+
+      Calculations will flow quickly and accurately,
+
+      and the relationships between numbers
+
+      will become clear and easy to understand.
+
+
+      Each time you use {{ cue.primary }},
+
+      your mathematical abilities become
+
+      easier, faster, and more effective.
+
+
+      Your natural ability to understand,
+
+      remember, and work with numbers
+
+      will continue strengthening automatically,
+
+      every day and every night.'
+  hplus.function.ocf-cog-002.closer:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-COG-002
+      allowed:
+      - cue.primary
+    text: 'Remember, whenever you wish to strengthen
+
+      your ability to calculate or understand numbers,
+
+      inhale deeply and hold your breath.
+
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+
+      Then exhale slowly through your mouth.
+
+
+      This concludes your OCF Mental Calculation exercise.'
+slug: buy-the-numbers
+classification:
+  primary_domain: cognition
+  secondary_domains: []
+category_labels:
+  cognition:
+    text: cognition
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-cog-002.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-cog-002.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-cog-002.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-COG-002
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: ee16a2f65c41824aeb68972d5a245dbe2bda1f1d84118d85ce5c2a5516ebd198
+    classification: KEEP CUE — ALIGN TITLE OR NARRATION
+    recommended_title: Mental Calculation
+    recommended_primary_cue: PLUS-CALCULATE
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Automatic mathematical understanding, numerical memory and symbolic reasoning,
+      optionally intensified with inhale/hold/cue/candle-like exhale. Mental Calculation must not
+      narrow scope to arithmetic.
+    pair_reason: CALCULATE is a natural, memorable action. A descriptive title is clearer than the
+      Buy/By the Numbers pun without changing the cue or its broader numerical-memory purpose.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. CALCULATE
+      is a natural, memorable action. A descriptive title is clearer than the Buy/By the Numbers pun
+      without changing the cue or its broader numerical-memory purpose.
+    teaching_disposition: Preserve complete taught cue; metadata/title alignment only
+    documentary_intent: Improve numerical memory, arithmetic, symbolic understanding and mathematical
+      expression, with an optional intensification cue.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: e2eeb3427b51c67b4337bf1b2b99d0b2ce852151d7f0abb6b6c221acb3f66244
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-COG-002-PRIMARY
+    command_status: unchanged
+    commands:
+    - PLUS-CALCULATE
+    name: BUY THE NUMBERS
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Buy the Numbers
+  compatibility:
+    state: unchanged
+  historical_lookup:
+  - text: Buy the Numbers
+    kind: former-title
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+  status:
+    evidence: source-described
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-cog-002.title
+    short_description_key: functions.ocf-cog-002.short-description
+    purpose_key: functions.ocf-cog-002.purpose
+  commands:
+  - id: OCF-CMD-COG-002-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-cog-002-primary.label
+      usage_key: commands.ocf-cmd-cog-002-primary.usage
+      purpose_key: functions.ocf-cog-002.purpose
+      explanation_key: commands.ocf-cmd-cog-002-primary.explanation
+      display_cue_key: commands.ocf-cmd-cog-002-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-cog-002-primary.spoken-cue
+  predecessor_resource_sha256: 7564e32a1a74aba74cd3b3f78985896c27db204a6496cd50eecc6663607b29bf
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-004
+    kind: approved-title-cue
+    source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup.
+      Preserve procedures, controls, semantics, provenance and separately flagged metadata questions.
+      Later user instruction releases the draft-pilot freeze; pilot bindings follow current approved
+      titles and cues.
+    decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
+      request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
+    source_row_sha256: d0aec76db86c79b835b8835f194db27be00babfca23f303f3a85823f441d5258
+    status: accepted
+    previous_values_sha256: 2765274247e4b9f90acdc2cd58efe13560ac7927c87e1437300223d99e4e13bf
+    current_values_sha256: c333cf43e1eb8d74e3178f8fc30d650ac12cabd67e2e775d54893ac476207169
+    changed_narration_keys:
+    - hplus.function.ocf-cog-002.closer
+    previous_resolved_text_sha256:
+      hplus.function.ocf-cog-002.closer: f7e77eacf9c7f3bcf58f0cf15068eb6f01784c249f1984a66fd6cf4d93ebb250
+    current_resolved_text_sha256:
+      hplus.function.ocf-cog-002.closer: 7c628adfb28b0596792d0b3ba7095714307c0513be3dda0633b06a2bf985784d
+    review_note: Change title from Buy the Numbers to Mental Calculation and update exercise sign-off.
+      Keep display and spoken cue unchanged. Preserve full mathematical scope including numerical
+      memory, arithmetic, algebra, geometry, trigonometry, symbolic reasoning, visualization and problem-solving,
+      automatic development and optional conscious reinforcement. Preserve inhale/hold/cue/slow mouth
+      exhale; do not add candle-blowing instructions. Retain Buy the Numbers as historical lookup;
+      introduce no mode or release. Do not narrow scope to arithmetic alone.
+    approval_response: '1'
+    review_position: 24
+  - id: REL-COG002-FND002
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 8f80b6d89838b2b7ce4970f6b7021bccc2588bb6f1d67331fb4b56bc29f9a51c
+    current_values_sha256: 1b551bfd8aaeeee8d4105f60d1558a93e075001a4f7729c46abf0d451951eb8a
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-COG-002", "sha256": "57ff0a5168d935e358c53450af35cf5b5d20d57f4c4de0ce389d1353e4466c5b"},
+      {"field": "description", "function_id": "OCF-FND-002", "sha256": "5589edf7e5fa4b3687d6ce74a83a0697d44ac80d155cee2f100481105c29d57d"}]'
+    relationship_id: REL-COG002-FND002
+    related_function_id: OCF-FND-002
+    relationship_type: complementary
+    dependency: optional
+    reciprocal_approved: false
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    - OCF-TPL-SESSION-HPLUS-LOCKED-006
+    - OCF-TPL-SESSION-HPLUS-LOCKED-007
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b:opener
+      kind: structural-inference
+      line_candidates:
+      - 7
+      - 9
+      - 123
+      scope: document
+      source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+    - category: main
+      confidence: low
+      id: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b:main
+      kind: structural-inference
+      line_candidates:
+      - 65
+      scope: document
+      source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+    - category: closer
+      confidence: low
+      id: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b:closer
+      kind: structural-inference
+      line_candidates:
+      - 115
+      scope: document
+      source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+    - category: preparation
+      confidence: low
+      id: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b:preparation
+      kind: structural-inference
+      line_candidates:
+      - 10
+      - 16
+      - 23
+      - 117
+      - 125
+      scope: document
+      source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+    - category: command_association
+      confidence: low
+      id: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b:command_association
+      kind: structural-inference
+      line_candidates:
+      - 90
+      - 111
+      scope: document
+      source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+    - category: future_use
+      confidence: low
+      id: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b:future_use
+      kind: structural-inference
+      line_candidates:
+      - 91
+      - 112
+      scope: document
+      source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+    - category: purpose
+      confidence: medium
+      id: review:OCF-COG-002:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 7
+      - 8
+      scope: document
+      source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+    - category: opener
+      confidence: medium
+      id: review:OCF-COG-002:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 54
+      - 66
+      scope: document
+      source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+    - category: main
+      confidence: medium
+      id: review:OCF-COG-002:main
+      kind: function-specification-inference
+      line_candidates:
+      - 67
+      - 92
+      scope: document
+      source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+    - category: association
+      confidence: medium
+      id: review:OCF-COG-002:association
+      kind: function-specification-inference
+      line_candidates:
+      - 88
+      - 92
+      scope: document
+      source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-COG-002:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 67
+      - 114
+      scope: document
+      source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+    - category: future_use
+      confidence: medium
+      id: review:OCF-COG-002:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 88
+      - 113
+      scope: document
+      source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-COG-002:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 330
+      scope: document
+      source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+    - category: closer
+      confidence: medium
+      id: review:OCF-COG-002:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 109
+      - 125
+      scope: document
+      source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-COG-002:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 126
+      - 330
+      scope: document
+      source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+    - category: handoff
+      confidence: unknown
+      id: review:OCF-COG-002:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 126
+      - 330
+      scope: document
+      source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-COG-002:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 59
+      - 92
+      scope: document
+      source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+      path: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.lrc
+      related_sha256:
+      - 5a202fe66d9e16be0a2a8a4fd342921abfef44882e3e97b65ca45ce4776f5463
+      - d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+      sha256: 5ba477f0677c7f988bc89c862347c7224188559ec2a6d1d1f523179e716efbeb
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.ocr.pdf
+      related_sha256: []
+      sha256: 6caa90e2c1fa97d6f96ef69f3025be71cfe8f5413cb7ab858dfd62f51958c2c2
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+      path: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.srt
+      related_sha256:
+      - 5ba477f0677c7f988bc89c862347c7224188559ec2a6d1d1f523179e716efbeb
+      - d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+      sha256: 5a202fe66d9e16be0a2a8a4fd342921abfef44882e3e97b65ca45ce4776f5463
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+      path: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+      related_sha256:
+      - 5a202fe66d9e16be0a2a8a4fd342921abfef44882e3e97b65ca45ce4776f5463
+      - 5ba477f0677c7f988bc89c862347c7224188559ec2a6d1d1f523179e716efbeb
+      sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Buy the Numbers/folder.jpg
+      related_sha256: []
+      sha256: 7113b7fdfdcdaa4f6327ed2dbfcdabc11807a5aad4ec8b2e7400a6cc7e1dba31
+  specifications:
+    analysis_review:
+      claim_categories:
+      - guaranteed-persistent-cognitive-improvement
+      - broad-mathematical-accuracy
+      - automatic-whole-system-learning
+      family: cognitive-enhancement
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+            end_line: 92
+            file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+            source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+            start_line: 88
+          status: supported
+          summary: Inhale/hold, internally issue calculation cue, exhale; cue intensifies an otherwise
+            asserted persistent improvement.
+        closer:
+          locators:
+          - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+            end_line: 125
+            file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+            source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+            start_line: 109
+          status: supported
+          summary: Reinforce future remembering, close the learning channel and return to ten-state
+            rest.
+        consolidation:
+          locators:
+          - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+            end_line: 330
+            file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+            source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+            start_line: 126
+          status: supported
+          summary: A subsequent numbered interval is present, but its complete sleep-entry explanation
+            and final exit are not preserved here.
+        conversion:
+          locators:
+          - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+            end_line: 92
+            file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+            source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+            start_line: 67
+          status: inferred
+          summary: Distinguish a deliberate math-task cue from promises of permanent ability; concrete
+            rehearsal must be an explicit OCF design, not recovered content.
+        future_use:
+          locators:
+          - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+            end_line: 113
+            file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+            source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+            start_line: 88
+          status: supported
+          summary: Use the cue to focus/intensify mathematical ability; repeated use is asserted to
+            improve efficiency.
+        handoff:
+          locators:
+          - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+            end_line: 330
+            file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+            source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+            start_line: 126
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. ASR
+            count artifacts and missing later content do not establish timing, deliberate repetition
+            or a complete return sequence.
+        identity:
+          locators:
+          - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+            end_line: 92
+            file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+            source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+            start_line: 88
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+            end_line: 92
+            file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+            source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+            start_line: 67
+          status: supported
+          summary: associate-number-perception-with-memory; associate-arithmetic-with-speed-and-accuracy;
+            associate-symbols-with-understanding-and-expression; intensify-via-breath-and-calculation-cue
+        opener:
+          locators:
+          - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+            end_line: 66
+            file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+            source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+            start_line: 54
+          status: supported
+          summary: Establish learning receptivity before broad mathematical-ability suggestions.
+        preparation:
+          locators:
+          - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+            end_line: 25
+            file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+            source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+            start_line: 9
+          status: supported
+          summary: Comfortable uninterrupted posture, ordinary settling movements/breathing and temporary
+            setting-aside in a repository representation.
+        provenance:
+          locators:
+          - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+            end_line: 330
+            file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+            source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. ASR
+            count artifacts and missing later content do not establish timing, deliberate repetition
+            or a complete return sequence.
+        purpose:
+          locators:
+          - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+            end_line: 8
+            file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+            source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+            start_line: 7
+          status: supported
+          summary: Improve numerical memory, arithmetic, symbolic understanding and mathematical expression,
+            with an optional intensification cue.
+        rehearsal:
+          locators:
+          - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+            end_line: 114
+            file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+            source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+            start_line: 67
+          status: supported
+          summary: Instruction describes the procedure but no distinct listener practice trial is
+            established in the inspected intelligible portion.
+        safety_claims:
+          locators:
+          - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+            end_line: 92
+            file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+            source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+            start_line: 59
+          status: supported
+          summary: guaranteed-persistent-cognitive-improvement; broad-mathematical-accuracy; automatic-whole-system-learning.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+            end_line: 64
+            file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+            source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+            start_line: 26
+          status: supported
+          summary: Ten-state entry, eleven learning opening, ten-state closing; subsequent numbered
+            sleep-like progression is incomplete and final return unavailable.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+            end_line: 330
+            file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+            source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. ASR
+            count artifacts and missing later content do not establish timing, deliberate repetition
+            or a complete return sequence.
+      source_extent:
+        content_group_sha256: 5ccbac82586a753196bfd5b349da32289ad0d5f603a7d50405d994d64498656e
+        end_line: 330
+        file: +Transcripts From available tapes/Buy the Numbers/Buy the Numbers.txt
+        source_sha256: d5bd9c83dd44cf28b3b203eca19d9d8e314047384613a89af6c755c763357a7b
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-COG-002:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-COG-002:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-COG-002:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-COG-002:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-COG-002:handoff
+        operations: []
+        status: unknown
+      main:
+        evidence_refs:
+        - review:OCF-COG-002:main
+        operations:
+        - associate-number-perception-with-memory
+        - associate-arithmetic-with-speed-and-accuracy
+        - associate-symbols-with-understanding-and-expression
+        - intensify-via-breath-and-calculation-cue
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-COG-002:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-COG-002:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-COG-002:rehearsal
+        operations:
+        - documented-rehearsal
+        status: inferred
+      safety_claims:
+        evidence_refs:
+        - review:OCF-COG-002:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-COG-002:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - ASR count artifacts and missing later content do not establish timing, deliberate repetition
+      or a complete return sequence.
+    - Distinguish a deliberate math-task cue from promises of permanent ability; concrete rehearsal
+      must be an explicit OCF design, not recovered content.
+    states:
+      preferred: []
+      required: []
+      status: unknown

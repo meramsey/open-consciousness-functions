@@ -1,0 +1,1037 @@
+schema_version: '2.0'
+locale: en-US
+domain: function
+function_id: OCF-SLP-006
+title:
+  text: Stay Awake
+  status: canonical
+  version: 1.0.0
+description:
+  text: Supports staying awake and alert when needed; activation cue PLUS-AWAKE.
+  status: reviewed
+  version: 1.0.1
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-SLP-006-PRIMARY
+  display_cue:
+    text: PLUS-AWAKE
+  spoken_cue:
+    text: Plus Awake
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-slp-006.function-body
+      before_steps:
+      - id: select-immediate-need
+        operation: select-purpose
+        localization_key: command.procedure.select-purpose
+    relationships: {}
+  procedure_steps:
+  - id: select-immediate-need
+    operation: select-purpose
+    instruction:
+      text: Choose the purpose for using this function.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-SLP-006-LEGACY-01
+  display_cue:
+    text: PLUS-ONE, AWAKE, ALERT, ONE, ONE
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-SLP-006-LEGACY-01
+    availability: historical-lookup
+    documentation:
+      visible: false
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
+tags:
+- text: attention
+  status: draft
+  semantic_id: attention
+- text: wakefulness
+  status: draft
+  semantic_id: wakefulness
+- text: self-direction
+  status: draft
+  semantic_id: self-direction
+common_uses:
+- text: Reviewing the intention of short-term alertness when an immediate need arises.
+  status: draft
+- text: Distinguishing a felt alertness practice from adequate sleep; never relying on it to make drowsy
+    driving or hazardous work safe.
+  status: draft
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-slp-006.opener:
+    status: reviewed
+    version: 1.2.0
+    text: 'This OCF exercise will teach you to call upon
+
+      immediate mental and physical alertness when
+
+      an essential need requires you to remain awake.'
+  hplus.function.ocf-slp-006.function-body:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-SLP-006
+      allowed:
+      - cue.primary
+    text: 'From this moment forward, you have the ability
+
+      to call upon a powerful state of waking alertness
+
+      whenever an essential, immediate need arises.
+
+
+      When you must remain awake and responsive,
+
+      bring the present need clearly into your awareness.
+
+      Know what requires your attention and action.
+
+
+      Inhale deeply and gently hold your breath.
+
+      Think or say in your mind,
+
+      "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth.
+
+
+      Immediately, your total self will begin to shift
+
+      into clear, active, focused wakefulness.
+
+      Your thoughts will become sharp and orderly.
+
+      Your awareness will brighten and become steady.
+
+      Your mind will recognize what matters now.
+
+
+      Your eyes, hearing, and other senses will work
+
+      together in clear awareness of your surroundings.
+
+      Your physical body will become responsive,
+
+      coordinated, and ready for the action required.
+
+
+      Feel heaviness and mental dullness receding.
+
+      Your attention will gather around the present need.
+
+      Unnecessary thoughts will fall away,
+
+      leaving calm, decisive, wakeful awareness.
+
+
+      Your conscious mind, subconscious awareness,
+
+      and physical body will cooperate as one,
+
+      directing their available strength and energy
+
+      toward remaining alert in this essential moment.
+
+
+      This response is temporary and purposeful.
+
+      It will serve the immediate need for wakefulness,
+
+      then give way naturally when that need has passed
+
+      and you can allow yourself to rest.
+
+
+      The ability to call upon this alertness
+
+      will remain permanently available within you,
+
+      without keeping you continually stimulated.
+
+      Each time you use this function,
+
+      the response will become clearer,
+
+      easier, and more effective.'
+  hplus.function.ocf-slp-006.closer:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-SLP-006
+      allowed:
+      - cue.primary
+    text: 'Remember, when an essential need requires
+
+      immediate waking alertness, inhale deeply
+
+      and hold your breath.
+
+      Think or say in your mind,
+
+      "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth.
+
+
+      This concludes your OCF Stay Awake exercise.'
+slug: stay-awake
+classification:
+  primary_domain: sleep
+  secondary_domains:
+  - performance
+category_labels:
+  sleep:
+    text: sleep
+    status: canonical
+  performance:
+    text: performance
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-slp-006.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-slp-006.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-slp-006.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-SLP-006
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: 3f5f3c9c54d543187dc6ea07b75f378fd61c9633ce6cf4a759011f4ca475abfd
+    classification: KEEP CUE — ALIGN TITLE OR NARRATION
+    recommended_title: Stay Awake
+    recommended_primary_cue: PLUS-AWAKE
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Select essential immediate need, inhale/hold/complete cue/slow mouth exhale. Temporary
+      purposeful alertness yields when need passes; lasting availability is not continuous stimulation.
+      No separate release cue taught.
+    pair_reason: AWAKE directly names the essential temporary alertness goal. Do not revive an opaque
+      five-token mnemonic merely for historical consistency, or broaden a temporary application into continuous
+      use.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. AWAKE directly names
+      the essential temporary alertness goal. Do not revive an opaque five-token mnemonic merely for historical
+      consistency, or broaden a temporary application into continuous use.
+    teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
+    documentary_intent: Brochure describes immediate temporary alertness only for essential need, includes
+      driving examples and prohibits continuous application.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: b4bb51b47513cb712bea82e161b63edab5fecf6cfda435042869ae03673cb397
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-SLP-006-LEGACY-01
+    command_status: proposed
+    commands:
+    - PLUS-ONE, AWAKE, ALERT, ONE, ONE
+    name: STAY AWAKE
+    source_availability: unavailable
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Stay Awake
+  compatibility:
+    legacy_commands:
+    - PLUS-ONE, AWAKE, ALERT, ONE, ONE
+    rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording is
+      historical lookup. Existing controls remain unchanged.
+    state: historical-lookup
+  historical_lookup:
+  - text: Plus One Awake Alert One One
+    kind: former-teaching
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+    command_id: OCF-CMD-SLP-006-PRIMARY
+  status:
+    evidence: community-hypothesis
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-slp-006.title
+    short_description_key: functions.ocf-slp-006.short-description
+    purpose_key: functions.ocf-slp-006.purpose
+  commands:
+  - id: OCF-CMD-SLP-006-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-slp-006-primary.label
+      usage_key: commands.ocf-cmd-slp-006-primary.usage
+      purpose_key: functions.ocf-slp-006.purpose
+      explanation_key: commands.ocf-cmd-slp-006-primary.explanation
+      display_cue_key: commands.ocf-cmd-slp-006-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-slp-006-primary.spoken-cue
+    observed_phrase:
+      text: Plus Awake
+      narration_key: hplus.function.ocf-slp-006.function-body
+      relationship: canonical-match
+  - id: OCF-CMD-SLP-006-LEGACY-01
+    localization:
+      label_key: commands.ocf-cmd-slp-006-legacy-01.label
+      usage_key: commands.ocf-cmd-slp-006-legacy-01.usage
+      purpose_key: functions.ocf-slp-006.purpose
+      explanation_key: commands.ocf-cmd-slp-006-legacy-01.explanation
+  predecessor_resource_sha256: c68c22fa94f196839e6cce08f2716958295f134a301ebf0627bd5668abd0dc5f
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-004
+    kind: approved-title-cue
+    source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
+      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
+      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
+      request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
+    source_row_sha256: ab6eea36acaa541785aad88a31a7fca7a680d2d2f84baab8f87211967bbd6188
+    status: accepted
+    previous_values_sha256: f22a4c97ac9d0bb2af75701da8013e48ccbf62fe828a93325d1a563df3ae92be
+    current_values_sha256: 69b84b4e913fe8ee63b53559346a56fa8674728a5edb1ed929c15052461d33a6
+    changed_narration_keys:
+    - hplus.function.ocf-slp-006.closer
+    - hplus.function.ocf-slp-006.function-body
+    previous_resolved_text_sha256:
+      hplus.function.ocf-slp-006.function-body: dc61ddcca824371d2a2b0ae10b7f2bf48c49e02aa23fc928eb731902b5532075
+      hplus.function.ocf-slp-006.closer: 0d973760c884ff19411a051fa9b89779cf6f255f9af48ffdf7d9a0168f8ded0d
+    current_resolved_text_sha256:
+      hplus.function.ocf-slp-006.function-body: 799829cfb832ace99050f5d3c20b7fe5ca927366c2058e232d6774c994c6b923
+      hplus.function.ocf-slp-006.closer: 8c0bfa72261fe8a015bcfc8c9907f3db35f36a42d8aa2f1362b0da918831e2de
+    review_note: Replace one body mention and one closer mention from Plus One Awake Alert One One to
+      Plus Awake. Preserve title, essential immediate selected-need focus, inhale/hold/cue/slow mouth
+      exhale and surrounding alertness suggestions. Retain longer legacy phrase as historical lookup;
+      introduce no mode or release. Preserve temporary purposeful response yielding naturally when the
+      need passes and rest is possible, and lasting availability without continuous stimulation.
+    approval_response: '1'
+    review_position: 12
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    - OCF-TPL-SESSION-HPLUS-LOCKED-006
+    - OCF-TPL-SESSION-HPLUS-LOCKED-007
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54:opener
+      kind: structural-inference
+      line_candidates:
+      - 36
+      - 209
+      - 265
+      scope: document
+      source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+    - category: main
+      confidence: low
+      id: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54:main
+      kind: structural-inference
+      line_candidates:
+      - 118
+      - 121
+      scope: document
+      source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+    - category: closer
+      confidence: low
+      id: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54:closer
+      kind: structural-inference
+      line_candidates:
+      - 196
+      - 265
+      scope: document
+      source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+    - category: preparation
+      confidence: low
+      id: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54:preparation
+      kind: structural-inference
+      line_candidates:
+      - 37
+      - 62
+      - 82
+      - 97
+      - 103
+      - 199
+      - 212
+      scope: document
+      source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+    - category: command_association
+      confidence: low
+      id: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54:command_association
+      kind: structural-inference
+      line_candidates:
+      - 126
+      - 189
+      - 253
+      scope: document
+      source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+    - category: future_use
+      confidence: low
+      id: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54:future_use
+      kind: structural-inference
+      line_candidates:
+      - 177
+      - 192
+      scope: document
+      source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+    - category: return
+      confidence: low
+      id: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54:return
+      kind: structural-inference
+      line_candidates:
+      - 218
+      - 236
+      - 245
+      scope: document
+      source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+    - category: opener
+      confidence: low
+      id: f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e:opener
+      kind: structural-inference
+      line_candidates:
+      - 49
+      - 220
+      - 324
+      scope: document
+      source_sha256: f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e
+    - category: main
+      confidence: low
+      id: f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e:main
+      kind: structural-inference
+      line_candidates:
+      - 142
+      - 146
+      scope: document
+      source_sha256: f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e
+    - category: closer
+      confidence: low
+      id: f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e:closer
+      kind: structural-inference
+      line_candidates:
+      - 205
+      - 324
+      scope: document
+      source_sha256: f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e
+    - category: preparation
+      confidence: low
+      id: f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e:preparation
+      kind: structural-inference
+      line_candidates:
+      - 28
+      - 29
+      - 50
+      - 67
+      - 81
+      - 91
+      - 127
+      - 209
+      - 222
+      scope: document
+      source_sha256: f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e
+    - category: command_association
+      confidence: low
+      id: f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e:command_association
+      kind: structural-inference
+      line_candidates:
+      - 150
+      - 200
+      - 315
+      scope: document
+      source_sha256: f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e
+    - category: future_use
+      confidence: low
+      id: f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e:future_use
+      kind: structural-inference
+      line_candidates:
+      - 190
+      - 202
+      scope: document
+      source_sha256: f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e
+    - category: return
+      confidence: low
+      id: f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e:return
+      kind: structural-inference
+      line_candidates:
+      - 228
+      - 287
+      - 310
+      scope: document
+      source_sha256: f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e
+    - category: purpose
+      confidence: medium
+      id: review:OCF-SLP-006:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 32
+      - 33
+      scope: document
+      source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+    - category: opener
+      confidence: medium
+      id: review:OCF-SLP-006:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 268
+      scope: document
+      source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+    - category: main
+      confidence: medium
+      id: review:OCF-SLP-006:main
+      kind: function-specification-inference
+      line_candidates:
+      - 120
+      - 178
+      scope: document
+      source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+    - category: association
+      confidence: medium
+      id: review:OCF-SLP-006:association
+      kind: function-specification-inference
+      line_candidates:
+      - 120
+      - 164
+      scope: document
+      source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+    - category: rehearsal
+      confidence: unknown
+      id: review:OCF-SLP-006:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 268
+      scope: document
+      source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+    - category: future_use
+      confidence: medium
+      id: review:OCF-SLP-006:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 166
+      - 178
+      scope: document
+      source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-SLP-006:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 268
+      scope: document
+      source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+    - category: closer
+      confidence: medium
+      id: review:OCF-SLP-006:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 183
+      - 212
+      scope: document
+      source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-SLP-006:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 214
+      - 230
+      scope: document
+      source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+    - category: handoff
+      confidence: medium
+      id: review:OCF-SLP-006:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 232
+      - 268
+      scope: document
+      source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-SLP-006:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 268
+      scope: document
+      source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: Stay Awake/Stay Awake.ocr.pdf
+      related_sha256: []
+      sha256: 2e2e0231d1b6499479d9a5116335aa765fa8b8ecf805858a1616caa898b6e23b
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: Stay Awake/Stay_Awake_881001_README.md
+      related_sha256: []
+      sha256: 88af9074d82bfc5b1cc754879c68f375e2d396fad637d03880a2ba7fc5e72bf1
+    - authentication: unverified
+      completeness: reconstruction; historical completeness not applicable
+      evidence_class: reconstructed_mockup
+      normalized_content_sha256: 798891d185cd3d950566743f0f2690a0b06e2ee84f9be63f121b4f12e4c78558
+      path: Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt
+      related_sha256: []
+      sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+    - authentication: unverified
+      completeness: reconstruction; historical completeness not applicable
+      evidence_class: reconstructed_mockup
+      normalized_content_sha256: a504764fa8057a73b7ef343ebd7055fe80eb49e652633a26a2e78f073dbc11cd
+      path: Stay Awake/Stay_Awake_881001_reconstructed_clean.txt
+      related_sha256: []
+      sha256: f21255d2ca3bb77c2619d726fd9d1d70e1c7fc7334cce2672696a3b0775dae4e
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: Stay Awake/Stay_Awake_881001_reconstruction_notes.md
+      related_sha256: []
+      sha256: ef3d92ce07e38004578372ade16ad00d7ef3d344eb47aa53b17007704315fdea
+  specifications:
+    analysis_review:
+      claim_categories:
+      - immediate-alertness-restoration
+      - temporary-waking-maintenance
+      - unsafe-driving-efficacy-implication
+      family: temporary-essential-alertness-claims
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 798891d185cd3d950566743f0f2690a0b06e2ee84f9be63f121b4f12e4c78558
+            end_line: 164
+            file: Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt
+            source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+            start_line: 120
+          status: inferred
+          summary: Known command/purpose metadata is paired in the mockup with a proposed internal cue/breath
+            procedure; the exact historical association wording/method is unknown.
+        closer:
+          locators:
+          - content_group_sha256: 798891d185cd3d950566743f0f2690a0b06e2ee84f9be63f121b4f12e4c78558
+            end_line: 212
+            file: Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt
+            source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+            start_line: 183
+          status: inferred
+          summary: Historical closer unknown; annotated mockup borrows remember/use, access close and
+            return shell from related transcripts.
+        consolidation:
+          locators:
+          - content_group_sha256: 798891d185cd3d950566743f0f2690a0b06e2ee84f9be63f121b4f12e4c78558
+            end_line: 230
+            file: Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt
+            source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+            start_line: 214
+          status: inferred
+          summary: Historical target consolidation unknown; proposed sleep/ambient segment is related-function
+            inference, never measured target timing.
+        conversion:
+          locators:
+          - content_group_sha256: 798891d185cd3d950566743f0f2690a0b06e2ee84f9be63f121b4f12e4c78558
+            end_line: 268
+            file: Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt
+            source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+            start_line: 1
+          status: inferred
+          summary: Driving examples are historical catalogue assertions, not advice or evidence of safe
+            alertness. Modern stop/rest safeguards are OCF/reconstruction clarification, not recovered
+            audio wording.
+        future_use:
+          locators:
+          - content_group_sha256: 798891d185cd3d950566743f0f2690a0b06e2ee84f9be63f121b4f12e4c78558
+            end_line: 178
+            file: Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt
+            source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+            start_line: 166
+          - file: Stay Awake/Stay Awake.ocr.pdf
+            page: 1
+            source_sha256: 2e2e0231d1b6499479d9a5116335aa765fa8b8ecf805858a1616caa898b6e23b
+          - file: Stay Awake/Stay Awake.ocr.pdf
+            page: 2
+            source_sha256: 2e2e0231d1b6499479d9a5116335aa765fa8b8ecf805858a1616caa898b6e23b
+          status: inferred
+          summary: Temporary essential use is catalogue-described; exact restored-alertness duration,
+            safe-driving efficacy and cancellation are not established.
+        handoff:
+          locators:
+          - content_group_sha256: 798891d185cd3d950566743f0f2690a0b06e2ee84f9be63f121b4f12e4c78558
+            end_line: 268
+            file: Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt
+            source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+            start_line: 232
+          status: inferred
+          summary: Historical handoff unknown; mockup's waking return/reminder is inferred, not recovered.
+        identity:
+          locators:
+          - content_group_sha256: 798891d185cd3d950566743f0f2690a0b06e2ee84f9be63f121b4f12e4c78558
+            end_line: 164
+            file: Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt
+            source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+            start_line: 120
+          - file: Stay Awake/Stay Awake.ocr.pdf
+            page: 1
+            source_sha256: 2e2e0231d1b6499479d9a5116335aa765fa8b8ecf805858a1616caa898b6e23b
+          - file: Stay Awake/Stay Awake.ocr.pdf
+            page: 2
+            source_sha256: 2e2e0231d1b6499479d9a5116335aa765fa8b8ecf805858a1616caa898b6e23b
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 798891d185cd3d950566743f0f2690a0b06e2ee84f9be63f121b4f12e4c78558
+            end_line: 178
+            file: Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt
+            source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+            start_line: 120
+          status: inferred
+          summary: identify-essential-alertness-need; proposed-awake-alert-breath-cue; proposed-attention-and-waking-association
+        opener:
+          locators:
+          - content_group_sha256: 798891d185cd3d950566743f0f2690a0b06e2ee84f9be63f121b4f12e4c78558
+            end_line: 268
+            file: Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt
+            source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+            start_line: 1
+          status: inferred
+          summary: Historical opener unknown; mockup supplies purpose orientation and related-function
+            learning shell as structural inference.
+        preparation:
+          locators:
+          - content_group_sha256: 798891d185cd3d950566743f0f2690a0b06e2ee84f9be63f121b4f12e4c78558
+            end_line: 268
+            file: Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt
+            source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+            start_line: 1
+          - file: Stay Awake/Stay Awake.ocr.pdf
+            page: 1
+            source_sha256: 2e2e0231d1b6499479d9a5116335aa765fa8b8ecf805858a1616caa898b6e23b
+          - file: Stay Awake/Stay Awake.ocr.pdf
+            page: 2
+            source_sha256: 2e2e0231d1b6499479d9a5116335aa765fa8b8ecf805858a1616caa898b6e23b
+          status: supported
+          summary: Brochure gives prior Preparation Exercise or prior H-PLUS learning, a quiet supported
+            position, soft stereo/headphone listening and next-day target exercise. Exact lost narration
+            procedure is unknown; mockup shell is related-function inference.
+        provenance:
+          locators:
+          - content_group_sha256: 798891d185cd3d950566743f0f2690a0b06e2ee84f9be63f121b4f12e4c78558
+            end_line: 268
+            file: Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt
+            source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+            start_line: 1
+          - file: Stay Awake/Stay Awake.ocr.pdf
+            page: 1
+            source_sha256: 2e2e0231d1b6499479d9a5116335aa765fa8b8ecf805858a1616caa898b6e23b
+          - file: Stay Awake/Stay Awake.ocr.pdf
+            page: 2
+            source_sha256: 2e2e0231d1b6499479d9a5116335aa765fa8b8ecf805858a1616caa898b6e23b
+          status: inferred
+          summary: Complete available reconstructed_mockup text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Annotated
+            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
+            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
+            historical operations remain unknown. Both brochure pages inspected separately; catalogue
+            assertions are documentary evidence, not recovered audio instructions.
+        purpose:
+          locators:
+          - content_group_sha256: 798891d185cd3d950566743f0f2690a0b06e2ee84f9be63f121b4f12e4c78558
+            end_line: 33
+            file: Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt
+            source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+            start_line: 32
+          - file: Stay Awake/Stay Awake.ocr.pdf
+            page: 1
+            source_sha256: 2e2e0231d1b6499479d9a5116335aa765fa8b8ecf805858a1616caa898b6e23b
+          - file: Stay Awake/Stay Awake.ocr.pdf
+            page: 2
+            source_sha256: 2e2e0231d1b6499479d9a5116335aa765fa8b8ecf805858a1616caa898b6e23b
+          status: supported
+          summary: Brochure describes immediate temporary alertness only for essential need, includes
+            driving examples and prohibits continuous application.
+        rehearsal:
+          locators:
+          - content_group_sha256: 798891d185cd3d950566743f0f2690a0b06e2ee84f9be63f121b4f12e4c78558
+            end_line: 268
+            file: Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt
+            source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Annotated
+            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
+            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
+            historical operations remain unknown.
+        safety_claims:
+          locators:
+          - content_group_sha256: 798891d185cd3d950566743f0f2690a0b06e2ee84f9be63f121b4f12e4c78558
+            end_line: 268
+            file: Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt
+            source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+            start_line: 1
+          - file: Stay Awake/Stay Awake.ocr.pdf
+            page: 1
+            source_sha256: 2e2e0231d1b6499479d9a5116335aa765fa8b8ecf805858a1616caa898b6e23b
+          - file: Stay Awake/Stay Awake.ocr.pdf
+            page: 2
+            source_sha256: 2e2e0231d1b6499479d9a5116335aa765fa8b8ecf805858a1616caa898b6e23b
+          status: inferred
+          summary: immediate-alertness-restoration; temporary-waking-maintenance; unsafe-driving-efficacy-implication.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 798891d185cd3d950566743f0f2690a0b06e2ee84f9be63f121b4f12e4c78558
+            end_line: 268
+            file: Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt
+            source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+            start_line: 1
+          status: inferred
+          summary: Historical target recording's exact state sequence remains unknown. Mockup imports
+            ten/eleven/ten/sleep/waking grammar from surviving Hearing/Seeing, not recovered target audio.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 798891d185cd3d950566743f0f2690a0b06e2ee84f9be63f121b4f12e4c78558
+            end_line: 268
+            file: Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt
+            source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Annotated
+            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
+            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
+            historical operations remain unknown.
+      source_extent:
+        content_group_sha256: 798891d185cd3d950566743f0f2690a0b06e2ee84f9be63f121b4f12e4c78558
+        end_line: 268
+        file: Stay Awake/Stay_Awake_881001_reconstructed_annotated.txt
+        source_sha256: f085f4691548832735cd360259fee04d60e15a2cb2b9dd87667a4cac00b32f54
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-SLP-006:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-SLP-006:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-SLP-006:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-SLP-006:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-SLP-006:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-SLP-006:main
+        operations:
+        - identify-essential-alertness-need
+        - proposed-awake-alert-breath-cue
+        - proposed-attention-and-waking-association
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-SLP-006:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-SLP-006:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-SLP-006:rehearsal
+        operations: []
+        status: unknown
+      safety_claims:
+        evidence_refs:
+        - review:OCF-SLP-006:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-SLP-006:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Annotated VERIFIED labels are reconstruction-author assertions, not independent authentication.
+      Catalogue purpose/command/use limits and proposed mockup operations are separate evidence axes.
+      Missing historical operations remain unknown.
+    - Driving examples are historical catalogue assertions, not advice or evidence of safe alertness.
+      Modern stop/rest safeguards are OCF/reconstruction clarification, not recovered audio wording.
+    states:
+      preferred: []
+      required: []
+      status: unknown

@@ -21,15 +21,14 @@ from .validators import _load_schema, validate_against_schema
 REVIEWED = {"reviewed_unchanged", "reviewed_modified"}
 RIGHTS = {"verified_redistributable", "user_cleared"}
 RUNTIME_ROOTS = (
+    "references",
+    "ReusablePrompts",
+    "brand",
     "schemas",
-    "functions",
     "function-content",
     "locales",
     "templates",
-    "audio/templates",
-    "audio/cues",
-    "audio/voices",
-    "audio/background",
+    "audio",
 )
 # Existing semantic families, independent of source/English terms. These are
 # candidate section associations, never injected DSP/state directives.
@@ -62,9 +61,14 @@ def checked_path(root: Path, relative: str) -> Path:
 
 def require_local_output(path: Path) -> None:
     """Local working expression must not be accidentally staged as runtime data."""
-    if any(path.resolve().is_relative_to((REPO_ROOT / name).resolve()) for name in RUNTIME_ROOTS):
+    resolved = path.resolve()
+    if any(
+        resolved.is_relative_to((REPO_ROOT / name).resolve())
+        or (REPO_ROOT / name).resolve().is_relative_to(resolved)
+        for name in RUNTIME_ROOTS
+    ):
         raise OCFError(
-            "editorial workspace/output cannot be inside packaged runtime resource roots"
+            "editorial workspace/output cannot be inside packaged runtime resource roots or protected research roots"
         )
 
 
@@ -75,6 +79,7 @@ def validate(data: dict, kind: str) -> None:
 
 
 def save(path: Path, data: dict, *, overwrite: bool = True) -> None:
+    require_local_output(path)
     write_text_atomic(path, yaml_safe_dump(data), overwrite=overwrite)
 
 
@@ -229,8 +234,9 @@ def skeletonize(source_root: Path, workspace: Path, records: list, content_root:
         raise OCFError("workspace must be outside immutable source root")
     pending = []
     for record in records:
-        spec = load_yaml_file(content_root / "specifications" / f"{record.id}.yaml")
-        evidence = load_yaml_file(content_root / "evidence" / f"{record.id}.yaml")
+        content = record.data["content"]
+        spec = content.get("specifications", {})
+        evidence = content.get("evidence", {"sources": [], "observations": [], "questions": []})
         review = spec.get("analysis_review", {})
         raw = None
         if record.source_availability == "available":
@@ -249,7 +255,7 @@ def skeletonize(source_root: Path, workspace: Path, records: list, content_root:
         if pilot:
             candidates += [
                 f"audio/templates/sessions/OCF-TPL-SESSION-PILOT-{pilot}-001.yaml",
-                "locales/en-US/functions.yaml",
+                "Canonical locale resource (previous candidate; not promoted)",
             ]
         doc, chunks = build_skeleton(
             record.id, record.source_availability, review, evidence, raw, candidates
@@ -283,6 +289,7 @@ def skeletonize(source_root: Path, workspace: Path, records: list, content_root:
     # An existing reviewed or edited chunk is never regenerated. Idempotence is
     # permitted only when the initial data is identical, including review state.
     for path, doc in pending:
+        require_local_output(path)
         if path.exists():
             existing = load_yaml_file(path)
             if "working" in doc and "working" in existing:
@@ -309,6 +316,7 @@ def skeletonize(source_root: Path, workspace: Path, records: list, content_root:
 
 
 def load_function(workspace: Path, function_id: str) -> dict:
+    require_local_output(workspace)
     if not re.fullmatch(r"OCF-[A-Z]{3}-[0-9]{3}", function_id):
         raise OCFError("invalid function ID")
     doc = load_yaml_file(checked_path(workspace, f"functions/{function_id}.yaml"))

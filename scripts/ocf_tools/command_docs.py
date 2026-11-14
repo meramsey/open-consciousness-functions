@@ -10,6 +10,7 @@ from .commands import command_view
 from .indexes import load_all_functions
 from .locale import UI_DOMAIN, LocaleCatalog, LocalizationError, normalize_tag
 from .models import FunctionRecord
+from .paths import REPO_ROOT
 from .utils import OCFError, generated_content, write_text_atomic
 
 
@@ -107,6 +108,9 @@ def _function_document(
     catalog: LocaleCatalog,
 ) -> dict[str, Any]:
     docs = record.documentation
+    from .localized_authority import metadata as localized_metadata
+
+    function_metadata = localized_metadata(record, locale, catalog=catalog)
     localized: dict[str, Any] = {}
     for field in ("title_key", "short_description_key", "purpose_key", "effect_key"):
         key = docs.get(field)
@@ -168,6 +172,29 @@ def _function_document(
                     }
                 )
         view["procedure_steps"] = localized_steps
+        if function_metadata is not None and function_metadata.get("schema_version") == "2.0":
+            local_command = next(
+                row
+                for row in [
+                    function_metadata["activation"],
+                    *function_metadata["secondary_commands"],
+                ]
+                if row["command_id"] == metadata.id
+            )
+            view["procedure_steps"] = [
+                {
+                    "id": step["id"],
+                    "operation": step["operation"],
+                    "instruction": {
+                        **step["instruction"],
+                        "requested_locale": locale,
+                        "resolved_locale": locale,
+                        "fallback": False,
+                        "key": f"{record.id}/{metadata.id}/procedure_steps/{index}",
+                    },
+                }
+                for index, step in enumerate(local_command["procedure_steps"])
+            ]
 
         related_commands = []
         for relation, target_ids in (view.get("relationships") or {}).items():
@@ -182,7 +209,14 @@ def _function_document(
                     raise CommandDocumentationError(
                         f"{record.id}/{metadata.id} refers to unknown related command {target_id}"
                     )
-                targets.append({"id": target.id, "phrase": command_view(record, target)["phrase"]})
+                targets.append(
+                    {
+                        "id": target.id,
+                        "phrase": command_view(record, target, locale=locale, catalog=catalog)[
+                            "phrase"
+                        ],
+                    }
+                )
             related_commands.append(
                 {"kind": relation, "label": relation_label, "commands": targets}
             )
@@ -213,11 +247,13 @@ def _function_document(
                 "title": _localized(catalog, target.documentation["title_key"], locale),
                 "description": _localized(catalog, relation["description_key"], locale),
                 "dependency": "optional",
-                "approval": "OCF-GUIDE-REVIEW-001",
+                "approval": relation["decision_source"],
+                "relationship_type": relation["relationship_type"],
             }
         )
-    return {
+    result = {
         "function_id": record.id,
+        "canonical_resource": "../" + record.path.relative_to(REPO_ROOT).as_posix(),
         "slug": record.slug,
         "title": localized["title"],
         "short_description": localized["short_description"],
@@ -243,6 +279,22 @@ def _function_document(
         "commands": commands,
         "related_functions": related_functions,
     }
+    if function_metadata is not None:
+        result["tags"] = function_metadata.get("tags", [])
+        result["common_uses"] = function_metadata.get("common_uses", [])
+        result["localized_relationships"] = function_metadata.get("relationships", {})
+        result["relationship_proposals"] = [
+            {
+                **proposal,
+                "title": _localized(
+                    catalog,
+                    load_function_by_id(proposal["function_id"]).documentation["title_key"],
+                    locale,
+                ),
+            }
+            for proposal in function_metadata.get("relationships", {}).get("proposals", [])
+        ]
+    return result
 
 
 def build_command_index(locale: str | None = None, catalog: LocaleCatalog | None = None) -> dict:
@@ -375,7 +427,7 @@ def render_command_index(index: dict) -> str:
                 + " | ".join(
                     _markdown_cell(value)
                     for value in (
-                        f"[{function['title']['text']}](functions/{function['function_id']}.md)",
+                        f"[{function['title']['text']}]({function['canonical_resource']})",
                         command["phrase"],
                         command["label"]["text"],
                         command["usage"]["text"],
@@ -445,7 +497,9 @@ def render_function_sheet(function: dict, index: dict) -> str:
         "",
         f"**{strings['command.guide.command-review']['text']}**: {function['command_review_label']['text']} (`{function['canonical_command_review']}`)",
         "",
-        "[Command index](../COMMAND_INDEX.md)",
+        "Commands: `ocf commands list`; details: `ocf commands describe "
+        + function["function_id"]
+        + "`.",
         "",
     ]
     if function.get("lifecycle_scopes"):
@@ -529,7 +583,7 @@ def render_function_sheet(function: dict, index: dict) -> str:
         lines += [f"## {strings['command.guide.relationships']['text']}", ""]
         for relation in function["related_functions"]:
             lines += [
-                f"- [{relation['title']['text']}]({relation['function_id']}.md): {relation['description']['text']} (`optional`; `{relation['approval']}`)."
+                f"- {relation['title']['text']} ({relation['function_id']}): {relation['description']['text']} (`optional`; `{relation['approval']}`)."
             ]
         lines.append("")
     fallback_count = index["fallback_count"]
@@ -562,7 +616,7 @@ def render_quick_reference(index: dict) -> str:
                 + " | ".join(
                     _markdown_cell(value)
                     for value in (
-                        f"[{function['title']['text']}](functions/{function['function_id']}.md)",
+                        f"[{function['title']['text']}]({function['canonical_resource']})",
                         primary["phrase"],
                         modes,
                         function["persistence_label"]["text"],
@@ -606,13 +660,6 @@ def generated_command_documents() -> list[tuple[str, str]]:
             json.dumps(index, indent=2, ensure_ascii=False, sort_keys=True) + "\n",
         ),
     ]
-    outputs.extend(
-        (
-            f"docs/functions/{function['function_id']}.md",
-            render_function_sheet(function, index),
-        )
-        for function in index["functions"]
-    )
     return [
         (
             path,

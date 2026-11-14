@@ -3,7 +3,12 @@ name: test
 on:
   pull_request:
   push:
-    branches: [main]
+    branches:
+      - main
+      - perf/test-execution-20261106
+      - perf/bulk-generation-20261106
+      - codex/integrate-test-performance-20261107
+      - codex/integrate-bulk-performance-20261107
 
 permissions:
   contents: read
@@ -157,9 +162,9 @@ jobs:
         run: python scripts/tools/report_pytest_failures.py .ocf-work/logs/pytest-results.xml
   coverage:
     runs-on: ubuntu-latest
-    # The full instrumented suite exceeded the 40-minute limit on a recent PR run.
-    # Allow report/upload headroom without filtering tests or coverage.
-    timeout-minutes: 60
+    # The full instrumented suite exceeded the previous limit. Allow full-suite
+    # coverage plus report/upload headroom without filtering tests or coverage.
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
         with:

@@ -17,31 +17,30 @@ timeline are never duplicated per language.
 
 ## Explicit localized spoken cues
 
-Source-English `commands[].spoken` in function YAML is authoritative. The existing
-en-US cue resources are checked compatibility copies. Localized languages retain
-their own reviewed realizations. [Symbolic cue templates](SYMBOLIC_CUES.md) resolve
-through the same LocaleCatalog before segmentation and audio/source selection;
-raw templates and effective speech have separate hashes.
+Each canonical `locales/<tag>/OCF-*.yaml` function owns its primary
+`activation.spoken_cue` / `activation.display_cue` and secondary command cue
+values. The internal `commands[].spoken` view is derived compatibility data,
+not a separate editable function definition. LocaleCatalog projects stable
+cue keys from the owning resource; do not maintain a second narration resource
+for the same cue.
 
-The approved English primary cues are explicitly bound through each stable
-command's optional `localization.spoken_cue_key`. The separate
-`localization.display_cue_key` resolves the exact display spelling, while
-`label_key` continues to describe the command role. No cue is constructed from
-a translated title or role label. Existing unbound records remain compatible
-and report `unbound`; they are not silently given a spoken-cue approval.
+[Symbolic cue templates](SYMBOLIC_CUES.md) resolve through LocaleCatalog before
+segmentation and audio/source selection. Raw templates and effective speech
+have separate hashes. No cue is constructed from a translated title or role
+label. Missing reviewed speech is reported rather than fabricated.
 
-The complete narration resource is registered in the en-US manifest:
+For example, these fields belong inside a complete canonical function resource
+(the excerpt is not a standalone resource):
 
 ```yaml
-schema_version: '1.0'
-locale: en-US
-domain: narration
-entries:
-  commands.ocf-cmd-exp-001-primary.spoken-cue:
+activation:
+  command_id: OCF-CMD-EXP-001-PRIMARY
+  display_cue:
+    text: PLUS-MANIFEST
+  spoken_cue:
     text: Plus Manifest
     status: reviewed
     version: 1.0.0
-    notes: English terminology approved in OCF-EDITORIAL-TITLE-CUES-001; listening and release approval remain separate.
 ```
 
 `commands.localized_cue` uses the existing `LocaleCatalog`: UI display fallback
@@ -58,7 +57,14 @@ Each future locale must decide its own complete title/cue pair and Plus-prefix
 treatment. Title, explicit cue and actual teaching must be reviewed together;
 resource availability is not language/editorial approval.
 
-## What this is not
+## Canonical function locales
+
+The 58 English function resources are complete canonical locale resources under
+`locales/en-US/`. Each owns its localized presentation, command controls,
+lifecycle, narration, and function-specific editorial/provenance metadata.
+Runtime loading does not consult a separate function registry or predecessor
+archive. The Spanish pack remains partial; missing function text is reported and
+never inherited from English. See the [per-locale authority contract](PER_LOCALE_FUNCTION_AUTHORITY.md).
 
 Localization changes words and measured speech duration. **Explicit semantic
 anchors remain fixed**; declared speech-end/event-end dependencies follow the
@@ -336,9 +342,9 @@ ocf transcript export /tmp/focus-cycle.yaml --format srt --locale es
 
 ## Not yet done
 
-- **Function-record translations.** Per-function narration is keyed
-  (`function.*`) and localizable today; a translated *function record* (one
-  source language plus a list of translations) needs its own schema change.
+- **Function records.** Complete per-locale function resources are shipped;
+  untranslated function resources remain explicitly missing/partial and never
+  inherit English speech.
 - **A real ICU runtime.** The subset covers what OCF messages need. Adopting
   PyICU or Babel is a dependency decision for a later proposal.
 - **Right-to-left layout.** `direction` is resolved, recorded, and exported in

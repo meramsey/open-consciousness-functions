@@ -14,7 +14,7 @@ from functools import wraps
 from pathlib import Path
 from typing import Any
 
-from .artifact_names import ArtifactNamer, safe_component
+from .artifact_names import ArtifactNamer, listener_export_names, safe_component
 from .content import load_layers
 from .locale import LocaleCatalog, iter_events, resolve_document
 from .paths import (
@@ -163,6 +163,7 @@ def _verify_session_structure(
             strict=True,
         )
         if stage not in (removed or set())
+        and not (stage == "focus-ten" and doc.get("narration_revision") == "OCF-SHARED-SESSION-003")
     ]
     if targets != expected:
         raise OCFError(
@@ -316,6 +317,7 @@ def build_complete_session_plan(
     template: str | None = None,
     dsp_profile: str | None = None,
     overrides: dict | None = None,
+    declared_voice_backend: str | None = None,
 ) -> dict[str, Any]:
     """Resolve a bound complete session and prove stage/state completeness before synthesis."""
     from .narration_first import plan_narration
@@ -324,6 +326,16 @@ def build_complete_session_plan(
     from .validators import validate_timed_transcript
 
     plan = plan_narration(function_id, locale=locale, voice=voice, pacing=pacing)
+    completeness_catalog = LocaleCatalog()
+    canonical = completeness_catalog.require("en-US").localized_functions.get(function_id, {})
+    if canonical.get("schema_version") == "2.0":
+        state = completeness_catalog.function_completeness(plan["requested_locale"]).get(
+            function_id, {"status": "missing"}
+        )
+        if state["status"] != "complete":
+            raise OCFError(
+                f"{function_id}: {plan['requested_locale']} function localization is {state['status']}; no inherited spoken function definition"
+            )
     layers = load_layers(function_id)
     binding = layers.get("bindings", {})
     template_record, _binding = _resolve_template(function_id, template)
@@ -336,7 +348,24 @@ def build_complete_session_plan(
     if not selected_dsp:
         raise OCFError(f"complete session template {selected_template} has no explicit DSP profile")
     dsp = load_profile(selected_dsp)
-    pacing_id = options.get("pacing_profile") or template_record.get("pacing_profile")
+    from . import backend_defaults
+
+    use_backend_defaults = backend_defaults.eligible(
+        (plan.get("voice_profile") or {}).get("backend")
+        or declared_voice_backend
+        or (
+            backend_defaults.declared_backend(options["voice_profile"])
+            if options.get("voice_profile")
+            else None
+        ),
+        dsp,
+        enabled=options.get("backend_defaults", True),
+    )
+    pacing_id = options.get("pacing_profile") or (
+        backend_defaults.pacing_id()
+        if use_backend_defaults
+        else template_record.get("pacing_profile")
+    )
     if not pacing_id:
         raise OCFError(
             f"complete session template {selected_template} has no explicit pacing profile"
@@ -364,12 +393,16 @@ def build_complete_session_plan(
 
     doc = compose(
         template_record,
-        {},
+        {"affirmation": options["custom_affirmation"]} if "custom_affirmation" in options else {},
         title=plan["title"],
         document_id=f"{function_id.lower()}-{plan['requested_locale'].lower()}-complete-session",
         function_id=function_id,
         pacing_profile=selected_pacing,
         slot_keys=slot_keys,
+        affirmation=options.get("affirmation"),
+        custom_affirmation_locale=options.get("custom_affirmation_locale"),
+        enabled_stages=options.get("enabled_stages"),
+        locale=plan["requested_locale"],
     )
     doc["semantic_dsp_profile"] = selected_dsp
     if voice is None:
@@ -381,14 +414,20 @@ def build_complete_session_plan(
             "complete session plan failed timed-script validation: "
             + " | ".join(issue.message for issue in validation.errors)
         )
-    resolved = resolve_document(doc, plan["requested_locale"], strict=True)
+    resolved = resolve_document(
+        doc, plan["requested_locale"], catalog=completeness_catalog, strict=True
+    )
     resolved_resources = list((resolved.get("narration") or {}).get("resolved", []))
     from .locale import NARRATION_DOMAIN
     from .narration_pacing import plan_event_pacing
 
-    catalog = LocaleCatalog()
+    catalog = completeness_catalog.with_revision(
+        doc.get("narration_revision"), plan["requested_locale"]
+    )
     for item in resolved_resources:
         if item.get("key") == "inline":
+            if item.get("id") == "affirmation.practice" and options.get("affirmation") == "custom":
+                continue
             raise OCFError(
                 "complete session includes inline text rather than bound canonical narration"
             )
@@ -469,6 +508,14 @@ def build_complete_session_plan(
         "resolved_pacing_profile": selected_pacing,
         "duration_preference": selected_pacing.get("duration_preference", {}),
         "resolved_dsp_profile": dsp,
+        **(
+            {
+                "backend_defaults": {"id": backend_defaults.POLICY_ID, "version": "1.0.0"},
+                "default_mix_profile": backend_defaults.mix_profile(),
+            }
+            if use_backend_defaults
+            else {}
+        ),
     }
 
 
@@ -1096,6 +1143,8 @@ def _render_complete_session_unlocked(
         }
     elif narration_source in ("recording", "hybrid"):
         raise OCFError("recording/hybrid mode requires --narration-sources")
+    if mix_profile is None and narration_sources is None:
+        mix_profile = session_plan.get("default_mix_profile")
     render_identity_sha256 = _complete_session_identity(
         function_id,
         session_plan,
@@ -1136,6 +1185,7 @@ def _render_complete_session_unlocked(
         / "-".join(
             (
                 function_id,
+                safe_component(tts_plan["title"], max_length=48),
                 safe_component(tts_plan["requested_locale"], max_length=16),
                 safe_component(tts_plan["voice_profile"]["id"], max_length=24),
                 "complete-session",
@@ -1254,13 +1304,14 @@ def _render_complete_session_unlocked(
         if not background_info:
             raise OCFError("complete session rendered no retained background layer")
         render_background = render_dir / background_info["file"]
-        listener_names = ArtifactNamer().filenames(
+        listener_names = listener_export_names(
             function_id,
             tts_plan["title"],
             tts_plan["requested_locale"],
             ["wav", "txt", "lrc", "srt", "vtt", "timing.json"],
-            variant=f"{tts_plan['voice_profile']['id']}-session",
-        )
+            voice_label=tts_plan["voice_profile"]["name"],
+            version=audition_version,
+        )["files"]
         master_name = listener_names["wav"]
         background_name = ArtifactNamer().filename(
             function_id,
@@ -1452,7 +1503,24 @@ def _render_complete_session_unlocked(
         }
         from .audition_exports import attach_render_artwork
 
-        if session_plan["template"]["id"] == "OCF-TPL-SESSION-HPLUS-LOCKED-005" and not options:
+        if (
+            session_plan["template"]["id"] == "OCF-TPL-SESSION-HPLUS-LOCKED-007"
+            and not options
+            and not dsp_profile
+        ):
+            from .session_pacing_audit import audit_shared_v3
+
+            manifest["session_pacing_audit"] = audit_shared_v3(
+                manifest, pacing=session_pacing_profile
+            )
+        if (
+            session_plan["template"]["id"]
+            in {
+                "OCF-TPL-SESSION-HPLUS-LOCKED-005",
+                "OCF-TPL-SESSION-HPLUS-LOCKED-006",
+            }
+            and not options
+        ):
             from .session_pacing_audit import audit_session
 
             manifest["session_pacing_audit"] = audit_session(

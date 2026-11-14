@@ -1,9 +1,14 @@
 # Structured Function Commands — Compatibility Design
 
-Status: implementation design for Milestone 2. This document records the
-architecture and migration boundaries before schema or runtime changes.
+Status: historical Milestone 2 compatibility design. The proposed `commands`
+array, field counts and migration steps below describe that earlier model, not
+today's authoring format. Current function identity, primary/secondary commands,
+spoken cues and narration live together in each canonical locale resource; see
+[per-locale function authority](PER_LOCALE_FUNCTION_AUTHORITY.md) and
+[localized cue authoring](LOCALIZATION.md). Internal compatibility projections
+do not create a second editable definition.
 
-## Current authoritative data
+## Historical model and compatibility context
 
 Current source-English speech is explicit in each command's `spoken` and
 `spoken_review`; missing/unresolved wording is not inferred from display cues.
@@ -11,10 +16,12 @@ Current source-English speech is explicit in each command's `spoken` and
 [strict symbolic cues](SYMBOLIC_CUES.md) for role/ID resolution, raw-versus-resolved
 hashes, localized complete realizations and one-function-at-a-time review.
 
-- `functions/<domain>/*.yaml` is the authoritative registry for function IDs,
-  canonical primary phrases, mode phrases, legacy commands, aliases, lifecycle,
-  and source availability.
-- `schemas/function.schema.json` constrains those fields. `FunctionRecord` in
+- `locales/en-US/OCF-*.yaml` (`domain: function`) are the authoritative
+  records for function IDs, canonical primary phrases, mode phrases, legacy
+  commands, aliases, lifecycle, source availability and English speech. Other
+  locales own their complete translated records under `locales/<tag>/`.
+- `schemas/function.schema.json` still constrains historical structural bytes;
+  `schemas/localized-function.schema.json` constrains active complete records. `FunctionRecord` in
   `scripts/ocf_tools/models.py` exposes `canonical_command`, `command_modes`,
   `legacy_commands`, and the function lifecycle fields.
 - `scripts/ocf_tools/validators.py` checks canonical command syntax, unique

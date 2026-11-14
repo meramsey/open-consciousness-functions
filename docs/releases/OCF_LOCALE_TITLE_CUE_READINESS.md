@@ -18,7 +18,7 @@ reviewed title, purpose, complete spoken cue, mode/control labels, pronunciation
 guidance, teaching resource keys, exact text hashes, language reviewer and separate
 editorial decision. The complete source-English starter glossary is the
 `functions` and `commands` arrays in
-[the companion recommendations](OCF_TITLE_CUE_REVIEW.json). All proposed values
+[the current title/cue view](OCF_TITLE_CUE_CURRENT.json). Current values
 remain unapproved. Current values and complete taught phrases remain separate.
 
 Whether Plus stays shared, is translated, or has a locale-specific realization

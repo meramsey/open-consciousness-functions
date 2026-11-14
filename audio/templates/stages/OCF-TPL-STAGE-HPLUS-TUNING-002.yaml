@@ -1,0 +1,30 @@
+description: Reviewed optional preparation instructions, one configured silent practice interval, and
+  reviewed completion; no added sound.
+events:
+- at: 0
+  id: begin
+  narration_key: hplus.optional.resonant-tuning.begin
+  narration_required: true
+  semantic: preparation.tuning.begin
+- after: begin
+  id: practice
+  narration_required: false
+  offset: 0
+  pacing_key: pauses.optional_stage_practice_s
+  semantic: preparation.tuning.practice
+  timing:
+    anchor: speech-end
+- after: practice
+  id: complete
+  narration_key: hplus.optional.resonant-tuning.complete
+  narration_required: true
+  offset: 0
+  pacing_key: pauses.optional_stage_complete_s
+  semantic: preparation.tuning.complete
+  timing:
+    anchor: speech-end
+id: OCF-TPL-STAGE-HPLUS-TUNING-002
+origin: original-ocf
+schema_version: '1.0'
+type: preparation
+version: 2.0.0

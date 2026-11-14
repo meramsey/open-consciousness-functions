@@ -1,0 +1,31 @@
+description: Reviewed common wrappers and exactly one explicitly selected preset/custom; optional and
+  default none.
+events:
+- at: 0
+  id: begin
+  narration_key: hplus.optional.affirmation.begin
+  narration_required: true
+  pacing_key: pauses.optional_stage_begin_s
+  semantic: preparation.affirmation.begin
+- after: begin
+  id: practice
+  narration_required: true
+  offset: 0
+  pacing_key: pauses.optional_stage_practice_s
+  semantic: preparation.affirmation.practice
+  timing:
+    anchor: speech-end
+- after: practice
+  id: complete
+  narration_key: hplus.optional.affirmation.complete
+  narration_required: true
+  offset: 0
+  pacing_key: pauses.optional_stage_complete_s
+  semantic: preparation.affirmation.complete
+  timing:
+    anchor: speech-end
+id: OCF-TPL-STAGE-HPLUS-AFFIRMATION-002
+origin: original-ocf
+schema_version: '1.0'
+type: preparation
+version: 2.0.0

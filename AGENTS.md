@@ -1,5 +1,33 @@
 # OCF Agent Contract
 
+## OCF continuous execution policy
+
+All authorized long-running OCF jobs MUST have continuous machine-level health
+monitoring. Every active production job MUST have an independent watchdog,
+heartbeat records, process identity checks, progress checks, durable job state,
+crash detection, safe automatic recovery, bounded retries and terminal-result
+verification. Monitoring is mandatory even when the agent is idle.
+
+Avoid wasteful repeated LLM calls for unchanged healthy progress. This
+token-efficiency guidance DOES NOT prohibit scheduled machine polling,
+independent watchdogs, automatic session recovery or event-driven agent
+continuation. A quiet job must still be monitored.
+
+A dead production owner with unfinished authorized work MUST trigger
+reconciliation and safe recovery without waiting for the user. Detect and
+correct stale running status with no matching live process. Diagnose a live
+but stalled worker after the configured heartbeat/progress threshold; do not
+use CPU utilization alone to declare a stall. If recovery cannot safely
+proceed, notify the user with the exact blocker. Do not ask the user to monitor
+authorized jobs or reauthorize previously approved work.
+
+Do not weaken output integrity, privacy, replay or duplicate-job protections.
+Use one canonical production controller and the existing OCF rendering APIs.
+Production must not depend on an OpenCode tool/location lifetime. Never claim
+that a parent service, accepted prompt or live PID alone proves job completion.
+Ponytail/token optimization must not disable this policy; OCF engineering uses
+the user's explicit Ponytail off mode.
+
 OCF is a declarative function/session authoring and audio toolchain. Schemas,
 canonical YAML, repository tests and cited evidence are authoritative. The
 agent reasons; OCF validates and executes. These instructions are provider-neutral.
@@ -20,17 +48,20 @@ agent reasons; OCF validates and executes. These instructions are provider-neutr
 
 ## Canonical map
 
-Function YAML also owns source-English command `spoken`/`spoken_review` and
-`narration.sequence`. Locale copies and content bindings must agree; never create
-a second English authority. Use [strict cue templates](docs/SYMBOLIC_CUES.md)
-through LocaleCatalog before segmentation, cache keys or recording fingerprints.
-Check raw-template and resolved-text hashes separately. Structural conversions
-must preserve all resolved speech bytes and immutable predecessor manifests.
+Each `locales/<tag>/OCF-*.yaml` function resource is the only function
+definition for that identity and locale. It owns localized words, command
+controls, lifecycle, narration order/repetition and function-specific evidence,
+specification, decisions and bindings. Bindings never duplicate narration order.
+Do not add an external function-definition archive, registry, binding, or
+fallback. Use [strict cue templates](docs/SYMBOLIC_CUES.md) through LocaleCatalog
+before segmentation, cache keys or recording fingerprints. Check raw-template
+and resolved-text hashes separately.
 Review remaining vocabulary ONE function at a time; wait for explicit user input.
 
-- `functions/`: identity, commands, legacy mappings and source availability.
-- `function-content/`: separate evidence, specifications, decisions and bindings.
-- `locales/`: stable localized narration/UI IDs and review/provenance metadata.
+- `locales/`: the sole per-locale function definitions plus shared localized
+  UI/narration resources; see `docs/PER_LOCALE_FUNCTION_AUTHORITY.md`.
+- `function-content/`: shared command procedures and editorial review inputs;
+  function-specific layers are being consolidated into canonical locale files.
 - `schemas/`: contracts; `scripts/ocf_tools/`: implementation and CLI services.
 - `audio/templates/`: session/stage/pacing inheritance; `audio/background/`: DSP
   profiles and explicit presets; `audio/voices/`: optional voice profiles.

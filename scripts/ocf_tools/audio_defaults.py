@@ -3,14 +3,15 @@
 from __future__ import annotations
 
 import json
+import re
 from copy import deepcopy
 from pathlib import Path
 
 from .paths import REPO_ROOT
 from .utils import OCFError, sha256_of_file, write_text_atomic
 
-PREVIOUS_BASELINE_ID = "OCF-AUDIO-DEFAULTS-HPLUS-014"
-BASELINE_ID = "OCF-AUDIO-DEFAULTS-HPLUS-015"
+PREVIOUS_BASELINE_ID = "OCF-AUDIO-DEFAULTS-HPLUS-019"
+BASELINE_ID = "OCF-AUDIO-DEFAULTS-HPLUS-020"
 BASELINE_VERSIONS = {
     "OCF-AUDIO-DEFAULTS-HPLUS-001": "1.0.0",
     "OCF-AUDIO-DEFAULTS-HPLUS-002": "2.0.0",
@@ -25,12 +26,17 @@ BASELINE_VERSIONS = {
     "OCF-AUDIO-DEFAULTS-HPLUS-011": "11.0.0",
     "OCF-AUDIO-DEFAULTS-HPLUS-012": "12.0.0",
     "OCF-AUDIO-DEFAULTS-HPLUS-013": "13.0.0",
-    PREVIOUS_BASELINE_ID: "14.0.0",
-    BASELINE_ID: "15.0.0",
+    "OCF-AUDIO-DEFAULTS-HPLUS-014": "14.0.0",
+    "OCF-AUDIO-DEFAULTS-HPLUS-015": "15.0.0",
+    "OCF-AUDIO-DEFAULTS-HPLUS-016": "16.0.0",
+    "OCF-AUDIO-DEFAULTS-HPLUS-017": "17.0.0",
+    "OCF-AUDIO-DEFAULTS-HPLUS-018": "18.0.0",
+    PREVIOUS_BASELINE_ID: "19.0.0",
+    BASELINE_ID: "20.0.0",
 }
-TEMPLATE_ID = "OCF-TPL-SESSION-HPLUS-LOCKED-005"
-PACING_ID = "OCF-PACING-HPLUS-LOCKED-005"
-DSP_ID = "OCF-DSP-HPLUS-LOCKED-003"
+TEMPLATE_ID = "OCF-TPL-SESSION-HPLUS-LOCKED-007"
+PACING_ID = "OCF-PACING-HPLUS-LOCKED-007"
+DSP_ID = "OCF-DSP-HPLUS-LOCKED-004"
 LOCK_PATH = REPO_ROOT / "audio" / "defaults" / f"{BASELINE_ID}.json"
 
 
@@ -49,6 +55,7 @@ def overlay(parent: dict, child: dict) -> dict:
 def configuration_lock(
     dependency_names: list[str] | None = None, *, baseline_id: str = BASELINE_ID
 ) -> dict:
+    from .function_catalog import resources
     from .semantic_dsp import load_profile
     from .session import load_pacing_profile, load_template
 
@@ -77,7 +84,6 @@ def configuration_lock(
         "audio/background/presets/focus-10-v4-candidate.yaml",
         "audio/background/presets/farfield/focus-11-b.yaml",
         "audio/background/state-profiles/OCF-DSP-HPLUS-*.yaml",
-        "locales/en-US/hplus-*.yaml",
     ):
         paths.update(REPO_ROOT.glob(pattern))
     if dependency_names is not None:
@@ -87,6 +93,22 @@ def configuration_lock(
             if Path(name).is_absolute() or not path.is_relative_to(REPO_ROOT):
                 raise OCFError("audio defaults dependency escapes repository")
             paths.add(path)
+    else:
+        paths.update(path for path, _data in resources(REPO_ROOT))
+    predecessor_hashes = {
+        data["function_id"]: digest
+        for _path, data in resources(REPO_ROOT)
+        if (digest := data.get("record_metadata", {}).get("predecessor_resource_sha256"))
+    }
+
+    def file_hash(path):
+        if not path.is_file():
+            identity = re.search(r"OCF-[A-Z]{3}-[0-9]{3}", path.name)
+            if identity and identity.group(0) in predecessor_hashes:
+                return predecessor_hashes[identity.group(0)]
+            raise OCFError("locked dependency is missing from the canonical checkout")
+        return sha256_of_file(path)
+
     return {
         "schema_version": "1.0",
         "id": baseline_id,
@@ -104,7 +126,7 @@ def configuration_lock(
             for name, data in (("template", template), ("pacing", pacing), ("dsp", dsp))
         },
         "files": {
-            path.relative_to(REPO_ROOT).as_posix(): sha256_of_file(path) for path in sorted(paths)
+            path.relative_to(REPO_ROOT).as_posix(): file_hash(path) for path in sorted(paths)
         },
     }
 

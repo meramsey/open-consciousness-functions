@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 import tempfile
+import time
 from contextlib import contextmanager, suppress
 from contextvars import ContextVar
 from copy import deepcopy
@@ -60,9 +61,36 @@ def read_json_object(path: Path) -> dict:
     return value
 
 
+class _UniqueSafeLoader(getattr(yaml, "CSafeLoader", yaml.SafeLoader)):
+    def construct_mapping(self, node, deep=False):
+        seen = set()
+        for key_node, _value_node in node.value:
+            if key_node.tag == "tag:yaml.org,2002:merge":
+                continue
+            key = self.construct_object(key_node, deep=deep)
+            try:
+                duplicate = key in seen
+                seen.add(key)
+            except TypeError:
+                raise yaml.constructor.ConstructorError(
+                    "while constructing a mapping",
+                    node.start_mark,
+                    "unhashable mapping key",
+                    key_node.start_mark,
+                ) from None
+            if duplicate:
+                raise yaml.constructor.ConstructorError(
+                    "while constructing a mapping",
+                    node.start_mark,
+                    f"duplicate key {key!r}",
+                    key_node.start_mark,
+                )
+        return super().construct_mapping(node, deep=deep)
+
+
 def yaml_safe_load(data: str) -> Any:
     """Parse fresh file content safely; never share mutable parsed objects."""
-    loader = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
+    loader = _UniqueSafeLoader
     if isinstance(data, str) and len(data) <= 262144:
         return deepcopy(_parsed_yaml(data, loader))
     return yaml.load(data, Loader=loader)
@@ -111,6 +139,23 @@ def write_bytes_atomic(path: Path, content: bytes, *, overwrite: bool = True) ->
     _write_atomic(path, content, overwrite=overwrite)
 
 
+def _publish_complete(publish, source, target, *, overwrite: bool) -> None:
+    """Retry only Windows replace-sharing failures, never exclusive publication.
+
+    Windows readers and virus scanners can briefly deny replacement of an open
+    state file. Every attempt publishes the same complete, fsynced bytes; a
+    permanent denial is still raised after a bounded sub-second retry window.
+    """
+    for attempt in range(8):
+        try:
+            publish(source, target)
+            return
+        except OSError as error:
+            if not overwrite or getattr(error, "winerror", None) not in {5, 32, 33} or attempt == 7:
+                raise
+            time.sleep(min(0.01 * 2**attempt, 0.25))
+
+
 def _write_atomic(path: Path, content: str | bytes, *, overwrite: bool) -> None:
     if path.exists() and not overwrite:
         raise OCFFileExistsError(f"Refusing to overwrite existing file: {path}")
@@ -125,7 +170,7 @@ def _write_atomic(path: Path, content: str | bytes, *, overwrite: bool) -> None:
             handle.flush()
             os.fsync(handle.fileno())
         try:
-            publish(tmp, path)
+            _publish_complete(publish, tmp, path, overwrite=overwrite)
         except OSError as exc:
             if exc.errno != errno.EXDEV:
                 raise
@@ -137,7 +182,7 @@ def _write_atomic(path: Path, content: str | bytes, *, overwrite: bool) -> None:
                 handle.write(payload)
                 handle.flush()
                 os.fsync(handle.fileno())
-            publish(fallback, path)
+            _publish_complete(publish, fallback, path, overwrite=overwrite)
             Path(fallback).unlink(missing_ok=True)
             fallback = None
         tmp.unlink(missing_ok=True)

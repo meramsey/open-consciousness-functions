@@ -1,0 +1,24 @@
+description: Reviewed complete Ten-to-One learning-only waking return; no routine Twenty return or advanced
+  shortcut.
+events:
+- at: 0
+  id: begin
+  narration_key: preparation.learning.v3.return
+  narration_required: true
+  pacing_key: pauses.waking_begin_s
+  semantic: session.return.begin
+- after: begin
+  dsp:
+    state: ordinary-waking
+  id: complete
+  narration_required: false
+  offset: 0
+  pacing_key: pauses.waking_complete_s
+  semantic: session.return.complete
+  timing:
+    anchor: speech-end
+id: OCF-TPL-STAGE-PREP-LEARNING-RETURN-002
+origin: original-ocf
+schema_version: '1.0'
+type: return
+version: 2.0.0

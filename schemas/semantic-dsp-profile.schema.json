@@ -9,7 +9,7 @@
       "type": "object", "additionalProperties": {
         "type": "object", "additionalProperties": false,
         "required": ["semantic", "unit_text"],
-        "properties": {"semantic": {"type": "string", "minLength": 1}, "unit_text": {"type": "string", "minLength": 1}}
+        "properties": {"semantic": {"type": "string", "minLength": 1}, "unit_text": {"type": "string", "minLength": 1}, "unit_occurrence": {"type": "integer", "minimum": 1, "description": "Explicit reviewed 1-based occurrence of repeated anchor text; never infers a state from a numeral."}}
       }
     },
     "allow_static": {"type":"boolean","description":"Explicitly permit a continuous initial-state bed without an effective transition; never inferred from missing directives."},

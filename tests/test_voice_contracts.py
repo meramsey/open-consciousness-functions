@@ -832,3 +832,189 @@ def test_model_bound_locale_without_sidecar_and_script_without_locale(
     monkeypatch.setattr(v, "render_narration", render)
     assert v.render_script(source, out) == 0
     assert "locale " not in capsys.readouterr().out
+
+
+def test_grouped_prose_records_one_measured_utterance(monkeypatch, tmp_path, narration_boundary):
+    from ocf_tools import locale
+
+    doc = {
+        "narration_pacing": {
+            "entries": {"test.guidance": "guided"},
+            "profiles": {
+                "guided": {
+                    "rate_scale": 1.0,
+                    "default_unit": "instruction",
+                    "group_prose": True,
+                    "pauses": {"instruction": 3},
+                }
+            },
+        },
+        "timeline": [
+            {
+                "id": "guidance",
+                "at": 0,
+                "narration_key": "test.guidance",
+                "text": "Act now. I will wait.",
+                "timing": {"pause_after": 20},
+            }
+        ],
+    }
+    monkeypatch.setattr(locale, "resolve_document", lambda document, *_a, **_k: document)
+    monkeypatch.setattr(v, "_pronunciation_hints", lambda *_a: {})
+    seen = []
+    result = v.render_narration(
+        doc,
+        tmp_path / "grouped.wav",
+        backend="espeak-ng",
+        sample_rate=100,
+        render_cue_with_profile=lambda text, _profile: seen.append(text) or wav([1000] * 100),
+    )
+    assert seen == ["Act now. I will wait."]
+    cue = result["cue_stats"][0]
+    assert cue["pacing"]["internal_pause_s"] == 0
+    assert cue["speech_duration"] == 1
+    assert len(cue["spoken_units"]) == 1
+    measured = cue["spoken_units"][0]
+    assert measured["source_unit_indexes"] == [0, 1]
+    assert measured["end_seconds"] == 1
+    assert measured["pause_after_s"] == 20
+    assert measured["pause_inside_event"] is False
+
+
+@pytest.mark.parametrize("channels", [1, 2])
+@pytest.mark.parametrize("origin", [1, 42948934])
+@pytest.mark.parametrize("tail", [0, 23])
+def test_measured_units_share_the_actual_pcm_clock(channels, origin, tail):
+    frames = 26459
+    unit = {
+        "start_offset_samples": 3 * channels,
+        "end_offset_samples": frames * channels,
+        "audible_end_offset_samples": (frames - tail) * channels,
+    }
+    cue = {"spoken_units": [unit]}
+    event = {"at": round(origin / 44100, 6)}
+    v._measure_placed_cue(cue, event, {}, origin, frames, 44100, channels)
+    assert unit["start_seconds"] < unit["audible_end_seconds"] <= unit["end_seconds"]
+    assert unit["end_seconds"] == event["end"] == round((origin + frames) / 44100, 6)
+    assert not any("offset" in key for key in unit)
+    assert cue["at"] == event["at"] == round(origin / 44100, 6)
+
+
+def test_measured_clock_keeps_pause_dsp_extent_and_invalid_bound_visible():
+    unit = {"start_offset_samples": 0, "end_offset_samples": 1000}
+    cue = {"spoken_units": [unit]}
+    event = {}
+    v._measure_placed_cue(
+        cue, event, {"timing": {"pause_after": 2}, "dsp": {"transition_s": 10}}, 1, 1000, 44100, 1
+    )
+    assert event["end"] == round(1 / 44100 + 12, 6)
+    assert unit["audible_end_seconds"] is None
+    corrupt = {
+        "start_offset_samples": 0,
+        "end_offset_samples": 1001,
+        "audible_end_offset_samples": 1001,
+    }
+    event = {}
+    v._measure_placed_cue({"spoken_units": [corrupt]}, event, {}, 0, 1000, 44100, 1)
+    assert corrupt["end_seconds"] > event["end"]  # Never clamp corrupt provenance.
+
+
+def test_sample_clock_correction_preserves_pcm_and_authored_pauses(
+    monkeypatch, tmp_path, narration_boundary
+):
+    doc = {
+        "narration_pacing": {
+            "profiles": {
+                "function-body": {
+                    "rate_scale": 1.0,
+                    "default_unit": "sentence",
+                    "pauses": {"sentence": 0.003},
+                }
+            }
+        },
+        "timeline": [
+            {
+                "id": "first",
+                "at": 0.000007,
+                "text": "Alpha. Omega.",
+                "slot_ref": "function_body",
+                "timing": {"pause_after": 0.000013},
+            },
+            {
+                "id": "second",
+                "after": "first",
+                "offset": 0.0021,
+                "timing": {"anchor": "speech-end"},
+                "text": "Ending.",
+                "slot_ref": "function_body",
+            },
+        ],
+    }
+
+    def render(name):
+        return v.render_narration(
+            doc,
+            tmp_path / name,
+            backend="espeak-ng",
+            sample_rate=44100,
+            render_cue_with_profile=lambda text, profile: wav([1000] * 2337, rate=44100),
+        )
+
+    measured = render("measured.wav")
+
+    def previous_metadata(cue, event, authored, frame_offset, frame_count, rate, channels):
+        cue["at"] = event["at"]
+        for unit in cue["spoken_units"]:
+            for name in ["start", "end", "audible_end"]:
+                value = unit.pop(name + "_offset_samples", None)
+                unit[name + "_seconds"] = (
+                    round(cue["at"] + round(value / (rate * channels), 6), 6)
+                    if value is not None
+                    else None
+                )
+
+    monkeypatch.setattr(v, "_measure_placed_cue", previous_metadata)
+    render("previous.wav")
+    assert (tmp_path / "measured.wav").read_bytes() == (tmp_path / "previous.wav").read_bytes()
+    for event in measured["event_timing"]:
+        for unit in event["spoken_units"]:
+            assert event["at"] <= unit["start_seconds"] < unit["audible_end_seconds"]
+            assert unit["audible_end_seconds"] <= unit["end_seconds"] <= event["end"]
+
+
+@pytest.mark.parametrize("authored_start", [0.000007, 0.000015])
+def test_silent_dependent_markers_follow_pcm_without_rescheduling(
+    authored_start, tmp_path, narration_boundary
+):
+    doc = {
+        "timeline": [
+            {
+                "id": "speech",
+                "at": authored_start,
+                "text": "Fixture.",
+                "timing": {"pause_after": 0.125},
+                "dsp": {"transition_s": 2},
+            },
+            {"id": "speech_marker", "after": "speech", "timing": {"anchor": "speech-end"}},
+            {"id": "event_marker", "after": "speech", "timing": {"anchor": "event-end"}},
+            {"id": "chained", "after": "event_marker", "offset": 0.5},
+            {"id": "fixed", "at": 3},
+        ]
+    }
+    out = tmp_path / "markers.wav"
+    result = v.render_narration(
+        doc,
+        out,
+        backend="espeak-ng",
+        sample_rate=44100,
+        render_cue=lambda text: wav([1000] * 44100, rate=44100),
+    )
+    rows = {row["id"]: row for row in result["event_timing"]}
+    frame = round(authored_start * 44100)
+    assert rows["speech_marker"]["at"] == round((frame + 44100) / 44100 + 0.125, 6)
+    assert rows["event_marker"]["at"] == rows["speech"]["end"]
+    assert rows["chained"]["at"] == round(frame / 44100 + 2.625, 6)
+    assert rows["fixed"]["at"] == rows["fixed"]["end"] == 3
+    expected = [0] * frame + [1000] * 44100 + [0] * (4 * 44100 - frame - 44100)
+    with wave.open(str(out), "rb") as stream:
+        assert stream.readframes(stream.getnframes()) == array("h", expected).tobytes()

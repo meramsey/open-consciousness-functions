@@ -1,0 +1,13 @@
+[Unit]
+Description=OCF independent production health reconciliation
+StartLimitIntervalSec=60
+StartLimitBurst=12
+
+[Service]
+Type=oneshot
+WorkingDirectory=@WORKING_DIRECTORY@
+ExecStart=@PYTHON@ @SUPERVISOR@ watchdog --config @CONFIG@
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=45
+UMask=0077

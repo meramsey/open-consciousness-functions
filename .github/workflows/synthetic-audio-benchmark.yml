@@ -1,0 +1,59 @@
+name: synthetic-audio-benchmark
+
+on:
+  workflow_dispatch:
+    inputs:
+      sessions:
+        description: Public synthetic sessions per batch (1 to 58)
+        type: string
+        default: "4"
+      seconds:
+        description: Synthetic bed duration (6 to 120 seconds)
+        type: string
+        default: "20"
+      workers:
+        description: Unique worker counts selected from 1 2 4
+        type: string
+        default: "1 2"
+
+permissions:
+  contents: read
+
+jobs:
+  public-audio:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install public CPU speech and codec tools
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg espeak-ng
+      - name: Bootstrap patched pip
+        run: "python -m pip install --only-binary=:all: --upgrade pip==26.2.0"
+      - name: Install core only
+        run: python -m pip install -e .
+      - name: Measure actual public audio stages and fixture recovery
+        env:
+          SESSIONS: ${{ inputs.sessions }}
+          SECONDS_PER_FIXTURE: ${{ inputs.seconds }}
+          WORKERS: ${{ inputs.workers }}
+        run: |
+          mkdir -p .ocf-work/audio-benchmark-reports
+          read -r -a worker_counts <<< "$WORKERS"
+          /usr/bin/time -v -o .ocf-work/audio-benchmark-reports/resources.txt \
+            python scripts/tools/benchmark_synthetic_audio.py \
+            --output .ocf-work/benchmarks/manual-public-audio \
+            --sessions "$SESSIONS" --seconds "$SECONDS_PER_FIXTURE" \
+            --workers "${worker_counts[@]}" \
+            > .ocf-work/audio-benchmark-reports/results.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-synthetic-audio-benchmark-reports
+          include-hidden-files: true
+          # Hashes/timings only: no voice assets or generated audio are uploaded.
+          path: .ocf-work/audio-benchmark-reports/

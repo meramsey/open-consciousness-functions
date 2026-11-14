@@ -1,0 +1,1229 @@
+schema_version: '2.0'
+locale: en-US
+domain: function
+function_id: OCF-SEN-005
+title:
+  text: Touch
+  status: canonical
+  version: 1.0.0
+description:
+  text: Adjusts the felt sense of touch or skin sensation using the MORE/LESS grammar.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-SEN-005-PRIMARY
+  display_cue:
+    text: PLUS-TOUCH MORE
+  spoken_cue:
+    text: Plus Touch More
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-CLOSE-OPEN
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-sen-005.function-body
+      before_steps: []
+    relationships:
+      pairs_with:
+      - OCF-CMD-SEN-005-TOUCH-LESS
+  procedure_steps:
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+  - id: open-eyes
+    operation: open-eyes
+    instruction:
+      text: Open your eyes.
+      status: canonical
+      version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-SEN-005-TOUCH-LESS
+  display_cue:
+    text: PLUS-TOUCH LESS
+  spoken_cue:
+    text: Plus Touch Less
+    status: reviewed
+  label:
+    text: Decrease mode
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This command selects the decrease mode.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use when you choose to decrease the selected function response.
+    status: canonical
+    version: 1.0.0
+  role: decrease
+  control:
+    designation: secondary
+    phrase_ref:
+      source: canonical-mode
+      command_id: OCF-CMD-SEN-005-TOUCH-LESS
+    documentation:
+      visible: true
+      order: 11
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-CLOSE-OPEN
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-sen-005.function-body
+      before_steps: []
+    relationships:
+      pairs_with:
+      - OCF-CMD-SEN-005-PRIMARY
+      modifies:
+      - OCF-CMD-SEN-005-PRIMARY
+  procedure_steps:
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+  - id: open-eyes
+    operation: open-eyes
+    instruction:
+      text: Open your eyes.
+      status: canonical
+      version: 1.0.0
+- command_id: OCF-CMD-SEN-005-LEGACY-01
+  display_cue:
+    text: PLUS-TOUCH GREATER
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-SEN-005-LEGACY-01
+    documentation:
+      visible: true
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
+- command_id: OCF-CMD-SEN-005-LEGACY-02
+  display_cue:
+    text: PLUS-TOUCH LESSER
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-SEN-005-LEGACY-02
+    documentation:
+      visible: true
+      order: 102
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
+tags:
+- text: sensory-awareness
+  status: draft
+  semantic_id: sensory-awareness
+- text: touch
+  status: draft
+  semantic_id: touch
+- text: imagination
+  status: draft
+  semantic_id: imagination
+common_uses:
+- text: Exploring remembered textures or an imagined sense of touch.
+  status: draft
+- text: Practicing attention to skin sensations without suppressing warning signs or assuming protection
+    from harm.
+  status: draft
+relationships:
+  related_functions: []
+  complementary_functions:
+  - function_id: OCF-PRF-003
+    description_key: relationships.rel-sen005-prf003.description
+    description:
+      text: Attention to touch and attention to coordinated movement offer distinct body-awareness
+        intentions without implying protection from injury.
+      status: reviewed
+      version: 1.0.0
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-sen-005.opener:
+    status: reviewed
+    version: 1.2.0
+    text: 'This OCF exercise will teach you to regulate
+
+      your physical sense of touch and strengthen your ability
+
+      to remember, imagine, and experience touch within your mind.'
+  hplus.function.ocf-sen-005.function-body:
+    status: reviewed
+    version: 1.2.0
+    cue_template:
+      function_id: OCF-SEN-005
+      allowed:
+      - cue.id.OCF-CMD-SEN-005-TOUCH-LESS
+      - cue.primary
+    text: 'From this moment forward, you have the ability
+
+      to regulate your sense of touch and develop
+
+      a clear, vivid sense of touch within your mind.
+
+
+      Your physical sense of touch will respond to your intention.
+
+      You can notice delicate sensations more clearly,
+
+      or allow unwanted sensations to fade into the background.
+
+
+      To increase your awareness of touch, close your eyes,
+
+      inhale deeply, and gently hold your breath.
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth and open your eyes.
+
+
+      The lightest contact will become more distinct.
+
+      You will recognize subtle differences in texture,
+
+      pressure, warmth, coolness, and movement across your skin.
+
+
+      To reduce the prominence of an unwanted sensation,
+
+      use the same eye and breathing sequence,
+
+      thinking or saying, "{{ cue.id.OCF-CMD-SEN-005-TOUCH-LESS }}."
+
+      The selected feeling will become less distracting,
+
+      and you can return to your usual sense of touch
+
+      whenever you consciously choose.
+
+
+      Your inner sense of touch will also grow stronger.
+
+      You will remember the softness of fabric,
+
+      the smoothness of stone, the warmth of sunlight,
+
+      and the gentle pressure of a familiar touch.
+
+
+      Even without physical contact, you can imagine
+
+      these sensations clearly, hold them in awareness,
+
+      and change their texture, pressure, temperature,
+
+      location, or movement through intention.
+
+
+      Your tactile imagination will work naturally
+
+      with remembered sights, sounds, smells, and tastes,
+
+      allowing you to create richer inner experiences.
+
+      You will know the difference between an imagined
+
+      sensation and what your physical body is feeling.
+
+
+      This ability to recall and create touch within your mind
+
+      will become a lasting part of your total self.
+
+      When desired, the same commands can make an imagined
+
+      sensation more vivid or allow it to fade.
+
+
+      Each time you use this function, physical touch regulation
+
+      and inner tactile imagery will become clearer,
+
+      easier, and more effective.'
+  hplus.function.ocf-sen-005.closer:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-SEN-005
+      allowed:
+      - cue.id.OCF-CMD-SEN-005-TOUCH-LESS
+      - cue.primary
+    text: 'Remember, to regulate your physical sense of touch
+
+      or strengthen your inner experience of it, close your eyes,
+
+      inhale deeply, and hold your breath.
+
+      Think or say in your mind, "{{ cue.primary }}"
+
+      or "{{ cue.id.OCF-CMD-SEN-005-TOUCH-LESS }}," according to your intention.
+
+      Then exhale through your mouth as though gently
+
+      blowing out a candle, and open your eyes.
+
+
+      This concludes your OCF Touch exercise.'
+slug: touch
+classification:
+  primary_domain: sensory
+  secondary_domains: []
+category_labels:
+  sensory:
+    text: sensory
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-sen-005.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-sen-005.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-sen-005.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-SEN-005
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: b86b3549aebc2f82ff29a895ed82c28e75ca2452b2d6e2a92241de8c531ccce6
+    classification: KEEP CUE — ALIGN TITLE OR NARRATION
+    recommended_title: Touch
+    recommended_primary_cue: PLUS-TOUCH MORE
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Close eyes, inhale/hold/chosen MORE or LESS cue/exhale/open eyes for physical
+      sensation or intended tactile imagination. Not numbing/injury protection; body slow-mouth and
+      closer candle-like exhale differ. GREATER/LESSER aliases are not current teaching.
+    pair_reason: The tactile scope needs a clear usage label, but replacing TOUCH with generic FEEL
+      could increase emotional ambiguity. Keep the existing directional pair.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. The tactile
+      scope needs a clear usage label, but replacing TOUCH with generic FEEL could increase emotional
+      ambiguity. Keep the existing directional pair.
+    teaching_disposition: Preserve complete taught cue; metadata/title alignment only
+    documentary_intent: Brochure describes tactile sensitivity and pressure/texture/temperature identification,
+      including pain/itch reduction assertions.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: 50ab535c9e4deaaa6970a826fa000a47bf4fd3e698deb06047dc49fcd0ef1c7e
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-SEN-005-LEGACY-01
+    - OCF-CMD-SEN-005-LEGACY-02
+    command_status: normalized
+    commands:
+    - PLUS-TOUCH GREATER
+    - PLUS-TOUCH LESSER
+    name: 'SENSORY: TOUCH'
+    source_availability: unavailable
+    source_system: Monroe H-PLUS
+  aliases:
+    commands:
+    - PLUS-TOUCH GREATER
+    - PLUS-TOUCH LESSER
+    command_ids:
+    - OCF-CMD-SEN-005-LEGACY-01
+    - OCF-CMD-SEN-005-LEGACY-02
+    names:
+    - 'Sensory: Touch'
+  compatibility:
+    legacy_commands:
+    - PLUS-TOUCH GREATER
+    - PLUS-TOUCH LESSER
+    rationale: 'Vocabulary normalization: GREATER/LESSER magnitudes standardize on MORE/LESS.'
+    state: alias-listed
+  historical_lookup:
+  - text: 'Sensory: Touch'
+    kind: former-title
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+  status:
+    evidence: community-hypothesis
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-sen-005.title
+    short_description_key: functions.ocf-sen-005.short-description
+    purpose_key: functions.ocf-sen-005.purpose
+  commands:
+  - id: OCF-CMD-SEN-005-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-sen-005-primary.label
+      usage_key: commands.ocf-cmd-sen-005-primary.usage
+      purpose_key: functions.ocf-sen-005.purpose
+      explanation_key: commands.ocf-cmd-sen-005-primary.explanation
+      display_cue_key: commands.ocf-cmd-sen-005-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-sen-005-primary.spoken-cue
+  - id: OCF-CMD-SEN-005-TOUCH-LESS
+    localization:
+      label_key: commands.ocf-cmd-sen-005-touch-less.label
+      usage_key: commands.ocf-cmd-sen-005-touch-less.usage
+      purpose_key: functions.ocf-sen-005.purpose
+      explanation_key: commands.ocf-cmd-sen-005-touch-less.explanation
+  - id: OCF-CMD-SEN-005-LEGACY-01
+    localization:
+      label_key: commands.ocf-cmd-sen-005-legacy-01.label
+      usage_key: commands.ocf-cmd-sen-005-legacy-01.usage
+      purpose_key: functions.ocf-sen-005.purpose
+      explanation_key: commands.ocf-cmd-sen-005-legacy-01.explanation
+  - id: OCF-CMD-SEN-005-LEGACY-02
+    localization:
+      label_key: commands.ocf-cmd-sen-005-legacy-02.label
+      usage_key: commands.ocf-cmd-sen-005-legacy-02.usage
+      purpose_key: functions.ocf-sen-005.purpose
+      explanation_key: commands.ocf-cmd-sen-005-legacy-02.explanation
+  predecessor_resource_sha256: b259a3f228714b1f3d5aa540ecb69d785ff15fa04c7e10a10e5c7a9b6a404a03
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-004
+    kind: approved-title-cue
+    source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup.
+      Preserve procedures, controls, semantics, provenance and separately flagged metadata questions.
+      Later user instruction releases the draft-pilot freeze; pilot bindings follow current approved
+      titles and cues.
+    decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
+      request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
+    source_row_sha256: 9598de6cb3bb1a276f7a15bf8e57e2e85f41705ac20801cad8c25d2bc1706578
+    status: accepted
+    previous_values_sha256: 098bd7f8f3ab7288799272e344557aa1be7f42d1044eaaedf44a0d243c382dba
+    current_values_sha256: 0715b9d9bffbe5d8ada8b8502b565c0a8cf13b73fc6821e22927d4b56a89df7d
+    changed_narration_keys:
+    - hplus.function.ocf-sen-005.closer
+    previous_resolved_text_sha256:
+      hplus.function.ocf-sen-005.closer: 49564642f0827a2970122d0289e51d1bfef1d86bc28dc4012c59b3e131902ba7
+    current_resolved_text_sha256:
+      hplus.function.ocf-sen-005.closer: 4c776b0d5e63ac17a7fbbce2e69ea16f940a3ebf58849995424daeb68b9773b9
+    review_note: 'Change title from Sensory: Touch to Touch and update exercise sign-off. Keep BOTH
+      cues unchanged: PLUS-TOUCH MORE / Plus Touch More and PLUS-TOUCH LESS / Plus Touch Less. Preserve
+      consciously controlled reversible physical adjustments, lasting tactile recall and imagination,
+      and distinction between imagined sensations and physical contact. Preserve close eyes/inhale/hold/selected
+      cue/exhale/open eyes, including slow mouth exhale in body and candle-like exhale in closer.
+      Retain Sensory: Touch as historical lookup; introduce no third normal, reset or release cue.
+      Do not replace current MORE/LESS teaching with older GREATER/LESSER wording.'
+    approval_response: '1'
+    review_position: 32
+  - id: REL-SEN005-PRF003
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: c752325e624f7271a24981491d7fff34f5f318ffa9cf18c14ec217e1e74cefdc
+    current_values_sha256: c233a857207d3ca239814ce839710962e00f50c13e7663918eb704c5ab9a6138
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-SEN-005", "sha256": "c6215692359e2ce4272e470f52cd1c075bff7cf448f558a5c4a967ef7d454d73"},
+      {"field": "description", "function_id": "OCF-PRF-003", "sha256": "56f2f35f08b831873fbaf58aeba4425962dfd125f63abdfbe54cc09eb93a729b"}]'
+    relationship_id: REL-SEN005-PRF003
+    related_function_id: OCF-PRF-003
+    relationship_type: complementary
+    dependency: optional
+    reciprocal_approved: false
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    - OCF-TPL-SESSION-HPLUS-LOCKED-006
+    - OCF-TPL-SESSION-HPLUS-LOCKED-007
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: main
+      confidence: low
+      id: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9:main
+      kind: structural-inference
+      line_candidates:
+      - 29
+      scope: document
+      source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+    - category: preparation
+      confidence: low
+      id: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9:preparation
+      kind: structural-inference
+      line_candidates:
+      - 24
+      scope: document
+      source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+    - category: command_association
+      confidence: low
+      id: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9:command_association
+      kind: structural-inference
+      line_candidates:
+      - 34
+      scope: document
+      source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+    - category: future_use
+      confidence: low
+      id: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9:future_use
+      kind: structural-inference
+      line_candidates:
+      - 66
+      scope: document
+      source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+    - category: opener
+      confidence: low
+      id: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066:opener
+      kind: structural-inference
+      line_candidates:
+      - 33
+      - 165
+      - 253
+      scope: document
+      source_sha256: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066
+    - category: main
+      confidence: low
+      id: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066:main
+      kind: structural-inference
+      line_candidates:
+      - 119
+      - 123
+      scope: document
+      source_sha256: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066
+    - category: closer
+      confidence: low
+      id: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066:closer
+      kind: structural-inference
+      line_candidates:
+      - 151
+      - 253
+      scope: document
+      source_sha256: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066
+    - category: preparation
+      confidence: low
+      id: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066:preparation
+      kind: structural-inference
+      line_candidates:
+      - 33
+      - 49
+      - 61
+      - 71
+      - 107
+      - 155
+      - 167
+      scope: document
+      source_sha256: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066
+    - category: command_association
+      confidence: low
+      id: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066:command_association
+      kind: structural-inference
+      line_candidates:
+      - 125
+      - 147
+      - 249
+      scope: document
+      source_sha256: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066
+    - category: future_use
+      confidence: low
+      id: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066:future_use
+      kind: structural-inference
+      line_candidates:
+      - 141
+      - 149
+      scope: document
+      source_sha256: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066
+    - category: return
+      confidence: low
+      id: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066:return
+      kind: structural-inference
+      line_candidates:
+      - 173
+      - 229
+      - 245
+      scope: document
+      source_sha256: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066
+    - category: opener
+      confidence: low
+      id: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405:opener
+      kind: structural-inference
+      line_candidates:
+      - 55
+      - 187
+      - 275
+      scope: document
+      source_sha256: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405
+    - category: main
+      confidence: low
+      id: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405:main
+      kind: structural-inference
+      line_candidates:
+      - 141
+      - 145
+      scope: document
+      source_sha256: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405
+    - category: closer
+      confidence: low
+      id: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405:closer
+      kind: structural-inference
+      line_candidates:
+      - 173
+      - 275
+      scope: document
+      source_sha256: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405
+    - category: preparation
+      confidence: low
+      id: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405:preparation
+      kind: structural-inference
+      line_candidates:
+      - 35
+      - 36
+      - 55
+      - 71
+      - 83
+      - 93
+      - 129
+      - 177
+      - 189
+      - 290
+      scope: document
+      source_sha256: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405
+    - category: command_association
+      confidence: low
+      id: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405:command_association
+      kind: structural-inference
+      line_candidates:
+      - 147
+      - 169
+      - 271
+      scope: document
+      source_sha256: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405
+    - category: future_use
+      confidence: low
+      id: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405:future_use
+      kind: structural-inference
+      line_candidates:
+      - 163
+      - 171
+      scope: document
+      source_sha256: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405
+    - category: return
+      confidence: low
+      id: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405:return
+      kind: structural-inference
+      line_candidates:
+      - 195
+      - 251
+      - 267
+      scope: document
+      source_sha256: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405
+    - category: purpose
+      confidence: medium
+      id: review:OCF-SEN-005:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 20
+      - 21
+      scope: document
+      source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+    - category: opener
+      confidence: medium
+      id: review:OCF-SEN-005:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 84
+      scope: document
+      source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+    - category: main
+      confidence: medium
+      id: review:OCF-SEN-005:main
+      kind: function-specification-inference
+      line_candidates:
+      - 28
+      - 66
+      scope: document
+      source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+    - category: association
+      confidence: medium
+      id: review:OCF-SEN-005:association
+      kind: function-specification-inference
+      line_candidates:
+      - 28
+      - 66
+      scope: document
+      source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+    - category: rehearsal
+      confidence: unknown
+      id: review:OCF-SEN-005:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 84
+      scope: document
+      source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+    - category: future_use
+      confidence: medium
+      id: review:OCF-SEN-005:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 61
+      - 80
+      scope: document
+      source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+    - category: suspend_cancel_reset
+      confidence: medium
+      id: review:OCF-SEN-005:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 72
+      - 76
+      scope: document
+      source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+    - category: closer
+      confidence: medium
+      id: review:OCF-SEN-005:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 23
+      - 26
+      scope: document
+      source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-SEN-005:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 23
+      - 26
+      scope: document
+      source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+    - category: handoff
+      confidence: medium
+      id: review:OCF-SEN-005:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 23
+      - 26
+      scope: document
+      source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-SEN-005:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 84
+      scope: document
+      source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
+    sources:
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: Sensory (Touch)/Sensory-Touch.ocr.pdf
+      related_sha256: []
+      sha256: 5cb32e5762a041e9bd778631fe3c63bf46d3c2014f95237edab9e8a0295abb38
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: Sensory (Touch)/Sensory_Touch_README.md
+      related_sha256: []
+      sha256: 6ccb94a5d6f7b5abc78335cdc9a45c4bb30306996877d5eeb2ca724387dc5097
+    - authentication: unverified
+      completeness: reconstruction; historical completeness not applicable
+      evidence_class: reconstructed_mockup
+      normalized_content_sha256: 695f9c4c70807467b8f4736834ed15f3be2c82ce054f0b8d0799526524e3cd43
+      path: Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt
+      related_sha256: []
+      sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+    - authentication: unverified
+      completeness: reconstruction; historical completeness not applicable
+      evidence_class: reconstructed_mockup
+      normalized_content_sha256: dc03d6ab3f56a8a79f01c0000981166c24260a6cf8c2744270684e35012b4df1
+      path: Sensory (Touch)/Sensory_Touch_reconstructed_clean.txt
+      related_sha256: []
+      sha256: 0b1eb9466d240ddfe85ebe137788aba30ad470d554a1f9cacf2b141369bc1066
+    - authentication: unverified
+      completeness: reconstruction; historical completeness not applicable
+      evidence_class: reconstructed_mockup
+      normalized_content_sha256: fe8061f829ab5320629fa36e1962006bce4600ffe1e943f0ca613f6214d34fc2
+      path: Sensory (Touch)/Sensory_Touch_reconstructed_script.txt
+      related_sha256: []
+      sha256: 6460aea6f063c196c0aed696a85678d26dac444cdc7422766625ae0bff6fe405
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: Sensory (Touch)/Sensory_Touch_reconstruction_notes.md
+      related_sha256: []
+      sha256: 28c78adcf1b005e4f25cbef44ae918a0721e210a81782540fbe17e237ad7e909
+  specifications:
+    analysis_review:
+      claim_categories:
+      - physical-tactile-sensitivity-change
+      - pain-and-itch-reduction
+      - inferred-duration
+      family: adjustable-sensory-perception
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 695f9c4c70807467b8f4736834ed15f3be2c82ce054f0b8d0799526524e3cd43
+            end_line: 66
+            file: Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt
+            source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+            start_line: 28
+          status: inferred
+          summary: Known command/purpose metadata is paired in the mockup with a proposed internal
+            cue/breath procedure; the exact historical association wording/method is unknown.
+        closer:
+          locators:
+          - content_group_sha256: 695f9c4c70807467b8f4736834ed15f3be2c82ce054f0b8d0799526524e3cd43
+            end_line: 26
+            file: Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt
+            source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+            start_line: 23
+          status: inferred
+          summary: Historical closer unknown; annotated mockup borrows remember/use, access close
+            and return shell from related transcripts.
+        consolidation:
+          locators:
+          - content_group_sha256: 695f9c4c70807467b8f4736834ed15f3be2c82ce054f0b8d0799526524e3cd43
+            end_line: 26
+            file: Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt
+            source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+            start_line: 23
+          status: inferred
+          summary: Historical target consolidation unknown; proposed sleep/ambient segment is related-function
+            inference, never measured target timing.
+        conversion:
+          locators:
+          - content_group_sha256: 695f9c4c70807467b8f4736834ed15f3be2c82ce054f0b8d0799526524e3cd43
+            end_line: 84
+            file: Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt
+            source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+            start_line: 1
+          status: inferred
+          summary: Original OCF design is still required; do not convert mockup expression by synonyms
+            or adopt unsupported mechanisms. Any safer/material reframing needs explicit human review,
+            not historical promotion.
+        future_use:
+          locators:
+          - content_group_sha256: 695f9c4c70807467b8f4736834ed15f3be2c82ce054f0b8d0799526524e3cd43
+            end_line: 80
+            file: Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt
+            source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+            start_line: 61
+          - file: Sensory (Touch)/Sensory-Touch.ocr.pdf
+            page: 1
+            source_sha256: 5cb32e5762a041e9bd778631fe3c63bf46d3c2014f95237edab9e8a0295abb38
+          - file: Sensory (Touch)/Sensory-Touch.ocr.pdf
+            page: 2
+            source_sha256: 5cb32e5762a041e9bd778631fe3c63bf46d3c2014f95237edab9e8a0295abb38
+          status: inferred
+          summary: Catalogue mode directions are known; precise breath/association, persistence and
+            state handoff remain target-audio unknowns despite mockup analogue.
+        handoff:
+          locators:
+          - content_group_sha256: 695f9c4c70807467b8f4736834ed15f3be2c82ce054f0b8d0799526524e3cd43
+            end_line: 26
+            file: Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt
+            source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+            start_line: 23
+          status: inferred
+          summary: Historical handoff unknown; mockup's waking return/reminder is inferred, not recovered.
+        identity:
+          locators:
+          - content_group_sha256: 695f9c4c70807467b8f4736834ed15f3be2c82ce054f0b8d0799526524e3cd43
+            end_line: 66
+            file: Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt
+            source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+            start_line: 28
+          - file: Sensory (Touch)/Sensory-Touch.ocr.pdf
+            page: 1
+            source_sha256: 5cb32e5762a041e9bd778631fe3c63bf46d3c2014f95237edab9e8a0295abb38
+          - file: Sensory (Touch)/Sensory-Touch.ocr.pdf
+            page: 2
+            source_sha256: 5cb32e5762a041e9bd778631fe3c63bf46d3c2014f95237edab9e8a0295abb38
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 695f9c4c70807467b8f4736834ed15f3be2c82ce054f0b8d0799526524e3cd43
+            end_line: 66
+            file: Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt
+            source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+            start_line: 28
+          status: inferred
+          summary: select-tactile-direction; proposed-internal-mode-cue-and-breathing; proposed-pressure-texture-temperature-attention
+        opener:
+          locators:
+          - content_group_sha256: 695f9c4c70807467b8f4736834ed15f3be2c82ce054f0b8d0799526524e3cd43
+            end_line: 84
+            file: Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt
+            source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+            start_line: 1
+          status: inferred
+          summary: Historical opener unknown; mockup supplies purpose orientation and related-function
+            learning shell as structural inference.
+        preparation:
+          locators:
+          - content_group_sha256: 695f9c4c70807467b8f4736834ed15f3be2c82ce054f0b8d0799526524e3cd43
+            end_line: 84
+            file: Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt
+            source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+            start_line: 1
+          - file: Sensory (Touch)/Sensory-Touch.ocr.pdf
+            page: 1
+            source_sha256: 5cb32e5762a041e9bd778631fe3c63bf46d3c2014f95237edab9e8a0295abb38
+          - file: Sensory (Touch)/Sensory-Touch.ocr.pdf
+            page: 2
+            source_sha256: 5cb32e5762a041e9bd778631fe3c63bf46d3c2014f95237edab9e8a0295abb38
+          status: supported
+          summary: Brochure gives prior Preparation Exercise or prior H-PLUS learning, a quiet supported
+            position, soft stereo/headphone listening and next-day target exercise. Exact lost narration
+            procedure is unknown; mockup shell is related-function inference.
+        provenance:
+          locators:
+          - content_group_sha256: 695f9c4c70807467b8f4736834ed15f3be2c82ce054f0b8d0799526524e3cd43
+            end_line: 84
+            file: Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt
+            source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+            start_line: 1
+          - file: Sensory (Touch)/Sensory-Touch.ocr.pdf
+            page: 1
+            source_sha256: 5cb32e5762a041e9bd778631fe3c63bf46d3c2014f95237edab9e8a0295abb38
+          - file: Sensory (Touch)/Sensory-Touch.ocr.pdf
+            page: 2
+            source_sha256: 5cb32e5762a041e9bd778631fe3c63bf46d3c2014f95237edab9e8a0295abb38
+          status: inferred
+          summary: Complete available reconstructed_mockup text inspected; shared representations
+            are not independent corroboration. Source accuracy/authentication remains unresolved.
+            Annotated VERIFIED labels are reconstruction-author assertions, not independent authentication.
+            Catalogue purpose/command/use limits and proposed mockup operations are separate evidence
+            axes. Missing historical operations remain unknown. Both brochure pages inspected separately;
+            catalogue assertions are documentary evidence, not recovered audio instructions.
+        purpose:
+          locators:
+          - content_group_sha256: 695f9c4c70807467b8f4736834ed15f3be2c82ce054f0b8d0799526524e3cd43
+            end_line: 21
+            file: Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt
+            source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+            start_line: 20
+          - file: Sensory (Touch)/Sensory-Touch.ocr.pdf
+            page: 1
+            source_sha256: 5cb32e5762a041e9bd778631fe3c63bf46d3c2014f95237edab9e8a0295abb38
+          - file: Sensory (Touch)/Sensory-Touch.ocr.pdf
+            page: 2
+            source_sha256: 5cb32e5762a041e9bd778631fe3c63bf46d3c2014f95237edab9e8a0295abb38
+          status: supported
+          summary: Brochure describes tactile sensitivity and pressure/texture/temperature identification,
+            including pain/itch reduction assertions.
+        rehearsal:
+          locators:
+          - content_group_sha256: 695f9c4c70807467b8f4736834ed15f3be2c82ce054f0b8d0799526524e3cd43
+            end_line: 84
+            file: Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt
+            source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Annotated
+            VERIFIED labels are reconstruction-author assertions, not independent authentication.
+            Catalogue purpose/command/use limits and proposed mockup operations are separate evidence
+            axes. Missing historical operations remain unknown.
+        safety_claims:
+          locators:
+          - content_group_sha256: 695f9c4c70807467b8f4736834ed15f3be2c82ce054f0b8d0799526524e3cd43
+            end_line: 84
+            file: Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt
+            source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+            start_line: 1
+          - file: Sensory (Touch)/Sensory-Touch.ocr.pdf
+            page: 1
+            source_sha256: 5cb32e5762a041e9bd778631fe3c63bf46d3c2014f95237edab9e8a0295abb38
+          - file: Sensory (Touch)/Sensory-Touch.ocr.pdf
+            page: 2
+            source_sha256: 5cb32e5762a041e9bd778631fe3c63bf46d3c2014f95237edab9e8a0295abb38
+          status: inferred
+          summary: physical-tactile-sensitivity-change; pain-and-itch-reduction; inferred-duration.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 695f9c4c70807467b8f4736834ed15f3be2c82ce054f0b8d0799526524e3cd43
+            end_line: 84
+            file: Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt
+            source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+            start_line: 1
+          status: inferred
+          summary: Historical target recording's exact state sequence remains unknown. Mockup imports
+            ten/eleven/ten/sleep/waking grammar from surviving Hearing/Seeing, not recovered target
+            audio.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 695f9c4c70807467b8f4736834ed15f3be2c82ce054f0b8d0799526524e3cd43
+            end_line: 76
+            file: Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt
+            source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+            start_line: 72
+          status: inferred
+          summary: No separate termination cue established in the inspected brochure; historical audio
+            may contain more, so absence there remains unknown.
+      source_extent:
+        content_group_sha256: 695f9c4c70807467b8f4736834ed15f3be2c82ce054f0b8d0799526524e3cd43
+        end_line: 84
+        file: Sensory (Touch)/Sensory_Touch_reconstructed_annotated.txt
+        source_sha256: 8af75ad0c400bcdae8a35bd2f5ff0b299d4908dfbe71e314412a9e43cbd0dfb9
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-SEN-005:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-SEN-005:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-SEN-005:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-SEN-005:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-SEN-005:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-SEN-005:main
+        operations:
+        - select-tactile-direction
+        - proposed-internal-mode-cue-and-breathing
+        - proposed-pressure-texture-temperature-attention
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-SEN-005:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-SEN-005:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-SEN-005:rehearsal
+        operations: []
+        status: unknown
+      safety_claims:
+        evidence_refs:
+        - review:OCF-SEN-005:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-SEN-005:suspend_cancel_reset
+        operations:
+        - documented-suspend-cancel-reset
+        status: inferred
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Annotated VERIFIED labels are reconstruction-author assertions, not independent authentication.
+      Catalogue purpose/command/use limits and proposed mockup operations are separate evidence axes.
+      Missing historical operations remain unknown.
+    - Original OCF design is still required; do not convert mockup expression by synonyms or adopt
+      unsupported mechanisms. Any safer/material reframing needs explicit human review, not historical
+      promotion.
+    states:
+      preferred: []
+      required: []
+      status: unknown

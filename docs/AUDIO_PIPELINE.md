@@ -406,8 +406,8 @@ python3 scripts/ocf.py audio render OCF-SLP-005 --mode narration-only \
   --locale en-US --voice OCF-VOICE-0002 --pacing sleep --dry-run
 ```
 
-This previews or renders the function's explicit
-`function-content/bindings/<FUNCTION_ID>.yaml` narration plan and does not
+This previews or renders the function's canonical `narration.sequence` from its
+per-locale function resource and does not
 require a complete-session template, audio implementation manifest, fixed
 source timestamps, artwork, or release metadata. Remove `--dry-run` to render;
 the default output is a unique retained audition under `.ocf-work/renders/`.
@@ -425,10 +425,10 @@ release readiness separately. It does not alter either approval state. Sleep
 Easy's plan is opener → function body four times → closer. Its user-approved
 successor consistently teaches `Plus Sleep Easy`, matching display cue
 `PLUS-SLEEP EASY`. The former `Plus Quiet Sleep` wording remains historical
-evidence, not an active compatibility lesson. The scoped
-[migration record](../function-content/editorial/approved-title-cues-001.json)
-preserves the old/new text fingerprints; breathing, repetitions and engineering
-defaults are unchanged. New audition speech has not received listening approval.
+evidence, not an active compatibility lesson. Hash-only approval provenance is
+stored with the canonical locale function resource; breathing, repetitions and
+engineering defaults are unchanged. New audition speech has not received
+listening approval.
 
 Pacing presets are configuration only: NORMAL uses 0.8 s paragraph/2 s section
 pauses, RELAXED uses 1.5 s/4 s, and SLEEP uses 2 s/6 s; SLEEP includes 2 s
@@ -548,3 +548,27 @@ regression coverage in `tests/test_audio_build.py` and
 
 See `docs/SEMANTIC_DSP.md`, `docs/SEMANTIC_SESSIONS.md`, and
 `docs/AUDIO_STANDARD.md` for contracts and schemas.
+
+### Readable listener export names
+
+Private listening exports and public release packages share the naming helper
+`listener_export_names`. Delivered media and transcript sidecars use:
+
+`OCF-ID - Function-Title - locale - Voice-Display-Label - vEDITION.ext`
+
+The title is shortened before the declared voice/version suffixes. The version
+is the actual audio edition, not an inferred release approval or the guide
+version. Automatic export folders include a readable title; explicit operator
+destinations remain authoritative and existing editions are never overwritten.
+
+Standalone Preparation Learning uses `00 - Preparation-Learning - locale -
+Voice-Display-Label - vEDITION.ext`, plus the explicit `preparation-learning`
+session kind. The `00` is a sorting prefix, not a fabricated function identity.
+Portal manifests use this session kind to place preparation before functions.
+Low-level engine scratch files and arbitrary explicitly named recording outputs
+retain their own filenames; they are not listener release packages.
+
+Renaming an existing completed collection must preserve media bytes and its
+original render identity, update relative manifest/playlist/portal links and
+recompute delivery checksums. A new named collection may hard-link verified
+media to avoid another audio copy while preserving its predecessor.

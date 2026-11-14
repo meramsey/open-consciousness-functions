@@ -1,0 +1,104 @@
+description: One approved long-form initial induction. The former generic whole-body hold is replaced
+  by the explicit Ten recognition hold, not stacked with it.
+events:
+- at: 0
+  id: begin
+  narration_key: hplus.shared.relaxation.begin
+  narration_required: true
+  pacing_key: pauses.relaxation_begin_s
+  semantic: preparation.relaxation.begin
+- after: begin
+  id: support
+  narration_key: hplus.shared.relaxation.support
+  narration_required: true
+  offset: 0
+  pacing_key: pauses.relaxation_step_s
+  semantic: preparation.relaxation.support
+  timing:
+    anchor: speech-end
+- after: support
+  id: face
+  narration_key: hplus.shared.relaxation.face
+  narration_required: true
+  offset: 0
+  pacing_key: pauses.relaxation_step_s
+  semantic: preparation.relaxation.face
+  timing:
+    anchor: speech-end
+- after: face
+  id: jaw-neck
+  narration_key: hplus.shared.relaxation.jaw-neck
+  narration_required: true
+  offset: 0
+  pacing_key: pauses.relaxation_step_s
+  semantic: preparation.relaxation.jaw-neck
+  timing:
+    anchor: speech-end
+- after: jaw-neck
+  id: shoulders
+  narration_key: hplus.shared.relaxation.shoulders
+  narration_required: true
+  offset: 0
+  pacing_key: pauses.relaxation_step_s
+  semantic: preparation.relaxation.shoulders
+  timing:
+    anchor: speech-end
+- after: shoulders
+  id: hands
+  narration_key: hplus.shared.relaxation.hands
+  narration_required: true
+  offset: 0
+  pacing_key: pauses.relaxation_step_s
+  semantic: preparation.relaxation.hands
+  timing:
+    anchor: speech-end
+- after: hands
+  id: chest-breathing
+  narration_key: hplus.shared.relaxation.chest-breathing
+  narration_required: true
+  offset: 0
+  pacing_key: pauses.relaxation_step_s
+  semantic: preparation.relaxation.chest-breathing
+  timing:
+    anchor: speech-end
+- after: chest-breathing
+  id: abdomen-lower-back
+  narration_key: hplus.shared.relaxation.abdomen-lower-back
+  narration_required: true
+  offset: 0
+  pacing_key: pauses.relaxation_step_s
+  semantic: preparation.relaxation.abdomen-lower-back
+  timing:
+    anchor: speech-end
+- after: abdomen-lower-back
+  id: hips-thighs
+  narration_key: hplus.shared.relaxation.hips-thighs
+  narration_required: true
+  offset: 0
+  pacing_key: pauses.relaxation_step_s
+  semantic: preparation.relaxation.hips-thighs
+  timing:
+    anchor: speech-end
+- after: hips-thighs
+  id: lower-legs-feet
+  narration_key: hplus.shared.relaxation.lower-legs-feet
+  narration_required: true
+  offset: 0
+  pacing_key: pauses.relaxation_step_s
+  semantic: preparation.relaxation.lower-legs-feet
+  timing:
+    anchor: speech-end
+- after: lower-legs-feet
+  id: whole-body-awareness
+  narration_key: hplus.shared.relaxation.whole-body-awareness
+  narration_required: true
+  offset: 0
+  pacing_key: pauses.relaxation_step_s
+  semantic: preparation.relaxation.whole-body-awareness
+  timing:
+    anchor: speech-end
+id: OCF-TPL-STAGE-HPLUS-RELAXATION-003
+origin: original-ocf
+schema_version: '1.0'
+type: induction
+version: 3.0.0

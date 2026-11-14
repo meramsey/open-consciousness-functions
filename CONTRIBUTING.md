@@ -75,8 +75,14 @@ Rules that always apply:
 Manual YAML editing, schema conformance, and generated-index discipline.
 
 1. **Inspect the schemas first**: `schemas/*.schema.json`.
-2. **Create or edit** a function record under `functions/<domain>/<slug>.yaml`
-   (copy `templates/function.yaml`).
+2. **Create or edit** the complete localized function record under
+   `locales/en-US/OCF-XXX-000-Name.yaml` and register it in
+   `locales/en-US/manifest.yaml`. Use the `new function` wizard (or an existing
+   locale resource as the structural contract); it writes a self-contained,
+   unrenderable draft with no invented narration.
+
+   Other locales add their own complete translated record; they never inherit
+   English speech.
 3. **Validate**: `python3 scripts/ocf.py validate --all`.
 4. **Regenerate indexes**: `python3 scripts/ocf.py build-index`.
 5. Add or update **tests** in `tests/` and run `python3 -m pytest`.

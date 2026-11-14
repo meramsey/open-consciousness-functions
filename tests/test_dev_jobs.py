@@ -41,6 +41,61 @@ def test_complete_session_job_accepts_speech_cache_policy(mode, monkeypatch, tmp
         )
 
 
+@pytest.mark.unit
+def test_status_retries_transient_windows_state_sharing_denial(monkeypatch, tmp_path):
+    from pathlib import Path
+
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    job_id = "a" * 32
+    root = jobs.directory(job_id)
+    root.mkdir(parents=True)
+    state_path = root / "state.json"
+    state_path.write_text(json.dumps({"job_id": job_id, "state": "completed"}), encoding="utf-8")
+    original_read = Path.read_text
+    attempts = 0
+
+    def transient_denial(path, *args, **kwargs):
+        nonlocal attempts
+        if path == state_path and attempts == 0:
+            attempts += 1
+            error = PermissionError("transient state-file sharing violation")
+            error.winerror = 32
+            raise error
+        return original_read(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "read_text", transient_denial)
+
+    assert jobs.status(job_id)["state"] == "completed"
+    assert attempts == 1
+
+
+@pytest.mark.unit
+def test_status_does_not_retry_unclassified_permission_errors(monkeypatch, tmp_path):
+    from pathlib import Path
+
+    monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))
+    job_id = "b" * 32
+    root = jobs.directory(job_id)
+    root.mkdir(parents=True)
+    state_path = root / "state.json"
+    state_path.write_text(json.dumps({"job_id": job_id, "state": "completed"}), encoding="utf-8")
+    original_read = Path.read_text
+    attempts = 0
+
+    def access_denied(path, *args, **kwargs):
+        nonlocal attempts
+        if path == state_path:
+            attempts += 1
+            raise PermissionError("permanent access denial")
+        return original_read(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "read_text", access_denied)
+
+    with pytest.raises(PermissionError, match="permanent access denial"):
+        jobs.status(job_id)
+    assert attempts == 1
+
+
 def wait(job_id, timeout=90):
     deadline = time.monotonic() + timeout
     while time.monotonic() < deadline:

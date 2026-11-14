@@ -4,8 +4,11 @@ OCF keeps portable profile metadata, model weights, recordings, training
 configuration and consent records separate. Existing OCF-VOICE-0002 and the
 default voice are preserved. Built-in profiles remain under
 `audio/voices/profiles/`; imported private profiles/models use
-`.ocf-work/cache/voices/{profiles,models}/`. Set `OCF_VOICE_ASSETS` to a dedicated
-model directory; relative values resolve from the repository root.
+the disposable `.ocf-work/cache/voices/{profiles,models}/` cache by default.
+Set both `OCF_VOICE_PROFILE_DIR` and `OCF_VOICE_ASSETS` to durable private
+directories before importing reusable assets; relative values resolve from the
+repository root. For reference-based voice creation, start with the
+[private pack walkthrough](VOICE_PACKS.md).
 
 ## Supported operations
 
@@ -43,9 +46,6 @@ Inference access never implies permission to redistribute recordings or weights.
 Profiles and Piper configuration must contain finite JSON-compatible values;
 NaN/infinity is rejected. Profile gain, processing defaults, speed and speaker
 selection are explicit controls, not evidence of a trained or cloned identity.
-In this checkout, private `OCF-VOICE-9001` is an ordinary imported Lessac Piper
-installed-model profile used for inference/audition checks. It is not a cloned
-voice or evidence of training.
 
 ### Portable metadata and private assets
 
@@ -147,11 +147,7 @@ fingerprints and declared speaker checks do not verify speech content or identit
 
 No OCF training adapter has produced and tested a model in this milestone.
 `training-plan` reports this explicitly; there is no fake `train` command or
-successful-cloning claim. No authorized speaker dataset was supplied. The local
-environment observed on 2026-10-15 has neither F5-TTS nor Torch installed; the
-explicit GPU probe reported about 6 GiB total VRAM and about 1 GiB free. These are
-local observations, not future hardware availability or training-memory promises.
-`voice capabilities` distinguishes upstream features, shipped adapters, installed
+successful-cloning claim. `voice capabilities` distinguishes upstream features, shipped adapters, installed
 packages and unverified inference. Only explicit `--gpu` requests the bounded GPU
 probe; capability discovery itself does not run inference or training.
 
@@ -161,7 +157,7 @@ Evaluated upstream paths:
   separate PyTorch Lightning/Cython training stack, dataset preparation and
   ONNX export. This is not a simple inference-side cloning API. Upstream reports
   most training on 24/48 GiB GPUs and user success from 8 GiB; that is not a
-  guarantee for this 6 GiB host. The current repository also requests maintainers.
+  guarantee for a particular host. Check the current upstream requirements.
   Engine, checkpoint and dataset licenses must be checked independently.
 - [F5-TTS](https://github.com/SWivid/F5-TTS): local reference-conditioned inference
   and fine-tuning are documented upstream, including Apple Silicon inference

@@ -4,7 +4,7 @@ from io import BytesIO
 
 import pytest
 from ocf_tools import listening_guides
-from ocf_tools.indexes import load_all_functions
+from ocf_tools.indexes import load_all_functions, load_function_by_id
 from ocf_tools.utils import OCFError
 from pypdf import PdfReader, PdfWriter
 
@@ -25,9 +25,32 @@ def test_portable_collection_is_self_contained_and_has_all_functions(tmp_path):
     assert (package / "complete-guide.pdf").is_file()
     assert (package / "listening-guide.pdf").is_file()
     assert b"/Outlines" in (package / "complete-guide.pdf").read_bytes()
+    required = (
+        "Complete Preparation Learning before using any OCF function. Only people who "
+        "have already learned the official Human Plus preparation track may skip it."
+    )
+    listening_markdown = (package / "listening-guide.md").read_text(encoding="utf-8")
+    assert required in " ".join(listening_markdown.split())
+    assert listening_markdown.index("## Preparation Learning first") < listening_markdown.index(
+        "## Before listening"
+    )
+    assert required in " ".join(
+        (package / "listening-guide.html").read_text(encoding="utf-8").split()
+    )
+    listening_pdf = " ".join(
+        text or ""
+        for text in (
+            page.extract_text() for page in PdfReader(package / "listening-guide.pdf").pages
+        )
+    )
+    assert required in " ".join(listening_pdf.split())
+    handbook = PdfReader(package / "complete-guide.pdf")
+    assert any("Historical H-Plus lookup" in page.extract_text() for page in handbook.pages)
     for record in load_all_functions():
         for suffix in (".md", ".html", ".pdf"):
-            assert (package / "functions" / f"{record.id}{suffix}").is_file()
+            assert (
+                package / "functions" / (listening_guides.function_guide_stem(record) + suffix)
+            ).is_file()
     html = (package / "index.html").read_text(encoding="utf-8")
     assert "Search by title, ID, cue, or description" in html
     assert "https://" not in html and "http://" not in html
@@ -43,7 +66,9 @@ def test_portable_collection_can_be_relocated_without_external_links(tmp_path, c
         assert "localhost" not in text
     assert (relocated / "complete-guide.pdf").is_file()
     result = listening_guides.validate_portable_collection(relocated)
-    assert (result["files"], result["markdown"], result["html"], result["pdf"]) == (181, 60, 60, 61)
+    assert (result["files"], result["markdown"], result["html"], result["pdf"]) == (202, 66, 66, 67)
+    assert result["individual_function_pdfs"] == 58
+    assert result["extracted_canonical_resources"] == 174
     assert result["broken_links"] == 0
     assert result["toc_entries"] > 58
     assert result["toc_links"] == 2 * result["toc_entries"]
@@ -54,7 +79,8 @@ def test_category_indexes_share_canonical_order(collection):
     html = (collection / "index.html").read_text(encoding="utf-8")
     markdown = (collection / "index.md").read_text(encoding="utf-8")
     categories = sorted(
-        {record.primary_domain or "Uncategorized" for record in load_all_functions()}
+        {record.primary_domain or "Uncategorized" for record in load_all_functions()},
+        key=lambda category: (category != "foundation", category.casefold()),
     )
     assert re.findall(r"<h2>(.*?)</h2>", html) == categories
     assert re.findall(r"^## (.*)$", markdown, re.MULTILINE) == categories
@@ -88,7 +114,11 @@ def test_relocation_validator_rejects_bad_links(tmp_path, collection, corruption
             encoding="utf-8",
         )
     elif corruption == "missing":
-        (package / "functions/OCF-EXP-001.html").unlink()
+        (
+            package
+            / "functions"
+            / (listening_guides.function_guide_stem(load_function_by_id("OCF-EXP-001")) + ".html")
+        ).unlink()
     else:
         with (package / "index.html").open("a", encoding="utf-8") as stream:
             stream.write(
@@ -96,7 +126,46 @@ def test_relocation_validator_rejects_bad_links(tmp_path, collection, corruption
                 if corruption == "asset"
                 else '<a href="../outside.md">escape</a>'
             )
+    # Exercise the legacy link-validation boundary itself. New-edition checksum
+    # rejection is covered separately, so it cannot mask a broken link checker.
+    (package / "build-manifest.json").unlink()
+    (package / "checksums.sha256").unlink()
     with pytest.raises(OCFError):
+        listening_guides.validate_portable_collection(package)
+
+
+@pytest.mark.integration
+def test_legacy_navigation_contract_is_not_falsely_certified_as_new_transcript_coverage(
+    tmp_path, collection
+):
+    package = tmp_path / "legacy-guides"
+    shutil.copytree(collection, package)
+    (package / "build-manifest.json").unlink()
+    (package / "checksums.sha256").unlink()
+    result = listening_guides.validate_portable_collection(package)
+    assert result["individual_function_pdfs"] == 58
+    assert result["extracted_canonical_resources"] == 0
+    assert result["broken_links"] == 0
+
+
+@pytest.mark.integration
+@pytest.mark.parametrize(
+    "corruption", ["missing-manifest", "duplicate", "invalid-digest", "incomplete"]
+)
+def test_new_edition_checksums_fail_closed(tmp_path, collection, corruption):
+    package = tmp_path / "guides"
+    shutil.copytree(collection, package)
+    checks = package / "checksums.sha256"
+    lines = checks.read_text().splitlines()
+    if corruption == "missing-manifest":
+        checks.unlink()
+    elif corruption == "duplicate":
+        checks.write_text("\n".join([*lines, lines[0]]) + "\n")
+    elif corruption == "invalid-digest":
+        checks.write_text("invalid  build-manifest.json\n")
+    else:
+        checks.write_text("\n".join(lines[1:]) + "\n")
+    with pytest.raises(OCFError, match="checksum"):
         listening_guides.validate_portable_collection(package)
 
 

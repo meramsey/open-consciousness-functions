@@ -1,0 +1,1019 @@
+schema_version: '2.0'
+locale: en-US
+domain: function
+function_id: OCF-BOD-013
+title:
+  text: Body Tune-Up
+  status: canonical
+  version: 1.0.0
+description:
+  text: A general self-directed balance-and-heal tune-up practice.
+  status: canonical
+  version: 1.0.0
+metadata_entries:
+  functions.ocf-bod-013.lifecycle.scopes.capability.description:
+    text: The ability to direct attention toward a selected body area remains available.
+  functions.ocf-bod-013.lifecycle.scopes.baseline.description:
+    text: The narrated whole-body maintenance and renewal baseline persists.
+  functions.ocf-bod-013.lifecycle.scopes.application.description:
+    text: Conscious selected-area reinforcement; not continuous intensified repair in that area.
+activation:
+  command_id: OCF-CMD-BOD-013-PRIMARY
+  display_cue:
+    text: PLUS-TUNE-UP
+    status: reviewed
+    version: 1.1.0
+  spoken_cue:
+    text: Plus Tune Up
+    status: reviewed
+    version: 1.1.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.scopes.application.persistence
+    invocation_scope_ref: lifecycle.scopes.application
+    procedure:
+      ref: OCF-PROC-CLOSE-FOCUS-OPEN
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-bod-013.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: canonical
+      version: 1.0.0
+  - id: focus-target
+    operation: focus-target
+    instruction:
+      text: Focus attention on the selected target.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+  - id: open-eyes
+    operation: open-eyes
+    instruction:
+      text: Open your eyes.
+      status: canonical
+      version: 1.0.0
+secondary_commands: []
+tags:
+- text: body-awareness
+  status: draft
+  semantic_id: body-awareness
+- text: renewal
+  status: draft
+  semantic_id: renewal
+- text: balance
+  status: draft
+  semantic_id: balance
+common_uses:
+- text: Directing kind attention toward a chosen part of the body.
+  status: draft
+- text: Visualizing whole-body maintenance and renewal without claiming healing or replacing treatment.
+  status: draft
+relationships:
+  related_functions:
+  - function_id: OCF-BOD-014
+    description_key: relationships.rel-bod013-bod014.description
+    description:
+      text: Compare general maintenance imagery with more specific regeneration imagery, without claiming
+        healing or tissue regrowth.
+      status: reviewed
+      version: 1.0.0
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-bod-013.opener:
+    status: reviewed
+    version: 1.2.0
+    text: 'This OCF exercise will teach you to perceive, balance,
+
+      and heal any part of your physical body, strengthening
+
+      its natural processes of repair, regeneration,
+
+      and ongoing maintenance.'
+  hplus.function.ocf-bod-013.function-body:
+    status: reviewed
+    version: 1.2.0
+    cue_template:
+      function_id: OCF-BOD-013
+      allowed:
+      - cue.primary
+    text: 'From this moment forward, your body''s natural
+
+      processes of balance, healing, and regeneration
+
+      are becoming stronger, smoother, and more effective.
+
+
+      Every part of your physical body is supported
+
+      by its natural ability to maintain, repair,
+
+      and renew itself.
+
+
+      Your body''s systems work together in harmony,
+
+      recognizing what needs attention and directing
+
+      the appropriate processes of restoration.
+
+
+      Your cells, tissues, and organs receive
+
+      the nourishment and support they need
+
+      to maintain their healthy function.
+
+
+      Whenever an area requires additional care,
+
+      your body''s natural processes of healing
+
+      and regeneration will respond,
+
+      restoring strength, balance, and harmony.
+
+
+      From this moment forward, this pattern
+
+      of whole-body maintenance and renewal
+
+      is permanently established within you.
+
+
+      Whether awake, resting, or sleeping,
+
+      your body continues these processes
+
+      automatically, without conscious effort.
+
+
+      Whenever you wish to perceive and improve
+
+      any particular part of your body,
+
+      you can do so quickly and easily.
+
+
+      Simply close your eyes and bring
+
+      your awareness to the area you wish to improve.
+
+
+      Look inward and become consciously aware
+
+      of that part of your physical body.
+
+
+      Take a deep breath in and gently hold it.
+
+
+      Think or say in your mind,
+
+      "{{ cue.primary }}."
+
+
+      Then exhale slowly through your mouth
+
+      and open your eyes.
+
+
+      Your body''s natural processes of repair
+
+      and regeneration will respond,
+
+      directing their activity toward the chosen area.
+
+
+      That part of your body will move steadily
+
+      toward its natural state of health,
+
+      strength, and balanced function.
+
+
+      Your entire system knows how to coordinate
+
+      these processes and will perform
+
+      them smoothly and effectively.
+
+
+      Each time you use {{ cue.primary }},
+
+      your ability to perceive and direct
+
+      this process becomes easier,
+
+      faster, and more effective.
+
+
+      Your body''s natural pattern of healing,
+
+      renewal, and balanced maintenance
+
+      will continue automatically,
+
+      every day and every night.'
+  hplus.function.ocf-bod-013.closer:
+    status: reviewed
+    version: 1.3.0
+    cue_template:
+      function_id: OCF-BOD-013
+      allowed:
+      - cue.primary
+    text: 'Remember, whenever you wish to perceive,
+
+      balance, or heal any part of your physical body,
+
+      close your eyes and focus on that area.
+
+
+      Inhale deeply and hold your breath.
+
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+
+      Then exhale slowly through your mouth
+
+      and open your eyes.
+
+
+      This concludes your OCF Body Tune-Up exercise.'
+slug: tune-up
+classification:
+  primary_domain: body
+  secondary_domains: []
+category_labels:
+  body:
+    text: body
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+  scopes:
+    capability:
+      persistence: permanent
+      description_key: functions.ocf-bod-013.lifecycle.scopes.capability.description
+    baseline:
+      persistence: permanent
+      description_key: functions.ocf-bod-013.lifecycle.scopes.baseline.description
+      activation: automatic
+    application:
+      persistence: temporary
+      description_key: functions.ocf-bod-013.lifecycle.scopes.application.description
+      activation: manual
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: health
+  medical_relevance: true
+  notes:
+  - Self-directed wellness practice; not a substitute for professional medical evaluation or treatment.
+    No guaranteed effects are claimed.
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-013.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-013.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-013.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-BOD-013
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: 55c7a7ac7d46a6cec582fc76e18ac137fe9aece22ced8823eb9aa58ce0bc39fd
+    classification: KEEP CUE — ALIGN TITLE OR NARRATION
+    recommended_title: Body Tune-Up
+    recommended_primary_cue: PLUS-BALANCE, HEAL
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Whole-body automatic maintenance and selected-area inward perception/repair.
+      Close eyes, select area, inhale/hold/complete cue/exhale/open eyes. Balance and Heal are one
+      cue, not separate modes; inner perception is not verified diagnosis.
+    pair_reason: The two positive operations fit the intended targeted body-balancing practice. HEAL
+      need not be reflexively weakened in proposed intention language; intended outcome and established
+      efficacy remain separate.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. The two
+      positive operations fit the intended targeted body-balancing practice. HEAL need not be reflexively
+      weakened in proposed intention language; intended outcome and established efficacy remain separate.
+    teaching_disposition: Preserve complete taught cue; metadata/title alignment only
+    documentary_intent: Claimed intuitive perception and balance/regeneration of a selected body part.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: 18ba853b6469efc1d900604f183b6d448a2e8d66b56331ce6960574f2052549a
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-BOD-013-PRIMARY
+    command_status: unchanged
+    commands:
+    - PLUS-BALANCE, HEAL
+    name: TUNE-UP
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Tune-Up
+  compatibility:
+    state: historical-lookup
+    rationale: Approved presentation successor OCF-COMMAND-SIMPLIFICATION-001; superseded wording
+      remains historical lookup.
+  historical_lookup:
+  - text: Tune-Up
+    kind: former-title
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+  - text: PLUS-BALANCE, HEAL
+    kind: former-primary
+    decision: OCF-COMMAND-SIMPLIFICATION-001
+    command_id: OCF-CMD-BOD-013-PRIMARY
+  - text: Plus Balance Heal
+    kind: former-teaching
+    decision: OCF-COMMAND-SIMPLIFICATION-001
+    command_id: OCF-CMD-BOD-013-PRIMARY
+  status:
+    evidence: source-described
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-bod-013.title
+    short_description_key: functions.ocf-bod-013.short-description
+    purpose_key: functions.ocf-bod-013.purpose
+  commands:
+  - id: OCF-CMD-BOD-013-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-bod-013-primary.label
+      usage_key: commands.ocf-cmd-bod-013-primary.usage
+      purpose_key: functions.ocf-bod-013.purpose
+      explanation_key: commands.ocf-cmd-bod-013-primary.explanation
+      display_cue_key: commands.ocf-cmd-bod-013-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-bod-013-primary.spoken-cue
+  predecessor_resource_sha256: ab9595652bfcff17fb87f7d843b7ba2fd474c448c6de2b1a0b5683d9f38d4950
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-004
+    kind: approved-title-cue
+    source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup.
+      Preserve procedures, controls, semantics, provenance and separately flagged metadata questions.
+      Later user instruction releases the draft-pilot freeze; pilot bindings follow current approved
+      titles and cues.
+    decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
+      request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
+    source_row_sha256: 5e036473f24a7aea4d7f2904e9c8e5bd08a99be87938e95c25534573ed3b4d4a
+    status: accepted
+    previous_values_sha256: 5d995556d6eaaa9b22af1841c004b5318a8b4faf071df0d156308290b311c1cd
+    current_values_sha256: e5b26702904b76b13e81dd5a33b0049747d5e2cdf950997c672c22595d72e7d7
+    changed_narration_keys:
+    - hplus.function.ocf-bod-013.closer
+    previous_resolved_text_sha256:
+      hplus.function.ocf-bod-013.closer: 2bde3e2a218aa1956b01ca13fa517b63f2fd6c00d835ee24b609f13201388ccc
+    current_resolved_text_sha256:
+      hplus.function.ocf-bod-013.closer: 3a4f5099d915674b677cc4ff4578f40fe190f0632f35a6b8fa5c8a9e89940e42
+    review_note: Change title from Tune-Up to Body Tune-Up and update exercise sign-off. Keep display
+      and spoken cue unchanged. Preserve selected-area inward attention, close eyes/inhale/hold/complete
+      cue/slow mouth exhale/open eyes sequence and surrounding automatic whole-body maintenance, repair
+      and renewal suggestions. Retain Tune-Up as historical lookup. Balance Heal remains one complete
+      cue, not separate modes.
+    approval_response: '1'
+    review_position: 22
+    separate_review_needed: true
+  - id: OCF-FUNCTIONAL-METADATA-PERSISTENCE
+    kind: approved-functional-metadata
+    source_commit: 4da47a5740ead0be6bc3127437ee7b36a9c86ddf
+    scope: OCF-BOD-013:persistence
+    decision_source: Please do
+    source_row_sha256: ffd73a0ae4fa6a5eff93a4a3ce2ed04903c6f7e057ee56d70d02659d704bb4d6
+    status: accepted
+    current_values_sha256: 72c6688a3a1bb200c0c08295c0af504b23ebf8abf1ff0c16914775387185be88
+    review_note: 'Body Tune-Up: 1'
+    approval_response: approve
+  - id: OCF-COMMAND-SIMPLIFICATION-001
+    kind: approved-command-simplification
+    source_commit: 8ec5b0395c7a5c05fa629d64297d3bf048b097f9
+    scope: Explicitly approved command title/display/spoken substitutions only; commands, lifecycle,
+      procedure and audio settings are unchanged.
+    decision_source: 'Explicit user confirmation: Confirm implementation'
+    source_row_sha256: 771814f87529e78dd2cc3e982bd9bce2b5d0c58679916891e0baa23e54853b02
+    status: accepted
+    previous_values_sha256: 40053342ce3821c8315614dd68e97c59270d85e953be901db43f1dc05a845556
+    current_values_sha256: d9ec862fe349785fbe4e5e41e3080f74cb33ebad719587ec774980a8a5464fba
+    changed_narration_keys: []
+    previous_resolved_text_sha256: {}
+    current_resolved_text_sha256: {}
+    review_note: Narration fingerprints and synthesis cache identity follow the approved canonical
+      wording; listening and release approval remain false.
+  - id: REL-BOD013-BOD014
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 83a8911930818c2ae253afe2f639327fc99bcc47a861af601cfed3467f79063f
+    current_values_sha256: 573f5d30faecc34ef76f60f325024840010c4a318f2a38ea9c3b207693d47134
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-BOD-013", "sha256": "a44fe521028bb9f0c208a287a719b331457a6e3ba2a33cdf36f688c8a08e8fcd"},
+      {"field": "description", "function_id": "OCF-BOD-014", "sha256": "2cea77591e70794d361ca5fb500eebea9a729e02833f8b6a9b6d104a85d67468"}]'
+    relationship_id: REL-BOD013-BOD014
+    related_function_id: OCF-BOD-014
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    - OCF-TPL-SESSION-HPLUS-LOCKED-006
+    - OCF-TPL-SESSION-HPLUS-LOCKED-007
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1:opener
+      kind: structural-inference
+      line_candidates:
+      - 3
+      - 60
+      - 196
+      scope: document
+      source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+    - category: main
+      confidence: low
+      id: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1:main
+      kind: structural-inference
+      line_candidates:
+      - 30
+      - 31
+      - 40
+      scope: document
+      source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+    - category: closer
+      confidence: low
+      id: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1:closer
+      kind: structural-inference
+      line_candidates:
+      - 52
+      - 196
+      scope: document
+      source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+    - category: preparation
+      confidence: low
+      id: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1:preparation
+      kind: structural-inference
+      line_candidates:
+      - 3
+      - 8
+      - 11
+      - 13
+      - 55
+      - 61
+      scope: document
+      source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+    - category: command_association
+      confidence: low
+      id: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1:command_association
+      kind: structural-inference
+      line_candidates:
+      - 34
+      - 43
+      - 50
+      - 194
+      scope: document
+      source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+    - category: future_use
+      confidence: low
+      id: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1:future_use
+      kind: structural-inference
+      line_candidates:
+      - 39
+      - 48
+      - 51
+      scope: document
+      source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+    - category: return
+      confidence: low
+      id: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1:return
+      kind: structural-inference
+      line_candidates:
+      - 63
+      - 160
+      - 161
+      - 181
+      scope: document
+      source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+    - category: purpose
+      confidence: medium
+      id: review:OCF-BOD-013:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 2
+      scope: document
+      source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+    - category: opener
+      confidence: medium
+      id: review:OCF-BOD-013:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 26
+      - 30
+      scope: document
+      source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+    - category: main
+      confidence: medium
+      id: review:OCF-BOD-013:main
+      kind: function-specification-inference
+      line_candidates:
+      - 31
+      - 48
+      scope: document
+      source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+    - category: association
+      confidence: medium
+      id: review:OCF-BOD-013:association
+      kind: function-specification-inference
+      line_candidates:
+      - 31
+      - 39
+      scope: document
+      source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-BOD-013:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 31
+      - 48
+      scope: document
+      source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+    - category: future_use
+      confidence: medium
+      id: review:OCF-BOD-013:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 31
+      - 51
+      scope: document
+      source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-BOD-013:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 196
+      scope: document
+      source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+    - category: closer
+      confidence: medium
+      id: review:OCF-BOD-013:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 49
+      - 61
+      scope: document
+      source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-BOD-013:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 62
+      - 159
+      scope: document
+      source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+    - category: handoff
+      confidence: medium
+      id: review:OCF-BOD-013:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 160
+      - 196
+      scope: document
+      source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-BOD-013:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 31
+      - 48
+      scope: document
+      source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
+      path: +Transcripts From available tapes/Tune-Up/Tune-Up.lrc
+      related_sha256:
+      - 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+      - 5a509429d916e45ecc32f6ab8e7bab6f24514b68202410df202313562fcab0a1
+      sha256: e02dd9a8ca5fe2da036fe235afb306ab9266ec4a96e84f468e4bbb291b0bb282
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Tune-Up/Tune-Up.ocr.pdf
+      related_sha256: []
+      sha256: d6f515053978a02e91e301d3c8adade42c4f70e98be4fc4d151bd68c5ba25610
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
+      path: +Transcripts From available tapes/Tune-Up/Tune-Up.srt
+      related_sha256:
+      - 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+      - e02dd9a8ca5fe2da036fe235afb306ab9266ec4a96e84f468e4bbb291b0bb282
+      sha256: 5a509429d916e45ecc32f6ab8e7bab6f24514b68202410df202313562fcab0a1
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
+      path: +Transcripts From available tapes/Tune-Up/Tune-Up.txt
+      related_sha256:
+      - 5a509429d916e45ecc32f6ab8e7bab6f24514b68202410df202313562fcab0a1
+      - e02dd9a8ca5fe2da036fe235afb306ab9266ec4a96e84f468e4bbb291b0bb282
+      sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Tune-Up/folder.jpg
+      related_sha256: []
+      sha256: 95a1d6cef74aba5e8c2a0c3180cdfff14c82f878f537d2d34e04d7709c2d7e87
+  specifications:
+    analysis_review:
+      claim_categories:
+      - intuitive-body-condition-diagnosis
+      - regeneration-and-normalization
+      - automatic-self-regulation
+      family: targeted-body-perception-and-balance
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
+            end_line: 39
+            file: +Transcripts From available tapes/Tune-Up/Tune-Up.txt
+            source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+            start_line: 31
+          status: supported
+          summary: Pair source cue/breathing with the selected body-related response; actual canonical
+            and legacy command variants stay in identity metadata.
+        closer:
+          locators:
+          - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
+            end_line: 61
+            file: +Transcripts From available tapes/Tune-Up/Tune-Up.txt
+            source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+            start_line: 49
+          status: supported
+          summary: Reinforce remembered future use and close the learning context to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
+            end_line: 159
+            file: +Transcripts From available tapes/Tune-Up/Tune-Up.txt
+            source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+            start_line: 62
+          status: supported
+          summary: Sleep-to-twenty shell present; physiological/automatic integration is not established
+            by that instruction.
+        conversion:
+          locators:
+          - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
+            end_line: 48
+            file: +Transcripts From available tapes/Tune-Up/Tune-Up.txt
+            source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+            start_line: 31
+          status: inferred
+          summary: Body awareness can be investigated, but diagnosis/healing/regeneration is not established;
+            reframing would materially change the claim and requires review.
+        future_use:
+          locators:
+          - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
+            end_line: 51
+            file: +Transcripts From available tapes/Tune-Up/Tune-Up.txt
+            source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+            start_line: 31
+          status: supported
+          summary: Use the cue/breathing procedure as described for the selected response; asserted
+            effectiveness is a claim, not an observed result.
+        handoff:
+          locators:
+          - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
+            end_line: 196
+            file: +Transcripts From available tapes/Tune-Up/Tune-Up.txt
+            source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+            start_line: 160
+          status: supported
+          summary: Counted waking/eyes-open return with target command reminder where intelligible.
+        identity:
+          locators:
+          - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
+            end_line: 39
+            file: +Transcripts From available tapes/Tune-Up/Tune-Up.txt
+            source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+            start_line: 31
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
+            end_line: 48
+            file: +Transcripts From available tapes/Tune-Up/Tune-Up.txt
+            source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+            start_line: 31
+          status: supported
+          summary: choose-body-region; close-eyes-inhale-and-hold; direct-inner-attention-to-region;
+            issue-balance-heal-cue; exhale-and-open-eyes
+        opener:
+          locators:
+          - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
+            end_line: 30
+            file: +Transcripts From available tapes/Tune-Up/Tune-Up.txt
+            source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+            start_line: 26
+          status: supported
+          summary: Introduce a body-oriented intended response and receptive learning context, not
+            evidence that the physiology changed.
+        preparation:
+          locators:
+          - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
+            end_line: 25
+            file: +Transcripts From available tapes/Tune-Up/Tune-Up.txt
+            source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+            start_line: 3
+          status: supported
+          summary: Supported uninterrupted posture, settling movements/breathing, repository representation
+            for temporary setting-aside and counted ten-state preparation.
+        provenance:
+          locators:
+          - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
+            end_line: 196
+            file: +Transcripts From available tapes/Tune-Up/Tune-Up.txt
+            source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
+            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact
+            timing or original underlay; unspecified cancellation remains unknown.
+        purpose:
+          locators:
+          - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
+            end_line: 2
+            file: +Transcripts From available tapes/Tune-Up/Tune-Up.txt
+            source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+            start_line: 1
+          status: supported
+          summary: Claimed intuitive perception and balance/regeneration of a selected body part.
+        rehearsal:
+          locators:
+          - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
+            end_line: 48
+            file: +Transcripts From available tapes/Tune-Up/Tune-Up.txt
+            source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+            start_line: 31
+          status: not-present
+          summary: No distinct listener test of physiological outcome is established; teaching repetition
+            and ASR ambient tokens are not outcome verification.
+        safety_claims:
+          locators:
+          - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
+            end_line: 48
+            file: +Transcripts From available tapes/Tune-Up/Tune-Up.txt
+            source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+            start_line: 31
+          status: supported
+          summary: intuitive-body-condition-diagnosis; regeneration-and-normalization; automatic-self-regulation.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
+            end_line: 30
+            file: +Transcripts From available tapes/Tune-Up/Tune-Up.txt
+            source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+            start_line: 26
+          status: supported
+          summary: Reference learning shell prepares ten, opens eleven, closes to ten and uses sleep-to-twenty
+            plus waking return where preserved; runtime OCF requirements remain separate and unknown.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
+            end_line: 196
+            file: +Transcripts From available tapes/Tune-Up/Tune-Up.txt
+            source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Source-designated
+            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact
+            timing or original underlay; unspecified cancellation remains unknown.
+      source_extent:
+        content_group_sha256: e7dd4cc1501e55021fc9956b92bfc666e53c9f1cb0c61c5bc052688aa1a7f1c0
+        end_line: 196
+        file: +Transcripts From available tapes/Tune-Up/Tune-Up.txt
+        source_sha256: 1ad524e718e8a18952c533321d45ecb98e6745d27c5b45fbb67a51ab93430ff1
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-BOD-013:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-BOD-013:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-BOD-013:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-BOD-013:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-BOD-013:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-BOD-013:main
+        operations:
+        - choose-body-region
+        - close-eyes-inhale-and-hold
+        - direct-inner-attention-to-region
+        - issue-balance-heal-cue
+        - exhale-and-open-eyes
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-BOD-013:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-BOD-013:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-BOD-013:rehearsal
+        operations: []
+        status: not-present
+      safety_claims:
+        evidence_refs:
+        - review:OCF-BOD-013:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-BOD-013:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Source-designated derivative is unauthenticated. Count/repetition/ambient artifacts do not establish
+      exact timing or original underlay; unspecified cancellation remains unknown.
+    - Body awareness can be investigated, but diagnosis/healing/regeneration is not established; reframing
+      would materially change the claim and requires review.
+    states:
+      preferred: []
+      required: []
+      status: unknown

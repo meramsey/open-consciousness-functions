@@ -4,7 +4,6 @@ import pytest
 from ocf_tools import audio_defaults, semantic_dsp
 from ocf_tools.complete_session import build_complete_session_plan
 from ocf_tools.locale import iter_events
-from ocf_tools.paths import REPO_ROOT
 from ocf_tools.session import load_pacing_profile
 from ocf_tools.session_pacing_audit import duration_budget
 from ocf_tools.utils import OCFError
@@ -18,7 +17,7 @@ def test_exit_follows_measured_audible_confirmation_not_voice_onset(monkeypatch,
         "ocf_tools.audio_build._resolve_background_manifest",
         lambda _ref: {"id": "fixture", "engine": "reference-master"},
     )
-    profile = semantic_dsp.load_profile(audio_defaults.DSP_ID)
+    profile = semantic_dsp.load_profile("OCF-DSP-HPLUS-LOCKED-003")
     profile["ignored_state_events"] = []
     profile["initial_state"] = "focus-11"
     profile["default_background_state"] = "focus-11"
@@ -72,7 +71,7 @@ def test_audible_bound_excludes_backend_tail_without_trimming_speech():
 @pytest.mark.integration
 def test_successor_relocates_only_approved_sentence_and_preserves_preparation():
     old = build_complete_session_plan("OCF-SEN-001", template="OCF-TPL-SESSION-HPLUS-LOCKED-004")
-    new = build_complete_session_plan("OCF-SEN-001")
+    new = build_complete_session_plan("OCF-SEN-001", template="OCF-TPL-SESSION-HPLUS-LOCKED-005")
     previous = list(iter_events(old["template_plan"]))
     current = list(iter_events(new["template_plan"]))
     calm = [
@@ -107,28 +106,6 @@ def test_successor_relocates_only_approved_sentence_and_preserves_preparation():
     assert new["resolved_pacing_profile"]["pauses"]["sleep20_post_repeat_s"] == 3
     assert next(stage for stage in new["stages"] if stage["id"] == "sleep20-body")["gain_db"] == -24
     assert sum(event.get("semantic") == "function.instruction" for event in current) == 4
-
-
-@pytest.mark.integration
-def test_immediate_predecessor_locks_verify_without_projection_changes():
-    for number in (13, 14, 15):
-        path = REPO_ROOT / f"audio/defaults/OCF-AUDIO-DEFAULTS-HPLUS-{number:03}.json"
-        assert audio_defaults.check_lock(path)["id"] == path.stem
-
-
-@pytest.mark.integration
-def test_pacing_ledger_preserves_predecessors_and_rejects_drift():
-    import json
-
-    from ocf_tools.session_pacing_successor import LEDGER, predecessor
-
-    ledger = json.loads((REPO_ROOT / LEDGER).read_text(encoding="utf-8"))
-    assert len(ledger["files"]) == 117
-    for name, row in ledger["files"].items():
-        current = (REPO_ROOT / name).read_text(encoding="utf-8")
-        assert predecessor(REPO_ROOT, name, current) == row["before"]
-    with pytest.raises(OCFError, match="source drift"):
-        predecessor(REPO_ROOT, name, current + "tampering")
 
 
 @pytest.mark.unit

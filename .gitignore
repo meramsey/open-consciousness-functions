@@ -38,6 +38,12 @@ audio/background/rendered/*
 audio/rendered/*
 !audio/rendered/.gitkeep
 
+# Durable operator-owned OCF voice packs. Never managed by workspace clean.
+# Keep only the usage guide tracked; private archives/assets/profiles stay local.
+/audio/voices/private-packs/*
+!/audio/voices/private-packs/README.md
+!/audio/voices/private-packs/.gitkeep
+
 # Final release packages are generated deliverables, not canonical source data.
 /releases/
 

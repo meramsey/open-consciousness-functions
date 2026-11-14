@@ -1,0 +1,13 @@
+evidence_notes:
+- 'Learning-only reviewed practice: four Ten rests of 60 seconds and three Eleven rests of 90 seconds
+  = 510 seconds. No routine 40-second hold is added. No function-body repetitions or sleep excursion are
+  composed.'
+extends: OCF-PACING-HPLUS-LOCKED-007
+id: OCF-PACING-PREP-LEARN-002
+pauses:
+  focus10_initial_hold_s: 0
+  focus11_ready_s: 90
+  learning_ten_hold_s: 60
+schema_version: '1.0'
+status: approved_for_internal_composition
+version: 2.0.0

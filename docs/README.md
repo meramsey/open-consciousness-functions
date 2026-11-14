@@ -3,8 +3,11 @@
 Start with [the project README](../README.md). Pick one workflow rather than
 loading the entire documentation tree:
 
+- Start as a listener or create your first session: [quickstart](QUICKSTART.md).
+- Make a private reference-based voice: [voice pack walkthrough](VOICE_PACKS.md).
 - Author a function: [lifecycle](FUNCTION_LIFECYCLE.md), then
-  [source-first narration](SOURCE_FIRST_AUTHORING.md).
+  [source-first narration](SOURCE_FIRST_AUTHORING.md), within the
+  [per-locale function authority](PER_LOCALE_FUNCTION_AUTHORITY.md) model.
 - Review current titles/cues and historical lookup: [implemented decisions](EDITORIAL_REVIEW.md).
 - Review new original drafts and the Manifest successor: [editorial candidates](EDITORIAL_CANDIDATES.md).
 - Inspect the implemented four-function approval: [batch successor](EDITORIAL_BATCH_APPROVAL.md).
@@ -12,12 +15,16 @@ loading the entire documentation tree:
 - Review functional purpose, persistence and triggers: [functional metadata](FUNCTIONAL_METADATA.md).
 - Author symbolic narration and preview resolved speech: [strict cue references](SYMBOLIC_CUES.md).
 - Translate: [localization](LOCALIZATION.md) and [locale packs](../locales/README.md).
+- Migrate localized metadata: [staged authority migration](LOCALIZED_AUTHORITY.md).
 - Plan and audition: [bulk sessions](BULK_SESSIONS.md), then
   [audio pipeline](AUDIO_PIPELINE.md).
 - Build private reference-V4 listening editions: [private workflow](PRIVATE_REFERENCE_V4.md).
 - Choose a voice: [community voices](COMMUNITY_VOICES.md).
+- Deliver private completed sessions: [private listening delivery](PRIVATE_LISTENING_DELIVERY.md).
 - Read the [general listening guide](LISTENING_GUIDE.md) and generate
   [function-specific Markdown/PDF/HTML guides](FUNCTION_GUIDES.md).
+- Build the reviewed, narration-free documentation projection for the public
+  audio website: [public website export](PUBLIC_WEBSITE_EXPORT.md).
 - Import/record/compare private voices: [voice workflows](VOICE_WORKFLOWS.md).
 - Use existing audio as speech: [recorded narration](RECORDED_NARRATION.md),
   including complete marked stems; mix sources with [hybrid narration](HYBRID_NARRATION.md).
@@ -27,9 +34,14 @@ loading the entire documentation tree:
   The supplied Cosmic Path 0.3.0 kit has an offline comparison gallery and
   SHA-256 import verification; it remains a human-review candidate.
 - Configure intentional session variants: [override precedence](SESSION_OVERRIDES.md).
+- Keep authorized production running independently of chat sessions:
+  [continuous production supervision](PRODUCTION_SUPERVISION.md).
+- Scope versioned spoken resources and explicit optional affirmations:
+  [narration revisions](NARRATION_REVISIONS.md).
 - Understand state audio: [semantic DSP](SEMANTIC_DSP.md) and
   [background audio](../audio/background/README.md).
 - Package: [verified releases](AUDIO_PIPELINE.md#final-release-packages).
+- Prepare existing lossless deliveries for public review: [public audio export](PUBLIC_AUDIO_EXPORT.md).
 - Develop: [agent guide](AGENT_DEVELOPMENT.md), [testing](TEST_COVERAGE.md),
   [contributing](../CONTRIBUTING.md).
 - Automate: [local MCP and jobs](MCP.md), with the CLI as the fallback.

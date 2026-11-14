@@ -185,6 +185,9 @@ def _build_parser() -> argparse.ArgumentParser:
     cover_cmd.add_argument(
         "--no-description", action="store_true", help="omit optional localized artwork copy"
     )
+    cover_cmd.add_argument(
+        "--lyrics", action="store_true", help="embed compatible measured artwork lyrics"
+    )
     cover_cmd.add_argument("--output", type=Path)
     dev = sub.add_parser(
         "dev",
@@ -225,6 +228,10 @@ def _build_parser() -> argparse.ArgumentParser:
     function_list.add_argument(
         "--rich", action="store_true", help="include separate content/evidence/runtime capabilities"
     )
+    function_list.add_argument("--tag", help="exact localized discovery tag (includes draft tags)")
+    function_list.add_argument(
+        "--search", help="search localized titles, descriptions, tags and uses"
+    )
     function_describe = function_sub.add_parser(
         "describe", help="describe a canonical function ID or slug"
     )
@@ -254,6 +261,11 @@ def _build_parser() -> argparse.ArgumentParser:
 
     commands = sub.add_parser("commands", help="localized command documentation and export")
     command_sub = commands.add_subparsers(dest="command_kind", required=True)
+    shared_states = command_sub.add_parser(
+        "shared-state",
+        help="reviewed shared state-intention cue references; not application commands",
+    )
+    shared_states.add_argument("--locale", default="en-US")
     command_list = command_sub.add_parser(
         "list", help="list primary function commands (use --all-roles for all)"
     )
@@ -399,6 +411,12 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     bulk_cmd.add_argument(
         "--dsp-profile", help="Explicit semantic DSP profile ID or local YAML path"
+    )
+    bulk_cmd.add_argument("--overrides", type=Path, help="explicit JSON session overrides")
+    bulk_cmd.add_argument(
+        "--mix-profile",
+        type=Path,
+        help="explicit YAML/JSON mix; {} disables automatic mix defaults",
     )
     bulk_cmd.add_argument("--dry-run", action="store_true")
     bulk_cmd.add_argument(
@@ -661,6 +679,22 @@ def _build_parser() -> argparse.ArgumentParser:
     release_cmd.add_argument(
         "--force", action="store_true", help="replace an existing release directory"
     )
+    export_cmd = audio_sub.add_parser(
+        "export-public", help="prepare a local public candidate from a verified retained delivery"
+    )
+    export_cmd.add_argument("manifest", type=Path)
+    export_cmd.add_argument("--expected-source-sha256", required=True)
+    export_cmd.add_argument("--public-voice-id", required=True)
+    export_cmd.add_argument("--public-voice-name", required=True)
+    export_cmd.add_argument("--source-commit", required=True)
+    export_cmd.add_argument("--source-version", required=True)
+    export_cmd.add_argument("--export-commit")
+    export_cmd.add_argument(
+        "--render-source", type=Path, help="explicit frozen-source provenance JSON"
+    )
+    export_cmd.add_argument("--output", required=True, type=Path, help="new final export directory")
+    export_cmd.add_argument("--reuse-existing-mp3", action="store_true")
+    export_cmd.add_argument("--dry-run", action="store_true")
     inspect_cmd = audio_sub.add_parser("inspect", help="show audio file metadata")
     inspect_cmd.add_argument("file", help="audio file")
     state_render = audio_sub.add_parser(
@@ -891,6 +925,12 @@ def _build_parser() -> argparse.ArgumentParser:
         help="enable an optional semantic stage feature (repeatable)",
     )
     compose_cmd.add_argument(
+        "--affirmation", choices=["none", "Gateway", "SyncCreation", "OCF", "custom"]
+    )
+    compose_cmd.add_argument(
+        "--custom-affirmation-locale", help="locale of explicit custom affirmation text"
+    )
+    compose_cmd.add_argument(
         "--function", help="function identity owning activation-command narration"
     )
     compose_cmd.add_argument(
@@ -906,6 +946,10 @@ def _build_parser() -> argparse.ArgumentParser:
     locale = sub.add_parser("locale", help="locale packs and localized narration")
     locale_sub = locale.add_subparsers(dest="locale_kind")
     locale_sub.add_parser("list", help="list locale packs, provenance, and coverage")
+    function_coverage = locale_sub.add_parser(
+        "functions", help="report complete/partial/missing/outdated function contracts"
+    )
+    function_coverage.add_argument("--locale", default="en-US")
     cov = locale_sub.add_parser(
         "coverage", help="report a locale's key coverage against the canonical pack"
     )
@@ -1185,6 +1229,19 @@ def cmd_locale_pseudo(args: argparse.Namespace) -> int:
         root = ensure_dir(Path(args.output))
         (root / "manifest.yaml").write_text(yaml_safe_dump(pack.manifest), encoding="utf-8")
         for filename in sorted({entry.file for entry in pack.entries.values() if entry.file}):
+            function_id = next(
+                (
+                    owner
+                    for owner, name in pack.localized_function_files.items()
+                    if name == filename
+                ),
+                None,
+            )
+            if function_id is not None:
+                (root / filename).write_text(
+                    yaml_safe_dump(pack.localized_functions[function_id]), encoding="utf-8"
+                )
+                continue
             by_domain: dict[str, dict[str, Any]] = {}
             for key, entry in sorted(pack.entries.items()):
                 if entry.file != filename:
@@ -1514,17 +1571,30 @@ def main(argv: list[str] | None = None) -> int:
 
             from .content import discover
             from .indexes import load_function_by_slug_or_id
+            from .locale import LocaleCatalog
+            from .localized_authority import registry_projection
+
+            catalog = LocaleCatalog()
 
             if args.function_kind == "list":
+                from .localized_authority import matches
+
                 data = [
-                    discover(record) if args.rich else record.data
+                    discover(record, catalog=catalog)
+                    if args.rich
+                    else registry_projection(record, catalog=catalog)
                     for record in load_all_functions()
+                    if matches(record, catalog=catalog, tag=args.tag, query=args.search)
                 ]
             else:
                 record = load_function_by_slug_or_id(args.id)
                 if record is None:
                     raise OCFError(f"unknown function {args.id}; use ocf functions list")
-                data = discover(record) if args.rich else record.data
+                data = (
+                    discover(record, catalog=catalog)
+                    if args.rich
+                    else registry_projection(record, catalog=catalog)
+                )
             if args.json:
                 print(
                     json.dumps(
@@ -1619,6 +1689,10 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "build-index":
             return cmd_build_index(args)
         if args.command == "commands":
+            if args.command_kind == "shared-state":
+                from .shared_state_cues import run_cli
+
+                return run_cli(args)
             from .command_docs import run_cli
 
             return run_cli(args)
@@ -1691,6 +1765,8 @@ def main(argv: list[str] | None = None) -> int:
                     fresh_synthesis=args.fresh_synthesis,
                     speech_cache_mode=args.speech_cache,
                     workers=args.workers,
+                    **({"overrides": read_json_object(args.overrides)} if args.overrides else {}),
+                    **({"mix_profile": args.mix_profile} if args.mix_profile else {}),
                 )
                 print(json.dumps(result, ensure_ascii=False, indent=2))
                 return 1 if result["failed"] else 0
@@ -1933,6 +2009,30 @@ def main(argv: list[str] | None = None) -> int:
                     **({"mix_profile": args.mix_profile} if args.mix_profile is not None else {}),
                 )
                 return 0
+            if args.audio_kind == "export-public":
+                import json
+
+                from .public_audio_export import export_delivery
+
+                result = export_delivery(
+                    args.manifest,
+                    expected_source_sha256=args.expected_source_sha256,
+                    public_voice_id=args.public_voice_id,
+                    public_voice_name=args.public_voice_name,
+                    source_commit=args.source_commit,
+                    source_version=args.source_version,
+                    export_commit=args.export_commit,
+                    render_source=(
+                        json.loads(args.render_source.read_text(encoding="utf-8"))
+                        if args.render_source
+                        else None
+                    ),
+                    output=args.output,
+                    reuse_existing_mp3=args.reuse_existing_mp3,
+                    dry_run=args.dry_run,
+                )
+                print(json.dumps(result, ensure_ascii=False, indent=2))
+                return 0
             if args.audio_kind == "release":
                 import json
 
@@ -2140,6 +2240,22 @@ def main(argv: list[str] | None = None) -> int:
             print(HELP_TEXT)
             return 0
         if args.command == "locale":
+            if args.locale_kind == "functions":
+                import json
+
+                from .locale import LocaleCatalog
+
+                print(
+                    json.dumps(
+                        {
+                            "locale": args.locale,
+                            "functions": LocaleCatalog().function_completeness(args.locale),
+                        },
+                        indent=2,
+                        ensure_ascii=False,
+                    )
+                )
+                return 0
             if args.locale_kind == "list" or args.locale_kind is None:
                 return cmd_locale_list()
             if args.locale_kind == "coverage":

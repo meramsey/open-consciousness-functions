@@ -65,7 +65,7 @@ def test_local_untracked_readme_image_cannot_pass_a_clean_checkout_guard(tmp_pat
     for name in ("lint", "validate", "generated-index-check", "test"):
         (workflows / (name + ".yml")).write_text("name: " + name, encoding="utf-8")
         badges.append(
-            f"![{name}](https://github.com/meramsey/open-consciousness-functions/actions/workflows/{name}.yml/badge.svg)"
+            f"![{name}](https://github.com/ocfproject-org/open-consciousness-functions/actions/workflows/{name}.yml/badge.svg)"
         )
     (tmp_path / "hero.png").write_bytes(b"locally present but untracked")
     (tmp_path / "README.md").write_text("![OCF](hero.png)\n" + "\n".join(badges), encoding="utf-8")
@@ -103,7 +103,8 @@ def test_function_theme_explicit_override_cache_and_existing_cover_preservation(
     assert artwork.generate_cover("OCF-SLP-005", resolution=320)["cache"] == "hit"
 
 
-def test_release_implementation_theme_and_custom_cover_precedence(monkeypatch, tmp_path):
+def test_release_implementation_theme_and_custom_cover_precedence(monkeypatch, release_tmp_path):
+    tmp_path = release_tmp_path
     pytest.importorskip("PIL")
     pytest.importorskip("fontTools")
     monkeypatch.setenv("OCF_WORK_DIR", str(tmp_path / "work"))

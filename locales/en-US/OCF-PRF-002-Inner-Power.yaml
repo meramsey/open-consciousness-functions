@@ -1,0 +1,959 @@
+schema_version: '2.0'
+locale: en-US
+domain: function
+function_id: OCF-PRF-002
+title:
+  text: Inner Power
+  status: canonical
+  version: 1.0.0
+description:
+  text: Strengthens recognition and expression of total-self strength, unity, resources, and power
+    throughout daily life.
+  status: canonical
+  version: 1.0.0
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-PRF-002-PRIMARY
+  display_cue:
+    text: PLUS-INNER POWER
+  spoken_cue:
+    text: Plus Inner Power
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      order: 1
+      visible: true
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      before_steps:
+      - id: select-quality
+        localization_key: command.procedure.select-purpose
+        operation: select-purpose
+      evidence_keys:
+      - hplus.function.ocf-prf-002.function-body
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+    relationships: {}
+  procedure_steps:
+  - id: select-quality
+    operation: select-purpose
+    instruction:
+      text: Choose the purpose for using this function.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-PRF-002-LEGACY-01
+  display_cue:
+    text: PLUS-EIGHT, GREAT
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      command_id: OCF-CMD-PRF-002-LEGACY-01
+      source: legacy-command
+    availability: historical-lookup
+    documentation:
+      order: 101
+      visible: false
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
+tags:
+- text: confidence
+  status: draft
+  semantic_id: confidence
+- text: inner-awareness
+  status: draft
+  semantic_id: inner-awareness
+- text: self-direction
+  status: draft
+  semantic_id: self-direction
+common_uses:
+- text: Reflecting on personal resources when facing a challenge.
+  status: draft
+- text: Practicing a calm sense of inner strength in daily life without assuming extraordinary abilities.
+  status: draft
+relationships:
+  related_functions:
+  - function_id: OCF-FND-005
+    description_key: relationships.rel-prf002-fnd005.description
+    description:
+      text: Compare ongoing recognition of inner resources with a deliberately invoked shift from
+        weariness toward renewed confidence.
+      status: reviewed
+      version: 1.0.0
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-prf-002.opener:
+    status: reviewed
+    version: 1.1.0
+    text: 'This OCF exercise will teach you to recognize
+
+      and express the greatness, strength, and power
+
+      of your total self in every part of your life.'
+  hplus.function.ocf-prf-002.function-body:
+    status: reviewed
+    version: 1.1.1
+    cue_template:
+      function_id: OCF-PRF-002
+      allowed:
+      - cue.primary
+    text: 'Beginning now, and from this moment forward,
+
+      you will recognize more fully the greatness
+
+      and power that are already within your total self.
+
+
+      Your conscious mind, subconscious mind,
+
+      higher self, and entire being are united
+
+      in the knowledge of your true inner strength.
+
+
+      This greatness is a natural part of who you are.
+
+      You will recognize it clearly, trust it completely,
+
+      and express it calmly in your daily life.
+
+
+      Whenever you encounter questions, challenges,
+
+      or important moments, your total self will respond
+
+      with wisdom, clarity, strength, and assurance.
+
+
+      You will think and act smoothly, quickly,
+
+      and effectively, drawing upon the full range
+
+      of your abilities without strain or hesitation.
+
+
+      You will meet life''s experiences with quiet happiness,
+
+      calm confidence, and the certainty that your
+
+      inner resources are available whenever needed.
+
+
+      Each day, your awareness of the strength,
+
+      knowledge, and capability of your total self
+
+      will become clearer and more complete.
+
+
+      This knowing is permanently established within you,
+
+      growing naturally through everything you experience.
+
+
+      Whenever you wish to bring this awareness
+
+      even more strongly into your life,
+
+      inhale deeply and gently hold your breath.
+
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+
+      Then exhale slowly through your mouth,
+
+      as though gently blowing out a candle.
+
+
+      Your awareness of your total self will immediately
+
+      become stronger, clearer, and more complete.
+
+      You will feel and express your natural inner power
+
+      with calmness, confidence, and ease.
+
+
+      The more you use {{ cue.primary }},
+
+      the easier and more effective this recognition
+
+      and expression of your total self will become.'
+  hplus.function.ocf-prf-002.closer:
+    status: reviewed
+    version: 1.1.1
+    cue_template:
+      function_id: OCF-PRF-002
+      allowed:
+      - cue.primary
+    text: 'Remember, whenever you wish to strengthen
+
+      your awareness and expression of your total self,
+
+      inhale deeply and hold your breath.
+
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+
+      Then exhale slowly through your mouth,
+
+      as though gently blowing out a candle.
+
+
+      This concludes your OCF Inner Power exercise.'
+slug: eight-great
+classification:
+  primary_domain: performance
+  secondary_domains:
+  - body
+category_labels:
+  performance:
+    text: performance
+    status: canonical
+  body:
+    text: body
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-prf-002.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-prf-002.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-prf-002.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-PRF-002
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: b36e90f7f0f7410f8b46bf0bdb8174033a3b4d9eed3546d63db6e523b51f71d0
+    classification: RENAME TITLE/CUE — UPDATE TEACHING
+    recommended_title: Inner Power
+    recommended_primary_cue: PLUS-INNER POWER
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Ongoing total-self greatness/power, conscious/subconscious/higher-self unity,
+      wisdom and expression throughout life. OPTIONAL inhale/hold/cue/candle-like reinforcement. Inner
+      Power retains this scope better than task competence or momentary physical force.
+    pair_reason: Names total-self power, unity and expression throughout life; distinguishes ongoing
+      development from Strong-Quick's exceptional temporary physical response.
+    title_cue_relationship_or_exception: Names total-self power, unity and expression throughout life;
+      distinguishes ongoing development from Strong-Quick's exceptional temporary physical response.
+    teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
+    documentary_intent: Claimed recognition of total inner capability/strength for life problems and
+      activity.
+    alternatives:
+    - title: Inner Capability
+      cue: PLUS-CAPABLE
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: aa338494888eff346ca84c60ae880f31c6a72b96014fc925f3a7abd0587b26b9
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-PRF-002-LEGACY-01
+    command_status: proposed
+    commands:
+    - PLUS-EIGHT, GREAT
+    name: EIGHT-GREAT
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    command_ids: []
+    commands: []
+    names:
+    - Eight-Great
+  compatibility:
+    rationale: Former primary vocabulary is discovery-only under OCF-EDITORIAL-TITLE-CUES-001; secondary
+      operational commands remain unchanged.
+    state: historical-lookup
+  historical_lookup:
+  - decision: OCF-EDITORIAL-TITLE-CUES-001
+    kind: former-title
+    text: Eight-Great
+  - command_id: OCF-CMD-PRF-002-PRIMARY
+    decision: OCF-EDITORIAL-TITLE-CUES-001
+    kind: former-primary
+    text: PLUS-STRONG
+  - command_id: OCF-CMD-PRF-002-PRIMARY
+    decision: OCF-EDITORIAL-TITLE-CUES-001
+    kind: former-teaching
+    text: Plus Eight Great
+  status:
+    evidence: community-hypothesis
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    purpose_key: functions.ocf-prf-002.purpose
+    short_description_key: functions.ocf-prf-002.short-description
+    title_key: functions.ocf-prf-002.title
+  commands:
+  - id: OCF-CMD-PRF-002-PRIMARY
+    localization:
+      display_cue_key: commands.ocf-cmd-prf-002-primary.display-cue
+      explanation_key: commands.ocf-cmd-prf-002-primary.explanation
+      label_key: commands.ocf-cmd-prf-002-primary.label
+      purpose_key: functions.ocf-prf-002.purpose
+      spoken_cue_key: commands.ocf-cmd-prf-002-primary.spoken-cue
+      usage_key: commands.ocf-cmd-prf-002-primary.usage
+    observed_phrase:
+      narration_key: hplus.function.ocf-prf-002.function-body
+      relationship: canonical-match
+      text: Plus Inner Power
+  - id: OCF-CMD-PRF-002-LEGACY-01
+    localization:
+      explanation_key: commands.ocf-cmd-prf-002-legacy-01.explanation
+      label_key: commands.ocf-cmd-prf-002-legacy-01.label
+      purpose_key: functions.ocf-prf-002.purpose
+      usage_key: commands.ocf-cmd-prf-002-legacy-01.usage
+  predecessor_resource_sha256: 4cfe5b2000451582f67e7a3b5375c22b3145e81da892a3ce14dcec029c7678d4
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-001
+    kind: approved-title-cue
+    source_commit: 21e63ac6f8bf5a7bce9506f033330df967aa4f97
+    scope: English primary cue, finalized title where supplied, exact teaching substitutions and necessary
+      presentation summaries; procedures/mechanisms/secondary controls unchanged.
+    decision_source: Explicit user approval in the approved English title-cue migration task
+    source_row_sha256: e8633356d526bd307741821de03d6b12e67f6b6fff35e0b4212d87350494028c
+    status: accepted
+    previous_values_sha256: ddb011c68f264eaae4110941e192af51581fc387633cc9787e3044df8bb279d0
+    current_values_sha256: 24031da2c2a07903291766b8693b3df4f0ddbb9f2e12a443f45d8f82159a5d17
+    changed_narration_keys:
+    - hplus.function.ocf-prf-002.closer
+    - hplus.function.ocf-prf-002.function-body
+    previous_resolved_text_sha256:
+      hplus.function.ocf-prf-002.function-body: 17f429d2edcf48cc91b2ded2a7282c4ac381ee79167c7a115e26f6e9f7483a73
+      hplus.function.ocf-prf-002.closer: 332215b91a10a5e20ad4d46a352e27ba46ca647977103b69deb8cf12d54e1a4b
+    current_resolved_text_sha256:
+      hplus.function.ocf-prf-002.function-body: 9ddc7f135a7cc0e763bc356c6f1f05314452f2a414dbf1e246e03a4d627be407
+      hplus.function.ocf-prf-002.closer: 50ea2c64e0ed16ece928c5c15643bf9f2a4c04bfafe161dbfcadfb0a8e01b070
+    review_note: Retain total-self strength, unity, resources and expression; not only confidence
+      or temporary physical performance.
+  - id: REL-PRF002-FND005
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: 2c70b69ec64e13d4f1eff38cfb88bcfd8b64d65e761f71c80bf22784d3712d28
+    current_values_sha256: 9db77afe124667da81b26a3eb310418e3aaa72d346257a6e37de582c7e0b29e3
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-PRF-002", "sha256": "b5bcd3eb460963a8e14c23231c41f5ad7b43e97e8663f09fda3358e79470ebb1"},
+      {"field": "description", "function_id": "OCF-FND-005", "sha256": "f9cde5900e2d3cee6be500dea088f649423c46216824daa3a410fa32e9b5be5f"}]'
+    relationship_id: REL-PRF002-FND005
+    related_function_id: OCF-FND-005
+    relationship_type: related
+    dependency: optional
+    reciprocal_approved: false
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    - OCF-TPL-SESSION-HPLUS-LOCKED-006
+    - OCF-TPL-SESSION-HPLUS-LOCKED-007
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f:opener
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 63
+      - 215
+      scope: document
+      source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+    - category: main
+      confidence: low
+      id: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f:main
+      kind: structural-inference
+      line_candidates:
+      - 33
+      - 42
+      scope: document
+      source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+    - category: closer
+      confidence: low
+      id: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f:closer
+      kind: structural-inference
+      line_candidates:
+      - 54
+      - 215
+      scope: document
+      source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+    - category: preparation
+      confidence: low
+      id: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f:preparation
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 10
+      - 16
+      - 57
+      - 64
+      scope: document
+      source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+    - category: command_association
+      confidence: low
+      id: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f:command_association
+      kind: structural-inference
+      line_candidates:
+      - 44
+      - 52
+      - 212
+      scope: document
+      source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+    - category: future_use
+      confidence: low
+      id: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f:future_use
+      kind: structural-inference
+      line_candidates:
+      - 42
+      - 48
+      - 53
+      scope: document
+      source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+    - category: return
+      confidence: low
+      id: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f:return
+      kind: structural-inference
+      line_candidates:
+      - 66
+      - 178
+      - 179
+      - 197
+      - 208
+      scope: document
+      source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+    - category: purpose
+      confidence: medium
+      id: review:OCF-PRF-002:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 1
+      scope: document
+      source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+    - category: opener
+      confidence: medium
+      id: review:OCF-PRF-002:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 29
+      - 33
+      scope: document
+      source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+    - category: main
+      confidence: medium
+      id: review:OCF-PRF-002:main
+      kind: function-specification-inference
+      line_candidates:
+      - 33
+      - 49
+      scope: document
+      source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+    - category: association
+      confidence: medium
+      id: review:OCF-PRF-002:association
+      kind: function-specification-inference
+      line_candidates:
+      - 42
+      - 49
+      scope: document
+      source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-PRF-002:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 33
+      - 53
+      scope: document
+      source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+    - category: future_use
+      confidence: medium
+      id: review:OCF-PRF-002:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 42
+      - 53
+      scope: document
+      source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-PRF-002:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 217
+      scope: document
+      source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+    - category: closer
+      confidence: medium
+      id: review:OCF-PRF-002:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 50
+      - 64
+      scope: document
+      source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-PRF-002:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 65
+      - 177
+      scope: document
+      source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+    - category: handoff
+      confidence: medium
+      id: review:OCF-PRF-002:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 178
+      - 217
+      scope: document
+      source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-PRF-002:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 33
+      - 49
+      scope: document
+      source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
+      path: +Transcripts From available tapes/Eight-Great/Eight-Great.lrc
+      related_sha256:
+      - 2a28498bfc332ec1eb83164795be43324bdc4fa02596ef7d019bcce4b24a48de
+      - 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+      sha256: cdf2d2b43c4ad16b5212fa77083d4808a639061419d84a24a7c6c19f801428ea
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Eight-Great/Eight-Great.ocr.pdf
+      related_sha256: []
+      sha256: defa97c8964de539965d3ab973114d7fa2da57542ceca5e975707fee3b740986
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
+      path: +Transcripts From available tapes/Eight-Great/Eight-Great.srt
+      related_sha256:
+      - 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+      - cdf2d2b43c4ad16b5212fa77083d4808a639061419d84a24a7c6c19f801428ea
+      sha256: 2a28498bfc332ec1eb83164795be43324bdc4fa02596ef7d019bcce4b24a48de
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
+      path: +Transcripts From available tapes/Eight-Great/Eight-Great.txt
+      related_sha256:
+      - 2a28498bfc332ec1eb83164795be43324bdc4fa02596ef7d019bcce4b24a48de
+      - cdf2d2b43c4ad16b5212fa77083d4808a639061419d84a24a7c6c19f801428ea
+      sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Eight-Great/folder.jpg
+      related_sha256: []
+      sha256: f75d6a65f728de08acf24770e8e9423de8e61617e44fa36dc6368aa8a0bb4852
+  specifications:
+    analysis_review:
+      claim_categories:
+      - persistent-inner-capability-growth
+      - guaranteed-correct-performance
+      - automatic-whole-system-learning
+      family: inner-capability-intensification
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
+            end_line: 49
+            file: +Transcripts From available tapes/Eight-Great/Eight-Great.txt
+            source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+            start_line: 42
+          status: supported
+          summary: Deliberate legacy cue paired with selected goal and breathing; canonical variants/aliases
+            are separate identity metadata, not silently changed source speech.
+        closer:
+          locators:
+          - content_group_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
+            end_line: 64
+            file: +Transcripts From available tapes/Eight-Great/Eight-Great.txt
+            source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+            start_line: 50
+          status: supported
+          summary: Future-use reinforcement and learning-context closure to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
+            end_line: 177
+            file: +Transcripts From available tapes/Eight-Great/Eight-Great.txt
+            source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+            start_line: 65
+          status: supported
+          summary: Sleep-to-twenty shell present; repeated ASR numbers do not establish reinforcement
+            or measured timing.
+        conversion:
+          locators:
+          - content_group_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
+            end_line: 49
+            file: +Transcripts From available tapes/Eight-Great/Eight-Great.txt
+            source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+            start_line: 33
+          status: inferred
+          summary: Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath
+            holding and automatic whole-system learning need review. Reframing a physical/metaphysical
+            goal is a material choice, not assumed equivalence.
+        future_use:
+          locators:
+          - content_group_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
+            end_line: 53
+            file: +Transcripts From available tapes/Eight-Great/Eight-Great.txt
+            source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+            start_line: 42
+          status: supported
+          summary: Optional cue intensifies an asserted ongoing capability improvement; no task-specific
+            rehearsal or cancellation established.
+        handoff:
+          locators:
+          - content_group_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
+            end_line: 217
+            file: +Transcripts From available tapes/Eight-Great/Eight-Great.txt
+            source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+            start_line: 178
+          status: supported
+          summary: Waking countdown, eyes-open return and target reminder where preserved.
+        identity:
+          locators:
+          - content_group_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
+            end_line: 49
+            file: +Transcripts From available tapes/Eight-Great/Eight-Great.txt
+            source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+            start_line: 42
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
+            end_line: 49
+            file: +Transcripts From available tapes/Eight-Great/Eight-Great.txt
+            source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+            start_line: 33
+          status: supported
+          summary: associate-self-with-capability-and-calm-correct-performance; inhale-and-hold; issue-legacy-eight-great-cue;
+            exhale; intensify-claimed-inner-knowing
+        opener:
+          locators:
+          - content_group_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
+            end_line: 33
+            file: +Transcripts From available tapes/Eight-Great/Eight-Great.txt
+            source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+            start_line: 29
+          status: supported
+          summary: Orient to the function and establish receptive learning context before the target
+            instruction.
+        preparation:
+          locators:
+          - content_group_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
+            end_line: 28
+            file: +Transcripts From available tapes/Eight-Great/Eight-Great.txt
+            source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+            start_line: 2
+          status: supported
+          summary: Supported uninterrupted relaxation, temporary repository setting-aside and counted
+            ten-state entry where described.
+        provenance:
+          locators:
+          - content_group_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
+            end_line: 217
+            file: +Transcripts From available tapes/Eight-Great/Eight-Great.txt
+            source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
+            text is unauthenticated; corrupted counts/ambient material cannot establish original repetition,
+            timing or mechanism.
+        purpose:
+          locators:
+          - content_group_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
+            end_line: 1
+            file: +Transcripts From available tapes/Eight-Great/Eight-Great.txt
+            source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+            start_line: 1
+          status: supported
+          summary: Claimed recognition of total inner capability/strength for life problems and activity.
+        rehearsal:
+          locators:
+          - content_group_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
+            end_line: 53
+            file: +Transcripts From available tapes/Eight-Great/Eight-Great.txt
+            source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+            start_line: 33
+          status: not-present
+          summary: Repeated teaching does not prove an explicit listener performance trial; no distinct
+            intelligible trial established in the available text.
+        safety_claims:
+          locators:
+          - content_group_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
+            end_line: 49
+            file: +Transcripts From available tapes/Eight-Great/Eight-Great.txt
+            source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+            start_line: 33
+          status: supported
+          summary: persistent-inner-capability-growth; guaranteed-correct-performance; automatic-whole-system-learning.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
+            end_line: 33
+            file: +Transcripts From available tapes/Eight-Great/Eight-Great.txt
+            source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+            start_line: 29
+          status: supported
+          summary: Reference learning shell uses ten preparation, eleven opening, ten close and sleep-to-twenty/waking
+            return where preserved; not runtime OCF state requirements.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
+            end_line: 217
+            file: +Transcripts From available tapes/Eight-Great/Eight-Great.txt
+            source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Source-designated
+            text is unauthenticated; corrupted counts/ambient material cannot establish original repetition,
+            timing or mechanism.
+      source_extent:
+        content_group_sha256: 0d635055fab8d8d9d3492eb99e5278e5ca71e921a4674b82b2af9cf6a935cec2
+        end_line: 217
+        file: +Transcripts From available tapes/Eight-Great/Eight-Great.txt
+        source_sha256: 7ac620d57646f6f4e4c29193bc31ffc3ad17e6d70b4248de879c816fc8f1ba0f
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-PRF-002:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-PRF-002:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-PRF-002:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-PRF-002:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-PRF-002:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-PRF-002:main
+        operations:
+        - associate-self-with-capability-and-calm-correct-performance
+        - inhale-and-hold
+        - issue-legacy-eight-great-cue
+        - exhale
+        - intensify-claimed-inner-knowing
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-PRF-002:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-PRF-002:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-PRF-002:rehearsal
+        operations: []
+        status: not-present
+      safety_claims:
+        evidence_refs:
+        - review:OCF-PRF-002:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-PRF-002:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Source-designated text is unauthenticated; corrupted counts/ambient material cannot establish
+      original repetition, timing or mechanism.
+    - Preserve deliberate agency/selection where useful, but guaranteed outcomes, breath holding and
+      automatic whole-system learning need review. Reframing a physical/metaphysical goal is a material
+      choice, not assumed equivalence.
+    states:
+      preferred: []
+      required: []
+      status: unknown

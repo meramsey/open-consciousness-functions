@@ -225,6 +225,15 @@ def plan_program(doc: dict, event_timing: list[dict], duration: float, profile: 
                 for unit in timing[event["id"]].get("spoken_units", [])
                 if unit.get("text") == anchor["unit_text"]
             ]
+            occurrence = anchor.get("unit_occurrence")
+            if occurrence is not None:
+                if (
+                    isinstance(occurrence, bool)
+                    or not isinstance(occurrence, int)
+                    or not 1 <= occurrence <= len(units)
+                ):
+                    raise OCFError("reviewed closure unit occurrence is missing or invalid")
+                units = [units[occurrence - 1]]
             if len(units) != 1 or units[0].get("audible_end_seconds") is None:
                 raise OCFError(
                     "closure end anchor requires one measured audible speech unit; missing/ambiguous confirmation"

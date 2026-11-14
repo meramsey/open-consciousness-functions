@@ -13,7 +13,7 @@ PYTHONPATH=scripts python -m ocf_tools.listening_guides --output .ocf-work/guide
 ```
 
 The default produces `listening-guide.md` / `.pdf` / `.html`, the same three
-index formats, and one Markdown/PDF/HTML set per registry function in `functions/`
+index formats, and one Markdown/PDF/HTML set per canonical locale function in `functions/`
 (currently 58 functions, 180 files total).
 `--markdown-only` needs no ReportLab installation. Relative outputs resolve from
 the repository root. Existing target files are never overwritten: use a new
@@ -39,10 +39,18 @@ Historical lookup wording and retained compatibility aliases are separated from
 primary/secondary controls. Source plans are not represented as released recordings.
 
 The documentation-only approval `OCF-GUIDE-REVIEW-001` records the six directional
-optional companion links and final batch confirmation. Canonical `companions`
-must agree with that approval before links are published. The guide generator
+optional companion links and final batch confirmation. The canonical `relationships.related_functions` entries and embedded approval
+records in each function's locale YAML must agree before reviewed links are
+published. `companions` is a derived compatibility projection, not another
+editable source. The guide generator
 resolves descriptions through locale keys; neither a similar name nor a matching
-topic is approval. No cue, procedure operation/order, lifecycle, narration or DSP
+topic is approval. Tags and common uses are also read from each function YAML;
+editorial status remains in source metadata rather than appearing beside every
+listener-facing tag or use. The owner approved adoption of the 27 existing optional
+relationship-map suggestions on 2026-11-10. Their descriptions remain verbatim,
+with directional approval records embedded in the owning canonical resources.
+Together with the six earlier links, 33 optional relationships are now projected
+into the relationship and complementary maps. No reciprocal links are inferred. No cue, procedure operation/order, lifecycle, narration or DSP
 change is authorized by this documentation batch. Immutable predecessors remain
 verifiable through the checked metadata-only successor.
 
@@ -113,13 +121,14 @@ to formal releases. Do not upload private bundles, source recordings or lyrics.
 ## Guide completeness and approved relationships
 
 All 58 current guides derive titles and primary/secondary cues from current
-registry/locale data. Current en-US titles match canonical titles. They expose
+canonical locale data. Current en-US titles match canonical titles. They expose
 review states, purpose, precautions, persistence and availability as metadata,
 not promises. Searchable PDF text, bookmarks and links do not establish PDF/UA
 compliance, visual clipping clearance or screen-reader usability.
 
 All 73 operational primary/secondary commands have documented procedures. The
-58 listener guides show those steps and the existing command explanations; 14
+58 function guides show the 72 function controls; preparation-only Access Close
+and its closure narration belong in Preparation Learning. They show the relevant steps and the existing command explanations; 14
 functions have additional scoped lifecycle metadata. Intuition's quiet-moment
 and discernment steps use specific approved instructions rather than generic
 `other` placeholders. Optional artwork copy is not required to show the existing
@@ -133,11 +142,11 @@ reset conditions. Injury/Toxic Exposure metadata is not emergency detection or
 treatment. Focus is a function, not a Focus 10/11 stage. Manifest, Dissolve and
 Intuition remain independent.
 
-The six proposals first recorded at checkpoint `2b26883` received six explicit
-approvals followed by final batch confirmation. Their exact approved explanations
-and responses are retained in
-[the documentation successor](../function-content/editorial/guide-review-001.json).
-All are **optional and directional**. No reciprocal link, required sequence,
+The six original optional relationship decisions below remain represented in
+the owning canonical locale resources, with hash-only approval provenance in
+`record_metadata.editorial_decisions`. Their explanations are rendered from the
+same canonical resources as the functions. All links are **optional and
+directional**. No reciprocal link, required sequence,
 proven synergy, clinical benefit or listening/release approval is implied.
 
 - Source `OCF-EXP-001` Manifest → related `OCF-EXP-003` Dissolve;
@@ -232,3 +241,42 @@ folders. For Plexamp, use a private server/library under your control.
 
 Actual UI result: **awaiting user verification** for all five players. Do not
 change narration, reencode audio or upload private text to diagnose player issues.
+
+## Listener layout and historical lookup
+
+The `listener-focused-3` layout contains all 174 function-specific narration
+resources. The additional preparation Access Close resource remains canonical
+and remains in audio/transcripts, but is omitted from individual function guides.
+PDF extraction validates this explicit inventory, including section boundaries;
+older guide layouts retain their original verification rules.
+
+The cue reference contains current function controls. Historical H-Plus names,
+inactive commands and compatibility aliases appear only on the dedicated
+`historical-lookup` page. They remain preserved in canonical data. The portable
+collection includes Markdown, HTML and PDF versions of that lookup page.
+
+The metadata-only `OCF-AUDIO-DEFAULTS-HPLUS-020` successor locks the newly
+approved relationship resources while retaining the predecessor dependency set
+and identical template, pacing and DSP profiles. Earlier locks are untouched.
+
+The hash-only `function-content/editorial/guide-relationships-002.json` receipt
+binds the 27 approved additions to the original semantic, catalog and shared-session
+baselines. Validation accepts only the recorded structural-contract successors;
+narration, commands, lifecycle and presentation retain their original hashes.
+The predecessor files are preserved. Existing locale-entry snapshots remain exact,
+with only the 27 specifically approved description keys added.
+
+## Readable guide filenames
+
+Per-function Markdown, HTML and PDF filenames use the canonical localized title:
+`OCF-AUT-001 - Automatic-Action.md` (and `.html` / `.pdf`). Voice and audio
+edition are omitted because these are shared function guides. Bundle edition
+and source hashes remain in the build manifest and document metadata. The
+manifest pins each function ID to its filename; old ID-only bundles remain
+verifiable without recalculating names from today's titles.
+
+All directory, relationship, companion and download links use relative,
+percent-encoded paths. Handbook anchors retain stable function IDs. The same
+files work offline or under a static hosting subdirectory, including GitHub
+Pages; this repository does not currently configure a Pages deployment.
+Listener packages and release guide attachments use the same naming helper.

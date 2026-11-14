@@ -74,3 +74,80 @@ def test_group_disambiguates_collisions_in_any_extension():
     for invalid in ([], ["exe"]):
         with pytest.raises(OCFError, match="artifact group"):
             namer.filenames("OCF-BOD-010", "Nutricia", "en-US", invalid)
+
+
+@pytest.mark.unit
+def test_listener_names_include_title_voice_version_and_preparation_sorting():
+    from ocf_tools.artifact_names import listener_export_names
+
+    result = listener_export_names(
+        "OCF-AUT-001",
+        "Automatic Action",
+        "en-US",
+        ["flac", "mp3"],
+        voice_label="Example — Original Voice",
+        version="1.0.0",
+    )
+    assert (
+        result["files"]["flac"]
+        == "OCF-AUT-001 - Automatic-Action - en-US - Example-—-Original-Voice - v1.0.0.flac"
+    )
+    prep = listener_export_names(
+        None,
+        "Preparation Learning",
+        "en-US",
+        ["mp3"],
+        voice_label="Example",
+        version="0.1.0",
+        session_kind="preparation-learning",
+    )
+    assert prep["directory"].startswith("00 - Preparation-Learning")
+    assert prep["directory"] < result["directory"]
+    assert prep["session_kind"] == "preparation-learning" and prep["sort_order"] == 0
+    with pytest.raises(OCFError, match="must not have"):
+        listener_export_names(
+            "OCF-AUT-001",
+            "Preparation Learning",
+            "en-US",
+            ["mp3"],
+            voice_label="Example",
+            version="1.0.0",
+            session_kind="preparation-learning",
+        )
+
+
+@pytest.mark.unit
+def test_listener_names_keep_identity_suffixes_and_require_declared_labels():
+    from ocf_tools.artifact_names import listener_export_names
+
+    result = listener_export_names(
+        "OCF-AUT-001",
+        "Long title " * 50,
+        "en-US",
+        ["flac", "timing.json"],
+        voice_label="Narrator",
+        version="12.34.56",
+    )
+    assert result["files"]["flac"].endswith(" - en-US - Narrator - v12.34.56.flac")
+    assert all(len(name) <= 180 for name in result["files"].values())
+    for voice, version in [("", "1.0.0"), ("Narrator", "")]:
+        with pytest.raises(OCFError):
+            listener_export_names(
+                "OCF-AUT-001", "Title", "en-US", ["mp3"], voice_label=voice, version=version
+            )
+
+
+@pytest.mark.unit
+def test_listener_names_fit_unicode_filesystem_components_without_losing_suffixes():
+    from ocf_tools.artifact_names import listener_export_names
+
+    result = listener_export_names(
+        "OCF-AUT-001",
+        "学習" * 80,
+        "en-US",
+        ["flac", "timing.json"],
+        voice_label="Narrator",
+        version="1.0.0",
+    )
+    assert all(len(name.encode("utf-8")) <= 240 for name in result["files"].values())
+    assert result["files"]["flac"].endswith(" - Narrator - v1.0.0.flac")

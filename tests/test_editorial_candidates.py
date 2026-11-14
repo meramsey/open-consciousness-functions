@@ -1,13 +1,9 @@
 """Repository integration: exact drafts, separate review, strict production gates."""
 
-import hashlib
-import json
-from copy import deepcopy
-
 import pytest
 from ocf_tools.commands import resolve_procedure, validate_command_collection
-from ocf_tools.editorial_candidates import CANDIDATES, DIRECTORY, LEDGER, review
-from ocf_tools.indexes import load_all_functions, load_yaml_file
+from ocf_tools.editorial_candidates import CANDIDATES, review, verify_approvals
+from ocf_tools.indexes import load_all_functions, load_function_by_id
 from ocf_tools.locale import LocaleCatalog, iter_events
 from ocf_tools.narration_first import plan_narration
 from ocf_tools.paths import REPO_ROOT
@@ -19,31 +15,42 @@ pytestmark = pytest.mark.integration
 
 @pytest.mark.parametrize("name", CANDIDATES)
 def test_candidate_preview_preserves_status_text_and_four_passes(name):
-    before = (REPO_ROOT / "locales/en-US/hplus-OCF-EXP-001.yaml").read_bytes()
+    catalog = LocaleCatalog()
+    active = (
+        REPO_ROOT
+        / "locales/en-US"
+        / catalog.require("en-US").localized_function_files["OCF-EXP-001"]
+    )
+    before = active.read_bytes()
     result = review(name)
-    assert result["editorial_status"] == "approved"
-    assert result["snapshot_status"] == "draft"
+    assert result["editorial_status"] == "approved and implemented"
+    assert result["snapshot_status"] == "canonical"
     assert result["production_authorized"] is True
     assert result["release_ready"] is False
     assert [row["repetitions"] for row in result["entries"]] == [1, 4, 1]
     events = list(iter_events(result["semantic_plan"]))
     assert len([row for row in events if row.get("slot_ref") == "function_body"]) == 4
     assert all("{{" not in row["text"] for row in result["entries"])
-    assert before == (REPO_ROOT / "locales/en-US/hplus-OCF-EXP-001.yaml").read_bytes()
+    assert before == active.read_bytes()
     with pytest.raises(OCFError):
         review(name, locale="es")
 
 
-def test_supplied_snapshots_and_generated_resources_remain_exact():
-    ledger = json.loads((REPO_ROOT / LEDGER).read_text(encoding="utf-8"))
-    for name, checksum in ledger["snapshots"].items():
-        assert hashlib.sha256((DIRECTORY / name).read_bytes()).hexdigest() == checksum
-    for slug, identifier in (("dissolve", "OCF-EXP-003"), ("clear-zone", "OCF-EXP-005")):
-        original = load_yaml_file(DIRECTORY / f"{slug}.en-US.yaml")
-        approved = deepcopy(original)
-        for entry in approved["entries"].values():
-            entry["status"] = "reviewed"
-        assert load_yaml_file(REPO_ROOT / f"locales/en-US/original-{identifier}.yaml") == approved
+def test_approval_provenance_and_resolved_text_hashes_live_with_canonical_resources():
+    assert verify_approvals() == []
+    catalog = LocaleCatalog()
+    for slug, identifier in CANDIDATES.items():
+        owner = load_function_by_id(identifier)
+        assert owner is not None
+        resource = catalog.require("en-US").localized_functions[identifier]
+        approval = resource["record_metadata"]["editorial_approval"]
+        preview = review(slug)
+        assert preview["authority"] == preview["narration_authority"]
+        assert approval["approval_id"] == "OCF-APPROVED-CANDIDATES-001"
+        assert approval["decision"] == "approve_full_draft"
+        actual = {row["key"]: row["resolved_text_sha256"] for row in preview["entries"]}
+        assert actual == approval["resolved_text_sha256"]
+        assert approval["release_ready"] is approval["listening_approval"] is False
     assert [row["version"] for row in review("manifest-v2")["entries"]] == [
         "1.2.0",
         "2.0.0",
@@ -100,7 +107,7 @@ def test_distinct_clear_zone_ids_and_exact_procedure():
     }
 
 
-def test_dissolve_procedure_and_intuition_staging():
+def test_dissolve_procedure_and_intuition_canonical_registration():
     owner = next(row for row in load_all_functions() if row.id == "OCF-EXP-003")
     assert [step["operation"] for step in resolve_procedure(owner.command_records[0], {})] == [
         "select-intention",
@@ -111,8 +118,15 @@ def test_dissolve_procedure_and_intuition_staging():
     ]
     assert next_function_id("experimental") == "OCF-EXP-007"
     assert "OCF-EXP-006" in {row.id for row in load_all_functions()}
-    candidate = load_yaml_file(DIRECTORY / "intuition.function.yaml")
-    assert candidate["commands"][0]["procedure"]["status"] == "unresolved"
+    intuition = load_function_by_id("OCF-EXP-006")
+    assert intuition is not None
+    approval = (
+        LocaleCatalog()
+        .require("en-US")
+        .localized_functions["OCF-EXP-006"]["record_metadata"]["editorial_approval"]
+    )
+    assert approval["decision"] == "approve_full_draft"
+    assert intuition.canonical_name == "Intuition"
     assert review("intuition")["entries"][0]["text"] == (
         "This OCF exercise will strengthen your intuitive awareness, bringing the wisdom of your heart, subconscious mind, and higher self into clear understanding and purposeful action."
     )

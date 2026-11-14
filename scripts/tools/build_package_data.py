@@ -11,12 +11,11 @@ from setuptools.command.build_py import build_py
 DIRECTORIES = (
     "brand",
     "schemas",
-    "functions",
-    "function-content",
     "locales",
     "templates",
     "audio/templates/stages",
     "audio/templates/sessions",
+    "audio/templates/pacing",
     "audio/cues/profiles",
     "audio/voices/profiles",
     "audio/voices/registry",
@@ -66,21 +65,36 @@ def stage_data(root: Path, target: Path) -> dict:
                 continue
             relative = path.relative_to(root)
             # Reference-derived session wording remains citation-only, even if
-            # historically tracked. Attention's citation-only binding is omitted
-            # with that optional template; canonical function metadata is retained.
+            # historically tracked. Function-specific content is embedded in
+            # canonical locale function resources and is not separately staged.
             if (
                 directory == "audio/templates/sessions"
                 and yaml.safe_load(path.read_text(encoding="utf-8")).get("origin") != "original-ocf"
             ):
                 omitted.append(relative.as_posix())
                 continue
-            if relative.as_posix() == "function-content/bindings/OCF-FND-002.yaml":
-                omitted.append(relative.as_posix())
-                continue
             destination = target / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(path, destination)
             copied.append(relative.as_posix())
+    # Only explicit shared operational/state-cue records are runtime data;
+    # migration snapshots and historical function definitions stay in Git history.
+    metadata_files = (
+        "function-content/command-procedures.yaml",
+        "function-content/shared-state-cues.yaml",
+    )
+    for name in metadata_files:
+        source = root / name
+        if (
+            not source.is_file()
+            or source.is_symlink()
+            or not source.resolve().is_relative_to(root.resolve())
+        ):
+            continue
+        destination = target / name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source, destination)
+        copied.append(name)
     for name in ("audio/voices/recording-script.json",):
         path = root / name
         if (

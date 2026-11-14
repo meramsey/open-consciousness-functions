@@ -328,7 +328,11 @@ class TestLocaleCli:
         assert main(["locale", "pseudo", "--from", "en-US", "--output", str(root)]) == 0
         manifest = yaml.safe_load((root / "manifest.yaml").read_text(encoding="utf-8"))
         assert manifest["locale"] == "en-XA"
-        assert {r["domain"] for r in manifest["resources"]} == {"ui", "narration"}
+        assert {r["domain"] for r in manifest["resources"]} == {"ui", "narration", "function"}
+        migrated = yaml.safe_load((root / "OCF-EMO-003-Empathize.yaml").read_text(encoding="utf-8"))
+        assert migrated["domain"] == "function"
+        assert migrated["locale"] == "en-XA"
+        assert migrated["activation"]["spoken_cue"]["text"]
         narration = yaml.safe_load((root / "narration.yaml").read_text(encoding="utf-8"))
         assert narration["domain"] == "narration"
         assert any(

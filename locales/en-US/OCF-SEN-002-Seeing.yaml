@@ -1,0 +1,943 @@
+schema_version: '2.0'
+locale: en-US
+domain: function
+function_id: OCF-SEN-002
+title:
+  text: Seeing
+  status: canonical
+  version: 1.0.0
+description:
+  text: Supports physical seeing and inner visualization, including visual processing, visual memory,
+    and deliberate creation and manipulation of mental images.
+  status: canonical
+  version: 1.0.1
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-SEN-002-PRIMARY
+  display_cue:
+    text: PLUS-SEE BETTER
+  spoken_cue:
+    text: Plus See Better
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-sen-002.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-SEN-002-LEGACY-01
+  display_cue:
+    text: PLUS-SEE BETTER
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-SEN-002-LEGACY-01
+    documentation:
+      visible: true
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
+tags:
+- text: sensory-awareness
+  status: draft
+  semantic_id: sensory-awareness
+- text: visualization
+  status: draft
+  semantic_id: visualization
+- text: visual-memory
+  status: draft
+  semantic_id: visual-memory
+common_uses:
+- text: Exploring remembered or deliberately imagined visual detail in your own way.
+  status: draft
+- text: Practicing attention to seeing without treating imagery as vision correction or requiring
+    vivid mental pictures.
+  status: draft
+relationships:
+  related_functions: []
+  complementary_functions:
+  - function_id: OCF-SEN-001
+    description_key: relationships.rel-sen002-sen001.description
+    description:
+      text: Visual imagery and inner sound offer different optional modes of imaginative awareness;
+        vivid imagery is not required and sensory restoration is not claimed.
+      status: reviewed
+      version: 1.0.0
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-sen-002.opener:
+    status: reviewed
+    version: 1.2.0
+    text: 'This OCF exercise will strengthen your entire system
+
+      of seeing, bringing greater clarity to your physical sight
+
+      and to the images you create and perceive within your mind.'
+  hplus.function.ocf-sen-002.function-body:
+    status: reviewed
+    version: 1.2.0
+    cue_template:
+      function_id: OCF-SEN-002
+      allowed:
+      - cue.primary
+    text: 'From this moment forward, your entire system of seeing,
+
+      both physical and within your mind, will become
+
+      clearer, sharper, and more effective.
+
+
+      Your eyes will maintain comfortable, balanced moisture.
+
+      Your eyelids will blink smoothly, distributing
+
+      tear fluid evenly and protecting your eyes.
+
+
+      Your eyes will adapt naturally to changing light.
+
+      Their focusing structures will bring the patterns
+
+      of light into increasingly clear detail.
+
+
+      Your inner eyes will receive these patterns accurately,
+
+      and your visual centers will process and understand
+
+      them with greater clarity, ease, and precision.
+
+
+      At the same time, your inner vision will grow stronger.
+
+      You will create images within your mind more readily,
+
+      seeing them vividly, clearly, and in rich detail.
+
+
+      You can picture people, places, objects, and events;
+
+      hold an image steadily; and change its shape,
+
+      color, distance, or movement whenever you choose.
+
+
+      Images from memory will become easier to recall,
+
+      and new possibilities easier to picture.
+
+      Your mind''s eye will respond naturally to intention,
+
+      imagination, and the direction of your total self.
+
+
+      These abilities will continue developing together,
+
+      becoming a permanent part of the way you see,
+
+      remember, imagine, and understand.
+
+
+      Whenever you wish to strengthen your physical sight,
+
+      your inner visualization, or both, inhale deeply
+
+      and gently hold your breath.
+
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+
+      Then exhale slowly through your mouth.
+
+
+      Your entire seeing system will respond to your intention,
+
+      becoming clearer, smoother, and more capable.
+
+      Each time you use {{ cue.primary }}, these abilities
+
+      will become easier, stronger, and more effective.'
+  hplus.function.ocf-sen-002.closer:
+    status: reviewed
+    version: 1.3.1
+    cue_template:
+      function_id: OCF-SEN-002
+      allowed:
+      - cue.primary
+    text: 'Remember, whenever you wish to strengthen your
+
+      physical sight or the clarity of your inner images,
+
+      inhale deeply and hold your breath.
+
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+
+      Then exhale slowly through your mouth.
+
+
+      This concludes your OCF Seeing exercise.'
+slug: seeing
+classification:
+  primary_domain: sensory
+  secondary_domains: []
+category_labels:
+  sensory:
+    text: sensory
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-sen-002.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-sen-002.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-sen-002.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-SEN-002
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: ec99572dab42e71926472669cfb07cc915fc88263e1e39e89afa25d52c98d635
+    classification: KEEP CUE — ALIGN TITLE OR NARRATION
+    recommended_title: Seeing
+    recommended_primary_cue: PLUS-SEE BETTER
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Inhale/hold/cue/exhale reinforces physical sight, inner visualization or both
+      by intention. Preserve protected SEE BETTER and physical/inner scope; superseded MORE/LESS must
+      not return as artificial modes.
+    pair_reason: The exact current cue is strong and explicitly protected. The extracted seeing-system
+      intent is broader than inner visualization; clarify scope separately without rewriting the cue.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise
+      verb, outcome or contextual mode can reinforce an umbrella title without copying it. The exact
+      current cue is strong and explicitly protected. The extracted seeing-system intent is broader
+      than inner visualization; clarify scope separately without rewriting the cue.
+    teaching_disposition: Preserve complete taught cue; metadata/title alignment only
+    documentary_intent: Claimed ongoing improvement of physical sight and seeing-system function.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes;
+        generated references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: a9f3a616c4cde592169a1ffb31308d9cbec47fef68be3f6005eb5f007352e52f
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-SEN-002-LEGACY-01
+    command_status: normalized
+    commands:
+    - PLUS-SEE BETTER
+    name: 'SENSORY: SEEING'
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - 'Sensory: Seeing'
+  compatibility:
+    legacy_commands:
+    - PLUS-SEE BETTER
+    rationale: The canonical activation command is PLUS-SEE BETTER, matching the approved narration.
+      The previous MORE/LESS directional pair (PLUS-SEE MORE / PLUS-SEE LESS) is superseded and preserved
+      as historical provenance.
+    state: alias-listed
+  historical_lookup:
+  - text: 'Sensory: Seeing'
+    kind: former-title
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+  status:
+    evidence: community-hypothesis
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-sen-002.title
+    short_description_key: functions.ocf-sen-002.short-description
+    purpose_key: functions.ocf-sen-002.purpose
+  commands:
+  - id: OCF-CMD-SEN-002-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-sen-002-primary.label
+      usage_key: commands.ocf-cmd-sen-002-primary.usage
+      purpose_key: functions.ocf-sen-002.purpose
+      explanation_key: commands.ocf-cmd-sen-002-primary.explanation
+      display_cue_key: commands.ocf-cmd-sen-002-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-sen-002-primary.spoken-cue
+    observed_phrase:
+      text: Plus See Better
+      narration_key: hplus.function.ocf-sen-002.function-body
+      relationship: canonical-match
+  - id: OCF-CMD-SEN-002-LEGACY-01
+    localization:
+      label_key: commands.ocf-cmd-sen-002-legacy-01.label
+      usage_key: commands.ocf-cmd-sen-002-legacy-01.usage
+      purpose_key: functions.ocf-sen-002.purpose
+      explanation_key: commands.ocf-cmd-sen-002-legacy-01.explanation
+  predecessor_resource_sha256: f80ca3409a6407c23bb9308dc6d440b4d57224aacbf3ac3b4c50967e47d83257
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-004
+    kind: approved-title-cue
+    source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup.
+      Preserve procedures, controls, semantics, provenance and separately flagged metadata questions.
+      Later user instruction releases the draft-pilot freeze; pilot bindings follow current approved
+      titles and cues.
+    decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
+      request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
+    source_row_sha256: bd4dc512f5304898de333245b1d43ebafe7ed5f4a37d7ca13233871656370b58
+    status: accepted
+    previous_values_sha256: 1144dfe4610a750f944d79541c259bb4a490700edbc8abc41cc09b5dc42fc43a
+    current_values_sha256: d2d80e6a7e3bd8ce86214e5a89c2d4b9e7d415cf1b78c90f0c60dafdb1d556af
+    changed_narration_keys:
+    - hplus.function.ocf-sen-002.closer
+    previous_resolved_text_sha256:
+      hplus.function.ocf-sen-002.closer: 989ec5839d7690433c408ebf9fd7579fc6d00033bb7a587bad3354357d5df7e4
+    current_resolved_text_sha256:
+      hplus.function.ocf-sen-002.closer: 7275b828b049aed4d664189125507d661814f41587e0f0c7dd2aa129ab5abbc8
+    review_note: 'Change title from Sensory: Seeing to Seeing and update exercise sign-off. Keep protected
+      PLUS-SEE BETTER and spoken Plus See Better unchanged. Preserve physical sight and inner visualization
+      scope, visual processing, imagination, visual memory, deliberate inner-image manipulation, continuing
+      development and inhale/hold/cue/slow mouth exhale. Retain Sensory: Seeing as historical lookup;
+      introduce no MORE/LESS modes or release command.'
+    approval_response: '1'
+    review_position: 29
+    separate_review_needed: true
+  - id: OCF-FUNCTIONAL-METADATA-PURPOSE
+    kind: approved-functional-metadata
+    source_commit: 4da47a5740ead0be6bc3127437ee7b36a9c86ddf
+    scope: OCF-SEN-002:purpose
+    decision_source: Please do
+    source_row_sha256: 9d42c88aa6246f4959bd953d3ddf2b7d6d8acc2fe42e5ac8d50eeb2106ea3230
+    status: accepted
+    current_values_sha256: 1b88d67b0ab6a9c5104e393c32d620e1b4f516203d3bfbcd5796c5f43c5b17e7
+    review_note: 'Seeing: 1'
+    approval_response: approve
+  - id: REL-SEN002-SEN001
+    kind: approved-relationship
+    source_commit: 0e7ca1199969f41f282b8cff5a5fb0ee459fdb46
+    scope: Optional listener-guide relationship only; no narration, cue, lifecycle or DSP change.
+    decision_source: Explicit owner approval to implement the existing relationship-map suggestions,
+      2026-11-10.
+    source_row_sha256: ab4649f068970f4b4ecb3ce83642f19b232a5e480e8c6ed094b3ff11728e043c
+    current_values_sha256: a0e34f2e93d893d0917bb584cddbaf45e3ad834f44adbe1405208d7517d4be2a
+    status: accepted
+    approval_response: Draft optional suggestions should all be implemented vs being suggestions in
+      the guides/relationship-map.html
+    review_note: 'Original proposal description retained verbatim. Directional optional relationship;
+      no reciprocal approval inferred. Original evidence: [{"field": "description", "function_id":
+      "OCF-SEN-002", "sha256": "1cc04c5b74cdd9b6b04881ccff576ea1a736a512e8385859f9a1078a0bf1e9fd"},
+      {"field": "description", "function_id": "OCF-SEN-001", "sha256": "863922bf2c9a9ad33643e8de48977dde9489d1d48cae1de1b5dffcf63a03a185"}]'
+    relationship_id: REL-SEN002-SEN001
+    related_function_id: OCF-SEN-001
+    relationship_type: complementary
+    dependency: optional
+    reciprocal_approved: false
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    - OCF-TPL-SESSION-HPLUS-LOCKED-006
+    - OCF-TPL-SESSION-HPLUS-LOCKED-007
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c:opener
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 71
+      - 234
+      scope: document
+      source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+    - category: main
+      confidence: low
+      id: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c:main
+      kind: structural-inference
+      line_candidates:
+      - 34
+      scope: document
+      source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+    - category: closer
+      confidence: low
+      id: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c:closer
+      kind: structural-inference
+      line_candidates:
+      - 64
+      - 234
+      scope: document
+      source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+    - category: preparation
+      confidence: low
+      id: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c:preparation
+      kind: structural-inference
+      line_candidates:
+      - 2
+      - 10
+      - 16
+      - 66
+      - 72
+      scope: document
+      source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+    - category: command_association
+      confidence: low
+      id: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c:command_association
+      kind: structural-inference
+      line_candidates:
+      - 56
+      - 62
+      - 233
+      scope: document
+      source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+    - category: future_use
+      confidence: low
+      id: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c:future_use
+      kind: structural-inference
+      line_candidates:
+      - 57
+      - 63
+      scope: document
+      source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+    - category: return
+      confidence: low
+      id: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c:return
+      kind: structural-inference
+      line_candidates:
+      - 74
+      - 222
+      - 231
+      scope: document
+      source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+    - category: purpose
+      confidence: medium
+      id: review:OCF-SEN-002:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 1
+      scope: document
+      source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+    - category: opener
+      confidence: medium
+      id: review:OCF-SEN-002:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 30
+      - 34
+      scope: document
+      source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+    - category: main
+      confidence: medium
+      id: review:OCF-SEN-002:main
+      kind: function-specification-inference
+      line_candidates:
+      - 35
+      - 58
+      scope: document
+      source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+    - category: association
+      confidence: medium
+      id: review:OCF-SEN-002:association
+      kind: function-specification-inference
+      line_candidates:
+      - 55
+      - 58
+      scope: document
+      source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-SEN-002:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 35
+      - 63
+      scope: document
+      source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+    - category: future_use
+      confidence: medium
+      id: review:OCF-SEN-002:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 53
+      - 63
+      scope: document
+      source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-SEN-002:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 235
+      scope: document
+      source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+    - category: closer
+      confidence: medium
+      id: review:OCF-SEN-002:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 59
+      - 72
+      scope: document
+      source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-SEN-002:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 73
+      - 212
+      scope: document
+      source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+    - category: handoff
+      confidence: medium
+      id: review:OCF-SEN-002:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 213
+      - 235
+      scope: document
+      source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-SEN-002:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 35
+      - 58
+      scope: document
+      source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish
+      absence of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+      path: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).lrc
+      related_sha256:
+      - 2dce03496fbc30b525dd04591bfa4cac6e784f17a90bd87934c5459c8c25f4d6
+      - 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+      sha256: ecfe6bc6c1d0a1831fa394e7cf589f68edd73766d76ae6aac0d12f2e7ec02b8e
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+      path: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).srt
+      related_sha256:
+      - 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+      - ecfe6bc6c1d0a1831fa394e7cf589f68edd73766d76ae6aac0d12f2e7ec02b8e
+      sha256: 2dce03496fbc30b525dd04591bfa4cac6e784f17a90bd87934c5459c8c25f4d6
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+      path: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+      related_sha256:
+      - 2dce03496fbc30b525dd04591bfa4cac6e784f17a90bd87934c5459c8c25f4d6
+      - ecfe6bc6c1d0a1831fa394e7cf589f68edd73766d76ae6aac0d12f2e7ec02b8e
+      sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Sensory (Seeing)/Sensory-Seeing.ocr.pdf
+      related_sha256: []
+      sha256: 7e9246efc7174e4a7b385df2dd2b4957b43e707224d29e2d8f2ba1799aa7fbd8
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Sensory (Seeing)/folder.jpg
+      related_sha256: []
+      sha256: 05b832a1fed0f90676f40182c3184e02fa35c242c49ef60da06364804a9473ab
+  specifications:
+    analysis_review:
+      claim_categories:
+      - tear-and-eyelid-regulation
+      - optical-focus-improvement
+      - eye-brain-signal-accuracy
+      - persistent-physiological-improvement
+      family: sensory-organ-improvement-intensification
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime
+        state binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+            end_line: 58
+            file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+            source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+            start_line: 55
+          status: supported
+          summary: One intensification cue is in this source; canonical MORE/LESS metadata does not
+            establish a historical two-mode seeing instruction here.
+        closer:
+          locators:
+          - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+            end_line: 72
+            file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+            source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+            start_line: 59
+          status: supported
+          summary: Future-use reinforcement and learning-context closure to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+            end_line: 212
+            file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+            source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+            start_line: 73
+          status: supported
+          summary: Sleep-to-twenty shell present; repeated ASR numbers do not establish reinforcement
+            or measured timing.
+        conversion:
+          locators:
+          - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+            end_line: 58
+            file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+            source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+            start_line: 35
+          status: inferred
+          summary: Do not propagate Hearing's attention reinterpretation to Seeing. Ongoing physical
+            sight claims and canonical mode differences require independent review.
+        future_use:
+          locators:
+          - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+            end_line: 63
+            file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+            source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+            start_line: 53
+          status: supported
+          summary: Cue intensifies asserted continued seeing improvement toward a desired condition.
+        handoff:
+          locators:
+          - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+            end_line: 235
+            file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+            source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+            start_line: 213
+          status: supported
+          summary: Waking countdown, eyes-open return and target reminder where preserved.
+        identity:
+          locators:
+          - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+            end_line: 58
+            file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+            source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+            start_line: 55
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained;
+            source cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+            end_line: 58
+            file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+            source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+            start_line: 35
+          status: supported
+          summary: represent-tear-glands-eyelids-light-adaptation-and-focus; imagine-eye-to-brain-signal-improvement;
+            inhale-hold-and-issue-legacy-see-better-cue; exhale
+        opener:
+          locators:
+          - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+            end_line: 34
+            file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+            source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+            start_line: 30
+          status: supported
+          summary: Orient to the function and establish receptive learning context before the target
+            instruction.
+        preparation:
+          locators:
+          - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+            end_line: 29
+            file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+            source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+            start_line: 2
+          status: supported
+          summary: Supported uninterrupted relaxation, temporary repository setting-aside and counted
+            ten-state entry where described.
+        provenance:
+          locators:
+          - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+            end_line: 235
+            file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+            source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
+            text is unauthenticated; corrupted counts/ambient material cannot establish original repetition,
+            timing or mechanism.
+        purpose:
+          locators:
+          - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+            end_line: 1
+            file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+            source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+            start_line: 1
+          status: supported
+          summary: Claimed ongoing improvement of physical sight and seeing-system function.
+        rehearsal:
+          locators:
+          - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+            end_line: 63
+            file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+            source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+            start_line: 35
+          status: not-present
+          summary: Repeated teaching does not prove an explicit listener performance trial; no distinct
+            intelligible trial established in the available text.
+        safety_claims:
+          locators:
+          - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+            end_line: 58
+            file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+            source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+            start_line: 35
+          status: supported
+          summary: tear-and-eyelid-regulation; optical-focus-improvement; eye-brain-signal-accuracy;
+            persistent-physiological-improvement. Claims are classified as source assertions, not
+            accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+            end_line: 34
+            file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+            source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+            start_line: 30
+          status: supported
+          summary: Reference learning shell uses ten preparation, eleven opening, ten close and sleep-to-twenty/waking
+            return where preserved; not runtime OCF state requirements.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+            end_line: 235
+            file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+            source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Source-designated
+            text is unauthenticated; corrupted counts/ambient material cannot establish original repetition,
+            timing or mechanism.
+      source_extent:
+        content_group_sha256: a96f811be67c644536e76958eb0f157923434b7982eec51e95b8cd977bbd87d7
+        end_line: 235
+        file: +Transcripts From available tapes/Sensory (Seeing)/Sensory (Seeing).txt
+        source_sha256: 54b00c862197e7e806bfd5cc2bc8f3da7f49ec4db1f7887ab0b6e7ee47919e6c
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-SEN-002:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-SEN-002:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-SEN-002:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-SEN-002:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-SEN-002:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-SEN-002:main
+        operations:
+        - represent-tear-glands-eyelids-light-adaptation-and-focus
+        - imagine-eye-to-brain-signal-improvement
+        - inhale-hold-and-issue-legacy-see-better-cue
+        - exhale
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-SEN-002:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-SEN-002:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-SEN-002:rehearsal
+        operations: []
+        status: not-present
+      safety_claims:
+        evidence_refs:
+        - review:OCF-SEN-002:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-SEN-002:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Source-designated text is unauthenticated; corrupted counts/ambient material cannot establish
+      original repetition, timing or mechanism.
+    - Do not propagate Hearing's attention reinterpretation to Seeing. Ongoing physical sight claims
+      and canonical mode differences require independent review.
+    states:
+      preferred: []
+      required: []
+      status: unknown

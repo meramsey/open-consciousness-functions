@@ -3,7 +3,7 @@
 ## Current reproducible measurement
 
 The [title–cue quality checkpoint](releases/OCF_TITLE_CUE_QUALITY_CHECKPOINT.md)
-records the latest isolated continuation and links exact uncovered statement and
+records an earlier isolated continuation and links its exact uncovered statement and
 branch regions for combined, unit-attributed and integration-attributed contexts.
 
 Use Python 3.11+ with `requirements-dev.txt` and any optional extras being tested:
@@ -347,9 +347,10 @@ reports: `/tmp/opencode/package-final.json`,
 `/tmp/opencode/preserve-final.json`, and `/tmp/opencode/review-tool.json`
 (temporary, not committed).
 
-The same continuation now measures **100% focused unit line and branch
-coverage** for `tools/analyze_v4_short.py`, `tools/preview_preparation_learning.py`,
-and `tools/bootstrap_legacy_map.py`. `analyze_v4_short.py` is tested with
+The same continuation measured **100% focused unit line and branch
+coverage** for `tools/analyze_v4_short.py` and `tools/preview_preparation_learning.py`.
+The one-shot legacy registry bootstrap has been retired after its metadata was
+consolidated into canonical locale resources. `analyze_v4_short.py` is tested with
 synthetic signals only; an independent-noise boundary test exposed that short
 Welch windows could yield spuriously high coherence from too few averages, so
 delay fitting now requires at least eight Welch segments. The 100-second

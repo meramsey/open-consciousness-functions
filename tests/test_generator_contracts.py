@@ -66,7 +66,9 @@ def records(monkeypatch, tmp_path):
         g, "background_presets_for", lambda id: [{}, {}] if id == rows[0].id else []
     )
     monkeypatch.setattr(
-        content, "discover", lambda record: {"function_id": record.id, "human_review": "required"}
+        content,
+        "discover",
+        lambda record, **kwargs: {"function_id": record.id, "human_review": "required"},
     )
     monkeypatch.setattr(
         content,
@@ -168,10 +170,11 @@ def test_generation_and_freshness_contracts_are_deterministic_and_detect_drift(r
     _, root = records
     first = g.generate_all_content()
     assert first == g.generate_all_content()
-    assert len(first) == 12 and len({path for path, _ in first}) == 12
+    assert len(first) == 14 and len({path for path, _ in first}) == 14
+    assert "function-field-sources.json" in {path for path, _ in first}
     assert not g.indexes_are_fresh()
     paths = g.build_all_generated_files()
-    assert len(paths) == 12 and all(path.is_relative_to(root) for path in paths)
+    assert len(paths) == 14 and all(path.is_relative_to(root) for path in paths)
     assert g.indexes_are_fresh()
     paths[0].write_text("changed metadata")
     assert not g.indexes_are_fresh()

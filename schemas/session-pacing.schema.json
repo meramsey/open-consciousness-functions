@@ -88,6 +88,7 @@
         "countdown_rate_scale_end": {"type": "number", "minimum": 0.5, "maximum": 1.0},
         "default_unit": {"enum": ["sentence", "instruction", "phrase", "count", "countdown"]},
         "require_unit_kinds": {"type": "boolean"},
+        "group_prose": {"type": "boolean", "description": "Synthesize connected prose within each paragraph together; preserve count and event boundaries."},
         "pauses": {
           "type": "object", "minProperties": 1,
           "additionalProperties": {"type": "number", "minimum": 0}

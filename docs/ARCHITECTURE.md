@@ -7,7 +7,8 @@ OCF separates the **specification** (schemas + YAML records) from the
 ```text
 ┌─────────────────────────── SPECIFICATION ───────────────────────────┐
 │ schemas/*.schema.json          canonical data model                │
-│ functions/<domain>/*.yaml      canonical editable records          │
+│ locales/en-US/OCF-*.yaml       canonical editable records          │
+│ locales/<tag>/OCF-*.yaml       complete localized records          │
 │ templates/*                    starting points for new records     │
 └─────────────────────────────────────────────────────────────────────┘
                      │ parsed by

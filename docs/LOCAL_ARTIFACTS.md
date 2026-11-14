@@ -4,6 +4,11 @@ New default OCF auditions and their local reports are retained under the
 gitignored **`.ocf-work/renders/auditions/`** tree. Historical frozen artifacts
 described below remain in their original `audio/rendered/auditions/` locations.
 Audition audio and machine-local provenance are not staged or redistributed.
+The default workspace tree is disposable; its presence is not a durable backup.
+Keep completed listening editions and irreplaceable originals in an operator-owned
+data directory outside the checkout and cache, following
+[durable private storage](PRIVATE_LISTENING_DELIVERY.md#durable-private-storage).
+Copy and verify hashes while retaining originals before any cleanup.
 
 `scripts/tools/preserve_auditions.py SOURCE OUTPUT` copies existing artifacts,
 compares SHA256 before/after, reuses identical copies and refuses to overwrite

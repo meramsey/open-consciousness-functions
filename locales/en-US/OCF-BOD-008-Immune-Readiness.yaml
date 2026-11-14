@@ -1,0 +1,918 @@
+schema_version: '2.0'
+locale: en-US
+domain: function
+function_id: OCF-BOD-008
+title:
+  text: Immune Readiness
+  status: canonical
+  version: 1.0.0
+description:
+  text: Supports a self-directed practice of immune surveillance, coordinated protective responses, immune
+    memory, protection of healthy tissue, and return to balance after a threat is controlled.
+  status: canonical
+  version: 1.0.1
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-BOD-008-PRIMARY
+  display_cue:
+    text: PLUS-IMMUNE READY
+  spoken_cue:
+    text: Plus Immune Ready
+    status: reviewed
+    version: 1.0.0
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-bod-008.function-body
+      before_steps: []
+    relationships: {}
+  procedure_steps:
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+secondary_commands: []
+tags:
+- text: body-awareness
+  status: draft
+  semantic_id: body-awareness
+- text: visualization
+  status: draft
+  semantic_id: visualization
+- text: balance
+  status: draft
+  semantic_id: balance
+common_uses:
+- text: Visualizing coordinated protective responses and a return to balance.
+  status: draft
+- text: Reflecting on immune readiness as an intention, not proof of protection from illness or a substitute
+    for care.
+  status: draft
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-bod-008.opener:
+    status: reviewed
+    version: 1.2.0
+    text: 'This OCF exercise will strengthen and reinforce your
+
+      body''s natural immune defenses, establishing a lasting,
+
+      automatic pattern of protection, renewal, and healthy balance.'
+  hplus.function.ocf-bod-008.function-body:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-BOD-008
+      allowed:
+      - cue.primary
+    text: 'From this moment forward, your body''s natural immune
+
+      defenses are becoming stronger, more accurate,
+
+      and more effective.
+
+
+      Throughout your body, specialized white blood cells
+
+      continually monitor for harmful organisms,
+
+      recognizing threats and responding quickly.
+
+
+      Neutrophils and macrophages move to affected areas,
+
+      engulfing harmful organisms and clearing damaged cells.
+
+
+      Dendritic cells identify threats and communicate
+
+      this information to your T cells.
+
+
+      Helper T cells coordinate the immune response,
+
+      activating the protective cells needed.
+
+
+      Cytotoxic T cells identify and eliminate infected cells,
+
+      while B cells produce antibodies that recognize
+
+      and help neutralize harmful organisms.
+
+
+      Your immune cells work together with precision,
+
+      protecting healthy tissue while eliminating threats.
+
+
+      Your immune system remembers previous encounters,
+
+      maintaining specialized memory cells that provide
+
+      faster, stronger protection against familiar threats.
+
+
+      Once a threat is controlled, your immune response
+
+      returns to its natural, healthy balance.
+
+
+      From this moment forward, this coordinated pattern
+
+      of immune protection is firmly established within you.
+
+
+      Whether awake, resting, or sleeping, your body''s
+
+      natural defenses continue working automatically,
+
+      responding whenever needed without conscious effort.
+
+
+      Whenever you wish to reinforce this protective
+
+      pattern, inhale deeply and gently hold your breath.
+
+
+      Silently say to yourself, "{{ cue.primary }}."
+
+
+      Then slowly exhale through your mouth.
+
+
+      Your immune system will respond with accuracy,
+
+      strength, and coordination, directing its defenses
+
+      toward harmful organisms while protecting healthy tissue.
+
+
+      Each time you use {{ cue.primary }}, reinforcing
+
+      this pattern becomes easier, faster, and more effective.
+
+
+      Your body''s natural protective systems will continue
+
+      maintaining their readiness, memory, and balance,
+
+      every day and every night.'
+  hplus.function.ocf-bod-008.closer:
+    status: reviewed
+    version: 1.2.1
+    cue_template:
+      function_id: OCF-BOD-008
+      allowed:
+      - cue.primary
+    text: 'Remember, whenever you wish to strengthen your body''s
+
+      natural defenses against harmful organisms, inhale
+
+      deeply and hold your breath.
+
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+
+      Then exhale slowly through your mouth.
+
+
+      This concludes your OCF Immune Readiness exercise.'
+slug: immunizing
+classification:
+  primary_domain: body
+  secondary_domains: []
+category_labels:
+  body:
+    text: body
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: permanent
+  release:
+    command: null
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: health
+  medical_relevance: true
+  notes:
+  - Self-directed wellness practice; not a substitute for professional medical evaluation or treatment.
+    No guaranteed effects are claimed.
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-bod-008.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-bod-008.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-bod-008.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: approved
+  proposals:
+  - id: OCF-TITLE-CUE-BOD-008
+    status: historical-review
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: dfead05c560a9a1545ef5c75aaf1e0cb5ad152d4ffd21798b4f9175d9e987529
+    classification: RENAME TITLE/CUE — UPDATE TEACHING
+    recommended_title: Immune Readiness
+    recommended_primary_cue: PLUS-IMMUNE READY
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Immune-specific surveillance, coordinated response, memory, healthy-tissue protection
+      and return to balance. Inhale/hold/cue/exhale; no eye-closing step is taught. Readiness must retain
+      response scope, not generic alertness.
+    pair_reason: IMMUNE READY is a clearer positive target than generic ALERT/DESTROY and avoids confusing
+      ordinary alertness. Retaining immune-system intent versus redesigning readiness requires an explicit
+      decision.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. IMMUNE READY is a
+      clearer positive target than generic ALERT/DESTROY and avoids confusing ordinary alertness. Retaining
+      immune-system intent versus redesigning readiness requires an explicit decision.
+    teaching_disposition: New spoken association requires explicit body/reinforcement/closer approval
+    documentary_intent: Claimed ongoing strengthening of organism-control systems, optionally intensified
+      by a cue.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: 2d86f21865a8948a28e6d613d9004a2a1a7a4f7371558f1509dff0b1fe81e9da
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-BOD-008-PRIMARY
+    command_status: unchanged
+    commands:
+    - PLUS-ALERT, DESTROY
+    name: IMMUNIZING
+    source_availability: available
+    source_system: Monroe H-PLUS
+  aliases:
+    commands: []
+    command_ids: []
+    names:
+    - Immunizing
+  compatibility:
+    state: historical-lookup
+    rationale: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording is
+      historical lookup. Existing controls remain unchanged.
+  historical_lookup:
+  - text: Immunizing
+    kind: former-title
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+  - text: PLUS-ALERT, DESTROY
+    kind: former-primary
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+    command_id: OCF-CMD-BOD-008-PRIMARY
+  - text: Plus Alert Destroy
+    kind: former-teaching
+    decision: OCF-EDITORIAL-TITLE-CUES-004
+    command_id: OCF-CMD-BOD-008-PRIMARY
+  status:
+    evidence: source-described
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: approved
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-bod-008.title
+    short_description_key: functions.ocf-bod-008.short-description
+    purpose_key: functions.ocf-bod-008.purpose
+  commands:
+  - id: OCF-CMD-BOD-008-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-bod-008-primary.label
+      usage_key: commands.ocf-cmd-bod-008-primary.usage
+      purpose_key: functions.ocf-bod-008.purpose
+      explanation_key: commands.ocf-cmd-bod-008-primary.explanation
+      display_cue_key: commands.ocf-cmd-bod-008-primary.display-cue
+      spoken_cue_key: commands.ocf-cmd-bod-008-primary.spoken-cue
+    observed_phrase:
+      text: Plus Immune Ready
+      narration_key: hplus.function.ocf-bod-008.function-body
+      relationship: canonical-match
+  predecessor_resource_sha256: 39083f8f3c8e41ce37965fb9dfbdfcd70494940e5c7e490ff23a46e8990184e3
+  editorial_decisions:
+  - id: OCF-EDITORIAL-TITLE-CUES-004
+    kind: approved-title-cue
+    source_commit: 85ba92896c2d6a2cea7b5668e49196838dd3ec2b
+    scope: Only approved titles, primary cues, their teaching associations and historical lookup. Preserve
+      procedures, controls, semantics, provenance and separately flagged metadata questions. Later user
+      instruction releases the draft-pilot freeze; pilot bindings follow current approved titles and cues.
+    decision_source: Explicit one-function reviews 3–32, collected before implementation at the user's
+      request. Options and Nutricia kept unchanged; Comfort and Regenerate already published.
+    source_row_sha256: 94ca45d9e8385aca261b6d9d5e0de05b7b49103c8e84dfd7bd9ed3dfd5f44897
+    status: accepted
+    previous_values_sha256: 57d9fd0e9caa7b1469b6b3308117c4c3e59d63f1198391bdc2830e1bd42412fe
+    current_values_sha256: ce050b5af40c97568a83891dd9959a401df1abf6777a1dacf07fc681540164a2
+    changed_narration_keys:
+    - hplus.function.ocf-bod-008.closer
+    - hplus.function.ocf-bod-008.function-body
+    previous_resolved_text_sha256:
+      hplus.function.ocf-bod-008.function-body: 3f49a2f23835d7ad8177c18fa49f37da6436b7222844a67755ff5d7e90bfb81f
+      hplus.function.ocf-bod-008.closer: 5854ee6594d730f541e2fb64e1d415c94aad7b811ce1511dcaba5b92e7340a18
+    current_resolved_text_sha256:
+      hplus.function.ocf-bod-008.function-body: 6f857fb22bea3d0e54e0217471828090813db25fe5b5fdbfddb8c4de77ae4fe2
+      hplus.function.ocf-bod-008.closer: c4cddd6226f99f9b74ea2f78e852cc1cd6786b4ac5738a68b61e09c19a7109fd
+    review_note: Change title from Immunizing to Immune Readiness and update exercise sign-off. Replace
+      two body mentions and one closer mention from Plus Alert Destroy to Plus Immune Ready. Preserve
+      immune-specific surveillance, coordinated response, memory, healthy-tissue protection, automatic
+      maintenance, return to balance, and inhale/hold/cue/slow mouth exhale. Do not add eye-closing instruction.
+      Retain Immunizing and superseded cue as historical lookup; introduce no mode or release.
+    approval_response: '1'
+    review_position: 20
+    separate_review_needed: true
+  - id: OCF-FUNCTIONAL-METADATA-PURPOSE
+    kind: approved-functional-metadata
+    source_commit: 4da47a5740ead0be6bc3127437ee7b36a9c86ddf
+    scope: OCF-BOD-008:purpose
+    decision_source: Please do
+    source_row_sha256: 2c486fff6a1d2b193a2197464f150c89fd67bfccc154225188c06ca443caf8d9
+    status: accepted
+    current_values_sha256: 962e3b69fdf91bd419c0d2091635880185fb7d4629d7a2a88e84ce0b764d25cd
+    review_note: 'Immune Readiness: 1'
+    approval_response: approve
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    - OCF-TPL-SESSION-HPLUS-LOCKED-006
+    - OCF-TPL-SESSION-HPLUS-LOCKED-007
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4:opener
+      kind: structural-inference
+      line_candidates:
+      - 83
+      - 207
+      scope: document
+      source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+    - category: main
+      confidence: low
+      id: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4:main
+      kind: structural-inference
+      line_candidates:
+      - 50
+      scope: document
+      source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+    - category: closer
+      confidence: low
+      id: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4:closer
+      kind: structural-inference
+      line_candidates:
+      - 75
+      - 207
+      scope: document
+      source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+    - category: preparation
+      confidence: low
+      id: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4:preparation
+      kind: structural-inference
+      line_candidates:
+      - 11
+      - 18
+      - 24
+      - 33
+      - 43
+      - 78
+      - 84
+      scope: document
+      source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+    - category: command_association
+      confidence: low
+      id: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4:command_association
+      kind: structural-inference
+      line_candidates:
+      - 57
+      - 73
+      - 204
+      scope: document
+      source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+    - category: future_use
+      confidence: low
+      id: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4:future_use
+      kind: structural-inference
+      line_candidates:
+      - 59
+      - 74
+      scope: document
+      source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+    - category: return
+      confidence: low
+      id: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4:return
+      kind: structural-inference
+      line_candidates:
+      - 86
+      - 166
+      - 168
+      - 188
+      - 201
+      scope: document
+      source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+    - category: purpose
+      confidence: medium
+      id: review:OCF-BOD-008:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 51
+      - 56
+      scope: document
+      source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+    - category: opener
+      confidence: medium
+      id: review:OCF-BOD-008:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 44
+      - 50
+      scope: document
+      source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+    - category: main
+      confidence: medium
+      id: review:OCF-BOD-008:main
+      kind: function-specification-inference
+      line_candidates:
+      - 51
+      - 59
+      scope: document
+      source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+    - category: association
+      confidence: medium
+      id: review:OCF-BOD-008:association
+      kind: function-specification-inference
+      line_candidates:
+      - 57
+      - 59
+      scope: document
+      source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+    - category: rehearsal
+      confidence: medium
+      id: review:OCF-BOD-008:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 51
+      - 74
+      scope: document
+      source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+    - category: future_use
+      confidence: medium
+      id: review:OCF-BOD-008:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 57
+      - 74
+      scope: document
+      source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+    - category: suspend_cancel_reset
+      confidence: unknown
+      id: review:OCF-BOD-008:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 208
+      scope: document
+      source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+    - category: closer
+      confidence: medium
+      id: review:OCF-BOD-008:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 72
+      - 84
+      scope: document
+      source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-BOD-008:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 85
+      - 165
+      scope: document
+      source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+    - category: handoff
+      confidence: medium
+      id: review:OCF-BOD-008:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 166
+      - 208
+      scope: document
+      source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-BOD-008:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 51
+      - 59
+      scope: document
+      source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
+      path: +Transcripts From available tapes/Immunizing/Immunizing.lrc
+      related_sha256:
+      - 0ed530a1ec99cd14dfd4950e86c2a9f77c78a876d8a9a8e7ec2130f143b028ec
+      - 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+      sha256: 906b2271a6ad38971daef683fccc87c4294d0906ed6335653e15a1c84887b17c
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: +Transcripts From available tapes/Immunizing/Immunizing.ocr.pdf
+      related_sha256: []
+      sha256: 391ef98a568caef41ffcf9ea7bc321a2089cd5c51d73f4d050ce14464a3b53be
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
+      path: +Transcripts From available tapes/Immunizing/Immunizing.srt
+      related_sha256:
+      - 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+      - 906b2271a6ad38971daef683fccc87c4294d0906ed6335653e15a1c84887b17c
+      sha256: 0ed530a1ec99cd14dfd4950e86c2a9f77c78a876d8a9a8e7ec2130f143b028ec
+    - authentication: operator-designated
+      completeness: pending-source-review; apparent boundaries do not prove completeness
+      evidence_class: source_transcript
+      normalized_content_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
+      path: +Transcripts From available tapes/Immunizing/Immunizing.txt
+      related_sha256:
+      - 0ed530a1ec99cd14dfd4950e86c2a9f77c78a876d8a9a8e7ec2130f143b028ec
+      - 906b2271a6ad38971daef683fccc87c4294d0906ed6335653e15a1c84887b17c
+      sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Immunizing/folder.jpg
+      related_sha256: []
+      sha256: 5e406b0cd5869af4af59d6b0f42e03a3879a956f38900648a1890b41bcc69d5c
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: unknown
+      path: +Transcripts From available tapes/Immunizing/release_info.nfo
+      related_sha256: []
+      sha256: ea49f015655c7f3dfadcfc8737dc546d66db50a597918d693f42689ba44dc4f8
+  specifications:
+    analysis_review:
+      claim_categories:
+      - immune-system-strengthening
+      - destructive-organism-elimination
+      - persistent-medical-protection
+      family: immune-enhancement-intensification
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
+            end_line: 59
+            file: +Transcripts From available tapes/Immunizing/Immunizing.txt
+            source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+            start_line: 57
+          status: supported
+          summary: Pair source cue/breathing with the selected body-related response; actual canonical
+            and legacy command variants stay in identity metadata.
+        closer:
+          locators:
+          - content_group_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
+            end_line: 84
+            file: +Transcripts From available tapes/Immunizing/Immunizing.txt
+            source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+            start_line: 72
+          status: supported
+          summary: Reinforce remembered future use and close the learning context to ten.
+        consolidation:
+          locators:
+          - content_group_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
+            end_line: 165
+            file: +Transcripts From available tapes/Immunizing/Immunizing.txt
+            source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+            start_line: 85
+          status: supported
+          summary: Sleep-to-twenty shell present; physiological/automatic integration is not established
+            by that instruction.
+        conversion:
+          locators:
+          - content_group_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
+            end_line: 59
+            file: +Transcripts From available tapes/Immunizing/Immunizing.txt
+            source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+            start_line: 51
+          status: inferred
+          summary: Immune efficacy/infection prevention cannot transfer as factual OCF outcomes. No universal
+            wellness substitute is asserted; mechanism/purpose and safety need review.
+        future_use:
+          locators:
+          - content_group_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
+            end_line: 74
+            file: +Transcripts From available tapes/Immunizing/Immunizing.txt
+            source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+            start_line: 57
+          status: supported
+          summary: Use the cue/breathing procedure as described for the selected response; asserted effectiveness
+            is a claim, not an observed result.
+        handoff:
+          locators:
+          - content_group_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
+            end_line: 208
+            file: +Transcripts From available tapes/Immunizing/Immunizing.txt
+            source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+            start_line: 166
+          status: supported
+          summary: Counted waking/eyes-open return with target command reminder where intelligible.
+        identity:
+          locators:
+          - content_group_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
+            end_line: 59
+            file: +Transcripts From available tapes/Immunizing/Immunizing.txt
+            source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+            start_line: 57
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
+            end_line: 59
+            file: +Transcripts From available tapes/Immunizing/Immunizing.txt
+            source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+            start_line: 51
+          status: supported
+          summary: associate-body-protection-with-increased-strength; imagine-organism-control-and-removal;
+            inhale-hold-and-issue-alert-destroy-cue; exhale
+        opener:
+          locators:
+          - content_group_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
+            end_line: 50
+            file: +Transcripts From available tapes/Immunizing/Immunizing.txt
+            source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+            start_line: 44
+          status: supported
+          summary: Introduce a body-oriented intended response and receptive learning context, not evidence
+            that the physiology changed.
+        preparation:
+          locators:
+          - content_group_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
+            end_line: 43
+            file: +Transcripts From available tapes/Immunizing/Immunizing.txt
+            source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+            start_line: 11
+          status: supported
+          summary: Supported uninterrupted posture, settling movements/breathing, repository representation
+            for temporary setting-aside and counted ten-state preparation.
+        provenance:
+          locators:
+          - content_group_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
+            end_line: 208
+            file: +Transcripts From available tapes/Immunizing/Immunizing.txt
+            source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+            start_line: 1
+          status: supported
+          summary: Complete available source_transcript text inspected; shared representations are not
+            independent corroboration. Source accuracy/authentication remains unresolved. Source-designated
+            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing
+            or original underlay; unspecified cancellation remains unknown.
+        purpose:
+          locators:
+          - content_group_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
+            end_line: 56
+            file: +Transcripts From available tapes/Immunizing/Immunizing.txt
+            source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+            start_line: 51
+          status: supported
+          summary: Claimed ongoing strengthening of organism-control systems, optionally intensified by
+            a cue.
+        rehearsal:
+          locators:
+          - content_group_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
+            end_line: 74
+            file: +Transcripts From available tapes/Immunizing/Immunizing.txt
+            source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+            start_line: 51
+          status: not-present
+          summary: No distinct listener test of physiological outcome is established; teaching repetition
+            and ASR ambient tokens are not outcome verification.
+        safety_claims:
+          locators:
+          - content_group_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
+            end_line: 59
+            file: +Transcripts From available tapes/Immunizing/Immunizing.txt
+            source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+            start_line: 51
+          status: supported
+          summary: immune-system-strengthening; destructive-organism-elimination; persistent-medical-protection.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
+            end_line: 50
+            file: +Transcripts From available tapes/Immunizing/Immunizing.txt
+            source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+            start_line: 44
+          status: supported
+          summary: Reference learning shell prepares ten, opens eleven, closes to ten and uses sleep-to-twenty
+            plus waking return where preserved; runtime OCF requirements remain separate and unknown.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
+            end_line: 208
+            file: +Transcripts From available tapes/Immunizing/Immunizing.txt
+            source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Source-designated
+            derivative is unauthenticated. Count/repetition/ambient artifacts do not establish exact timing
+            or original underlay; unspecified cancellation remains unknown.
+      source_extent:
+        content_group_sha256: e732bb210f1d211d42e718356d3c466d602e1f6dc91102742d14d66d35f68140
+        end_line: 208
+        file: +Transcripts From available tapes/Immunizing/Immunizing.txt
+        source_sha256: 30828edc165219e385b49e6c32631ea08ab5d968367c81f52c3298992669d4b4
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-BOD-008:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-BOD-008:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-BOD-008:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-BOD-008:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-BOD-008:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-BOD-008:main
+        operations:
+        - associate-body-protection-with-increased-strength
+        - imagine-organism-control-and-removal
+        - inhale-hold-and-issue-alert-destroy-cue
+        - exhale
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-BOD-008:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-BOD-008:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-BOD-008:rehearsal
+        operations: []
+        status: not-present
+      safety_claims:
+        evidence_refs:
+        - review:OCF-BOD-008:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-BOD-008:suspend_cancel_reset
+        operations: []
+        status: unknown
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Source-designated derivative is unauthenticated. Count/repetition/ambient artifacts do not establish
+      exact timing or original underlay; unspecified cancellation remains unknown.
+    - Immune efficacy/infection prevention cannot transfer as factual OCF outcomes. No universal wellness
+      substitute is asserted; mechanism/purpose and safety need review.
+    states:
+      preferred: []
+      required: []
+      status: unknown

@@ -1,0 +1,142 @@
+content_status: reviewed
+description: Exact approved shared v3 blocks; selected canonical function words and four passes unchanged.
+  No listening or publication approval.
+dsp_profile: OCF-DSP-HPLUS-LOCKED-004
+extends: OCF-TPL-SESSION-HPLUS-LOCKED-006
+id: OCF-TPL-SESSION-HPLUS-LOCKED-007
+name: 'Reviewed shared-session v3: one initial induction'
+narration_revision: OCF-SHARED-SESSION-003
+pacing_profile: OCF-PACING-HPLUS-LOCKED-007
+schema_version: '1.0'
+sections:
+- id: function-opener
+  pace: block
+  role: function-specific opener
+  semantic: function.purpose
+  slot: opener
+  start: 0.0
+  type: function-intro
+- after: $previous
+  id: body-comfort
+  stage: OCF-TPL-STAGE-HPLUS-BODY-COMFORT-002
+- after: $previous
+  id: transmutation-box
+  narration:
+    begin:
+      narration_key: hplus.shared.transmutation-box.begin
+    complete:
+      narration_key: hplus.shared.transmutation-box.complete
+    place:
+      narration_key: hplus.shared.transmutation-box.place
+  pacing_overrides:
+    begin: pauses.transmutation_box_begin_s
+    complete: pauses.transmutation_box_complete_s
+    place: pauses.transmutation_box_place_s
+  role: shared transmutation-box preparation candidate
+  stage: OCF-TPL-STAGE-SETTING-ASIDE-001
+- after: $previous
+  enabled_by: affirmation
+  id: affirmation
+  narration:
+    practice:
+      slot: affirmation
+  role: optional affirmation stage; disabled by default
+  stage: OCF-TPL-STAGE-HPLUS-AFFIRMATION-002
+- after: $previous
+  enabled_by: resonant-tuning
+  id: resonant-tuning
+  role: reviewed optional resonant-tuning; off by default
+  stage: OCF-TPL-STAGE-HPLUS-TUNING-002
+- after: $previous
+  enabled_by: energy-ball
+  id: energy-ball
+  role: reviewed optional energy-ball; off by default
+  stage: OCF-TPL-STAGE-HPLUS-ENERGY-BALL-002
+- after: $previous
+  id: relaxation
+  role: approved original long-form v2 shared relaxation
+  stage: OCF-TPL-STAGE-HPLUS-RELAXATION-003
+- after: $previous
+  id: focus-ten
+  role: recognition of the single initial induction, not a second count
+  stage: OCF-TPL-STAGE-FOCUS-TEN-002
+- after: $previous
+  id: open
+  narration:
+    open:
+      narration_key: hplus.shared.focus11.open
+    prepare:
+      narration_key: hplus.shared.focus11.open.prepare
+    ready:
+      narration_key: hplus.shared.focus11.ready
+  role: shared Focus 10 to Focus 11 transition candidate
+  stage: OCF-TPL-STAGE-HPLUS-FOCUS-ELEVEN-OPEN-001
+- after: $previous
+  after_anchor: event-end
+  id: focus11-body
+  pace: block
+  repeat_gap_pacing_key: pauses.focus11_repeat_gap_s
+  repeat_pacing_key: repetitions.focus11
+  role: function-specific Focus 11 body, repeated twice
+  semantic: function.instruction
+  slot: function_body
+  type: installation
+- after: $previous
+  id: close
+  narration:
+    close:
+      narration_key: hplus.shared.focus11.close
+    prepare:
+      narration_key: hplus.shared.focus11.close.prepare
+    ready:
+      narration_key: hplus.shared.focus10.return.ready
+  role: shared Access Channel close and return to Focus 10 candidate
+  stage: OCF-TPL-STAGE-HPLUS-FOCUS-ELEVEN-CLOSE-003
+- after: $previous
+  id: focus10-hold
+  role: shared 60-second Focus 10 hold
+  stage: OCF-TPL-STAGE-HPLUS-FOCUS-TEN-HOLD-001
+- after: $previous
+  id: focus20-enter
+  role: shared sleep-entry narration; background remains Focus 10
+  stage: OCF-TPL-STAGE-HPLUS-FOCUS-TWENTY-ENTER-002
+- after: $previous
+  after_anchor: event-end
+  from_slot: function_body
+  gain_db_pacing_key: underlay.gain_db
+  id: sleep20-body
+  pace: block
+  pause_after_pacing_key: pauses.sleep20_post_repeat_s
+  repeat_gap_pacing_key: pauses.sleep20_repeat_gap_s
+  repeat_pacing_key: repetitions.focus20
+  role: same function_body slot, two low-level sleep repetitions
+  semantic: function.instruction
+  type: sleep
+- after: $previous
+  id: focus20-close
+  role: silent logical sleep-section return marker; no extra hold
+  stage: OCF-TPL-STAGE-HPLUS-FOCUS-TWENTY-CLOSE-002
+- after: $previous
+  id: return
+  role: shared return-to-waking narration; the selected profile keeps Focus 10
+  stage: OCF-TPL-STAGE-HPLUS-WAKING-RETURN-001
+- after: $previous
+  after_anchor: event-end
+  id: function-closer
+  pace: block
+  role: function-specific closer
+  semantic: function.closer
+  slot: closer
+  type: outro
+- after: $previous
+  id: session-complete
+  role: operational session completion marker
+  stage: OCF-TPL-STAGE-HPLUS-SESSION-COMPLETE-001
+slots:
+  optional:
+  - affirmation
+  required:
+  - opener
+  - function_body
+  - closer
+version: 7.0.0

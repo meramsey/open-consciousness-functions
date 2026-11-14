@@ -203,7 +203,7 @@
         "artwork",
         "generate"
       ],
-      "usage": "usage: ocf artwork generate [-h] [--locale LOCALE] [--theme THEME]\n                            [--resolution RESOLUTION] [--format {png,jpeg}]\n                            [--version VERSION] [--font FONT] [--no-cue]\n                            [--no-description] [--output OUTPUT]\n                            function_id",
+      "usage": "usage: ocf artwork generate [-h] [--locale LOCALE] [--theme THEME]\n                            [--resolution RESOLUTION] [--format {png,jpeg}]\n                            [--version VERSION] [--font FONT] [--no-cue]\n                            [--no-description] [--lyrics] [--output OUTPUT]\n                            function_id",
       "verification": "parser-only; placeholders are not dispatched"
     },
     {
@@ -301,7 +301,7 @@
         "functions",
         "list"
       ],
-      "usage": "usage: ocf functions list [-h] [--json] [--rich]",
+      "usage": "usage: ocf functions list [-h] [--json] [--rich] [--tag TAG] [--search SEARCH]",
       "verification": "parser-only; placeholders are not dispatched"
     },
     {
@@ -353,6 +353,18 @@
         "lookup"
       ],
       "usage": "usage: ocf functions lookup [-h] [--locale LOCALE] [--json] query",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "commands",
+        "shared-state"
+      ],
+      "path": [
+        "commands",
+        "shared-state"
+      ],
+      "usage": "usage: ocf commands shared-state [-h] [--locale LOCALE]",
       "verification": "parser-only; placeholders are not dispatched"
     },
     {
@@ -721,7 +733,7 @@
         "audio",
         "render-many"
       ],
-      "usage": "usage: ocf audio render-many [-h] [--all] [--locale LOCALE] --voice VOICE\n                             [--pacing {normal,relaxed,sleep}] [--rate RATE]\n                             [--workers WORKERS] [--dsp-profile DSP_PROFILE]\n                             [--dry-run] [--resume] [--force]\n                             [--fresh-synthesis]\n                             [--speech-cache {auto,off,refresh,require-hit}]\n                             [function_ids ...]",
+      "usage": "usage: ocf audio render-many [-h] [--all] [--locale LOCALE] --voice VOICE\n                             [--pacing {normal,relaxed,sleep}] [--rate RATE]\n                             [--workers WORKERS] [--dsp-profile DSP_PROFILE]\n                             [--overrides OVERRIDES]\n                             [--mix-profile MIX_PROFILE] [--dry-run]\n                             [--resume] [--force] [--fresh-synthesis]\n                             [--speech-cache {auto,off,refresh,require-hit}]\n                             [function_ids ...]",
       "verification": "parser-only; placeholders are not dispatched"
     },
     {
@@ -888,6 +900,31 @@
         "release"
       ],
       "usage": "usage: ocf audio release [-h] [--locale LOCALE] [--format {mp3,flac}]\n                         [--voice VOICE] [--artwork ARTWORK]\n                         [--artwork-theme ARTWORK_THEME]\n                         [--artwork-resolution ARTWORK_RESOLUTION]\n                         [--output OUTPUT] [--version VERSION]\n                         [--guides GUIDES] [--lyrics] [--tag TAG] [--dry-run]\n                         [--force]\n                         query",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "audio",
+        "export-public",
+        "YOUR_MANIFEST",
+        "--expected-source-sha256",
+        "YOUR_EXPECTED_SOURCE_SHA256",
+        "--public-voice-id",
+        "YOUR_PUBLIC_VOICE_ID",
+        "--public-voice-name",
+        "YOUR_PUBLIC_VOICE_NAME",
+        "--source-commit",
+        "YOUR_SOURCE_COMMIT",
+        "--source-version",
+        "YOUR_SOURCE_VERSION",
+        "--output",
+        ".ocf-work/examples/YOUR_OUTPUT"
+      ],
+      "path": [
+        "audio",
+        "export-public"
+      ],
+      "usage": "usage: ocf audio export-public [-h] --expected-source-sha256\n                               EXPECTED_SOURCE_SHA256 --public-voice-id\n                               PUBLIC_VOICE_ID --public-voice-name\n                               PUBLIC_VOICE_NAME --source-commit SOURCE_COMMIT\n                               --source-version SOURCE_VERSION\n                               [--export-commit EXPORT_COMMIT]\n                               [--render-source RENDER_SOURCE] --output OUTPUT\n                               [--reuse-existing-mp3] [--dry-run]\n                               manifest",
       "verification": "parser-only; placeholders are not dispatched"
     },
     {
@@ -1351,7 +1388,7 @@
         "session",
         "compose"
       ],
-      "usage": "usage: ocf session compose [-h] [--template TEMPLATE]\n                           [--pacing-profile PACING_PROFILE] [--opener OPENER]\n                           [--focus11 FOCUS11] [--sleep20 SLEEP20]\n                           [--closer CLOSER] [--slot SLOT] [--title TITLE]\n                           [--id ID] [--duration DURATION]\n                           [--line-seconds LINE_SECONDS] [--locale LOCALE]\n                           [--enable-stage ENABLE_STAGE] [--function FUNCTION]\n                           [--allow-fallback] [--output OUTPUT] [--force]",
+      "usage": "usage: ocf session compose [-h] [--template TEMPLATE]\n                           [--pacing-profile PACING_PROFILE] [--opener OPENER]\n                           [--focus11 FOCUS11] [--sleep20 SLEEP20]\n                           [--closer CLOSER] [--slot SLOT] [--title TITLE]\n                           [--id ID] [--duration DURATION]\n                           [--line-seconds LINE_SECONDS] [--locale LOCALE]\n                           [--enable-stage ENABLE_STAGE]\n                           [--affirmation {none,Gateway,SyncCreation,OCF,custom}]\n                           [--custom-affirmation-locale CUSTOM_AFFIRMATION_LOCALE]\n                           [--function FUNCTION] [--allow-fallback]\n                           [--output OUTPUT] [--force]",
       "verification": "parser-only; placeholders are not dispatched"
     },
     {
@@ -1364,6 +1401,18 @@
         "list"
       ],
       "usage": "usage: ocf locale list [-h]",
+      "verification": "parser-only; placeholders are not dispatched"
+    },
+    {
+      "argv": [
+        "locale",
+        "functions"
+      ],
+      "path": [
+        "locale",
+        "functions"
+      ],
+      "usage": "usage: ocf locale functions [-h] [--locale LOCALE]",
       "verification": "parser-only; placeholders are not dispatched"
     },
     {
@@ -1978,18 +2027,6 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "d9e86b62cc0ecf849a721f0ce94263e6e5007b191cfc074b49bc9c9814ec26da",
-      "schema": "cue-completion-successor.schema.json",
-      "source": "function-content/editorial/cue-completion-001.json",
-      "verification": "structural schema only; not semantic, asset, rights or release approval"
-    },
-    {
-      "example_sha256": "734b2314b5591b2df67d1aa0fa46066423d64b6856a39fe86863df25384ecf8a",
-      "schema": "cue-header-successor.schema.json",
-      "source": "function-content/editorial/cue-headers-001.json",
-      "verification": "structural schema only; not semantic, asset, rights or release approval"
-    },
-    {
       "example_sha256": "d9fbbb26008a1ad345cf1ad9a2252d853a245ecaba96d00b63dd46cb50e9afa7",
       "schema": "cue-profile.schema.json",
       "source": "audio/cues/profiles/OCF-CUE-PROFILE-DEFAULT.yaml",
@@ -2010,28 +2047,18 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "5742257d6bda15fbc9688c26b15020473fddd6b979b2bc7dc5e0da5f82eda2c9",
-      "schema": "editorial-cue-migration.schema.json",
-      "source": "function-content/editorial/approved-title-cues-001.json",
-      "verification": "structural schema only; not semantic, asset, rights or release approval"
-    },
-    {
       "example_sha256": "e6f996f69203f39e9c2b7929f775401d9ce6145f5897614dcde5e9546f2291ec",
       "schema": "editorial-function.schema.json",
       "source": "examples/contracts.json#/editorial-function.schema.json",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "4af38b6f9cea0b94bb0a5af56a4ba9cf43e8b40c5c6ecdee9bdead1f9f774728",
       "schema": "function-binding.schema.json",
-      "source": "function-content/bindings/OCF-FND-002.yaml",
-      "verification": "structural schema only; not semantic, asset, rights or release approval"
+      "verification": "standalone function layer retired; canonical data is nested in per-locale function resources"
     },
     {
-      "example_sha256": "867ad5e5f139d2e118212a7eedb2886cea9f3abfceb1f0b6a9a618f25519fe4e",
       "schema": "function-decisions.schema.json",
-      "source": "function-content/decisions/OCF-FND-002.yaml",
-      "verification": "structural schema only; not semantic, asset, rights or release approval"
+      "verification": "standalone function layer retired; canonical data is nested in per-locale function resources"
     },
     {
       "argv": [
@@ -2045,27 +2072,17 @@
       "verification": "runtime JSON schema checked by --execute-read-only"
     },
     {
-      "example_sha256": "8020433b1fe70be8202f8e11a12a799991f3b41bf9897b63b2a0cf2e0d1e56d0",
       "schema": "function-evidence.schema.json",
-      "source": "function-content/evidence/OCF-FND-002.yaml",
-      "verification": "structural schema only; not semantic, asset, rights or release approval"
+      "verification": "standalone function layer retired; canonical data is nested in per-locale function resources"
     },
     {
-      "example_sha256": "560a4b25c66d2a81a0ec3724cf0707d6732bdbd8a3dafb92e31dbf4e66bd0750",
       "schema": "function-specification.schema.json",
-      "source": "function-content/specifications/OCF-FND-002.yaml",
-      "verification": "structural schema only; not semantic, asset, rights or release approval"
+      "verification": "standalone function layer retired; canonical data is nested in per-locale function resources"
     },
     {
       "example_sha256": "7b929a3b098d32b86d6d7cdf06234a004e1d1b2488624237b823235530cdcc14",
       "schema": "function.schema.json",
       "source": "tests/fixtures/function-sample.yaml",
-      "verification": "structural schema only; not semantic, asset, rights or release approval"
-    },
-    {
-      "example_sha256": "09603d115243e85912884425ca845200fa02195d8ca2761dc12c1075373d1e59",
-      "schema": "functional-metadata.schema.json",
-      "source": "function-content/editorial/functional-metadata-001.json",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
@@ -2075,19 +2092,19 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "4faa8f43ff3c3e1a828e46604a1007187e8e1a443403b611e09bd77c1dbed2d7",
+      "example_sha256": "1deff60a23e78c3ee7bb82272251aa812df08098fc27c940f65cfa227888d090",
       "schema": "locale-manifest.schema.json",
       "source": "locales/en-US/manifest.yaml",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "bd5836a272ae53affac397c5375d234c356db6c640d7f945e7e34212eeac22cf",
+      "example_sha256": "6cc9dd7b960d85b96ceb60085bb32bdcb692d878c3ecf8f97252466ae5cf9c14",
       "schema": "locale-resource.schema.json",
-      "source": "locales/en-US/ui.yaml",
+      "source": "locales/en-US/shared-ui.yaml",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "553718d9d99f3b121e39663d9b71a13409436c09142089e03a1304584c8432a8",
+      "example_sha256": "15a3eb4a840096fdb96f0a8cc8867110c933b2903b917d52a82652a0f53405ac",
       "schema": "localized-function.schema.json",
       "source": "examples/contracts.json#/localized-function.schema.json",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
@@ -2117,10 +2134,26 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
+      "example_sha256": "f4d783614a3223eed8fc06d1f9bda96348a23fe5d774ad7696b3d10effb8e24b",
+      "schema": "private-session.schema.json",
+      "source": "examples/contracts.json#/private-session.schema.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
       "example_sha256": "14a34409976c4717d2604000f5273cbd9ab93964a19c096e33791eb39729a6b7",
       "schema": "proposal.schema.json",
       "source": "examples/contracts.json#/proposal.schema.json",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "example_sha256": "6ca294660c5f2788fb6886fa09c45588a0ce6b0c1064782d5449cac9e795173e",
+      "schema": "public-export-candidate.schema.json",
+      "source": "examples/contracts.json#/public-export-candidate.schema.json",
+      "verification": "structural schema only; not semantic, asset, rights or release approval"
+    },
+    {
+      "schema": "public-site-guide-export.schema.json",
+      "verification": "deterministic export is generated from the pinned canonical locale resources and validated by public_site_export.py and test_public_site_export.py"
     },
     {
       "example_sha256": "9a45cf5b4594be2711988d64602a5d69cb7b87dad0ae3c58dd68a757f6aa6afa",
@@ -2147,7 +2180,7 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "55121a50f2592dc479626718835f07d033785a9d97fb95be622702757c27ea70",
+      "example_sha256": "f4899d184737083198eaefe454770ce7e2f2a44eb6a3266278258ccc17b83346",
       "schema": "session-plan.schema.json",
       "source": "audio/session-plans/en-US/OCF-FND-002.json",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
@@ -2165,9 +2198,9 @@
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
-      "example_sha256": "50fa58764174ba1609e05165347715cd673846ad22269c35d17aa475b3add05b",
-      "schema": "symbolic-cue-migration.schema.json",
-      "source": "function-content/editorial/symbolic-cues-001.json",
+      "example_sha256": "60dcdb3cf548595d3249c57629921234fd1bffd9dea4594f30768329694da8d0",
+      "schema": "shared-state-cues.schema.json",
+      "source": "function-content/shared-state-cues.yaml",
       "verification": "structural schema only; not semantic, asset, rights or release approval"
     },
     {
@@ -2199,7 +2232,7 @@
     "schemas/audio-implementation.schema.json": "8a785e8968d5c9cee2a2f1c5ad360e4d47c33dc71846ef6c73bec11af48c1899",
     "schemas/audio-release.schema.json": "66b708e5a7dc282557a5aa718b133940b45c1d34420183f5d421eb338b196a9a",
     "schemas/audition-edition.schema.json": "8d4d036c4095310872fb637f18b389757ad4e860ea915624089e1707de56fe7a",
-    "schemas/authoring-plan.schema.json": "1de8a1ac424fd28a154579132f6f29a99c8bda17ba140829445b02f8a00c0694",
+    "schemas/authoring-plan.schema.json": "0ed3a2954e1e13c7642d3b802df53550b6c21a8c7ce43361ee894ec888a5bc79",
     "schemas/background-audio.schema.json": "f5a99af7a55c482274f22598f5d39380a0368d91456b4c767c5f439c11793a73",
     "schemas/brand-import.schema.json": "e152f47e9e49daf1d118e9f2a61ecdcc8fe5429e7a9983bde534e255d3cdb801",
     "schemas/brand-refinement.schema.json": "45940b6ab35b0b087982e7096e1ea82548eceb09d9c9949bc839dfaa61822922",
@@ -2208,47 +2241,46 @@
     "schemas/command-procedure.schema.json": "ce83b5e0ce5d297aa71c8e293fc4af0a0d32ac35d1a677e6b08bf9c3cf211747",
     "schemas/community-voice.schema.json": "c530fa8bb6783b56da06980dc943e5848ad0bee10168c4146ac0cc318ab0c9b3",
     "schemas/corpus-inventory.schema.json": "11a08e6c17c8409b6111b5de49018a36fa0310975f9917c9b8380c5815bdc6a5",
-    "schemas/cue-completion-successor.schema.json": "726bcb557312c5435e67549ee27207905a0f73b376396c453fb54d658395bcc3",
-    "schemas/cue-header-successor.schema.json": "89de88d74e8fe13951ff00d1319a9ea53457563194e1e3ebaee09c0cc5e3197c",
     "schemas/cue-profile.schema.json": "05500c0c486bf959ea4d952a9d9d487860bd67e80e333c0e99e990e234833b3a",
     "schemas/doctor.schema.json": "9b861ac28abab75f1aab4c78419d7faf731db099a6031704abbb07bf75f1ff74",
     "schemas/editorial-block.schema.json": "ef17e6b8bce5b318036b5c1618ee2dfa83473f45e93a9fd486bbef1fa72d26d0",
-    "schemas/editorial-cue-migration.schema.json": "cf1d4b64d850bbfa2b77661ad2a34ed777ffa55a8ccb38ff74a6a1026f1ad9e3",
     "schemas/editorial-function.schema.json": "f43a058da0c9e1815d975b255f8f96c420c2385da88627c9e78e6878cd42c6cf",
     "schemas/function-binding.schema.json": "d3095a31cf1edf746a9d6ec230b7a545765774be446a4028d8b03519df6fb33f",
     "schemas/function-decisions.schema.json": "5882d26b99b7bb3005a334926ec879cf77df8dfdfc8041219eba0e59df871a52",
-    "schemas/function-discovery.schema.json": "232fab932622ecf2332d6a409ec355a69abe081d520c7ae9602d8ad27de852aa",
+    "schemas/function-discovery.schema.json": "ab9e08f729d6b4b6ff51a6fcdd9d8066e7a65db32fb1144720e53b352160ce23",
     "schemas/function-evidence.schema.json": "e541f1af76323fb9b059c4e39ceb5ab5f2eceaa0cbf4d6e37d0230d303b919a8",
     "schemas/function-specification.schema.json": "f7348ab2cba5a5fc8b4216efd00dc3e8300e053c77d78004527ea176354409ea",
     "schemas/function.schema.json": "b3bbc6e5415146af47c98a45d848b5bd625a3ef92015ed1fa4cb5b107fe08fcc",
-    "schemas/functional-metadata.schema.json": "e8bcf6a722735269065ef8c308ac03e6a4dcae6210538209dec87d738a0d072a",
     "schemas/hplus-review-selection.schema.json": "2e65fa5465bd6a70185dbcbb5ae3d933b81e2e7034ba17b4699b7998a392ac19",
-    "schemas/locale-manifest.schema.json": "f352c493429c07707427784522bbec47ae249ef0654da801b9bf954c56160a24",
-    "schemas/locale-resource.schema.json": "1573a212f7aad08201444d34f7f10b7c035307f30ea713f6d1897dfe72dab7a7",
-    "schemas/localized-function.schema.json": "4f7eb8e0ced12e5c75305227e8c22058e6e7d0f1fb0606092a96e93036543643",
+    "schemas/locale-manifest.schema.json": "5ed80569f045f3c58ed69a62bfff30be470764abe59c01537022ad3278e8c987",
+    "schemas/locale-resource.schema.json": "445591d5c47fceaf27c6948513777a3c1a0d67c5ebfe1fb8709180c922cae320",
+    "schemas/localized-function.schema.json": "4c16b15194f43a92b728c00eb0ae6b6d82e614da275cf9d36e75f8e25f01b7bd",
     "schemas/mix-profile.schema.json": "05ac30c768cb95eb76f6cb300fcc29e20499c2c36a0a4b5692d169174050b40b",
     "schemas/narration-package.schema.json": "8a9e55379eec1481cdde5fbfa55b91af471dc45fe0ae30c64da36ab5d9b1a15d",
     "schemas/narration-sources.schema.json": "5c084f128351d6a2a879b5a971007cbc9efe3fb269deb3eeb12832895e729c3e",
     "schemas/narration-stem.schema.json": "6e377d585c16ed0c77178862a99f6de5be75786183cef36361ed4e717faa1efd",
+    "schemas/private-session.schema.json": "b897511ef47e30d1a8b1a9885b6ac9ab60961801cdb8d6371f8dd4af659f6b8d",
     "schemas/proposal.schema.json": "110b6780ef9fda7154fcd5358c4502ea589c6a26356afd24da5668d4be2482a0",
+    "schemas/public-export-candidate.schema.json": "7be2ef6ffe5a99412b427e54e990beca0fbf7cab520e8dc917a40a3314f9475a",
+    "schemas/public-site-guide-export.schema.json": "9616029789ca2ea71b6021dff0265c4d6154457000be215ed78735941a298dc4",
     "schemas/recording-processing.schema.json": "7062e488510f3703db3392200d8a9f5ace7500dd41eb01496f3d5dad8a17ceec",
-    "schemas/semantic-dsp-profile.schema.json": "478ea33458d43cb670c8d9e732d76dc71b937ea3328c47ff2876196bb7777803",
-    "schemas/session-overrides.schema.json": "e2a8867050ebfd3ff2f974cb5b588012047bf196ee0280469a5cedbbea6eeade",
-    "schemas/session-pacing.schema.json": "0d98b739d792ed3f34d772531a2348bb29ff0b969342df6231e8225c44c684c4",
+    "schemas/semantic-dsp-profile.schema.json": "2b02bb6c1e577bd6ccd2cfe4f429fe43408efd0c7717ea3d1e896f4cb4cdfe79",
+    "schemas/session-overrides.schema.json": "cf4291d252d07931ec9822e8315c0ac84bbc05bbe2c3f68006626aebe9479413",
+    "schemas/session-pacing.schema.json": "0f364e26798ad8c37d5d25b5bf36679ed19b121186450ca5e8349325b67f9388",
     "schemas/session-plan.schema.json": "824a833d7751536b8a1ded3784d6268847bc3bc101b06d8b649b25c163487805",
     "schemas/session-stage.schema.json": "fcdccd53577a0df9f444439199332bcc097cd9083a30c2b583f23811e48f2981",
-    "schemas/session-template.schema.json": "a6e0d4d7485ba4ea09057cbfbc743a6ab737ccec7bdc71d28825acc760333ef2",
-    "schemas/symbolic-cue-migration.schema.json": "6d73f31a786e2e874a708b570339d12aa5319d18cfb4d6349abfb9c46becda1f",
+    "schemas/session-template.schema.json": "238dc37d49bfff0ce2cba8a6f00c73aaba1bd7e8b3c44104246fc468dddbf72c",
+    "schemas/shared-state-cues.schema.json": "30287c76cef3b44d0de0eb84c06114bc273fe7867f42240a83ac9a3bad53f874",
     "schemas/theme.schema.json": "e4316f7acbd55c53c255d06efba8ecd8d3f7b69541219ee360d24f4779ccb6fb",
-    "schemas/timed-transcript.schema.json": "c3e2798f7ace0ba81c1fb5f1d2fa5afad20066ac3285a2fb7772dbed995b5950",
+    "schemas/timed-transcript.schema.json": "cad4e2345ddaf67b082c580cb61222e6a210c764feb593ea04894c773df4bf37",
     "schemas/voice-dataset.schema.json": "0307327f3f52eeaaaed71abaa6d1950c0b665fc677b43547e2452e9c31000ed8",
     "schemas/voice-profile.schema.json": "bff61d964e36686802129b9631fed45c3baa5262d5359d330a0b3f59763ee40e",
-    "scripts/ocf_tools/agent_api.py": "ac978df4e808bbc8b1541139b4760e0244faa5d62101b78ab954c9b43f0ed7a0",
-    "scripts/ocf_tools/cli.py": "62c8f2a1610b947d175f4ba43b98b023dad75ae5ff9728f8cfa5d3ac7409c43c",
+    "scripts/ocf_tools/agent_api.py": "9d6d5453ff75639b6ca8c0ea8977593f393fa5f3674eb070fb94665e0631d706",
+    "scripts/ocf_tools/cli.py": "2105485299ea7e083e6c62dc0dd69162dcd297b79691d93e275565415a6f05dc",
     "scripts/ocf_tools/lsp_server.py": "a753b91b1b73609ecd6886470a037a9bbf1259e2a77f08203546e55ef4cbae09",
     "scripts/ocf_tools/mcp_server.py": "d8641d4160888abbe7152fca2117623de4dfb061793b95b161dbfb4534a2be54",
     "scripts/ocf_tools/narration_cli.py": "5f13a05251816e5d3b80419d9ed67184b5c6c48722175700bbc88ec2b429bd41",
-    "scripts/ocf_tools/prompts.py": "3ac363286118b80afb1c7b9fc0424228f3c1721dfb1f627128a50c47a3c5e6c3",
+    "scripts/ocf_tools/prompts.py": "576bcefd8dde296159b2047693a63df5c85a1879a11f9b9ebcb0002a41288599",
     "scripts/ocf_tools/voice_engine_cli.py": "8072498f87f5509f7a18016d8d12f221dc36f3a393699c63ea18e6f6d39c77eb"
   },
   "workflows": {

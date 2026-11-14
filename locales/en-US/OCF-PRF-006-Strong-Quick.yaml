@@ -1,0 +1,1092 @@
+schema_version: '2.0'
+locale: en-US
+domain: function
+function_id: OCF-PRF-006
+title:
+  text: Strong-Quick
+  status: canonical
+  version: 1.0.0
+description:
+  text: Combines strength and quickness in a single felt state; activation cue PLUS-STRONG QUICK.
+  status: reviewed
+  version: 1.0.1
+metadata_entries: {}
+activation:
+  command_id: OCF-CMD-PRF-006-PRIMARY
+  display_cue:
+    text: PLUS-STRONG QUICK
+  spoken_cue:
+    text: Plus Strong Quick
+    status: reviewed
+  label:
+    text: Primary activation command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is the primary command for the function.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Use only when you choose to activate the documented function.
+    status: canonical
+    version: 1.0.0
+  role: activation
+  control:
+    designation: primary
+    phrase_ref:
+      source: canonical-primary
+    documentation:
+      visible: true
+      order: 1
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-prf-006.function-body
+      before_steps:
+      - id: select-immediate-action
+        operation: select-activity
+        localization_key: command.procedure.select-activity
+    relationships: {}
+  procedure_steps:
+  - id: select-immediate-action
+    operation: select-activity
+    instruction:
+      text: Choose an activity.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+secondary_commands:
+- command_id: OCF-CMD-PRF-006-LEGACY-01
+  display_cue:
+    text: PLUS-STRONG-QUICK
+  label:
+    text: Legacy compatibility phrase
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This is a compatibility phrase, not a new canonical command.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Compatibility phrase retained by the registry; historical authentication is not implied.
+    status: canonical
+    version: 1.0.0
+  role: legacy-alias
+  control:
+    designation: secondary
+    phrase_ref:
+      source: legacy-command
+      command_id: OCF-CMD-PRF-006-LEGACY-01
+    documentation:
+      visible: true
+      order: 101
+    effect_scope_ref: lifecycle.persistence
+    relationships: {}
+  procedure_steps: []
+- command_id: OCF-CMD-PRF-006-RELEASE
+  display_cue:
+    text: Plus Release
+  spoken_cue:
+    text: Plus Release
+    status: reviewed
+  label:
+    text: Release command
+    status: canonical
+    version: 1.0.0
+  explanation:
+    text: This command releases or suspends the current application as documented.
+    status: canonical
+    version: 1.0.0
+  usage:
+    text: Ends the temporary Strong-Quick application; the learned ability remains available.
+    status: canonical
+    version: 1.0.0
+  role: release
+  control:
+    designation: special
+    phrase_ref:
+      source: special-phrase
+      phrase_id: OCF-CMD-PRF-006-RELEASE
+    documentation:
+      visible: true
+      order: 200
+    effect_scope_ref: lifecycle.persistence
+    procedure:
+      ref: OCF-PROC-INHALE-HOLD
+      status: documented
+      evidence_keys:
+      - hplus.function.ocf-prf-006.function-body
+      before_steps:
+      - id: focus-strong-quick
+        operation: focus-target
+        localization_key: command.procedure.focus-target
+    relationships:
+      releases:
+      - OCF-CMD-PRF-006-PRIMARY
+  procedure_steps:
+  - id: focus-strong-quick
+    operation: focus-target
+    instruction:
+      text: Focus attention on the selected target.
+      status: canonical
+      version: 1.0.0
+  - id: inhale
+    operation: inhale
+    instruction:
+      text: Inhale.
+      status: canonical
+      version: 1.0.0
+  - id: hold
+    operation: hold-breath
+    instruction:
+      text: Hold your breath.
+      status: canonical
+      version: 1.0.0
+  - id: command
+    operation: think-or-say-command
+    instruction:
+      text: Think or say the command.
+      status: canonical
+      version: 1.0.0
+  - id: exhale
+    operation: exhale
+    instruction:
+      text: Exhale.
+      status: canonical
+      version: 1.0.0
+tags:
+- text: movement
+  status: draft
+  semantic_id: movement
+- text: attention
+  status: draft
+  semantic_id: attention
+- text: self-direction
+  status: draft
+  semantic_id: self-direction
+common_uses:
+- text: Reviewing the exercise's intention of prompt, coordinated action.
+  status: draft
+- text: Reflecting on the documented release after an immediate need passes, without assuming exceptional
+    strength or taking physical risks.
+  status: draft
+relationships:
+  related_functions: []
+  complementary_functions: []
+changelog:
+- version: 1.0.0
+  change: Structural migration; narration and cues unchanged.
+entries:
+  hplus.function.ocf-prf-006.opener:
+    status: reviewed
+    version: 1.1.0
+    text: 'This OCF exercise will teach you to call upon
+
+      extraordinary strength and quickness within your total self,
+
+      bringing them into action immediately when they are needed most.'
+  hplus.function.ocf-prf-006.function-body:
+    status: reviewed
+    version: 1.2.0
+    cue_template:
+      function_id: OCF-PRF-006
+      allowed:
+      - cue.id.OCF-CMD-PRF-006-RELEASE
+      - cue.primary
+    text: 'From this moment forward, within your total self
+
+      there is an exceptional reserve of strength and quickness,
+
+      ready to be called upon when an immediate need arises.
+
+
+      You will recognize the moment that calls for action.
+
+      Your awareness will become clear and direct.
+
+      Your mind and body will unite around what must be done.
+
+
+      When you need this extraordinary response,
+
+      bring the necessary action clearly into your awareness.
+
+      Inhale deeply and gently hold your breath.
+
+
+      Think or say in your mind, "{{ cue.primary }}."
+
+
+      Then exhale slowly through your mouth.
+
+
+      Immediately, your total self will respond as one.
+
+      Your conscious mind, subconscious mind, nervous system,
+
+      and muscles will work together in complete coordination.
+
+
+      Hesitation and unnecessary thought will fall away.
+
+      Your movements will become direct, rapid, and precise.
+
+      Every part of your body needed for the action
+
+      will contribute its strength in perfect timing.
+
+
+      You will draw upon reserves of power and speed
+
+      beyond what you ordinarily recognize within yourself,
+
+      concentrating your entire capacity into the moment.
+
+
+      Your awareness will remain clear.
+
+      Your action will be decisive.
+
+      The strength and quickness you call upon
+
+      will be directed toward the immediate purpose.
+
+
+      This exceptional response is temporary,
+
+      arising when you deliberately call upon it.
+
+      When its purpose is complete, bring Strong-Quick
+
+      clearly into your awareness.
+
+
+      Inhale deeply, hold your breath,
+
+      think or say in your mind, "{{ cue.id.OCF-CMD-PRF-006-RELEASE }},"
+
+      and exhale slowly through your mouth.
+
+
+      The present application will end,
+
+      and your physical system will return smoothly to balance.
+
+      Your learned ability will remain available
+
+      whenever another need arises.
+
+
+      Each time you use this function,
+
+      your total self will recognize and respond
+
+      to your intention more readily and effectively.'
+  hplus.function.ocf-prf-006.closer:
+    status: reviewed
+    version: 1.2.0
+    cue_template:
+      function_id: OCF-PRF-006
+      allowed:
+      - cue.id.OCF-CMD-PRF-006-RELEASE
+      - cue.primary
+    text: 'Remember, when an immediate need calls for extraordinary
+
+      strength and quickness, inhale deeply, hold your breath,
+
+      and think or say in your mind, "{{ cue.primary }}."
+
+      Then exhale slowly through your mouth.
+
+
+      When the need has passed, bring Strong-Quick to mind,
+
+      inhale, hold your breath, think or say "{{ cue.id.OCF-CMD-PRF-006-RELEASE }},"
+
+      and exhale slowly through your mouth.
+
+
+      This concludes your OCF Strong-Quick exercise.'
+slug: strong-quick
+classification:
+  primary_domain: performance
+  secondary_domains:
+  - body
+category_labels:
+  performance:
+    text: performance
+    status: canonical
+  body:
+    text: body
+    status: canonical
+lifecycle:
+  activation: manual
+  persistence: temporary
+  release:
+    command: null
+    command_id: OCF-CMD-PRF-006-RELEASE
+    required: false
+  trigger_conditions: []
+audio:
+  background_audio:
+    engine: farfield
+    preset: null
+    strategy: optional
+  implementation_status: not-started
+  script_status: approved
+safety:
+  level: general
+  medical_relevance: false
+  notes: []
+function_version:
+  created: '2026-09-12'
+  current: 0.1.0
+  updated: '2026-09-12'
+narration:
+  sequence:
+  - key: hplus.function.ocf-prf-006.opener
+    repetitions: 1
+    role: opener
+  - key: hplus.function.ocf-prf-006.function-body
+    repetitions: 4
+    role: function-body
+  - key: hplus.function.ocf-prf-006.closer
+    repetitions: 1
+    role: closer
+editorial:
+  command_review: review-required
+  proposals:
+  - id: OCF-TITLE-CUE-PRF-006
+    status: pending
+    source_revision: fb66fbce11dd3d71e57fac4d5784365128d41c82
+    source_row_sha256: 96c68ac7b1c28a478a89b4303ac38a404cc50c48cfe8efff402009c20dd140ff
+    classification: KEEP — TITLE, CUE, AND TEACHING ALREADY CONSISTENT
+    recommended_title: Strong-Quick
+    recommended_primary_cue: PLUS-STRONG QUICK
+    prior_review_note: Approve paired title/cue, scope clarification and explicit body/reinforcement/closer
+      association plan; approve controls together. No narration replacement text selected.
+    contextual_review: Select essential immediate action, inhale/hold/cue/exhale. Exceptional strength/quickness
+      application is temporary; focus Strong-Quick and use Plus Release with inhale/hold/exhale when need
+      passes. Not lasting total-self Inner Power.
+    pair_reason: Both intended qualities are explicit and differentiate the momentary emergency application
+      from general capability. Preserve its RELEASE record and do not assume a longer cue is worse merely
+      because the old spelling was hyphenated.
+    title_cue_relationship_or_exception: Title and cue name the same selected operation; a concise verb,
+      outcome or contextual mode can reinforce an umbrella title without copying it. Both intended qualities
+      are explicit and differentiate the momentary emergency application from general capability. Preserve
+      its RELEASE record and do not assume a longer cue is worse merely because the old spelling was hyphenated.
+    teaching_disposition: Preserve complete taught cue; metadata/title alignment only
+    documentary_intent: Brochure limits unusual muscular energy/speed to instant momentary emergency use,
+      despite examples that include exertion contexts.
+    alternatives: []
+    technical_impact:
+      cache: Any changed text/locale/voice needs matching fresh fingerprints, recordings/TTS and measured
+        timing; do not rewrite old receipts/immutable locks.
+      generated: Regenerate indexes, command guides and plans only after approved active changes; generated
+        references are current metadata, not proof of taught speech.
+      recordings: Private manifests/stems not inspected. Review event/resource/unit mappings and every
+        composed nonspoken marker; preserve originals. No recording relabeling.
+      rendered_transcripts: No new render. Source composition resolved without engines; recorded speech
+        and final rendered transcripts unverified.
+localization:
+  status: complete
+  contract_sha256: 2b5ca4505c2bed851459f0d3d72d96c06af28f9f780492785eca35032719d1d4
+record_metadata:
+  legacy:
+    command_ids:
+    - OCF-CMD-PRF-006-LEGACY-01
+    command_status: proposed
+    commands:
+    - PLUS-STRONG-QUICK
+    name: STRONG-QUICK
+    source_availability: unavailable
+    source_system: Monroe H-PLUS
+  aliases:
+    commands:
+    - PLUS-STRONG-QUICK
+    command_ids:
+    - OCF-CMD-PRF-006-LEGACY-01
+    names:
+    - Strong-Quick
+  compatibility:
+    legacy_commands:
+    - PLUS-STRONG-QUICK
+    rationale: Hyphenated legacy cue PLUS-STRONG-QUICK reads as one word; canonical PLUS-STRONG QUICK
+      is proposed for review.
+    state: bridge-trainable
+  status:
+    evidence: community-hypothesis
+    implementation: specification-only
+    maturity: legacy-mapped
+  sources:
+  - locator: null
+    title: OCF Bootstrap Specification — Legacy Function Index
+    type: legacy-reference
+    url: null
+  claims:
+    intended_effects: []
+    prohibited_claims:
+    - No guaranteed psychological, physiological, medical, paranormal, or behavioral result is claimed.
+  attribution:
+    ocf_contributors: []
+    original_authors: []
+  history:
+  - date: '2026-09-12'
+    note: Initial legacy mapping record created by bootstrap generator.
+    version: 0.1.0
+  ocf:
+    command_review: review-required
+    reimplementation_status: planned
+  documentation:
+    title_key: functions.ocf-prf-006.title
+    short_description_key: functions.ocf-prf-006.short-description
+    purpose_key: functions.ocf-prf-006.purpose
+  commands:
+  - id: OCF-CMD-PRF-006-PRIMARY
+    localization:
+      label_key: commands.ocf-cmd-prf-006-primary.label
+      usage_key: commands.ocf-cmd-prf-006-primary.usage
+      purpose_key: functions.ocf-prf-006.purpose
+      explanation_key: commands.ocf-cmd-prf-006-primary.explanation
+  - id: OCF-CMD-PRF-006-LEGACY-01
+    localization:
+      label_key: commands.ocf-cmd-prf-006-legacy-01.label
+      usage_key: commands.ocf-cmd-prf-006-legacy-01.usage
+      purpose_key: functions.ocf-prf-006.purpose
+      explanation_key: commands.ocf-cmd-prf-006-legacy-01.explanation
+  - id: OCF-CMD-PRF-006-RELEASE
+    localization:
+      label_key: commands.ocf-cmd-prf-006-release.label
+      usage_key: commands.ocf-cmd-prf-006-release.usage
+      purpose_key: functions.ocf-prf-006.purpose
+      explanation_key: commands.ocf-cmd-prf-006-release.explanation
+  command_phrases:
+  - id: OCF-CMD-PRF-006-RELEASE
+    phrase: Plus Release
+    source_narration_key: hplus.function.ocf-prf-006.function-body
+    status: observed
+  predecessor_resource_sha256: a62055246485a3d24c6aa1834ec73afb4ec9f6d57c6281f24b7f77daeb55116b
+content:
+  bindings:
+    default_session_template: OCF-TPL-SESSION-HPLUS-LOCKED-007
+    duration: null
+    narration_resources: []
+    session_templates:
+    - OCF-TPL-SESSION-HPLUS-LOCKED-004
+    - OCF-TPL-SESSION-HPLUS-LOCKED-005
+    - OCF-TPL-SESSION-HPLUS-LOCKED-006
+    - OCF-TPL-SESSION-HPLUS-LOCKED-007
+    voice_sources:
+    - tts
+  decisions:
+    decisions: []
+  evidence:
+    observations:
+    - category: opener
+      confidence: low
+      id: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb:opener
+      kind: structural-inference
+      line_candidates:
+      - 36
+      - 206
+      - 266
+      scope: document
+      source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+    - category: main
+      confidence: low
+      id: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb:main
+      kind: structural-inference
+      line_candidates:
+      - 88
+      - 91
+      scope: document
+      source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+    - category: closer
+      confidence: low
+      id: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb:closer
+      kind: structural-inference
+      line_candidates:
+      - 193
+      - 266
+      scope: document
+      source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+    - category: preparation
+      confidence: low
+      id: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb:preparation
+      kind: structural-inference
+      line_candidates:
+      - 37
+      - 52
+      - 63
+      - 67
+      - 73
+      - 196
+      - 209
+      scope: document
+      source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+    - category: command_association
+      confidence: low
+      id: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb:command_association
+      kind: structural-inference
+      line_candidates:
+      - 96
+      - 158
+      - 186
+      - 250
+      scope: document
+      source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+    - category: future_use
+      confidence: low
+      id: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb:future_use
+      kind: structural-inference
+      line_candidates:
+      - 189
+      scope: document
+      source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+    - category: return
+      confidence: low
+      id: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb:return
+      kind: structural-inference
+      line_candidates:
+      - 215
+      - 233
+      - 242
+      scope: document
+      source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+    - category: opener
+      confidence: low
+      id: e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32:opener
+      kind: structural-inference
+      line_candidates:
+      - 49
+      - 236
+      - 343
+      scope: document
+      source_sha256: e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32
+    - category: main
+      confidence: low
+      id: e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32:main
+      kind: structural-inference
+      line_candidates:
+      - 142
+      - 146
+      scope: document
+      source_sha256: e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32
+    - category: closer
+      confidence: low
+      id: e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32:closer
+      kind: structural-inference
+      line_candidates:
+      - 221
+      - 343
+      scope: document
+      source_sha256: e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32
+    - category: preparation
+      confidence: low
+      id: e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32:preparation
+      kind: structural-inference
+      line_candidates:
+      - 28
+      - 29
+      - 50
+      - 67
+      - 81
+      - 91
+      - 127
+      - 225
+      - 238
+      scope: document
+      source_sha256: e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32
+    - category: command_association
+      confidence: low
+      id: e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32:command_association
+      kind: structural-inference
+      line_candidates:
+      - 150
+      - 194
+      - 216
+      - 331
+      scope: document
+      source_sha256: e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32
+    - category: future_use
+      confidence: low
+      id: e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32:future_use
+      kind: structural-inference
+      line_candidates:
+      - 218
+      scope: document
+      source_sha256: e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32
+    - category: return
+      confidence: low
+      id: e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32:return
+      kind: structural-inference
+      line_candidates:
+      - 244
+      - 303
+      - 326
+      scope: document
+      source_sha256: e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32
+    - category: purpose
+      confidence: medium
+      id: review:OCF-PRF-006:purpose
+      kind: function-specification-inference
+      line_candidates:
+      - 32
+      - 33
+      scope: document
+      source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+    - category: opener
+      confidence: medium
+      id: review:OCF-PRF-006:opener
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 269
+      scope: document
+      source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+    - category: main
+      confidence: medium
+      id: review:OCF-PRF-006:main
+      kind: function-specification-inference
+      line_candidates:
+      - 90
+      - 134
+      scope: document
+      source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+    - category: association
+      confidence: medium
+      id: review:OCF-PRF-006:association
+      kind: function-specification-inference
+      line_candidates:
+      - 90
+      - 134
+      scope: document
+      source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+    - category: rehearsal
+      confidence: unknown
+      id: review:OCF-PRF-006:rehearsal
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 269
+      scope: document
+      source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+    - category: future_use
+      confidence: medium
+      id: review:OCF-PRF-006:future_use
+      kind: function-specification-inference
+      line_candidates:
+      - 136
+      - 175
+      scope: document
+      source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+    - category: suspend_cancel_reset
+      confidence: medium
+      id: review:OCF-PRF-006:suspend_cancel_reset
+      kind: function-specification-inference
+      line_candidates:
+      - 148
+      - 171
+      scope: document
+      source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+    - category: closer
+      confidence: medium
+      id: review:OCF-PRF-006:closer
+      kind: function-specification-inference
+      line_candidates:
+      - 180
+      - 209
+      scope: document
+      source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+    - category: consolidation
+      confidence: medium
+      id: review:OCF-PRF-006:consolidation
+      kind: function-specification-inference
+      line_candidates:
+      - 211
+      - 227
+      scope: document
+      source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+    - category: handoff
+      confidence: medium
+      id: review:OCF-PRF-006:handoff
+      kind: function-specification-inference
+      line_candidates:
+      - 229
+      - 269
+      scope: document
+      source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+    - category: safety_claims
+      confidence: medium
+      id: review:OCF-PRF-006:safety_claims
+      kind: function-specification-inference
+      line_candidates:
+      - 1
+      - 269
+      scope: document
+      source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+    questions:
+    - Source derivatives are not independently authenticated recordings
+    - Keyword candidate locators require full semantic review; absence of a match does not establish absence
+      of an operation
+    sources:
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: Strong Quick/Strong-Quick.ocr.pdf
+      related_sha256: []
+      sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: Strong Quick/Strong_Quick_88R1006_README.md
+      related_sha256: []
+      sha256: b6cd5d3d03ff554f7082dbc5c3f00dab957340b3f997fd3b3531a82e9cdd7b7c
+    - authentication: unverified
+      completeness: reconstruction; historical completeness not applicable
+      evidence_class: reconstructed_mockup
+      normalized_content_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+      path: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+      related_sha256: []
+      sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+    - authentication: unverified
+      completeness: reconstruction; historical completeness not applicable
+      evidence_class: reconstructed_mockup
+      normalized_content_sha256: b401f042178748214274f9eaff0af463a26e56c283f2ae3b82ae6fd6b905eed8
+      path: Strong Quick/Strong_Quick_88R1006_reconstructed_clean.txt
+      related_sha256: []
+      sha256: e8db9842a16d2fc48afb77f093e69bf6296acbe1d36b235c13ee05239c772c32
+    - authentication: unverified
+      completeness: pending-source-review
+      evidence_class: secondary_description
+      path: Strong Quick/Strong_Quick_88R1006_reconstruction_notes.md
+      related_sha256: []
+      sha256: 89621014fb20232dbb791433e6317030f1a07715fd3372e629e13d77d5a5e694
+  specifications:
+    analysis_review:
+      claim_categories:
+      - beyond-typical-muscular-capability
+      - momentary-energy-enhancement
+      - injury-risk-and-example-tension
+      family: momentary-emergency-strength-claims
+      method: complete-available-source-content-review
+      scope: documentary extraction; not narration approval, historical authentication or runtime state
+        binding
+      sections:
+        association:
+          locators:
+          - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+            end_line: 134
+            file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+            source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+            start_line: 90
+          status: inferred
+          summary: Known command/purpose metadata is paired in the mockup with a proposed internal cue/breath
+            procedure; the exact historical association wording/method is unknown.
+        closer:
+          locators:
+          - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+            end_line: 209
+            file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+            source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+            start_line: 180
+          status: inferred
+          summary: Historical closer unknown; annotated mockup borrows remember/use, access close and
+            return shell from related transcripts.
+        consolidation:
+          locators:
+          - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+            end_line: 227
+            file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+            source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+            start_line: 211
+          status: inferred
+          summary: Historical target consolidation unknown; proposed sleep/ambient segment is related-function
+            inference, never measured target timing.
+        conversion:
+          locators:
+          - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+            end_line: 269
+            file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+            source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+            start_line: 1
+          status: inferred
+          summary: Original OCF design is still required; do not convert mockup expression by synonyms
+            or adopt unsupported mechanisms. Any safer/material reframing needs explicit human review,
+            not historical promotion.
+        future_use:
+          locators:
+          - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+            end_line: 175
+            file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+            source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+            start_line: 136
+          - file: Strong Quick/Strong-Quick.ocr.pdf
+            page: 1
+            source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+          - file: Strong Quick/Strong-Quick.ocr.pdf
+            page: 2
+            source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+          status: inferred
+          summary: Brief/as-needed use with RELEASE after need; precise action, selection and duration
+            remain unknown/reconstructed, not recreational performance policy.
+        handoff:
+          locators:
+          - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+            end_line: 269
+            file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+            source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+            start_line: 229
+          status: inferred
+          summary: Historical handoff unknown; mockup's waking return/reminder is inferred, not recovered.
+        identity:
+          locators:
+          - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+            end_line: 134
+            file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+            source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+            start_line: 90
+          - file: Strong Quick/Strong-Quick.ocr.pdf
+            page: 1
+            source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+          - file: Strong Quick/Strong-Quick.ocr.pdf
+            page: 2
+            source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+          status: supported
+          summary: Canonical/legacy identity, command variants and compatibility metadata retained; source
+            cue association inspected without inventing a new command.
+        main:
+          locators:
+          - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+            end_line: 134
+            file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+            source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+            start_line: 90
+          status: inferred
+          summary: identify-emergency-exertion-need; proposed-strong-quick-breath-cue; proposed-coordinated-immediate-action
+        opener:
+          locators:
+          - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+            end_line: 269
+            file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+            source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+            start_line: 1
+          status: inferred
+          summary: Historical opener unknown; mockup supplies purpose orientation and related-function
+            learning shell as structural inference.
+        preparation:
+          locators:
+          - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+            end_line: 269
+            file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+            source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+            start_line: 1
+          - file: Strong Quick/Strong-Quick.ocr.pdf
+            page: 1
+            source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+          - file: Strong Quick/Strong-Quick.ocr.pdf
+            page: 2
+            source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+          status: supported
+          summary: Brochure gives prior Preparation Exercise or prior H-PLUS learning, a quiet supported
+            position, soft stereo/headphone listening and next-day target exercise. Exact lost narration
+            procedure is unknown; mockup shell is related-function inference.
+        provenance:
+          locators:
+          - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+            end_line: 269
+            file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+            source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+            start_line: 1
+          - file: Strong Quick/Strong-Quick.ocr.pdf
+            page: 1
+            source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+          - file: Strong Quick/Strong-Quick.ocr.pdf
+            page: 2
+            source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+          status: inferred
+          summary: Complete available reconstructed_mockup text inspected; shared representations are
+            not independent corroboration. Source accuracy/authentication remains unresolved. Annotated
+            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
+            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
+            historical operations remain unknown. Both brochure pages inspected separately; catalogue
+            assertions are documentary evidence, not recovered audio instructions.
+        purpose:
+          locators:
+          - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+            end_line: 33
+            file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+            source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+            start_line: 32
+          - file: Strong Quick/Strong-Quick.ocr.pdf
+            page: 1
+            source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+          - file: Strong Quick/Strong-Quick.ocr.pdf
+            page: 2
+            source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+          status: supported
+          summary: Brochure limits unusual muscular energy/speed to instant momentary emergency use, despite
+            examples that include exertion contexts.
+        rehearsal:
+          locators:
+          - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+            end_line: 269
+            file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+            source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+            start_line: 1
+          status: unknown
+          summary: Investigated the full available source; this operation is not established. Annotated
+            VERIFIED labels are reconstruction-author assertions, not independent authentication. Catalogue
+            purpose/command/use limits and proposed mockup operations are separate evidence axes. Missing
+            historical operations remain unknown.
+        safety_claims:
+          locators:
+          - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+            end_line: 269
+            file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+            source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+            start_line: 1
+          - file: Strong Quick/Strong-Quick.ocr.pdf
+            page: 1
+            source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+          - file: Strong Quick/Strong-Quick.ocr.pdf
+            page: 2
+            source_sha256: f774120d6036271b54c3fcf13d6e4de1faedf7a38c99aa8bc91387f0039ae06f
+          status: inferred
+          summary: beyond-typical-muscular-capability; momentary-energy-enhancement; injury-risk-and-example-tension.
+            Claims are classified as source assertions, not accepted OCF mechanisms/outcomes.
+        state:
+          locators:
+          - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+            end_line: 269
+            file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+            source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+            start_line: 1
+          status: inferred
+          summary: Historical target recording's exact state sequence remains unknown. Mockup imports
+            ten/eleven/ten/sleep/waking grammar from surviving Hearing/Seeing, not recovered target audio.
+        suspend_cancel_reset:
+          locators:
+          - content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+            end_line: 171
+            file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+            source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+            start_line: 148
+          status: inferred
+          summary: Catalogue advises RELEASE after need; exact selection and normalization sequence is
+            inferred from Release research.
+      source_extent:
+        content_group_sha256: 4f9a53d8f22b1675004d633683c519baa57a87f47c093d14290575b0a8b9983f
+        end_line: 269
+        file: Strong Quick/Strong_Quick_88R1006_reconstructed_annotated.txt
+        source_sha256: 37932e018ed2683ce27a5dc9c3d977331a49daffecef7e4f27e37b863cb8acfb
+        start_line: 1
+    blocks:
+      association:
+        evidence_refs:
+        - review:OCF-PRF-006:association
+        operations:
+        - documented-association
+        status: inferred
+      closer:
+        evidence_refs:
+        - review:OCF-PRF-006:closer
+        operations:
+        - documented-closer
+        status: inferred
+      consolidation:
+        evidence_refs:
+        - review:OCF-PRF-006:consolidation
+        operations:
+        - documented-consolidation
+        status: inferred
+      future_use:
+        evidence_refs:
+        - review:OCF-PRF-006:future_use
+        operations:
+        - documented-future-use
+        status: inferred
+      handoff:
+        evidence_refs:
+        - review:OCF-PRF-006:handoff
+        operations:
+        - documented-handoff
+        status: inferred
+      main:
+        evidence_refs:
+        - review:OCF-PRF-006:main
+        operations:
+        - identify-emergency-exertion-need
+        - proposed-strong-quick-breath-cue
+        - proposed-coordinated-immediate-action
+        status: inferred
+      opener:
+        evidence_refs:
+        - review:OCF-PRF-006:opener
+        operations:
+        - documented-opener
+        status: inferred
+      purpose:
+        evidence_refs:
+        - review:OCF-PRF-006:purpose
+        operations:
+        - documented-purpose
+        status: inferred
+      rehearsal:
+        evidence_refs:
+        - review:OCF-PRF-006:rehearsal
+        operations: []
+        status: unknown
+      safety_claims:
+        evidence_refs:
+        - review:OCF-PRF-006:safety_claims
+        operations:
+        - documented-safety-claims
+        status: inferred
+      suspend_cancel_reset:
+        evidence_refs:
+        - review:OCF-PRF-006:suspend_cancel_reset
+        operations:
+        - documented-suspend-cancel-reset
+        status: inferred
+    command_ref: canonical.command
+    extraction_status: complete
+    human_review: required
+    maturity: draft
+    metadata_ref: canonical-function-record
+    preparation: []
+    questions:
+    - Annotated VERIFIED labels are reconstruction-author assertions, not independent authentication.
+      Catalogue purpose/command/use limits and proposed mockup operations are separate evidence axes.
+      Missing historical operations remain unknown.
+    - Original OCF design is still required; do not convert mockup expression by synonyms or adopt unsupported
+      mechanisms. Any safer/material reframing needs explicit human review, not historical promotion.
+    states:
+      preferred: []
+      required: []
+      status: unknown
