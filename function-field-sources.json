@@ -3271,7 +3271,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/control/procedure/ref": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "OCF-PROC-CLOSE-FOCUS",
+          "value": "OCF-PROC-CLOSE-OPEN",
           "yaml_pointer": "/activation/control/procedure/ref"
         },
         "/activation/control/procedure/status": {
@@ -3321,7 +3321,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/0/instruction/status": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/0/instruction/status"
         },
         "/activation/procedure_steps/0/instruction/text": {
@@ -3341,17 +3341,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/1/id": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "focus-target",
+          "value": "inhale",
           "yaml_pointer": "/activation/procedure_steps/1/id"
         },
         "/activation/procedure_steps/1/instruction/status": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/1/instruction/status"
         },
         "/activation/procedure_steps/1/instruction/text": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "Focus attention on the selected target.",
+          "value": "Take a deep breath in.",
           "yaml_pointer": "/activation/procedure_steps/1/instruction/text"
         },
         "/activation/procedure_steps/1/instruction/version": {
@@ -3361,22 +3361,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/1/operation": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "focus-target",
+          "value": "inhale",
           "yaml_pointer": "/activation/procedure_steps/1/operation"
         },
         "/activation/procedure_steps/2/id": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "inhale",
+          "value": "hold",
           "yaml_pointer": "/activation/procedure_steps/2/id"
         },
         "/activation/procedure_steps/2/instruction/status": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/2/instruction/status"
         },
         "/activation/procedure_steps/2/instruction/text": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "Inhale.",
+          "value": "Gently hold your breath.",
           "yaml_pointer": "/activation/procedure_steps/2/instruction/text"
         },
         "/activation/procedure_steps/2/instruction/version": {
@@ -3386,22 +3386,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/2/operation": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "inhale",
+          "value": "hold-breath",
           "yaml_pointer": "/activation/procedure_steps/2/operation"
         },
         "/activation/procedure_steps/3/id": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "hold",
+          "value": "command",
           "yaml_pointer": "/activation/procedure_steps/3/id"
         },
         "/activation/procedure_steps/3/instruction/status": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/3/instruction/status"
         },
         "/activation/procedure_steps/3/instruction/text": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "Hold your breath.",
+          "value": "While holding your breath, silently say the command to yourself.",
           "yaml_pointer": "/activation/procedure_steps/3/instruction/text"
         },
         "/activation/procedure_steps/3/instruction/version": {
@@ -3411,22 +3411,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/3/operation": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "hold-breath",
+          "value": "think-or-say-command",
           "yaml_pointer": "/activation/procedure_steps/3/operation"
         },
         "/activation/procedure_steps/4/id": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "command",
+          "value": "exhale",
           "yaml_pointer": "/activation/procedure_steps/4/id"
         },
         "/activation/procedure_steps/4/instruction/status": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/4/instruction/status"
         },
         "/activation/procedure_steps/4/instruction/text": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "Think or say the command.",
+          "value": "Then slowly exhale through your mouth, as though gently blowing out a candle.",
           "yaml_pointer": "/activation/procedure_steps/4/instruction/text"
         },
         "/activation/procedure_steps/4/instruction/version": {
@@ -3436,22 +3436,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/4/operation": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "think-or-say-command",
+          "value": "exhale",
           "yaml_pointer": "/activation/procedure_steps/4/operation"
         },
         "/activation/procedure_steps/5/id": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "exhale",
+          "value": "open-eyes",
           "yaml_pointer": "/activation/procedure_steps/5/id"
         },
         "/activation/procedure_steps/5/instruction/status": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/5/instruction/status"
         },
         "/activation/procedure_steps/5/instruction/text": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "Exhale.",
+          "value": "Open your eyes.",
           "yaml_pointer": "/activation/procedure_steps/5/instruction/text"
         },
         "/activation/procedure_steps/5/instruction/version": {
@@ -3461,7 +3461,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/5/operation": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "exhale",
+          "value": "open-eyes",
           "yaml_pointer": "/activation/procedure_steps/5/operation"
         },
         "/activation/role": {
@@ -5581,7 +5581,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-001.closer/text": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "Remember, the natural pattern of healthy circulation, renewal,\nand maintenance in your brain and neck is now firmly established.\n\nWhenever you wish to reinforce this pattern, simply close\nyour eyes and bring your attention to the area you choose.\n\nInhale deeply and gently hold your breath.\n\nSilently say to yourself, \"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth, as though gently\nblowing out a candle, and open your eyes.\n\nThis concludes your OCF Brain Flow exercise.",
+          "value": "Remember, to reinforce healthy circulation and maintenance\nin your brain and neck, close your eyes.\nInhale deeply and gently hold your breath.\nSilently say to yourself, \"{{ cue.primary }}.\"\nThen slowly exhale through your mouth, as though gently\nblowing out a candle, and open your eyes.\n\nThis concludes your OCF Brain Flow exercise.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-001.closer/text"
         },
         "/entries/hplus.function.ocf-bod-001.closer/version": {
@@ -5606,7 +5606,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-001.function-body/text": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "From this moment forward, bring your awareness to the blood\ncirculating throughout your brain and the blood vessels in your\nneck that supply it.\n\nImagine this circulation becoming stronger, smoother, and more\nbalanced with every passing moment.\n\nSee and feel your blood flowing freely and evenly, carrying\noxygen and nourishment to every part of your brain.\n\nBecome aware of the arteries and veins that carry this blood.\n\nVisualize each vessel becoming stronger, healthier, and more\nflexible, maintaining the ideal size and shape for smooth,\nnatural circulation.\n\nImagine every restriction clearing, and see these pathways\nbecoming open and free for balanced circulation.\n\nNow visualize your body's natural processes of renewal and\nmaintenance working together in complete harmony.\n\nImagine healthy circulation pathways strengthening and renewing,\nwith each part of the system receiving exactly the support it needs.\n\nSee this entire network becoming stronger, more efficient,\nand perfectly balanced.\n\nFeel the strength and vitality of this healthy circulation\nthroughout your brain.\n\nKnow that this pattern of healthy circulation, renewal, and\nmaintenance is now firmly established within you.\n\nFrom this moment forward, it will continue automatically,\nwithout any need for conscious thought or effort.\n\nWhether you are awake, resting, or sleeping, your body's natural\ncirculation and maintenance systems will continue working for you.\n\nThey will respond to your body's needs, adjusting smoothly and\nprecisely, providing what is needed and returning to their\nnatural balance when their work is complete.\n\nThis is a lasting, automatic pattern of healthy maintenance,\nalways working at the appropriate level for your body.\n\nYour mind will become clearer, your thinking sharper, and your\nresponses quicker and more precise.\n\nYour awareness will strengthen, your concentration will improve,\nand your thoughts will flow smoothly and naturally.\n\nEach day, clear thinking and mental sharpness will become more\nnatural, steady, and effortless.\n\nWhenever you wish to give this established pattern additional\nattention and reinforcement, you can do so quickly and easily.\n\nSimply close your eyes and bring your attention to the area\nyou wish to strengthen.\n\nTake a deep breath in and gently hold it.\n\nWhile holding your breath, silently say to yourself,\n\"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth, as though gently\nblowing out a candle.\n\nAs you exhale, visualize circulation becoming smoother,\nstronger, and more balanced throughout your chosen area.\n\nYour mind will reinforce this already-established pattern\nof healthy circulation, renewal, and maintenance.\n\nEach time you use {{ cue.primary }}, conscious reinforcement\nof this pattern becomes easier, faster, and more effective.\n\nRemember, the maintenance pattern continues automatically,\nwhether or not you think about it.\n\n{{ cue.primary }} is always available whenever you choose\nto focus and reinforce it.\n\nYour mind will remain clear, sharp, alert, and ready\nwhenever you need it.",
+          "value": "From this moment forward, let healthy circulation, renewal,\nand maintenance work together throughout your brain\nand the blood vessels in your neck that supply it.\n\nLet blood flow smoothly and evenly,\ncarrying oxygen and nourishment to every part of your brain.\nLet these pathways remain open, strong, and flexible,\nwith renewal and maintenance working together in natural balance.\n\nThis pattern is permanently established within you\nand continues automatically, whether you are awake, resting, or asleep,\nadjusting to your body's needs without conscious effort.\n\nYour mind becomes clearer, your thinking sharper,\nand your concentration steadier.\nYour thoughts flow smoothly,\nand your responses become quicker and more precise.\n\nWhenever you wish to reinforce this pattern, simply close your eyes.\nTake a deep breath in and gently hold it.\nWhile holding your breath, silently say to yourself,\n\"{{ cue.primary }}.\"\nThen slowly exhale through your mouth, as though gently\nblowing out a candle, and open your eyes.\n\nAs you exhale, let this pattern of healthy circulation, renewal,\nand maintenance continue throughout your brain and neck.\n\nThe more you use this command,\nthe easier and more effective this reinforcement becomes.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-001.function-body/text"
         },
         "/entries/hplus.function.ocf-bod-001.function-body/version": {
@@ -5621,7 +5621,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-001.opener/text": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "This OCF exercise will strengthen and reinforce your body's natural\nability to maintain healthy circulation throughout your brain and\nthe blood vessels in your neck that supply it, establishing a lasting,\nautomatic pattern of balanced circulation, clear thinking, and\nmental sharpness.",
+          "value": "This OCF exercise will teach you to strengthen healthy circulation\nand natural maintenance throughout your brain\nand the blood vessels in your neck that supply it,\nsupporting clear thinking and mental sharpness.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-001.opener/text"
         },
         "/entries/hplus.function.ocf-bod-001.opener/version": {
@@ -5681,7 +5681,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/localization/contract_sha256": {
           "file": "locales/en-US/OCF-BOD-001-Brain-Flow.yaml",
-          "value": "4ddb1aaf6a44a82d7304183c2a0faa199e7b3fad2cbf07a983884824016e049b",
+          "value": "296ef60534a0527b011e51dd452f3e6bddaf135bd1b151b75286701cb1f297c5",
           "yaml_pointer": "/localization/contract_sha256"
         },
         "/localization/status": {
@@ -6319,7 +6319,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/control/procedure/ref": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "OCF-PROC-CLOSE-FOCUS",
+          "value": "OCF-PROC-CLOSE-INHALE-HOLD",
           "yaml_pointer": "/activation/control/procedure/ref"
         },
         "/activation/control/procedure/status": {
@@ -6379,7 +6379,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/0/instruction/status": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/0/instruction/status"
         },
         "/activation/procedure_steps/0/instruction/text": {
@@ -6399,17 +6399,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/1/id": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "focus-target",
+          "value": "inhale",
           "yaml_pointer": "/activation/procedure_steps/1/id"
         },
         "/activation/procedure_steps/1/instruction/status": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/1/instruction/status"
         },
         "/activation/procedure_steps/1/instruction/text": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "Focus attention on the selected target.",
+          "value": "Take a deep breath in.",
           "yaml_pointer": "/activation/procedure_steps/1/instruction/text"
         },
         "/activation/procedure_steps/1/instruction/version": {
@@ -6419,22 +6419,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/1/operation": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "focus-target",
+          "value": "inhale",
           "yaml_pointer": "/activation/procedure_steps/1/operation"
         },
         "/activation/procedure_steps/2/id": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "inhale",
+          "value": "hold",
           "yaml_pointer": "/activation/procedure_steps/2/id"
         },
         "/activation/procedure_steps/2/instruction/status": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/2/instruction/status"
         },
         "/activation/procedure_steps/2/instruction/text": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "Inhale.",
+          "value": "Gently hold your breath.",
           "yaml_pointer": "/activation/procedure_steps/2/instruction/text"
         },
         "/activation/procedure_steps/2/instruction/version": {
@@ -6444,22 +6444,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/2/operation": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "inhale",
+          "value": "hold-breath",
           "yaml_pointer": "/activation/procedure_steps/2/operation"
         },
         "/activation/procedure_steps/3/id": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "hold",
+          "value": "command",
           "yaml_pointer": "/activation/procedure_steps/3/id"
         },
         "/activation/procedure_steps/3/instruction/status": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/3/instruction/status"
         },
         "/activation/procedure_steps/3/instruction/text": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "Hold your breath.",
+          "value": "While holding your breath, silently say the command to yourself.",
           "yaml_pointer": "/activation/procedure_steps/3/instruction/text"
         },
         "/activation/procedure_steps/3/instruction/version": {
@@ -6469,22 +6469,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/3/operation": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "hold-breath",
+          "value": "think-or-say-command",
           "yaml_pointer": "/activation/procedure_steps/3/operation"
         },
         "/activation/procedure_steps/4/id": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "command",
+          "value": "exhale",
           "yaml_pointer": "/activation/procedure_steps/4/id"
         },
         "/activation/procedure_steps/4/instruction/status": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/4/instruction/status"
         },
         "/activation/procedure_steps/4/instruction/text": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "Think or say the command.",
+          "value": "Then slowly exhale through your mouth, as though gently blowing out a candle.",
           "yaml_pointer": "/activation/procedure_steps/4/instruction/text"
         },
         "/activation/procedure_steps/4/instruction/version": {
@@ -6494,33 +6494,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/4/operation": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "think-or-say-command",
+          "value": "exhale",
           "yaml_pointer": "/activation/procedure_steps/4/operation"
-        },
-        "/activation/procedure_steps/5/id": {
-          "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "exhale",
-          "yaml_pointer": "/activation/procedure_steps/5/id"
-        },
-        "/activation/procedure_steps/5/instruction/status": {
-          "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "canonical",
-          "yaml_pointer": "/activation/procedure_steps/5/instruction/status"
-        },
-        "/activation/procedure_steps/5/instruction/text": {
-          "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "Exhale.",
-          "yaml_pointer": "/activation/procedure_steps/5/instruction/text"
-        },
-        "/activation/procedure_steps/5/instruction/version": {
-          "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "1.0.0",
-          "yaml_pointer": "/activation/procedure_steps/5/instruction/version"
-        },
-        "/activation/procedure_steps/5/operation": {
-          "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "exhale",
-          "yaml_pointer": "/activation/procedure_steps/5/operation"
         },
         "/activation/role": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
@@ -8504,7 +8479,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/description/text": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "Promotes a felt sense of smooth, comfortable circulation.",
+          "value": "A self-directed practice focused on healthy circulation throughout the body, supporting smooth blood flow, oxygen and nutrient delivery, blood vessel maintenance, and natural renewal, with conscious reinforcement when desired.",
           "yaml_pointer": "/description/text"
         },
         "/description/version": {
@@ -8624,7 +8599,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-002.closer/text": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "Remember, your body's natural pattern of healthy circulation\nand maintenance is now firmly established.\n\nWhenever you wish to reinforce circulation in any part\nof your body, simply close your eyes.\n\nBring your attention to the area you choose.\n\nInhale deeply and gently hold your breath.\n\nSilently say to yourself, \"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth, as though\ngently blowing out a candle, and open your eyes.\n\nThis concludes your OCF Circulation exercise.",
+          "value": "Remember, to reinforce healthy circulation and natural maintenance throughout your body, close your eyes.\n\nInhale deeply and gently hold your breath.\n\nSilently say to yourself, \"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth, as though gently blowing out a candle, and open your eyes.\n\nThis concludes your OCF Circulation exercise.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-002.closer/text"
         },
         "/entries/hplus.function.ocf-bod-002.closer/version": {
@@ -8649,7 +8624,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-002.function-body/text": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "From this moment forward, bring your awareness to the blood\ncirculating throughout your entire physical body.\n\nFeel your blood flowing smoothly and evenly, reaching every\npart of you with the oxygen and nourishment it needs.\n\nBecome aware of the arteries, veins, and tiny blood vessels\nthat carry this flow throughout your body.\n\nSee and feel each vessel becoming stronger, healthier,\nand more flexible, maintaining its ideal shape and size\nfor smooth and natural circulation.\n\nImagine every restriction clearing, and see the pathways\nof circulation becoming open and free.\n\nSee your entire circulation system working smoothly,\nevenly, and efficiently.\n\nNow bring your awareness to the nourishment carried\nby your blood.\n\nWith every breath, your lungs supply the oxygen your\nbody needs, and your digestive system provides the\nnutrients that sustain your strength and vitality.\n\nYour blood carries this oxygen and nourishment throughout\nyour body, delivering it where it is needed.\n\nFeel the energy and vitality of this nourishment\nreaching every part of you.\n\nYour lungs, kidneys, liver, and other organs work\ntogether to process and eliminate waste and to\nmaintain your body's natural balance.\n\nYour body's protective and maintenance systems work\ntogether in complete harmony, each doing exactly\nwhat is needed.\n\nNow know that this pattern of smooth circulation,\nnourishment, and maintenance is firmly established\nwithin you.\n\nFrom this moment forward, your body will maintain\nthis healthy pattern automatically, without conscious\nthought or effort.\n\nWhether you are awake, resting, or sleeping, your\nnatural circulation and maintenance systems will\ncontinue working for you.\n\nBlood flow will adjust smoothly and appropriately\nto the needs of each part of your body, supplying\nmore where needed and maintaining balance throughout.\n\nThis automatic process will remain naturally regulated,\nproviding exactly what your body needs without\nunnecessary strain or excess.\n\nThe pattern is lasting and continuous, becoming a\nnatural part of your everyday life.\n\nWith each passing day, your circulation will become\nsmoother, more balanced, and more efficient.\n\nYou will feel stronger, refreshed, and full of\nnatural vitality.\n\nWhenever you wish to give this established pattern\nadditional attention and reinforcement, you can\ndo so quickly and easily.\n\nSimply close your eyes and bring your awareness\nto the area you wish to improve.\n\nTake a deep breath in and gently hold it.\n\nWhile holding your breath, silently say to yourself,\n\"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth, as though\ngently blowing out a candle.\n\nAs you exhale, visualize smooth, balanced circulation\nthroughout your chosen area.\n\nYour mind will reinforce this already-established\npattern of healthy circulation and maintenance.\n\nEach time you use {{ cue.primary }}, conscious\nreinforcement of this pattern becomes easier,\nfaster, and more effective.\n\nRemember, your body's natural circulation and\nmaintenance will continue automatically, whether\nor not you think about it.\n\n{{ cue.primary }} is always available whenever\nyou choose to focus and reinforce this pattern.\n\nYour blood will flow smoothly and evenly,\nbringing nourishment and vitality throughout\nyour body.",
+          "value": "From this moment forward, let healthy circulation, nourishment, renewal, and maintenance work together throughout your entire body.\n\nLet your blood flow smoothly and evenly through your arteries, veins, and smaller blood vessels, carrying oxygen and nourishment wherever they are needed.\n\nLet these pathways remain open, strong, and flexible, supporting steady and efficient circulation.\n\nYour lungs supply oxygen, and your digestive system provides nourishment. Your blood carries these essential resources throughout your body, while your kidneys, liver, lungs, and other natural systems help process waste and maintain healthy balance.\n\nEvery organ and tissue receives the circulation and nourishment it needs, with blood flow adjusting naturally to your body's changing demands.\n\nThis pattern is permanently established within you and continues automatically, whether you are awake, resting, or asleep, without conscious effort.\n\nYour body's natural circulation and maintenance systems work together smoothly, supporting strength, balance, renewal, and vitality throughout your everyday life.\n\nWhenever you wish to reinforce this pattern, simply close your eyes.\n\nTake a deep breath in and gently hold it.\n\nWhile holding your breath, silently say to yourself, \"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth, as though gently blowing out a candle.\n\nAs you exhale, let this pattern of smooth, balanced circulation and natural maintenance continue throughout your entire body.\n\nThe more you use this command, the easier and more effective this reinforcement becomes.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-002.function-body/text"
         },
         "/entries/hplus.function.ocf-bod-002.function-body/version": {
@@ -8664,7 +8639,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-002.opener/text": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "This OCF exercise will strengthen and reinforce your body's\nnatural ability to maintain smooth, healthy circulation throughout\nyour entire body, establishing a lasting, automatic pattern of\nbalanced blood flow, nourishment, renewal, and maintenance.",
+          "value": "This OCF exercise will teach you to strengthen healthy circulation throughout your entire body, supporting smooth blood flow, nourishment, renewal, and natural maintenance.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-002.opener/text"
         },
         "/entries/hplus.function.ocf-bod-002.opener/version": {
@@ -8724,7 +8699,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/localization/contract_sha256": {
           "file": "locales/en-US/OCF-BOD-002-Circulation.yaml",
-          "value": "547d059d7e0f4c6f611ab71a25a2daea08086ed94cf0d544a6269990d4976118",
+          "value": "d7481e6cd4b26c22cdad8e53f06b00fbb68564d3093b8b7fde9b820b85de56a9",
           "yaml_pointer": "/localization/contract_sha256"
         },
         "/localization/status": {
@@ -9262,7 +9237,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/0/instruction/status": {
           "file": "locales/en-US/OCF-BOD-003-Comfort.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/0/instruction/status"
         },
         "/activation/procedure_steps/0/instruction/text": {
@@ -9287,12 +9262,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/1/instruction/status": {
           "file": "locales/en-US/OCF-BOD-003-Comfort.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/1/instruction/status"
         },
         "/activation/procedure_steps/1/instruction/text": {
           "file": "locales/en-US/OCF-BOD-003-Comfort.yaml",
-          "value": "Focus attention on the selected target.",
+          "value": "Bring the area where you want comfort into your awareness.",
           "yaml_pointer": "/activation/procedure_steps/1/instruction/text"
         },
         "/activation/procedure_steps/1/instruction/version": {
@@ -9312,12 +9287,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/2/instruction/status": {
           "file": "locales/en-US/OCF-BOD-003-Comfort.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/2/instruction/status"
         },
         "/activation/procedure_steps/2/instruction/text": {
           "file": "locales/en-US/OCF-BOD-003-Comfort.yaml",
-          "value": "Inhale.",
+          "value": "Take a deep breath in.",
           "yaml_pointer": "/activation/procedure_steps/2/instruction/text"
         },
         "/activation/procedure_steps/2/instruction/version": {
@@ -9337,12 +9312,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/3/instruction/status": {
           "file": "locales/en-US/OCF-BOD-003-Comfort.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/3/instruction/status"
         },
         "/activation/procedure_steps/3/instruction/text": {
           "file": "locales/en-US/OCF-BOD-003-Comfort.yaml",
-          "value": "Hold your breath.",
+          "value": "Gently hold your breath.",
           "yaml_pointer": "/activation/procedure_steps/3/instruction/text"
         },
         "/activation/procedure_steps/3/instruction/version": {
@@ -9362,12 +9337,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/4/instruction/status": {
           "file": "locales/en-US/OCF-BOD-003-Comfort.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/4/instruction/status"
         },
         "/activation/procedure_steps/4/instruction/text": {
           "file": "locales/en-US/OCF-BOD-003-Comfort.yaml",
-          "value": "Think or say the command.",
+          "value": "While holding your breath, silently say the command to yourself.",
           "yaml_pointer": "/activation/procedure_steps/4/instruction/text"
         },
         "/activation/procedure_steps/4/instruction/version": {
@@ -9387,12 +9362,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/5/instruction/status": {
           "file": "locales/en-US/OCF-BOD-003-Comfort.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/5/instruction/status"
         },
         "/activation/procedure_steps/5/instruction/text": {
           "file": "locales/en-US/OCF-BOD-003-Comfort.yaml",
-          "value": "Exhale.",
+          "value": "Then slowly exhale through your mouth, as though gently blowing out a candle.",
           "yaml_pointer": "/activation/procedure_steps/5/instruction/text"
         },
         "/activation/procedure_steps/5/instruction/version": {
@@ -11397,7 +11372,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/description/text": {
           "file": "locales/en-US/OCF-BOD-003-Comfort.yaml",
-          "value": "Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT.",
+          "value": "A self-directed practice for easing physical discomfort in a selected area of the body.",
           "yaml_pointer": "/description/text"
         },
         "/description/version": {
@@ -11517,7 +11492,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-003.closer/text": {
           "file": "locales/en-US/OCF-BOD-003-Comfort.yaml",
-          "value": "Remember, whenever you wish to reduce discomfort\nin any part of your body, simply close your eyes.\n\nBring your attention to the area\nwhere the discomfort begins.\n\nInhale deeply and gently hold your breath.\n\nSilently say to yourself,\n\"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth,\nas though gently blowing out a candle.\n\nThe discomfort will diminish,\nbecoming less and less important to you.\n\nThis concludes your OCF Comfort exercise.",
+          "value": "Remember this method for easing physical discomfort.\nClose your eyes and bring the area where you want comfort into your awareness.\nInhale deeply and gently hold your breath.\nSilently say to yourself, \"{{ cue.primary }}.\"\nThen slowly exhale through your mouth,\nas though gently blowing out a candle.\n\nThis concludes your OCF Comfort exercise.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-003.closer/text"
         },
         "/entries/hplus.function.ocf-bod-003.closer/version": {
@@ -11542,7 +11517,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-003.function-body/text": {
           "file": "locales/en-US/OCF-BOD-003-Comfort.yaml",
-          "value": "From this moment forward, whenever you wish to reduce\nphysical discomfort in any part of your body,\nyou can do so quickly and easily.\n\nBegin by bringing your awareness to the area\nwhere the discomfort begins.\n\nClose your eyes and focus your attention on that area.\n\nTake a deep breath in and gently hold it.\n\nWhile holding your breath, silently say to yourself,\n\"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth,\nas though gently blowing out a candle.\n\nAs you exhale, the discomfort signals will begin\nto diminish, becoming weaker and weaker.\n\nFeel the discomfort fading away,\nless and less, until it no longer demands\nyour attention.\n\nYour body will become more comfortable,\ncalm, and relaxed.\n\nYour mind will become clear and peaceful,\nfree to focus on whatever you choose.\n\nYou will remain aware of your body's needs\nwhile experiencing greater comfort and ease.\n\nWhenever you wish to reduce discomfort,\nsimply close your eyes, inhale deeply,\nand gently hold your breath.\n\nFocus on the area of discomfort and silently\nsay to yourself, \"{{ cue.primary }}.\"\n\nThen exhale slowly through your mouth.\n\nThe discomfort will quickly become less and less,\nfading into the background until it is\nno longer important to you.\n\nEach time you use {{ cue.primary }},\nthis process becomes easier, smoother,\nfaster, and more effective.\n\nYou are in control of your response to discomfort.\n\nYou can return to a state of calm,\ncomfort, and relaxation whenever you desire.",
+          "value": "From this moment forward, whenever you wish to ease physical discomfort,\nyou can use this method to bring comfort to the area you choose.\n\nClose your eyes and bring the area where you want comfort into your awareness.\nTake a deep breath in and gently hold it.\nWhile holding your breath, silently say to yourself,\n\"{{ cue.primary }}.\"\nThen slowly exhale through your mouth,\nas though gently blowing out a candle.\n\nAs you exhale, let discomfort ease,\nbecoming less intense and less demanding of your attention.\nLet your body settle into comfort and relaxation,\nwhile your mind remains calm, clear, and peaceful.\n\nYou remain aware of your body's needs\nand free to focus on what you choose.\n\nThe more you use this command,\nthe easier and more effective this response becomes.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-003.function-body/text"
         },
         "/entries/hplus.function.ocf-bod-003.function-body/version": {
@@ -11557,7 +11532,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-003.opener/text": {
           "file": "locales/en-US/OCF-BOD-003-Comfort.yaml",
-          "value": "This OCF exercise will teach you to reduce and control\nphysical discomfort signals within your body,\nwhenever and wherever you choose.",
+          "value": "This OCF exercise will teach you to ease physical discomfort\nin a selected area of your body.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-003.opener/text"
         },
         "/entries/hplus.function.ocf-bod-003.opener/version": {
@@ -12380,7 +12355,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/control/procedure/ref": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "OCF-PROC-CLOSE-FOCUS",
+          "value": "OCF-PROC-CLOSE-INHALE-HOLD",
           "yaml_pointer": "/activation/control/procedure/ref"
         },
         "/activation/control/procedure/status": {
@@ -12430,7 +12405,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/0/instruction/status": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/0/instruction/status"
         },
         "/activation/procedure_steps/0/instruction/text": {
@@ -12450,17 +12425,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/1/id": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "focus-target",
+          "value": "inhale",
           "yaml_pointer": "/activation/procedure_steps/1/id"
         },
         "/activation/procedure_steps/1/instruction/status": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/1/instruction/status"
         },
         "/activation/procedure_steps/1/instruction/text": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "Focus attention on the selected target.",
+          "value": "Take a deep breath in.",
           "yaml_pointer": "/activation/procedure_steps/1/instruction/text"
         },
         "/activation/procedure_steps/1/instruction/version": {
@@ -12470,22 +12445,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/1/operation": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "focus-target",
+          "value": "inhale",
           "yaml_pointer": "/activation/procedure_steps/1/operation"
         },
         "/activation/procedure_steps/2/id": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "inhale",
+          "value": "hold",
           "yaml_pointer": "/activation/procedure_steps/2/id"
         },
         "/activation/procedure_steps/2/instruction/status": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/2/instruction/status"
         },
         "/activation/procedure_steps/2/instruction/text": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "Inhale.",
+          "value": "Gently hold your breath.",
           "yaml_pointer": "/activation/procedure_steps/2/instruction/text"
         },
         "/activation/procedure_steps/2/instruction/version": {
@@ -12495,22 +12470,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/2/operation": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "inhale",
+          "value": "hold-breath",
           "yaml_pointer": "/activation/procedure_steps/2/operation"
         },
         "/activation/procedure_steps/3/id": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "hold",
+          "value": "command",
           "yaml_pointer": "/activation/procedure_steps/3/id"
         },
         "/activation/procedure_steps/3/instruction/status": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/3/instruction/status"
         },
         "/activation/procedure_steps/3/instruction/text": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "Hold your breath.",
+          "value": "While holding your breath, silently say the command to yourself.",
           "yaml_pointer": "/activation/procedure_steps/3/instruction/text"
         },
         "/activation/procedure_steps/3/instruction/version": {
@@ -12520,22 +12495,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/3/operation": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "hold-breath",
+          "value": "think-or-say-command",
           "yaml_pointer": "/activation/procedure_steps/3/operation"
         },
         "/activation/procedure_steps/4/id": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "command",
+          "value": "exhale",
           "yaml_pointer": "/activation/procedure_steps/4/id"
         },
         "/activation/procedure_steps/4/instruction/status": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/4/instruction/status"
         },
         "/activation/procedure_steps/4/instruction/text": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "Think or say the command.",
+          "value": "Then slowly exhale through your mouth, as though gently blowing out a candle.",
           "yaml_pointer": "/activation/procedure_steps/4/instruction/text"
         },
         "/activation/procedure_steps/4/instruction/version": {
@@ -12545,33 +12520,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/4/operation": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "think-or-say-command",
+          "value": "exhale",
           "yaml_pointer": "/activation/procedure_steps/4/operation"
-        },
-        "/activation/procedure_steps/5/id": {
-          "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "exhale",
-          "yaml_pointer": "/activation/procedure_steps/5/id"
-        },
-        "/activation/procedure_steps/5/instruction/status": {
-          "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "canonical",
-          "yaml_pointer": "/activation/procedure_steps/5/instruction/status"
-        },
-        "/activation/procedure_steps/5/instruction/text": {
-          "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "Exhale.",
-          "yaml_pointer": "/activation/procedure_steps/5/instruction/text"
-        },
-        "/activation/procedure_steps/5/instruction/version": {
-          "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "1.0.0",
-          "yaml_pointer": "/activation/procedure_steps/5/instruction/version"
-        },
-        "/activation/procedure_steps/5/operation": {
-          "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "exhale",
-          "yaml_pointer": "/activation/procedure_steps/5/operation"
         },
         "/activation/role": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
@@ -14590,7 +14540,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-004.closer/text": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "Remember, your body's natural processes of cleansing,\nrenewal, and maintenance are now firmly established\nas a lasting, automatic pattern.\n\nWhenever you wish to reinforce this pattern,\nsimply close your eyes.\n\nInhale deeply and gently hold your breath.\n\nSilently say to yourself, \"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth,\nas though gently blowing out a candle.\n\nThis concludes your OCF Detox exercise.",
+          "value": "Remember, to reinforce your body's natural cleansing, renewal, and maintenance, close your eyes.\n\nInhale deeply and gently hold your breath.\n\nSilently say to yourself, \"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth, as though gently blowing out a candle.\n\nThis concludes your OCF Detox exercise.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-004.closer/text"
         },
         "/entries/hplus.function.ocf-bod-004.closer/version": {
@@ -14615,7 +14565,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-004.function-body/text": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "From this moment forward, your body's natural processes\nof cleansing, renewal, and maintenance will become stronger,\nsmoother, and more effective.\n\nEvery part of your body will work together in complete\nharmony, maintaining the healthy balance you are\nnaturally designed to achieve.\n\nBring your awareness to the many systems within your\nbody that continually cleanse, protect, and renew you.\n\nYour liver, kidneys, lungs, digestive system, and other\nnatural cleansing systems work together, each performing\nits own important function.\n\nSee and feel these systems working smoothly, efficiently,\nand in perfect coordination.\n\nYour body recognizes what it needs and what it no\nlonger needs.\n\nEverything useful and beneficial is retained and used\nwhere it is needed.\n\nUnwanted substances and natural waste products are\nprocessed and eliminated through your body's normal\ncleansing pathways.\n\nVisualize these processes becoming clearer, smoother,\nand more effective throughout your entire body.\n\nImagine every cell receiving the nourishment it needs,\nwhile your body's natural maintenance systems keep\nyour internal environment clean and balanced.\n\nFeel this sense of balance spreading throughout\nyour entire physical body.\n\nEvery organ, every tissue, and every system works\ntogether to maintain your natural health and vitality.\n\nNow know that this pattern of cleansing, renewal,\nand maintenance is becoming permanently established\nwithin you.\n\nFrom this moment forward, your body will maintain\nthis pattern automatically, without any need for\nconscious thought or effort.\n\nWhether you are awake, resting, or sleeping,\nyour body's natural cleansing and maintenance\nprocesses will continue working for you.\n\nThese processes will always respond intelligently\nto your body's needs, becoming more active when\nneeded and returning to their normal balanced\nactivity when their work is complete.\n\nYour body will continuously maintain this healthy\nbalance, retaining what is beneficial and\neliminating what is no longer needed.\n\nThis automatic pattern is now a natural and lasting\npart of your everyday life.\n\nEach day, your body's natural processes of\ncleansing and renewal will operate more smoothly,\nefficiently, and effectively.\n\nYou will feel increasingly clean, refreshed,\nbalanced, and full of natural vitality.\n\nWhenever you wish to consciously strengthen\nor reinforce this cleansing pattern,\nyou can do so quickly and easily.\n\nSimply close your eyes and bring your awareness\nto your body's natural cleansing systems.\n\nTake a deep breath in and gently hold it.\n\nWhile holding your breath, silently say to yourself,\n\"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth,\nas though gently blowing out a candle.\n\nAs you exhale, visualize your body's cleansing\nand maintenance systems working together\nsmoothly and in complete harmony.\n\nYour body will reinforce its natural pattern\nof cleansing, renewal, and healthy balance.\n\nEvery system will perform its function at exactly\nthe level needed to maintain your well-being.\n\nEach time you use {{ cue.primary }},\nyour ability to consciously reinforce\nthis pattern becomes easier, faster,\nand more effective.\n\nRemember, this process is now automatic.\n\nYour body will continue its natural cleansing\nand maintenance whether or not you\nconsciously think about it.\n\n{{ cue.primary }} is always available whenever\nyou wish to give this established pattern\nadditional attention and reinforcement.\n\nYour body knows how to maintain its natural\nbalance, and this pattern will continue\nworking for you every day and every night.",
+          "value": "From this moment forward, let your body's natural processes of cleansing, renewal, and maintenance work together smoothly and efficiently.\n\nYour liver, kidneys, lungs, digestive system, and other natural cleansing pathways each perform their important work.\n\nLet your body retain and use what is beneficial, while processing and eliminating natural waste products and substances it no longer needs.\n\nLet every organ, tissue, and supporting system work together in healthy balance, providing nourishment, protection, maintenance, and renewal throughout your body.\n\nThis pattern is permanently established within you and continues automatically, whether you are awake, resting, or asleep, adjusting naturally to your body's changing needs without conscious effort.\n\nWhenever you wish to reinforce this pattern, simply close your eyes.\n\nTake a deep breath in and gently hold it.\n\nWhile holding your breath, silently say to yourself, \"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth, as though gently blowing out a candle.\n\nAs you exhale, let this pattern of natural cleansing, renewal, and maintenance continue throughout your body.\n\nThe more you use this command, the easier and more effective this reinforcement becomes.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-004.function-body/text"
         },
         "/entries/hplus.function.ocf-bod-004.function-body/version": {
@@ -14630,7 +14580,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-004.opener/text": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "This OCF exercise will strengthen and reinforce your body's\nnatural ability to cleanse, renew, and maintain itself,\nestablishing a lasting, automatic pattern of healthy balance\nand maintenance throughout your entire physical body.",
+          "value": "This OCF exercise will teach you to strengthen and reinforce your body's natural processes of cleansing, renewal, and maintenance, establishing a lasting, automatic pattern of healthy balance throughout your body.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-004.opener/text"
         },
         "/entries/hplus.function.ocf-bod-004.opener/version": {
@@ -14690,7 +14640,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/localization/contract_sha256": {
           "file": "locales/en-US/OCF-BOD-004-Detox.yaml",
-          "value": "acabbac24a597c9cc3357ebe82c28e52fbc4c08a30da6ac3b38ce9c3d712a980",
+          "value": "c146679590f8ef5290d1a88ccbb59cf7d6c67b7f2a04fba40f33a1b653636e9d",
           "yaml_pointer": "/localization/contract_sha256"
         },
         "/localization/status": {
@@ -18471,7 +18421,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/control/procedure/ref": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "OCF-PROC-CLOSE-FOCUS",
+          "value": "OCF-PROC-CLOSE-INHALE-HOLD",
           "yaml_pointer": "/activation/control/procedure/ref"
         },
         "/activation/control/procedure/status": {
@@ -18531,7 +18481,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/0/instruction/status": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/0/instruction/status"
         },
         "/activation/procedure_steps/0/instruction/text": {
@@ -18551,17 +18501,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/1/id": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "focus-target",
+          "value": "inhale",
           "yaml_pointer": "/activation/procedure_steps/1/id"
         },
         "/activation/procedure_steps/1/instruction/status": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/1/instruction/status"
         },
         "/activation/procedure_steps/1/instruction/text": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "Focus attention on the selected target.",
+          "value": "Take a deep breath in.",
           "yaml_pointer": "/activation/procedure_steps/1/instruction/text"
         },
         "/activation/procedure_steps/1/instruction/version": {
@@ -18571,22 +18521,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/1/operation": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "focus-target",
+          "value": "inhale",
           "yaml_pointer": "/activation/procedure_steps/1/operation"
         },
         "/activation/procedure_steps/2/id": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "inhale",
+          "value": "hold",
           "yaml_pointer": "/activation/procedure_steps/2/id"
         },
         "/activation/procedure_steps/2/instruction/status": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/2/instruction/status"
         },
         "/activation/procedure_steps/2/instruction/text": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "Inhale.",
+          "value": "Gently hold your breath.",
           "yaml_pointer": "/activation/procedure_steps/2/instruction/text"
         },
         "/activation/procedure_steps/2/instruction/version": {
@@ -18596,22 +18546,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/2/operation": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "inhale",
+          "value": "hold-breath",
           "yaml_pointer": "/activation/procedure_steps/2/operation"
         },
         "/activation/procedure_steps/3/id": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "hold",
+          "value": "command",
           "yaml_pointer": "/activation/procedure_steps/3/id"
         },
         "/activation/procedure_steps/3/instruction/status": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/3/instruction/status"
         },
         "/activation/procedure_steps/3/instruction/text": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "Hold your breath.",
+          "value": "While holding your breath, silently say the command to yourself.",
           "yaml_pointer": "/activation/procedure_steps/3/instruction/text"
         },
         "/activation/procedure_steps/3/instruction/version": {
@@ -18621,22 +18571,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/3/operation": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "hold-breath",
+          "value": "think-or-say-command",
           "yaml_pointer": "/activation/procedure_steps/3/operation"
         },
         "/activation/procedure_steps/4/id": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "command",
+          "value": "exhale",
           "yaml_pointer": "/activation/procedure_steps/4/id"
         },
         "/activation/procedure_steps/4/instruction/status": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/4/instruction/status"
         },
         "/activation/procedure_steps/4/instruction/text": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "Think or say the command.",
+          "value": "Then slowly exhale through your mouth, as though gently blowing out a candle.",
           "yaml_pointer": "/activation/procedure_steps/4/instruction/text"
         },
         "/activation/procedure_steps/4/instruction/version": {
@@ -18646,33 +18596,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/4/operation": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "think-or-say-command",
+          "value": "exhale",
           "yaml_pointer": "/activation/procedure_steps/4/operation"
-        },
-        "/activation/procedure_steps/5/id": {
-          "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "exhale",
-          "yaml_pointer": "/activation/procedure_steps/5/id"
-        },
-        "/activation/procedure_steps/5/instruction/status": {
-          "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "canonical",
-          "yaml_pointer": "/activation/procedure_steps/5/instruction/status"
-        },
-        "/activation/procedure_steps/5/instruction/text": {
-          "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "Exhale.",
-          "yaml_pointer": "/activation/procedure_steps/5/instruction/text"
-        },
-        "/activation/procedure_steps/5/instruction/version": {
-          "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "1.0.0",
-          "yaml_pointer": "/activation/procedure_steps/5/instruction/version"
-        },
-        "/activation/procedure_steps/5/operation": {
-          "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "exhale",
-          "yaml_pointer": "/activation/procedure_steps/5/operation"
         },
         "/activation/role": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
@@ -20631,7 +20556,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/description/text": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "Self-directed wellness practice supporting a felt sense of calm, steady heart function.",
+          "value": "A self-directed practice focused on steady, coordinated heart function, healthy circulation, and ongoing natural maintenance, with conscious reinforcement when desired.",
           "yaml_pointer": "/description/text"
         },
         "/description/version": {
@@ -20751,7 +20676,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-006.closer/text": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "Remember, your heart's natural processes\nof maintenance and renewal are now firmly\nestablished as a lasting, automatic pattern.\n\nWhenever you wish to consciously reinforce\nthis pattern, simply close your eyes.\n\nBring your attention to your heart.\n\nInhale deeply and gently hold your breath.\n\nSilently say to yourself,\n\"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth,\nas though gently blowing out a candle.\n\nThis concludes your OCF Heart Flow exercise.",
+          "value": "Remember, to reinforce healthy heart function,\ncirculation, and maintenance, close your eyes.\nInhale deeply and gently hold your breath.\nSilently say to yourself, \"{{ cue.primary }}.\"\nThen slowly exhale through your mouth,\nas though gently blowing out a candle.\n\nThis concludes your OCF Heart Flow exercise.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-006.closer/text"
         },
         "/entries/hplus.function.ocf-bod-006.closer/version": {
@@ -20776,7 +20701,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-006.function-body/text": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "From this moment forward, the muscles, nerves,\nand blood vessels within and around your heart\nare becoming stronger, healthier, and more balanced.\n\nBring your awareness to your heart,\nworking steadily and naturally within your chest.\n\nFeel its strength and its steady rhythm.\n\nWith every heartbeat, your heart performs\nits important work, circulating blood\nthroughout your entire physical body.\n\nNow become aware of the muscles of your heart.\n\nSee and feel these muscles becoming stronger,\nhealthier, and more efficient.\n\nEvery part of your heart works together\nin perfect coordination, providing exactly\nthe strength needed for smooth, steady circulation.\n\nYour heart muscles are strong and balanced,\nworking naturally and efficiently\nwithout unnecessary strain.\n\nNow bring your awareness to the blood vessels\nwithin and around your heart.\n\nVisualize each artery and vein becoming stronger,\nhealthier, and more flexible.\n\nSee the pathways of circulation becoming\nsmooth and clear, allowing blood\nto flow freely and evenly.\n\nYour heart receives the oxygen and nourishment\nit needs to maintain its strength and vitality.\n\nImagine every part of your heart receiving\na steady, balanced supply of blood.\n\nSee its entire circulation system\nworking smoothly and efficiently.\n\nNow bring your awareness to the signals\nthat guide and coordinate your heartbeat.\n\nThese signals are clear, steady,\nand perfectly coordinated.\n\nEvery signal reaches its intended destination,\nguiding your heart muscles to work together\nin a smooth and balanced rhythm.\n\nYour heart responds naturally and appropriately\nto the changing needs of your body.\n\nWhen you are resting, your heart works\ncalmly and efficiently.\n\nWhen you are active, your heart adjusts\nits activity smoothly and naturally\nto provide the circulation your body needs.\n\nEvery part of your heart works together\nin complete harmony.\n\nNow become aware of your heart's natural\nprocesses of maintenance and renewal.\n\nVisualize every muscle, vessel, and supporting\nstructure receiving the nourishment\nand care it needs.\n\nSee your body's natural maintenance systems\nworking together, supporting the strength,\nbalance, and healthy function of your heart.\n\nYour heart is growing stronger,\nsteadier, and more efficient.\n\nIts muscles work in harmony,\nits circulation flows smoothly,\nand its rhythm remains naturally balanced.\n\nNow know that this pattern of healthy\nheart maintenance and renewal\nis becoming permanently established within you.\n\nFrom this moment forward, your body's natural\nprocesses of heart maintenance will continue\nautomatically, without conscious thought or effort.\n\nWhether you are awake, resting, or sleeping,\nthese processes will continue working for you.\n\nYour heart will maintain its natural strength,\ncoordination, and healthy balance.\n\nThese processes will always respond intelligently\nto the needs of your body, providing exactly\nthe level of activity and support required.\n\nWhen more circulation is needed,\nyour heart will respond appropriately.\n\nWhen your body is resting,\nyour heart will return to its natural,\ncomfortable, and efficient rhythm.\n\nThis automatic pattern of healthy maintenance\nis now a lasting part of your everyday life.\n\nEach day, your heart's natural processes\nof maintenance and renewal will work\nmore smoothly, efficiently, and effectively.\n\nFeel the confidence of knowing that\nyour heart is supported by these\nautomatic processes of healthy maintenance.\n\nYour heart is strong, steady,\nbalanced, and full of natural vitality.\n\nWhenever you wish to consciously strengthen\nor reinforce this established pattern,\nyou can do so quickly and easily.\n\nSimply close your eyes and bring\nyour awareness to your heart.\n\nTake a deep breath in and gently hold it.\n\nWhile holding your breath, silently say\nto yourself, \"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth,\nas though gently blowing out a candle.\n\nAs you exhale, visualize your heart\nworking smoothly, strongly,\nand in perfect coordination.\n\nFeel its natural rhythm,\nits steady strength,\nand its balanced activity.\n\nYour mind reinforces this established pattern\nof healthy heart maintenance and renewal.\n\nEvery muscle, vessel, and supporting system\nworks together in complete harmony.\n\nEach time you use {{ cue.primary }},\nyour ability to consciously reinforce\nthis pattern becomes easier, faster,\nand more effective.\n\nRemember, this process is now automatic.\n\nYour body's natural processes of heart maintenance\nwill continue working whether or not\nyou consciously think about them.\n\n{{ cue.primary }} is always available\nwhenever you wish to give this established\npattern additional attention and reinforcement.\n\nYour heart will continue maintaining\nits natural strength, balance,\nand efficient function every day and every night.",
+          "value": "From this moment forward, let your heart's natural strength,\ncoordination, circulation, and maintenance work together\nin lasting balance.\n\nLet its muscles work smoothly and efficiently,\nwith the strength needed to circulate blood without unnecessary strain.\nLet the signals guiding each heartbeat remain clear and coordinated,\nbringing the heart's activity into a steady, balanced rhythm.\n\nLet the blood vessels within and around your heart\nremain open, strong, and flexible,\nsupplying the oxygen and nourishment it needs.\nLet renewal and maintenance support every part of your heart.\n\nYour heart responds naturally to your body's changing needs,\nincreasing its activity when needed\nand returning to an easy rhythm during rest.\n\nThis pattern is permanently established within you\nand continues automatically, whether you are awake, resting, or asleep,\nwithout conscious effort.\n\nWhenever you wish to reinforce this pattern, simply close your eyes.\nTake a deep breath in and gently hold it.\nWhile holding your breath, silently say to yourself,\n\"{{ cue.primary }}.\"\nThen slowly exhale through your mouth,\nas though gently blowing out a candle.\n\nThe more you use this command,\nthe easier and more effective this reinforcement becomes.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-006.function-body/text"
         },
         "/entries/hplus.function.ocf-bod-006.function-body/version": {
@@ -20791,7 +20716,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-006.opener/text": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "This OCF exercise will strengthen and reinforce your heart's\nnatural processes of renewal and maintenance, establishing\na lasting, automatic pattern of healthy strength, balance,\nand efficient function throughout your heart.",
+          "value": "This OCF exercise will teach you to reinforce steady,\ncoordinated heart function, healthy circulation,\nand your heart's natural renewal and maintenance.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-006.opener/text"
         },
         "/entries/hplus.function.ocf-bod-006.opener/version": {
@@ -20851,7 +20776,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/localization/contract_sha256": {
           "file": "locales/en-US/OCF-BOD-006-Heart-Flow.yaml",
-          "value": "058070bc25682576ef4b4ebcb8974bc8f2f025d311ca8e79a63c3b65639b5aa9",
+          "value": "1ec1cc4f61973bb87741ee569474f47f30941188f09463bd649b7ae846d9880f",
           "yaml_pointer": "/localization/contract_sha256"
         },
         "/localization/status": {
@@ -21679,7 +21604,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/control/procedure/ref": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "OCF-PROC-CLOSE-FOCUS",
+          "value": "OCF-PROC-CLOSE-INHALE-HOLD",
           "yaml_pointer": "/activation/control/procedure/ref"
         },
         "/activation/control/procedure/status": {
@@ -21729,7 +21654,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/0/instruction/status": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/0/instruction/status"
         },
         "/activation/procedure_steps/0/instruction/text": {
@@ -21749,17 +21674,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/1/id": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "focus-target",
+          "value": "inhale",
           "yaml_pointer": "/activation/procedure_steps/1/id"
         },
         "/activation/procedure_steps/1/instruction/status": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/1/instruction/status"
         },
         "/activation/procedure_steps/1/instruction/text": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "Focus attention on the selected target.",
+          "value": "Take a comfortable breath in.",
           "yaml_pointer": "/activation/procedure_steps/1/instruction/text"
         },
         "/activation/procedure_steps/1/instruction/version": {
@@ -21769,22 +21694,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/1/operation": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "focus-target",
+          "value": "inhale",
           "yaml_pointer": "/activation/procedure_steps/1/operation"
         },
         "/activation/procedure_steps/2/id": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "inhale",
+          "value": "hold",
           "yaml_pointer": "/activation/procedure_steps/2/id"
         },
         "/activation/procedure_steps/2/instruction/status": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/2/instruction/status"
         },
         "/activation/procedure_steps/2/instruction/text": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "Inhale.",
+          "value": "Gently hold your breath.",
           "yaml_pointer": "/activation/procedure_steps/2/instruction/text"
         },
         "/activation/procedure_steps/2/instruction/version": {
@@ -21794,22 +21719,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/2/operation": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "inhale",
+          "value": "hold-breath",
           "yaml_pointer": "/activation/procedure_steps/2/operation"
         },
         "/activation/procedure_steps/3/id": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "hold",
+          "value": "command",
           "yaml_pointer": "/activation/procedure_steps/3/id"
         },
         "/activation/procedure_steps/3/instruction/status": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/3/instruction/status"
         },
         "/activation/procedure_steps/3/instruction/text": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "Hold your breath.",
+          "value": "While holding your breath, silently say the command to yourself.",
           "yaml_pointer": "/activation/procedure_steps/3/instruction/text"
         },
         "/activation/procedure_steps/3/instruction/version": {
@@ -21819,22 +21744,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/3/operation": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "hold-breath",
+          "value": "think-or-say-command",
           "yaml_pointer": "/activation/procedure_steps/3/operation"
         },
         "/activation/procedure_steps/4/id": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "command",
+          "value": "exhale",
           "yaml_pointer": "/activation/procedure_steps/4/id"
         },
         "/activation/procedure_steps/4/instruction/status": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/4/instruction/status"
         },
         "/activation/procedure_steps/4/instruction/text": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "Think or say the command.",
+          "value": "Then slowly exhale through your mouth, as though gently blowing out a candle.",
           "yaml_pointer": "/activation/procedure_steps/4/instruction/text"
         },
         "/activation/procedure_steps/4/instruction/version": {
@@ -21844,33 +21769,8 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/4/operation": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "think-or-say-command",
+          "value": "exhale",
           "yaml_pointer": "/activation/procedure_steps/4/operation"
-        },
-        "/activation/procedure_steps/5/id": {
-          "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "exhale",
-          "yaml_pointer": "/activation/procedure_steps/5/id"
-        },
-        "/activation/procedure_steps/5/instruction/status": {
-          "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "canonical",
-          "yaml_pointer": "/activation/procedure_steps/5/instruction/status"
-        },
-        "/activation/procedure_steps/5/instruction/text": {
-          "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "Exhale.",
-          "yaml_pointer": "/activation/procedure_steps/5/instruction/text"
-        },
-        "/activation/procedure_steps/5/instruction/version": {
-          "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "1.0.0",
-          "yaml_pointer": "/activation/procedure_steps/5/instruction/version"
-        },
-        "/activation/procedure_steps/5/operation": {
-          "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "exhale",
-          "yaml_pointer": "/activation/procedure_steps/5/operation"
         },
         "/activation/role": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
@@ -23829,7 +23729,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/description/text": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute for medical care.",
+          "value": "A self-directed practice focused on supporting healthy blood pressure regulation, coordinated heart and blood vessel function, and natural cardiovascular balance that adapts to the body's changing needs, with conscious reinforcement when desired.",
           "yaml_pointer": "/description/text"
         },
         "/description/version": {
@@ -23949,7 +23849,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-007.closer/text": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "Remember, your body's natural systems\nof blood pressure regulation and\ncardiovascular maintenance continue\nworking automatically every day and every night.\n\nYour heart and blood vessels work together,\nresponding naturally to your body's needs.\n\nYour ability to release unnecessary tension\nand return to a calm, balanced state\nis now firmly established within you.\n\nWhenever you wish to reinforce this pattern,\nsimply close your eyes.\n\nBring your attention to your heart\nand blood vessel system.\n\nInhale comfortably and gently hold your breath.\n\nSilently say to yourself,\n\"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth,\nas though gently blowing out a candle.\n\nThis concludes your OCF Blood Pressure Balance exercise.",
+          "value": "Remember, to reinforce your body's natural blood pressure regulation and cardiovascular balance, close your eyes.\n\nInhale comfortably and gently hold your breath.\n\nSilently say to yourself,\n\"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth, as though gently blowing out a candle.\n\nThis concludes your OCF Blood Pressure Balance exercise.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-007.closer/text"
         },
         "/entries/hplus.function.ocf-bod-007.closer/version": {
@@ -23974,7 +23874,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-007.function-body/text": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "From this moment forward, bring your awareness\nto your heart and the blood vessels throughout\nyour entire physical body.\n\nBecome aware of the natural rhythm of your heart\nand the smooth, steady circulation of your blood.\n\nYour heart and blood vessels work together,\nsupplying every part of your body with\nthe oxygen and nourishment it needs.\n\nNow become aware of your body's natural\nability to regulate and balance blood pressure.\n\nYour body has systems designed to coordinate\nthe activity of your heart, blood vessels,\nand circulation according to your needs.\n\nVisualize these systems working together\nsmoothly, efficiently, and in complete harmony.\n\nSee your blood vessels remaining healthy,\nstrong, and naturally flexible.\n\nFeel your body becoming calm and relaxed,\nallowing unnecessary tension to fade away.\n\nYour breathing becomes comfortable and steady.\n\nYour muscles relax, your thoughts become clear,\nand your entire body settles into\na natural state of calm and balance.\n\nWith every comfortable breath, you become\nmore relaxed, more peaceful, and more at ease.\n\nNow visualize your cardiovascular system\nmaintaining the healthy balance your body needs.\n\nYour heart works smoothly and efficiently,\nand your blood vessels respond naturally\nto the changing needs of your body.\n\nWhen you are resting, your body settles\ninto a calm and comfortable state.\n\nWhen you are active, your cardiovascular\nsystem adjusts appropriately to support\nyour body's increased needs.\n\nYour natural regulatory systems coordinate\nthese changes smoothly and efficiently.\n\nEvery part of your cardiovascular system\nworks together to support healthy circulation\nand balanced blood pressure.\n\nKnow that this pattern of calm, awareness,\nand healthy cardiovascular maintenance\nis becoming firmly established within you.\n\nFrom this moment forward, your mind\nwill naturally reinforce this pattern\nof relaxation and cardiovascular balance.\n\nThis pattern is now a lasting,\nautomatic part of your everyday life.\n\nWhether you are awake, resting, or sleeping,\nyour body's natural regulatory systems\ncontinue performing their important work.\n\nYour heart and blood vessels respond\nappropriately to your body's needs,\nmaintaining the balance required\nfor healthy circulation.\n\nYou will naturally recognize unnecessary\nphysical tension and release it.\n\nYour breathing will become comfortable,\nyour muscles will relax,\nand your mind will return to a calm,\nclear, and balanced state.\n\nEach day, this response becomes\nmore familiar, easier, and more automatic.\n\nYou are establishing a lasting pattern\nof calm, relaxation, and conscious awareness\nthat supports your cardiovascular well-being.\n\nWhenever you wish to consciously reinforce\nthis pattern of relaxation and balance,\nyou can do so quickly and easily.\n\nSimply close your eyes and bring\nyour awareness to your heart\nand blood vessel system.\n\nIf you wish, focus your attention\non a particular area of your body.\n\nTake a comfortable breath in\nand gently hold it.\n\nWhile holding your breath, silently say\nto yourself, \"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth,\nas though gently blowing out a candle.\n\nAs you exhale, feel unnecessary tension\nleaving your body.\n\nYour mind becomes calm and clear.\n\nYour muscles relax, your breathing settles,\nand you return to a comfortable\nstate of balance and ease.\n\nVisualize your heart and blood vessels\nworking together smoothly,\nnaturally, and efficiently.\n\nYour mind reinforces this established\npattern of healthy cardiovascular awareness,\nrelaxation, and balance.\n\nEach time you use {{ cue.primary }},\nyour ability to enter this calm,\nbalanced state becomes easier,\nfaster, and more effective.\n\nThis response becomes increasingly natural\nand familiar each time you practice it.\n\nRemember, your body's natural processes\nof cardiovascular regulation and maintenance\ncontinue automatically.\n\nYou do not need to consciously direct\nevery heartbeat or adjustment.\n\nYour body performs these natural functions\naccording to its needs.\n\n{{ cue.primary }} remains available\nwhenever you wish to consciously reinforce\nyour established pattern of relaxation\nand healthy cardiovascular awareness.\n\nFrom this moment forward, you will find\nit easier and easier to release tension,\nbecome calm, and maintain a comfortable,\nbalanced state throughout your day.",
+          "value": "From this moment forward, let your body's natural systems of blood pressure regulation, circulation, and cardiovascular maintenance work together in healthy balance.\n\nLet your heart and blood vessels work smoothly and efficiently, supporting the circulation of oxygen and nourishment throughout your body.\n\nLet your blood vessels remain healthy, strong, and naturally flexible, responding appropriately to your body's changing needs.\n\nWhen you are resting, let your cardiovascular system settle into calm, comfortable, and efficient activity.\n\nWhen you are active, let your heart and blood vessels adjust naturally, providing the circulation and support your body requires.\n\nLet unnecessary physical tension ease, allowing your breathing, muscles, and mind to return to a comfortable, balanced state.\n\nThis pattern of healthy cardiovascular regulation and maintenance is permanently established within you.\n\nIt continues automatically, whether you are awake, resting, or asleep, adjusting to your body's needs without conscious effort.\n\nWhenever you wish to reinforce this established pattern, simply close your eyes.\n\nTake a comfortable breath in and gently hold it.\n\nWhile holding your breath, silently say to yourself,\n\"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth, as though gently blowing out a candle.\n\nAs you exhale, let your heart and blood vessels continue working together in natural balance, supporting healthy circulation and appropriate blood pressure regulation.\n\nThe more you use this command, the easier and more effective this conscious reinforcement becomes.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-007.function-body/text"
         },
         "/entries/hplus.function.ocf-bod-007.function-body/version": {
@@ -23989,7 +23889,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-007.opener/text": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "This OCF exercise will help you reinforce your body's\nnatural ability to regulate blood pressure, supporting\nhealthy circulation, cardiovascular balance, and\nthe efficient functioning of your heart and blood vessels.",
+          "value": "This OCF exercise will teach you to reinforce your body's natural ability to regulate blood pressure, supporting healthy circulation, cardiovascular balance, and coordinated heart and blood vessel function.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-007.opener/text"
         },
         "/entries/hplus.function.ocf-bod-007.opener/version": {
@@ -24089,7 +23989,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/localization/contract_sha256": {
           "file": "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml",
-          "value": "e7174bd4da7fdd6aa50d5e3a027b74d1938f5c587286c4a5526ce79956bbc41e",
+          "value": "70c5e067f37a3ff5b8f4ce171d0ee7b734905829dd0cec47e8bb3db0285b671b",
           "yaml_pointer": "/localization/contract_sha256"
         },
         "/localization/status": {
@@ -26927,7 +26827,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-008.closer/text": {
           "file": "locales/en-US/OCF-BOD-008-Immune-Readiness.yaml",
-          "value": "Remember, whenever you wish to strengthen your body's\nnatural defenses against harmful organisms, inhale\ndeeply and hold your breath.\n\nThink or say in your mind, \"{{ cue.primary }}.\"\n\nThen exhale slowly through your mouth.\n\nThis concludes your OCF Immune Readiness exercise.",
+          "value": "Remember, whenever you wish to reinforce your body's natural immune readiness and coordinated protective responses, inhale deeply and gently hold your breath.\n\nSilently say to yourself, \"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth.\n\nThis concludes your OCF Immune Readiness exercise.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-008.closer/text"
         },
         "/entries/hplus.function.ocf-bod-008.closer/version": {
@@ -27685,12 +27585,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/0/instruction/status": {
           "file": "locales/en-US/OCF-BOD-009-Breathe-Better.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/0/instruction/status"
         },
         "/activation/procedure_steps/0/instruction/text": {
           "file": "locales/en-US/OCF-BOD-009-Breathe-Better.yaml",
-          "value": "Inhale.",
+          "value": "Take a deep breath in.",
           "yaml_pointer": "/activation/procedure_steps/0/instruction/text"
         },
         "/activation/procedure_steps/0/instruction/version": {
@@ -27710,12 +27610,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/1/instruction/status": {
           "file": "locales/en-US/OCF-BOD-009-Breathe-Better.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/1/instruction/status"
         },
         "/activation/procedure_steps/1/instruction/text": {
           "file": "locales/en-US/OCF-BOD-009-Breathe-Better.yaml",
-          "value": "Hold your breath.",
+          "value": "Gently hold your breath.",
           "yaml_pointer": "/activation/procedure_steps/1/instruction/text"
         },
         "/activation/procedure_steps/1/instruction/version": {
@@ -27735,12 +27635,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/2/instruction/status": {
           "file": "locales/en-US/OCF-BOD-009-Breathe-Better.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/2/instruction/status"
         },
         "/activation/procedure_steps/2/instruction/text": {
           "file": "locales/en-US/OCF-BOD-009-Breathe-Better.yaml",
-          "value": "Think or say the command.",
+          "value": "While holding your breath, silently say the command to yourself.",
           "yaml_pointer": "/activation/procedure_steps/2/instruction/text"
         },
         "/activation/procedure_steps/2/instruction/version": {
@@ -27760,12 +27660,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/3/instruction/status": {
           "file": "locales/en-US/OCF-BOD-009-Breathe-Better.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/3/instruction/status"
         },
         "/activation/procedure_steps/3/instruction/text": {
           "file": "locales/en-US/OCF-BOD-009-Breathe-Better.yaml",
-          "value": "Exhale.",
+          "value": "Then slowly exhale through your mouth.",
           "yaml_pointer": "/activation/procedure_steps/3/instruction/text"
         },
         "/activation/procedure_steps/3/instruction/version": {
@@ -29840,7 +29740,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-009.closer/text": {
           "file": "locales/en-US/OCF-BOD-009-Breathe-Better.yaml",
-          "value": "Remember, whenever you wish to reinforce\nyour respiratory system's natural strength\nand healthy function, inhale deeply\nand hold your breath.\n\nThink or say in your mind, \"{{ cue.primary }}.\"\n\nThen exhale slowly through your mouth.\n\nThis concludes your OCF Breathe Better exercise.",
+          "value": "Remember, to reinforce healthy breathing and your respiratory system's natural maintenance, inhale deeply and gently hold your breath.\n\nSilently say to yourself,\n\"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth.\n\nThis concludes your OCF Breathe Better exercise.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-009.closer/text"
         },
         "/entries/hplus.function.ocf-bod-009.closer/version": {
@@ -29865,7 +29765,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-009.function-body/text": {
           "file": "locales/en-US/OCF-BOD-009-Breathe-Better.yaml",
-          "value": "From this moment forward, your entire respiratory\nsystem is becoming stronger, healthier,\nand more efficient.\n\nBring your awareness to your nose, throat,\nairways, and lungs, working together\nto provide the oxygen your body needs.\n\nFeel your nasal passages becoming clear\nand comfortable, allowing air to flow\nsmoothly and naturally.\n\nTiny protective cilia help move mucus\nand trapped particles out of your airways,\nwhile incoming air is warmed and moistened.\n\nYour airways remain clear and open,\nsupporting smooth, comfortable breathing.\n\nNow bring your awareness to your lungs.\n\nDeep within them, millions of tiny air sacs\ncalled alveoli exchange oxygen and carbon dioxide.\n\nOxygen passes into your bloodstream,\nwhile carbon dioxide moves from your blood\ninto your lungs to be released as you exhale.\n\nThis exchange is becoming smoother,\nmore balanced, and more efficient.\n\nYour diaphragm and breathing muscles\nwork together with strength and coordination,\nmoving air naturally and without unnecessary effort.\n\nYour body's natural processes of cellular\nmaintenance and renewal continually support\nthe healthy function of your respiratory system.\n\nFrom this moment forward, this pattern\nof efficient breathing and maintenance\nis permanently established within you.\n\nWhether awake, resting, or sleeping,\nyour breathing continues automatically,\nadjusting smoothly to your body's needs.\n\nYour respiratory system maintains\nits natural strength, flexibility,\nand efficient function without conscious effort.\n\nWhenever you wish to reinforce this\nimproving pattern, inhale deeply\nand gently hold your breath.\n\nThink or say in your mind, \"{{ cue.primary }}.\"\n\nThen exhale slowly through your mouth.\n\nYour breathing will become smoother,\neasier, and more efficient,\nstrengthening this established pattern\nof healthy respiratory function.\n\nEach time you use {{ cue.primary }},\nthis reinforcement becomes easier,\nfaster, and more effective.\n\nYour respiratory system will continue\nits natural maintenance and renewal\nautomatically, every day and every night.",
+          "value": "From this moment forward, let your entire respiratory system become stronger, healthier, and more efficient.\n\nLet your nose, throat, airways, and lungs work together smoothly, providing the oxygen your body needs.\n\nLet your nasal passages remain clear and comfortable, warming and moistening incoming air, while tiny protective cilia help carry mucus and trapped particles out of your airways.\n\nLet your airways remain open and flexible, allowing air to move smoothly and naturally.\n\nWithin your lungs, millions of tiny air sacs exchange oxygen and carbon dioxide. Oxygen enters your bloodstream to nourish your body, while carbon dioxide passes into your lungs to be released as you exhale.\n\nLet this exchange remain smooth, balanced, and efficient.\n\nYour diaphragm and breathing muscles work together with natural strength and coordination, allowing you to breathe comfortably without unnecessary effort.\n\nYour body's natural processes of maintenance and renewal support the strength, flexibility, and healthy function of your entire respiratory system.\n\nThis pattern of efficient breathing and respiratory maintenance is permanently established within you.\n\nIt continues automatically, whether you are awake, resting, or asleep, adjusting naturally to your body's changing needs without conscious effort.\n\nWhenever you wish to reinforce this established pattern, take a deep breath in and gently hold it.\n\nWhile holding your breath, silently say to yourself,\n\"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth.\n\nAs you exhale, let this pattern of smooth, efficient breathing and natural respiratory maintenance continue throughout your body.\n\nThe more you use this command, the easier and more effective this reinforcement becomes.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-009.function-body/text"
         },
         "/entries/hplus.function.ocf-bod-009.function-body/version": {
@@ -29880,7 +29780,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-bod-009.opener/text": {
           "file": "locales/en-US/OCF-BOD-009-Breathe-Better.yaml",
-          "value": "This OCF exercise will strengthen and reinforce your\nrespiratory system's natural processes of breathing,\nrenewal, and maintenance, establishing a lasting,\nautomatic pattern of healthy, efficient breathing.",
+          "value": "This OCF exercise will teach you to strengthen your respiratory system's natural processes of breathing, renewal, and maintenance, establishing a lasting, automatic pattern of healthy, efficient breathing.",
           "yaml_pointer": "/entries/hplus.function.ocf-bod-009.opener/text"
         },
         "/entries/hplus.function.ocf-bod-009.opener/version": {
@@ -159619,7 +159519,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/control/procedure/before_steps/0/id": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "select-restoration-target",
+          "value": "optional-restoration-target",
           "yaml_pointer": "/activation/control/procedure/before_steps/0/id"
         },
         "/activation/control/procedure/before_steps/0/localization_key": {
@@ -159639,7 +159539,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/control/procedure/ref": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "OCF-PROC-INHALE-HOLD",
+          "value": "OCF-PROC-CLOSE-NATURAL",
           "yaml_pointer": "/activation/control/procedure/ref"
         },
         "/activation/control/procedure/status": {
@@ -159684,17 +159584,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/0/id": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "select-restoration-target",
+          "value": "optional-restoration-target",
           "yaml_pointer": "/activation/procedure_steps/0/id"
         },
         "/activation/procedure_steps/0/instruction/status": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/0/instruction/status"
         },
         "/activation/procedure_steps/0/instruction/text": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "Choose a target area.",
+          "value": "Let your intention extend throughout your entire body and being; optionally include a particular area you wish to restore.",
           "yaml_pointer": "/activation/procedure_steps/0/instruction/text"
         },
         "/activation/procedure_steps/0/instruction/version": {
@@ -159709,17 +159609,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/1/id": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "inhale",
+          "value": "close-eyes",
           "yaml_pointer": "/activation/procedure_steps/1/id"
         },
         "/activation/procedure_steps/1/instruction/status": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/1/instruction/status"
         },
         "/activation/procedure_steps/1/instruction/text": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "Inhale.",
+          "value": "Close your eyes.",
           "yaml_pointer": "/activation/procedure_steps/1/instruction/text"
         },
         "/activation/procedure_steps/1/instruction/version": {
@@ -159729,22 +159629,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/1/operation": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "inhale",
+          "value": "close-eyes",
           "yaml_pointer": "/activation/procedure_steps/1/operation"
         },
         "/activation/procedure_steps/2/id": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "hold",
+          "value": "inhale",
           "yaml_pointer": "/activation/procedure_steps/2/id"
         },
         "/activation/procedure_steps/2/instruction/status": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/2/instruction/status"
         },
         "/activation/procedure_steps/2/instruction/text": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "Hold your breath.",
+          "value": "Take a deep breath in.",
           "yaml_pointer": "/activation/procedure_steps/2/instruction/text"
         },
         "/activation/procedure_steps/2/instruction/version": {
@@ -159754,22 +159654,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/2/operation": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "hold-breath",
+          "value": "inhale",
           "yaml_pointer": "/activation/procedure_steps/2/operation"
         },
         "/activation/procedure_steps/3/id": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "command",
+          "value": "hold",
           "yaml_pointer": "/activation/procedure_steps/3/id"
         },
         "/activation/procedure_steps/3/instruction/status": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/3/instruction/status"
         },
         "/activation/procedure_steps/3/instruction/text": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "Think or say the command.",
+          "value": "Gently hold your breath.",
           "yaml_pointer": "/activation/procedure_steps/3/instruction/text"
         },
         "/activation/procedure_steps/3/instruction/version": {
@@ -159779,22 +159679,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/3/operation": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "think-or-say-command",
+          "value": "hold-breath",
           "yaml_pointer": "/activation/procedure_steps/3/operation"
         },
         "/activation/procedure_steps/4/id": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "exhale",
+          "value": "command",
           "yaml_pointer": "/activation/procedure_steps/4/id"
         },
         "/activation/procedure_steps/4/instruction/status": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/4/instruction/status"
         },
         "/activation/procedure_steps/4/instruction/text": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "Exhale.",
+          "value": "While holding your breath, silently say the command to yourself.",
           "yaml_pointer": "/activation/procedure_steps/4/instruction/text"
         },
         "/activation/procedure_steps/4/instruction/version": {
@@ -159804,8 +159704,58 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/4/operation": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "exhale",
+          "value": "think-or-say-command",
           "yaml_pointer": "/activation/procedure_steps/4/operation"
+        },
+        "/activation/procedure_steps/5/id": {
+          "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
+          "value": "exhale",
+          "yaml_pointer": "/activation/procedure_steps/5/id"
+        },
+        "/activation/procedure_steps/5/instruction/status": {
+          "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
+          "value": "reviewed",
+          "yaml_pointer": "/activation/procedure_steps/5/instruction/status"
+        },
+        "/activation/procedure_steps/5/instruction/text": {
+          "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
+          "value": "Then slowly exhale through your mouth, as though gently blowing out a candle.",
+          "yaml_pointer": "/activation/procedure_steps/5/instruction/text"
+        },
+        "/activation/procedure_steps/5/instruction/version": {
+          "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
+          "value": "1.0.0",
+          "yaml_pointer": "/activation/procedure_steps/5/instruction/version"
+        },
+        "/activation/procedure_steps/5/operation": {
+          "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
+          "value": "exhale",
+          "yaml_pointer": "/activation/procedure_steps/5/operation"
+        },
+        "/activation/procedure_steps/6/id": {
+          "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
+          "value": "breathe-normally",
+          "yaml_pointer": "/activation/procedure_steps/6/id"
+        },
+        "/activation/procedure_steps/6/instruction/status": {
+          "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
+          "value": "reviewed",
+          "yaml_pointer": "/activation/procedure_steps/6/instruction/status"
+        },
+        "/activation/procedure_steps/6/instruction/text": {
+          "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
+          "value": "Continue breathing naturally.",
+          "yaml_pointer": "/activation/procedure_steps/6/instruction/text"
+        },
+        "/activation/procedure_steps/6/instruction/version": {
+          "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
+          "value": "1.0.0",
+          "yaml_pointer": "/activation/procedure_steps/6/instruction/version"
+        },
+        "/activation/procedure_steps/6/operation": {
+          "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
+          "value": "breathe-normally",
+          "yaml_pointer": "/activation/procedure_steps/6/operation"
         },
         "/activation/role": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
@@ -161754,7 +161704,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/description/text": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE SLEEP.",
+          "value": "A self-directed practice focused on deep, restorative sleep, supporting the body's natural processes of healing, repair, renewal, and regeneration throughout sleep, with optional attention to specific areas when desired.",
           "yaml_pointer": "/description/text"
         },
         "/description/version": {
@@ -161874,7 +161824,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-slp-001.closer/text": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "Remember, whenever you wish to direct your total self\ntoward healing and restoration during sleep,\ninhale deeply and hold your breath.\n\nThink or say in your mind, \"{{ cue.primary }}.\"\nThen exhale slowly through your mouth,\nas though gently blowing out a candle.\n\nThis concludes your OCF Restorative Sleep exercise.",
+          "value": "Remember, whenever you wish to direct your total self toward healing, restoration, and regeneration during sleep, simply close your eyes.\n\nInhale deeply and gently hold your breath.\n\nSilently say to yourself,\n\"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth, as though gently blowing out a candle, and continue resting naturally.\n\nThis concludes your OCF Restorative Sleep exercise.",
           "yaml_pointer": "/entries/hplus.function.ocf-slp-001.closer/text"
         },
         "/entries/hplus.function.ocf-slp-001.closer/version": {
@@ -161899,7 +161849,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-slp-001.function-body/text": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "From this moment forward, whenever you prepare for sleep,\nyou can direct your total self toward deep healing,\nrestoration, and regeneration throughout your rest.\n\nBring into awareness any part of your physical body\nor total being that you desire to restore.\nForm a clear intention for complete balance,\nrenewal, and natural, healthy functioning.\n\nInhale deeply and gently hold your breath.\nThink or say in your mind, \"{{ cue.primary }}.\"\nThen exhale slowly through your mouth,\nas though gently blowing out a candle.\n\nYou will move easily and calmly into deep,\npeaceful, natural sleep.\n\nAs you sleep, your conscious mind can rest\nwhile your subconscious mind and higher self\nwork together with your physical body,\ndirecting their resources toward restoration.\n\nYour entire system will adjust, equalize,\nand return toward its natural balance.\nAreas of weariness, strain, or imbalance\nwill receive the attention needed for renewal.\n\nYour total self will continue this restorative pattern\nsmoothly and automatically throughout your sleep,\nsupporting the healing, repair, and regeneration\nyou have clearly intended.\n\nEach part of your being will cooperate with the others,\nrestoring harmony and strengthening natural vitality.\nThere is no need to follow or direct each step.\nThe process continues while you rest.\n\nAs your sleep is complete, you will awaken\nnaturally, deeply rested and refreshed,\nwith renewed energy, clarity, and strength.\n\nYour ability to invoke this restorative sleep pattern\nwill remain permanently available whenever you choose.\nEach use will make entering restful sleep\nand directing your total self toward healing\neasier, smoother, and more effective.",
+          "value": "From this moment forward, whenever you prepare for sleep, you can direct your total self toward deep healing, restoration, and regeneration throughout your rest.\n\nLet this intention extend throughout your entire body and being. If there is a particular area you wish to restore, you may include it in your intention.\n\nWhen you are ready, simply close your eyes.\n\nTake a deep breath in and gently hold it.\n\nWhile holding your breath, silently say to yourself,\n\"{{ cue.primary }}.\"\n\nThen slowly exhale through your mouth, as though gently blowing out a candle, and continue breathing naturally.\n\nAllow yourself to move easily into deep, peaceful, natural sleep.\n\nAs your conscious mind rests, let your subconscious mind, higher self, and physical body work together, directing their natural resources toward healing, repair, renewal, and regeneration.\n\nLet your body's natural maintenance and restorative processes work in harmony, supporting balance, recovery, and renewed vitality throughout your entire being.\n\nAreas of weariness, strain, or imbalance receive the care and attention needed for natural restoration.\n\nThis restorative pattern continues automatically throughout your sleep, without requiring conscious direction, observation, or effort.\n\nAs your sleep is complete, awaken naturally, deeply rested and refreshed, with renewed energy, clarity, and strength.\n\nYour ability to invoke this restorative sleep pattern remains permanently available whenever you choose. Each use makes entering restorative sleep and directing your total self toward renewal easier and more familiar.",
           "yaml_pointer": "/entries/hplus.function.ocf-slp-001.function-body/text"
         },
         "/entries/hplus.function.ocf-slp-001.function-body/version": {
@@ -161914,7 +161864,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-slp-001.opener/text": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "This OCF exercise will teach you to direct your total self\ntoward deep restoration, healing, and regeneration\nthroughout your natural sleep.",
+          "value": "This OCF exercise will teach you to direct your total self toward deep restoration, healing, repair, and regeneration throughout your natural sleep.",
           "yaml_pointer": "/entries/hplus.function.ocf-slp-001.opener/text"
         },
         "/entries/hplus.function.ocf-slp-001.opener/version": {
@@ -161974,7 +161924,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/localization/contract_sha256": {
           "file": "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml",
-          "value": "b1f95c85f6ab31f2589fd4f75914bfd66c8d6aa283089c7dc288f5a869537999",
+          "value": "7c92050a91600924bb31e244a7001451e2bae75ceacb9f18028582765349374c",
           "yaml_pointer": "/localization/contract_sha256"
         },
         "/localization/status": {
@@ -162625,20 +162575,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
           "value": "canonical-primary",
           "yaml_pointer": "/activation/control/phrase_ref/source"
         },
-        "/activation/control/procedure/before_steps/0/id": {
+        "/activation/control/procedure/before_steps": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "select-sleep-and-wake-intention",
-          "yaml_pointer": "/activation/control/procedure/before_steps/0/id"
-        },
-        "/activation/control/procedure/before_steps/0/localization_key": {
-          "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "command.procedure.select-purpose",
-          "yaml_pointer": "/activation/control/procedure/before_steps/0/localization_key"
-        },
-        "/activation/control/procedure/before_steps/0/operation": {
-          "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "select-purpose",
-          "yaml_pointer": "/activation/control/procedure/before_steps/0/operation"
+          "value": [],
+          "yaml_pointer": "/activation/control/procedure/before_steps"
         },
         "/activation/control/procedure/evidence_keys/0": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
@@ -162647,7 +162587,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/control/procedure/ref": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "OCF-PROC-SLEEP-EXHALE",
+          "value": "OCF-PROC-CLOSE-NATURAL",
           "yaml_pointer": "/activation/control/procedure/ref"
         },
         "/activation/control/procedure/status": {
@@ -162692,17 +162632,17 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/0/id": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "select-sleep-and-wake-intention",
+          "value": "close-eyes",
           "yaml_pointer": "/activation/procedure_steps/0/id"
         },
         "/activation/procedure_steps/0/instruction/status": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/0/instruction/status"
         },
         "/activation/procedure_steps/0/instruction/text": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "Choose the purpose for using this function.",
+          "value": "Close your eyes.",
           "yaml_pointer": "/activation/procedure_steps/0/instruction/text"
         },
         "/activation/procedure_steps/0/instruction/version": {
@@ -162712,22 +162652,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/0/operation": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "select-purpose",
+          "value": "close-eyes",
           "yaml_pointer": "/activation/procedure_steps/0/operation"
         },
         "/activation/procedure_steps/1/id": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "sleep-intention",
+          "value": "inhale",
           "yaml_pointer": "/activation/procedure_steps/1/id"
         },
         "/activation/procedure_steps/1/instruction/status": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/1/instruction/status"
         },
         "/activation/procedure_steps/1/instruction/text": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "Choose the purpose for using this function.",
+          "value": "Take a deep breath in.",
           "yaml_pointer": "/activation/procedure_steps/1/instruction/text"
         },
         "/activation/procedure_steps/1/instruction/version": {
@@ -162737,22 +162677,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/1/operation": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "select-purpose",
+          "value": "inhale",
           "yaml_pointer": "/activation/procedure_steps/1/operation"
         },
         "/activation/procedure_steps/2/id": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "breathe-slowly",
+          "value": "hold",
           "yaml_pointer": "/activation/procedure_steps/2/id"
         },
         "/activation/procedure_steps/2/instruction/status": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/2/instruction/status"
         },
         "/activation/procedure_steps/2/instruction/text": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "Breathe slowly and deeply.",
+          "value": "Gently hold your breath.",
           "yaml_pointer": "/activation/procedure_steps/2/instruction/text"
         },
         "/activation/procedure_steps/2/instruction/version": {
@@ -162762,22 +162702,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/2/operation": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "breathe-slowly-deeply",
+          "value": "hold-breath",
           "yaml_pointer": "/activation/procedure_steps/2/operation"
         },
         "/activation/procedure_steps/3/id": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "command-during-exhale",
+          "value": "command",
           "yaml_pointer": "/activation/procedure_steps/3/id"
         },
         "/activation/procedure_steps/3/instruction/status": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/3/instruction/status"
         },
         "/activation/procedure_steps/3/instruction/text": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "Think the command during exhalation.",
+          "value": "While holding your breath, silently say the command to yourself.",
           "yaml_pointer": "/activation/procedure_steps/3/instruction/text"
         },
         "/activation/procedure_steps/3/instruction/version": {
@@ -162787,22 +162727,22 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/3/operation": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "think-command-during-exhale",
+          "value": "think-or-say-command",
           "yaml_pointer": "/activation/procedure_steps/3/operation"
         },
         "/activation/procedure_steps/4/id": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "continue-breathing",
+          "value": "exhale",
           "yaml_pointer": "/activation/procedure_steps/4/id"
         },
         "/activation/procedure_steps/4/instruction/status": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "canonical",
+          "value": "reviewed",
           "yaml_pointer": "/activation/procedure_steps/4/instruction/status"
         },
         "/activation/procedure_steps/4/instruction/text": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "Continue breathing normally.",
+          "value": "Then slowly exhale.",
           "yaml_pointer": "/activation/procedure_steps/4/instruction/text"
         },
         "/activation/procedure_steps/4/instruction/version": {
@@ -162812,8 +162752,33 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/activation/procedure_steps/4/operation": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "breathe-normally",
+          "value": "exhale",
           "yaml_pointer": "/activation/procedure_steps/4/operation"
+        },
+        "/activation/procedure_steps/5/id": {
+          "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
+          "value": "breathe-normally",
+          "yaml_pointer": "/activation/procedure_steps/5/id"
+        },
+        "/activation/procedure_steps/5/instruction/status": {
+          "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
+          "value": "reviewed",
+          "yaml_pointer": "/activation/procedure_steps/5/instruction/status"
+        },
+        "/activation/procedure_steps/5/instruction/text": {
+          "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
+          "value": "Continue breathing naturally.",
+          "yaml_pointer": "/activation/procedure_steps/5/instruction/text"
+        },
+        "/activation/procedure_steps/5/instruction/version": {
+          "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
+          "value": "1.0.0",
+          "yaml_pointer": "/activation/procedure_steps/5/instruction/version"
+        },
+        "/activation/procedure_steps/5/operation": {
+          "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
+          "value": "breathe-normally",
+          "yaml_pointer": "/activation/procedure_steps/5/operation"
         },
         "/activation/role": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
@@ -164742,7 +164707,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/description/text": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP.",
+          "value": "A self-directed practice for entering natural, restful sleep through relaxation and a simple mental command.",
           "yaml_pointer": "/description/text"
         },
         "/description/version": {
@@ -164862,7 +164827,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-slp-002.closer/text": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "Remember, whenever you wish to enter normal,\nnatural, restful sleep, breathe slowly and deeply.\nAs you exhale, think or say in your mind,\n\"{{ cue.primary }}.\"\n\nThis concludes your OCF Sleep exercise.",
+          "value": "Remember, whenever you wish to enter normal, natural, restful sleep, close your eyes.\n\nTake a deep breath in and gently hold it.\nWhile holding your breath, silently say to yourself,\n\"{{ cue.primary }}.\"\nThen slowly exhale and continue breathing naturally.\n\nAllow yourself to settle into restful sleep.\n\nThis concludes your OCF Sleep exercise.",
           "yaml_pointer": "/entries/hplus.function.ocf-slp-002.closer/text"
         },
         "/entries/hplus.function.ocf-slp-002.closer/version": {
@@ -164887,7 +164852,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-slp-002.function-body/text": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "From this moment forward, you have the ability\nto enter normal, natural, restful sleep\nwhenever you consciously desire.\n\nWhen you choose to sleep, allow your body\nto settle comfortably and begin breathing\nslowly, deeply, and easily.\n\nAs you exhale, think or say in your mind,\n\"{{ cue.primary }}.\"\n\nWith each gentle breath and each repetition\nof this command, you will move more deeply\ninto calm, peaceful, natural sleep.\n\nYour thoughts will become quiet.\nUnnecessary effort and tension will fade.\nYour mind and body will recognize that\nthe time for comfortable sleep has arrived.\n\nYou will fall asleep smoothly and naturally,\nwithout needing to force or follow the process.\n\nDuring sleep, your total self will work\ntoward harmony, balance, and equalization.\nYour nervous system and physical body\nwill cooperate in their natural patterns\nof rest, maintenance, and renewal.\n\nEach part of your system will settle\ninto the rhythms appropriate for sleep,\nallowing your body and mind to recover\nand restore their natural vitality.\n\nYou will remain peacefully asleep for\nthe rest you desire, and awaken at the\ntime you have chosen, refreshed, alert,\nand ready to begin again.\n\nThis ability to enter restful sleep\nwill remain permanently available to you.\nIt begins when you choose to use it,\nleaving your ordinary waking state\nclear and active at other times.\n\nEach time you use {{ cue.primary }},\nentering natural sleep and awakening\nrefreshed will become easier and more effective.",
+          "value": "From this moment forward, you have the ability to enter normal, natural, restful sleep whenever you choose.\n\nWhen you are ready for sleep, make yourself comfortable and allow your body and mind to begin relaxing.\n\nSimply close your eyes.\nTake a deep breath in and gently hold it.\nWhile holding your breath, silently say to yourself,\n\"{{ cue.primary }}.\"\nThen slowly exhale and continue breathing naturally.\n\nAs you exhale, allow yourself to move more deeply into peaceful, natural sleep.\n\nYour thoughts become quiet. Unnecessary effort and tension fade away. Your mind and body recognize that the time for sleep has arrived.\n\nYou fall asleep smoothly and naturally, without needing to force the process.\n\nThroughout your sleep, your mind and body settle into their natural rhythms of rest, balance, maintenance, and renewal.\n\nYou enjoy the restful sleep you desire, awakening at your chosen time, refreshed, alert, and ready for the day ahead.\n\nThis ability remains available whenever you consciously choose to use it. At other times, your ordinary waking awareness remains clear and active.\n\nEach time you use \"{{ cue.primary }},\" entering natural sleep becomes easier and more familiar.",
           "yaml_pointer": "/entries/hplus.function.ocf-slp-002.function-body/text"
         },
         "/entries/hplus.function.ocf-slp-002.function-body/version": {
@@ -164902,7 +164867,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/entries/hplus.function.ocf-slp-002.opener/text": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "This OCF exercise will teach you to enter normal,\nnatural, restful sleep whenever you choose,\nand awaken at the time you desire.",
+          "value": "This OCF exercise will teach you to enter normal, natural, restful sleep whenever you choose, and awaken at the time you desire.",
           "yaml_pointer": "/entries/hplus.function.ocf-slp-002.opener/text"
         },
         "/entries/hplus.function.ocf-slp-002.opener/version": {
@@ -164962,7 +164927,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "/localization/contract_sha256": {
           "file": "locales/en-US/OCF-SLP-002-Sleep.yaml",
-          "value": "45e9b8a36e17bc94f2a597dccb070645287e0f2a24c39c931e68f688b8c8689d",
+          "value": "8267a57161aab20e23d7b4c53ae846e8f38889d6c75710ec43c60625200cb7f4",
           "yaml_pointer": "/localization/contract_sha256"
         },
         "/localization/status": {

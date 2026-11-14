@@ -401,7 +401,7 @@
             "evidence_keys": [
               "hplus.function.ocf-bod-001.function-body"
             ],
-            "ref": "OCF-PROC-CLOSE-FOCUS",
+            "ref": "OCF-PROC-CLOSE-OPEN",
             "status": "documented"
           },
           "procedure_status": "documented",
@@ -413,34 +413,21 @@
                 "key": "OCF-BOD-001/OCF-CMD-BOD-001-PRIMARY/procedure_steps/0",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
+                "status": "reviewed",
                 "text": "Close your eyes.",
                 "version": "1.0.0"
               },
               "operation": "close-eyes"
             },
             {
-              "id": "focus-target",
+              "id": "inhale",
               "instruction": {
                 "fallback": false,
                 "key": "OCF-BOD-001/OCF-CMD-BOD-001-PRIMARY/procedure_steps/1",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Focus attention on the selected target.",
-                "version": "1.0.0"
-              },
-              "operation": "focus-target"
-            },
-            {
-              "id": "inhale",
-              "instruction": {
-                "fallback": false,
-                "key": "OCF-BOD-001/OCF-CMD-BOD-001-PRIMARY/procedure_steps/2",
-                "requested_locale": "en-US",
-                "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Inhale.",
+                "status": "reviewed",
+                "text": "Take a deep breath in.",
                 "version": "1.0.0"
               },
               "operation": "inhale"
@@ -449,11 +436,11 @@
               "id": "hold",
               "instruction": {
                 "fallback": false,
-                "key": "OCF-BOD-001/OCF-CMD-BOD-001-PRIMARY/procedure_steps/3",
+                "key": "OCF-BOD-001/OCF-CMD-BOD-001-PRIMARY/procedure_steps/2",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Hold your breath.",
+                "status": "reviewed",
+                "text": "Gently hold your breath.",
                 "version": "1.0.0"
               },
               "operation": "hold-breath"
@@ -462,11 +449,11 @@
               "id": "command",
               "instruction": {
                 "fallback": false,
-                "key": "OCF-BOD-001/OCF-CMD-BOD-001-PRIMARY/procedure_steps/4",
+                "key": "OCF-BOD-001/OCF-CMD-BOD-001-PRIMARY/procedure_steps/3",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Think or say the command.",
+                "status": "reviewed",
+                "text": "While holding your breath, silently say the command to yourself.",
                 "version": "1.0.0"
               },
               "operation": "think-or-say-command"
@@ -475,14 +462,27 @@
               "id": "exhale",
               "instruction": {
                 "fallback": false,
-                "key": "OCF-BOD-001/OCF-CMD-BOD-001-PRIMARY/procedure_steps/5",
+                "key": "OCF-BOD-001/OCF-CMD-BOD-001-PRIMARY/procedure_steps/4",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Exhale.",
+                "status": "reviewed",
+                "text": "Then slowly exhale through your mouth, as though gently blowing out a candle.",
                 "version": "1.0.0"
               },
               "operation": "exhale"
+            },
+            {
+              "id": "open-eyes",
+              "instruction": {
+                "fallback": false,
+                "key": "OCF-BOD-001/OCF-CMD-BOD-001-PRIMARY/procedure_steps/5",
+                "requested_locale": "en-US",
+                "resolved_locale": "en-US",
+                "status": "reviewed",
+                "text": "Open your eyes.",
+                "version": "1.0.0"
+              },
+              "operation": "open-eyes"
             }
           ],
           "purpose": {
@@ -687,7 +687,7 @@
             "evidence_keys": [
               "hplus.function.ocf-bod-002.function-body"
             ],
-            "ref": "OCF-PROC-CLOSE-FOCUS",
+            "ref": "OCF-PROC-CLOSE-INHALE-HOLD",
             "status": "documented"
           },
           "procedure_status": "documented",
@@ -699,34 +699,21 @@
                 "key": "OCF-BOD-002/OCF-CMD-BOD-002-PRIMARY/procedure_steps/0",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
+                "status": "reviewed",
                 "text": "Close your eyes.",
                 "version": "1.0.0"
               },
               "operation": "close-eyes"
             },
             {
-              "id": "focus-target",
+              "id": "inhale",
               "instruction": {
                 "fallback": false,
                 "key": "OCF-BOD-002/OCF-CMD-BOD-002-PRIMARY/procedure_steps/1",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Focus attention on the selected target.",
-                "version": "1.0.0"
-              },
-              "operation": "focus-target"
-            },
-            {
-              "id": "inhale",
-              "instruction": {
-                "fallback": false,
-                "key": "OCF-BOD-002/OCF-CMD-BOD-002-PRIMARY/procedure_steps/2",
-                "requested_locale": "en-US",
-                "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Inhale.",
+                "status": "reviewed",
+                "text": "Take a deep breath in.",
                 "version": "1.0.0"
               },
               "operation": "inhale"
@@ -735,11 +722,11 @@
               "id": "hold",
               "instruction": {
                 "fallback": false,
-                "key": "OCF-BOD-002/OCF-CMD-BOD-002-PRIMARY/procedure_steps/3",
+                "key": "OCF-BOD-002/OCF-CMD-BOD-002-PRIMARY/procedure_steps/2",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Hold your breath.",
+                "status": "reviewed",
+                "text": "Gently hold your breath.",
                 "version": "1.0.0"
               },
               "operation": "hold-breath"
@@ -748,11 +735,11 @@
               "id": "command",
               "instruction": {
                 "fallback": false,
-                "key": "OCF-BOD-002/OCF-CMD-BOD-002-PRIMARY/procedure_steps/4",
+                "key": "OCF-BOD-002/OCF-CMD-BOD-002-PRIMARY/procedure_steps/3",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Think or say the command.",
+                "status": "reviewed",
+                "text": "While holding your breath, silently say the command to yourself.",
                 "version": "1.0.0"
               },
               "operation": "think-or-say-command"
@@ -761,11 +748,11 @@
               "id": "exhale",
               "instruction": {
                 "fallback": false,
-                "key": "OCF-BOD-002/OCF-CMD-BOD-002-PRIMARY/procedure_steps/5",
+                "key": "OCF-BOD-002/OCF-CMD-BOD-002-PRIMARY/procedure_steps/4",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Exhale.",
+                "status": "reviewed",
+                "text": "Then slowly exhale through your mouth, as though gently blowing out a candle.",
                 "version": "1.0.0"
               },
               "operation": "exhale"
@@ -776,7 +763,7 @@
             "key": "functions.ocf-bod-002.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Promotes a felt sense of smooth, comfortable circulation."
+            "text": "A self-directed practice focused on healthy circulation throughout the body, supporting smooth blood flow, oxygen and nutrient delivery, blood vessel maintenance, and natural renewal, with conscious reinforcement when desired."
           },
           "related_commands": [],
           "relationships": {},
@@ -829,7 +816,7 @@
         "key": "functions.ocf-bod-002.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Promotes a felt sense of smooth, comfortable circulation."
+        "text": "A self-directed practice focused on healthy circulation throughout the body, supporting smooth blood flow, oxygen and nutrient delivery, blood vessel maintenance, and natural renewal, with conscious reinforcement when desired."
       },
       "reimplementation_status": "planned",
       "related_functions": [],
@@ -839,7 +826,7 @@
         "key": "functions.ocf-bod-002.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Promotes a felt sense of smooth, comfortable circulation."
+        "text": "A self-directed practice focused on healthy circulation throughout the body, supporting smooth blood flow, oxygen and nutrient delivery, blood vessel maintenance, and natural renewal, with conscious reinforcement when desired."
       },
       "slug": "circulation",
       "source_availability": "available",
@@ -958,7 +945,7 @@
                 "key": "OCF-BOD-003/OCF-CMD-BOD-003-PRIMARY/procedure_steps/0",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
+                "status": "reviewed",
                 "text": "Close your eyes.",
                 "version": "1.0.0"
               },
@@ -971,8 +958,8 @@
                 "key": "OCF-BOD-003/OCF-CMD-BOD-003-PRIMARY/procedure_steps/1",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Focus attention on the selected target.",
+                "status": "reviewed",
+                "text": "Bring the area where you want comfort into your awareness.",
                 "version": "1.0.0"
               },
               "operation": "focus-target"
@@ -984,8 +971,8 @@
                 "key": "OCF-BOD-003/OCF-CMD-BOD-003-PRIMARY/procedure_steps/2",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Inhale.",
+                "status": "reviewed",
+                "text": "Take a deep breath in.",
                 "version": "1.0.0"
               },
               "operation": "inhale"
@@ -997,8 +984,8 @@
                 "key": "OCF-BOD-003/OCF-CMD-BOD-003-PRIMARY/procedure_steps/3",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Hold your breath.",
+                "status": "reviewed",
+                "text": "Gently hold your breath.",
                 "version": "1.0.0"
               },
               "operation": "hold-breath"
@@ -1010,8 +997,8 @@
                 "key": "OCF-BOD-003/OCF-CMD-BOD-003-PRIMARY/procedure_steps/4",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Think or say the command.",
+                "status": "reviewed",
+                "text": "While holding your breath, silently say the command to yourself.",
                 "version": "1.0.0"
               },
               "operation": "think-or-say-command"
@@ -1023,8 +1010,8 @@
                 "key": "OCF-BOD-003/OCF-CMD-BOD-003-PRIMARY/procedure_steps/5",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Exhale.",
+                "status": "reviewed",
+                "text": "Then slowly exhale through your mouth, as though gently blowing out a candle.",
                 "version": "1.0.0"
               },
               "operation": "exhale"
@@ -1035,7 +1022,7 @@
             "key": "functions.ocf-bod-003.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT."
+            "text": "A self-directed practice for easing physical discomfort in a selected area of the body."
           },
           "related_commands": [],
           "relationships": {},
@@ -1098,7 +1085,7 @@
         "key": "functions.ocf-bod-003.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT."
+        "text": "A self-directed practice for easing physical discomfort in a selected area of the body."
       },
       "reimplementation_status": "planned",
       "related_functions": [
@@ -1130,7 +1117,7 @@
         "key": "functions.ocf-bod-003.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT."
+        "text": "A self-directed practice for easing physical discomfort in a selected area of the body."
       },
       "slug": "de-discomfort",
       "source_availability": "available",
@@ -1237,7 +1224,7 @@
             "evidence_keys": [
               "hplus.function.ocf-bod-004.function-body"
             ],
-            "ref": "OCF-PROC-CLOSE-FOCUS",
+            "ref": "OCF-PROC-CLOSE-INHALE-HOLD",
             "status": "documented"
           },
           "procedure_status": "documented",
@@ -1249,34 +1236,21 @@
                 "key": "OCF-BOD-004/OCF-CMD-BOD-004-PRIMARY/procedure_steps/0",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
+                "status": "reviewed",
                 "text": "Close your eyes.",
                 "version": "1.0.0"
               },
               "operation": "close-eyes"
             },
             {
-              "id": "focus-target",
+              "id": "inhale",
               "instruction": {
                 "fallback": false,
                 "key": "OCF-BOD-004/OCF-CMD-BOD-004-PRIMARY/procedure_steps/1",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Focus attention on the selected target.",
-                "version": "1.0.0"
-              },
-              "operation": "focus-target"
-            },
-            {
-              "id": "inhale",
-              "instruction": {
-                "fallback": false,
-                "key": "OCF-BOD-004/OCF-CMD-BOD-004-PRIMARY/procedure_steps/2",
-                "requested_locale": "en-US",
-                "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Inhale.",
+                "status": "reviewed",
+                "text": "Take a deep breath in.",
                 "version": "1.0.0"
               },
               "operation": "inhale"
@@ -1285,11 +1259,11 @@
               "id": "hold",
               "instruction": {
                 "fallback": false,
-                "key": "OCF-BOD-004/OCF-CMD-BOD-004-PRIMARY/procedure_steps/3",
+                "key": "OCF-BOD-004/OCF-CMD-BOD-004-PRIMARY/procedure_steps/2",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Hold your breath.",
+                "status": "reviewed",
+                "text": "Gently hold your breath.",
                 "version": "1.0.0"
               },
               "operation": "hold-breath"
@@ -1298,11 +1272,11 @@
               "id": "command",
               "instruction": {
                 "fallback": false,
-                "key": "OCF-BOD-004/OCF-CMD-BOD-004-PRIMARY/procedure_steps/4",
+                "key": "OCF-BOD-004/OCF-CMD-BOD-004-PRIMARY/procedure_steps/3",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Think or say the command.",
+                "status": "reviewed",
+                "text": "While holding your breath, silently say the command to yourself.",
                 "version": "1.0.0"
               },
               "operation": "think-or-say-command"
@@ -1311,11 +1285,11 @@
               "id": "exhale",
               "instruction": {
                 "fallback": false,
-                "key": "OCF-BOD-004/OCF-CMD-BOD-004-PRIMARY/procedure_steps/5",
+                "key": "OCF-BOD-004/OCF-CMD-BOD-004-PRIMARY/procedure_steps/4",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Exhale.",
+                "status": "reviewed",
+                "text": "Then slowly exhale through your mouth, as though gently blowing out a candle.",
                 "version": "1.0.0"
               },
               "operation": "exhale"
@@ -1853,7 +1827,7 @@
             "evidence_keys": [
               "hplus.function.ocf-bod-006.function-body"
             ],
-            "ref": "OCF-PROC-CLOSE-FOCUS",
+            "ref": "OCF-PROC-CLOSE-INHALE-HOLD",
             "status": "documented"
           },
           "procedure_status": "documented",
@@ -1865,34 +1839,21 @@
                 "key": "OCF-BOD-006/OCF-CMD-BOD-006-PRIMARY/procedure_steps/0",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
+                "status": "reviewed",
                 "text": "Close your eyes.",
                 "version": "1.0.0"
               },
               "operation": "close-eyes"
             },
             {
-              "id": "focus-target",
+              "id": "inhale",
               "instruction": {
                 "fallback": false,
                 "key": "OCF-BOD-006/OCF-CMD-BOD-006-PRIMARY/procedure_steps/1",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Focus attention on the selected target.",
-                "version": "1.0.0"
-              },
-              "operation": "focus-target"
-            },
-            {
-              "id": "inhale",
-              "instruction": {
-                "fallback": false,
-                "key": "OCF-BOD-006/OCF-CMD-BOD-006-PRIMARY/procedure_steps/2",
-                "requested_locale": "en-US",
-                "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Inhale.",
+                "status": "reviewed",
+                "text": "Take a deep breath in.",
                 "version": "1.0.0"
               },
               "operation": "inhale"
@@ -1901,11 +1862,11 @@
               "id": "hold",
               "instruction": {
                 "fallback": false,
-                "key": "OCF-BOD-006/OCF-CMD-BOD-006-PRIMARY/procedure_steps/3",
+                "key": "OCF-BOD-006/OCF-CMD-BOD-006-PRIMARY/procedure_steps/2",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Hold your breath.",
+                "status": "reviewed",
+                "text": "Gently hold your breath.",
                 "version": "1.0.0"
               },
               "operation": "hold-breath"
@@ -1914,11 +1875,11 @@
               "id": "command",
               "instruction": {
                 "fallback": false,
-                "key": "OCF-BOD-006/OCF-CMD-BOD-006-PRIMARY/procedure_steps/4",
+                "key": "OCF-BOD-006/OCF-CMD-BOD-006-PRIMARY/procedure_steps/3",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Think or say the command.",
+                "status": "reviewed",
+                "text": "While holding your breath, silently say the command to yourself.",
                 "version": "1.0.0"
               },
               "operation": "think-or-say-command"
@@ -1927,11 +1888,11 @@
               "id": "exhale",
               "instruction": {
                 "fallback": false,
-                "key": "OCF-BOD-006/OCF-CMD-BOD-006-PRIMARY/procedure_steps/5",
+                "key": "OCF-BOD-006/OCF-CMD-BOD-006-PRIMARY/procedure_steps/4",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Exhale.",
+                "status": "reviewed",
+                "text": "Then slowly exhale through your mouth, as though gently blowing out a candle.",
                 "version": "1.0.0"
               },
               "operation": "exhale"
@@ -1942,7 +1903,7 @@
             "key": "functions.ocf-bod-006.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Self-directed wellness practice supporting a felt sense of calm, steady heart function."
+            "text": "A self-directed practice focused on steady, coordinated heart function, healthy circulation, and ongoing natural maintenance, with conscious reinforcement when desired."
           },
           "related_commands": [],
           "relationships": {},
@@ -2005,7 +1966,7 @@
         "key": "functions.ocf-bod-006.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Self-directed wellness practice supporting a felt sense of calm, steady heart function."
+        "text": "A self-directed practice focused on steady, coordinated heart function, healthy circulation, and ongoing natural maintenance, with conscious reinforcement when desired."
       },
       "reimplementation_status": "planned",
       "related_functions": [
@@ -2037,7 +1998,7 @@
         "key": "functions.ocf-bod-006.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Self-directed wellness practice supporting a felt sense of calm, steady heart function."
+        "text": "A self-directed practice focused on steady, coordinated heart function, healthy circulation, and ongoing natural maintenance, with conscious reinforcement when desired."
       },
       "slug": "heart-repairs",
       "source_availability": "available",
@@ -2164,7 +2125,7 @@
             "evidence_keys": [
               "hplus.function.ocf-bod-007.function-body"
             ],
-            "ref": "OCF-PROC-CLOSE-FOCUS",
+            "ref": "OCF-PROC-CLOSE-INHALE-HOLD",
             "status": "documented"
           },
           "procedure_status": "documented",
@@ -2176,34 +2137,21 @@
                 "key": "OCF-BOD-007/OCF-CMD-BOD-007-PRIMARY/procedure_steps/0",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
+                "status": "reviewed",
                 "text": "Close your eyes.",
                 "version": "1.0.0"
               },
               "operation": "close-eyes"
             },
             {
-              "id": "focus-target",
+              "id": "inhale",
               "instruction": {
                 "fallback": false,
                 "key": "OCF-BOD-007/OCF-CMD-BOD-007-PRIMARY/procedure_steps/1",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Focus attention on the selected target.",
-                "version": "1.0.0"
-              },
-              "operation": "focus-target"
-            },
-            {
-              "id": "inhale",
-              "instruction": {
-                "fallback": false,
-                "key": "OCF-BOD-007/OCF-CMD-BOD-007-PRIMARY/procedure_steps/2",
-                "requested_locale": "en-US",
-                "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Inhale.",
+                "status": "reviewed",
+                "text": "Take a comfortable breath in.",
                 "version": "1.0.0"
               },
               "operation": "inhale"
@@ -2212,11 +2160,11 @@
               "id": "hold",
               "instruction": {
                 "fallback": false,
-                "key": "OCF-BOD-007/OCF-CMD-BOD-007-PRIMARY/procedure_steps/3",
+                "key": "OCF-BOD-007/OCF-CMD-BOD-007-PRIMARY/procedure_steps/2",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Hold your breath.",
+                "status": "reviewed",
+                "text": "Gently hold your breath.",
                 "version": "1.0.0"
               },
               "operation": "hold-breath"
@@ -2225,11 +2173,11 @@
               "id": "command",
               "instruction": {
                 "fallback": false,
-                "key": "OCF-BOD-007/OCF-CMD-BOD-007-PRIMARY/procedure_steps/4",
+                "key": "OCF-BOD-007/OCF-CMD-BOD-007-PRIMARY/procedure_steps/3",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Think or say the command.",
+                "status": "reviewed",
+                "text": "While holding your breath, silently say the command to yourself.",
                 "version": "1.0.0"
               },
               "operation": "think-or-say-command"
@@ -2238,11 +2186,11 @@
               "id": "exhale",
               "instruction": {
                 "fallback": false,
-                "key": "OCF-BOD-007/OCF-CMD-BOD-007-PRIMARY/procedure_steps/5",
+                "key": "OCF-BOD-007/OCF-CMD-BOD-007-PRIMARY/procedure_steps/4",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Exhale.",
+                "status": "reviewed",
+                "text": "Then slowly exhale through your mouth, as though gently blowing out a candle.",
                 "version": "1.0.0"
               },
               "operation": "exhale"
@@ -2253,7 +2201,7 @@
             "key": "functions.ocf-bod-007.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute for medical care."
+            "text": "A self-directed practice focused on supporting healthy blood pressure regulation, coordinated heart and blood vessel function, and natural cardiovascular balance that adapts to the body's changing needs, with conscious reinforcement when desired."
           },
           "related_commands": [],
           "relationships": {},
@@ -2364,7 +2312,7 @@
         "key": "functions.ocf-bod-007.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute for medical care."
+        "text": "A self-directed practice focused on supporting healthy blood pressure regulation, coordinated heart and blood vessel function, and natural cardiovascular balance that adapts to the body's changing needs, with conscious reinforcement when desired."
       },
       "reimplementation_status": "planned",
       "related_functions": [],
@@ -2374,7 +2322,7 @@
         "key": "functions.ocf-bod-007.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute for medical care."
+        "text": "A self-directed practice focused on supporting healthy blood pressure regulation, coordinated heart and blood vessel function, and natural cardiovascular balance that adapts to the body's changing needs, with conscious reinforcement when desired."
       },
       "slug": "hypertension",
       "source_availability": "available",
@@ -2726,8 +2674,8 @@
                 "key": "OCF-BOD-009/OCF-CMD-BOD-009-PRIMARY/procedure_steps/0",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Inhale.",
+                "status": "reviewed",
+                "text": "Take a deep breath in.",
                 "version": "1.0.0"
               },
               "operation": "inhale"
@@ -2739,8 +2687,8 @@
                 "key": "OCF-BOD-009/OCF-CMD-BOD-009-PRIMARY/procedure_steps/1",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Hold your breath.",
+                "status": "reviewed",
+                "text": "Gently hold your breath.",
                 "version": "1.0.0"
               },
               "operation": "hold-breath"
@@ -2752,8 +2700,8 @@
                 "key": "OCF-BOD-009/OCF-CMD-BOD-009-PRIMARY/procedure_steps/2",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Think or say the command.",
+                "status": "reviewed",
+                "text": "While holding your breath, silently say the command to yourself.",
                 "version": "1.0.0"
               },
               "operation": "think-or-say-command"
@@ -2765,8 +2713,8 @@
                 "key": "OCF-BOD-009/OCF-CMD-BOD-009-PRIMARY/procedure_steps/3",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Exhale.",
+                "status": "reviewed",
+                "text": "Then slowly exhale through your mouth.",
                 "version": "1.0.0"
               },
               "operation": "exhale"
@@ -18304,7 +18252,7 @@
           "procedure": {
             "before_steps": [
               {
-                "id": "select-restoration-target",
+                "id": "optional-restoration-target",
                 "localization_key": "command.procedure.select-target-area",
                 "operation": "select-target-area"
               }
@@ -18312,33 +18260,46 @@
             "evidence_keys": [
               "hplus.function.ocf-slp-001.function-body"
             ],
-            "ref": "OCF-PROC-INHALE-HOLD",
+            "ref": "OCF-PROC-CLOSE-NATURAL",
             "status": "documented"
           },
           "procedure_status": "documented",
           "procedure_steps": [
             {
-              "id": "select-restoration-target",
+              "id": "optional-restoration-target",
               "instruction": {
                 "fallback": false,
                 "key": "OCF-SLP-001/OCF-CMD-SLP-001-PRIMARY/procedure_steps/0",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Choose a target area.",
+                "status": "reviewed",
+                "text": "Let your intention extend throughout your entire body and being; optionally include a particular area you wish to restore.",
                 "version": "1.0.0"
               },
               "operation": "select-target-area"
             },
             {
-              "id": "inhale",
+              "id": "close-eyes",
               "instruction": {
                 "fallback": false,
                 "key": "OCF-SLP-001/OCF-CMD-SLP-001-PRIMARY/procedure_steps/1",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Inhale.",
+                "status": "reviewed",
+                "text": "Close your eyes.",
+                "version": "1.0.0"
+              },
+              "operation": "close-eyes"
+            },
+            {
+              "id": "inhale",
+              "instruction": {
+                "fallback": false,
+                "key": "OCF-SLP-001/OCF-CMD-SLP-001-PRIMARY/procedure_steps/2",
+                "requested_locale": "en-US",
+                "resolved_locale": "en-US",
+                "status": "reviewed",
+                "text": "Take a deep breath in.",
                 "version": "1.0.0"
               },
               "operation": "inhale"
@@ -18347,11 +18308,11 @@
               "id": "hold",
               "instruction": {
                 "fallback": false,
-                "key": "OCF-SLP-001/OCF-CMD-SLP-001-PRIMARY/procedure_steps/2",
+                "key": "OCF-SLP-001/OCF-CMD-SLP-001-PRIMARY/procedure_steps/3",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Hold your breath.",
+                "status": "reviewed",
+                "text": "Gently hold your breath.",
                 "version": "1.0.0"
               },
               "operation": "hold-breath"
@@ -18360,11 +18321,11 @@
               "id": "command",
               "instruction": {
                 "fallback": false,
-                "key": "OCF-SLP-001/OCF-CMD-SLP-001-PRIMARY/procedure_steps/3",
+                "key": "OCF-SLP-001/OCF-CMD-SLP-001-PRIMARY/procedure_steps/4",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Think or say the command.",
+                "status": "reviewed",
+                "text": "While holding your breath, silently say the command to yourself.",
                 "version": "1.0.0"
               },
               "operation": "think-or-say-command"
@@ -18373,14 +18334,27 @@
               "id": "exhale",
               "instruction": {
                 "fallback": false,
-                "key": "OCF-SLP-001/OCF-CMD-SLP-001-PRIMARY/procedure_steps/4",
+                "key": "OCF-SLP-001/OCF-CMD-SLP-001-PRIMARY/procedure_steps/5",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Exhale.",
+                "status": "reviewed",
+                "text": "Then slowly exhale through your mouth, as though gently blowing out a candle.",
                 "version": "1.0.0"
               },
               "operation": "exhale"
+            },
+            {
+              "id": "breathe-normally",
+              "instruction": {
+                "fallback": false,
+                "key": "OCF-SLP-001/OCF-CMD-SLP-001-PRIMARY/procedure_steps/6",
+                "requested_locale": "en-US",
+                "resolved_locale": "en-US",
+                "status": "reviewed",
+                "text": "Continue breathing naturally.",
+                "version": "1.0.0"
+              },
+              "operation": "breathe-normally"
             }
           ],
           "purpose": {
@@ -18388,7 +18362,7 @@
             "key": "functions.ocf-slp-001.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE SLEEP."
+            "text": "A self-directed practice focused on deep, restorative sleep, supporting the body's natural processes of healing, repair, renewal, and regeneration throughout sleep, with optional attention to specific areas when desired."
           },
           "related_commands": [],
           "relationships": {},
@@ -18441,7 +18415,7 @@
         "key": "functions.ocf-slp-001.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE SLEEP."
+        "text": "A self-directed practice focused on deep, restorative sleep, supporting the body's natural processes of healing, repair, renewal, and regeneration throughout sleep, with optional attention to specific areas when desired."
       },
       "reimplementation_status": "planned",
       "related_functions": [],
@@ -18451,7 +18425,7 @@
         "key": "functions.ocf-slp-001.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE SLEEP."
+        "text": "A self-directed practice focused on deep, restorative sleep, supporting the body's natural processes of healing, repair, renewal, and regeneration throughout sleep, with optional attention to specific areas when desired."
       },
       "slug": "restorative-sleep",
       "source_availability": "available",
@@ -18554,82 +18528,89 @@
             "source": "canonical-primary"
           },
           "procedure": {
-            "before_steps": [
-              {
-                "id": "select-sleep-and-wake-intention",
-                "localization_key": "command.procedure.select-purpose",
-                "operation": "select-purpose"
-              }
-            ],
+            "before_steps": [],
             "evidence_keys": [
               "hplus.function.ocf-slp-002.function-body"
             ],
-            "ref": "OCF-PROC-SLEEP-EXHALE",
+            "ref": "OCF-PROC-CLOSE-NATURAL",
             "status": "documented"
           },
           "procedure_status": "documented",
           "procedure_steps": [
             {
-              "id": "select-sleep-and-wake-intention",
+              "id": "close-eyes",
               "instruction": {
                 "fallback": false,
                 "key": "OCF-SLP-002/OCF-CMD-SLP-002-PRIMARY/procedure_steps/0",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Choose the purpose for using this function.",
+                "status": "reviewed",
+                "text": "Close your eyes.",
                 "version": "1.0.0"
               },
-              "operation": "select-purpose"
+              "operation": "close-eyes"
             },
             {
-              "id": "sleep-intention",
+              "id": "inhale",
               "instruction": {
                 "fallback": false,
                 "key": "OCF-SLP-002/OCF-CMD-SLP-002-PRIMARY/procedure_steps/1",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Choose the purpose for using this function.",
+                "status": "reviewed",
+                "text": "Take a deep breath in.",
                 "version": "1.0.0"
               },
-              "operation": "select-purpose"
+              "operation": "inhale"
             },
             {
-              "id": "breathe-slowly",
+              "id": "hold",
               "instruction": {
                 "fallback": false,
                 "key": "OCF-SLP-002/OCF-CMD-SLP-002-PRIMARY/procedure_steps/2",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Breathe slowly and deeply.",
+                "status": "reviewed",
+                "text": "Gently hold your breath.",
                 "version": "1.0.0"
               },
-              "operation": "breathe-slowly-deeply"
+              "operation": "hold-breath"
             },
             {
-              "id": "command-during-exhale",
+              "id": "command",
               "instruction": {
                 "fallback": false,
                 "key": "OCF-SLP-002/OCF-CMD-SLP-002-PRIMARY/procedure_steps/3",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Think the command during exhalation.",
+                "status": "reviewed",
+                "text": "While holding your breath, silently say the command to yourself.",
                 "version": "1.0.0"
               },
-              "operation": "think-command-during-exhale"
+              "operation": "think-or-say-command"
             },
             {
-              "id": "continue-breathing",
+              "id": "exhale",
               "instruction": {
                 "fallback": false,
                 "key": "OCF-SLP-002/OCF-CMD-SLP-002-PRIMARY/procedure_steps/4",
                 "requested_locale": "en-US",
                 "resolved_locale": "en-US",
-                "status": "canonical",
-                "text": "Continue breathing normally.",
+                "status": "reviewed",
+                "text": "Then slowly exhale.",
+                "version": "1.0.0"
+              },
+              "operation": "exhale"
+            },
+            {
+              "id": "breathe-normally",
+              "instruction": {
+                "fallback": false,
+                "key": "OCF-SLP-002/OCF-CMD-SLP-002-PRIMARY/procedure_steps/5",
+                "requested_locale": "en-US",
+                "resolved_locale": "en-US",
+                "status": "reviewed",
+                "text": "Continue breathing naturally.",
                 "version": "1.0.0"
               },
               "operation": "breathe-normally"
@@ -18640,7 +18621,7 @@
             "key": "functions.ocf-slp-002.purpose",
             "requested_locale": "en-US",
             "resolved_locale": "en-US",
-            "text": "Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP."
+            "text": "A self-directed practice for entering natural, restful sleep through relaxation and a simple mental command."
           },
           "related_commands": [],
           "relationships": {},
@@ -18703,7 +18684,7 @@
         "key": "functions.ocf-slp-002.purpose",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP."
+        "text": "A self-directed practice for entering natural, restful sleep through relaxation and a simple mental command."
       },
       "reimplementation_status": "planned",
       "related_functions": [
@@ -18735,7 +18716,7 @@
         "key": "functions.ocf-slp-002.short-description",
         "requested_locale": "en-US",
         "resolved_locale": "en-US",
-        "text": "Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP."
+        "text": "A self-directed practice for entering natural, restful sleep through relaxation and a simple mental command."
       },
       "slug": "sleep",
       "source_availability": "available",

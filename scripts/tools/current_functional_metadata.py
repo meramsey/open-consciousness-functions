@@ -60,7 +60,7 @@ def render(data):
         "",
         f"{data['id']}: {data['approved']} explicitly approved decisions across {len(data['functions'])} functions.",
         "",
-        "Final user confirmation: **Please do**. No deferred decisions. All 177 resolved narration entries are unchanged.",
+        "Historical metadata decision confirmation: **Please do**. That metadata-only decision left all 177 resolved narration entries unchanged. The subsequent source-only approved editorial batch is documented separately in [the editorial batch report](APPROVED_EDITORIAL_BATCH_20261114.md); it does not grant audio or publication approval.",
         "",
         data["runtime_policy"],
         "",
@@ -95,7 +95,7 @@ def render(data):
         [
             "## Localization and audio",
             "",
-            "English purpose, role and scope descriptions are synchronized with canonical YAML. Partial Spanish requires descriptive terminology review; no production translation was changed. Speech inputs, templates, DSP, pacing, gains, repetitions and recording text fingerprints remain unchanged. The current catalog has 58 source plans and preserves the separate 55-function historical cohort.",
+            "English purpose, role and scope descriptions are synchronized with canonical YAML. Partial Spanish requires descriptive terminology review; no production translation was changed. For that historical metadata-only decision, speech inputs, templates, DSP, pacing, gains, repetitions and recording text fingerprints were unchanged. Subsequent source editorial changes do not update historical recording fingerprints. The current catalog has 58 source plans and preserves the separate 55-function historical cohort.",
             "",
         ]
     )

@@ -29,7 +29,7 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 Title: Comfort. Title status: canonical.
 Display: `PLUS-COMFORT`. Complete speech: **Plus Comfort**.
 
-Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT.
+A self-directed practice for easing physical discomfort in a selected area of the body.
 
 Translator context: User approved Comfort / PLUS-COMFORT / Plus Comfort in OCF-EDITORIAL-TITLE-CUES-002. Numeric wording remains historical lookup only; no bridge lesson is added.
 
@@ -62,7 +62,7 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 Title: Heart Flow. Title status: canonical.
 Display: `PLUS-HEART-FLOW`. Complete speech: **Plus Heart Flow**.
 
-Self-directed wellness practice supporting a felt sense of calm, steady heart function.
+A self-directed practice focused on steady, coordinated heart function, healthy circulation, and ongoing natural maintenance, with conscious reinforcement when desired.
 
 Translator context: Approved presentation successor OCF-COMMAND-SIMPLIFICATION-001; superseded wording remains historical lookup.
 
@@ -73,7 +73,7 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 Title: Blood Pressure Balance. Title status: canonical.
 Display: `PLUS-BALANCE BLOOD PRESSURE`. Complete speech: **Plus Balance Blood Pressure**.
 
-Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute for medical care.
+A self-directed practice focused on supporting healthy blood pressure regulation, coordinated heart and blood vessel function, and natural cardiovascular balance that adapts to the body's changing needs, with conscious reinforcement when desired.
 
 Translator context: Canonical locale function resource.
 
@@ -425,7 +425,7 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 Title: Restorative Sleep. Title status: canonical.
 Display: `PLUS-RESTORATIVE SLEEP`. Complete speech: **Plus Restorative Sleep**.
 
-Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE SLEEP.
+A self-directed practice focused on deep, restorative sleep, supporting the body's natural processes of healing, repair, renewal, and regeneration throughout sleep, with optional attention to specific areas when desired.
 
 Translator context: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording is historical lookup. Existing controls remain unchanged.
 
@@ -436,7 +436,7 @@ Review: English primary cue approved and implemented. Preserve controls/procedur
 Title: Sleep. Title status: canonical.
 Display: `PLUS-SLEEP`. Complete speech: **Plus Sleep**.
 
-Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP.
+A self-directed practice for entering natural, restful sleep through relaxation and a simple mental command.
 
 Translator context: Primary wording approved in OCF-EDITORIAL-TITLE-CUES-004; superseded primary wording is historical lookup. Existing controls remain unchanged.
 

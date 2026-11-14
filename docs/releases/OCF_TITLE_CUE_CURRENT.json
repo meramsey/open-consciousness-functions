@@ -276,7 +276,7 @@
         "version": "0.1.0",
         "resource_status": "reviewed"
       },
-      "current_purpose": "Promotes a felt sense of smooth, comfortable circulation.",
+      "current_purpose": "A self-directed practice focused on healthy circulation throughout the body, supporting smooth blood flow, oxygen and nutrient delivery, blood vessel maintenance, and natural renewal, with conscious reinforcement when desired.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
       "title_status": "canonical",
@@ -344,7 +344,7 @@
         "version": "1.0.0",
         "resource_status": "reviewed"
       },
-      "current_purpose": "Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT.",
+      "current_purpose": "A self-directed practice for easing physical discomfort in a selected area of the body.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
       "title_status": "canonical",
@@ -571,7 +571,7 @@
         "version": "1.1.0",
         "resource_status": "reviewed"
       },
-      "current_purpose": "Self-directed wellness practice supporting a felt sense of calm, steady heart function.",
+      "current_purpose": "A self-directed practice focused on steady, coordinated heart function, healthy circulation, and ongoing natural maintenance, with conscious reinforcement when desired.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
       "title_status": "canonical",
@@ -664,7 +664,7 @@
         "version": "1.0.0",
         "resource_status": "reviewed"
       },
-      "current_purpose": "Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute for medical care.",
+      "current_purpose": "A self-directed practice focused on supporting healthy blood pressure regulation, coordinated heart and blood vessel function, and natural cardiovascular balance that adapts to the body's changing needs, with conscious reinforcement when desired.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
       "title_status": "canonical",
@@ -3573,7 +3573,7 @@
         "version": "1.0.0",
         "resource_status": "reviewed"
       },
-      "current_purpose": "Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE SLEEP.",
+      "current_purpose": "A self-directed practice focused on deep, restorative sleep, supporting the body's natural processes of healing, repair, renewal, and regeneration throughout sleep, with optional attention to specific areas when desired.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
       "title_status": "canonical",
@@ -3644,7 +3644,7 @@
         "version": "1.0.0",
         "resource_status": "reviewed"
       },
-      "current_purpose": "Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP.",
+      "current_purpose": "A self-directed practice for entering natural, restful sleep through relaxation and a simple mental command.",
       "decision_status": "APPROVED AND IMPLEMENTED",
       "metadata_teaching_consistent": true,
       "title_status": "canonical",
@@ -4095,7 +4095,7 @@
         "evidence_keys": [
           "hplus.function.ocf-bod-001.function-body"
         ],
-        "ref": "OCF-PROC-CLOSE-FOCUS",
+        "ref": "OCF-PROC-CLOSE-OPEN",
         "status": "documented"
       },
       "relationships": {},
@@ -4126,11 +4126,6 @@
           "localization_key": "command.procedure.close-eyes"
         },
         {
-          "id": "focus-target",
-          "operation": "focus-target",
-          "localization_key": "command.procedure.focus-target"
-        },
-        {
           "id": "inhale",
           "operation": "inhale",
           "localization_key": "command.procedure.inhale"
@@ -4149,6 +4144,11 @@
           "id": "exhale",
           "operation": "exhale",
           "localization_key": "command.procedure.exhale"
+        },
+        {
+          "id": "open-eyes",
+          "operation": "open-eyes",
+          "localization_key": "command.procedure.open-eyes"
         }
       ],
       "cue_presentation": {
@@ -4177,7 +4177,7 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "procedure": {
-        "ref": "OCF-PROC-CLOSE-FOCUS",
+        "ref": "OCF-PROC-CLOSE-INHALE-HOLD",
         "status": "documented",
         "evidence_keys": [
           "hplus.function.ocf-bod-002.function-body"
@@ -4205,11 +4205,6 @@
           "id": "close-eyes",
           "operation": "close-eyes",
           "localization_key": "command.procedure.close-eyes"
-        },
-        {
-          "id": "focus-target",
-          "operation": "focus-target",
-          "localization_key": "command.procedure.focus-target"
         },
         {
           "id": "inhale",
@@ -4384,7 +4379,7 @@
         "evidence_keys": [
           "hplus.function.ocf-bod-004.function-body"
         ],
-        "ref": "OCF-PROC-CLOSE-FOCUS",
+        "ref": "OCF-PROC-CLOSE-INHALE-HOLD",
         "status": "documented"
       },
       "relationships": {},
@@ -4413,11 +4408,6 @@
           "id": "close-eyes",
           "operation": "close-eyes",
           "localization_key": "command.procedure.close-eyes"
-        },
-        {
-          "id": "focus-target",
-          "operation": "focus-target",
-          "localization_key": "command.procedure.focus-target"
         },
         {
           "id": "inhale",
@@ -4601,7 +4591,7 @@
         "evidence_keys": [
           "hplus.function.ocf-bod-006.function-body"
         ],
-        "ref": "OCF-PROC-CLOSE-FOCUS",
+        "ref": "OCF-PROC-CLOSE-INHALE-HOLD",
         "status": "documented"
       },
       "relationships": {},
@@ -4630,11 +4620,6 @@
           "id": "close-eyes",
           "operation": "close-eyes",
           "localization_key": "command.procedure.close-eyes"
-        },
-        {
-          "id": "focus-target",
-          "operation": "focus-target",
-          "localization_key": "command.procedure.focus-target"
         },
         {
           "id": "inhale",
@@ -4684,7 +4669,7 @@
       "effect_scope_ref": "lifecycle.scopes.application.persistence",
       "invocation_scope_ref": "lifecycle.scopes.application",
       "procedure": {
-        "ref": "OCF-PROC-CLOSE-FOCUS",
+        "ref": "OCF-PROC-CLOSE-INHALE-HOLD",
         "status": "documented",
         "evidence_keys": [
           "hplus.function.ocf-bod-007.function-body"
@@ -4729,11 +4714,6 @@
           "id": "close-eyes",
           "operation": "close-eyes",
           "localization_key": "command.procedure.close-eyes"
-        },
-        {
-          "id": "focus-target",
-          "operation": "focus-target",
-          "localization_key": "command.procedure.focus-target"
         },
         {
           "id": "inhale",
@@ -10445,14 +10425,14 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "procedure": {
-        "ref": "OCF-PROC-INHALE-HOLD",
+        "ref": "OCF-PROC-CLOSE-NATURAL",
         "status": "documented",
         "evidence_keys": [
           "hplus.function.ocf-slp-001.function-body"
         ],
         "before_steps": [
           {
-            "id": "select-restoration-target",
+            "id": "optional-restoration-target",
             "operation": "select-target-area",
             "localization_key": "command.procedure.select-target-area"
           }
@@ -10481,9 +10461,14 @@
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
         {
-          "id": "select-restoration-target",
+          "id": "optional-restoration-target",
           "operation": "select-target-area",
           "localization_key": "command.procedure.select-target-area"
+        },
+        {
+          "id": "close-eyes",
+          "operation": "close-eyes",
+          "localization_key": "command.procedure.close-eyes"
         },
         {
           "id": "inhale",
@@ -10504,6 +10489,11 @@
           "id": "exhale",
           "operation": "exhale",
           "localization_key": "command.procedure.exhale"
+        },
+        {
+          "id": "breathe-normally",
+          "operation": "breathe-normally",
+          "localization_key": "command.procedure.breathe-normally"
         }
       ],
       "cue_presentation": {
@@ -10568,18 +10558,12 @@
       },
       "effect_scope_ref": "lifecycle.persistence",
       "procedure": {
-        "ref": "OCF-PROC-SLEEP-EXHALE",
+        "ref": "OCF-PROC-CLOSE-NATURAL",
         "status": "documented",
         "evidence_keys": [
           "hplus.function.ocf-slp-002.function-body"
         ],
-        "before_steps": [
-          {
-            "id": "select-sleep-and-wake-intention",
-            "operation": "select-purpose",
-            "localization_key": "command.procedure.select-purpose"
-          }
-        ]
+        "before_steps": []
       },
       "relationships": {},
       "id": "OCF-CMD-SLP-002-PRIMARY",
@@ -10604,27 +10588,32 @@
       "effect_scope": "temporary",
       "resolved_procedure_steps": [
         {
-          "id": "select-sleep-and-wake-intention",
-          "operation": "select-purpose",
-          "localization_key": "command.procedure.select-purpose"
+          "id": "close-eyes",
+          "operation": "close-eyes",
+          "localization_key": "command.procedure.close-eyes"
         },
         {
-          "id": "sleep-intention",
-          "operation": "select-purpose",
-          "localization_key": "command.procedure.select-purpose"
+          "id": "inhale",
+          "operation": "inhale",
+          "localization_key": "command.procedure.inhale"
         },
         {
-          "id": "breathe-slowly",
-          "operation": "breathe-slowly-deeply",
-          "localization_key": "command.procedure.breathe-slowly-deeply"
+          "id": "hold",
+          "operation": "hold-breath",
+          "localization_key": "command.procedure.hold-breath"
         },
         {
-          "id": "command-during-exhale",
-          "operation": "think-command-during-exhale",
-          "localization_key": "command.procedure.think-command-during-exhale"
+          "id": "command",
+          "operation": "think-or-say-command",
+          "localization_key": "command.procedure.think-or-say-command"
         },
         {
-          "id": "continue-breathing",
+          "id": "exhale",
+          "operation": "exhale",
+          "localization_key": "command.procedure.exhale"
+        },
+        {
+          "id": "breathe-normally",
           "operation": "breathe-normally",
           "localization_key": "command.procedure.breathe-normally"
         }
@@ -11294,15 +11283,15 @@
   ],
   "input_sha256": {
     "locales/en-US/OCF-AUT-001-Automatic-Action.yaml": "eceab6a78ff1b6a13d410f3caa04927e327ebc14aced4faba886761a183bcb63",
-    "locales/en-US/OCF-BOD-001-Brain-Flow.yaml": "138290edf75693a1891a37c0be7e4c51e3661c89ce90f176406d2e47e64eeefc",
-    "locales/en-US/OCF-BOD-002-Circulation.yaml": "712b0f25380c0f514377503eae40a476a6441cb640fd9ee181e3adeee39416e5",
-    "locales/en-US/OCF-BOD-003-Comfort.yaml": "8f9db0c8fabe4bce73ea15a85fa26e5037c7af24bb88541dcd321699a51aba59",
-    "locales/en-US/OCF-BOD-004-Detox.yaml": "a2ef494ea74201317aa6abe186a994bbd41e62798b2622ed01570c2ebe45541b",
+    "locales/en-US/OCF-BOD-001-Brain-Flow.yaml": "3f59b437e41c59d504cff1fe7c07b17c468b0c56850fa8b771d185bb93899911",
+    "locales/en-US/OCF-BOD-002-Circulation.yaml": "d14d8252802ff079640f38fca9a5772c4bda474ca3b20180fb9901eda91a4c0e",
+    "locales/en-US/OCF-BOD-003-Comfort.yaml": "0661fe9c039a4497400ae4565a9c21a7bda98e77fd00d182eac4d3622441e398",
+    "locales/en-US/OCF-BOD-004-Detox.yaml": "f256b748f378b03f3b9b484339961176ed648d36d19e1517a2e36820871192bb",
     "locales/en-US/OCF-BOD-005-Appetite-Choice.yaml": "7b8b7b00195770496e42f73f070790de160fdcdd72f050c0e3d38bb0615bbfdb",
-    "locales/en-US/OCF-BOD-006-Heart-Flow.yaml": "54f2c55034809e2c5407ed7671a9c0bab8075567bb050b7caa09b939711b6344",
-    "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml": "d1a2a430bf4187b5900e97dc21bc528b2859592d2c3742723855098494706d03",
-    "locales/en-US/OCF-BOD-008-Immune-Readiness.yaml": "f0c28c356cd84be05f4ce5b5bf1c61cb3a19d39b685d24c79af85361f1520151",
-    "locales/en-US/OCF-BOD-009-Breathe-Better.yaml": "abcfa506fa0ffa1f54fc45b2224c36e814a7b7b05e6275ae5ad2e3985d8956bc",
+    "locales/en-US/OCF-BOD-006-Heart-Flow.yaml": "52525f89820e89622d50826844270ae4b52aecfafc8ee4596c4da67d7778ea00",
+    "locales/en-US/OCF-BOD-007-Blood-Pressure-Balance.yaml": "5023c803a1705d1aaa26ff7a90963b31cecc708b2849751e926e23aa34dfac64",
+    "locales/en-US/OCF-BOD-008-Immune-Readiness.yaml": "e170f6031fd64be5b7866eeb229ccb3f57de957dc272504da1956e8bf5538e55",
+    "locales/en-US/OCF-BOD-009-Breathe-Better.yaml": "8908201c1156d258e951c1397808ddf87889e07376d1f3905aac2861cf96c15e",
     "locales/en-US/OCF-BOD-010-Nutricia.yaml": "93b47f0a7824b668b359fdc8a729cf587c0bf61d1b83475c175d9b0a37e0541e",
     "locales/en-US/OCF-BOD-011-Hormonal-Transitions.yaml": "6ee19e36ef3192a5363a953677caf22151ed1c0af94f54077b85bbf6d8b2eda4",
     "locales/en-US/OCF-BOD-012-Sex-Drive.yaml": "aa9d7a26ff54db00e256d170687b107d451c8095560dcc6276e662b4eb225d05",
@@ -11345,8 +11334,8 @@
     "locales/en-US/OCF-SEN-003-Smell.yaml": "73415e0cfd020879382f009a2511e06e2269d21686dea196e31820852a3b0242",
     "locales/en-US/OCF-SEN-004-Taste.yaml": "9b4537dad67db612d1f371da537ed88624f4cfef6fc8f83d72f4e9dd75c68ada",
     "locales/en-US/OCF-SEN-005-Touch.yaml": "8233748194f6e60528e63e00f0e227c1145fa9dc744c1c70b58f5f67bd04f3dd",
-    "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml": "a91d1c2d2152c73342727308861a966c76ce464f40b9a0f8613e21e170c1be60",
-    "locales/en-US/OCF-SLP-002-Sleep.yaml": "0d4210a4abf5d4c419df49883d36605e0ffa43bf8cbc48d33263902529f8053e",
+    "locales/en-US/OCF-SLP-001-Restorative-Sleep.yaml": "4f6434645e2e36ddd64e0a8cd72b3f9da89667eb6518e3dcb306675da9b4d807",
+    "locales/en-US/OCF-SLP-002-Sleep.yaml": "fc0b2c958e528f554cdd2b0709c020a9c11bc84cd683d303e32f8dd97a9b207b",
     "locales/en-US/OCF-SLP-003-Dream-Theme.yaml": "88f6078aad039e867590b06f9e3ebd13471f5731aa4a04bfd4e13c9ba50b87aa",
     "locales/en-US/OCF-SLP-004-Sleep-Insight.yaml": "4f2f37e6105ebcdfac428d3300bcb3e9c2a96669b7aff96649e50f1be8ba1a2c",
     "locales/en-US/OCF-SLP-005-Sleep-Easy.yaml": "8d1957c96ced76d01b2eb887042499e8abad2acc09677564e88cac98a7d5b941",

@@ -30,7 +30,7 @@ Counts: {"active_records": 83, "approved_candidate_narrations": 4, "embedded_app
 
 - Current display cue: `PLUS-CIRCULATE`; complete teaching: **Plus Circulate**.
 - Status: APPROVED AND IMPLEMENTED; title: canonical.
-- Purpose: Promotes a felt sense of smooth, comfortable circulation.
+- Purpose: A self-directed practice focused on healthy circulation throughout the body, supporting smooth blood flow, oxygen and nutrient delivery, blood vessel maintenance, and natural renewal, with conscious reinforcement when desired.
 - Pending title: None.
 - Other unselected proposal: null
 
@@ -38,7 +38,7 @@ Counts: {"active_records": 83, "approved_candidate_narrations": 4, "embedded_app
 
 - Current display cue: `PLUS-COMFORT`; complete teaching: **Plus Comfort**.
 - Status: APPROVED AND IMPLEMENTED; title: canonical.
-- Purpose: Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT.
+- Purpose: A self-directed practice for easing physical discomfort in a selected area of the body.
 - Pending title: None.
 - Other unselected proposal: null
 
@@ -62,7 +62,7 @@ Counts: {"active_records": 83, "approved_candidate_narrations": 4, "embedded_app
 
 - Current display cue: `PLUS-HEART-FLOW`; complete teaching: **Plus Heart Flow**.
 - Status: APPROVED AND IMPLEMENTED; title: canonical.
-- Purpose: Self-directed wellness practice supporting a felt sense of calm, steady heart function.
+- Purpose: A self-directed practice focused on steady, coordinated heart function, healthy circulation, and ongoing natural maintenance, with conscious reinforcement when desired.
 - Pending title: None.
 - Other unselected proposal: null
 
@@ -70,7 +70,7 @@ Counts: {"active_records": 83, "approved_candidate_narrations": 4, "embedded_app
 
 - Current display cue: `PLUS-BALANCE BLOOD PRESSURE`; complete teaching: **Plus Balance Blood Pressure**.
 - Status: APPROVED AND IMPLEMENTED; title: canonical.
-- Purpose: Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute for medical care.
+- Purpose: A self-directed practice focused on supporting healthy blood pressure regulation, coordinated heart and blood vessel function, and natural cardiovascular balance that adapts to the body's changing needs, with conscious reinforcement when desired.
 - Pending title: None.
 - Other unselected proposal: null
 
@@ -430,7 +430,7 @@ Counts: {"active_records": 83, "approved_candidate_narrations": 4, "embedded_app
 
 - Current display cue: `PLUS-RESTORATIVE SLEEP`; complete teaching: **Plus Restorative Sleep**.
 - Status: APPROVED AND IMPLEMENTED; title: canonical.
-- Purpose: Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE SLEEP.
+- Purpose: A self-directed practice focused on deep, restorative sleep, supporting the body's natural processes of healing, repair, renewal, and regeneration throughout sleep, with optional attention to specific areas when desired.
 - Pending title: None.
 - Other unselected proposal: null
 
@@ -438,7 +438,7 @@ Counts: {"active_records": 83, "approved_candidate_narrations": 4, "embedded_app
 
 - Current display cue: `PLUS-SLEEP`; complete teaching: **Plus Sleep**.
 - Status: APPROVED AND IMPLEMENTED; title: canonical.
-- Purpose: Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP.
+- Purpose: A self-directed practice for entering natural, restful sleep through relaxation and a simple mental command.
 - Pending title: None.
 - Other unselected proposal: null
 

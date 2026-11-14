@@ -144,7 +144,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "evidence_keys": [
                   "hplus.function.ocf-bod-001.function-body"
                 ],
-                "ref": "OCF-PROC-CLOSE-FOCUS",
+                "ref": "OCF-PROC-CLOSE-OPEN",
                 "status": "documented"
               },
               "relationships": {}
@@ -154,10 +154,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               {
                 "id": "close-eyes",
                 "operation": "close-eyes"
-              },
-              {
-                "id": "focus-target",
-                "operation": "focus-target"
               },
               {
                 "id": "inhale",
@@ -174,6 +170,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               {
                 "id": "exhale",
                 "operation": "exhale"
+              },
+              {
+                "id": "open-eyes",
+                "operation": "open-eyes"
               }
             ]
           }
@@ -207,7 +207,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "trigger_count": 0
       },
-      "sha256": "4ddb1aaf6a44a82d7304183c2a0faa199e7b3fad2cbf07a983884824016e049b"
+      "sha256": "296ef60534a0527b011e51dd452f3e6bddaf135bd1b151b75286701cb1f297c5"
     },
     "OCF-BOD-002": {
       "contract": {
@@ -239,7 +239,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "evidence_keys": [
                   "hplus.function.ocf-bod-002.function-body"
                 ],
-                "ref": "OCF-PROC-CLOSE-FOCUS",
+                "ref": "OCF-PROC-CLOSE-INHALE-HOLD",
                 "status": "documented"
               },
               "relationships": {}
@@ -249,10 +249,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               {
                 "id": "close-eyes",
                 "operation": "close-eyes"
-              },
-              {
-                "id": "focus-target",
-                "operation": "focus-target"
               },
               {
                 "id": "inhale",
@@ -302,7 +298,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "trigger_count": 0
       },
-      "sha256": "547d059d7e0f4c6f611ab71a25a2daea08086ed94cf0d544a6269990d4976118"
+      "sha256": "d7481e6cd4b26c22cdad8e53f06b00fbb68564d3093b8b7fde9b820b85de56a9"
     },
     "OCF-BOD-003": {
       "contract": {
@@ -448,7 +444,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "evidence_keys": [
                   "hplus.function.ocf-bod-004.function-body"
                 ],
-                "ref": "OCF-PROC-CLOSE-FOCUS",
+                "ref": "OCF-PROC-CLOSE-INHALE-HOLD",
                 "status": "documented"
               },
               "relationships": {}
@@ -458,10 +454,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               {
                 "id": "close-eyes",
                 "operation": "close-eyes"
-              },
-              {
-                "id": "focus-target",
-                "operation": "focus-target"
               },
               {
                 "id": "inhale",
@@ -530,7 +522,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "trigger_count": 0
       },
-      "sha256": "acabbac24a597c9cc3357ebe82c28e52fbc4c08a30da6ac3b38ce9c3d712a980"
+      "sha256": "c146679590f8ef5290d1a88ccbb59cf7d6c67b7f2a04fba40f33a1b653636e9d"
     },
     "OCF-BOD-005": {
       "contract": {
@@ -675,7 +667,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "evidence_keys": [
                   "hplus.function.ocf-bod-006.function-body"
                 ],
-                "ref": "OCF-PROC-CLOSE-FOCUS",
+                "ref": "OCF-PROC-CLOSE-INHALE-HOLD",
                 "status": "documented"
               },
               "relationships": {}
@@ -685,10 +677,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               {
                 "id": "close-eyes",
                 "operation": "close-eyes"
-              },
-              {
-                "id": "focus-target",
-                "operation": "focus-target"
               },
               {
                 "id": "inhale",
@@ -738,7 +726,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "trigger_count": 0
       },
-      "sha256": "058070bc25682576ef4b4ebcb8974bc8f2f025d311ca8e79a63c3b65639b5aa9"
+      "sha256": "1ec1cc4f61973bb87741ee569474f47f30941188f09463bd649b7ae846d9880f"
     },
     "OCF-BOD-007": {
       "contract": {
@@ -769,7 +757,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "evidence_keys": [
                   "hplus.function.ocf-bod-007.function-body"
                 ],
-                "ref": "OCF-PROC-CLOSE-FOCUS",
+                "ref": "OCF-PROC-CLOSE-INHALE-HOLD",
                 "status": "documented"
               },
               "relationships": {}
@@ -779,10 +767,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               {
                 "id": "close-eyes",
                 "operation": "close-eyes"
-              },
-              {
-                "id": "focus-target",
-                "operation": "focus-target"
               },
               {
                 "id": "inhale",
@@ -845,7 +829,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "trigger_count": 0
       },
-      "sha256": "e7174bd4da7fdd6aa50d5e3a027b74d1938f5c587286c4a5526ce79956bbc41e"
+      "sha256": "70c5e067f37a3ff5b8f4ce171d0ee7b734905829dd0cec47e8bb3db0285b671b"
     },
     "OCF-BOD-008": {
       "contract": {
@@ -6386,7 +6370,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "procedure": {
                 "before_steps": [
                   {
-                    "id": "select-restoration-target",
+                    "id": "optional-restoration-target",
                     "localization_key": "command.procedure.select-target-area",
                     "operation": "select-target-area"
                   }
@@ -6394,7 +6378,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "evidence_keys": [
                   "hplus.function.ocf-slp-001.function-body"
                 ],
-                "ref": "OCF-PROC-INHALE-HOLD",
+                "ref": "OCF-PROC-CLOSE-NATURAL",
                 "status": "documented"
               },
               "relationships": {}
@@ -6402,8 +6386,12 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation",
             "steps": [
               {
-                "id": "select-restoration-target",
+                "id": "optional-restoration-target",
                 "operation": "select-target-area"
+              },
+              {
+                "id": "close-eyes",
+                "operation": "close-eyes"
               },
               {
                 "id": "inhale",
@@ -6420,6 +6408,10 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               {
                 "id": "exhale",
                 "operation": "exhale"
+              },
+              {
+                "id": "breathe-normally",
+                "operation": "breathe-normally"
               }
             ]
           },
@@ -6472,7 +6464,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "trigger_count": 0
       },
-      "sha256": "b1f95c85f6ab31f2589fd4f75914bfd66c8d6aa283089c7dc288f5a869537999"
+      "sha256": "7c92050a91600924bb31e244a7001451e2bae75ceacb9f18028582765349374c"
     },
     "OCF-SLP-002": {
       "contract": {
@@ -6500,17 +6492,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "source": "canonical-primary"
               },
               "procedure": {
-                "before_steps": [
-                  {
-                    "id": "select-sleep-and-wake-intention",
-                    "localization_key": "command.procedure.select-purpose",
-                    "operation": "select-purpose"
-                  }
-                ],
+                "before_steps": [],
                 "evidence_keys": [
                   "hplus.function.ocf-slp-002.function-body"
                 ],
-                "ref": "OCF-PROC-SLEEP-EXHALE",
+                "ref": "OCF-PROC-CLOSE-NATURAL",
                 "status": "documented"
               },
               "relationships": {}
@@ -6518,23 +6504,27 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "role": "activation",
             "steps": [
               {
-                "id": "select-sleep-and-wake-intention",
-                "operation": "select-purpose"
+                "id": "close-eyes",
+                "operation": "close-eyes"
               },
               {
-                "id": "sleep-intention",
-                "operation": "select-purpose"
+                "id": "inhale",
+                "operation": "inhale"
               },
               {
-                "id": "breathe-slowly",
-                "operation": "breathe-slowly-deeply"
+                "id": "hold",
+                "operation": "hold-breath"
               },
               {
-                "id": "command-during-exhale",
-                "operation": "think-command-during-exhale"
+                "id": "command",
+                "operation": "think-or-say-command"
               },
               {
-                "id": "continue-breathing",
+                "id": "exhale",
+                "operation": "exhale"
+              },
+              {
+                "id": "breathe-normally",
                 "operation": "breathe-normally"
               }
             ]
@@ -6588,7 +6578,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "trigger_count": 0
       },
-      "sha256": "45e9b8a36e17bc94f2a597dccb070645287e0f2a24c39c931e68f688b8c8689d"
+      "sha256": "8267a57161aab20e23d7b4c53ae846e8f38889d6c75710ec43c60625200cb7f4"
     },
     "OCF-SLP-003": {
       "contract": {

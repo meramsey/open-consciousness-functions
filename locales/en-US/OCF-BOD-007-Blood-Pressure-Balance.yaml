@@ -7,8 +7,9 @@ title:
   status: canonical
   version: 1.0.0
 description:
-  text: Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute for
-    medical care.
+  text: A self-directed practice focused on supporting healthy blood pressure regulation, coordinated
+    heart and blood vessel function, and natural cardiovascular balance that adapts to the body's changing
+    needs, with conscious reinforcement when desired.
   status: canonical
   version: 1.0.0
 metadata_entries:
@@ -50,7 +51,7 @@ activation:
     effect_scope_ref: lifecycle.scopes.application.persistence
     invocation_scope_ref: lifecycle.scopes.application
     procedure:
-      ref: OCF-PROC-CLOSE-FOCUS
+      ref: OCF-PROC-CLOSE-INHALE-HOLD
       status: documented
       evidence_keys:
       - hplus.function.ocf-bod-007.function-body
@@ -61,37 +62,31 @@ activation:
     operation: close-eyes
     instruction:
       text: Close your eyes.
-      status: canonical
-      version: 1.0.0
-  - id: focus-target
-    operation: focus-target
-    instruction:
-      text: Focus attention on the selected target.
-      status: canonical
+      status: reviewed
       version: 1.0.0
   - id: inhale
     operation: inhale
     instruction:
-      text: Inhale.
-      status: canonical
+      text: Take a comfortable breath in.
+      status: reviewed
       version: 1.0.0
   - id: hold
     operation: hold-breath
     instruction:
-      text: Hold your breath.
-      status: canonical
+      text: Gently hold your breath.
+      status: reviewed
       version: 1.0.0
   - id: command
     operation: think-or-say-command
     instruction:
-      text: Think or say the command.
-      status: canonical
+      text: While holding your breath, silently say the command to yourself.
+      status: reviewed
       version: 1.0.0
   - id: exhale
     operation: exhale
     instruction:
-      text: Exhale.
-      status: canonical
+      text: Then slowly exhale through your mouth, as though gently blowing out a candle.
+      status: reviewed
       version: 1.0.0
 secondary_commands: []
 tags:
@@ -120,13 +115,9 @@ entries:
   hplus.function.ocf-bod-007.opener:
     status: reviewed
     version: 1.2.0
-    text: 'This OCF exercise will help you reinforce your body''s
-
-      natural ability to regulate blood pressure, supporting
-
-      healthy circulation, cardiovascular balance, and
-
-      the efficient functioning of your heart and blood vessels.'
+    text: This OCF exercise will teach you to reinforce your body's natural ability to regulate blood
+      pressure, supporting healthy circulation, cardiovascular balance, and coordinated heart and blood
+      vessel function.
   hplus.function.ocf-bod-007.function-body:
     status: reviewed
     version: 1.2.0
@@ -134,274 +125,57 @@ entries:
       function_id: OCF-BOD-007
       allowed:
       - cue.primary
-    text: 'From this moment forward, bring your awareness
+    text: 'From this moment forward, let your body''s natural systems of blood pressure regulation, circulation,
+      and cardiovascular maintenance work together in healthy balance.
 
-      to your heart and the blood vessels throughout
 
-      your entire physical body.
+      Let your heart and blood vessels work smoothly and efficiently, supporting the circulation of oxygen
+      and nourishment throughout your body.
 
 
-      Become aware of the natural rhythm of your heart
+      Let your blood vessels remain healthy, strong, and naturally flexible, responding appropriately
+      to your body''s changing needs.
 
-      and the smooth, steady circulation of your blood.
 
+      When you are resting, let your cardiovascular system settle into calm, comfortable, and efficient
+      activity.
 
-      Your heart and blood vessels work together,
 
-      supplying every part of your body with
+      When you are active, let your heart and blood vessels adjust naturally, providing the circulation
+      and support your body requires.
 
-      the oxygen and nourishment it needs.
 
+      Let unnecessary physical tension ease, allowing your breathing, muscles, and mind to return to a
+      comfortable, balanced state.
 
-      Now become aware of your body''s natural
 
-      ability to regulate and balance blood pressure.
+      This pattern of healthy cardiovascular regulation and maintenance is permanently established within
+      you.
 
 
-      Your body has systems designed to coordinate
+      It continues automatically, whether you are awake, resting, or asleep, adjusting to your body''s
+      needs without conscious effort.
 
-      the activity of your heart, blood vessels,
 
-      and circulation according to your needs.
+      Whenever you wish to reinforce this established pattern, simply close your eyes.
 
 
-      Visualize these systems working together
+      Take a comfortable breath in and gently hold it.
 
-      smoothly, efficiently, and in complete harmony.
 
+      While holding your breath, silently say to yourself,
 
-      See your blood vessels remaining healthy,
+      "{{ cue.primary }}."
 
-      strong, and naturally flexible.
 
+      Then slowly exhale through your mouth, as though gently blowing out a candle.
 
-      Feel your body becoming calm and relaxed,
 
-      allowing unnecessary tension to fade away.
+      As you exhale, let your heart and blood vessels continue working together in natural balance, supporting
+      healthy circulation and appropriate blood pressure regulation.
 
 
-      Your breathing becomes comfortable and steady.
-
-
-      Your muscles relax, your thoughts become clear,
-
-      and your entire body settles into
-
-      a natural state of calm and balance.
-
-
-      With every comfortable breath, you become
-
-      more relaxed, more peaceful, and more at ease.
-
-
-      Now visualize your cardiovascular system
-
-      maintaining the healthy balance your body needs.
-
-
-      Your heart works smoothly and efficiently,
-
-      and your blood vessels respond naturally
-
-      to the changing needs of your body.
-
-
-      When you are resting, your body settles
-
-      into a calm and comfortable state.
-
-
-      When you are active, your cardiovascular
-
-      system adjusts appropriately to support
-
-      your body''s increased needs.
-
-
-      Your natural regulatory systems coordinate
-
-      these changes smoothly and efficiently.
-
-
-      Every part of your cardiovascular system
-
-      works together to support healthy circulation
-
-      and balanced blood pressure.
-
-
-      Know that this pattern of calm, awareness,
-
-      and healthy cardiovascular maintenance
-
-      is becoming firmly established within you.
-
-
-      From this moment forward, your mind
-
-      will naturally reinforce this pattern
-
-      of relaxation and cardiovascular balance.
-
-
-      This pattern is now a lasting,
-
-      automatic part of your everyday life.
-
-
-      Whether you are awake, resting, or sleeping,
-
-      your body''s natural regulatory systems
-
-      continue performing their important work.
-
-
-      Your heart and blood vessels respond
-
-      appropriately to your body''s needs,
-
-      maintaining the balance required
-
-      for healthy circulation.
-
-
-      You will naturally recognize unnecessary
-
-      physical tension and release it.
-
-
-      Your breathing will become comfortable,
-
-      your muscles will relax,
-
-      and your mind will return to a calm,
-
-      clear, and balanced state.
-
-
-      Each day, this response becomes
-
-      more familiar, easier, and more automatic.
-
-
-      You are establishing a lasting pattern
-
-      of calm, relaxation, and conscious awareness
-
-      that supports your cardiovascular well-being.
-
-
-      Whenever you wish to consciously reinforce
-
-      this pattern of relaxation and balance,
-
-      you can do so quickly and easily.
-
-
-      Simply close your eyes and bring
-
-      your awareness to your heart
-
-      and blood vessel system.
-
-
-      If you wish, focus your attention
-
-      on a particular area of your body.
-
-
-      Take a comfortable breath in
-
-      and gently hold it.
-
-
-      While holding your breath, silently say
-
-      to yourself, "{{ cue.primary }}."
-
-
-      Then slowly exhale through your mouth,
-
-      as though gently blowing out a candle.
-
-
-      As you exhale, feel unnecessary tension
-
-      leaving your body.
-
-
-      Your mind becomes calm and clear.
-
-
-      Your muscles relax, your breathing settles,
-
-      and you return to a comfortable
-
-      state of balance and ease.
-
-
-      Visualize your heart and blood vessels
-
-      working together smoothly,
-
-      naturally, and efficiently.
-
-
-      Your mind reinforces this established
-
-      pattern of healthy cardiovascular awareness,
-
-      relaxation, and balance.
-
-
-      Each time you use {{ cue.primary }},
-
-      your ability to enter this calm,
-
-      balanced state becomes easier,
-
-      faster, and more effective.
-
-
-      This response becomes increasingly natural
-
-      and familiar each time you practice it.
-
-
-      Remember, your body''s natural processes
-
-      of cardiovascular regulation and maintenance
-
-      continue automatically.
-
-
-      You do not need to consciously direct
-
-      every heartbeat or adjustment.
-
-
-      Your body performs these natural functions
-
-      according to its needs.
-
-
-      {{ cue.primary }} remains available
-
-      whenever you wish to consciously reinforce
-
-      your established pattern of relaxation
-
-      and healthy cardiovascular awareness.
-
-
-      From this moment forward, you will find
-
-      it easier and easier to release tension,
-
-      become calm, and maintain a comfortable,
-
-      balanced state throughout your day.'
+      The more you use this command, the easier and more effective this conscious reinforcement becomes.'
   hplus.function.ocf-bod-007.closer:
     status: reviewed
     version: 1.2.1
@@ -409,35 +183,8 @@ entries:
       function_id: OCF-BOD-007
       allowed:
       - cue.primary
-    text: 'Remember, your body''s natural systems
-
-      of blood pressure regulation and
-
-      cardiovascular maintenance continue
-
-      working automatically every day and every night.
-
-
-      Your heart and blood vessels work together,
-
-      responding naturally to your body''s needs.
-
-
-      Your ability to release unnecessary tension
-
-      and return to a calm, balanced state
-
-      is now firmly established within you.
-
-
-      Whenever you wish to reinforce this pattern,
-
-      simply close your eyes.
-
-
-      Bring your attention to your heart
-
-      and blood vessel system.
+    text: 'Remember, to reinforce your body''s natural blood pressure regulation and cardiovascular balance,
+      close your eyes.
 
 
       Inhale comfortably and gently hold your breath.
@@ -448,9 +195,7 @@ entries:
       "{{ cue.primary }}."
 
 
-      Then slowly exhale through your mouth,
-
-      as though gently blowing out a candle.
+      Then slowly exhale through your mouth, as though gently blowing out a candle.
 
 
       This concludes your OCF Blood Pressure Balance exercise.'
@@ -543,7 +288,7 @@ editorial:
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: e7174bd4da7fdd6aa50d5e3a027b74d1938f5c587286c4a5526ce79956bbc41e
+  contract_sha256: 70c5e067f37a3ff5b8f4ce171d0ee7b734905829dd0cec47e8bb3db0285b671b
 record_metadata:
   legacy:
     command_ids:

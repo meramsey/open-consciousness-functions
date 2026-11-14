@@ -605,7 +605,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "evidence_keys": [
                 "hplus.function.ocf-bod-001.function-body"
               ],
-              "ref": "OCF-PROC-CLOSE-FOCUS",
+              "ref": "OCF-PROC-CLOSE-OPEN",
               "status": "documented"
             },
             "relationships": {},
@@ -614,11 +614,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "id": "close-eyes",
                 "localization_key": "command.procedure.close-eyes",
                 "operation": "close-eyes"
-              },
-              {
-                "id": "focus-target",
-                "localization_key": "command.procedure.focus-target",
-                "operation": "focus-target"
               },
               {
                 "id": "inhale",
@@ -639,6 +634,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "id": "exhale",
                 "localization_key": "command.procedure.exhale",
                 "operation": "exhale"
+              },
+              {
+                "id": "open-eyes",
+                "localization_key": "command.procedure.open-eyes",
+                "operation": "open-eyes"
               }
             ],
             "role": "activation",
@@ -1067,7 +1067,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "evidence_keys": [
                 "hplus.function.ocf-bod-002.function-body"
               ],
-              "ref": "OCF-PROC-CLOSE-FOCUS",
+              "ref": "OCF-PROC-CLOSE-INHALE-HOLD",
               "status": "documented"
             },
             "relationships": {},
@@ -1076,11 +1076,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "id": "close-eyes",
                 "localization_key": "command.procedure.close-eyes",
                 "operation": "close-eyes"
-              },
-              {
-                "id": "focus-target",
-                "localization_key": "command.procedure.focus-target",
-                "operation": "focus-target"
               },
               {
                 "id": "inhale",
@@ -1400,7 +1395,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Promotes a felt sense of smooth, comfortable circulation.",
+        "purpose": "A self-directed practice focused on healthy circulation throughout the body, supporting smooth blood flow, oxygen and nutrient delivery, blood vessel maintenance, and natural renewal, with conscious reinforcement when desired.",
         "safety": {
           "level": "health",
           "medical_relevance": true,
@@ -1864,7 +1859,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Felt-discomfort support for self-directed comfort; activation cue PLUS-COMFORT.",
+        "purpose": "A self-directed practice for easing physical discomfort in a selected area of the body.",
         "safety": {
           "level": "health",
           "medical_relevance": true,
@@ -1987,7 +1982,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "evidence_keys": [
                 "hplus.function.ocf-bod-004.function-body"
               ],
-              "ref": "OCF-PROC-CLOSE-FOCUS",
+              "ref": "OCF-PROC-CLOSE-INHALE-HOLD",
               "status": "documented"
             },
             "relationships": {},
@@ -1996,11 +1991,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "id": "close-eyes",
                 "localization_key": "command.procedure.close-eyes",
                 "operation": "close-eyes"
-              },
-              {
-                "id": "focus-target",
-                "localization_key": "command.procedure.focus-target",
-                "operation": "focus-target"
               },
               {
                 "id": "inhale",
@@ -2935,7 +2925,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "evidence_keys": [
                 "hplus.function.ocf-bod-006.function-body"
               ],
-              "ref": "OCF-PROC-CLOSE-FOCUS",
+              "ref": "OCF-PROC-CLOSE-INHALE-HOLD",
               "status": "documented"
             },
             "relationships": {},
@@ -2944,11 +2934,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "id": "close-eyes",
                 "localization_key": "command.procedure.close-eyes",
                 "operation": "close-eyes"
-              },
-              {
-                "id": "focus-target",
-                "localization_key": "command.procedure.focus-target",
-                "operation": "focus-target"
               },
               {
                 "id": "inhale",
@@ -3279,7 +3264,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Self-directed wellness practice supporting a felt sense of calm, steady heart function.",
+        "purpose": "A self-directed practice focused on steady, coordinated heart function, healthy circulation, and ongoing natural maintenance, with conscious reinforcement when desired.",
         "safety": {
           "level": "health",
           "medical_relevance": true,
@@ -3415,7 +3400,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "evidence_keys": [
                 "hplus.function.ocf-bod-007.function-body"
               ],
-              "ref": "OCF-PROC-CLOSE-FOCUS",
+              "ref": "OCF-PROC-CLOSE-INHALE-HOLD",
               "status": "documented"
             },
             "relationships": {},
@@ -3424,11 +3409,6 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "id": "close-eyes",
                 "localization_key": "command.procedure.close-eyes",
                 "operation": "close-eyes"
-              },
-              {
-                "id": "focus-target",
-                "localization_key": "command.procedure.focus-target",
-                "operation": "focus-target"
               },
               {
                 "id": "inhale",
@@ -3764,7 +3744,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Legacy practice associated with blood-pressure balance. Not a treatment and not a substitute for medical care.",
+        "purpose": "A self-directed practice focused on supporting healthy blood pressure regulation, coordinated heart and blood vessel function, and natural cardiovascular balance that adapts to the body's changing needs, with conscious reinforcement when desired.",
         "safety": {
           "level": "health",
           "medical_relevance": true,
@@ -25935,7 +25915,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
             "procedure": {
               "before_steps": [
                 {
-                  "id": "select-restoration-target",
+                  "id": "optional-restoration-target",
                   "localization_key": "command.procedure.select-target-area",
                   "operation": "select-target-area"
                 }
@@ -25943,15 +25923,20 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "evidence_keys": [
                 "hplus.function.ocf-slp-001.function-body"
               ],
-              "ref": "OCF-PROC-INHALE-HOLD",
+              "ref": "OCF-PROC-CLOSE-NATURAL",
               "status": "documented"
             },
             "relationships": {},
             "resolved_procedure_steps": [
               {
-                "id": "select-restoration-target",
+                "id": "optional-restoration-target",
                 "localization_key": "command.procedure.select-target-area",
                 "operation": "select-target-area"
+              },
+              {
+                "id": "close-eyes",
+                "localization_key": "command.procedure.close-eyes",
+                "operation": "close-eyes"
               },
               {
                 "id": "inhale",
@@ -25972,6 +25957,11 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
                 "id": "exhale",
                 "localization_key": "command.procedure.exhale",
                 "operation": "exhale"
+              },
+              {
+                "id": "breathe-normally",
+                "localization_key": "command.procedure.breathe-normally",
+                "operation": "breathe-normally"
               }
             ],
             "role": "activation",
@@ -26269,7 +26259,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE SLEEP.",
+        "purpose": "A self-directed practice focused on deep, restorative sleep, supporting the body's natural processes of healing, repair, renewal, and regeneration throughout sleep, with optional attention to specific areas when desired.",
         "safety": {
           "level": "health",
           "medical_relevance": true,
@@ -26388,43 +26378,42 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
               "source": "canonical-primary"
             },
             "procedure": {
-              "before_steps": [
-                {
-                  "id": "select-sleep-and-wake-intention",
-                  "localization_key": "command.procedure.select-purpose",
-                  "operation": "select-purpose"
-                }
-              ],
+              "before_steps": [],
               "evidence_keys": [
                 "hplus.function.ocf-slp-002.function-body"
               ],
-              "ref": "OCF-PROC-SLEEP-EXHALE",
+              "ref": "OCF-PROC-CLOSE-NATURAL",
               "status": "documented"
             },
             "relationships": {},
             "resolved_procedure_steps": [
               {
-                "id": "select-sleep-and-wake-intention",
-                "localization_key": "command.procedure.select-purpose",
-                "operation": "select-purpose"
+                "id": "close-eyes",
+                "localization_key": "command.procedure.close-eyes",
+                "operation": "close-eyes"
               },
               {
-                "id": "sleep-intention",
-                "localization_key": "command.procedure.select-purpose",
-                "operation": "select-purpose"
+                "id": "inhale",
+                "localization_key": "command.procedure.inhale",
+                "operation": "inhale"
               },
               {
-                "id": "breathe-slowly",
-                "localization_key": "command.procedure.breathe-slowly-deeply",
-                "operation": "breathe-slowly-deeply"
+                "id": "hold",
+                "localization_key": "command.procedure.hold-breath",
+                "operation": "hold-breath"
               },
               {
-                "id": "command-during-exhale",
-                "localization_key": "command.procedure.think-command-during-exhale",
-                "operation": "think-command-during-exhale"
+                "id": "command",
+                "localization_key": "command.procedure.think-or-say-command",
+                "operation": "think-or-say-command"
               },
               {
-                "id": "continue-breathing",
+                "id": "exhale",
+                "localization_key": "command.procedure.exhale",
+                "operation": "exhale"
+              },
+              {
+                "id": "breathe-normally",
                 "localization_key": "command.procedure.breathe-normally",
                 "operation": "breathe-normally"
               }
@@ -26736,7 +26725,7 @@ GENERATED FILE — DO NOT EDIT DIRECTLY
         },
         "narration_resources": [],
         "preparation": [],
-        "purpose": "Induces a felt, deliberate movement into sleep onset; activation cue PLUS-SLEEP.",
+        "purpose": "A self-directed practice for entering natural, restful sleep through relaxation and a simple mental command.",
         "safety": {
           "level": "general",
           "medical_relevance": false,

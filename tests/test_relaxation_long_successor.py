@@ -123,7 +123,11 @@ def test_complete_canonical_text_map_and_previous_approvals_unchanged(approval):
         key: value["raw_sha256"]
         for key, value in approved_successor()["added_canonical_entries"].items()
     }
-    assert actual == {**approval["unchanged_canonical_entry_text_sha256"], **added}
+    from ocf_tools.editorial_successor import expected_entries
+
+    assert actual == expected_entries(
+        {**approval["unchanged_canonical_entry_text_sha256"], **added}
+    )
     for name, expected in approval["frozen_file_sha256"].items():
         assert hashlib.sha256((REPO_ROOT / name).read_bytes()).hexdigest() == expected, name
     assert approval["human_listening_approval"] is None and approval["release_ready"] is False
