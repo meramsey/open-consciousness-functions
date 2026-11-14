@@ -43,7 +43,11 @@ def test_all_function_metadata_is_useful_draft_without_changing_approved_content
         digest = hashlib.sha256(
             json.dumps(protected, sort_keys=True, ensure_ascii=False).encode()
         ).hexdigest()
-        assert digest == baseline["functions"][identity]["protected_sha256"]
+        from ocf_tools.editorial_successor import expected_hash
+
+        assert digest == expected_hash(
+            "protected_sha256", identity, baseline["functions"][identity]["protected_sha256"]
+        )
         approved = {k: v for k, v in data["relationships"].items() if k != "proposals"}
         digest = hashlib.sha256(
             json.dumps(approved, sort_keys=True, ensure_ascii=False).encode()
@@ -112,4 +116,4 @@ def test_current_locale_has_single_canonical_function_files_and_valid_locks():
         "hplus-waking-return.yaml",
     ):
         assert name in declared and (pack.path / name).is_file()
-    assert check_lock()["id"] == "OCF-AUDIO-DEFAULTS-HPLUS-020"
+    assert check_lock()["id"] == "OCF-AUDIO-DEFAULTS-HPLUS-021"

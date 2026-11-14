@@ -30,11 +30,14 @@ def verify(root: Path | None = None, baseline_path: Path = BASELINE) -> list[str
     problems = []
     if len(localized) != 58 or set(localized) != set(records) or set(localized) != set(expected):
         return ["canonical semantic baseline identity set differs from the 58-function catalog"]
+    from .editorial_successor import expected_hash, verify_resources
     from .guide_review import approved_successor
     from .utils import OCFError
 
     successors = {}
+    editorial = None
     try:
+        editorial = verify_resources(root, localized)
         successors = approved_successor(root, snapshot=localized, records=records)["functions"]
     except OCFError as exc:
         problems.append(str(exc))
@@ -82,6 +85,10 @@ def verify(root: Path | None = None, baseline_path: Path = BASELINE) -> list[str
                 and approved == successor["previous_contract_sha256"]
             ):
                 approved = successor["contract_sha256"]
+            try:
+                approved = expected_hash(field, identity, approved, root, approved=editorial)
+            except OCFError as exc:
+                problems.append(str(exc))
             if actual != approved:
                 problems.append(f"{identity}: canonical {field} differs from the approved baseline")
     return problems

@@ -125,6 +125,7 @@ def _metadata_hash(value):
 def approved_successor(root=REPO_ROOT, *, snapshot=None, records=None):
     """Verify the fixed, hash-only approval; never refresh it from current data."""
     from .canonical_integrity import digest
+    from .editorial_successor import expected_hash, verify_resources
     from .function_catalog import structural_contract
 
     receipt = json.loads(SUCCESSOR.read_text(encoding="utf-8"))
@@ -149,6 +150,7 @@ def approved_successor(root=REPO_ROOT, *, snapshot=None, records=None):
     decisions = {identity: rows for identity, rows in decisions.items() if rows}
     if set(decisions) != set(receipt["functions"]) or len(decisions) != 27:
         raise OCFError("guide successor approved identity set differs")
+    editorial = verify_resources(root, snapshot)
     records = {row.id: row for row in load_all_functions(root=root)} if records is None else records
     fields = {
         "previous_contract_sha256",
@@ -182,11 +184,19 @@ def approved_successor(root=REPO_ROOT, *, snapshot=None, records=None):
         data = snapshot[identity]
         if _metadata_hash(decisions[identity]) != expected["approved_decisions_sha256"]:
             raise OCFError("guide successor embedded approval differs: " + identity)
-        if digest(structural_contract(data)) != expected["contract_sha256"]:
+        if digest(structural_contract(data)) != expected_hash(
+            "contract_sha256", identity, expected["contract_sha256"], root, approved=editorial
+        ):
             raise OCFError("guide successor structural contract differs: " + identity)
         projected = deepcopy(records[identity].data)
         projected["content"].pop("bindings")
-        if _metadata_hash(projected) != expected["record_without_bindings_sha256"]:
+        if _metadata_hash(projected) != expected_hash(
+            "record_without_bindings_sha256",
+            identity,
+            expected["record_without_bindings_sha256"],
+            root,
+            approved=editorial,
+        ):
             raise OCFError("guide successor projected record differs: " + identity)
         reviewed = {
             key: value for key, value in data["relationships"].items() if key != "proposals"

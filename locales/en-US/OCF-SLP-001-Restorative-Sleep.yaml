@@ -7,7 +7,9 @@ title:
   status: canonical
   version: 1.0.0
 description:
-  text: Supports deep, restorative rest and recovery; activation cue PLUS-RESTORATIVE SLEEP.
+  text: A self-directed practice focused on deep, restorative sleep, supporting the body's natural processes
+    of healing, repair, renewal, and regeneration throughout sleep, with optional attention to specific
+    areas when desired.
   status: reviewed
   version: 1.0.1
 metadata_entries: {}
@@ -41,45 +43,58 @@ activation:
       order: 1
     effect_scope_ref: lifecycle.persistence
     procedure:
-      ref: OCF-PROC-INHALE-HOLD
+      ref: OCF-PROC-CLOSE-NATURAL
       status: documented
       evidence_keys:
       - hplus.function.ocf-slp-001.function-body
       before_steps:
-      - id: select-restoration-target
+      - id: optional-restoration-target
         operation: select-target-area
         localization_key: command.procedure.select-target-area
     relationships: {}
   procedure_steps:
-  - id: select-restoration-target
+  - id: optional-restoration-target
     operation: select-target-area
     instruction:
-      text: Choose a target area.
-      status: canonical
+      text: Let your intention extend throughout your entire body and being; optionally include a particular
+        area you wish to restore.
+      status: reviewed
+      version: 1.0.0
+  - id: close-eyes
+    operation: close-eyes
+    instruction:
+      text: Close your eyes.
+      status: reviewed
       version: 1.0.0
   - id: inhale
     operation: inhale
     instruction:
-      text: Inhale.
-      status: canonical
+      text: Take a deep breath in.
+      status: reviewed
       version: 1.0.0
   - id: hold
     operation: hold-breath
     instruction:
-      text: Hold your breath.
-      status: canonical
+      text: Gently hold your breath.
+      status: reviewed
       version: 1.0.0
   - id: command
     operation: think-or-say-command
     instruction:
-      text: Think or say the command.
-      status: canonical
+      text: While holding your breath, silently say the command to yourself.
+      status: reviewed
       version: 1.0.0
   - id: exhale
     operation: exhale
     instruction:
-      text: Exhale.
-      status: canonical
+      text: Then slowly exhale through your mouth, as though gently blowing out a candle.
+      status: reviewed
+      version: 1.0.0
+  - id: breathe-normally
+    operation: breathe-normally
+    instruction:
+      text: Continue breathing naturally.
+      status: reviewed
       version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-SLP-001-LEGACY-01
@@ -135,11 +150,8 @@ entries:
   hplus.function.ocf-slp-001.opener:
     status: reviewed
     version: 1.2.0
-    text: 'This OCF exercise will teach you to direct your total self
-
-      toward deep restoration, healing, and regeneration
-
-      throughout your natural sleep.'
+    text: This OCF exercise will teach you to direct your total self toward deep restoration, healing,
+      repair, and regeneration throughout your natural sleep.
   hplus.function.ocf-slp-001.function-body:
     status: reviewed
     version: 1.2.1
@@ -147,88 +159,54 @@ entries:
       function_id: OCF-SLP-001
       allowed:
       - cue.primary
-    text: 'From this moment forward, whenever you prepare for sleep,
-
-      you can direct your total self toward deep healing,
-
-      restoration, and regeneration throughout your rest.
+    text: 'From this moment forward, whenever you prepare for sleep, you can direct your total self toward
+      deep healing, restoration, and regeneration throughout your rest.
 
 
-      Bring into awareness any part of your physical body
-
-      or total being that you desire to restore.
-
-      Form a clear intention for complete balance,
-
-      renewal, and natural, healthy functioning.
+      Let this intention extend throughout your entire body and being. If there is a particular area you
+      wish to restore, you may include it in your intention.
 
 
-      Inhale deeply and gently hold your breath.
-
-      Think or say in your mind, "{{ cue.primary }}."
-
-      Then exhale slowly through your mouth,
-
-      as though gently blowing out a candle.
+      When you are ready, simply close your eyes.
 
 
-      You will move easily and calmly into deep,
-
-      peaceful, natural sleep.
+      Take a deep breath in and gently hold it.
 
 
-      As you sleep, your conscious mind can rest
+      While holding your breath, silently say to yourself,
 
-      while your subconscious mind and higher self
-
-      work together with your physical body,
-
-      directing their resources toward restoration.
+      "{{ cue.primary }}."
 
 
-      Your entire system will adjust, equalize,
-
-      and return toward its natural balance.
-
-      Areas of weariness, strain, or imbalance
-
-      will receive the attention needed for renewal.
+      Then slowly exhale through your mouth, as though gently blowing out a candle, and continue breathing
+      naturally.
 
 
-      Your total self will continue this restorative pattern
-
-      smoothly and automatically throughout your sleep,
-
-      supporting the healing, repair, and regeneration
-
-      you have clearly intended.
+      Allow yourself to move easily into deep, peaceful, natural sleep.
 
 
-      Each part of your being will cooperate with the others,
-
-      restoring harmony and strengthening natural vitality.
-
-      There is no need to follow or direct each step.
-
-      The process continues while you rest.
+      As your conscious mind rests, let your subconscious mind, higher self, and physical body work together,
+      directing their natural resources toward healing, repair, renewal, and regeneration.
 
 
-      As your sleep is complete, you will awaken
-
-      naturally, deeply rested and refreshed,
-
-      with renewed energy, clarity, and strength.
+      Let your body''s natural maintenance and restorative processes work in harmony, supporting balance,
+      recovery, and renewed vitality throughout your entire being.
 
 
-      Your ability to invoke this restorative sleep pattern
+      Areas of weariness, strain, or imbalance receive the care and attention needed for natural restoration.
 
-      will remain permanently available whenever you choose.
 
-      Each use will make entering restful sleep
+      This restorative pattern continues automatically throughout your sleep, without requiring conscious
+      direction, observation, or effort.
 
-      and directing your total self toward healing
 
-      easier, smoother, and more effective.'
+      As your sleep is complete, awaken naturally, deeply rested and refreshed, with renewed energy, clarity,
+      and strength.
+
+
+      Your ability to invoke this restorative sleep pattern remains permanently available whenever you
+      choose. Each use makes entering restorative sleep and directing your total self toward renewal easier
+      and more familiar.'
   hplus.function.ocf-slp-001.closer:
     status: reviewed
     version: 1.2.1
@@ -236,18 +214,20 @@ entries:
       function_id: OCF-SLP-001
       allowed:
       - cue.primary
-    text: 'Remember, whenever you wish to direct your total self
-
-      toward healing and restoration during sleep,
-
-      inhale deeply and hold your breath.
+    text: 'Remember, whenever you wish to direct your total self toward healing, restoration, and regeneration
+      during sleep, simply close your eyes.
 
 
-      Think or say in your mind, "{{ cue.primary }}."
+      Inhale deeply and gently hold your breath.
 
-      Then exhale slowly through your mouth,
 
-      as though gently blowing out a candle.
+      Silently say to yourself,
+
+      "{{ cue.primary }}."
+
+
+      Then slowly exhale through your mouth, as though gently blowing out a candle, and continue resting
+      naturally.
 
 
       This concludes your OCF Restorative Sleep exercise.'
@@ -334,7 +314,7 @@ editorial:
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: b1f95c85f6ab31f2589fd4f75914bfd66c8d6aa283089c7dc288f5a869537999
+  contract_sha256: 7c92050a91600924bb31e244a7001451e2bae75ceacb9f18028582765349374c
 record_metadata:
   legacy:
     command_ids:

@@ -45,7 +45,7 @@ activation:
       before_steps: []
       evidence_keys:
       - hplus.function.ocf-bod-004.function-body
-      ref: OCF-PROC-CLOSE-FOCUS
+      ref: OCF-PROC-CLOSE-INHALE-HOLD
       status: documented
     relationships: {}
   procedure_steps:
@@ -53,37 +53,31 @@ activation:
     operation: close-eyes
     instruction:
       text: Close your eyes.
-      status: canonical
-      version: 1.0.0
-  - id: focus-target
-    operation: focus-target
-    instruction:
-      text: Focus attention on the selected target.
-      status: canonical
+      status: reviewed
       version: 1.0.0
   - id: inhale
     operation: inhale
     instruction:
-      text: Inhale.
-      status: canonical
+      text: Take a deep breath in.
+      status: reviewed
       version: 1.0.0
   - id: hold
     operation: hold-breath
     instruction:
-      text: Hold your breath.
-      status: canonical
+      text: Gently hold your breath.
+      status: reviewed
       version: 1.0.0
   - id: command
     operation: think-or-say-command
     instruction:
-      text: Think or say the command.
-      status: canonical
+      text: While holding your breath, silently say the command to yourself.
+      status: reviewed
       version: 1.0.0
   - id: exhale
     operation: exhale
     instruction:
-      text: Exhale.
-      status: canonical
+      text: Then slowly exhale through your mouth, as though gently blowing out a candle.
+      status: reviewed
       version: 1.0.0
 secondary_commands:
 - command_id: OCF-CMD-BOD-004-LEGACY-01
@@ -140,13 +134,9 @@ entries:
   hplus.function.ocf-bod-004.opener:
     status: reviewed
     version: 1.2.0
-    text: 'This OCF exercise will strengthen and reinforce your body''s
-
-      natural ability to cleanse, renew, and maintain itself,
-
-      establishing a lasting, automatic pattern of healthy balance
-
-      and maintenance throughout your entire physical body.'
+    text: This OCF exercise will teach you to strengthen and reinforce your body's natural processes of
+      cleansing, renewal, and maintenance, establishing a lasting, automatic pattern of healthy balance
+      throughout your body.
   hplus.function.ocf-bod-004.function-body:
     status: reviewed
     version: 1.2.1
@@ -154,203 +144,44 @@ entries:
       function_id: OCF-BOD-004
       allowed:
       - cue.primary
-    text: 'From this moment forward, your body''s natural processes
+    text: 'From this moment forward, let your body''s natural processes of cleansing, renewal, and maintenance
+      work together smoothly and efficiently.
 
-      of cleansing, renewal, and maintenance will become stronger,
 
-      smoother, and more effective.
+      Your liver, kidneys, lungs, digestive system, and other natural cleansing pathways each perform
+      their important work.
 
 
-      Every part of your body will work together in complete
+      Let your body retain and use what is beneficial, while processing and eliminating natural waste
+      products and substances it no longer needs.
 
-      harmony, maintaining the healthy balance you are
 
-      naturally designed to achieve.
+      Let every organ, tissue, and supporting system work together in healthy balance, providing nourishment,
+      protection, maintenance, and renewal throughout your body.
 
 
-      Bring your awareness to the many systems within your
+      This pattern is permanently established within you and continues automatically, whether you are
+      awake, resting, or asleep, adjusting naturally to your body''s changing needs without conscious
+      effort.
 
-      body that continually cleanse, protect, and renew you.
 
-
-      Your liver, kidneys, lungs, digestive system, and other
-
-      natural cleansing systems work together, each performing
-
-      its own important function.
-
-
-      See and feel these systems working smoothly, efficiently,
-
-      and in perfect coordination.
-
-
-      Your body recognizes what it needs and what it no
-
-      longer needs.
-
-
-      Everything useful and beneficial is retained and used
-
-      where it is needed.
-
-
-      Unwanted substances and natural waste products are
-
-      processed and eliminated through your body''s normal
-
-      cleansing pathways.
-
-
-      Visualize these processes becoming clearer, smoother,
-
-      and more effective throughout your entire body.
-
-
-      Imagine every cell receiving the nourishment it needs,
-
-      while your body''s natural maintenance systems keep
-
-      your internal environment clean and balanced.
-
-
-      Feel this sense of balance spreading throughout
-
-      your entire physical body.
-
-
-      Every organ, every tissue, and every system works
-
-      together to maintain your natural health and vitality.
-
-
-      Now know that this pattern of cleansing, renewal,
-
-      and maintenance is becoming permanently established
-
-      within you.
-
-
-      From this moment forward, your body will maintain
-
-      this pattern automatically, without any need for
-
-      conscious thought or effort.
-
-
-      Whether you are awake, resting, or sleeping,
-
-      your body''s natural cleansing and maintenance
-
-      processes will continue working for you.
-
-
-      These processes will always respond intelligently
-
-      to your body''s needs, becoming more active when
-
-      needed and returning to their normal balanced
-
-      activity when their work is complete.
-
-
-      Your body will continuously maintain this healthy
-
-      balance, retaining what is beneficial and
-
-      eliminating what is no longer needed.
-
-
-      This automatic pattern is now a natural and lasting
-
-      part of your everyday life.
-
-
-      Each day, your body''s natural processes of
-
-      cleansing and renewal will operate more smoothly,
-
-      efficiently, and effectively.
-
-
-      You will feel increasingly clean, refreshed,
-
-      balanced, and full of natural vitality.
-
-
-      Whenever you wish to consciously strengthen
-
-      or reinforce this cleansing pattern,
-
-      you can do so quickly and easily.
-
-
-      Simply close your eyes and bring your awareness
-
-      to your body''s natural cleansing systems.
+      Whenever you wish to reinforce this pattern, simply close your eyes.
 
 
       Take a deep breath in and gently hold it.
 
 
-      While holding your breath, silently say to yourself,
-
-      "{{ cue.primary }}."
+      While holding your breath, silently say to yourself, "{{ cue.primary }}."
 
 
-      Then slowly exhale through your mouth,
-
-      as though gently blowing out a candle.
+      Then slowly exhale through your mouth, as though gently blowing out a candle.
 
 
-      As you exhale, visualize your body''s cleansing
-
-      and maintenance systems working together
-
-      smoothly and in complete harmony.
+      As you exhale, let this pattern of natural cleansing, renewal, and maintenance continue throughout
+      your body.
 
 
-      Your body will reinforce its natural pattern
-
-      of cleansing, renewal, and healthy balance.
-
-
-      Every system will perform its function at exactly
-
-      the level needed to maintain your well-being.
-
-
-      Each time you use {{ cue.primary }},
-
-      your ability to consciously reinforce
-
-      this pattern becomes easier, faster,
-
-      and more effective.
-
-
-      Remember, this process is now automatic.
-
-
-      Your body will continue its natural cleansing
-
-      and maintenance whether or not you
-
-      consciously think about it.
-
-
-      {{ cue.primary }} is always available whenever
-
-      you wish to give this established pattern
-
-      additional attention and reinforcement.
-
-
-      Your body knows how to maintain its natural
-
-      balance, and this pattern will continue
-
-      working for you every day and every night.'
+      The more you use this command, the easier and more effective this reinforcement becomes.'
   hplus.function.ocf-bod-004.closer:
     status: reviewed
     version: 1.2.1
@@ -358,16 +189,8 @@ entries:
       function_id: OCF-BOD-004
       allowed:
       - cue.primary
-    text: 'Remember, your body''s natural processes of cleansing,
-
-      renewal, and maintenance are now firmly established
-
-      as a lasting, automatic pattern.
-
-
-      Whenever you wish to reinforce this pattern,
-
-      simply close your eyes.
+    text: 'Remember, to reinforce your body''s natural cleansing, renewal, and maintenance, close your
+      eyes.
 
 
       Inhale deeply and gently hold your breath.
@@ -376,9 +199,7 @@ entries:
       Silently say to yourself, "{{ cue.primary }}."
 
 
-      Then slowly exhale through your mouth,
-
-      as though gently blowing out a candle.
+      Then slowly exhale through your mouth, as though gently blowing out a candle.
 
 
       This concludes your OCF Detox exercise.'
@@ -463,7 +284,7 @@ editorial:
         and final rendered transcripts unverified.
 localization:
   status: complete
-  contract_sha256: acabbac24a597c9cc3357ebe82c28e52fbc4c08a30da6ac3b38ce9c3d712a980
+  contract_sha256: c146679590f8ef5290d1a88ccbb59cf7d6c67b7f2a04fba40f33a1b653636e9d
 record_metadata:
   legacy:
     command_ids:

@@ -52,26 +52,26 @@ activation:
   - id: inhale
     operation: inhale
     instruction:
-      text: Inhale.
-      status: canonical
+      text: Take a deep breath in.
+      status: reviewed
       version: 1.0.0
   - id: hold
     operation: hold-breath
     instruction:
-      text: Hold your breath.
-      status: canonical
+      text: Gently hold your breath.
+      status: reviewed
       version: 1.0.0
   - id: command
     operation: think-or-say-command
     instruction:
-      text: Think or say the command.
-      status: canonical
+      text: While holding your breath, silently say the command to yourself.
+      status: reviewed
       version: 1.0.0
   - id: exhale
     operation: exhale
     instruction:
-      text: Exhale.
-      status: canonical
+      text: Then slowly exhale through your mouth.
+      status: reviewed
       version: 1.0.0
 secondary_commands: []
 tags:
@@ -107,13 +107,9 @@ entries:
   hplus.function.ocf-bod-009.opener:
     status: reviewed
     version: 1.2.0
-    text: 'This OCF exercise will strengthen and reinforce your
-
-      respiratory system''s natural processes of breathing,
-
-      renewal, and maintenance, establishing a lasting,
-
-      automatic pattern of healthy, efficient breathing.'
+    text: This OCF exercise will teach you to strengthen your respiratory system's natural processes of
+      breathing, renewal, and maintenance, establishing a lasting, automatic pattern of healthy, efficient
+      breathing.
   hplus.function.ocf-bod-009.function-body:
     status: reviewed
     version: 1.2.0
@@ -121,128 +117,61 @@ entries:
       function_id: OCF-BOD-009
       allowed:
       - cue.primary
-    text: 'From this moment forward, your entire respiratory
+    text: 'From this moment forward, let your entire respiratory system become stronger, healthier, and
+      more efficient.
 
-      system is becoming stronger, healthier,
 
-      and more efficient.
+      Let your nose, throat, airways, and lungs work together smoothly, providing the oxygen your body
+      needs.
 
 
-      Bring your awareness to your nose, throat,
+      Let your nasal passages remain clear and comfortable, warming and moistening incoming air, while
+      tiny protective cilia help carry mucus and trapped particles out of your airways.
 
-      airways, and lungs, working together
 
-      to provide the oxygen your body needs.
+      Let your airways remain open and flexible, allowing air to move smoothly and naturally.
 
 
-      Feel your nasal passages becoming clear
+      Within your lungs, millions of tiny air sacs exchange oxygen and carbon dioxide. Oxygen enters your
+      bloodstream to nourish your body, while carbon dioxide passes into your lungs to be released as
+      you exhale.
 
-      and comfortable, allowing air to flow
 
-      smoothly and naturally.
+      Let this exchange remain smooth, balanced, and efficient.
 
 
-      Tiny protective cilia help move mucus
+      Your diaphragm and breathing muscles work together with natural strength and coordination, allowing
+      you to breathe comfortably without unnecessary effort.
 
-      and trapped particles out of your airways,
 
-      while incoming air is warmed and moistened.
+      Your body''s natural processes of maintenance and renewal support the strength, flexibility, and
+      healthy function of your entire respiratory system.
 
 
-      Your airways remain clear and open,
+      This pattern of efficient breathing and respiratory maintenance is permanently established within
+      you.
 
-      supporting smooth, comfortable breathing.
 
+      It continues automatically, whether you are awake, resting, or asleep, adjusting naturally to your
+      body''s changing needs without conscious effort.
 
-      Now bring your awareness to your lungs.
 
+      Whenever you wish to reinforce this established pattern, take a deep breath in and gently hold it.
 
-      Deep within them, millions of tiny air sacs
 
-      called alveoli exchange oxygen and carbon dioxide.
+      While holding your breath, silently say to yourself,
 
+      "{{ cue.primary }}."
 
-      Oxygen passes into your bloodstream,
 
-      while carbon dioxide moves from your blood
+      Then slowly exhale through your mouth.
 
-      into your lungs to be released as you exhale.
 
+      As you exhale, let this pattern of smooth, efficient breathing and natural respiratory maintenance
+      continue throughout your body.
 
-      This exchange is becoming smoother,
 
-      more balanced, and more efficient.
-
-
-      Your diaphragm and breathing muscles
-
-      work together with strength and coordination,
-
-      moving air naturally and without unnecessary effort.
-
-
-      Your body''s natural processes of cellular
-
-      maintenance and renewal continually support
-
-      the healthy function of your respiratory system.
-
-
-      From this moment forward, this pattern
-
-      of efficient breathing and maintenance
-
-      is permanently established within you.
-
-
-      Whether awake, resting, or sleeping,
-
-      your breathing continues automatically,
-
-      adjusting smoothly to your body''s needs.
-
-
-      Your respiratory system maintains
-
-      its natural strength, flexibility,
-
-      and efficient function without conscious effort.
-
-
-      Whenever you wish to reinforce this
-
-      improving pattern, inhale deeply
-
-      and gently hold your breath.
-
-
-      Think or say in your mind, "{{ cue.primary }}."
-
-
-      Then exhale slowly through your mouth.
-
-
-      Your breathing will become smoother,
-
-      easier, and more efficient,
-
-      strengthening this established pattern
-
-      of healthy respiratory function.
-
-
-      Each time you use {{ cue.primary }},
-
-      this reinforcement becomes easier,
-
-      faster, and more effective.
-
-
-      Your respiratory system will continue
-
-      its natural maintenance and renewal
-
-      automatically, every day and every night.'
+      The more you use this command, the easier and more effective this reinforcement becomes.'
   hplus.function.ocf-bod-009.closer:
     status: reviewed
     version: 1.2.1
@@ -250,19 +179,16 @@ entries:
       function_id: OCF-BOD-009
       allowed:
       - cue.primary
-    text: 'Remember, whenever you wish to reinforce
-
-      your respiratory system''s natural strength
-
-      and healthy function, inhale deeply
-
-      and hold your breath.
+    text: 'Remember, to reinforce healthy breathing and your respiratory system''s natural maintenance,
+      inhale deeply and gently hold your breath.
 
 
-      Think or say in your mind, "{{ cue.primary }}."
+      Silently say to yourself,
+
+      "{{ cue.primary }}."
 
 
-      Then exhale slowly through your mouth.
+      Then slowly exhale through your mouth.
 
 
       This concludes your OCF Breathe Better exercise.'

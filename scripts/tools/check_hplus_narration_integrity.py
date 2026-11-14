@@ -130,6 +130,16 @@ def check(root: Path = REPO_ROOT, baseline: Path = BASELINE_PATH) -> list[str]:
         isinstance(key, str) and isinstance(value, str) for key, value in expected.items()
     ):
         raise ValueError(f"invalid narration integrity baseline: {baseline}")
+    if baseline == BASELINE_PATH:
+        from ocf_tools.editorial_successor import expected_entries, verify_resources
+
+        verify_resources(root)
+        updated = expected_entries(
+            {identity.split("::", 1)[1]: value for identity, value in expected.items()},
+            resolved=True,
+            root=root,
+        )
+        expected = {identity: updated[identity.split("::", 1)[1]] for identity in expected}
     current = text_fingerprints(narration_texts(root))
     problems = differences(expected, current)
     if baseline == BASELINE_PATH and root == REPO_ROOT:
